@@ -23,10 +23,22 @@ Vijf recepten die deze week trending zijn, plus één Fermentatie van de week. W
    - `native` + `roman`: de naam in het Japans of Koreaans met uitspraak. Alleen als je het zeker weet; anders leeg laten.
    - `trend`: `source` + één zin in gewone woorden waarom het nu trending is. **Geen kale percentages**: schrijf "twee keer zo vaak gezocht", niet "+110%".
    - `signal.text` + `links`: de langere uitleg en de bronnen voor "Waarom deze week".
-5. **Fermentatie van de week:** volg **[FERMENTATIE.md](FERMENTATIE.md)** en vink de checklist in §8 helemaal af. Wissel het type af per week (kool, wortel, radijs, chili, fruit). Koppel het ferment met `usedIn` aan een recept van deze editie als dat kan. Zet de geraadpleegde bronnen in `sources`.
+5. **Fermentatie van de week:** kies uit de bibliotheek in **[FERMENTATIE.md](FERMENTATIE.md) §9** en vink de checklist in §8 helemaal af. Herhaal geen ferment uit de laatste 4 edities. Koppel het ferment met `usedIn` aan een recept van deze editie als dat kan. Zet de geraadpleegde bronnen in `sources`.
 6. **Omslag:** `cover.color` is anders dan vorige week (`navy`, `ink`, `kaki`, `moss`). `cover.glyph` is één teken voor het thema van de week (standaard 旬, "in het seizoen").
-7. **Controleer:** `python3 scripts/check_edition.py`. Alle fouten moeten weg zijn.
+7. **Controleer:** `python3 scripts/check_photos.py editions/<id>.json` (alle foto's moeten werken) en `python3 scripts/check_edition.py` (0 fouten).
 8. **Publiceer:** voeg het id vooraan toe in `editions/index.json`, commit als `Proef: editie NN (week WW)` en push naar `main`. GitHub Pages zet het binnen een paar minuten live.
+
+## Wekelijkse run (Claude-routine): zuinig werken
+
+De routine draait elke zaterdag om 06:00. Elke stap kost tokens, en alles wat je inleest wordt bij elke volgende stap opnieuw meegestuurd. Daarom:
+
+1. **Begin met `python3 scripts/summary.py --example`.** Dat geeft de volgende id, datum en nummer, alle eerdere recepten en ferments, en een ingekort voorbeeld. Lees **niet** de volledige edities, `index.html` of de broncode van de scripts.
+2. **Lees alleen** deze REDACTIE.md en van FERMENTATIE.md §1, §6, §8 en §9.
+3. **Zoeken:** gebruik WebSearch in `standard`-modus (niet `extended`), **maximaal 8 zoekopdrachten** in totaal. Stuur ze tegelijk in één beurt.
+4. **Pagina's openen:** maximaal 10 keer WebFetch, alleen voor pagina's die je echt gebruikt (bronrecept, trendbron). Vraag in de prompt alleen wat je nodig hebt.
+5. **Ferment:** kies uit de bibliotheek in FERMENTATIE.md §9, geen nieuw onderzoek. Schrijf het ferment met de cijfers uit de tabel. De bronlinks controleert `check_photos.py`.
+6. **Schrijf de editie in één keer** met Write. Draai daarna `python3 scripts/check_photos.py editions/<id>.json` en `python3 scripts/check_edition.py`. Herstel alleen wat de scripts melden.
+7. **Publiceer** zoals in stap 8 hierboven en sluit af met een verslag van hooguit 15 regels.
 
 ## Velden van een editie
 

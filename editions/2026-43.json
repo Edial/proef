@@ -17,9 +17,7 @@
       "category": "Hoofdgerecht",
       "minutes": 55,
       "servings": 4,
-      "form": "pan",
       "signal": {
-        "metric": "+110%",
         "source": "Pinterest",
         "text": "Er wordt ruim twee keer zo vaak naar kool gezocht als vorig jaar. Pinterest noemt 'Cabbage Crush' een van de grootste foodtrends van 2026, en op TikTok is deze versie het herkenbaarste voorbeeld."
       },
@@ -152,9 +150,7 @@
       "category": "Hoofdgerecht",
       "minutes": 35,
       "servings": 4,
-      "form": "tray",
       "signal": {
-        "metric": "Najaarstrend",
         "source": "PureWow · TikTok",
         "text": "Dumpling bakes staan op de lijst met grootste foodtrends van najaar 2026 (PureWow, september). De virale versie bakt diepvriesdumplings in een saus van kokosmelk en gele curry."
       },
@@ -269,9 +265,7 @@
       "category": "Soep",
       "minutes": 40,
       "servings": 4,
-      "form": "bowl",
       "signal": {
-        "metric": "Seizoenspiek",
         "source": "TikTok · Pinterest",
         "text": "Op TikTok gaat deze soep rond als hét herfstrecept van 2026, en Pinterest zet in zijn weekrapport van 16 oktober 'Cozy Season' centraal."
       },
@@ -382,9 +376,7 @@
       "category": "Hoofdgerecht",
       "minutes": 20,
       "servings": 4,
-      "form": "bowl",
       "signal": {
-        "metric": "+110%",
         "source": "Pinterest",
         "text": "Pinterest ziet kool als dé trend van 2026 (ruim twee keer zo veel zoekopdrachten naar kool), mede aangejaagd door de populariteit van gefermenteerde gerechten zoals kimchi."
       },
@@ -478,9 +470,7 @@
       "category": "Lunch",
       "minutes": 45,
       "servings": 2,
-      "form": "flat",
       "signal": {
-        "metric": "Eiwittrend",
         "source": "TikTok",
         "text": "Cottage cheese ging in 2023 viraal en is sindsdien niet meer weggeweest. Deze flatbread van drie ingrediënten is de versie die nu onder #viralrecipes2026 rondgaat."
       },

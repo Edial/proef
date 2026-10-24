@@ -122,6 +122,9 @@ def main():
     if len(ids) != len(set(ids)):
         err("index.json", "een editie staat er dubbel in")
     seen, numbers, prev_cover = {}, {}, None
+    md = (ROOT / "FERMENTATIE.md").read_text() if (ROOT / "FERMENTATIE.md").exists() else ""
+    library = md.split("## 9.", 1)[1].split("## Bronnen", 1)[0].lower() if "## 9." in md else ""
+    recent_ferments = []
     for eid in reversed(ids):  # oud naar nieuw
         path = ED / f"{eid}.json"
         where = f"editions/{eid}.json"
@@ -162,6 +165,12 @@ def main():
             check_recipe(r, f"{where} recept {i + 1} ({r.get('slug', '?')})", seen)
         if "ferment" in ed:
             check_ferment(ed["ferment"], f"{where} ferment", recipes, seen)
+            title = ed["ferment"].get("title", "").lower()
+            if library and title and title not in library:
+                warn(f"{where} ferment", f"'{ed['ferment'].get('title')}' staat niet in de bibliotheek (FERMENTATIE.md §9); laat een mens het nalopen")
+            if title in recent_ferments[-4:]:
+                warn(f"{where} ferment", "zelfde ferment als in een van de laatste 4 edities")
+            recent_ferments.append(title)
         elif n and n >= 2:
             err(where, "geen Fermentatie van de week")
     for w in warnings:
