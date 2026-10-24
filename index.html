@@ -20,6 +20,7 @@
   --rule: #DDD6C8;
   /* vaste kleuren: tekst op navy of op een gekleurde kaart */
   --cream: #F8F5EE;
+  --ink-cover: #1F1D1A;
   --dark: #1F1D1A;
   --navy: #2E4A6B;
   --hanko: #C4372C;
@@ -38,11 +39,11 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --board: #161412; --sheet: #211E1A; --ink: #EEE9DF; --muted: #A39B8E; --rule: #37322B; --navy: #2B4562; --ok: #8FBF9F;
+    --board: #161412; --sheet: #211E1A; --ink: #EEE9DF; --muted: #A39B8E; --rule: #37322B; --navy: #2B4562; --ok: #8FBF9F; --ink-cover: #3A352E;
   }
 }
 :root[data-theme="dark"] {
-  --board: #161412; --sheet: #211E1A; --ink: #EEE9DF; --muted: #A39B8E; --rule: #37322B; --navy: #2B4562; --ok: #8FBF9F;
+  --board: #161412; --sheet: #211E1A; --ink: #EEE9DF; --muted: #A39B8E; --rule: #37322B; --navy: #2B4562; --ok: #8FBF9F; --ink-cover: #3A352E;
 }
 
 * { box-sizing: border-box; }
@@ -112,7 +113,9 @@ img { display: block; max-width: 100%; }
 
 /* ---------- Home ---------- */
 .home { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gap); }
-.mast { grid-column: span 4; background: var(--navy); color: var(--cream); padding: 28px 26px 24px; display: flex; flex-direction: column; min-height: 540px; }
+/* omslagkleur per editie */
+.c-navy { --cover: var(--navy); } .c-ink { --cover: var(--ink-cover); } .c-kaki { --cover: #A9512F; } .c-moss { --cover: #3D5A47; }
+.mast { grid-column: span 4; background: var(--cover, var(--navy)); color: var(--cream); padding: 28px 26px 24px; display: flex; flex-direction: column; min-height: 540px; }
 .mast .logo { font-weight: 400; font-size: 68px; letter-spacing: -0.035em; line-height: .9; }
 .mast .sub { margin-top: 14px; color: rgba(248,245,238,.65); }
 .mast .glyph { font-size: 190px; margin: auto 0 0 -6px; padding-top: 28px; }
@@ -147,25 +150,36 @@ img { display: block; max-width: 100%; }
 .ferm-teaser p:not(.kicker) { font-style: italic; color: var(--muted); font-size: 15px; }
 .ferm-teaser .go { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
 
-/* Archief */
-.archive { margin-top: 96px; display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: var(--gap); align-items: start; }
-.archive .side { padding: 26px; }
+/* Editiebalk: welke editie, en bladeren */
+.issuebar { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; color: var(--muted); }
+.issuebar nav { display: flex; gap: 18px; }
+.issuebar a { text-decoration: none; color: var(--muted); }
+.issuebar a:hover { color: var(--ink); }
+
+/* Archief: een plank met edities */
+.archive { margin-top: 96px; }
+.archive-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
 .archive h2 { font-size: 36px; letter-spacing: -0.02em; margin-top: 6px; }
-.search { display: grid; gap: 6px; margin-top: 26px; }
-.search input { font: inherit; font-size: 17px; color: var(--ink); background: transparent; border: 0; border-bottom: 1px solid var(--ink); padding: 8px 0; width: 100%; border-radius: 0; }
-.search input::placeholder { color: var(--muted); }
-#archive-list { padding: 10px 26px; }
-.list { list-style: none; margin: 0; padding: 0; }
-.list > li { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 16px; padding-block: 16px; border-bottom: 1px solid var(--rule); }
-.list > li:last-child { border-bottom: 0; }
-.list .no { font-size: 28px; line-height: 1; text-decoration: none; }
-.list .when { margin-bottom: 6px; }
-.list .titles { display: flex; flex-wrap: wrap; gap: 4px 18px; }
-.list .titles a, .list > li > div > a { text-decoration: none; }
-.list .titles a:hover, .list > li > div > a:hover { text-decoration: underline; }
-.list .titles .f { font-style: italic; }
-.list .hit-meta { margin-top: 2px; }
-.empty { color: var(--muted); padding-block: 16px; font-style: italic; }
+.find { display: flex; align-items: center; gap: 14px; min-width: min(100%, 360px); font: inherit; font-size: 16px; font-style: italic; color: var(--muted); background: var(--sheet); border: 0; padding: 14px 16px; cursor: pointer; text-align: left; }
+.find:hover { color: var(--ink); }
+.find span { flex: 1; }
+kbd { font-family: var(--mono); font-style: normal; font-size: 11px; border: 1px solid var(--rule); border-radius: 3px; padding: 1px 6px; color: var(--muted); }
+.shelf { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--gap); }
+.issue { display: flex; flex-direction: column; background: var(--sheet); min-width: 0; }
+.issue .cov { background: var(--cover); color: var(--cream); padding: 16px 18px 14px; display: flex; flex-direction: column; aspect-ratio: 4 / 3.4; text-decoration: none; }
+.issue .cov .cjk { font-size: 72px; margin-top: auto; }
+.issue .cov .row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.issue .cov .logo { font-size: 26px; letter-spacing: -0.02em; }
+.issue .cov .mono { color: rgba(248,245,238,.7); }
+.issue .cov:hover .logo { text-decoration: underline; text-decoration-thickness: 1px; }
+.issue ul { list-style: none; margin: 0; padding: 12px 18px 16px; font-size: 15px; line-height: 1.35; }
+.issue li { padding: 4px 0; display: flex; gap: 8px; }
+.issue li a { text-decoration: none; }
+.issue li a:hover { text-decoration: underline; }
+.issue .dot { flex: none; width: 8px; height: 8px; margin-top: 7px; background: var(--bg); }
+.issue li.f a { font-style: italic; }
+.issue li.f .dot { background: var(--hanko); border-radius: 50%; }
+.empty { color: var(--muted); padding: 16px; font-style: italic; }
 
 /* ---------- Recept ---------- */
 .back { display: inline-block; margin-bottom: 18px; text-decoration: none; color: var(--muted); }
@@ -245,6 +259,52 @@ img { display: block; max-width: 100%; }
 .checks .mono { display: block; margin-bottom: 4px; }
 .checks .ok { color: var(--ok); } .checks .bad { color: var(--hanko); } .checks .kid { color: var(--muted); }
 
+/* Tags en "Meer zoals dit" */
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.tags a { font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; text-decoration: none; padding: 4px 9px; border: 1px solid var(--rule); border-radius: 99px; color: var(--muted); }
+.tags a:hover { border-color: var(--ink); color: var(--ink); }
+.related { margin-top: 56px; }
+.related > .head-row { margin-bottom: 12px; }
+.related h2 { font-size: 24px; letter-spacing: -0.01em; }
+.related-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); }
+.mini { display: grid; grid-template-columns: 96px minmax(0, 1fr); background: var(--bg); color: var(--dark); text-decoration: none; min-width: 0; }
+.mini .duo { aspect-ratio: 1; }
+.mini .body { padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.mini strong { font-weight: 400; font-size: 17px; line-height: 1.15; }
+.mini:hover strong { text-decoration: underline; text-decoration-thickness: 1px; }
+.mini .why-rel { font-family: var(--sans); font-size: 12px; line-height: 1.35; color: rgba(31,29,26,.7); margin-top: auto; }
+.mini .mono { color: rgba(31,29,26,.65); font-size: 10.5px; }
+.mini.t-persimmon { color: var(--cream); }
+.mini.t-persimmon .why-rel, .mini.t-persimmon .mono { color: rgba(248,245,238,.85); }
+
+/* Zoeken (toets /) */
+#search { width: min(720px, calc(100vw - 24px)); max-height: min(80vh, 760px); margin: 9vh auto auto; padding: 0; border: 0; background: var(--sheet); color: var(--ink); box-shadow: 0 30px 80px rgba(0,0,0,.25); display: none; flex-direction: column; overflow: hidden; }
+#search[open] { display: flex; }
+#search::backdrop { background: rgba(22,20,18,.55); }
+.s-top { display: flex; align-items: center; gap: 12px; padding: 18px 22px 14px; border-bottom: 1px solid var(--ink); }
+.s-top .cjk { font-size: 22px; font-weight: 700; color: var(--hanko); }
+.s-top input { flex: 1; min-width: 0; font: inherit; font-size: 22px; letter-spacing: -0.01em; color: var(--ink); background: transparent; border: 0; padding: 4px 0; }
+.s-top input:focus { outline: none; }
+.s-top input::placeholder { color: var(--muted); font-style: italic; }
+.s-close { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); background: none; border: 0; cursor: pointer; padding: 4px; }
+.s-chips { display: flex; gap: 6px; flex-wrap: wrap; padding: 12px 22px; border-bottom: 1px solid var(--rule); }
+.s-chips button { font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; padding: 5px 10px; border: 1px solid var(--rule); border-radius: 99px; background: transparent; color: var(--ink); cursor: pointer; }
+.s-chips button:hover, .s-chips button.on { border-color: var(--ink); background: var(--ink); color: var(--sheet); }
+.s-chips .dice { border-color: var(--hanko); color: var(--hanko); }
+.s-hint { padding: 10px 22px 0; font-family: var(--sans); font-size: 12.5px; color: var(--muted); }
+.s-results { list-style: none; margin: 0; padding: 8px 10px 14px; overflow-y: auto; }
+.s-results li a { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 10px 12px; text-decoration: none; }
+.s-results li a.sel, .s-results li a:hover { background: var(--board); }
+.s-results .sw { width: 40px; height: 40px; display: grid; place-items: center; background: var(--bg, var(--hanko)); color: var(--dark); font-size: 20px; }
+.s-results .sw.t-persimmon, .s-results .sw.ferm { color: var(--cream); }
+.s-results .sw.ferm { background: #2E4A6B; }
+.s-results strong { display: block; font-weight: 400; font-size: 17px; line-height: 1.2; }
+.s-results .meta { display: block; font-family: var(--sans); font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+.s-results .meta b { font-weight: 500; color: var(--ink); }
+.s-results .no { font-size: 15px; }
+.s-group { padding: 10px 12px 4px; }
+.s-empty { padding: 18px 12px; color: var(--muted); font-style: italic; }
+
 /* Status en voet */
 .status { padding-block: 48px; color: var(--muted); font-style: italic; }
 .toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--board); font-family: var(--mono); font-size: 12px; padding: 10px 16px; border-radius: 2px; z-index: 10; }
@@ -258,6 +318,7 @@ footer { margin-top: 96px; }
   .spread, .ferm, .archive { grid-template-columns: minmax(0, 1fr); }
   .spread .left, .ferm-side { position: static; }
   .spread .left .duo { aspect-ratio: 4 / 3; }
+  .related-grid { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 640px) {
   .top { flex-direction: column; gap: 6px; }
@@ -281,6 +342,12 @@ footer { margin-top: 96px; }
   .timeline li { padding: 0 0 18px 26px; }
   .pager strong { font-size: 17px; }
   .pager a { padding: 14px 16px; }
+  .shelf { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .issue .cov .cjk { font-size: 52px; }
+  .issue ul { padding: 10px 12px 12px; font-size: 14px; }
+  #search { margin-top: 12px; max-height: calc(100vh - 24px); }
+  .s-top input { font-size: 19px; }
+  .s-hint { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .duo img, .duo::after, .duo::before { transition: none; }
@@ -296,23 +363,24 @@ footer { margin-top: 96px; }
       <a href="#deze-week">Deze week</a>
       <a href="#fermentatie">Fermentatie</a>
       <a href="#archief">Archief</a>
+      <a href="#zoek" aria-keyshortcuts="/">Zoek <kbd>/</kbd></a>
     </nav>
   </header>
 
   <main id="home">
     <p class="notice" id="edition-notice" hidden>Je bekijkt een eerdere editie. <a href="#deze-week">Naar deze week →</a></p>
+    <div class="issuebar mono" id="issuebar"></div>
     <div class="home" id="features"><p class="status" id="status">Recepten laden…</p></div>
 
     <section class="archive" id="archief" aria-labelledby="archief-titel">
-      <div class="card side">
-        <p class="kicker">Archief</p>
-        <h2 id="archief-titel">Alle edities</h2>
-        <label class="search" for="zoek">
-          <span class="label">Zoeken</span>
-          <input id="zoek" type="search" placeholder="Recept of ingrediënt" autocomplete="off">
-        </label>
+      <div class="archive-head">
+        <div>
+          <p class="kicker">Archief</p>
+          <h2 id="archief-titel">Alle edities</h2>
+        </div>
+        <button type="button" class="find" id="find"><span>Zoek op gerecht, ingrediënt of wat je in huis hebt</span><kbd>/</kbd></button>
       </div>
-      <div class="card" id="archive-list"></div>
+      <div class="shelf" id="shelf"></div>
     </section>
   </main>
 
@@ -326,6 +394,17 @@ footer { margin-top: 96px; }
   </footer>
 </div>
 <div class="toast" id="toast" role="status" hidden></div>
+
+<dialog id="search" aria-label="Zoeken">
+  <div class="s-top">
+    <span class="cjk" aria-hidden="true">探</span>
+    <input id="q" type="search" placeholder="kimchi, onder 30 min, of: kool, ei, rijst" autocomplete="off" aria-controls="s-results" aria-label="Zoek in alle recepten">
+    <button type="button" class="s-close" id="s-close">Esc</button>
+  </div>
+  <div class="s-chips" id="s-chips"></div>
+  <p class="s-hint">Tip: typ wat je in huis hebt, gescheiden door komma's. Dan zie je wat je ermee kunt maken.</p>
+  <ul class="s-results" id="s-results" role="listbox"></ul>
+</dialog>
 
 <script>
 (() => {
@@ -378,6 +457,8 @@ footer { margin-top: 96px; }
   const tintClass = (r) => "t-" + (TINTS[r.tint] || "sage");
   const SEASONS = [[[12, 1, 2], "Winter", "冬"], [[3, 4, 5], "Lente", "春"], [[6, 7, 8], "Zomer", "夏"], [[9, 10, 11], "Herfst", "秋"]];
   const season = (iso) => { const m = new Date(iso + "T12:00:00").getMonth() + 1; return SEASONS.find(([ms]) => ms.includes(m)); };
+  const COVERS = ["navy", "ink", "kaki", "moss"];
+  const coverClass = (ed) => "c-" + (COVERS.includes(ed.cover?.color) ? ed.cover.color : COVERS[(ed.number - 1) % COVERS.length]);
   const servingsText = (r, n) => { const lab = r.servingsLabel || "personen"; return n + " " + (n === 1 ? singular[lab] || lab : lab); };
   const recipeNo = (r) => pad(r._edition.recipes.indexOf(r) + 1);
 
@@ -413,12 +494,19 @@ footer { margin-top: 96px; }
     const [, sName, sGlyph] = season(ed.date);
     const [lead, ...rest] = ed.recipes;
     const spans = tileSpans(rest.length);
+    const i = state.editions.indexOf(ed), newer = state.editions[i - 1], older = state.editions[i + 1];
+    $("issuebar").replaceChildren(
+      h("span", { text: `${latest ? "Deze week" : "Editie"} · Nº ${pad(ed.number)} · ${fmtDate(ed.date)}` }),
+      h("nav", { "aria-label": "Edities" },
+        older ? h("a", { href: "#editie-" + older.id, text: `← Nº ${pad(older.number)}` }) : null,
+        newer ? h("a", { href: newer === state.editions[0] ? "#deze-week" : "#editie-" + newer.id, text: `Nº ${pad(newer.number)} →` }) : null));
+    document.title = latest ? "Proef" : `Proef Nº ${pad(ed.number)} · week ${ed.week}`;
     const box = $("features");
     box.replaceChildren(...[
-      h("section", { class: "mast", "aria-label": "Editie" },
+      h("section", { class: "mast " + coverClass(ed), "aria-label": "Editie" },
         h("h1", { class: "logo", text: "Proef" }),
         h("p", { class: "sub mono", text: `Nº ${pad(ed.number)} · Week ${ed.week} · ${sName} ${ed.year}` }),
-        h("div", { class: "glyph cjk", "aria-hidden": "true", text: "旬" }),
+        h("div", { class: "glyph cjk", "aria-hidden": "true", text: ed.cover?.glyph || "旬" }),
         h("div", { class: "bottom" },
           h("p", { class: "intro", text: ed.intro || "" }),
           h("span", { class: "hanko", title: sName, "aria-hidden": "true", text: sGlyph }))),
@@ -497,6 +585,7 @@ footer { margin-top: 96px; }
           h("div", { class: "metaline mono" }, h("span", { class: "stepper" }, minus, out, plus), h("span", { text: r.minutes + " min" }), r.category ? h("span", { text: r.category }) : null),
           h("p", { class: "dek", text: r.dek || "" }),
           trend(r),
+          (r.tags || []).length ? h("div", { class: "tags" }, r.tags.map((t) => h("a", { href: "#zoek/" + encodeURIComponent(t.toLowerCase()), text: t }))) : null,
           h("div", { class: "cols" },
             h("section", { "aria-labelledby": "ing-t" },
               h("div", { class: "head-row" }, h("h2", { class: "mono colhead", id: "ing-t", text: "Ingrediënten" }), copyBtn),
@@ -513,8 +602,10 @@ footer { margin-top: 96px; }
       h("nav", { class: "pager", "aria-label": "Andere recepten" },
         prev ? h("a", { class: "card", href: "#" + prev.slug }, h("span", { class: "label", text: "← Vorige" }), h("strong", { text: prev.title })) : h("span"),
         next ? h("a", { class: "card next", href: "#" + next.slug }, h("span", { class: "label", text: "Volgende →" }), h("strong", { text: next.title }))
-          : ed.ferment ? h("a", { class: "card next", href: "#fermentatie-" + ed.id }, h("span", { class: "label", text: "Fermentatie →" }), h("strong", { text: ed.ferment.title })) : h("span"))
+          : ed.ferment ? h("a", { class: "card next", href: "#fermentatie-" + ed.id }, h("span", { class: "label", text: "Fermentatie →" }), h("strong", { text: ed.ferment.title })) : h("span")),
+      relatedBlock(r)
     ));
+    document.title = r.title + " · Proef";
     $("home").hidden = true; $("detail-view").hidden = false;
     state.lastSlug = r.slug;
     window.scrollTo(0, 0);
@@ -551,39 +642,192 @@ footer { margin-top: 96px; }
           h("section", { class: "checks" },
             f.ok ? h("div", null, h("span", { class: "mono ok", text: "Goed teken" }), f.ok) : null,
             f.bad ? h("div", null, h("span", { class: "mono bad", text: "Weggooien als" }), f.bad) : null,
-            f.kids ? h("div", null, h("span", { class: "mono kid", text: "Met kinderen" }), f.kids) : null))),
+            f.kids ? h("div", null, h("span", { class: "mono kid", text: "Met kinderen" }), f.kids) : null),
+          (f.sources || []).length ? h("section", { class: "why", style: "margin-top:28px" },
+            h("span", { class: "label", text: "Veilig fermenteren · bronnen" }),
+            h("p", { text: "Gecontroleerd tegen de richtlijnen van universiteiten en het National Center for Home Food Preservation. Twijfel je? Gooi het weg." }),
+            h("ul", { class: "links" }, f.sources.map((l) => h("li", null, h("a", { href: l.url, target: "_blank", rel: "noopener", text: l.label + " ↗" }))))) : null)),
       h("nav", { class: "pager", "aria-label": "Andere recepten" },
         last ? h("a", { class: "card", href: "#" + last.slug }, h("span", { class: "label", text: "← Vorige" }), h("strong", { text: last.title })) : h("span"),
         h("a", { class: "card next", href: "#editie-" + ed.id }, h("span", { class: "label", text: "Editie →" }), h("strong", { text: `Nº ${pad(ed.number)} · week ${ed.week}` })))
     ));
+    document.title = f.title + " · Fermentatie · Proef";
     $("home").hidden = true; $("detail-view").hidden = false;
     state.lastSlug = null;
     window.scrollTo(0, 0);
   }
 
-  /* ---------- Archief ---------- */
-  function renderArchive() {
-    const q = norm($("zoek").value.trim());
-    const box = $("archive-list");
-    if (!q) {
-      box.replaceChildren(h("ul", { class: "list" }, state.editions.map((ed) => h("li", null,
-        h("a", { class: "no", href: "#editie-" + ed.id, text: pad(ed.number), "aria-label": "Editie " + ed.number }),
-        h("div", null, h("p", { class: "when mono", style: "color:var(--muted)", text: `Week ${ed.week} · ${fmtDate(ed.date)}` }),
-          h("div", { class: "titles" }, ed.recipes.map((r) => h("a", { href: "#" + r.slug, text: r.title })),
-            ed.ferment ? h("a", { class: "f", href: "#fermentatie-" + ed.id, text: ed.ferment.title }) : null))))));
-      return;
-    }
-    const hits = [], match = (parts) => { const hay = norm(parts.join(" ")); return q.split(/\s+/).every((t) => hay.includes(t)); };
+  /* ---------- Archief: plank met edities ---------- */
+  function renderShelf() {
+    $("shelf").replaceChildren(...state.editions.map((ed) => {
+      const latest = ed === state.editions[0];
+      return h("article", { class: "issue " + coverClass(ed) },
+        h("a", { class: "cov", href: latest ? "#deze-week" : "#editie-" + ed.id, "aria-label": `Editie ${ed.number}, week ${ed.week}` },
+          h("div", { class: "row" }, h("span", { class: "logo", text: "Proef" }), h("span", { class: "mono", text: "Nº " + pad(ed.number) })),
+          h("span", { class: "cjk", "aria-hidden": "true", text: ed.cover?.glyph || "旬" }),
+          h("span", { class: "mono", text: `Week ${ed.week} · ${fmtDate(ed.date)}` })),
+        h("ul", null,
+          ed.recipes.map((r) => h("li", null, h("span", { class: "dot " + tintClass(r), "aria-hidden": "true" }), h("a", { href: "#" + r.slug, text: r.title }))),
+          ed.ferment ? h("li", { class: "f" }, h("span", { class: "dot", "aria-hidden": "true" }), h("a", { href: "#fermentatie-" + ed.id, text: ed.ferment.title })) : null));
+    }));
+  }
+
+  /* ---------- Zoekindex ---------- */
+  // woorden die in ingrediënten wel staan maar niets zeggen over het gerecht
+  const STOP = new Set("een het de en of in op met van voor naar uit tot aan bij om als zonder plus liefst ca extra vers verse fijn fijngesneden fijngehakt gehakt geraspt gesneden ringetjes reepjes stukken stukjes partjes blokjes plakjes gekookte gekookt gebakken grote kleine grof dun dunne half halve heel hele snufje naar smaak koud koude warm warme dag oud oude diepvries".split(" "));
+  const words = (s) => norm(s).split(/[^a-z0-9぀-ヿ㐀-鿿가-힯-]+/).map((w) => w.replace(/^-+|-+$/g, "")).filter((w) => w.length > 2 && !STOP.has(w));
+  function indexItems() {
+    const items = [];
     for (const ed of state.editions) {
-      for (const r of ed.recipes) if (match([r.title, r.dek, r.category, ...(r.ingredients || []).map((i) => i.item)])) hits.push({ ed, title: r.title, href: "#" + r.slug, meta: `${r.category || ""} · ${r.minutes} min · week ${ed.week}` });
+      for (const r of ed.recipes) items.push({
+        kind: "recipe", r, ed, href: "#" + r.slug, title: r.title, minutes: r.minutes, tint: tintClass(r), glyph: r.glyph || "食",
+        tags: (r.tags || []).map(norm), category: norm(r.category),
+        ings: (r.ingredients || []).map((i) => ({ text: norm(i.item), label: i.item })),
+        fields: [[norm(r.title), 6], [norm([r.native, r.roman, r.glyph].join(" ")), 5], [norm((r.tags || []).join(" ") + " " + r.category), 4], [norm((r.ingredients || []).map((i) => i.item).join(" ")), 3], [norm([r.dek, r.trend?.text, r.signal?.text].join(" ")), 2], [norm((r.steps || []).join(" ") + " " + (r.tip || "")), 1]],
+        keys: new Set(words((r.ingredients || []).map((i) => i.item).join(" "))),
+      });
       const f = ed.ferment;
-      if (f && match([f.title, f.lede, "fermentatie", ...(f.ingredients || []).map((i) => i.item)])) hits.push({ ed, title: f.title, href: "#fermentatie-" + ed.id, meta: `Fermentatie · week ${ed.week}` });
+      if (f) items.push({
+        kind: "ferment", ed, href: "#fermentatie-" + ed.id, title: f.title, minutes: null, tint: "ferm", glyph: f.glyph || "酵",
+        tags: ["fermentatie", "fermenteren", "zelf maken"], category: "fermentatie",
+        ings: (f.ingredients || []).map((i) => ({ text: norm(i.item), label: i.item })),
+        fields: [[norm(f.title), 6], [norm([f.native, f.roman, f.glyph, "fermentatie fermenteren ferment"].join(" ")), 5], [norm((f.ingredients || []).map((i) => i.item).join(" ")), 3], [norm([f.lede, ...(f.science || [])].join(" ")), 2], [norm((f.steps || []).join(" ")), 1]],
+        keys: new Set(words((f.ingredients || []).map((i) => i.item).join(" "))),
+      });
     }
-    box.replaceChildren(hits.length
-      ? h("ul", { class: "list" }, hits.map((x) => h("li", null,
-          h("span", { class: "no", text: pad(x.ed.number) }),
-          h("div", null, h("a", { href: x.href, text: x.title }), h("p", { class: "hit-meta mono", style: "color:var(--muted)", text: x.meta })))))
-      : h("p", { class: "empty", text: "Geen recepten gevonden. Probeer een ander ingrediënt." }));
+    return items;
+  }
+
+  /* ---------- Meer zoals dit ---------- */
+  function relatedBlock(r) {
+    const all = state.index || (state.index = indexItems());
+    const me = all.find((x) => x.r === r);
+    const scored = all.filter((x) => x.kind === "recipe" && x.r !== r).map((x) => {
+      const sharedIng = [...x.keys].filter((k) => me.keys.has(k));
+      const sharedTags = x.tags.filter((t) => me.tags.includes(t));
+      const score = sharedIng.length * 3 + sharedTags.length * 2 + (x.category === me.category ? 1 : 0) + (x.ed !== r._edition ? 0.5 : 0);
+      const reason = sharedIng.length ? "Ook met " + sharedIng.slice(0, 2).join(" en ") : sharedTags.length ? "Ook " + (x.r.tags.find((t) => norm(t) === sharedTags[0]) || "").toLowerCase() : "Ook " + (x.r.category || "").toLowerCase();
+      return { x, score, reason };
+    }).filter((s) => s.score > 0).sort((a, b) => b.score - a.score).slice(0, 3);
+    if (!scored.length) return null;
+    return h("section", { class: "related", "aria-labelledby": "rel-t" },
+      h("div", { class: "head-row" }, h("h2", { id: "rel-t", text: "Meer zoals dit" }), h("a", { class: "mono", href: "#archief", style: "color:var(--muted);text-decoration:none", text: "Alle edities →" })),
+      h("div", { class: "related-grid" }, scored.map(({ x, reason }) => h("a", { class: "mini " + x.tint, href: x.href },
+        photo(x.r, { alt: false }),
+        h("div", { class: "body" },
+          h("span", { class: "mono", text: `Nº ${pad(x.ed.number)} · ${x.minutes} min` }),
+          h("strong", { text: x.title }),
+          h("span", { class: "why-rel", text: reason }))))));
+  }
+
+  /* ---------- Zoeken ---------- */
+  const CHIPS = [
+    ["Onder 30 min", "onder 30 min"], ["Kindvriendelijk", "kindvriendelijk"], ["Aziatisch", "aziatisch"], ["Weinig werk", "weinig werk"],
+    ["Seizoen", "seizoen"], ["Soep", "soep"], ["Uit de oven", "oven"], ["Fermentatie", "fermentatie"],
+  ];
+  const ALIASES = { kind: "kindvriendelijk", kinderen: "kindvriendelijk", kids: "kindvriendelijk", makkelijk: "weinig werk", simpel: "weinig werk", lui: "weinig werk", aziatisch: "aziatisch", azie: "aziatisch", koreaans: "aziatisch", japans: "aziatisch", chinees: "aziatisch", herfst: "seizoen", seizoensgroente: "seizoen", ferment: "fermentatie", fermenteren: "fermentatie" };
+
+  function parseQuery(raw) {
+    let q = norm(raw).trim(), max = null;
+    const m = q.match(/(?:onder|binnen|max|<)\s*(\d+)\s*(?:min(?:uten)?)?|(\d+)\s*min(?:uten)?/);
+    if (m) { max = +(m[1] || m[2]); q = q.replace(m[0], " "); }
+    if (/\bsnel\b/.test(q)) { max = max || 30; q = q.replace(/\bsnel\b/, " "); }
+    const pantry = q.includes(",");
+    const terms = (pantry ? q.split(",") : q.split(/\s+(?=(?:[^"]*"[^"]*")*[^"]*$)/)).map((t) => t.replace(/"/g, "").trim()).filter(Boolean);
+    // "weinig werk" als één term houden
+    const joined = [];
+    for (let i = 0; i < terms.length; i++) { const two = terms[i] + " " + (terms[i + 1] || ""); if (!pantry && two === "weinig werk") { joined.push(two); i++; } else joined.push(terms[i]); }
+    return { max, pantry, terms: joined.map((t) => ALIASES[t] || t) };
+  }
+
+  // korte woorden (ei, ui) alleen aan het begin van een woord; langere ook midden in samenstellingen (boerenkool)
+  const hit = (text, t) => t.length > 3 ? text.includes(t) : new RegExp("(^|[^a-z])" + t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).test(text);
+  function search(raw) {
+    const all = state.index || (state.index = indexItems());
+    const { max, pantry, terms } = parseQuery(raw);
+    const out = [];
+    for (const x of all) {
+      if (max && (x.minutes == null || x.minutes > max)) continue;
+      if (pantry) {
+        const have = terms.filter((t) => x.ings.some((i) => hit(i.text, t)));
+        if (!have.length) continue;
+        const rest = x.ings.length - have.length;
+        out.push({ x, score: have.length * 10 - rest * 0.3, why: [h("b", { text: "Je hebt: " }), have.join(", "), ` · nog ${Math.max(rest, 0)} andere ingrediënten`] });
+        continue;
+      }
+      let score = 0, why = null, ok = true;
+      for (const t of terms) {
+        let best = 0;
+        for (const [text, w] of x.fields) if (hit(text, t)) best = Math.max(best, w);
+        if (x.tags.includes(t) || x.category === t) best = Math.max(best, 5);
+        if (!best) { ok = false; break; }
+        score += best;
+        if (!why) { const ing = x.ings.find((i) => hit(i.text, t)); if (ing && best <= 3) why = [h("b", { text: "Bevat: " }), ing.label]; }
+      }
+      if (!ok) continue;
+      if (!terms.length) score = 1;
+      out.push({ x, score: score + (x.ed === state.editions[0] ? 0.5 : 0), why });
+    }
+    return out.sort((a, b) => b.score - a.score);
+  }
+
+  let sel = -1;
+  function renderResults() {
+    const raw = $("q").value, list = $("s-results");
+    const res = raw.trim() ? search(raw) : search("").filter((s) => s.x.ed === state.editions[0]);
+    sel = res.length ? 0 : -1;
+    for (const b of $("s-chips").querySelectorAll("button[data-q]")) b.classList.toggle("on", norm(raw).includes(b.dataset.q));
+    list.replaceChildren(
+      ...(raw.trim() ? [] : [h("li", { class: "s-group label", text: "Deze week" })]),
+      ...(res.length ? res.slice(0, 30).map((s, i) => h("li", { role: "option" },
+        h("a", { href: s.x.href, class: i === 0 ? "sel" : null },
+          h("span", { class: "sw cjk " + s.x.tint, "aria-hidden": "true", text: s.x.glyph }),
+          h("span", null, h("strong", { text: s.x.title }),
+            h("span", { class: "meta" }, s.why || [s.x.kind === "ferment" ? "Fermentatie van de week" : s.x.r.category, s.x.minutes ? ` · ${s.x.minutes} min` : ""])),
+          h("span", { class: "no", text: "Nº " + pad(s.x.ed.number) }))))
+        : [h("li", { class: "s-empty", text: parseQuery(raw).pantry ? "Hier kun je nog niets mee maken. Probeer een ander ingrediënt." : "Niets gevonden. Probeer een ingrediënt, of typ wat je in huis hebt met komma's ertussen." })]));
+  }
+  function moveSel(d) {
+    const links = [...$("s-results").querySelectorAll("a")];
+    if (!links.length) return;
+    links[sel]?.classList.remove("sel");
+    sel = (sel + d + links.length) % links.length;
+    links[sel].classList.add("sel"); links[sel].scrollIntoView({ block: "nearest" });
+  }
+  function openSearch(q = "") {
+    const dlg = $("search");
+    if (!dlg.open) dlg.showModal();
+    $("q").value = q; renderResults(); $("q").focus();
+  }
+  function closeSearch(go) {
+    const dlg = $("search");
+    if (dlg.open) dlg.close();
+    if (!go && location.hash.startsWith("#zoek")) history.replaceState(null, "", state.lastHash || location.pathname + location.search);
+  }
+  function surprise() {
+    const pool = state.editions.flatMap((e) => e.recipes);
+    const r = pool[Math.floor(Math.random() * pool.length)];
+    closeSearch(true); location.hash = r.slug;
+  }
+  function initSearch() {
+    $("s-chips").replaceChildren(...CHIPS.map(([label, q]) => h("button", { type: "button", "data-q": q, text: label, onclick: () => { const cur = $("q").value.trim(); $("q").value = norm(cur).includes(q) ? cur.replace(new RegExp(q, "i"), "").trim() : (cur ? cur + " " : "") + q; renderResults(); $("q").focus(); } })),
+      h("button", { type: "button", class: "dice", text: "Verras me", onclick: surprise }));
+    $("q").addEventListener("input", () => { renderResults(); history.replaceState(null, "", "#zoek/" + encodeURIComponent($("q").value)); });
+    $("q").addEventListener("keydown", (e) => {
+      if (e.key === "ArrowDown") { e.preventDefault(); moveSel(1); }
+      else if (e.key === "ArrowUp") { e.preventDefault(); moveSel(-1); }
+      else if (e.key === "Enter") { const a = $("s-results").querySelectorAll("a")[sel]; if (a) { e.preventDefault(); closeSearch(true); location.hash = a.getAttribute("href"); } }
+    });
+    $("s-results").addEventListener("click", (e) => { if (e.target.closest("a")) closeSearch(true); });
+    $("s-close").addEventListener("click", () => closeSearch());
+    $("search").addEventListener("cancel", (e) => { e.preventDefault(); closeSearch(); });
+    $("search").addEventListener("click", (e) => { if (e.target === $("search")) closeSearch(); });
+    $("find").addEventListener("click", () => openSearch());
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "/" || e.metaKey || e.ctrlKey || e.altKey) return;
+      if (e.target instanceof Element && e.target.closest("input, textarea, select, [contenteditable]")) return;
+      e.preventDefault(); openSearch();
+    });
   }
 
   let toastTimer;
@@ -597,6 +841,12 @@ footer { margin-top: 96px; }
   function route() {
     if (!state.editions.length) return;
     const hsh = decodeURIComponent(location.hash.slice(1));
+    if (hsh === "zoek" || hsh.startsWith("zoek/")) {
+      if ($("detail-view").hidden && !$("features").querySelector(".mast")) showHome(state.editions[0], "");
+      return openSearch(hsh.slice(5));
+    }
+    if ($("search").open) closeSearch(true);
+    state.lastHash = location.hash;
     if (state.bySlug.has(hsh)) return showRecipe(state.bySlug.get(hsh));
     if (hsh === "fermentatie" || hsh.startsWith("fermentatie-")) {
       const ed = hsh === "fermentatie" ? state.editions.find((e) => e.ferment) : state.editions.find((e) => "fermentatie-" + e.id === hsh);
@@ -617,7 +867,7 @@ footer { margin-top: 96px; }
       state.editions = eds.filter((e) => e && Array.isArray(e.recipes)).sort((a, b) => b.number - a.number);
       for (const ed of state.editions) for (const r of ed.recipes) { r._edition = ed; state.bySlug.set(r.slug, r); }
       if (!state.editions.length) throw new Error("leeg");
-      renderArchive();
+      renderShelf();
       route();
     } catch (e) {
       $("status").textContent = "De recepten konden niet worden geladen. Ververs de pagina om het opnieuw te proberen.";
@@ -625,7 +875,7 @@ footer { margin-top: 96px; }
   }
 
   window.addEventListener("hashchange", route);
-  $("zoek").addEventListener("input", renderArchive);
+  initSearch();
   load();
 })();
 </script>

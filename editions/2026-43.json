@@ -5,6 +5,10 @@
   "week": 43,
   "date": "2026-10-24",
   "intro": "Kool is het hele jaar niet weg te slaan, het soepseizoen is begonnen en de diepvriesdumpling krijgt een tweede leven in de oven. Vijf recepten met weinig werk, allemaal in grammen en milliliters.",
+  "cover": {
+    "color": "navy",
+    "glyph": "旬"
+  },
   "recipes": [
     {
       "slug": "marry-me-melting-cabbage",
@@ -587,19 +591,23 @@
     "facts": [
       {
         "label": "Pot",
-        "value": "1,5 liter"
+        "value": "1,5 liter, glas"
       },
       {
         "label": "Werk",
         "value": "30 min + 2 uur zouten"
       },
       {
+        "label": "Aanrecht",
+        "value": "1–2 dagen, 18–22 °C"
+      },
+      {
         "label": "Klaar",
         "value": "na 3 dagen"
       },
       {
-        "label": "Houdbaar",
-        "value": "2 maanden, koelkast"
+        "label": "Bewaren",
+        "value": "koelkast, binnen 1 maand op"
       },
       {
         "label": "Niveau",
@@ -620,7 +628,7 @@
       {
         "when": "Dag 1–2",
         "title": "Op het aanrecht",
-        "text": "18–20 °C. Eerste bubbels, het begint zurig te ruiken."
+        "text": "18–22 °C. Eerste bubbels, het begint zurig te ruiken."
       },
       {
         "when": "Dag 3",
@@ -634,9 +642,9 @@
         "text": "De smaak wordt dieper, de kool zachter."
       },
       {
-        "when": "Week 4+",
+        "when": "Week 3–4",
         "title": "Kookkimchi",
-        "text": "Te zuur om zo te eten, perfect om mee te bakken."
+        "text": "Te zuur om zo te eten, perfect om mee te bakken. Binnen een maand op."
       }
     ],
     "ingredients": [
@@ -648,7 +656,7 @@
       {
         "qty": 40,
         "unit": "g",
-        "item": "grof zeezout"
+        "item": "zeezout zonder jodium of antiklontermiddel, gewogen"
       },
       {
         "qty": 15,
@@ -697,15 +705,31 @@
       }
     ],
     "steps": [
+      "Was een glazen pot van 1,5 liter, het deksel en een klein schoteltje of gewicht in heet sop en spoel na met heel heet water.",
       "Snijd de kool in de lengte in vieren, haal de harde kern eruit en snijd in stukken van 4 cm. Was en laat uitlekken.",
       "Hussel de kool met het zout in een grote kom. Laat 2 uur staan en schep elk half uur om. Hij is klaar als een stuk buigt zonder te knappen.",
       "Kook intussen rijstebloem en water al roerend 2 minuten tot een dunne pap. Laat afkoelen en roer gochugaru, vissaus, suiker, knoflook en gember erdoor.",
       "Spoel de kool 3 keer in koud water en laat 20 minuten uitlekken. Meng met daikon, lente-ui en de pasta. Gebruik handschoenen.",
-      "Druk alles stevig in een schone pot tot het vocht erboven staat. Laat 3 cm ruimte en leg het deksel er losjes op.",
-      "Laat 1 tot 2 dagen op het aanrecht staan en druk elke dag aan met een schone lepel. Zie je bubbels en ruikt het zurig, dan gaat de pot de koelkast in."
+      "Druk alles stevig in de pot tot het vocht erboven staat en leg het schoteltje of gewicht erop. Laat 5 cm ruimte tot de rand en draai het deksel er losjes op.",
+      "Laat 1 tot 2 dagen op het aanrecht staan, bij 18–22 °C. Draai het deksel elke dag even open en druk de kool aan met een schone lepel. Staat het vocht niet boven de kool, giet er dan pekel bij: 20 g zout per liter gekookt en afgekoeld water.",
+      "Zie je bubbels en ruikt het zurig, dan gaat de pot de koelkast in. Wil je zeker zijn: met een pH-strip moet het 4,6 of lager zijn. Eet de kimchi binnen een maand op."
     ],
-    "ok": "Bubbels, gesis bij het openen, een frisse zure geur en troebel vocht. Een vlak wit vliesje (kahmgist) is onschuldig: schep het eraf.",
-    "bad": "Pluizige schimmel (wit, groen of zwart), een roze slijmerige laag of een rotte geur. Dan alles weggooien.",
-    "kids": "Laat ze het zout door de kool masseren. Maak hun portie zonder gochugaru, met 1 tl paprikapoeder voor de kleur."
+    "ok": "Bubbels, gesis bij het openen, een frisse zure geur en troebel vocht. Een vlak wit, grijs of roze vliesje op het vocht (kahmgist) is onschuldig: schep het eraf en druk de kool weer onder.",
+    "bad": "Pluizige schimmel (groen, blauw, zwart of wit pluis), een slijmerige laag of een rotte geur in plaats van een zure. Dan alles weggooien, ook als het maar een plekje is.",
+    "kids": "Laat ze het zout door de kool masseren. Maak hun portie zonder gochugaru, met 1 tl paprikapoeder voor de kleur.",
+    "sources": [
+      {
+        "label": "Oregon State University · Kimchi basics",
+        "url": "https://extension.oregonstate.edu/catalog/sp50-1007-kimchi-basics"
+      },
+      {
+        "label": "UC Davis · Troubleshooting fermented vegetables",
+        "url": "https://ucfoodsafety.ucdavis.edu/sites/g/files/dgvnsk7366/files/media/documents/Troubleshooting%20fermented%20fruits%20and%20vegetables%20FINAL.pdf"
+      },
+      {
+        "label": "NCHFP · Containers, covers and weights",
+        "url": "https://nchfp.uga.edu/how/ferment/general-information-on-fermenting/suitable-containers-covers-and-weights-for-fermenting-food/"
+      }
+    ]
   }
 }

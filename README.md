@@ -8,5 +8,7 @@ Minimalistisch weekmagazine: elke zaterdag vijf trending recepten. Weinig werk, 
 
 ## Per editie
 
-- Per recept: `tint` (sage, sky, blush, persimmon of mustard) kleurt de kaart en de foto, `glyph` is het grote teken (bijv. 밥), `native` + `roman` de naam in het Japans of Koreaans, en `trend` (`source`, `text`) zegt in één zin waarom het recept trending is.
-- `ferment`: de Fermentatie van de week, met `usedIn` als slug van het recept waarin hij terugkomt.
+- **[REDACTIE.md](REDACTIE.md)**: de vaste werkwijze voor een nieuwe editie, met alle velden. Elke zaterdag maakt een Claude-routine zo een editie.
+- **[FERMENTATIE.md](FERMENTATIE.md)**: veiligheidsrichtlijnen. Elke Fermentatie van de week moet de checklist daarin doorstaan.
+- `python3 scripts/check_edition.py` controleert alle edities voordat er iets live gaat.
+- Op de site opent `/` de zoekfunctie. Je kunt zoeken op gerecht, ingrediënt, tag, tijd ("onder 30 min") of wat je in huis hebt ("kool, ei, rijst").
