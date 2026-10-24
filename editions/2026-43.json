@@ -1,0 +1,542 @@
+{
+  "id": "2026-43",
+  "number": 1,
+  "year": 2026,
+  "week": 43,
+  "date": "2026-10-24",
+  "intro": "Kool is het hele jaar niet weg te slaan, het soepseizoen is begonnen en de diepvriesdumpling krijgt een tweede leven in de oven. Vijf recepten met weinig werk, allemaal in grammen en milliliters.",
+  "recipes": [
+    {
+      "slug": "marry-me-melting-cabbage",
+      "title": "Marry Me Melting Cabbage",
+      "dek": "Partjes kool, eerst hard aangebraden en dan in de oven gesmoord in een romige saus van zongedroogde tomaat en Parmezaan.",
+      "category": "Hoofdgerecht",
+      "minutes": 55,
+      "servings": 4,
+      "form": "pan",
+      "signal": {
+        "metric": "+110%",
+        "source": "Pinterest",
+        "text": "Zoekopdrachten naar kool stegen met 110%. Pinterest noemt 'Cabbage Crush' een van de grootste foodtrends van 2026, en op TikTok is deze versie het herkenbaarste voorbeeld."
+      },
+      "links": [
+        {
+          "label": "Pinterest Predicts 2026",
+          "url": "https://letsdatascience.com/news/pinterest-predicts-21-trends-for-2026-62ab5d9c"
+        },
+        {
+          "label": "TikTok · Viral food trend 2026",
+          "url": "https://www.tiktok.com/discover/viral-food-trend-2026"
+        }
+      ],
+      "ingredients": [
+        {
+          "qty": 1,
+          "unit": "",
+          "item": "groene kool (ca. 1 kg), in 8 partjes"
+        },
+        {
+          "qty": 30,
+          "unit": "ml",
+          "item": "olijfolie"
+        },
+        {
+          "group": "Saus",
+          "qty": 30,
+          "unit": "g",
+          "item": "roomboter"
+        },
+        {
+          "group": "Saus",
+          "qty": 4,
+          "unit": "",
+          "item": "teentjes knoflook, fijngehakt"
+        },
+        {
+          "group": "Saus",
+          "qty": 80,
+          "unit": "g",
+          "item": "zongedroogde tomaten op olie, uitgelekt en gehakt"
+        },
+        {
+          "group": "Saus",
+          "qty": 15,
+          "unit": "g",
+          "item": "tomatenpuree"
+        },
+        {
+          "group": "Saus",
+          "qty": 2,
+          "unit": "g",
+          "item": "chilivlokken"
+        },
+        {
+          "group": "Saus",
+          "qty": 2,
+          "unit": "g",
+          "item": "gedroogde Italiaanse kruiden"
+        },
+        {
+          "group": "Saus",
+          "qty": 250,
+          "unit": "ml",
+          "item": "groentebouillon"
+        },
+        {
+          "group": "Saus",
+          "qty": 200,
+          "unit": "ml",
+          "item": "kookroom"
+        },
+        {
+          "group": "Saus",
+          "qty": 50,
+          "unit": "g",
+          "item": "Parmezaanse kaas, geraspt, plus extra"
+        },
+        {
+          "group": "Afmaken",
+          "qty": 10,
+          "unit": "g",
+          "item": "verse basilicum"
+        },
+        {
+          "group": "Afmaken",
+          "qty": null,
+          "unit": "",
+          "item": "zout en zwarte peper"
+        }
+      ],
+      "steps": [
+        "Verwarm de oven voor op 200 °C. Snijd de kool in 8 partjes en laat een stukje kern aan elk partje zitten, zodat ze heel blijven.",
+        "Verhit de olijfolie in een ovenvaste hapjespan (ø 28 cm) op hoog vuur. Bak de partjes in twee porties 3 tot 4 minuten per snijvlak tot ze diep goudbruin zijn. Bestrooi met zout en peper en leg ze apart.",
+        "Zet het vuur middelhoog. Smelt de boter en fruit de knoflook 1 minuut. Voeg zongedroogde tomaat, tomatenpuree, chilivlokken en kruiden toe en bak nog 1 minuut.",
+        "Blus met de bouillon en schraap de aanbaksels los. Roer de kookroom en Parmezaan erdoor en laat 2 minuten zachtjes koken.",
+        "Leg de partjes terug in de saus, snijvlak naar boven. Dek af met een deksel of aluminiumfolie en zet 25 minuten in de oven.",
+        "Haal de afdekking eraf, schep saus over de kool en bak nog 10 tot 15 minuten, tot de kern zacht is en de randen kleuren.",
+        "Bestrooi met extra Parmezaan en gescheurde basilicum."
+      ],
+      "tip": "Lekker met orzo, polenta of geroosterd brood om de saus op te deppen.",
+      "tint": "sage",
+      "tags": [
+        "Seizoen",
+        "Weinig werk"
+      ],
+      "photo": "https://noblepig.com/site/wp-content/uploads/2025/07/marry-me-melting-cabbage-tuscan.jpg",
+      "photoCredit": {
+        "label": "Noble Pig",
+        "url": "https://noblepig.com/marry-me-melting-cabbage/"
+      }
+    },
+    {
+      "slug": "dumpling-bake",
+      "title": "Dumpling bake met kokoscurry",
+      "tint": "lavender",
+      "tags": [
+        "Aziatisch",
+        "Kindvriendelijk",
+        "Weinig werk"
+      ],
+      "dek": "Diepvriesdumplings in een milde saus van kokosmelk en gele curry, met paksoi. Vijf minuten werk, de oven doet de rest.",
+      "category": "Hoofdgerecht",
+      "minutes": 35,
+      "servings": 4,
+      "form": "tray",
+      "signal": {
+        "metric": "Najaarstrend",
+        "source": "PureWow · TikTok",
+        "text": "Dumpling bakes staan op de lijst met grootste foodtrends van najaar 2026 (PureWow, september). De virale versie bakt diepvriesdumplings in een saus van kokosmelk en gele curry."
+      },
+      "links": [
+        {
+          "label": "PureWow · Food trends fall 2026",
+          "url": "https://www.purewow.com/food/biggest-food-trends-2018"
+        },
+        {
+          "label": "TikTok · Trending recipes 2026",
+          "url": "https://www.tiktok.com/discover/trending-tiktok-recipes-2026"
+        }
+      ],
+      "ingredients": [
+        {
+          "qty": 600,
+          "unit": "g",
+          "item": "diepvries gyoza of dumplings (kip of groente)"
+        },
+        {
+          "qty": 200,
+          "unit": "g",
+          "item": "paksoi, in reepjes"
+        },
+        {
+          "group": "Saus",
+          "qty": 400,
+          "unit": "ml",
+          "item": "kokosmelk"
+        },
+        {
+          "group": "Saus",
+          "qty": 25,
+          "unit": "g",
+          "item": "gele currypasta (mild)"
+        },
+        {
+          "group": "Saus",
+          "qty": 250,
+          "unit": "ml",
+          "item": "kippen- of groentebouillon"
+        },
+        {
+          "group": "Saus",
+          "qty": 15,
+          "unit": "ml",
+          "item": "sojasaus"
+        },
+        {
+          "group": "Saus",
+          "qty": 10,
+          "unit": "g",
+          "item": "verse gember, geraspt"
+        },
+        {
+          "group": "Saus",
+          "qty": 2,
+          "unit": "",
+          "item": "teentjes knoflook, geraspt"
+        },
+        {
+          "group": "Afmaken",
+          "qty": 2,
+          "unit": "",
+          "item": "lente-uien, in ringetjes"
+        },
+        {
+          "group": "Afmaken",
+          "qty": 10,
+          "unit": "g",
+          "item": "verse koriander"
+        },
+        {
+          "group": "Afmaken",
+          "qty": 1,
+          "unit": "",
+          "item": "limoen, in partjes"
+        },
+        {
+          "group": "Afmaken",
+          "qty": null,
+          "unit": "",
+          "item": "chili crisp aan tafel, voor wie van pittig houdt"
+        }
+      ],
+      "steps": [
+        "Verwarm de oven voor op 200 °C (hetelucht 180 °C).",
+        "Klop in een ovenschaal van ongeveer 20 × 30 cm de kokosmelk, currypasta, bouillon, sojasaus, gember en knoflook door elkaar.",
+        "Leg de bevroren dumplings in één laag in de saus en verdeel de paksoi ertussen.",
+        "Dek af met aluminiumfolie en bak 20 minuten.",
+        "Haal de folie eraf en bak nog 10 minuten, tot de saus iets is ingedikt en de dumplings bovenop krokant worden.",
+        "Bestrooi met lente-ui en koriander en zet limoen en chili crisp op tafel."
+      ],
+      "tip": "Lekker met rijst. Voor kleine kinderen kun je de currypasta halveren; de kokosmelk maakt het al mild.",
+      "photo": "https://foxeslovelemons.com/wp-content/uploads/2025/11/One-Pan-Dumpling-DinnerOne-Pot-Dumpling-Recipe-Foxes-Love-Lemons.jpg",
+      "photoCredit": {
+        "label": "Foxes Love Lemons",
+        "url": "https://foxeslovelemons.com/dumpling-bake/"
+      }
+    },
+    {
+      "slug": "zuppa-toscana",
+      "title": "Zuppa Toscana",
+      "dek": "Romige soep met pittige worst, aardappel en boerenkool. De Toscaanse klassieker die elk najaar terugkomt.",
+      "category": "Soep",
+      "minutes": 40,
+      "servings": 4,
+      "form": "bowl",
+      "signal": {
+        "metric": "Seizoenspiek",
+        "source": "TikTok · Pinterest",
+        "text": "Op TikTok gaat deze soep rond als hét herfstrecept van 2026, en Pinterest zet in zijn weekrapport van 16 oktober 'Cozy Season' centraal."
+      },
+      "links": [
+        {
+          "label": "TikTok · New healthy recipes 2026",
+          "url": "https://www.tiktok.com/discover/new-healthy-recipes-2026"
+        },
+        {
+          "label": "Pinterest weekrapport 16 okt",
+          "url": "https://community.pinterest.biz/t/the-weekly-pbc-trend-report-october-16th-2026/52310"
+        }
+      ],
+      "ingredients": [
+        {
+          "qty": 100,
+          "unit": "g",
+          "item": "ontbijtspek in reepjes"
+        },
+        {
+          "qty": 400,
+          "unit": "g",
+          "item": "Italiaanse worstjes (salsiccia), uit het vel"
+        },
+        {
+          "qty": 1,
+          "unit": "",
+          "item": "ui, gesnipperd"
+        },
+        {
+          "qty": 3,
+          "unit": "",
+          "item": "teentjes knoflook, fijngehakt"
+        },
+        {
+          "qty": 2,
+          "unit": "g",
+          "item": "chilivlokken"
+        },
+        {
+          "qty": 1000,
+          "unit": "ml",
+          "item": "kippenbouillon"
+        },
+        {
+          "qty": 600,
+          "unit": "g",
+          "item": "vastkokende aardappelen, in halve plakjes van 5 mm"
+        },
+        {
+          "qty": 150,
+          "unit": "g",
+          "item": "boerenkool, gesneden, zonder harde nerven"
+        },
+        {
+          "qty": 200,
+          "unit": "ml",
+          "item": "slagroom"
+        },
+        {
+          "qty": 30,
+          "unit": "g",
+          "item": "Parmezaanse kaas, geraspt, om te serveren"
+        },
+        {
+          "qty": null,
+          "unit": "",
+          "item": "zout en zwarte peper"
+        }
+      ],
+      "steps": [
+        "Bak het spek in een grote soeppan op middelhoog vuur in 6 tot 8 minuten krokant. Schep het uit de pan en laat het vet zitten.",
+        "Bak de worst in brokjes in het spekvet in 6 minuten bruin. Voeg ui, knoflook en chilivlokken toe en bak 3 minuten tot de ui zacht is.",
+        "Schenk de bouillon erbij, voeg de aardappel toe en breng aan de kook. Laat 15 minuten zachtjes koken tot de aardappel gaar is.",
+        "Roer de boerenkool erdoor en kook nog 5 minuten.",
+        "Zet het vuur laag en roer de slagroom erdoor. Laat de soep warm worden maar niet meer koken. Breng op smaak met zout en peper.",
+        "Schep in kommen en bestrooi met het krokante spek en de Parmezaan."
+      ],
+      "tip": "Voor een lichtere versie vervang je de helft van de slagroom door volle melk. De soep is de volgende dag nog lekkerder.",
+      "tint": "peach",
+      "tags": [
+        "Seizoen",
+        "Kindvriendelijk"
+      ],
+      "photo": "https://www.dinneratthezoo.com/wp-content/uploads/2019/09/zuppa-toscana-5.jpg",
+      "photoCredit": {
+        "label": "Dinner at the Zoo",
+        "url": "https://www.dinneratthezoo.com/zuppa-toscana-recipe/"
+      }
+    },
+    {
+      "slug": "kimchi-gebakken-rijst",
+      "title": "Kimchi-gebakken rijst",
+      "tint": "rose",
+      "tags": [
+        "Aziatisch",
+        "Weinig werk",
+        "Seizoen"
+      ],
+      "dek": "Rijst van gisteren, kimchi, doperwten en een gebakken ei erop. Klaar in twintig minuten.",
+      "category": "Hoofdgerecht",
+      "minutes": 20,
+      "servings": 4,
+      "form": "bowl",
+      "signal": {
+        "metric": "+110%",
+        "source": "Pinterest",
+        "text": "Pinterest ziet kool als dé trend van 2026 (+110% zoekopdrachten naar kool), mede aangejaagd door de populariteit van gefermenteerde gerechten zoals kimchi."
+      },
+      "links": [
+        {
+          "label": "Pinterest Predicts 2026",
+          "url": "https://letsdatascience.com/news/pinterest-predicts-21-trends-for-2026-62ab5d9c"
+        },
+        {
+          "label": "SCMP · year of the cabbage",
+          "url": "https://www.scmp.com/lifestyle/food-drink/article/3338908/2026-year-cabbage-how-vegetable-being-hailed-online"
+        }
+      ],
+      "ingredients": [
+        {
+          "qty": 600,
+          "unit": "g",
+          "item": "gekookte rijst, liefst een dag oud en koud"
+        },
+        {
+          "qty": 200,
+          "unit": "g",
+          "item": "kimchi, fijngesneden, plus 30 ml kimchisap"
+        },
+        {
+          "qty": 150,
+          "unit": "g",
+          "item": "doperwten (diepvries)"
+        },
+        {
+          "qty": 2,
+          "unit": "",
+          "item": "lente-uien, in ringetjes"
+        },
+        {
+          "qty": 15,
+          "unit": "ml",
+          "item": "zonnebloemolie"
+        },
+        {
+          "qty": 15,
+          "unit": "ml",
+          "item": "sojasaus"
+        },
+        {
+          "qty": 15,
+          "unit": "ml",
+          "item": "sesamolie"
+        },
+        {
+          "qty": 4,
+          "unit": "",
+          "item": "eieren"
+        },
+        {
+          "qty": 5,
+          "unit": "g",
+          "item": "geroosterd sesamzaad"
+        },
+        {
+          "qty": 1,
+          "unit": "",
+          "item": "vel nori, in reepjes"
+        }
+      ],
+      "steps": [
+        "Verhit de zonnebloemolie in een wok of grote koekenpan op hoog vuur. Bak de kimchi 2 minuten.",
+        "Voeg de rijst toe en druk de klontjes los. Bak 4 tot 5 minuten, roer af en toe zodat er krokante stukjes ontstaan.",
+        "Roer doperwten, kimchisap, sojasaus en de helft van de lente-ui erdoor en bak nog 2 minuten. Maak af met sesamolie.",
+        "Bak in een andere pan 4 spiegeleieren met een zachte dooier.",
+        "Verdeel de rijst over kommen, leg er een ei op en bestrooi met sesamzaad, nori en de rest van de lente-ui."
+      ],
+      "tip": "Voor kinderen: schep hun portie op voordat de kimchi erbij gaat en bak die apart met alleen doperwten en sojasaus.",
+      "photo": "https://i.ytimg.com/vi/Lf44Fk7H24s/maxresdefault.jpg",
+      "photoCredit": {
+        "label": "Maangchi",
+        "url": "https://www.maangchi.com/recipe/kimchi-bokkeumbap"
+      }
+    },
+    {
+      "slug": "cottage-cheese-flatbread",
+      "title": "Cottage cheese flatbread",
+      "dek": "Wrap van drie ingrediënten: cottage cheese en eieren, glad gemixt en dun gebakken. Zonder bloem en vol eiwit.",
+      "category": "Lunch",
+      "minutes": 45,
+      "servings": 2,
+      "form": "flat",
+      "signal": {
+        "metric": "Eiwittrend",
+        "source": "TikTok",
+        "text": "Cottage cheese ging in 2023 viraal en is sindsdien niet meer weggeweest. Deze flatbread van drie ingrediënten is de versie die nu onder #viralrecipes2026 rondgaat."
+      },
+      "links": [
+        {
+          "label": "TikTok · #viralrecipes2026",
+          "url": "https://www.tiktok.com/tag/viralrecipes2026%F0%9F%94%A5"
+        },
+        {
+          "label": "Chowhound · viral food trends",
+          "url": "https://www.chowhound.com/1986354/best-viral-food-trends-2025/"
+        }
+      ],
+      "ingredients": [
+        {
+          "group": "Flatbread",
+          "qty": 250,
+          "unit": "g",
+          "item": "cottage cheese"
+        },
+        {
+          "group": "Flatbread",
+          "qty": 2,
+          "unit": "",
+          "item": "eieren (M)"
+        },
+        {
+          "group": "Flatbread",
+          "qty": 30,
+          "unit": "g",
+          "item": "belegen kaas, geraspt"
+        },
+        {
+          "group": "Flatbread",
+          "qty": 2,
+          "unit": "g",
+          "item": "gedroogde oregano"
+        },
+        {
+          "group": "Flatbread",
+          "qty": null,
+          "unit": "",
+          "item": "snuf zout en zwarte peper"
+        },
+        {
+          "group": "Vulling",
+          "qty": 100,
+          "unit": "g",
+          "item": "hummus"
+        },
+        {
+          "group": "Vulling",
+          "qty": 150,
+          "unit": "g",
+          "item": "gegrilde kipfilet of geroosterde kikkererwten"
+        },
+        {
+          "group": "Vulling",
+          "qty": 40,
+          "unit": "g",
+          "item": "rucola"
+        },
+        {
+          "group": "Vulling",
+          "qty": 0.5,
+          "unit": "",
+          "item": "komkommer, in dunne reepjes"
+        }
+      ],
+      "steps": [
+        "Verwarm de oven voor op 200 °C (hetelucht 180 °C). Bekleed een bakplaat met bakpapier en vet het papier licht in.",
+        "Mix cottage cheese, eieren, kaas, oregano, zout en peper met een staafmixer helemaal glad.",
+        "Giet het beslag op het bakpapier en strijk het uit tot een rechthoek van ongeveer 30 × 35 cm en 3 tot 4 mm dik.",
+        "Bak 30 tot 35 minuten, tot het beslag stevig is en de randen goudbruin zijn.",
+        "Laat 5 minuten afkoelen en trek de flatbread daarna voorzichtig los van het papier.",
+        "Halveer de plaat. Besmeer elke helft met hummus, beleg met kip, rucola en komkommer en rol strak op."
+      ],
+      "tip": "Plakt hij nog aan het papier, dan is hij niet lang genoeg gebakken. Zet hem nog 5 minuten terug. Een hele plaat levert ruim 40 g eiwit.",
+      "tint": "butter",
+      "tags": [
+        "Weinig werk",
+        "Kindvriendelijk"
+      ],
+      "photo": "https://api.flavournetwork.ca/wp-content/uploads/2024/06/cottage-cheese-flatbread-feature-image.jpg",
+      "photoCredit": {
+        "label": "Flavour Network",
+        "url": "https://www.flavournetwork.ca/recipe/cottage-cheese-flatbread/"
+      }
+    }
+  ]
+}
