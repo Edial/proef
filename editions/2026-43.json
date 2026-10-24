@@ -17,7 +17,7 @@
       "signal": {
         "metric": "+110%",
         "source": "Pinterest",
-        "text": "Zoekopdrachten naar kool stegen met 110%. Pinterest noemt 'Cabbage Crush' een van de grootste foodtrends van 2026, en op TikTok is deze versie het herkenbaarste voorbeeld."
+        "text": "Er wordt ruim twee keer zo vaak naar kool gezocht als vorig jaar. Pinterest noemt 'Cabbage Crush' een van de grootste foodtrends van 2026, en op TikTok is deze versie het herkenbaarste voorbeeld."
       },
       "links": [
         {
@@ -126,12 +126,19 @@
       "photoCredit": {
         "label": "Noble Pig",
         "url": "https://noblepig.com/marry-me-melting-cabbage/"
+      },
+      "glyph": "菜",
+      "native": "キャベツ",
+      "roman": "kyabetsu",
+      "trend": {
+        "source": "Pinterest",
+        "text": "Kool wordt dit jaar twee keer zo vaak gezocht als vorig jaar."
       }
     },
     {
       "slug": "dumpling-bake",
       "title": "Dumpling bake met kokoscurry",
-      "tint": "lavender",
+      "tint": "sky",
       "tags": [
         "Aziatisch",
         "Kindvriendelijk",
@@ -242,6 +249,13 @@
       "photoCredit": {
         "label": "Foxes Love Lemons",
         "url": "https://foxeslovelemons.com/dumpling-bake/"
+      },
+      "glyph": "餃",
+      "native": "餃子",
+      "roman": "gyōza",
+      "trend": {
+        "source": "TikTok",
+        "text": "Een van de grootste foodtrends van dit najaar."
       }
     },
     {
@@ -333,7 +347,7 @@
         "Schep in kommen en bestrooi met het krokante spek en de Parmezaan."
       ],
       "tip": "Voor een lichtere versie vervang je de helft van de slagroom door volle melk. De soep is de volgende dag nog lekkerder.",
-      "tint": "peach",
+      "tint": "blush",
       "tags": [
         "Seizoen",
         "Kindvriendelijk"
@@ -342,12 +356,19 @@
       "photoCredit": {
         "label": "Dinner at the Zoo",
         "url": "https://www.dinneratthezoo.com/zuppa-toscana-recipe/"
+      },
+      "glyph": "汁",
+      "native": "スープ",
+      "roman": "sūpu",
+      "trend": {
+        "source": "TikTok",
+        "text": "Gaat rond als hét herfstrecept van 2026."
       }
     },
     {
       "slug": "kimchi-gebakken-rijst",
       "title": "Kimchi-gebakken rijst",
-      "tint": "rose",
+      "tint": "persimmon",
       "tags": [
         "Aziatisch",
         "Weinig werk",
@@ -361,7 +382,7 @@
       "signal": {
         "metric": "+110%",
         "source": "Pinterest",
-        "text": "Pinterest ziet kool als dé trend van 2026 (+110% zoekopdrachten naar kool), mede aangejaagd door de populariteit van gefermenteerde gerechten zoals kimchi."
+        "text": "Pinterest ziet kool als dé trend van 2026 (ruim twee keer zo veel zoekopdrachten naar kool), mede aangejaagd door de populariteit van gefermenteerde gerechten zoals kimchi."
       },
       "links": [
         {
@@ -437,6 +458,13 @@
       "photoCredit": {
         "label": "Maangchi",
         "url": "https://www.maangchi.com/recipe/kimchi-bokkeumbap"
+      },
+      "glyph": "밥",
+      "native": "김치볶음밥",
+      "roman": "kimchi bokkeumbap",
+      "trend": {
+        "source": "Pinterest",
+        "text": "Gefermenteerd eten is in, en kimchi voorop."
       }
     },
     {
@@ -527,7 +555,7 @@
         "Halveer de plaat. Besmeer elke helft met hummus, beleg met kip, rucola en komkommer en rol strak op."
       ],
       "tip": "Plakt hij nog aan het papier, dan is hij niet lang genoeg gebakken. Zet hem nog 5 minuten terug. Een hele plaat levert ruim 40 g eiwit.",
-      "tint": "butter",
+      "tint": "mustard",
       "tags": [
         "Weinig werk",
         "Kindvriendelijk"
@@ -536,7 +564,148 @@
       "photoCredit": {
         "label": "Flavour Network",
         "url": "https://www.flavournetwork.ca/recipe/cottage-cheese-flatbread/"
+      },
+      "glyph": "卵",
+      "native": "卵",
+      "roman": "tamago",
+      "trend": {
+        "source": "TikTok",
+        "text": "Al maanden een van de meest gemaakte eiwitrecepten."
       }
     }
-  ]
+  ],
+  "ferment": {
+    "number": 1,
+    "slug": "mak-kimchi",
+    "title": "Mak-kimchi",
+    "glyph": "酵",
+    "native": "막김치",
+    "roman": "mak-gimchi, ‘snelle kimchi’",
+    "lede": "Kimchi zonder gedoe: de kool gaat in stukken in plaats van in hele kroppen. Eén pot, een half uur werk, en na drie dagen eet je hem al.",
+    "teaser": "Eén pot, een half uur werk, na drie dagen klaar.",
+    "yield": "1 pot van 1,5 liter",
+    "facts": [
+      {
+        "label": "Pot",
+        "value": "1,5 liter"
+      },
+      {
+        "label": "Werk",
+        "value": "30 min + 2 uur zouten"
+      },
+      {
+        "label": "Klaar",
+        "value": "na 3 dagen"
+      },
+      {
+        "label": "Houdbaar",
+        "value": "2 maanden, koelkast"
+      },
+      {
+        "label": "Niveau",
+        "value": "Beginner"
+      }
+    ],
+    "usedIn": "kimchi-gebakken-rijst",
+    "science": [
+      "Zout trekt vocht uit de kool en houdt rotbacteriën op afstand. Melkzuurbacteriën, die al gewoon op de kool zitten, kunnen daar wél tegen. Ze eten de suikers op en maken er melkzuur en koolzuurgas van: dat zijn de bubbels.",
+      "Hoe zuurder het wordt, hoe veiliger. Onder een pH van ongeveer 4,6 kan bijna niets anders meer groeien. In de koelkast gaat de fermentatie langzaam door, dus de smaak verschuift elke week een beetje: van fris en pittig naar diep en zuur."
+    ],
+    "timeline": [
+      {
+        "when": "Dag 0",
+        "title": "Zouten en inmaken",
+        "text": "Kool 2 uur in het zout, daarna de pot in."
+      },
+      {
+        "when": "Dag 1–2",
+        "title": "Op het aanrecht",
+        "text": "18–20 °C. Eerste bubbels, het begint zurig te ruiken."
+      },
+      {
+        "when": "Dag 3",
+        "title": "Koelkast in",
+        "text": "Fris, knapperig en pittig. Nu al lekker.",
+        "now": true
+      },
+      {
+        "when": "Week 2",
+        "title": "Rond en zuur",
+        "text": "De smaak wordt dieper, de kool zachter."
+      },
+      {
+        "when": "Week 4+",
+        "title": "Kookkimchi",
+        "text": "Te zuur om zo te eten, perfect om mee te bakken."
+      }
+    ],
+    "ingredients": [
+      {
+        "qty": 1,
+        "unit": "",
+        "item": "Chinese kool (ca. 1 kg)"
+      },
+      {
+        "qty": 40,
+        "unit": "g",
+        "item": "grof zeezout"
+      },
+      {
+        "qty": 15,
+        "unit": "g",
+        "item": "rijstebloem"
+      },
+      {
+        "qty": 150,
+        "unit": "ml",
+        "item": "water"
+      },
+      {
+        "qty": 25,
+        "unit": "g",
+        "item": "gochugaru (Koreaans chilipoeder)"
+      },
+      {
+        "qty": 30,
+        "unit": "ml",
+        "item": "vissaus (of sojasaus)"
+      },
+      {
+        "qty": 10,
+        "unit": "g",
+        "item": "suiker"
+      },
+      {
+        "qty": 20,
+        "unit": "g",
+        "item": "knoflook (ca. 5 tenen), geraspt"
+      },
+      {
+        "qty": 10,
+        "unit": "g",
+        "item": "verse gember, geraspt"
+      },
+      {
+        "qty": 100,
+        "unit": "g",
+        "item": "daikon of winterpeen, in reepjes"
+      },
+      {
+        "qty": 4,
+        "unit": "",
+        "item": "lente-uien, in stukken van 3 cm"
+      }
+    ],
+    "steps": [
+      "Snijd de kool in de lengte in vieren, haal de harde kern eruit en snijd in stukken van 4 cm. Was en laat uitlekken.",
+      "Hussel de kool met het zout in een grote kom. Laat 2 uur staan en schep elk half uur om. Hij is klaar als een stuk buigt zonder te knappen.",
+      "Kook intussen rijstebloem en water al roerend 2 minuten tot een dunne pap. Laat afkoelen en roer gochugaru, vissaus, suiker, knoflook en gember erdoor.",
+      "Spoel de kool 3 keer in koud water en laat 20 minuten uitlekken. Meng met daikon, lente-ui en de pasta. Gebruik handschoenen.",
+      "Druk alles stevig in een schone pot tot het vocht erboven staat. Laat 3 cm ruimte en leg het deksel er losjes op.",
+      "Laat 1 tot 2 dagen op het aanrecht staan en druk elke dag aan met een schone lepel. Zie je bubbels en ruikt het zurig, dan gaat de pot de koelkast in."
+    ],
+    "ok": "Bubbels, gesis bij het openen, een frisse zure geur en troebel vocht. Een vlak wit vliesje (kahmgist) is onschuldig: schep het eraf.",
+    "bad": "Pluizige schimmel (wit, groen of zwart), een roze slijmerige laag of een rotte geur. Dan alles weggooien.",
+    "kids": "Laat ze het zout door de kool masseren. Maak hun portie zonder gochugaru, met 1 tl paprikapoeder voor de kleur."
+  }
 }

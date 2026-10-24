@@ -4,214 +4,286 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<meta name="description" content="Elke zaterdag vijf trending recepten: weinig werk, veel Aziatisch, groente van het seizoen en goed te maken voor kinderen. Alles in grammen en milliliters.">
+<meta name="description" content="Elke zaterdag vijf trending recepten: weinig werk, veel Aziatisch, groente van het seizoen en goed te maken voor kinderen. Plus elke week een fermentatie voor thuis. Alles in grammen en milliliters.">
 <title>Proef</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23DDE7D4'/%3E%3Ctext x='16' y='23' font-family='Helvetica,Arial,sans-serif' font-size='20' font-weight='700' text-anchor='middle' fill='%230E0C0A'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='3' fill='%232E4A6B'/%3E%3Ctext x='16' y='23.5' font-family='Georgia,serif' font-size='21' text-anchor='middle' fill='%23F8F5EE'%3EP%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Serif+KR:wght@700;900&display=swap">
 <style>
-/* Layout: één kolom op papier. Per recept een smalle tekstkolom naast een groot tekenpaneel; maten en cijfers in mono. */
 :root {
-  --paper: #EEEBE4;
-  --ink: #0E0C0A;
-  --muted: #6B655B;
-  --rule: #D6D0C4;
-  --panel: #E5E1D8;
-  --accent: #3B5733;
-  --sage: #DDE7D4; --peach: #F4DFCF; --lavender: #E3DEF0; --butter: #F2EAC8; --sky: #D8E5EF; --rose: #F1DBE0;
-  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  --t-xs: 0.78rem;
-  --t-sm: 0.9rem;
-  --t-md: 1.0625rem;
-  --t-lg: 1.3rem;
-  --t-xl: clamp(1.7rem, 3.2vw, 2.5rem);
-  --t-2xl: clamp(2.4rem, 6vw, 4.6rem);
-  --t-mark: clamp(3.6rem, 13vw, 8.5rem);
-  --maxw: 1240px;
+  --board: #E8E4DB;
+  --sheet: #F8F5EE;
+  --ink: #1F1D1A;
+  --muted: #7A7366;
+  --rule: #DDD6C8;
+  /* vaste kleuren: tekst op navy of op een gekleurde kaart */
+  --cream: #F8F5EE;
+  --dark: #1F1D1A;
+  --navy: #2E4A6B;
+  --hanko: #C4372C;
+  --ok: #3F6B4F;
+  --persimmon: #D8693E;
+  --mustard: #F0B23B;
+  --blush: #EBC9BA;
+  --sage: #BFD3C7;
+  --sky: #A9C4DE;
+  --serif: "Fraunces", Georgia, serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --cjk: "Noto Serif JP", "Noto Serif KR", serif;
+  --gap: 12px;
+  --maxw: 1200px;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --paper: #0E0C0A; --ink: #ECE8E0; --muted: #9A9286; --rule: #2A2622; --panel: #171411; --accent: #A9C394;
-    --sage: #232D20; --peach: #33271F; --lavender: #29263A; --butter: #302B1C; --sky: #1E2932; --rose: #332328;
-    color-scheme: dark;
+    --board: #161412; --sheet: #211E1A; --ink: #EEE9DF; --muted: #A39B8E; --rule: #37322B; --navy: #2B4562; --ok: #8FBF9F;
   }
 }
 :root[data-theme="dark"] {
-  --paper: #0E0C0A; --ink: #ECE8E0; --muted: #9A9286; --rule: #2A2622; --panel: #171411; --accent: #A9C394;
-    --sage: #232D20; --peach: #33271F; --lavender: #29263A; --butter: #302B1C; --sky: #1E2932; --rose: #332328;
-  color-scheme: dark;
+  --board: #161412; --sheet: #211E1A; --ink: #EEE9DF; --muted: #A39B8E; --rule: #37322B; --navy: #2B4562; --ok: #8FBF9F;
 }
 
 * { box-sizing: border-box; }
-html, body { margin: 0; }
-img { max-width: 100%; }
-[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
 body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--font-sans);
-  font-size: var(--t-md);
-  line-height: 1.55;
-  -webkit-font-smoothing: antialiased;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  margin: 0; background: var(--board); color: var(--ink);
+  font-family: var(--serif); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased;
+  padding: 0 max(16px, env(safe-area-inset-right, 0px)) 0 max(16px, env(safe-area-inset-left, 0px));
 }
-@media (min-width: 760px) {
-  body {
-    padding-left: max(40px, env(safe-area-inset-left, 0px));
-    padding-right: max(40px, env(safe-area-inset-right, 0px));
-  }
-}
+@media (min-width: 760px) { body { padding-left: 24px; padding-right: 24px; } }
 .wrap { max-width: var(--maxw); margin-inline: auto; }
-a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
-a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
-h1, h2, h3 { margin: 0; font-weight: 600; text-wrap: balance; }
+a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--hanko); outline-offset: 3px; }
+h1, h2, h3, h4 { margin: 0; font-weight: 400; text-wrap: balance; }
 p { margin: 0; }
-.mono { font-family: var(--font-mono); font-size: var(--t-xs); letter-spacing: 0.02em; font-variant-numeric: tabular-nums; }
-.label { font-family: var(--font-mono); font-size: var(--t-xs); color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
-.muted { color: var(--muted); }
+img { display: block; max-width: 100%; }
+
+.mono { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; font-variant-numeric: tabular-nums; }
+.label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.kicker { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--hanko); }
+.cjk { font-family: var(--cjk); font-weight: 900; line-height: 1; }
+.card { background: var(--sheet); }
+.no { font-family: var(--serif); color: var(--persimmon); font-variant-numeric: lining-nums; }
+.hanko { display: inline-grid; place-items: center; flex: none; width: 28px; height: 28px; background: var(--hanko); color: var(--cream); font-family: var(--cjk); font-weight: 700; font-size: 16px; line-height: 1; border-radius: 2px; }
+.native { font-family: var(--cjk); font-weight: 700; font-size: 13px; color: var(--muted); }
+.native em { font-family: var(--serif); font-weight: 400; font-style: italic; margin-left: 6px; }
+.metaline { display: flex; flex-wrap: wrap; gap: 4px 12px; color: var(--muted); }
+.metaline span + span::before { content: "·"; margin-right: 12px; }
+.colhead { color: var(--muted); margin-bottom: 8px; }
+
+/* Trending: in woorden waarom het in de editie staat */
+.trend { display: flex; gap: 8px; align-items: baseline; font-family: var(--sans); font-size: 13px; line-height: 1.4; color: var(--muted); }
+.trend b { flex: none; font-family: var(--mono); font-weight: 500; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--hanko); }
+.trend .src { opacity: .75; }
+
+/* Receptkleuren */
+.t-sage      { --bg: var(--sage);      --hi: var(--sage);  --lo: #2E4A6B; }
+.t-sky       { --bg: var(--sky);       --hi: var(--sky);   --lo: #2E4A6B; }
+.t-blush     { --bg: var(--blush);     --hi: #F3DACE;      --lo: #7E3A2C; }
+.t-persimmon { --bg: var(--persimmon); --hi: #FAD2B4;      --lo: #9C3F1F; }
+.t-mustard   { --bg: var(--mustard);   --hi: #F7D27E;      --lo: #5B3D10; }
+
+/* Foto: duotoon in de receptkleur met drukraster; hover toont het origineel */
+.duo { position: relative; overflow: hidden; background: var(--hi); isolation: isolate; }
+.duo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.08) brightness(1.08); mix-blend-mode: multiply; transition: filter .5s ease; }
+.duo::after { content: ""; position: absolute; inset: 0; background: var(--lo); mix-blend-mode: lighten; pointer-events: none; transition: opacity .5s ease; }
+.duo::before { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: .2; mix-blend-mode: multiply; background-image: radial-gradient(circle, #000 0.7px, transparent 1.3px); background-size: 4px 4px; transition: opacity .5s ease; }
+@media (hover: hover) {
+  .duo:hover img { filter: none; mix-blend-mode: normal; }
+  .duo:hover::after, .duo:hover::before { opacity: 0; }
+}
+.duo.color img { filter: none; mix-blend-mode: normal; }
+.duo.color::after, .duo.color::before { opacity: 0; }
+.duo .glyph { position: absolute; top: 16px; right: 18px; z-index: 3; color: var(--cream); }
+.duo .fallback { position: absolute; inset: 0; display: grid; place-items: center; font-size: clamp(64px, 12vw, 140px); color: var(--lo); }
+
+.seigaiha { background-color: #2E4A6B; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='20'%3E%3Cg fill='none' stroke='%23F8F5EE' stroke-width='1.4'%3E%3Cg%3E%3Ccircle cx='20' cy='0' r='19' fill='%232E4A6B'/%3E%3Ccircle cx='20' cy='0' r='14'/%3E%3Ccircle cx='20' cy='0' r='9'/%3E%3Ccircle cx='20' cy='0' r='4'/%3E%3C/g%3E%3Cg%3E%3Ccircle cx='0' cy='10' r='19' fill='%232E4A6B'/%3E%3Ccircle cx='0' cy='10' r='14'/%3E%3Ccircle cx='0' cy='10' r='9'/%3E%3Ccircle cx='0' cy='10' r='4'/%3E%3Ccircle cx='40' cy='10' r='19' fill='%232E4A6B'/%3E%3Ccircle cx='40' cy='10' r='14'/%3E%3Ccircle cx='40' cy='10' r='9'/%3E%3Ccircle cx='40' cy='10' r='4'/%3E%3C/g%3E%3Cg%3E%3Ccircle cx='20' cy='20' r='19' fill='%232E4A6B'/%3E%3Ccircle cx='20' cy='20' r='14'/%3E%3Ccircle cx='20' cy='20' r='9'/%3E%3Ccircle cx='20' cy='20' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); background-size: 40px 20px; }
 
 /* Kop */
-.top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-block: 20px; }
-.top .brand { font-family: var(--font-mono); font-size: var(--t-sm); text-decoration: none; }
-.top .brand span { color: var(--muted); margin-right: 0.4em; }
-.top nav { display: flex; gap: 22px; font-family: var(--font-mono); font-size: var(--t-xs); }
-.top nav a { text-decoration: none; color: var(--muted); }
+.top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-block: 18px; }
+.top .brand { font-family: var(--mono); font-size: 13px; letter-spacing: .04em; text-decoration: none; }
+.top .brand .cjk { font-size: 14px; margin-right: 6px; font-weight: 700; }
+.top nav { display: flex; gap: 20px; flex-wrap: wrap; justify-content: end; }
+.top nav a { font-family: var(--mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; text-decoration: none; color: var(--muted); }
 .top nav a:hover { color: var(--ink); }
+.notice { font-family: var(--sans); font-size: 14px; color: var(--muted); margin-bottom: 12px; }
 
-/* Masthead */
-.mast { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: end; gap: 16px clamp(20px, 4vw, 48px); padding-block: clamp(12px, 3vw, 32px) clamp(14px, 2vw, 22px); border-bottom: 1px solid var(--ink); }
-.mast .intro { font-size: var(--t-md); line-height: 1.45; max-width: 52ch; padding-bottom: 0.4em; }
-.mark { font-size: var(--t-mark); line-height: 0.8; letter-spacing: -0.06em; font-weight: 600; margin-left: -0.04em; }
-.issue { display: grid; gap: 4px; text-align: right; padding-bottom: 0.35em; }
-.issue .no { font-family: var(--font-mono); font-size: var(--t-lg); font-weight: 500; }
-.lede { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(20px, 4vw, 56px); padding-block: clamp(22px, 4vw, 40px); }
-.lede .tagline { font-size: var(--t-lg); line-height: 1.35; max-width: 26ch; }
-.principles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px clamp(20px, 3vw, 40px); }
-.principles p { font-size: var(--t-sm); color: var(--muted); max-width: 42ch; }
-.principles strong { display: block; color: var(--ink); font-weight: 500; margin-bottom: 4px; font-size: var(--t-sm); }
+/* ---------- Home ---------- */
+.home { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gap); }
+.mast { grid-column: span 4; background: var(--navy); color: var(--cream); padding: 28px 26px 24px; display: flex; flex-direction: column; min-height: 540px; }
+.mast .logo { font-weight: 400; font-size: 68px; letter-spacing: -0.035em; line-height: .9; }
+.mast .sub { margin-top: 14px; color: rgba(248,245,238,.65); }
+.mast .glyph { font-size: 190px; margin: auto 0 0 -6px; padding-top: 28px; }
+.mast .bottom { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-top: 22px; }
+.mast .intro { font-style: italic; font-size: 15px; line-height: 1.5; color: rgba(248,245,238,.85); max-width: 32ch; }
 
-/* Editie */
-.notice { font-size: var(--t-sm); color: var(--muted); padding-top: 16px; }
-.features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 4vw, 44px) clamp(16px, 2.4vw, 28px); padding-block: clamp(20px, 3vw, 32px) clamp(40px, 6vw, 72px); }
-.feature { display: grid; gap: 12px; align-content: start; min-width: 0; }
-.feature:first-child { grid-column: span 2; }
-.feature-text { display: grid; gap: 8px; min-width: 0; }
-.feature h2 { font-size: var(--t-lg); line-height: 1.15; letter-spacing: -0.02em; }
-.feature:first-child h2 { font-size: var(--t-xl); line-height: 1.05; letter-spacing: -0.03em; }
-.feature h2 a { text-decoration: none; }
-.feature h2 a:hover { text-decoration: underline; text-decoration-thickness: 2px; }
-.feature .dek { color: var(--muted); font-size: var(--t-sm); max-width: 52ch; }
-.meta-row { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; font-family: var(--font-mono); font-size: var(--t-xs); color: var(--muted); }
-.tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.tag { font-family: var(--font-mono); font-size: 0.72rem; padding: 3px 8px; border-radius: 99px; background: var(--tint, var(--panel)); color: var(--ink); }
-.signal { display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; font-family: var(--font-mono); font-size: var(--t-xs); letter-spacing: 0.02em; }
-.signal .metric { color: var(--accent); font-weight: 500; font-size: var(--t-sm); }
-.signal .src { color: var(--muted); }
-.split { display: grid; grid-template-columns: 1fr 1fr; border-radius: 6px; overflow: hidden; text-decoration: none; background: var(--tint); }
-.split > * { min-width: 0; aspect-ratio: 1 / 1; width: 100%; max-width: 100%; }
-.split canvas { display: block; background: var(--tint); }
-.split img { display: block; object-fit: cover; height: 100%; }
-.split .ph { display: grid; align-content: space-between; padding: clamp(12px, 2vw, 20px); background: color-mix(in srgb, var(--tint) 55%, var(--ink) 8%); }
-.split .ph .big { font-family: var(--font-mono); font-size: clamp(1.4rem, 3vw, 2.4rem); line-height: 1; letter-spacing: -0.03em; color: var(--accent); font-weight: 500; overflow-wrap: anywhere; }
-.feature:first-child .split .ph .big { font-size: clamp(1.8rem, 5vw, 3.6rem); }
-.split .ph .big.word { font-size: clamp(1rem, 1.8vw, 1.5rem); letter-spacing: -0.01em; overflow-wrap: normal; }
-.feature:first-child .split .ph .big.word { font-size: clamp(1.3rem, 3vw, 2.2rem); }
-.credit { font-family: var(--font-mono); font-size: var(--t-xs); color: var(--muted); }
-.credit a { color: inherit; }
-.split .ph .cap { font-family: var(--font-mono); font-size: var(--t-xs); color: var(--muted); }
-.t-sage { --tint: var(--sage); } .t-peach { --tint: var(--peach); } .t-lavender { --tint: var(--lavender); } .t-butter { --tint: var(--butter); } .t-sky { --tint: var(--sky); } .t-rose { --tint: var(--rose); }
-.feature-visual:hover + .feature-text h2 a { text-decoration: underline; text-decoration-thickness: 2px; }
+.lead { grid-column: span 8; display: grid; grid-template-rows: minmax(0, 1fr) auto; text-decoration: none; min-width: 0; }
+.lead .duo { min-height: 340px; }
+.lead .body { padding: 22px 26px 26px; display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 0 18px; }
+.lead .no { font-size: 56px; line-height: .9; }
+.lead h2 { margin-top: 4px; font-size: 36px; line-height: 1.05; letter-spacing: -0.02em; }
+.lead .dek { margin: 8px 0 14px; font-size: 16px; color: var(--muted); font-style: italic; max-width: 56ch; }
+.lead .trend { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--rule); }
+.lead:hover h2, .tile:hover h2, .ferm-teaser:hover h2 { text-decoration: underline; text-decoration-thickness: 1px; }
 
-.panel { background: var(--panel); border-radius: 4px; overflow: hidden; display: block; text-decoration: none; min-width: 0; }
-.panel-bar { display: flex; justify-content: space-between; gap: 12px; padding: 10px 14px; border-bottom: 1px solid var(--rule); color: var(--muted); }
-.panel canvas { display: block; width: 100%; max-width: 100%; aspect-ratio: 4 / 3; }
+.tile { grid-column: span 3; display: flex; flex-direction: column; text-decoration: none; background: var(--bg); color: var(--dark); min-width: 0; }
+.tile .duo { aspect-ratio: 4 / 3; }
+.tile .body { padding: 16px 18px 18px; display: flex; flex-direction: column; flex: 1; }
+.tile .no { font-size: 15px; color: var(--dark); }
+.tile h2 { margin-top: 4px; font-size: 21px; line-height: 1.12; letter-spacing: -0.01em; }
+.tile .metaline { margin-top: 10px; color: rgba(31,29,26,.72); }
+.tile .trend { margin-top: auto; padding-top: 14px; color: rgba(31,29,26,.72); }
+.tile .trend b { color: var(--dark); }
+.tile.t-persimmon { color: var(--cream); }
+.tile.t-persimmon .no, .tile.t-persimmon .trend b { color: var(--cream); }
+.tile.t-persimmon .metaline, .tile.t-persimmon .trend { color: rgba(248,245,238,.85); }
+
+.ferm-teaser { grid-column: span 12; display: grid; grid-template-columns: 120px auto minmax(0, 1fr) auto; gap: 24px; align-items: center; text-decoration: none; padding-right: 24px; }
+.ferm-teaser .seigaiha { align-self: stretch; min-height: 96px; }
+.ferm-teaser .cjk { font-size: 54px; }
+.ferm-teaser h2 { margin-top: 2px; font-size: 24px; letter-spacing: -0.01em; }
+.ferm-teaser p:not(.kicker) { font-style: italic; color: var(--muted); font-size: 15px; }
+.ferm-teaser .go { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
 
 /* Archief */
-.archive { padding-block: clamp(40px, 7vw, 88px); border-top: 1px solid var(--ink); display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(20px, 4vw, 56px); }
-.archive h2 { font-size: var(--t-xl); letter-spacing: -0.03em; margin-top: 10px; }
-.archive .side { display: grid; gap: 18px; align-content: start; }
-.search { display: grid; gap: 6px; }
-.search input { font: inherit; font-size: var(--t-md); color: var(--ink); background: transparent; border: 0; border-bottom: 1px solid var(--ink); padding: 8px 0; width: 100%; border-radius: 0; }
+.archive { margin-top: 96px; display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: var(--gap); align-items: start; }
+.archive .side { padding: 26px; }
+.archive h2 { font-size: 36px; letter-spacing: -0.02em; margin-top: 6px; }
+.search { display: grid; gap: 6px; margin-top: 26px; }
+.search input { font: inherit; font-size: 17px; color: var(--ink); background: transparent; border: 0; border-bottom: 1px solid var(--ink); padding: 8px 0; width: 100%; border-radius: 0; }
 .search input::placeholder { color: var(--muted); }
-.list { list-style: none; margin: 0; padding: 0; min-width: 0; }
-.list > li { display: grid; grid-template-columns: 4.5ch minmax(0, 1fr); gap: 16px; padding-block: 16px; border-top: 1px solid var(--rule); }
-.list > li:last-child { border-bottom: 1px solid var(--rule); }
-.list .no { font-family: var(--font-mono); font-size: var(--t-sm); color: var(--muted); }
-.list .when { font-family: var(--font-mono); font-size: var(--t-xs); color: var(--muted); margin-bottom: 6px; }
+#archive-list { padding: 10px 26px; }
+.list { list-style: none; margin: 0; padding: 0; }
+.list > li { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 16px; padding-block: 16px; border-bottom: 1px solid var(--rule); }
+.list > li:last-child { border-bottom: 0; }
+.list .no { font-size: 28px; line-height: 1; text-decoration: none; }
+.list .when { margin-bottom: 6px; }
 .list .titles { display: flex; flex-wrap: wrap; gap: 4px 18px; }
-.list .titles a { text-decoration: none; }
-.list .titles a:hover { text-decoration: underline; }
-.list .hit-meta { font-family: var(--font-mono); font-size: var(--t-xs); color: var(--muted); }
-.empty { color: var(--muted); padding-block: 16px; border-top: 1px solid var(--rule); }
+.list .titles a, .list > li > div > a { text-decoration: none; }
+.list .titles a:hover, .list > li > div > a:hover { text-decoration: underline; }
+.list .titles .f { font-style: italic; }
+.list .hit-meta { margin-top: 2px; }
+.empty { color: var(--muted); padding-block: 16px; font-style: italic; }
 
-/* Recept */
-.recipe { padding-block: clamp(20px, 4vw, 40px) clamp(40px, 7vw, 88px); }
-.back { font-family: var(--font-mono); font-size: var(--t-xs); color: var(--muted); text-decoration: none; display: inline-block; margin-bottom: clamp(24px, 4vw, 48px); }
+/* ---------- Recept ---------- */
+.back { display: inline-block; margin-bottom: 18px; text-decoration: none; color: var(--muted); }
 .back:hover { color: var(--ink); }
-.recipe-top { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(24px, 4vw, 56px); align-items: end; }
-.recipe-head { display: grid; gap: 14px; }
-.recipe-head h1 { font-size: var(--t-2xl); line-height: 0.98; letter-spacing: -0.04em; }
-.recipe-head .dek { font-size: var(--t-lg); line-height: 1.4; color: var(--muted); max-width: 44ch; }
-.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: clamp(16px, 3vw, 28px) 0 0; border-top: 1px solid var(--ink); }
-.facts > div:nth-child(n+3) { border-top: 1px solid var(--rule); }
-.facts > div { padding: 14px 16px 14px 0; display: grid; gap: 6px; align-content: start; min-width: 0; }
-.facts dt { font-family: var(--font-mono); font-size: var(--t-xs); color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
-.facts dd { margin: 0; }
-.facts .metric { color: var(--accent); font-family: var(--font-mono); font-weight: 500; }
-.stepper { display: inline-flex; align-items: center; gap: 10px; }
-.stepper button { font: inherit; font-family: var(--font-mono); width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--rule); background: transparent; color: var(--ink); cursor: pointer; line-height: 1; }
-.stepper button:hover:not(:disabled) { border-color: var(--ink); }
-.stepper button:disabled { opacity: 0.35; cursor: default; }
-.stepper output { font-variant-numeric: tabular-nums; min-width: 6ch; }
-
-.recipe-body { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(28px, 5vw, 64px); margin-top: clamp(28px, 4vw, 48px); }
-.section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--ink); margin-bottom: 4px; }
-.section-head h2 { font-size: var(--t-lg); letter-spacing: -0.02em; }
-.copy { font-family: var(--font-mono); font-size: var(--t-xs); color: var(--muted); background: none; border: 0; padding: 4px 0; cursor: pointer; text-decoration: underline; text-underline-offset: 0.2em; }
+.spread { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--gap); align-items: start; }
+.spread .left { display: flex; flex-direction: column; gap: 10px; position: sticky; top: 16px; }
+.spread .left .duo { aspect-ratio: 4 / 5; }
+.spread .left .glyph { font-size: 72px; }
+.credit { font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.credit a { text-decoration: none; }
+.credit a:hover { color: var(--ink); }
+.sheet { padding: 32px 34px 34px; min-width: 0; }
+.sheet header { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0 18px; align-items: end; padding-bottom: 16px; }
+.sheet header .no { font-size: 64px; line-height: .85; }
+.sheet h1 { margin-top: 4px; font-size: 38px; line-height: 1; letter-spacing: -0.02em; }
+.sheet > .metaline { padding: 10px 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); color: var(--ink); align-items: center; }
+.sheet .dek { font-style: italic; color: var(--muted); font-size: 17px; margin-top: 18px; max-width: 60ch; }
+.sheet .trend { margin-top: 12px; }
+.cols { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 36px; margin-top: 28px; }
+.head-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.copy { font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: .25em; }
 .copy:hover { color: var(--ink); }
-.ing-group { font-family: var(--font-mono); font-size: var(--t-xs); color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; padding: 20px 0 6px; }
-.ings { list-style: none; margin: 0; padding: 0; }
-.ings li { display: grid; grid-template-columns: 7ch minmax(0, 1fr); gap: 14px; padding-block: 9px; border-bottom: 1px solid var(--rule); font-size: var(--t-sm); }
-.ings .q { font-family: var(--font-mono); font-size: var(--t-xs); text-align: right; padding-top: 2px; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.steps { list-style: none; margin: 0; padding: 0; counter-reset: stap; }
-.steps li { counter-increment: stap; display: grid; grid-template-columns: 3ch minmax(0, 1fr); gap: 14px; padding-block: 16px; border-bottom: 1px solid var(--rule); max-width: 68ch; }
-.steps li::before { content: counter(stap); font-family: var(--font-mono); font-size: var(--t-xs); color: var(--muted); padding-top: 4px; }
-.tip { margin-top: 28px; display: grid; gap: 8px; max-width: 62ch; }
-.why { margin-top: 28px; padding: 16px; border-radius: 6px; background: var(--tint); display: grid; gap: 10px; }
-.why .big { font-family: var(--font-mono); font-size: var(--t-xl); line-height: 1; letter-spacing: -0.04em; color: var(--accent); font-weight: 500; overflow-wrap: anywhere; }
-.why .src { margin-top: 2px; }
-.why .why-text { font-size: var(--t-sm); }
-.links { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-family: var(--font-mono); font-size: var(--t-xs); }
-.links a { text-decoration: none; border-bottom: 1px solid var(--rule); }
+.stepper { display: inline-flex; align-items: center; gap: 8px; }
+.stepper button { font-family: var(--mono); font-size: 13px; width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--rule); background: transparent; color: var(--ink); cursor: pointer; line-height: 1; padding: 0; }
+.stepper button:hover:not(:disabled) { border-color: var(--ink); }
+.stepper button:disabled { opacity: .35; cursor: default; }
+.stepper output { min-width: 9ch; text-align: center; }
+.ing-group { padding: 16px 0 4px; }
+.ingr { list-style: none; margin: 0; padding: 0; font-family: var(--mono); font-size: 12.5px; }
+.ingr li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; padding: 7px 0; border-bottom: 1px solid var(--rule); line-height: 1.4; }
+.ingr .q { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.steps { list-style: none; margin: 0; padding: 0; counter-reset: s; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 8px; margin-bottom: 12px; font-size: 15.5px; line-height: 1.5; }
+.steps li::before { content: counter(s); color: var(--hanko); }
+.tip { margin-top: 20px; border-left: 2px solid var(--persimmon); padding: 2px 0 2px 14px; font-style: italic; font-size: 15px; color: var(--muted); }
+.tip .label { display: block; font-style: normal; color: var(--ink); margin-bottom: 2px; }
+.why { margin-top: 28px; padding-top: 14px; border-top: 1px solid var(--rule); font-family: var(--sans); font-size: 14px; line-height: 1.5; color: var(--muted); }
+.why .label { display: block; color: var(--ink); margin-bottom: 4px; }
+.links { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 4px; font-family: var(--mono); font-size: 11px; letter-spacing: .04em; }
+.links a { text-decoration: none; color: var(--ink); border-bottom: 1px solid var(--rule); }
 .links a:hover { border-color: var(--ink); }
-.pager { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: clamp(40px, 6vw, 72px); border-top: 1px solid var(--rule); padding-top: 20px; }
-.pager a { text-decoration: none; display: grid; gap: 6px; }
-.pager a:hover strong { text-decoration: underline; }
+.ferm-link { margin-top: 16px; font-family: var(--sans); font-size: 14.5px; color: var(--muted); }
+.pager { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap); margin-top: var(--gap); }
+.pager a { text-decoration: none; display: grid; gap: 4px; padding: 18px 22px; }
+.pager a:hover strong { text-decoration: underline; text-decoration-thickness: 1px; }
 .pager .next { text-align: right; }
-.pager strong { font-weight: 500; font-size: var(--t-lg); letter-spacing: -0.02em; }
+.pager strong { font-weight: 400; font-size: 21px; letter-spacing: -0.01em; }
+
+/* ---------- Fermentatie ---------- */
+.ferm { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: var(--gap); align-items: start; }
+.ferm-side { position: sticky; top: 16px; display: flex; flex-direction: column; }
+.ferm-side .seigaiha { height: 72px; }
+.ferm-side .in { padding: 26px 26px 28px; }
+.ferm-side .big { font-size: 132px; margin: 6px 0 22px -4px; }
+.ferm-side h1 { margin: 6px 0 2px; font-size: 44px; line-height: 1; letter-spacing: -0.025em; }
+.ferm-side .lede { font-style: italic; color: var(--muted); font-size: 16px; margin-top: 14px; }
+.facts { list-style: none; margin: 22px 0 0; padding: 0; border-top: 1px solid var(--rule); }
+.facts li { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--rule); font-family: var(--mono); font-size: 12px; text-align: right; }
+.facts li span:first-child { color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-size: 11px; text-align: left; }
+.ferm-side .used { display: block; margin-top: 18px; font-size: 15px; text-decoration: none; }
+.ferm-side .used:hover { text-decoration: underline; }
+.ferm-side .used .no { margin-right: 6px; }
+.ferm-main { padding: 34px 36px 36px; min-width: 0; }
+.ferm-main section + section { margin-top: 40px; }
+.prose { columns: 2; column-gap: 32px; font-size: 16px; }
+.prose p { margin: 0 0 12px; break-inside: avoid; }
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); position: relative; }
+.timeline::before { content: ""; position: absolute; left: 0; right: 0; top: 5px; height: 1px; background: var(--ink); }
+.timeline li { position: relative; padding: 24px 14px 0 0; }
+.timeline li::before { content: ""; position: absolute; top: 0; left: 0; width: 11px; height: 11px; border-radius: 50%; background: var(--sheet); border: 1px solid var(--ink); }
+.timeline li.now::before { background: var(--hanko); border-color: var(--hanko); }
+.timeline .when { display: block; }
+.timeline b { display: block; font-weight: 500; font-size: 16px; margin: 2px 0; line-height: 1.3; }
+.timeline .txt { display: block; color: var(--muted); font-size: 13.5px; line-height: 1.4; }
+.checks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; border-top: 1px solid var(--ink); padding-top: 16px; }
+.checks div { font-size: 14.5px; line-height: 1.5; }
+.checks .mono { display: block; margin-bottom: 4px; }
+.checks .ok { color: var(--ok); } .checks .bad { color: var(--hanko); } .checks .kid { color: var(--muted); }
 
 /* Status en voet */
-.status { padding-block: 48px; color: var(--muted); font-family: var(--font-mono); font-size: var(--t-xs); }
-.toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--paper); font-family: var(--font-mono); font-size: var(--t-xs); padding: 10px 16px; border-radius: 4px; }
-footer { margin-top: 24px; }
-footer canvas { display: block; width: 100%; max-width: 100%; height: 150px; }
-.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-block: 18px 32px; border-top: 1px solid var(--rule); color: var(--muted); }
+.status { padding-block: 48px; color: var(--muted); font-style: italic; }
+.toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--board); font-family: var(--mono); font-size: 12px; padding: 10px 16px; border-radius: 2px; z-index: 10; }
+footer { margin-top: 96px; }
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-block: 18px 36px; border-top: 1px solid var(--ink); color: var(--muted); }
 
-@media (min-width: 761px) and (max-width: 1020px) {
-  .features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 1000px) {
+  .mast, .lead { grid-column: span 12; }
+  .mast { min-height: 0; } .mast .glyph { font-size: 120px; }
+  .tile { grid-column: span 6 !important; }
+  .spread, .ferm, .archive { grid-template-columns: minmax(0, 1fr); }
+  .spread .left, .ferm-side { position: static; }
+  .spread .left .duo { aspect-ratio: 4 / 3; }
 }
-@media (max-width: 760px) {
-  .mast { grid-template-columns: minmax(0, 1fr) auto; }
-  .mast .intro { grid-column: 1 / -1; grid-row: 2; }
-  .features { grid-template-columns: minmax(0, 1fr); }
-  .feature:first-child { grid-column: auto; }
-  .archive, .recipe-body, .recipe-top { grid-template-columns: minmax(0, 1fr); }
+@media (max-width: 640px) {
+  .top { flex-direction: column; gap: 6px; }
+  .top nav { justify-content: start; gap: 16px; }
+  .tile { grid-column: span 12 !important; }
+  .mast .logo { font-size: 54px; }
+  .lead .duo { min-height: 230px; }
+  .lead .body { grid-template-columns: minmax(0, 1fr); padding: 20px; } .lead .no { font-size: 40px; }
+  .lead h2 { font-size: 28px; }
+  .ferm-teaser { grid-template-columns: 56px minmax(0, 1fr); gap: 14px; padding-right: 16px; }
+  .ferm-teaser .cjk, .ferm-teaser .go { display: none; }
+  .sheet, .ferm-main { padding: 24px 18px; }
+  .ferm-side .in, .archive .side { padding: 22px 18px; }
+  #archive-list { padding: 6px 18px; }
+  .sheet header .no { font-size: 46px; } .sheet h1 { font-size: 28px; }
+  .ferm-side .big { font-size: 96px; } .ferm-side h1 { font-size: 34px; }
+  .cols, .checks { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .prose { columns: 1; }
+  .timeline { grid-template-columns: minmax(0, 1fr); }
+  .timeline::before { top: 0; bottom: 0; left: 5px; right: auto; width: 1px; height: auto; }
+  .timeline li { padding: 0 0 18px 26px; }
+  .pager strong { font-size: 17px; }
+  .pager a { padding: 14px 16px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .more::after { transition: none; }
+  .duo img, .duo::after, .duo::before { transition: none; }
 }
 </style>
 </head>
@@ -219,48 +291,34 @@ footer canvas { display: block; width: 100%; max-width: 100%; height: 150px; }
 
 <div class="wrap">
   <header class="top">
-    <a class="brand" href="#deze-week"><span>/</span>Proef</a>
+    <a class="brand" href="#deze-week"><span class="cjk" aria-hidden="true">旬</span>Proef</a>
     <nav aria-label="Hoofdmenu">
       <a href="#deze-week">Deze week</a>
+      <a href="#fermentatie">Fermentatie</a>
       <a href="#archief">Archief</a>
     </nav>
   </header>
 
   <main id="home">
-    <section class="mast" aria-label="Proef">
-      <h1 class="mark">Proef</h1>
-      <div>
-        <p class="label" id="edition-label">Deze week</p>
-        <p class="intro" id="edition-intro">Recepten laden…</p>
-      </div>
-      <div class="issue" id="issue">
-        <span class="no">Nº —</span>
-        <span class="mono muted">Week —</span>
-      </div>
-    </section>
     <p class="notice" id="edition-notice" hidden>Je bekijkt een eerdere editie. <a href="#deze-week">Naar deze week →</a></p>
-
-    <div class="features" id="features"></div>
+    <div class="home" id="features"><p class="status" id="status">Recepten laden…</p></div>
 
     <section class="archive" id="archief" aria-labelledby="archief-titel">
-      <div class="side">
-        <div>
-          <p class="label">Archief</p>
-          <h2 id="archief-titel">Alle edities</h2>
-        </div>
+      <div class="card side">
+        <p class="kicker">Archief</p>
+        <h2 id="archief-titel">Alle edities</h2>
         <label class="search" for="zoek">
           <span class="label">Zoeken</span>
           <input id="zoek" type="search" placeholder="Recept of ingrediënt" autocomplete="off">
         </label>
       </div>
-      <div id="archive-list"></div>
+      <div class="card" id="archive-list"></div>
     </section>
   </main>
 
-  <main id="recipe-view" hidden></main>
+  <main id="detail-view" hidden></main>
 
   <footer>
-    <canvas id="contour" aria-hidden="true"></canvas>
     <div class="foot mono">
       <span>© 2026 Proef</span>
       <span>Samengesteld met Claude · trenddata van Pinterest, Google en TikTok</span>
@@ -272,9 +330,7 @@ footer canvas { display: block; width: 100%; max-width: 100%; height: 150px; }
 <script>
 (() => {
   "use strict";
-  const TAU = Math.PI * 2;
   const state = { editions: [], bySlug: new Map(), lastSlug: null };
-  const drawn = new Map();
   const $ = (id) => document.getElementById(id);
 
   /* ---------- DOM-hulp ---------- */
@@ -295,7 +351,7 @@ footer canvas { display: block; width: 100%; max-width: 100%; height: 150px; }
   const fmtDate = (iso) => dateFmt.format(new Date(iso + "T12:00:00"));
   const nf = new Intl.NumberFormat("nl-NL", { maximumFractionDigits: 1 });
   const singular = { personen: "persoon", glazen: "glas", koekjes: "koekje", stuks: "stuk", porties: "portie" };
-  const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
 
   function fmtQty(ing, factor) {
     if (ing.qty == null) return "";
@@ -316,363 +372,91 @@ footer canvas { display: block; width: 100%; max-width: 100%; height: 150px; }
     return (whole ? String(whole) : "") + (half ? "½" : "") + (u ? " " + u : "");
   }
 
-  /* ---------- Tekenwerk ---------- */
-  function hashStr(s) { let x = 2166136261 >>> 0; for (const ch of s) { x ^= ch.charCodeAt(0); x = Math.imul(x, 16777619); } return x >>> 0; }
-  function mulberry32(a) { return () => { a |= 0; a = (a + 0x6D2B79F5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
-  function makeNoise(rng) {
-    const perm = Array.from({ length: 256 }, (_, i) => i);
-    for (let i = 255; i > 0; i--) { const j = Math.floor(rng() * (i + 1)); [perm[i], perm[j]] = [perm[j], perm[i]]; }
-    const p = new Uint8Array(512); for (let i = 0; i < 512; i++) p[i] = perm[i & 255];
-    const val = (ix, iy) => p[(p[ix & 255] + iy) & 255] / 255;
-    const sm = (t) => t * t * (3 - 2 * t);
-    const n2 = (x, y) => {
-      const ix = Math.floor(x), iy = Math.floor(y), fx = x - ix, fy = y - iy;
-      const a = val(ix, iy), b = val(ix + 1, iy), c = val(ix, iy + 1), d = val(ix + 1, iy + 1);
-      const u = sm(fx), v = sm(fy);
-      return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
-    };
-    return (x, y, oct = 3) => { let s = 0, amp = 1, f = 1, nrm = 0; for (let o = 0; o < oct; o++) { s += amp * n2(x * f + o * 17.3, y * f + o * 9.1); nrm += amp; amp *= 0.5; f *= 2; } return s / nrm; };
-  }
-  const lv = (n, lo, hi) => Array.from({ length: n }, (_, i) => lo + (hi - lo) * (i + 0.5) / n);
-
-  function fillStroke(g, lw = 1.25) { const c = g.ctx; c.globalAlpha = 1; c.fillStyle = g.bg; c.fill(); c.lineWidth = lw; c.strokeStyle = g.ink; c.stroke(); }
-  function strokeOnly(g, lw = 1, alpha = 1) { const c = g.ctx; c.globalAlpha = alpha; c.lineWidth = lw; c.strokeStyle = g.ink; c.stroke(); c.globalAlpha = 1; }
-  function dot(g, x, y, r) { const c = g.ctx; c.beginPath(); c.arc(x, y, r, 0, TAU); c.globalAlpha = 1; c.fillStyle = g.ink; c.fill(); }
-  function rr(c, x, y, w, hh, r) { r = Math.min(r, w / 2, hh / 2); c.beginPath(); c.moveTo(x + r, y); c.arcTo(x + w, y, x + w, y + hh, r); c.arcTo(x + w, y + hh, x, y + hh, r); c.arcTo(x, y + hh, x, y, r); c.arcTo(x, y, x + w, y, r); c.closePath(); }
-
-  function blob(cx, cy, r, amp, noise, off = 0) {
-    const rf = (th) => r * (1 + amp * (noise(Math.cos(th) * 1.3 + off, Math.sin(th) * 1.3 + off, 2) - 0.5) * 2);
-    return {
-      rf,
-      path(c) { const n = 120; c.beginPath(); for (let i = 0; i <= n; i++) { const th = (i / n) * TAU, q = rf(th); const x = cx + Math.cos(th) * q, y = cy + Math.sin(th) * q; i ? c.lineTo(x, y) : c.moveTo(x, y); } c.closePath(); },
-      inside(x, y, m = 0) { const dx = x - cx, dy = y - cy; return Math.hypot(dx, dy) < rf(Math.atan2(dy, dx)) - m; },
-    };
-  }
-
-  function contourLines(g, o) {
-    const c = g.ctx, step = o.step, x0 = o.x0, y0 = o.y0;
-    const nx = Math.ceil((o.x1 - x0) / step) + 1, ny = Math.ceil((o.y1 - y0) / step) + 1;
-    const v = new Float32Array(nx * ny);
-    for (let j = 0; j < ny; j++) for (let i = 0; i < nx; i++) v[j * nx + i] = o.field(x0 + i * step, y0 + j * step);
-    c.beginPath();
-    const seg = (P, Q) => { if (o.inside && !o.inside((P[0] + Q[0]) / 2, (P[1] + Q[1]) / 2)) return; c.moveTo(P[0], P[1]); c.lineTo(Q[0], Q[1]); };
-    for (const L of o.levels) {
-      for (let j = 0; j < ny - 1; j++) for (let i = 0; i < nx - 1; i++) {
-        const a = v[j * nx + i], b = v[j * nx + i + 1], cc = v[(j + 1) * nx + i + 1], d = v[(j + 1) * nx + i];
-        const idx = (a > L ? 8 : 0) | (b > L ? 4 : 0) | (cc > L ? 2 : 0) | (d > L ? 1 : 0);
-        if (idx === 0 || idx === 15) continue;
-        const x = x0 + i * step, y = y0 + j * step;
-        const T = () => [x + step * (L - a) / (b - a), y];
-        const R = () => [x + step, y + step * (L - b) / (cc - b)];
-        const B = () => [x + step * (L - d) / (cc - d), y + step];
-        const Lf = () => [x, y + step * (L - a) / (d - a)];
-        switch (idx) {
-          case 1: case 14: seg(Lf(), B()); break;
-          case 2: case 13: seg(B(), R()); break;
-          case 3: case 12: seg(Lf(), R()); break;
-          case 4: case 11: seg(T(), R()); break;
-          case 5: seg(T(), R()); seg(Lf(), B()); break;
-          case 6: case 9: seg(T(), B()); break;
-          case 7: case 8: seg(T(), Lf()); break;
-          case 10: seg(T(), Lf()); seg(B(), R()); break;
-        }
-      }
-    }
-    c.lineWidth = o.lw || 0.75; c.strokeStyle = g.ink; c.globalAlpha = o.alpha ?? 0.5; c.stroke(); c.globalAlpha = 1;
-  }
-
-  function scatter(n, minD, sample) { const pts = []; let tries = 0; while (pts.length < n && tries < n * 80) { tries++; const p = sample(); if (pts.every((q) => Math.hypot(q[0] - p[0], q[1] - p[1]) >= minD)) pts.push(p); } return pts; }
-  const inDisc = (rng, cx, cy, r) => () => { const a = rng() * TAU, d = Math.sqrt(rng()) * r; return [cx + Math.cos(a) * d, cy + Math.sin(a) * d]; };
-
-  function leaf(g, x, y, len, ang) {
-    const c = g.ctx, w = len * 0.42;
-    c.save(); c.translate(x, y); c.rotate(ang);
-    c.beginPath(); c.moveTo(-len / 2, 0); c.quadraticCurveTo(0, -w, len / 2, 0); c.quadraticCurveTo(0, w, -len / 2, 0); c.closePath(); fillStroke(g, 1);
-    c.beginPath(); c.moveTo(-len / 2, 0); c.lineTo(len * 0.4, 0);
-    for (let k = -1; k <= 1; k++) { const vx = k * len * 0.17; c.moveTo(vx, 0); c.lineTo(vx + len * 0.11, -w * 0.33); c.moveTo(vx, 0); c.lineTo(vx + len * 0.11, w * 0.33); }
-    strokeOnly(g, 0.6, 0.7);
-    c.restore();
-  }
-  function halfMoon(g, x, y, r, ang) { const c = g.ctx; c.save(); c.translate(x, y); c.rotate(ang); c.beginPath(); c.arc(0, 0, r, 0, Math.PI); c.closePath(); fillStroke(g, 1); c.beginPath(); c.arc(0, 0, r * 0.76, 0.18, Math.PI - 0.18); strokeOnly(g, 0.6, 0.6); c.restore(); }
-  function crumble(g, x, y, r) { const b = blob(x, y, r, 0.28, g.noise, x * 0.01 + y * 0.013); b.path(g.ctx); fillStroke(g, 1); dot(g, x + r * 0.2, y - r * 0.15, 0.8); dot(g, x - r * 0.25, y + r * 0.2, 0.8); }
-  function spiral(g, x, y, r, turns, rot) { const c = g.ctx; c.beginPath(); const n = Math.round(turns * 60); for (let i = 0; i <= n; i++) { const t = i / n, a = rot + t * turns * TAU, q = r * (0.08 + 0.92 * t); const px = x + Math.cos(a) * q, py = y + Math.sin(a) * q; i ? c.lineTo(px, py) : c.moveTo(px, py); } strokeOnly(g, 1, 0.85); }
-  function bean(g, x, y, len, ang) { const c = g.ctx; c.save(); c.translate(x, y); c.rotate(ang); c.beginPath(); c.ellipse(0, 0, len / 2, len * 0.34, 0, 0, TAU); fillStroke(g, 1); c.beginPath(); c.moveTo(-len * 0.4, 0); c.bezierCurveTo(-len * 0.1, -len * 0.12, len * 0.1, len * 0.12, len * 0.4, 0); strokeOnly(g, 0.8); c.restore(); }
-  function spider(g, x, y, s) {
-    const c = g.ctx; c.globalAlpha = 1; c.fillStyle = g.ink;
-    c.beginPath(); c.ellipse(x, y, s * 1.1, s * 1.35, 0, 0, TAU); c.fill();
-    c.beginPath(); c.arc(x, y - s * 1.8, s * 0.7, 0, TAU); c.fill();
-    c.beginPath();
-    for (const side of [-1, 1]) for (let k = 0; k < 4; k++) { const ky = y + (k - 1.5) * s * 0.95 - s * 0.6, kx = x + side * s * 2.3; c.moveTo(x + side * s * 0.6, y + (k - 1.5) * s * 0.4); c.lineTo(kx, ky); c.lineTo(kx + side * s * 0.9, ky + s * 1.3); }
-    c.moveTo(x, y - s * 2.4); c.lineTo(x, y - s * 7);
-    c.lineWidth = 0.9; c.strokeStyle = g.ink; c.stroke();
-  }
-  function rrPoints(x0, y0, x1, y1, r, per) {
-    const pts = [];
-    const line = (ax, ay, bx, by) => { for (let i = 0; i < per; i++) { const t = i / per; pts.push([ax + (bx - ax) * t, ay + (by - ay) * t]); } };
-    const arc = (cx, cy, a0) => { for (let i = 0; i < 8; i++) { const a = a0 + (Math.PI / 2) * (i / 8); pts.push([cx + Math.cos(a) * r, cy + Math.sin(a) * r]); } };
-    line(x0 + r, y0, x1 - r, y0); arc(x1 - r, y0 + r, -Math.PI / 2);
-    line(x1, y0 + r, x1, y1 - r); arc(x1 - r, y1 - r, 0);
-    line(x1 - r, y1, x0 + r, y1); arc(x0 + r, y1 - r, Math.PI / 2);
-    line(x0, y1 - r, x0, y0 + r); arc(x0 + r, y0 + r, Math.PI);
-    return pts;
-  }
-  function polyline(c, f, xa, xb, n = 80) { c.beginPath(); for (let i = 0; i <= n; i++) { const x = xa + (xb - xa) * (i / n); const y = f(x); i ? c.lineTo(x, y) : c.moveTo(x, y); } }
-
-  const FORMS = {
-    bowl(g) {
-      const { ctx, cx, cy, S, noise, rng } = g;
-      const R = S * 0.42, rimR = S * 0.345, liq = S * 0.325;
-      // lepelsteel onder de kom-rand door
-      const a = -0.62, bd = liq * 0.42, bx = cx + Math.cos(a) * bd, by = cy + Math.sin(a) * bd;
-      const outer = blob(cx, cy, R, 0.006, noise, 1.7), rim = blob(cx, cy, rimR, 0.008, noise, 4.2), surf = blob(cx, cy, liq, 0.012, noise, 8.4);
-      outer.path(ctx); fillStroke(g, 1.3);
-      rim.path(ctx); strokeOnly(g, 1);
-      const fs = S * 0.16;
-      contourLines(g, { x0: cx - liq, y0: cy - liq, x1: cx + liq, y1: cy + liq, step: Math.max(2.5, S / 110),
-        field: (x, y) => noise(x / fs + 3, y / fs + 7, 3) * 0.75 + (Math.hypot(x - cx, y - cy) / liq) * 0.25,
-        inside: (x, y) => surf.inside(x, y, 3), levels: lv(10, 0.3, 0.72), alpha: 0.45 });
-      surf.path(ctx); strokeOnly(g, 0.8, 0.6);
-      const pts = scatter(13, S * 0.085, inDisc(rng, cx, cy, liq * 0.78)).filter((p) => Math.hypot(p[0] - bx, p[1] - by) > S * 0.1);
-      pts.forEach((p, i) => { const k = i % 3; if (k === 0) leaf(g, p[0], p[1], S * 0.085, rng() * TAU); else if (k === 1) halfMoon(g, p[0], p[1], S * 0.032, rng() * TAU); else crumble(g, p[0], p[1], S * 0.022); });
-      for (let i = 0; i < 40; i++) { const p = inDisc(rng, cx, cy, liq * 0.9)(); dot(g, p[0], p[1], 0.7); }
-      ctx.save(); ctx.translate(bx, by); ctx.rotate(a);
-      const L = R * 1.2 - bd;
-      rr(ctx, S * 0.05, -S * 0.013, L - S * 0.05, S * 0.026, S * 0.013); fillStroke(g, 1.1);
-      ctx.beginPath(); ctx.ellipse(0, 0, S * 0.075, S * 0.052, 0, 0, TAU); fillStroke(g, 1.2);
-      ctx.beginPath(); ctx.ellipse(-S * 0.01, 0, S * 0.05, S * 0.03, 0, 2.2, 4.1); strokeOnly(g, 0.7, 0.6);
-      ctx.restore();
-    },
-
-    pan(g) {
-      const { ctx, cx, cy, S, noise, rng } = g;
-      const pcx = cx - S * 0.07, pcy = cy, R = S * 0.37, wall = S * 0.33;
-      const hx0 = pcx + R * 0.9, hx1 = pcx + R + S * 0.28, hh = S * 0.075;
-      rr(ctx, hx0, pcy - hh / 2, hx1 - hx0, hh, hh / 2); fillStroke(g, 1.2);
-      rr(ctx, hx1 - S * 0.09, pcy - hh * 0.17, S * 0.055, hh * 0.34, hh * 0.17); strokeOnly(g, 0.9);
-      const outer = blob(pcx, pcy, R, 0.004, noise, 2.2), inner = blob(pcx, pcy, wall, 0.006, noise, 5.1);
-      outer.path(ctx); fillStroke(g, 1.3); inner.path(ctx); strokeOnly(g, 1);
-      const fs = S * 0.12;
-      contourLines(g, { x0: pcx - wall, y0: pcy - wall, x1: pcx + wall, y1: pcy + wall, step: Math.max(2.5, S / 110), field: (x, y) => noise(x / fs, y / fs, 3), inside: (x, y) => inner.inside(x, y, 3), levels: lv(9, 0.3, 0.7), alpha: 0.4 });
-      const n = 6, hw = 0.4, r0 = wall * 0.1, r1 = wall * 0.86, rot = rng() * TAU;
-      const P = (r, t) => [pcx + Math.cos(t) * r, pcy + Math.sin(t) * r];
-      for (let i = 0; i < n; i++) {
-        const t = rot + (i * TAU) / n;
-        const p0 = P(r0, t), pa = P(r1, t - hw), pb = P(r1, t + hw), ca = P(r1 * 0.55, t - hw * 1.2), cb = P(r1 * 0.55, t + hw * 1.2), co = P(r1 * 1.12, t);
-        ctx.beginPath(); ctx.moveTo(p0[0], p0[1]); ctx.quadraticCurveTo(ca[0], ca[1], pa[0], pa[1]); ctx.quadraticCurveTo(co[0], co[1], pb[0], pb[1]); ctx.quadraticCurveTo(cb[0], cb[1], p0[0], p0[1]); ctx.closePath(); fillStroke(g, 1.2);
-        ctx.beginPath();
-        for (let k = 1; k <= 4; k++) {
-          const f = 0.3 + k * 0.15, rk = r0 + (r1 - r0) * f, hk = hw * (0.35 + 0.5 * f) * 0.85;
-          const s0 = P(rk, t - hk), s1 = P(rk, t + hk), sc = P(rk * 1.07, t);
-          ctx.moveTo(s0[0], s0[1]); ctx.quadraticCurveTo(sc[0], sc[1], s1[0], s1[1]);
-        }
-        const v0 = P(r0 * 1.6, t), v1 = P(r1 * 0.96, t); ctx.moveTo(v0[0], v0[1]); ctx.lineTo(v1[0], v1[1]);
-        strokeOnly(g, 0.75, 0.75);
-      }
-      for (let i = 0; i < 3; i++) { const t = rot + ((i * 2 + 0.5) * TAU) / n; const p = P(wall * 0.62, t); leaf(g, p[0], p[1], S * 0.055, t); }
-    },
-
-    plate(g) {
-      const { ctx, cx, cy, S, noise, rng } = g;
-      const R = S * 0.43, rimR = S * 0.32;
-      blob(cx, cy, R, 0.004, noise, 1.1).path(ctx); fillStroke(g, 1.3);
-      ctx.beginPath(); ctx.arc(cx, cy, rimR, 0, TAU); strokeOnly(g, 0.9, 0.55);
-      const mx = cx + S * 0.02, my = cy - S * 0.01, mr = S * 0.19;
-      const mound = blob(mx, my, mr, 0.16, noise, 6.3), fs = S * 0.1;
-      contourLines(g, { x0: mx - mr * 1.4, y0: my - mr * 1.4, x1: mx + mr * 1.4, y1: my + mr * 1.4, step: Math.max(2.2, S / 120),
-        field: (x, y) => { const d = Math.hypot(x - mx, y - my) / mound.rf(Math.atan2(y - my, x - mx)); return 1 - d + (noise(x / fs, y / fs, 2) - 0.5) * 0.3; },
-        inside: (x, y) => mound.inside(x, y, 1.5), levels: lv(8, 0.05, 0.85), alpha: 0.55 });
-      mound.path(ctx); strokeOnly(g, 1.2);
-      for (let i = 0; i < 6; i++) { const a = (i / 6) * TAU + rng() * 0.5; const rad = mr * 1.32 + rng() * S * 0.02; leaf(g, mx + Math.cos(a) * rad, my + Math.sin(a) * rad, S * 0.05, a + Math.PI / 2); }
-      const a0 = rng() * TAU;
-      for (let i = 0; i < 7; i++) { const a = a0 + i * 0.16, rad = (rimR + R) / 2; dot(g, cx + Math.cos(a) * rad, cy + Math.sin(a) * rad, S * (0.014 - i * 0.0014)); }
-    },
-
-    flat(g) {
-      const { ctx, w, h, S, noise, rng } = g;
-      const bx = w * 0.08, by = h * 0.1, bw = w * 0.84, bh = h * 0.8;
-      rr(ctx, bx, by, bw, bh, S * 0.035); fillStroke(g, 1.3);
-      ctx.beginPath();
-      for (let k = 1; k < 7; k++) { const y0 = by + (bh * k) / 7; for (let i = 0; i <= 60; i++) { const x = bx + S * 0.02 + ((bw - S * 0.04) * i) / 60; const y = y0 + (noise(x / (S * 0.25), k * 3.1, 2) - 0.5) * S * 0.05; i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); } }
-      strokeOnly(g, 0.6, 0.3);
-      const sx0 = bx + bw * 0.07, sy0 = by + bh * 0.12, sx1 = bx + bw * 0.6, sy1 = by + bh * 0.88, scx = (sx0 + sx1) / 2, scy = (sy0 + sy1) / 2;
-      ctx.beginPath();
-      rrPoints(sx0, sy0, sx1, sy1, S * 0.05, 40).forEach((p, i) => { const dx = p[0] - scx, dy = p[1] - scy, d = Math.hypot(dx, dy) || 1; const off = (noise(p[0] / (S * 0.08), p[1] / (S * 0.08), 2) - 0.5) * S * 0.035; const x = p[0] + (dx / d) * off, y = p[1] + (dy / d) * off; i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); });
-      ctx.closePath(); fillStroke(g, 1.2);
-      scatter(16, S * 0.06, () => [sx0 + S * 0.05 + rng() * (sx1 - sx0 - S * 0.1), sy0 + S * 0.05 + rng() * (sy1 - sy0 - S * 0.1)]).forEach((p) => { blob(p[0], p[1], S * (0.012 + rng() * 0.016), 0.3, noise, p[0] * 0.02).path(ctx); strokeOnly(g, 0.8, 0.75); });
-      for (let i = 0; i < 70; i++) dot(g, sx0 + S * 0.03 + rng() * (sx1 - sx0 - S * 0.06), sy0 + S * 0.03 + rng() * (sy1 - sy0 - S * 0.06), 0.55);
-      const rcx = bx + bw * 0.8, rr1 = Math.min(S * 0.105, bh * 0.2);
-      [[rcx, by + bh * 0.3], [rcx - bw * 0.02, by + bh * 0.7]].forEach(([x, y], j) => {
-        blob(x, y, rr1, 0.035, noise, 9 + j).path(ctx); fillStroke(g, 1.2);
-        spiral(g, x, y, rr1 * 0.88, 2.6, rng() * TAU);
-        for (let k = 0; k < 4; k++) { const a = rng() * TAU, d = rr1 * (0.3 + rng() * 0.5); dot(g, x + Math.cos(a) * d, y + Math.sin(a) * d, 0.9); }
-      });
-    },
-
-    cookies(g) {
-      const { ctx, w, h, S, noise, rng } = g;
-      const tx = w * 0.07, ty = h * 0.09, tw = w * 0.86, th = h * 0.82;
-      rr(ctx, tx, ty, tw, th, S * 0.03); fillStroke(g, 1.3);
-      rr(ctx, tx + S * 0.025, ty + S * 0.025, tw - S * 0.05, th - S * 0.05, S * 0.02); strokeOnly(g, 0.7, 0.5);
-      const cols = 3, rows = 2, cw = (tw - S * 0.05) / cols, ch = (th - S * 0.05) / rows, r = Math.min(cw, ch) * 0.36;
-      const spiderAt = Math.floor(rng() * 6);
-      for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
-        const k = j * cols + i;
-        const x = tx + S * 0.025 + cw * (i + 0.5) + (rng() - 0.5) * cw * 0.12, y = ty + S * 0.025 + ch * (j + 0.5) + (rng() - 0.5) * ch * 0.12;
-        blob(x, y, r, 0.03, noise, k * 2.3).path(ctx); fillStroke(g, 1.2);
-        const ir = r * 0.84; blob(x, y, ir, 0.035, noise, k * 2.3 + 1).path(ctx); strokeOnly(g, 0.9, 0.8);
-        const rot = rng() * TAU;
-        ctx.beginPath();
-        for (let q = 1; q <= 3; q++) { const rq = (ir * q) / 3.4; for (let s = 0; s <= 48; s++) { const an = (s / 48) * TAU, wob = 1 + Math.sin(an * 8 - rot * 8) * 0.06; const px = x + Math.cos(an) * rq * wob, py = y + Math.sin(an) * rq * wob; s ? ctx.lineTo(px, py) : ctx.moveTo(px, py); } }
-        for (let s = 0; s < 8; s++) { const an = rot + (s * TAU) / 8; const ex = x + Math.cos(an) * ir * 0.95, ey = y + Math.sin(an) * ir * 0.95, mx = x + Math.cos(an + 0.12) * ir * 0.5, my = y + Math.sin(an + 0.12) * ir * 0.5; ctx.moveTo(x, y); ctx.quadraticCurveTo(mx, my, ex, ey); }
-        strokeOnly(g, 0.85, 0.85);
-        if (k === spiderAt) spider(g, x + ir * 0.4, y + ir * 0.15, r * 0.075);
-      }
-    },
-
-    cake(g) {
-      const { ctx, cx, cy, S, noise, rng } = g;
-      const R = S * 0.44;
-      blob(cx, cy, R, 0.004, noise, 1.4).path(ctx); fillStroke(g, 1.3);
-      ctx.beginPath(); ctx.arc(cx, cy, R * 0.86, 0, TAU); strokeOnly(g, 0.8, 0.45);
-      const r = S * 0.3, t0 = -0.95, span = 0.72, off = S * 0.075, mid = t0 + span / 2, sx = cx + Math.cos(mid) * off, sy = cy + Math.sin(mid) * off;
-      const angIn = (x, y, ox, oy, test) => { const d = Math.hypot(x - ox, y - oy); if (d > r - 1.5) return false; let an = Math.atan2(y - oy, x - ox) - t0; an = ((an % TAU) + TAU) % TAU; return test(an); };
-      const dust = (ox, oy, inside) => { const fs = S * 0.07, n = Math.round(r * r * 0.12); for (let i = 0; i < n; i++) { const x = ox - r + rng() * 2 * r, y = oy - r + rng() * 2 * r; if (!inside(x, y)) continue; if (noise(x / fs, y / fs, 2) < 0.42) continue; dot(g, x, y, 0.55); } };
-      ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, r, t0 + span, t0 + TAU); ctx.closePath(); fillStroke(g, 1.25);
-      dust(cx, cy, (x, y) => angIn(x, y, cx, cy, (an) => an > span + 0.03));
-      ctx.beginPath(); for (let k = 1; k < 8; k++) { const an = t0 + span + (k * (TAU - span)) / 8; ctx.moveTo(cx, cy); ctx.lineTo(cx + Math.cos(an) * r, cy + Math.sin(an) * r); } strokeOnly(g, 0.6, 0.3);
-      ctx.beginPath(); ctx.moveTo(sx, sy); ctx.arc(sx, sy, r, t0, t0 + span); ctx.closePath(); fillStroke(g, 1.25);
-      dust(sx, sy, (x, y) => angIn(x, y, sx, sy, (an) => an > 0.03 && an < span - 0.03));
-      for (let i = 0; i < 3; i++) { const an = mid + Math.PI + (i - 1) * 0.35, rad = R * 0.93; bean(g, cx + Math.cos(an) * rad, cy + Math.sin(an) * rad, S * 0.045, an + 1.2); }
-    },
-
-    glass(g) {
-      const { ctx, cx, h, S, noise, rng } = g;
-      const gx = cx - S * 0.04, top = h * 0.14, bot = h * 0.8, tw = S * 0.19, bw = S * 0.15;
-      const sy = h * 0.84;
-      ctx.beginPath(); ctx.ellipse(gx, sy, S * 0.36, S * 0.06, 0, 0, TAU); fillStroke(g, 1.2);
-      ctx.beginPath(); ctx.ellipse(gx, sy - S * 0.008, S * 0.22, S * 0.035, 0, 0, TAU); strokeOnly(g, 0.7, 0.45);
-      const gp = () => { ctx.beginPath(); ctx.moveTo(gx - tw, top); ctx.lineTo(gx - bw, bot - S * 0.02); ctx.quadraticCurveTo(gx - bw, bot, gx - bw + S * 0.02, bot); ctx.lineTo(gx + bw - S * 0.02, bot); ctx.quadraticCurveTo(gx + bw, bot, gx + bw, bot - S * 0.02); ctx.lineTo(gx + tw, top); ctx.closePath(); };
-      gp(); ctx.globalAlpha = 1; ctx.fillStyle = g.bg; ctx.fill();
-      ctx.save(); gp(); ctx.clip();
-      const span = bot - top, yS = bot - span * 0.1, yE = bot - span * 0.34, yM = bot - span * 0.76, yF = top + span * 0.04;
-      const wave = (y0, amp, ph) => (x) => y0 + (noise(x / (S * 0.09) + ph, ph, 2) - 0.5) * amp;
-      const fS = wave(yS, S * 0.02, 5), fE = wave(yE, S * 0.05, 2), fM = wave(yM, S * 0.035, 9);
-      ctx.beginPath(); for (let y = yS - S * 0.02; y < bot; y += 2.6) { ctx.moveTo(gx - tw, y); ctx.lineTo(gx + tw, y); }
-      ctx.save(); ctx.globalCompositeOperation = "source-over"; strokeOnly(g, 0.55, 0.5); ctx.restore();
-      contourLines(g, { x0: gx - tw, y0: yE - S * 0.05, x1: gx + tw, y1: yS + 4, step: Math.max(2, S / 130), field: (x, y) => noise(x / (S * 0.05), y / (S * 0.03), 3), inside: (x, y) => y > fE(x) && y < fS(x) - 1, levels: lv(7, 0.32, 0.68), alpha: 0.6 });
-      for (const f of [fS, fE, fM]) { polyline(ctx, f, gx - tw, gx + tw); strokeOnly(g, 0.9, 0.8); }
-      ctx.beginPath(); for (let k = 0; k < 3; k++) { const y0 = yM + (yE - yM) * (0.3 + k * 0.22); polyline(ctx, wave(y0, S * 0.05, 13 + k * 4), gx - tw * 0.7, gx + tw * 0.5, 40); strokeOnly(g, 0.6, 0.25); }
-      for (let i = 0; i < 300; i++) { const x = gx - tw + rng() * 2 * tw, y = yF + rng() * (yM - yF); if (y > fM(x) - 1) continue; dot(g, x, y, 0.6); }
-      ctx.restore();
-      gp(); strokeOnly(g, 1.3);
-      ctx.beginPath(); ctx.ellipse(gx, top, tw, S * 0.028, 0, 0, TAU); fillStroke(g, 1.2);
-      for (let i = 0; i < 70; i++) { const a = rng() * TAU, d = Math.sqrt(rng()); dot(g, gx + Math.cos(a) * d * tw * 0.9, top + Math.sin(a) * d * S * 0.022, 0.6); }
-      // kaneelstokje
-      const p0 = [gx + tw * 0.25, top + S * 0.16], p1 = [gx + tw * 0.95, top - S * 0.1];
-      const dx = p1[0] - p0[0], dy = p1[1] - p0[1], dl = Math.hypot(dx, dy), nx = (-dy / dl) * S * 0.016, ny = (dx / dl) * S * 0.016;
-      ctx.beginPath(); ctx.moveTo(p0[0] + nx, p0[1] + ny); ctx.lineTo(p1[0] + nx, p1[1] + ny); ctx.lineTo(p1[0] - nx, p1[1] - ny); ctx.lineTo(p0[0] - nx, p0[1] - ny); ctx.closePath(); fillStroke(g, 1.1);
-      ctx.beginPath(); ctx.moveTo(p0[0] + nx * 0.2, p0[1] + ny * 0.2); ctx.lineTo(p1[0] + nx * 0.2, p1[1] + ny * 0.2); strokeOnly(g, 0.6, 0.6);
-      spiral(g, p1[0], p1[1], S * 0.016, 1.6, Math.atan2(dy, dx));
-      // banaanschijf op de schotel
-      const bx = gx + S * 0.27, by = sy - S * 0.004;
-      ctx.beginPath(); ctx.ellipse(bx, by, S * 0.045, S * 0.02, 0, 0, TAU); fillStroke(g, 1);
-      ctx.beginPath(); ctx.ellipse(bx, by, S * 0.034, S * 0.014, 0, 0, TAU); strokeOnly(g, 0.6, 0.6);
-      for (let i = 0; i < 6; i++) { const a = (i / 6) * TAU; dot(g, bx + Math.cos(a) * S * 0.01, by + Math.sin(a) * S * 0.004, 0.7); }
-    },
-
-    tray(g) {
-      const { ctx, w, h, S, noise, rng } = g;
-      const dw = w * 0.7, dh = h * 0.66, dx = (w - dw) / 2, dy = (h - dh) / 2;
-      rr(ctx, dx - S * 0.07, h / 2 - S * 0.07, S * 0.12, S * 0.14, S * 0.04); fillStroke(g, 1.2);
-      rr(ctx, dx + dw - S * 0.05, h / 2 - S * 0.07, S * 0.12, S * 0.14, S * 0.04); fillStroke(g, 1.2);
-      rr(ctx, dx, dy, dw, dh, S * 0.06); fillStroke(g, 1.3);
-      const ix = dx + S * 0.04, iy = dy + S * 0.04, iw = dw - S * 0.08, ih = dh - S * 0.08;
-      rr(ctx, ix, iy, iw, ih, S * 0.04); strokeOnly(g, 0.9, 0.8);
-      ctx.save(); rr(ctx, ix, iy, iw, ih, S * 0.04); ctx.clip();
-      contourLines(g, { x0: ix, y0: iy, x1: ix + iw, y1: iy + ih, step: Math.max(2.5, S / 110), field: (x, y) => noise(x / (S * 0.11), y / (S * 0.11), 3), levels: lv(9, 0.3, 0.7), alpha: 0.4 });
-      scatter(16, S * 0.075, () => [ix + S * 0.04 + rng() * (iw - S * 0.08), iy + S * 0.04 + rng() * (ih - S * 0.08)]).forEach((p, i) => {
-        if (i % 3 === 0) leaf(g, p[0], p[1], S * 0.06, rng() * TAU);
-        else { const s = S * (0.026 + rng() * 0.018); ctx.save(); ctx.translate(p[0], p[1]); ctx.rotate(rng() * TAU); rr(ctx, -s, -s, 2 * s, 2 * s, s * 0.35); fillStroke(g, 1); ctx.restore(); }
-      });
-      ctx.restore();
-    },
-  };
-
-  function readColors(prop) { return getComputedStyle(document.documentElement).getPropertyValue(prop).trim(); }
-  function prep(canvas) {
-    const rect = canvas.getBoundingClientRect(); const w = rect.width, hh = rect.height;
-    if (!w || !hh) return null;
-    const dpr = Math.min(2, window.devicePixelRatio || 1);
-    canvas.width = Math.round(w * dpr); canvas.height = Math.round(hh * dpr);
-    const ctx = canvas.getContext("2d"); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, w, hh);
-    ctx.lineCap = "round"; ctx.lineJoin = "round";
-    return { ctx, w, h: hh };
-  }
-  function drawDish(canvas, form, seed) {
-    const base = prep(canvas); if (!base) return;
-    const rng = mulberry32(hashStr(seed));
-    const g = { ...base, cx: base.w / 2, cy: base.h / 2, S: Math.min(base.w, base.h), rng, noise: makeNoise(rng), ink: readColors("--ink"), bg: getComputedStyle(canvas).backgroundColor || readColors("--panel") };
-    try { (FORMS[form] || FORMS.plate)(g); } catch (e) { /* tekening overslaan bij een fout */ }
-  }
-  function drawFooter() {
-    const canvas = $("contour"); const base = prep(canvas); if (!base) return;
-    const rng = mulberry32(hashStr("proef-noord")), noise = makeNoise(rng);
-    contourLines({ ...base, ink: readColors("--muted") }, { x0: 0, y0: 0, x1: base.w, y1: base.h, step: 4, field: (x, y) => noise(x / 260, y / 130, 4) * 0.85 + (y / base.h) * 0.15, levels: lv(14, 0.25, 0.75), alpha: 0.5, lw: 0.8 });
-  }
-
-  const ro = "ResizeObserver" in window ? new ResizeObserver((entries) => { for (const en of entries) { const d = drawn.get(en.target); if (d) requestAnimationFrame(() => drawDish(en.target, d.form, d.seed)); else if (en.target.id === "contour") requestAnimationFrame(drawFooter); } }) : null;
-  function dishCanvas(r, label) {
-    const c = h("canvas", { role: "img", "aria-label": label });
-    drawn.set(c, { form: r.form, seed: r.slug });
-    if (ro) ro.observe(c);
-    return c;
-  }
-  function redrawAll() { for (const [c, d] of drawn) if (c.isConnected) drawDish(c, d.form, d.seed); drawFooter(); }
-
-  /* ---------- Weergaven ---------- */
+  /* ---------- Bouwstenen ---------- */
+  // oude kleurnamen uit eerdere edities blijven werken
+  const TINTS = { sage: "sage", sky: "sky", blush: "blush", persimmon: "persimmon", mustard: "mustard", lavender: "sky", peach: "blush", rose: "persimmon", butter: "mustard" };
+  const tintClass = (r) => "t-" + (TINTS[r.tint] || "sage");
+  const SEASONS = [[[12, 1, 2], "Winter", "冬"], [[3, 4, 5], "Lente", "春"], [[6, 7, 8], "Zomer", "夏"], [[9, 10, 11], "Herfst", "秋"]];
+  const season = (iso) => { const m = new Date(iso + "T12:00:00").getMonth() + 1; return SEASONS.find(([ms]) => ms.includes(m)); };
   const servingsText = (r, n) => { const lab = r.servingsLabel || "personen"; return n + " " + (n === 1 ? singular[lab] || lab : lab); };
-  const metaLine = (r) => `${r.minutes} min · ${servingsText(r, r.servings)}`;
-  const tintClass = (r) => "t-" + (["sage", "peach", "lavender", "butter", "sky", "rose"].includes(r.tint) ? r.tint : "sage");
-  const tagList = (r) => (r.tags || []).length ? h("div", { class: "tags" }, r.tags.map((t) => h("span", { class: "tag", text: t }))) : null;
-  function splitVisual(r, href) {
-    const tile = () => h("div", { class: "ph", "aria-hidden": "true" }, h("span", { class: "cap", text: "Signaal" }), h("span", { class: "big" + ((r.signal?.metric || "").length > 6 ? " word" : ""), text: r.signal?.metric || "" }), h("span", { class: "cap", text: r.signal?.source || "" }));
-    let half = tile();
-    if (r.photo) {
-      half = h("img", { src: r.photo, alt: "Foto van " + r.title + (r.photoCredit ? " (" + r.photoCredit.label + ")" : ""), loading: "lazy", referrerpolicy: "no-referrer", decoding: "async" });
-      half.addEventListener("error", () => half.replaceWith(tile()), { once: true });
-    }
-    return h(href ? "a" : "div", { class: "split feature-visual " + tintClass(r), href: href || null, "aria-label": href ? r.title : null }, dishCanvas(r, "Lijntekening van " + r.title), half);
-  }
+  const recipeNo = (r) => pad(r._edition.recipes.indexOf(r) + 1);
 
-  function renderMast(ed) {
-    const issue = $("issue"); issue.replaceChildren(
-      h("span", { class: "no", text: "Nº " + pad(ed.number) }),
-      h("span", { class: "mono muted", text: `Week ${ed.week} · ${ed.year}` }),
-      h("span", { class: "mono muted", text: fmtDate(ed.date) })
-    );
+  function photo(r, opts = {}) {
+    const box = h("div", { class: "duo " + tintClass(r) });
+    const fallback = () => box.replaceChildren(h("span", { class: "fallback cjk", "aria-hidden": "true", text: r.glyph || "食" }));
+    if (r.photo) {
+      const img = h("img", { src: r.photo, alt: opts.alt === false ? "" : "Foto van " + r.title + (r.photoCredit ? " (" + r.photoCredit.label + ")" : ""), loading: opts.eager ? "eager" : "lazy", referrerpolicy: "no-referrer", decoding: "async" });
+      img.addEventListener("error", fallback, { once: true });
+      box.append(img);
+      if (opts.glyph && r.glyph) box.append(h("span", { class: "glyph cjk", "aria-hidden": "true", text: r.glyph }));
+      // aanraakschermen: tik om de echte kleuren te zien
+      box.addEventListener("click", (e) => { if (matchMedia("(hover: none)").matches && !box.closest("a")) { e.preventDefault(); box.classList.toggle("color"); } });
+    } else fallback();
+    return box;
+  }
+  const native = (r) => r.native ? h("p", { class: "native", lang: /[가-힯]/.test(r.native) ? "ko" : "ja" }, r.native, r.roman ? h("em", { lang: "nl", text: r.roman }) : null) : null;
+  const trend = (r) => r.trend ? h("p", { class: "trend" }, h("b", { text: "↗ Trending" }), h("span", null, r.trend.text + " ", r.trend.source ? h("span", { class: "src", text: "(" + r.trend.source + ")" }) : null)) : null;
+  const metaline = (...items) => h("div", { class: "metaline mono" }, items.filter(Boolean).map((t) => h("span", { text: t })));
+
+  /* ---------- Home ---------- */
+  function tileSpans(n) {
+    // verdeel de kaarten over rijen van max. 4, zo gelijk mogelijk
+    const rows = Math.ceil(n / 4), spans = [];
+    for (let i = 0, left = n; i < rows; i++) { const c = Math.ceil(left / (rows - i)); for (let k = 0; k < c; k++) spans.push(12 / c); left -= c; }
+    return spans;
   }
 
   function showHome(ed, target) {
-    $("recipe-view").hidden = true; $("home").hidden = false;
-    renderMast(ed);
+    $("detail-view").hidden = true; $("home").hidden = false;
     const latest = ed === state.editions[0];
-    $("edition-label").textContent = latest ? "Deze week" : `Editie ${pad(ed.number)} · week ${ed.week}`;
-    $("edition-intro").textContent = ed.intro || "";
     $("edition-notice").hidden = latest;
-    const box = $("features"); box.replaceChildren();
-    ed.recipes.forEach((r) => {
-      const text = h("div", { class: "feature-text " + tintClass(r) },
-        h("p", { class: "signal" }, h("span", { class: "metric", text: r.signal?.metric || "" }), h("span", { class: "src", text: r.signal?.source || "" })),
-        h("h2", { id: "f-" + r.slug }, h("a", { href: "#" + r.slug, text: r.title })),
-        h("p", { class: "dek", text: r.dek || "" }),
-        h("div", { class: "meta-row" }, h("span", { text: metaLine(r) }), r.photoCredit ? h("span", { text: "Foto: " + r.photoCredit.label }) : null, tagList(r)));
-      box.append(h("article", { class: "feature", "aria-labelledby": "f-" + r.slug }, splitVisual(r, "#" + r.slug), text));
-    });
-    requestAnimationFrame(redrawAll);
+    const [, sName, sGlyph] = season(ed.date);
+    const [lead, ...rest] = ed.recipes;
+    const spans = tileSpans(rest.length);
+    const box = $("features");
+    box.replaceChildren(...[
+      h("section", { class: "mast", "aria-label": "Editie" },
+        h("h1", { class: "logo", text: "Proef" }),
+        h("p", { class: "sub mono", text: `Nº ${pad(ed.number)} · Week ${ed.week} · ${sName} ${ed.year}` }),
+        h("div", { class: "glyph cjk", "aria-hidden": "true", text: "旬" }),
+        h("div", { class: "bottom" },
+          h("p", { class: "intro", text: ed.intro || "" }),
+          h("span", { class: "hanko", title: sName, "aria-hidden": "true", text: sGlyph }))),
+      lead ? h("a", { class: "card lead", href: "#" + lead.slug, id: "f-" + lead.slug },
+        photo(lead, { eager: true }),
+        h("div", { class: "body" },
+          h("span", { class: "no", text: "01" }),
+          h("div", null, native(lead), h("h2", { text: lead.title }), h("p", { class: "dek", text: lead.dek || "" }),
+            metaline(servingsText(lead, lead.servings), lead.minutes + " min", lead.category), trend(lead)))) : null,
+      ...rest.map((r, i) => h("a", { class: "tile " + tintClass(r), href: "#" + r.slug, id: "f-" + r.slug, style: `grid-column: span ${spans[i]}` },
+        photo(r),
+        h("div", { class: "body" },
+          h("span", { class: "no", text: pad(i + 2) }),
+          h("h2", { text: r.title }),
+          metaline(servingsText(r, r.servings), r.minutes + " min"),
+          trend(r)))),
+      ed.ferment ? h("a", { class: "card ferm-teaser", href: "#fermentatie-" + ed.id },
+        h("div", { class: "seigaiha", "aria-hidden": "true" }),
+        h("span", { class: "cjk", "aria-hidden": "true", text: ed.ferment.glyph || "酵" }),
+        h("div", null, h("p", { class: "kicker", text: "Fermentatie van de week" }), h("h2", { text: ed.ferment.title }), h("p", { text: ed.ferment.teaser || "" })),
+        h("span", { class: "go", "aria-hidden": "true", text: "Lees →" })) : null,
+    ].filter(Boolean));
     if (target === "archief") $("archief").scrollIntoView();
-    else if (state.lastSlug && $("f-" + state.lastSlug)) { $("f-" + state.lastSlug).closest("article").scrollIntoView({ block: "center" }); }
+    else if (state.lastSlug && $("f-" + state.lastSlug)) $("f-" + state.lastSlug).scrollIntoView({ block: "center" });
     else window.scrollTo(0, 0);
     state.lastSlug = null;
+  }
+
+  /* ---------- Recept ---------- */
+  function ingredientList(list, factor) {
+    const groups = []; let cur = null;
+    for (const ing of list || []) { const g = ing.group || ""; if (!cur || cur.name !== g) { cur = { name: g, items: [] }; groups.push(cur); } cur.items.push(ing); }
+    const cells = [], box = h("div");
+    for (const grp of groups) {
+      if (grp.name) box.append(h("p", { class: "label ing-group", text: grp.name }));
+      box.append(h("ul", { class: "ingr" }, grp.items.map((ing) => { const q = h("span", { class: "q", text: fmtQty(ing, factor) }); cells.push([q, ing]); return h("li", null, h("span", { text: ing.item }), q); })));
+    }
+    return { box, cells, groups };
   }
 
   function showRecipe(r) {
@@ -682,20 +466,11 @@ footer canvas { display: block; width: 100%; max-width: 100%; height: 150px; }
     const out = h("output", { "aria-live": "polite" });
     const minus = h("button", { type: "button", "aria-label": "Minder", text: "−" });
     const plus = h("button", { type: "button", "aria-label": "Meer", text: "+" });
-    const qtyCells = [];
-    const groups = []; let cur = null;
-    for (const ing of r.ingredients || []) { const g = ing.group || ""; if (!cur || cur.name !== g) { cur = { name: g, items: [] }; groups.push(cur); } cur.items.push(ing); }
-    const ingBox = h("div");
-    for (const grp of groups) {
-      if (grp.name) ingBox.append(h("p", { class: "ing-group", text: grp.name }));
-      const ul = h("ul", { class: "ings" });
-      for (const ing of grp.items) { const q = h("span", { class: "q" }); qtyCells.push([q, ing]); ul.append(h("li", null, q, h("span", { text: ing.item }))); }
-      ingBox.append(ul);
-    }
+    const ings = ingredientList(r.ingredients, 1);
     const update = () => {
       out.textContent = servingsText(r, n);
       minus.disabled = n - step < step; plus.disabled = n + step > base * 4;
-      for (const [q, ing] of qtyCells) q.textContent = fmtQty(ing, n / base);
+      for (const [q, ing] of ings.cells) q.textContent = fmtQty(ing, n / base);
     };
     minus.addEventListener("click", () => { n = Math.max(step, n - step); update(); });
     plus.addEventListener("click", () => { n = Math.min(base * 4, n + step); update(); });
@@ -704,82 +479,131 @@ footer canvas { display: block; width: 100%; max-width: 100%; height: 150px; }
     const copyBtn = h("button", { type: "button", class: "copy", text: "Kopieer lijst" });
     copyBtn.addEventListener("click", () => {
       const lines = [`${r.title} (${servingsText(r, n)})`];
-      for (const grp of groups) { if (grp.name) lines.push("", grp.name); for (const ing of grp.items) { const q = fmtQty(ing, n / base); lines.push("- " + (q ? q + " " : "") + ing.item); } }
-      const text = lines.join("\n");
-      const done = () => toast("Boodschappenlijst gekopieerd");
-      const fallback = () => { const ta = h("textarea", { "aria-hidden": "true" }); ta.value = text; ta.style.cssText = "position:fixed;opacity:0;left:0;top:0"; document.body.append(ta); ta.select(); let ok = false; try { ok = document.execCommand("copy"); } catch (e) { ok = false; } ta.remove(); toast(ok ? "Boodschappenlijst gekopieerd" : "Kopiëren lukt hier niet. Selecteer de lijst handmatig."); };
-      try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+      for (const grp of ings.groups) { if (grp.name) lines.push("", grp.name); for (const ing of grp.items) { const q = fmtQty(ing, n / base); lines.push("- " + (q ? q + " " : "") + ing.item); } }
+      copyText(lines.join("\n"));
     });
 
     const idx = ed.recipes.indexOf(r), prev = ed.recipes[idx - 1], next = ed.recipes[idx + 1];
-    const view = $("recipe-view");
-    view.replaceChildren(h("article", { class: "recipe" },
-      h("a", { class: "back", href: "#editie-" + ed.id, text: `← Editie ${pad(ed.number)} · week ${ed.week}` }),
-      h("div", { class: "recipe-top" },
-        h("div", null,
-          h("header", { class: "recipe-head " + tintClass(r) },
-            h("p", { class: "label", text: r.category || "" }),
-            h("h1", { text: r.title }),
-            h("p", { class: "dek", text: r.dek || "" }),
-            tagList(r)),
-          h("dl", { class: "facts" },
-            h("div", null, h("dt", { text: "Tijd" }), h("dd", { text: r.minutes + " min" })),
-            h("div", null, h("dt", { text: r.servingsLabel ? "Aantal" : "Personen" }), h("dd", null, h("span", { class: "stepper" }, minus, out, plus))))),
-        h("figure", { style: "margin:0;display:grid;gap:8px" }, splitVisual(r, null),
-          r.photoCredit ? h("figcaption", { class: "credit" }, "Foto en origineel recept: ", h("a", { href: r.photoCredit.url, target: "_blank", rel: "noopener", text: r.photoCredit.label + " ↗" })) : null)),
-      h("div", { class: "recipe-body" },
-        h("section", { "aria-labelledby": "ing-t" }, h("div", { class: "section-head" }, h("h2", { id: "ing-t", text: "Ingrediënten" }), copyBtn), ingBox,
-          h("aside", { class: "why " + tintClass(r), "aria-labelledby": "why-t" },
-            h("p", { class: "label", id: "why-t", text: "Waarom deze week" }),
-            h("p", { class: "big", text: r.signal?.metric || "" }),
-            h("p", { class: "mono muted src", text: r.signal?.source || "" }),
-            h("p", { class: "why-text", text: r.signal?.text || "" }),
-            (r.links || []).length ? h("ul", { class: "links" }, r.links.map((l) => h("li", null, h("a", { href: l.url, target: "_blank", rel: "noopener", text: l.label + " ↗" })))) : null)),
-        h("section", { "aria-labelledby": "steps-t" },
-          h("div", { class: "section-head" }, h("h2", { id: "steps-t", text: "Bereiding" })),
-          h("ol", { class: "steps" }, (r.steps || []).map((s) => h("li", null, h("span", { text: s })))),
-          r.tip ? h("aside", { class: "tip" }, h("p", { class: "label", text: "Tip" }), h("p", { text: r.tip })) : null)),
+    const f = ed.ferment && ed.ferment.usedIn === r.slug ? ed.ferment : null;
+    const whyText = r.signal?.text;
+    $("detail-view").replaceChildren(h("article", null,
+      h("a", { class: "back mono", href: "#editie-" + ed.id, text: `← Nº ${pad(ed.number)} · week ${ed.week}` }),
+      h("div", { class: "spread" },
+        h("figure", { class: "left", style: "margin:0" },
+          photo(r, { glyph: true, eager: true }),
+          r.photoCredit ? h("figcaption", { class: "credit" }, "Foto en origineel recept: ", h("a", { href: r.photoCredit.url, target: "_blank", rel: "noopener", text: r.photoCredit.label + " ↗" })) : null),
+        h("div", { class: "card sheet" },
+          h("header", null, h("span", { class: "no", text: recipeNo(r) }), h("div", null, native(r), h("h1", { text: r.title }))),
+          h("div", { class: "metaline mono" }, h("span", { class: "stepper" }, minus, out, plus), h("span", { text: r.minutes + " min" }), r.category ? h("span", { text: r.category }) : null),
+          h("p", { class: "dek", text: r.dek || "" }),
+          trend(r),
+          h("div", { class: "cols" },
+            h("section", { "aria-labelledby": "ing-t" },
+              h("div", { class: "head-row" }, h("h2", { class: "mono colhead", id: "ing-t", text: "Ingrediënten" }), copyBtn),
+              ings.box,
+              whyText || (r.links || []).length ? h("aside", { class: "why", "aria-labelledby": "why-t" },
+                h("span", { class: "label", id: "why-t", text: "Waarom deze week" }),
+                whyText ? h("p", { text: whyText }) : null,
+                (r.links || []).length ? h("ul", { class: "links" }, r.links.map((l) => h("li", null, h("a", { href: l.url, target: "_blank", rel: "noopener", text: l.label + " ↗" })))) : null) : null),
+            h("section", { "aria-labelledby": "steps-t" },
+              h("h2", { class: "mono colhead", id: "steps-t", text: "Bereiding" }),
+              h("ol", { class: "steps" }, (r.steps || []).map((s) => h("li", null, h("span", { text: s })))),
+              r.tip ? h("aside", { class: "tip" }, h("span", { class: "label", text: "Tip" }), r.tip) : null,
+              f ? h("p", { class: "ferm-link" }, "Zelf maken? ", h("a", { href: "#fermentatie-" + ed.id, text: "Fermentatie van de week: " + f.title + " →" })) : null)))),
       h("nav", { class: "pager", "aria-label": "Andere recepten" },
-        prev ? h("a", { href: "#" + prev.slug }, h("span", { class: "label", text: "← Vorige" }), h("strong", { text: prev.title })) : h("span"),
-        next ? h("a", { class: "next", href: "#" + next.slug }, h("span", { class: "label", text: "Volgende →" }), h("strong", { text: next.title })) : h("span"))
+        prev ? h("a", { class: "card", href: "#" + prev.slug }, h("span", { class: "label", text: "← Vorige" }), h("strong", { text: prev.title })) : h("span"),
+        next ? h("a", { class: "card next", href: "#" + next.slug }, h("span", { class: "label", text: "Volgende →" }), h("strong", { text: next.title }))
+          : ed.ferment ? h("a", { class: "card next", href: "#fermentatie-" + ed.id }, h("span", { class: "label", text: "Fermentatie →" }), h("strong", { text: ed.ferment.title })) : h("span"))
     ));
-    $("home").hidden = true; view.hidden = false;
+    $("home").hidden = true; $("detail-view").hidden = false;
     state.lastSlug = r.slug;
     window.scrollTo(0, 0);
-    requestAnimationFrame(redrawAll);
   }
 
+  /* ---------- Fermentatie ---------- */
+  function showFerment(ed) {
+    const f = ed.ferment;
+    const used = f.usedIn ? state.bySlug.get(f.usedIn) : null;
+    const ings = ingredientList(f.ingredients, 1);
+    const copyBtn = h("button", { type: "button", class: "copy", text: "Kopieer lijst" });
+    copyBtn.addEventListener("click", () => copyText([`${f.title} (${f.yield || "1 pot"})`, ...(f.ingredients || []).map((i) => "- " + (fmtQty(i, 1) ? fmtQty(i, 1) + " " : "") + i.item)].join("\n")));
+    const last = ed.recipes[ed.recipes.length - 1];
+    $("detail-view").replaceChildren(h("article", null,
+      h("a", { class: "back mono", href: "#editie-" + ed.id, text: `← Nº ${pad(ed.number)} · week ${ed.week}` }),
+      h("div", { class: "ferm" },
+        h("aside", { class: "card ferm-side" },
+          h("div", { class: "seigaiha", "aria-hidden": "true" }),
+          h("div", { class: "in" },
+            h("p", { class: "kicker", text: `Fermentatie van de week · Nº ${pad(f.number || ed.number)}` }),
+            h("div", { class: "big cjk", "aria-hidden": "true", text: f.glyph || "酵" }),
+            native(f),
+            h("h1", { text: f.title }),
+            h("p", { class: "lede", text: f.lede || "" }),
+            (f.facts || []).length ? h("ul", { class: "facts" }, f.facts.map((x) => h("li", null, h("span", { text: x.label }), h("span", { text: x.value })))) : null,
+            used ? h("a", { class: "used", href: "#" + used.slug }, h("span", { class: "no", text: recipeNo(used) }), "Deze week in " + used.title + " →") : null)),
+        h("div", { class: "card ferm-main" },
+          (f.science || []).length ? h("section", null, h("h2", { class: "mono colhead", text: "Wat er gebeurt" }), h("div", { class: "prose" }, f.science.map((p) => h("p", { text: p })))) : null,
+          (f.timeline || []).length ? h("section", null, h("h2", { class: "mono colhead", text: "In de pot" }),
+            h("ol", { class: "timeline" }, f.timeline.map((t) => h("li", { class: t.now ? "now" : null }, h("span", { class: "when mono colhead", text: t.when }), h("b", { text: t.title }), h("span", { class: "txt", text: t.text }))))) : null,
+          h("section", { class: "cols" },
+            h("div", null, h("div", { class: "head-row" }, h("h2", { class: "mono colhead", text: "Ingrediënten" }), copyBtn), ings.box),
+            h("div", null, h("h2", { class: "mono colhead", text: "Zo doe je het" }), h("ol", { class: "steps" }, (f.steps || []).map((s) => h("li", null, h("span", { text: s })))))),
+          h("section", { class: "checks" },
+            f.ok ? h("div", null, h("span", { class: "mono ok", text: "Goed teken" }), f.ok) : null,
+            f.bad ? h("div", null, h("span", { class: "mono bad", text: "Weggooien als" }), f.bad) : null,
+            f.kids ? h("div", null, h("span", { class: "mono kid", text: "Met kinderen" }), f.kids) : null))),
+      h("nav", { class: "pager", "aria-label": "Andere recepten" },
+        last ? h("a", { class: "card", href: "#" + last.slug }, h("span", { class: "label", text: "← Vorige" }), h("strong", { text: last.title })) : h("span"),
+        h("a", { class: "card next", href: "#editie-" + ed.id }, h("span", { class: "label", text: "Editie →" }), h("strong", { text: `Nº ${pad(ed.number)} · week ${ed.week}` })))
+    ));
+    $("home").hidden = true; $("detail-view").hidden = false;
+    state.lastSlug = null;
+    window.scrollTo(0, 0);
+  }
+
+  /* ---------- Archief ---------- */
   function renderArchive() {
     const q = norm($("zoek").value.trim());
     const box = $("archive-list");
     if (!q) {
       box.replaceChildren(h("ul", { class: "list" }, state.editions.map((ed) => h("li", null,
         h("a", { class: "no", href: "#editie-" + ed.id, text: pad(ed.number), "aria-label": "Editie " + ed.number }),
-        h("div", null, h("p", { class: "when", text: `Week ${ed.week} · ${fmtDate(ed.date)}` }),
-          h("div", { class: "titles" }, ed.recipes.map((r) => h("a", { href: "#" + r.slug, text: r.title }))))))));
+        h("div", null, h("p", { class: "when mono", style: "color:var(--muted)", text: `Week ${ed.week} · ${fmtDate(ed.date)}` }),
+          h("div", { class: "titles" }, ed.recipes.map((r) => h("a", { href: "#" + r.slug, text: r.title })),
+            ed.ferment ? h("a", { class: "f", href: "#fermentatie-" + ed.id, text: ed.ferment.title }) : null))))));
       return;
     }
-    const hits = [];
-    for (const ed of state.editions) for (const r of ed.recipes) {
-      const hay = norm([r.title, r.dek, r.category, ...(r.ingredients || []).map((i) => i.item)].join(" "));
-      if (q.split(/\s+/).every((t) => hay.includes(t))) hits.push(r);
+    const hits = [], match = (parts) => { const hay = norm(parts.join(" ")); return q.split(/\s+/).every((t) => hay.includes(t)); };
+    for (const ed of state.editions) {
+      for (const r of ed.recipes) if (match([r.title, r.dek, r.category, ...(r.ingredients || []).map((i) => i.item)])) hits.push({ ed, title: r.title, href: "#" + r.slug, meta: `${r.category || ""} · ${r.minutes} min · week ${ed.week}` });
+      const f = ed.ferment;
+      if (f && match([f.title, f.lede, "fermentatie", ...(f.ingredients || []).map((i) => i.item)])) hits.push({ ed, title: f.title, href: "#fermentatie-" + ed.id, meta: `Fermentatie · week ${ed.week}` });
     }
     box.replaceChildren(hits.length
-      ? h("ul", { class: "list" }, hits.map((r) => h("li", null,
-          h("span", { class: "no", text: pad(r._edition.number) }),
-          h("div", null, h("a", { href: "#" + r.slug, text: r.title }), h("p", { class: "hit-meta", text: `${r.category || ""} · ${r.minutes} min · week ${r._edition.week}` })))))
+      ? h("ul", { class: "list" }, hits.map((x) => h("li", null,
+          h("span", { class: "no", text: pad(x.ed.number) }),
+          h("div", null, h("a", { href: x.href, text: x.title }), h("p", { class: "hit-meta mono", style: "color:var(--muted)", text: x.meta })))))
       : h("p", { class: "empty", text: "Geen recepten gevonden. Probeer een ander ingrediënt." }));
   }
 
   let toastTimer;
   function toast(msg) { const t = $("toast"); t.textContent = msg; t.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.hidden = true; }, 2200); }
+  function copyText(text) {
+    const done = () => toast("Boodschappenlijst gekopieerd");
+    const fallback = () => { const ta = h("textarea", { "aria-hidden": "true" }); ta.value = text; ta.style.cssText = "position:fixed;opacity:0;left:0;top:0"; document.body.append(ta); ta.select(); let ok = false; try { ok = document.execCommand("copy"); } catch (e) { ok = false; } ta.remove(); toast(ok ? "Boodschappenlijst gekopieerd" : "Kopiëren lukt hier niet. Selecteer de lijst handmatig."); };
+    try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+  }
 
   function route() {
     if (!state.editions.length) return;
     const hsh = decodeURIComponent(location.hash.slice(1));
     if (state.bySlug.has(hsh)) return showRecipe(state.bySlug.get(hsh));
+    if (hsh === "fermentatie" || hsh.startsWith("fermentatie-")) {
+      const ed = hsh === "fermentatie" ? state.editions.find((e) => e.ferment) : state.editions.find((e) => "fermentatie-" + e.id === hsh);
+      if (ed && ed.ferment) return showFerment(ed);
+    }
     let ed = state.editions[0];
-    if (hsh.startsWith("editie-")) { const f = state.editions.find((e) => "editie-" + e.id === hsh); if (f) { ed = f; state.lastSlug = null; } }
+    if (hsh.startsWith("editie-")) { const f = state.editions.find((e) => "editie-" + e.id === hsh); if (f) ed = f; }
     if (hsh === "deze-week") state.lastSlug = null;
     showHome(ed, hsh);
   }
@@ -796,17 +620,12 @@ footer canvas { display: block; width: 100%; max-width: 100%; height: 150px; }
       renderArchive();
       route();
     } catch (e) {
-      $("edition-intro").textContent = "De recepten konden niet worden geladen. Ververs de pagina om het opnieuw te proberen.";
+      $("status").textContent = "De recepten konden niet worden geladen. Ververs de pagina om het opnieuw te proberen.";
     }
   }
 
   window.addEventListener("hashchange", route);
   $("zoek").addEventListener("input", renderArchive);
-  try { matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => requestAnimationFrame(redrawAll)); } catch (e) { /* oudere browsers */ }
-  new MutationObserver(() => requestAnimationFrame(redrawAll)).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme", "class"] });
-  if (ro) ro.observe($("contour"));
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => requestAnimationFrame(redrawAll));
-  drawFooter();
   load();
 })();
 </script>
