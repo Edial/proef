@@ -101,7 +101,9 @@ img { display: block; max-width: 100%; }
 }
 .duo.color .orig, .duo.scrolled .orig { opacity: 1; }
 .duo.color::before, .duo.scrolled::before { opacity: 0; }
-/* receptfoto: filter gaat snel weg zodra je scrolt */
+/* receptfoto: filter gaat snel weg zodra je scrolt; op mobiel met de scroll mee (--mix 0..1) */
+.duo.scrub:not(.color) .orig { opacity: var(--mix, 0); transition: none; }
+.duo.scrub:not(.color)::before { opacity: calc(.2 * (1 - var(--mix, 0))); transition: none; }
 .spread .left .duo .orig, .spread .left .duo::before { transition-duration: .6s; transition-timing-function: cubic-bezier(.2, .7, .3, 1); }
 .duo .glyph { position: absolute; top: 16px; right: 18px; z-index: 3; color: var(--cream); }
 .duo .fallback { position: absolute; inset: 0; display: grid; place-items: center; font-size: clamp(64px, 12vw, 140px); color: var(--lo); }
@@ -329,7 +331,7 @@ footer { margin-top: 96px; }
   .tile { grid-column: span 6 !important; }
   .spread, .ferm, .archive { grid-template-columns: minmax(0, 1fr); }
   .spread .left, .ferm-side { position: static; }
-  .spread .left .duo { aspect-ratio: 4 / 3; }
+  .spread .left .duo { aspect-ratio: 1; }
   .related-grid { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 640px) {
@@ -937,7 +939,13 @@ footer { margin-top: 96px; }
 
   window.addEventListener("hashchange", route);
   // receptpagina: na een klein stukje scrollen verschijnt de foto in kleur
-  addEventListener("scroll", () => { const d = document.querySelector(".spread .left .duo"); if (d) d.classList.toggle("scrolled", scrollY > 24); }, { passive: true });
+  // (op mobiel loopt de overgang mee met het scrollen, anders is de foto al weg voor je het ziet)
+  const narrow = matchMedia("(max-width: 1000px)");
+  addEventListener("scroll", () => {
+    const d = document.querySelector(".spread .left .duo"); if (!d) return;
+    if (narrow.matches) { d.classList.add("scrub"); d.style.setProperty("--mix", Math.min(1, scrollY / (d.offsetHeight * 0.45)).toFixed(3)); }
+    else { d.classList.remove("scrub"); d.classList.toggle("scrolled", scrollY > 24); }
+  }, { passive: true });
   initSearch();
   load();
 })();

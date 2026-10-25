@@ -136,7 +136,23 @@
         "source": "Pinterest",
         "text": "Er wordt dit jaar veel meer naar kool gezocht."
       },
-      "photoGamma": 0.78
+      "photoGamma": 0.78,
+      "trendTerms": [
+        "marry me cabbage",
+        "melting cabbage"
+      ],
+      "signals": [
+        {
+          "source": "Pinterest",
+          "metric": "search-growth",
+          "value": 2,
+          "unit": "x",
+          "period": "2026 vs 2025",
+          "geo": "world",
+          "url": "https://letsdatascience.com/news/pinterest-predicts-21-trends-for-2026-62ab5d9c",
+          "note": "Pinterest Predicts 2026: Cabbage Crush, zoekopdrachten naar kool ruim verdubbeld"
+        }
+      ]
     },
     {
       "slug": "dumpling-bake",
@@ -258,7 +274,21 @@
         "source": "TikTok",
         "text": "Diepvriesdumplings uit de oven, veel gemaakt dit najaar."
       },
-      "photoGamma": 0.71
+      "photoGamma": 0.71,
+      "trendTerms": [
+        "dumpling bake",
+        "frozen dumplings"
+      ],
+      "signals": [
+        {
+          "source": "PureWow",
+          "metric": "listed",
+          "period": "2026-09",
+          "geo": "world",
+          "url": "https://www.purewow.com/food/biggest-food-trends-2018",
+          "note": "lijst grootste foodtrends najaar 2026"
+        }
+      ]
     },
     {
       "slug": "zuppa-toscana",
@@ -364,7 +394,20 @@
         "source": "TikTok",
         "text": "Wordt nu veel gemaakt, nu het kouder wordt."
       },
-      "photoGamma": 0.5
+      "photoGamma": 0.5,
+      "trendTerms": [
+        "zuppa toscana"
+      ],
+      "signals": [
+        {
+          "source": "Pinterest",
+          "metric": "listed",
+          "period": "2026-10-16",
+          "geo": "world",
+          "url": "https://community.pinterest.biz/t/the-weekly-pbc-trend-report-october-16th-2026/52310",
+          "note": "weekrapport: Cozy Season"
+        }
+      ]
     },
     {
       "slug": "kimchi-gebakken-rijst",
@@ -465,7 +508,21 @@
         "source": "Pinterest",
         "text": "Een goede manier om restjes rijst en kimchi op te maken."
       },
-      "photoGamma": 0.35
+      "photoGamma": 0.35,
+      "trendTerms": [
+        "kimchi fried rice",
+        "kimchi"
+      ],
+      "signals": [
+        {
+          "source": "SCMP",
+          "metric": "listed",
+          "period": "2026",
+          "geo": "world",
+          "url": "https://www.scmp.com/lifestyle/food-drink/article/3338908/2026-year-cabbage-how-vegetable-being-hailed-online",
+          "note": "2026 als jaar van de kool, gefermenteerd eten populair"
+        }
+      ]
     },
     {
       "slug": "cottage-cheese-flatbread",
@@ -570,7 +627,21 @@
         "source": "TikTok",
         "text": "Wordt al een paar maanden veel gemaakt."
       },
-      "photoGamma": 0.59
+      "photoGamma": 0.59,
+      "trendTerms": [
+        "cottage cheese flatbread",
+        "cottage cheese"
+      ],
+      "signals": [
+        {
+          "source": "TikTok",
+          "metric": "listed",
+          "period": "2026-10",
+          "geo": "world",
+          "url": "https://www.tiktok.com/tag/viralrecipes2026%F0%9F%94%A5",
+          "note": "#viralrecipes2026"
+        }
+      ]
     }
   ],
   "ferment": {

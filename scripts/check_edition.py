@@ -70,6 +70,27 @@ def check_recipe(r, where, seen):
     if not r.get("tip"):
         warn(where, "geen tip (voor kinderen)")
     check_ingredients(r.get("ingredients"), where)
+    if not r.get("trendTerms"):
+        warn(where, "geen trendTerms (zoektermen voor Google Trends); de titel wordt gebruikt")
+    elif not (isinstance(r["trendTerms"], list) and all(isinstance(x, str) and x.strip() for x in r["trendTerms"]) and len(r["trendTerms"]) <= 3):
+        err(where, "trendTerms moet een lijst van 1 tot 3 zoektermen zijn")
+    check_signals(r.get("signals"), where)
+
+
+SIGNAL_KEYS = {"source", "metric", "value", "unit", "period", "geo", "url", "note"}
+
+
+def check_signals(items, where):
+    for i, s in enumerate(items or []):
+        w = f"{where} signal {i + 1}"
+        if not isinstance(s, dict):
+            err(w, "moet een object zijn")
+            continue
+        if set(s) - SIGNAL_KEYS:
+            err(w, f"onbekende velden {sorted(set(s) - SIGNAL_KEYS)} (toegestaan: {', '.join(sorted(SIGNAL_KEYS))})")
+        need(s, ["source", "metric", "period"], w)
+        if "value" in s and not isinstance(s["value"], (int, float)):
+            err(w, "value moet een getal zijn (zet tekst in 'note')")
 
 
 def check_ferment(f, where, recipes, seen):
@@ -137,6 +158,10 @@ def main():
             err(where, f"geen geldige JSON: {e}")
             continue
         need(ed, ["id", "number", "year", "week", "date", "intro", "recipes"], where)
+        for i, wt in enumerate(ed.get("watch") or []):
+            ww = f"{where} watch {i + 1}"
+            need(wt, ["term", "source"], ww)
+            check_signals(wt.get("signals"), ww)
         if ed.get("id") != eid:
             err(where, f"id '{ed.get('id')}' hoort '{eid}' te zijn")
         try:
