@@ -21,7 +21,7 @@ Vijf recepten die deze week trending zijn, plus één Fermentatie van de week. W
    - `tint`: gebruik elke kleur één keer (`sage`, `sky`, `blush`, `persimmon`, `mustard`). Kies de kleur die bij het gerecht past.
    - `glyph`: één Japans of Koreaans teken dat het gerecht samenvat (bijv. 汁 soep, 밥 rijst, 麺 noedels, 菜 groente, 卵 ei).
    - `native` + `roman`: de naam in het Japans of Koreaans met uitspraak. Alleen als je het zeker weet; anders leeg laten.
-   - `trend`: `source` + één zin in gewone woorden waarom het nu trending is. **Geen kale percentages**: schrijf "twee keer zo vaak gezocht", niet "+110%".
+   - `trend`: `source` (bijv. TikTok, Pinterest; op de site staat "Gezien op …") + één rustige zin van **hooguit 10 woorden** waarom het nu gemaakt wordt. Schrijf als een vaststelling, niet als reclame: geen superlatieven of hypewoorden ("hét", "grootste", "viral", "is in", "must"). **Geen kale percentages**: schrijf "veel meer gezocht", niet "+110%". Goed: "Wordt nu veel gemaakt, nu het kouder wordt."
    - `signal.text` + `links`: de langere uitleg en de bronnen voor "Waarom deze week".
 5. **Fermentatie van de week:** kies uit de bibliotheek in **[FERMENTATIE.md](FERMENTATIE.md) §9** en vink de checklist in §8 helemaal af. Herhaal geen ferment uit de laatste 4 edities. Koppel het ferment met `usedIn` aan een recept van deze editie als dat kan. Zet de geraadpleegde bronnen in `sources`.
 6. **Omslag:** `cover.color` is anders dan vorige week (`navy`, `ink`, `kaki`, `moss`). `cover.glyph` is één teken voor het thema van de week (standaard 旬, "in het seizoen").

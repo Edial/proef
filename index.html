@@ -75,9 +75,9 @@ img { display: block; max-width: 100%; }
 .colhead { color: var(--muted); margin-bottom: 8px; }
 
 /* Trending: in woorden waarom het in de editie staat */
-.trend { display: flex; gap: 8px; align-items: baseline; font-family: var(--sans); font-size: 13px; line-height: 1.4; color: var(--muted); }
-.trend b { flex: none; font-family: var(--mono); font-weight: 500; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--hanko); }
-.trend .src { opacity: .75; }
+.trend { border-top: 1px solid var(--rule); padding-top: 10px; }
+.trend b { display: block; margin-bottom: 3px; font-family: var(--mono); font-weight: 500; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--hanko); }
+.trend p { margin: 0; font-style: italic; font-size: 15px; line-height: 1.4; color: var(--muted); }
 
 /* Receptkleuren */
 .t-sage      { --bg: var(--sage);      --hi: var(--sage);  --lo: #2E4A6B; }
@@ -87,22 +87,22 @@ img { display: block; max-width: 100%; }
 .t-mustard   { --bg: var(--mustard);   --hi: #F7D27E;      --lo: #5B3D10; }
 
 /* Foto: duotoon in de receptkleur met drukraster; hover toont het origineel */
-.duo { position: relative; overflow: hidden; background: var(--hi); isolation: isolate; transition: background-color .5s ease; }
+.duo { position: relative; overflow: hidden; background: var(--hi); isolation: isolate; }
 .duo .lift { position: absolute; inset: 0; display: block; mix-blend-mode: multiply; }
-.duo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.08) brightness(1.08); transition: filter .5s ease; }
-.duo::after { content: ""; position: absolute; inset: 0; background: var(--lo); mix-blend-mode: lighten; pointer-events: none; transition: opacity .5s ease; }
+.duo img { width: 100%; height: 100%; object-fit: cover; }
+.duo .lift img { filter: grayscale(1) contrast(1.08) brightness(1.08); }
+.duo::after { content: ""; position: absolute; inset: 0; background: var(--lo); mix-blend-mode: lighten; pointer-events: none; }
 .duo::before { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: .2; mix-blend-mode: multiply; background-image: radial-gradient(circle, #000 0.7px, transparent 1.3px); background-size: 4px 4px; transition: opacity .5s ease; }
-/* origineel: wit achter de multiply-laag, dan blijft de foto over; alles animeert mee */
+/* origineel: een onbewerkte kopie (zonder duotoon en zonder ophelderen) die erover heen infadet */
+.duo .orig { position: absolute; inset: 0; z-index: 1; opacity: 0; transition: opacity .5s ease; }
 @media (hover: hover) {
-  .duo:hover { background-color: #fff; }
-  .duo:hover img { filter: none; }
-  .duo:hover::after, .duo:hover::before { opacity: 0; }
+  .duo:hover .orig { opacity: 1; }
+  .duo:hover::before { opacity: 0; }
 }
-.duo.color, .duo.scrolled { background-color: #fff; }
-.duo.color img, .duo.scrolled img { filter: none; }
-.duo.color::after, .duo.color::before, .duo.scrolled::after, .duo.scrolled::before { opacity: 0; }
+.duo.color .orig, .duo.scrolled .orig { opacity: 1; }
+.duo.color::before, .duo.scrolled::before { opacity: 0; }
 /* receptfoto: filter gaat snel weg zodra je scrolt */
-.spread .left .duo, .spread .left .duo img, .spread .left .duo::after, .spread .left .duo::before { transition-duration: .6s; transition-timing-function: cubic-bezier(.2, .7, .3, 1); }
+.spread .left .duo .orig, .spread .left .duo::before { transition-duration: .6s; transition-timing-function: cubic-bezier(.2, .7, .3, 1); }
 .duo .glyph { position: absolute; top: 16px; right: 18px; z-index: 3; color: var(--cream); }
 .duo .fallback { position: absolute; inset: 0; display: grid; place-items: center; font-size: clamp(64px, 12vw, 140px); color: var(--lo); }
 
@@ -134,7 +134,7 @@ img { display: block; max-width: 100%; }
 .lead .no { font-size: 56px; line-height: .9; }
 .lead h2 { margin-top: 4px; font-size: 36px; line-height: 1.05; letter-spacing: -0.02em; }
 .lead .dek { margin: 8px 0 14px; font-size: 16px; color: var(--muted); font-style: italic; max-width: 56ch; }
-.lead .trend { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--rule); }
+.lead .trend { margin-top: 14px; }
 .lead:hover h2, .tile:hover h2, .ferm-teaser:hover h2 { text-decoration: underline; text-decoration-thickness: 1px; }
 
 .tile { grid-column: span 3; display: flex; flex-direction: column; text-decoration: none; background: var(--bg); color: var(--dark); min-width: 0; }
@@ -143,11 +143,14 @@ img { display: block; max-width: 100%; }
 .tile .no { font-size: 15px; color: var(--dark); }
 .tile h2 { margin-top: 4px; font-size: 21px; line-height: 1.12; letter-spacing: -0.01em; }
 .tile .metaline { margin-top: 10px; color: rgba(31,29,26,.72); }
-.tile .trend { margin-top: auto; padding-top: 14px; color: rgba(31,29,26,.72); }
+.tile .trend { margin-top: auto; padding-top: 10px; border-top-color: rgba(31,29,26,.25); }
+.tile .body > .metaline { margin-bottom: 16px; }
 .tile .trend b { color: var(--dark); }
+.tile .trend p { color: rgba(31,29,26,.78); }
 .tile.t-persimmon { color: var(--cream); }
 .tile.t-persimmon .no, .tile.t-persimmon .trend b { color: var(--cream); }
-.tile.t-persimmon .metaline, .tile.t-persimmon .trend { color: rgba(248,245,238,.85); }
+.tile.t-persimmon .metaline, .tile.t-persimmon .trend p { color: rgba(248,245,238,.88); }
+.tile.t-persimmon .trend { border-top-color: rgba(248,245,238,.4); }
 
 .ferm-teaser { grid-column: span 12; display: grid; grid-template-columns: 120px auto minmax(0, 1fr) auto; gap: 24px; align-items: center; text-decoration: none; padding-right: 24px; }
 .ferm-teaser .seigaiha { align-self: stretch; min-height: 96px; }
@@ -358,7 +361,7 @@ footer { margin-top: 96px; }
   .s-hint { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .duo, .duo img, .duo::after, .duo::before, .spread .left .duo, .spread .left .duo img, .spread .left .duo::after, .spread .left .duo::before { transition: none; }
+  .duo .orig, .duo::before, .spread .left .duo .orig, .spread .left .duo::before { transition: none; }
 }
 </style>
 </head>
@@ -502,7 +505,8 @@ footer { margin-top: 96px; }
       const img = h("img", { src: r.photo, alt: opts.alt === false ? "" : "Foto van " + r.title + (r.photoCredit ? " (" + r.photoCredit.label + ")" : ""), loading: opts.eager ? "eager" : "lazy", referrerpolicy: "no-referrer", decoding: "async" });
       img.addEventListener("error", fallback, { once: true });
       const g = Number(r.photoGamma);
-      box.append(h("span", { class: "lift", style: g > 0 && g !== 1 ? "filter:" + liftFilter(g) : null }, img));
+      box.append(h("span", { class: "lift", style: g > 0 && g !== 1 ? "filter:" + liftFilter(g) : null }, img),
+        h("img", { class: "orig", src: r.photo, alt: "", "aria-hidden": "true", loading: img.loading, referrerpolicy: "no-referrer", decoding: "async" }));
       if (opts.glyph && r.glyph) box.append(h("span", { class: "glyph cjk", "aria-hidden": "true", text: r.glyph }));
       // aanraakschermen: tik om de echte kleuren te zien
       box.addEventListener("click", (e) => { if (matchMedia("(hover: none)").matches && !box.closest("a")) { e.preventDefault(); box.classList.toggle("color"); } });
@@ -510,7 +514,7 @@ footer { margin-top: 96px; }
     return box;
   }
   const native = (r) => r.native ? h("p", { class: "native", lang: /[가-힯]/.test(r.native) ? "ko" : "ja" }, r.native, r.roman ? h("em", { lang: "nl", text: r.roman }) : null) : null;
-  const trend = (r) => r.trend ? h("p", { class: "trend" }, h("b", { text: "↗ Trending" }), h("span", null, r.trend.text + " ", r.trend.source ? h("span", { class: "src", text: "(" + r.trend.source + ")" }) : null)) : null;
+  const trend = (r) => r.trend ? h("div", { class: "trend" }, h("b", { text: r.trend.source ? "Gezien op " + r.trend.source : "Veel gemaakt" }), h("p", { text: r.trend.text })) : null;
   const metaline = (...items) => h("div", { class: "metaline mono" }, items.filter(Boolean).map((t) => h("span", { text: t })));
 
   /* ---------- Home ---------- */
