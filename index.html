@@ -6,7 +6,7 @@
 <meta name="color-scheme" content="light dark">
 <meta name="description" content="Elke zaterdag vijf trending recepten: weinig werk, veel Aziatisch, groente van het seizoen en goed te maken voor kinderen. Plus elke week een fermentatie voor thuis. Alles in grammen en milliliters.">
 <title>Proef</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='3' fill='%232E4A6B'/%3E%3Ctext x='16' y='23.5' font-family='Georgia,serif' font-size='21' text-anchor='middle' fill='%23F8F5EE'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap">
@@ -110,8 +110,8 @@ img { display: block; max-width: 100%; }
 
 /* Kop */
 .top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-block: 18px; }
-.top .brand { font-family: var(--mono); font-size: 13px; letter-spacing: .04em; text-decoration: none; }
-.top .brand .cjk { font-size: 14px; margin-right: 6px; font-weight: 700; }
+.wordmark { display: block; height: 1em; width: auto; aspect-ratio: 307 / 104; }
+.top .brand { display: block; font-size: 24px; color: var(--ink); text-decoration: none; align-self: center; }
 .top nav { display: flex; gap: 20px; flex-wrap: wrap; justify-content: end; }
 .top nav a { font-family: var(--mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; text-decoration: none; color: var(--muted); }
 .top nav a:hover { color: var(--ink); }
@@ -122,8 +122,9 @@ img { display: block; max-width: 100%; }
 /* omslagkleur per editie */
 .c-navy { --cover: var(--navy); } .c-ink { --cover: var(--ink-cover); } .c-kaki { --cover: #A9512F; } .c-moss { --cover: #3D5A47; }
 .mast { grid-column: span 4; background: var(--cover, var(--navy)); color: var(--cream); padding: 28px 26px 24px; display: flex; flex-direction: column; min-height: 540px; }
-.mast .logo { font-weight: 400; font-size: 68px; letter-spacing: -0.035em; line-height: .9; }
-.mast .sub { margin-top: 14px; color: rgba(248,245,238,.65); }
+.mast .logo { margin: 0; font-size: 64px; line-height: 1; }
+.mast .tagline { margin-top: 14px; font-size: 18px; line-height: 1.35; max-width: 22ch; }
+.mast .sub { margin-top: 12px; color: rgba(248,245,238,.65); }
 .mast .glyph { font-size: 190px; margin: auto 0 0 -6px; padding-top: 28px; }
 .mast .bottom { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-top: 22px; }
 .mast .intro { font-style: italic; font-size: 15px; line-height: 1.5; color: rgba(248,245,238,.85); max-width: 32ch; }
@@ -152,11 +153,11 @@ img { display: block; max-width: 100%; }
 .tile.t-persimmon .metaline, .tile.t-persimmon .trend p { color: rgba(248,245,238,.88); }
 .tile.t-persimmon .trend { border-top-color: rgba(248,245,238,.4); }
 
-.ferm-teaser { grid-column: span 12; display: grid; grid-template-columns: 120px auto minmax(0, 1fr) auto; gap: 24px; align-items: center; text-decoration: none; padding-right: 24px; }
-.ferm-teaser .seigaiha { align-self: stretch; min-height: 96px; }
-.ferm-teaser .cjk { font-size: 54px; }
-.ferm-teaser h2 { margin-top: 2px; font-size: 24px; letter-spacing: -0.01em; }
-.ferm-teaser p:not(.kicker) { font-style: italic; color: var(--muted); font-size: 15px; }
+.ferm-teaser { grid-column: span 12; display: grid; grid-template-columns: minmax(160px, 3fr) auto minmax(0, 7fr) auto; gap: 40px; align-items: center; text-decoration: none; padding-right: 36px; }
+.ferm-teaser .seigaiha { align-self: stretch; min-height: 220px; }
+.ferm-teaser .cjk { font-size: 120px; }
+.ferm-teaser h2 { margin-top: 6px; font-size: 40px; line-height: 1.05; letter-spacing: -0.02em; }
+.ferm-teaser p:not(.kicker) { margin-top: 10px; font-style: italic; color: var(--muted); font-size: 18px; max-width: 46ch; }
 .ferm-teaser .go { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
 
 /* Editiebalk: welke editie, en bladeren */
@@ -178,9 +179,9 @@ kbd { font-family: var(--mono); font-style: normal; font-size: 11px; border: 1px
 .issue .cov { background: var(--cover); color: var(--cream); padding: 16px 18px 14px; display: flex; flex-direction: column; aspect-ratio: 4 / 3.4; text-decoration: none; }
 .issue .cov .cjk { font-size: 72px; margin-top: auto; }
 .issue .cov .row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
-.issue .cov .logo { font-size: 26px; letter-spacing: -0.02em; }
+.issue .cov .logo { font-size: 24px; }
 .issue .cov .mono { color: rgba(248,245,238,.7); }
-.issue .cov:hover .logo { text-decoration: underline; text-decoration-thickness: 1px; }
+.issue .cov:hover .logo { opacity: .8; }
 .issue ul { list-style: none; margin: 0; padding: 12px 18px 16px; font-size: 15px; line-height: 1.35; }
 .issue li { padding: 4px 0; display: flex; gap: 8px; }
 .issue li a { text-decoration: none; }
@@ -335,11 +336,14 @@ footer { margin-top: 96px; }
   .top { flex-direction: column; gap: 6px; }
   .top nav { justify-content: start; gap: 16px; }
   .tile { grid-column: span 12 !important; }
-  .mast .logo { font-size: 54px; }
+  .mast .logo { font-size: 52px; }
   .lead .duo { min-height: 230px; }
   .lead .body { grid-template-columns: minmax(0, 1fr); padding: 20px; } .lead .no { font-size: 40px; }
   .lead h2 { font-size: 28px; }
-  .ferm-teaser { grid-template-columns: 56px minmax(0, 1fr); gap: 14px; padding-right: 16px; }
+  .ferm-teaser { grid-template-columns: 72px minmax(0, 1fr); gap: 18px; padding-right: 18px; }
+  .ferm-teaser .seigaiha { min-height: 150px; }
+  .ferm-teaser h2 { font-size: 28px; }
+  .ferm-teaser p:not(.kicker) { font-size: 16px; }
   .ferm-teaser .cjk, .ferm-teaser .go { display: none; }
   .sheet, .ferm-main { padding: 24px 18px; }
   .ferm-side .in, .archive .side { padding: 22px 18px; }
@@ -366,10 +370,21 @@ footer { margin-top: 96px; }
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="proef-logo" viewBox="0 0 307 104">
+    <g fill="currentColor">
+      <path d="M 27.29 66.79 C 27.25 66.91 27.21 67.04 27.17 67.17 L 27.17 92.54 C 27.17 93.55 27.66 94.67 27.88 95.2 C 33.48 97.73 34.42 95.71 38.34 97.96 C 38.37 98.28 38.8 100.5 36.1 100.5 L 30.1 100.5 L 4.7 100.5 C 2.39 100.5 2.22 98.9 2.19 98.84 C 3.45 95.99 5 97.83 11.17 95.26 C 11.44 94.65 12.03 93.35 12.03 92.43 L 12.03 77.24 L 12.03 13.62 C 12.03 6.68 0.41 11.17 2.7 5.75 C 2.73 5.74 3.54 5.38 4.23 5.38 L 9.83 5.38 L 35.63 5.37 L 41.63 5.49 C 41.82 5.49 47.82 6.54 51.05 7.35 C 52.06 7.6 51.72 7.41 53.54 8.02 C 53.62 8.05 55.26 8.63 55.96 8.9 C 56.1 8.95 56.31 9.04 56.7 9.2 C 81.87 19.11 84.28 47.17 70.05 60.45 C 61.17 68.75 47.24 70.44 35.12 68.35 C 31.11 67.66 28.56 66.55 28.41 66.57 C 27.5 66.66 28.17 66.55 27.29 66.79 Z M 27.6 9.11 C 27.59 9.13 27.17 9.67 27.17 10.2 L 27.17 46.99 L 27.17 60.98 C 27.17 61.1 27.22 62.17 28.18 62.9 C 29.19 63.68 51.85 71.1 60.8 53.04 C 61.24 52.14 62.46 48.58 62.73 47.61 C 63.25 45.77 63.29 45.58 63.51 41.89 C 63.59 40.65 63.63 39.98 63.64 39.5 C 63.99 19.79 50.16 8.92 34.94 8.92 L 29.95 8.92 C 28.06 8.92 28.7 8.89 27.6 9.11 Z"/>
+      <path d="M 103.02 52.73 C 103.45 51.87 108.17 37.37 119.95 37.37 C 127.41 37.37 131.72 41.82 131.72 49.08 C 131.72 55.68 128.38 57.81 125.06 57.81 C 114.82 57.81 122.76 44.94 114.44 44.94 C 106.69 44.94 103.5 57.42 103.5 59.3 L 103.5 64.89 C 103.5 64.95 102.9 67.62 102.9 67.79 L 102.9 92.39 C 102.9 99.16 111.8 95.09 113.76 98.89 C 113.73 98.95 113.6 100.5 111.44 100.5 L 91.84 100.5 L 84.44 100.5 C 82.37 100.5 82.06 98.98 82.04 98.93 C 83.91 95.96 89.52 98.02 89.52 93.33 L 89.52 83.13 L 89.52 48.31 C 89.52 47.73 89.32 46.95 89.32 46.93 C 86.3 44.63 84.67 46.79 81.69 44.98 C 81.77 43.92 81.42 44.1 82.92 43.07 C 83.52 42.65 98.91 38.03 99.25 38.03 C 99.34 38.03 102.56 37.57 102.56 40.53 L 102.56 48.93 C 102.56 51.99 102.65 51.88 103.02 52.73 Z"/>
+      <path d="M 166.75 101.86 C 149.29 102.72 136.43 91.36 133.75 75.62 C 133.4 73.56 133.46 71.18 133.46 70.04 L 133.46 65.04 C 133.46 61.83 138.02 42.89 156.94 38.34 C 158.42 37.99 160.78 37.44 160.86 37.44 L 165.86 37.44 C 165.95 37.44 167.88 37.29 170.46 37.54 C 179.41 38.39 184.75 43.11 185.68 43.81 C 194.68 50.63 198.47 60.57 197.78 71.81 C 197.46 77.12 196.37 87.26 185.26 95.57 C 183.54 96.85 181.4 98.78 176.2 100.37 C 172.62 101.47 171.48 101.53 166.75 101.86 Z M 169.97 98.05 C 171.45 97.67 175.76 97.01 178.96 93.37 C 185.2 86.29 184.97 73.46 182.79 63.32 C 181.54 57.5 177.63 41.02 163.61 41.02 C 151.41 41.02 148.22 52.51 147.6 56.29 C 147.28 58.17 146.99 61.95 147.36 67.45 C 147.5 69.6 147.5 70.95 147.62 71.84 C 149.2 83.34 155.15 98.26 167.59 98.26 C 169.2 98.26 169.54 98.12 169.97 98.05 Z"/>
+      <path d="M 215.12 66.93 C 214.27 74.1 218.62 93.3 237.52 93.3 C 253.09 93.3 255.27 80.27 256.75 79.74 C 257.71 79.39 257.71 79.67 258.03 79.71 C 259.05 82.08 257.48 86.5 255.86 89.42 C 245.35 108.36 209.04 106.44 203.36 79.23 C 203.33 79.11 203.3 78.92 203.2 78.44 C 203.08 77.83 202.81 76.74 202.7 75.9 C 202.5 74.43 202.44 71.31 202.51 68.71 C 202.53 68.22 202.53 67.92 202.54 67.71 C 202.66 65.06 203.37 61.21 204.43 57.94 C 207.56 48.31 216.15 37.13 233.48 37.31 C 248.08 37.45 254.36 46.23 256.62 51.98 C 257.17 53.37 258.55 56.41 258.55 60.88 C 258.55 61.02 259.37 66.55 254.23 66.55 L 243.83 66.55 L 216.24 66.56 C 215.65 66.56 215.14 66.92 215.12 66.93 Z M 215.07 63.11 C 215.09 63.12 215.73 63.57 216.15 63.57 L 230.94 63.57 L 242.15 63.57 C 245.7 63.57 245.05 59.6 245.05 59.34 C 245.05 51.06 240.84 40.75 231.58 40.75 C 219.83 40.75 215.27 52.88 215.07 63.11 Z"/>
+      <path d="M 272.63 39.4 C 272.63 32.25 266.36 29.08 266.36 19.1 C 266.36 6.34 277.7 2.26 283.75 2.26 C 284.68 2.26 285.6 2.27 286.52 2.35 C 289.67 2.64 293.28 3.63 295.44 6.09 C 295.92 6.63 296.31 7.24 296.6 7.91 C 296.95 8.75 297.05 9.37 297.7 10.11 C 298.41 10.91 299.32 11.53 300.11 12.26 C 301.22 13.29 302.18 14.48 302.92 15.81 C 303.68 17.17 304.31 18.84 304.47 20.4 C 304.75 23.21 303.7 26.26 301.26 27.84 C 300.65 28.23 299.97 28.51 299.26 28.66 C 295.88 29.38 292.79 27.08 291.47 24.09 C 290.75 22.47 290.56 20.66 290.65 18.91 C 290.75 17 291.27 15.16 292.07 13.44 C 292.63 12.24 293.38 11.06 293.32 9.68 C 293.32 9.51 293.32 9.33 293.27 9.16 C 292.92 7.89 291.19 6.89 290.08 6.42 C 289.26 6.06 288.4 5.8 287.53 5.61 C 286.3 5.35 285.01 5.18 283.75 5.18 C 277.51 5.18 274.57 9.64 274.57 14.9 C 274.57 25.72 284.16 29.52 285.35 39.4 L 285.35 40.5 L 272.63 40.5 Z M 263.4 39.4 L 298.2 39.4 C 299.6 39.4 300.25 40 300.25 40.8 C 300.25 41.75 299.4 42.55 298.5 42.8 C 297.8 43 297 43.05 296 43.05 L 285.94 43.05 L 285.94 46.5 L 272.66 46.5 L 272.66 46.1 C 272.66 45.2 271.9 44.5 270.8 44.05 L 263.9 42.35 C 263.1 42.15 262.55 41.6 262.55 40.85 C 262.55 40.1 262.8 39.4 263.4 39.4 Z M 272.66 45.5 L 285.94 45.5 C 285.94 67.5 288.4 78 288.4 90 C 288.4 96.44 286.58 101.5 279.3 101.5 C 272.02 101.5 270.2 96.44 270.2 90 C 270.2 78 272.66 67.5 272.66 45.5 Z"/>
+    </g>
+  </symbol>
+</svg>
 
 <div class="wrap">
   <header class="top">
-    <a class="brand" href="#deze-week"><span class="cjk" aria-hidden="true">旬</span>Proef</a>
+    <a class="brand" href="#deze-week" aria-label="Proef, deze week"><svg class="wordmark" viewBox="0 0 307 104" aria-hidden="true"><use href="#proef-logo"/></svg></a>
     <nav aria-label="Hoofdmenu">
       <a href="#deze-week">Deze week</a>
       <a href="#fermentatie">Fermentatie</a>
@@ -498,6 +513,13 @@ footer { margin-top: 96px; }
     return `url(#${id})`;
   }
 
+  // woordmerk uit het symbool #proef-logo (kleur via currentColor)
+  function wordmark(tag, cls) {
+    const el = h(tag, { class: cls, "aria-label": "Proef" });
+    el.innerHTML = '<svg class="wordmark" viewBox="0 0 307 104" aria-hidden="true"><use href="#proef-logo"/></svg>';
+    return el;
+  }
+
   function photo(r, opts = {}) {
     const box = h("div", { class: "duo " + tintClass(r) });
     const fallback = () => box.replaceChildren(h("span", { class: "fallback cjk", "aria-hidden": "true", text: r.glyph || "食" }));
@@ -542,7 +564,8 @@ footer { margin-top: 96px; }
     const box = $("features");
     box.replaceChildren(...[
       h("section", { class: "mast " + coverClass(ed), "aria-label": "Editie" },
-        h("h1", { class: "logo", text: "Proef" }),
+        wordmark("h1", "logo"),
+        h("p", { class: "tagline", text: "Elke week vijf trending recepten die kinderen ook lekker vinden." }),
         h("p", { class: "sub mono", text: `Nº ${pad(ed.number)} · Week ${ed.week} · ${sName} ${ed.year}` }),
         h("div", { class: "glyph cjk", "aria-hidden": "true", text: ed.cover?.glyph || "旬" }),
         h("div", { class: "bottom" },
@@ -701,7 +724,7 @@ footer { margin-top: 96px; }
       const latest = ed === state.editions[0];
       return h("article", { class: "issue " + coverClass(ed) },
         h("a", { class: "cov", href: latest ? "#deze-week" : "#editie-" + ed.id, "aria-label": `Editie ${ed.number}, week ${ed.week}` },
-          h("div", { class: "row" }, h("span", { class: "logo", text: "Proef" }), h("span", { class: "mono", text: "Nº " + pad(ed.number) })),
+          h("div", { class: "row" }, wordmark("span", "logo"), h("span", { class: "mono", text: "Nº " + pad(ed.number) })),
           h("span", { class: "cjk", "aria-hidden": "true", text: ed.cover?.glyph || "旬" }),
           h("span", { class: "mono", text: `Week ${ed.week} · ${fmtDate(ed.date)}` })),
         h("ul", null,

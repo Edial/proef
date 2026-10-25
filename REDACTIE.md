@@ -45,7 +45,7 @@ De routine draait elke zaterdag om 06:00. Elke stap kost tokens, en alles wat je
 ```jsonc
 {
   "id": "2026-44", "number": 2, "year": 2026, "week": 44, "date": "2026-10-31",
-  "intro": "Twee, drie zinnen over deze week.",
+  "intro": "Twee zinnen over deze week. Herhaal niet de vaste tagline (vijf trending recepten, kindvriendelijk) en niet grammen/milliliters.",
   "cover": { "color": "ink", "glyph": "旬" },
   "recipes": [
     {
