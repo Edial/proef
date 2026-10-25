@@ -87,16 +87,22 @@ img { display: block; max-width: 100%; }
 .t-mustard   { --bg: var(--mustard);   --hi: #F7D27E;      --lo: #5B3D10; }
 
 /* Foto: duotoon in de receptkleur met drukraster; hover toont het origineel */
-.duo { position: relative; overflow: hidden; background: var(--hi); isolation: isolate; }
-.duo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.08) brightness(1.08); mix-blend-mode: multiply; transition: filter .5s ease; }
+.duo { position: relative; overflow: hidden; background: var(--hi); isolation: isolate; transition: background-color .5s ease; }
+.duo .lift { position: absolute; inset: 0; display: block; mix-blend-mode: multiply; }
+.duo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.08) brightness(1.08); transition: filter .5s ease; }
 .duo::after { content: ""; position: absolute; inset: 0; background: var(--lo); mix-blend-mode: lighten; pointer-events: none; transition: opacity .5s ease; }
 .duo::before { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: .2; mix-blend-mode: multiply; background-image: radial-gradient(circle, #000 0.7px, transparent 1.3px); background-size: 4px 4px; transition: opacity .5s ease; }
+/* origineel: wit achter de multiply-laag, dan blijft de foto over; alles animeert mee */
 @media (hover: hover) {
-  .duo:hover img { filter: none; mix-blend-mode: normal; }
+  .duo:hover { background-color: #fff; }
+  .duo:hover img { filter: none; }
   .duo:hover::after, .duo:hover::before { opacity: 0; }
 }
-.duo.color img { filter: none; mix-blend-mode: normal; }
-.duo.color::after, .duo.color::before { opacity: 0; }
+.duo.color, .duo.scrolled { background-color: #fff; }
+.duo.color img, .duo.scrolled img { filter: none; }
+.duo.color::after, .duo.color::before, .duo.scrolled::after, .duo.scrolled::before { opacity: 0; }
+/* receptfoto: filter gaat snel weg zodra je scrolt */
+.spread .left .duo, .spread .left .duo img, .spread .left .duo::after, .spread .left .duo::before { transition-duration: .6s; transition-timing-function: cubic-bezier(.2, .7, .3, 1); }
 .duo .glyph { position: absolute; top: 16px; right: 18px; z-index: 3; color: var(--cream); }
 .duo .fallback { position: absolute; inset: 0; display: grid; place-items: center; font-size: clamp(64px, 12vw, 140px); color: var(--lo); }
 
@@ -198,6 +204,8 @@ kbd { font-family: var(--mono); font-style: normal; font-size: 11px; border: 1px
 .sheet > .metaline { padding: 10px 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); color: var(--ink); align-items: center; }
 .sheet .dek { font-style: italic; color: var(--muted); font-size: 17px; margin-top: 18px; max-width: 60ch; }
 .sheet .trend { margin-top: 12px; }
+.stack { display: grid; gap: 32px; margin-top: 28px; }
+.stack .why { margin-top: 0; }
 .cols { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 36px; margin-top: 28px; }
 .head-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
 .copy { font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: .25em; }
@@ -209,8 +217,8 @@ kbd { font-family: var(--mono); font-style: normal; font-size: 11px; border: 1px
 .stepper output { min-width: 9ch; text-align: center; }
 .ing-group { padding: 16px 0 4px; }
 .ingr { list-style: none; margin: 0; padding: 0; font-family: var(--mono); font-size: 12.5px; }
-.ingr li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; padding: 7px 0; border-bottom: 1px solid var(--rule); line-height: 1.4; }
-.ingr .q { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.ingr li { display: grid; grid-template-columns: 9ch minmax(0, 1fr); gap: 16px; padding: 7px 0; border-bottom: 1px solid var(--rule); line-height: 1.4; }
+.ingr .q { white-space: nowrap; font-variant-numeric: tabular-nums; }
 .steps { list-style: none; margin: 0; padding: 0; counter-reset: s; }
 .steps li { counter-increment: s; display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 8px; margin-bottom: 12px; font-size: 15.5px; line-height: 1.5; }
 .steps li::before { content: counter(s); color: var(--hanko); }
@@ -350,7 +358,7 @@ footer { margin-top: 96px; }
   .s-hint { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .duo img, .duo::after, .duo::before { transition: none; }
+  .duo, .duo img, .duo::after, .duo::before, .spread .left .duo, .spread .left .duo img, .spread .left .duo::after, .spread .left .duo::before { transition: none; }
 }
 </style>
 </head>
@@ -389,7 +397,7 @@ footer { margin-top: 96px; }
   <footer>
     <div class="foot mono">
       <span>© 2026 Proef</span>
-      <span>Samengesteld met Claude · trenddata van Pinterest, Google en TikTok</span>
+      <span>Trenddata van Pinterest, Google en TikTok</span>
     </div>
   </footer>
 </div>
@@ -462,13 +470,39 @@ footer { margin-top: 96px; }
   const servingsText = (r, n) => { const lab = r.servingsLabel || "personen"; return n + " " + (n === 1 ? singular[lab] || lab : lab); };
   const recipeNo = (r) => pad(r._edition.recipes.indexOf(r) + 1);
 
+  // per foto een gamma-filter (photoGamma uit de editie), zodat alle foto's even licht zijn
+  function liftFilter(g) {
+    const id = "lift-" + String(g).replace(".", "_");
+    if (!document.getElementById(id)) {
+      const ns = "http://www.w3.org/2000/svg";
+      let defs = document.getElementById("lift-defs");
+      if (!defs) {
+        const svg = document.createElementNS(ns, "svg");
+        svg.setAttribute("aria-hidden", "true");
+        svg.style.cssText = "position:absolute;width:0;height:0";
+        defs = svg.appendChild(document.createElementNS(ns, "defs"));
+        defs.id = "lift-defs";
+        document.body.append(svg);
+      }
+      const f = defs.appendChild(document.createElementNS(ns, "filter"));
+      f.id = id; f.setAttribute("color-interpolation-filters", "sRGB");
+      const ct = f.appendChild(document.createElementNS(ns, "feComponentTransfer"));
+      for (const c of ["R", "G", "B"]) {
+        const fn = ct.appendChild(document.createElementNS(ns, "feFunc" + c));
+        fn.setAttribute("type", "gamma"); fn.setAttribute("exponent", g);
+      }
+    }
+    return `url(#${id})`;
+  }
+
   function photo(r, opts = {}) {
     const box = h("div", { class: "duo " + tintClass(r) });
     const fallback = () => box.replaceChildren(h("span", { class: "fallback cjk", "aria-hidden": "true", text: r.glyph || "食" }));
     if (r.photo) {
       const img = h("img", { src: r.photo, alt: opts.alt === false ? "" : "Foto van " + r.title + (r.photoCredit ? " (" + r.photoCredit.label + ")" : ""), loading: opts.eager ? "eager" : "lazy", referrerpolicy: "no-referrer", decoding: "async" });
       img.addEventListener("error", fallback, { once: true });
-      box.append(img);
+      const g = Number(r.photoGamma);
+      box.append(h("span", { class: "lift", style: g > 0 && g !== 1 ? "filter:" + liftFilter(g) : null }, img));
       if (opts.glyph && r.glyph) box.append(h("span", { class: "glyph cjk", "aria-hidden": "true", text: r.glyph }));
       // aanraakschermen: tik om de echte kleuren te zien
       box.addEventListener("click", (e) => { if (matchMedia("(hover: none)").matches && !box.closest("a")) { e.preventDefault(); box.classList.toggle("color"); } });
@@ -542,7 +576,7 @@ footer { margin-top: 96px; }
     const cells = [], box = h("div");
     for (const grp of groups) {
       if (grp.name) box.append(h("p", { class: "label ing-group", text: grp.name }));
-      box.append(h("ul", { class: "ingr" }, grp.items.map((ing) => { const q = h("span", { class: "q", text: fmtQty(ing, factor) }); cells.push([q, ing]); return h("li", null, h("span", { text: ing.item }), q); })));
+      box.append(h("ul", { class: "ingr" }, grp.items.map((ing) => { const q = h("span", { class: "q", text: fmtQty(ing, factor) }); cells.push([q, ing]); return h("li", null, q, h("span", { text: ing.item })); })));
     }
     return { box, cells, groups };
   }
@@ -586,19 +620,19 @@ footer { margin-top: 96px; }
           h("p", { class: "dek", text: r.dek || "" }),
           trend(r),
           (r.tags || []).length ? h("div", { class: "tags" }, r.tags.map((t) => h("a", { href: "#zoek/" + encodeURIComponent(t.toLowerCase()), text: t }))) : null,
-          h("div", { class: "cols" },
+          h("div", { class: "stack" },
             h("section", { "aria-labelledby": "ing-t" },
               h("div", { class: "head-row" }, h("h2", { class: "mono colhead", id: "ing-t", text: "Ingrediënten" }), copyBtn),
-              ings.box,
-              whyText || (r.links || []).length ? h("aside", { class: "why", "aria-labelledby": "why-t" },
-                h("span", { class: "label", id: "why-t", text: "Waarom deze week" }),
-                whyText ? h("p", { text: whyText }) : null,
-                (r.links || []).length ? h("ul", { class: "links" }, r.links.map((l) => h("li", null, h("a", { href: l.url, target: "_blank", rel: "noopener", text: l.label + " ↗" })))) : null) : null),
+              ings.box),
             h("section", { "aria-labelledby": "steps-t" },
               h("h2", { class: "mono colhead", id: "steps-t", text: "Bereiding" }),
               h("ol", { class: "steps" }, (r.steps || []).map((s) => h("li", null, h("span", { text: s })))),
               r.tip ? h("aside", { class: "tip" }, h("span", { class: "label", text: "Tip" }), r.tip) : null,
-              f ? h("p", { class: "ferm-link" }, "Zelf maken? ", h("a", { href: "#fermentatie-" + ed.id, text: "Fermentatie van de week: " + f.title + " →" })) : null)))),
+              f ? h("p", { class: "ferm-link" }, "Zelf maken? ", h("a", { href: "#fermentatie-" + ed.id, text: "Fermentatie van de week: " + f.title + " →" })) : null),
+            whyText || (r.links || []).length ? h("aside", { class: "why", "aria-labelledby": "why-t" },
+              h("span", { class: "label", id: "why-t", text: "Waarom deze week" }),
+              whyText ? h("p", { text: whyText }) : null,
+              (r.links || []).length ? h("ul", { class: "links" }, r.links.map((l) => h("li", null, h("a", { href: l.url, target: "_blank", rel: "noopener", text: l.label + " ↗" })))) : null) : null))),
       h("nav", { class: "pager", "aria-label": "Andere recepten" },
         prev ? h("a", { class: "card", href: "#" + prev.slug }, h("span", { class: "label", text: "← Vorige" }), h("strong", { text: prev.title })) : h("span"),
         next ? h("a", { class: "card next", href: "#" + next.slug }, h("span", { class: "label", text: "Volgende →" }), h("strong", { text: next.title }))
@@ -875,6 +909,8 @@ footer { margin-top: 96px; }
   }
 
   window.addEventListener("hashchange", route);
+  // receptpagina: na een klein stukje scrollen verschijnt de foto in kleur
+  addEventListener("scroll", () => { const d = document.querySelector(".spread .left .duo"); if (d) d.classList.toggle("scrolled", scrollY > 24); }, { passive: true });
   initSearch();
   load();
 })();

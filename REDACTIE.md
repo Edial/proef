@@ -25,7 +25,7 @@ Vijf recepten die deze week trending zijn, plus één Fermentatie van de week. W
    - `signal.text` + `links`: de langere uitleg en de bronnen voor "Waarom deze week".
 5. **Fermentatie van de week:** kies uit de bibliotheek in **[FERMENTATIE.md](FERMENTATIE.md) §9** en vink de checklist in §8 helemaal af. Herhaal geen ferment uit de laatste 4 edities. Koppel het ferment met `usedIn` aan een recept van deze editie als dat kan. Zet de geraadpleegde bronnen in `sources`.
 6. **Omslag:** `cover.color` is anders dan vorige week (`navy`, `ink`, `kaki`, `moss`). `cover.glyph` is één teken voor het thema van de week (standaard 旬, "in het seizoen").
-7. **Controleer:** `python3 scripts/check_photos.py editions/<id>.json` (alle foto's moeten werken) en `python3 scripts/check_edition.py` (0 fouten).
+7. **Controleer:** `python3 scripts/check_photos.py editions/<id>.json` (alle foto's moeten werken), daarna `python3 scripts/photo_light.py editions/<id>.json` (zet `photoGamma`, zodat alle foto's even licht zijn; vereist `pip install pillow`) en `python3 scripts/check_edition.py` (0 fouten).
 8. **Publiceer:** voeg het id vooraan toe in `editions/index.json`, commit als `Proef: editie NN (week WW)` en push naar `main`. GitHub Pages zet het binnen een paar minuten live.
 
 ## Wekelijkse run (Claude-routine): zuinig werken
@@ -37,7 +37,7 @@ De routine draait elke zaterdag om 06:00. Elke stap kost tokens, en alles wat je
 3. **Zoeken:** gebruik WebSearch in `standard`-modus (niet `extended`), **maximaal 8 zoekopdrachten** in totaal. Stuur ze tegelijk in één beurt.
 4. **Pagina's openen:** maximaal 10 keer WebFetch, alleen voor pagina's die je echt gebruikt (bronrecept, trendbron). Vraag in de prompt alleen wat je nodig hebt.
 5. **Ferment:** kies uit de bibliotheek in FERMENTATIE.md §9, geen nieuw onderzoek. Schrijf het ferment met de cijfers uit de tabel. De bronlinks controleert `check_photos.py`.
-6. **Schrijf de editie in één keer** met Write. Draai daarna `python3 scripts/check_photos.py editions/<id>.json` en `python3 scripts/check_edition.py`. Herstel alleen wat de scripts melden.
+6. **Schrijf de editie in één keer** met Write. Draai daarna `python3 scripts/check_photos.py editions/<id>.json`, `python3 scripts/photo_light.py editions/<id>.json` en `python3 scripts/check_edition.py`. Herstel alleen wat de scripts melden.
 7. **Publiceer** zoals in stap 8 hierboven en sluit af met een verslag van hooguit 15 regels.
 
 ## Velden van een editie
@@ -58,6 +58,7 @@ De routine draait elke zaterdag om 06:00. Elke stap kost tokens, en alles wat je
       "signal": { "source": "…", "text": "…" },
       "links": [{ "label": "…", "url": "https://…" }],
       "photo": "https://…jpg", "photoCredit": { "label": "…", "url": "https://…" },
+      "photoGamma": 0.62,  // door scripts/photo_light.py, niet zelf invullen
       "ingredients": [{ "qty": 200, "unit": "g", "item": "…", "group": "Saus (optioneel)" }],
       "steps": ["…"], "tip": "…"
     }

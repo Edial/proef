@@ -135,7 +135,8 @@
       "trend": {
         "source": "Pinterest",
         "text": "Kool wordt dit jaar twee keer zo vaak gezocht als vorig jaar."
-      }
+      },
+      "photoGamma": 0.78
     },
     {
       "slug": "dumpling-bake",
@@ -256,7 +257,8 @@
       "trend": {
         "source": "TikTok",
         "text": "Een van de grootste foodtrends van dit najaar."
-      }
+      },
+      "photoGamma": 0.71
     },
     {
       "slug": "zuppa-toscana",
@@ -361,7 +363,8 @@
       "trend": {
         "source": "TikTok",
         "text": "Gaat rond als hét herfstrecept van 2026."
-      }
+      },
+      "photoGamma": 0.5
     },
     {
       "slug": "kimchi-gebakken-rijst",
@@ -461,7 +464,8 @@
       "trend": {
         "source": "Pinterest",
         "text": "Gefermenteerd eten is in, en kimchi voorop."
-      }
+      },
+      "photoGamma": 0.35
     },
     {
       "slug": "cottage-cheese-flatbread",
@@ -565,7 +569,8 @@
       "trend": {
         "source": "TikTok",
         "text": "Al maanden een van de meest gemaakte eiwitrecepten."
-      }
+      },
+      "photoGamma": 0.59
     }
   ],
   "ferment": {
