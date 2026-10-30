@@ -75,8 +75,24 @@ def check_recipe(r, where, seen):
     elif not (isinstance(r["trendTerms"], list) and all(isinstance(x, str) and x.strip() for x in r["trendTerms"]) and len(r["trendTerms"]) <= 3):
         err(where, "trendTerms moet een lijst van 1 tot 3 zoektermen zijn")
     check_signals(r.get("signals"), where)
+    if r.get("source") and r["source"] not in SOURCES:
+        err(where, f"source '{r['source']}' staat niet in data/sources.csv")
+    sp = r.get("spark")
+    if sp is not None:
+        if sp.get("label") not in SPARK_LABELS:
+            err(where, f"spark.label '{sp.get('label')}' is onbekend ({', '.join(sorted(SPARK_LABELS))})")
+        if not (isinstance(sp.get("weeks"), list) and len(sp["weeks"]) == 52 and all(isinstance(x, int) for x in sp["weeks"])):
+            err(where, "spark.weeks moet 52 hele getallen zijn (maak spark met scripts/trends_spark.py)")
+        if not sp.get("text"):
+            err(where, "spark.text ontbreekt")
 
 
+SOURCES = {}
+if (ROOT / "data" / "sources.csv").exists():
+    import csv
+    with (ROOT / "data" / "sources.csv").open(newline="") as _f:
+        SOURCES = {row["id"]: row for row in csv.DictReader(_f)}
+SPARK_LABELS = {"Nieuw", "Seizoen", "Piek", "Stijgt", "Stabiel", "Dalend"}
 SIGNAL_KEYS = {"source", "metric", "value", "unit", "period", "geo", "url", "note"}
 
 
@@ -158,6 +174,13 @@ def main():
             err(where, f"geen geldige JSON: {e}")
             continue
         need(ed, ["id", "number", "year", "week", "date", "intro", "recipes"], where)
+        if str(ed.get("date", "")) >= "2026-11-07":
+            core = sum((SOURCES.get(r.get("source") or "") or {}).get("tier") == "core" for r in ed.get("recipes", []))
+            if core < 3:
+                warn(where, f"maar {core} van de recepten komen van een kernbron (doel: minstens 3, veld 'source')")
+            good = sum((r.get("spark") or {}).get("label") in ("Nieuw", "Seizoen", "Piek", "Stijgt") for r in ed.get("recipes", []))
+            if good < 3:
+                warn(where, f"maar {good} recepten zijn volgens Google Trends echt in trek (doel: minstens 3 met Nieuw, Seizoen, Piek of Stijgt)")
         for i, wt in enumerate(ed.get("watch") or []):
             ww = f"{where} watch {i + 1}"
             need(wt, ["term", "source"], ww)

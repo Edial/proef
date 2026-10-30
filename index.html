@@ -78,6 +78,48 @@ img { display: block; max-width: 100%; }
 .trend { border-top: 1px solid var(--rule); padding-top: 10px; }
 .trend b { display: block; margin-bottom: 3px; font-family: var(--mono); font-weight: 500; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--hanko); }
 .trend p { margin: 0; font-style: italic; font-size: 15px; line-height: 1.4; color: var(--muted); }
+/* gemeten trend: label, sparkline (12 maanden) en één zin, uit Google Trends (scripts/trends_spark.py) */
+.tl { display: inline-flex; align-items: baseline; gap: 5px; font-family: var(--mono); font-weight: 500; font-size: 10.5px; line-height: 1.5; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; color: var(--hanko); }
+.tl i { font-style: normal; font-size: 12px; letter-spacing: 0; }
+.tl.quiet { color: var(--muted); }
+.spark { display: block; width: 100%; height: 34px; overflow: visible; color: var(--ink); }
+.trend .row { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+.trend .row .spark { flex: none; width: 84px; height: 18px; }
+.spark path { fill: none; vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round; }
+.spark .ln { stroke: currentColor; stroke-width: 1.5; }
+.spark .prev { stroke: currentColor; stroke-width: 1; stroke-dasharray: 2 3; opacity: .4; }
+.spark .dot { stroke: var(--hanko); stroke-width: 6; }
+.trend.line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-top: 14px; padding-top: 10px; text-decoration: none; color: var(--muted); font-style: italic; font-size: 15px; }
+.trend.line:hover span:last-child { text-decoration: underline; text-decoration-thickness: 1px; }
+.why .spark { height: 110px; margin: 14px 0 4px; color: var(--ink); }
+.spark-axis { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.why-line { margin: 16px 0 0; font-family: var(--serif); font-size: 16px; line-height: 1.5; color: var(--ink); max-width: 60ch; }
+.why-src { margin: 8px 0 0; font-size: 12.5px; line-height: 1.5; color: var(--muted); max-width: 70ch; }
+.why-line a, .why-src a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .2em; }
+@media (max-width: 640px) { .why .spark { height: 90px; } }
+.trend-src { margin: 10px 0 0; font-family: var(--mono); font-size: 10.5px; letter-spacing: .04em; color: var(--muted); }
+.trend-src a { color: var(--ink); }
+.method .dek { max-width: 62ch; }
+.method .prose-1 { margin: 18px 0 28px; max-width: 62ch; font-size: 16px; }
+.method .prose-1 p + p { margin-top: 12px; }
+.method .labels { display: grid; gap: 10px; margin: 0 0 8px; }
+.method .labels div { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 12px; align-items: baseline; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
+.method .labels dd { margin: 0; font-size: 15.5px; }
+.trends .dek { max-width: 62ch; }
+.buzz { list-style: none; margin: 24px 0 0; padding: 0; }
+.buzz > li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 12px; padding: 14px 0; border-top: 1px solid var(--rule); }
+.buzz .no { font-size: 22px; line-height: 1.1; }
+.buzz strong { display: block; font-weight: 400; font-size: 22px; line-height: 1.15; text-transform: lowercase; }
+.buzz .meta { display: flex; gap: 12px; align-items: baseline; margin-top: 4px; color: var(--muted); }
+.buzz .links { margin-top: 8px; }
+.buzz .links b, .ours-list b { font-weight: 500; }
+.trends .ours { margin-top: 36px; }
+.ours-list { list-style: none; margin: 0; padding: 0; }
+.ours-list li { display: grid; grid-template-columns: minmax(0, 1.2fr) auto minmax(0, 1.6fr); gap: 16px; align-items: center; padding: 10px 0; border-top: 1px solid var(--rule); }
+.ours-list li > a { font-size: 17px; text-decoration: none; }
+.ours-list .row { display: flex; align-items: center; gap: 10px; }
+.ours-list .spark { width: 84px; height: 18px; }
+.ours-list .txt { font-style: italic; font-size: 14.5px; color: var(--muted); }
 
 /* Receptkleuren */
 .t-sage      { --bg: var(--sage);      --hi: var(--sage);  --lo: #2E4A6B; }
@@ -149,11 +191,17 @@ img { display: block; max-width: 100%; }
 .tile .trend { margin-top: auto; padding-top: 10px; border-top-color: rgba(31,29,26,.25); }
 .tile .body > .metaline { margin-bottom: 16px; }
 .tile .trend b { color: var(--dark); }
+.tile .spark { color: var(--lo); }
+.tile .tl { color: var(--dark); }
+.tile .tl.quiet { color: rgba(31,29,26,.6); }
 .tile .trend p { color: rgba(31,29,26,.78); }
 .tile.t-persimmon { color: var(--cream); }
 .tile.t-persimmon .no, .tile.t-persimmon .trend b { color: var(--cream); }
 .tile.t-persimmon .metaline, .tile.t-persimmon .trend p { color: rgba(248,245,238,.88); }
 .tile.t-persimmon .trend { border-top-color: rgba(248,245,238,.4); }
+.tile.t-persimmon .spark { color: var(--cream); }
+.tile.t-persimmon .tl { color: var(--cream); }
+.tile.t-persimmon .tl.quiet { color: rgba(248,245,238,.75); }
 
 .ferm-teaser { grid-column: span 12; display: grid; grid-template-columns: minmax(160px, 3fr) auto minmax(0, 7fr) auto; gap: 40px; align-items: center; text-decoration: none; padding-right: 36px; }
 .ferm-teaser .seigaiha { align-self: stretch; min-height: 220px; }
@@ -353,6 +401,7 @@ footer { margin-top: 96px; }
   .sheet header .no { font-size: 46px; } .sheet h1 { font-size: 28px; }
   .ferm-side .big { font-size: 96px; } .ferm-side h1 { font-size: 34px; }
   .cols, .checks { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .ours-list li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
   .prose { columns: 1; }
   .timeline { grid-template-columns: minmax(0, 1fr); }
   .timeline::before { top: 0; bottom: 0; left: 5px; right: auto; width: 1px; height: auto; }
@@ -390,6 +439,7 @@ footer { margin-top: 96px; }
     <nav aria-label="Hoofdmenu">
       <a href="#deze-week">Deze week</a>
       <a href="#fermentatie">Fermentatie</a>
+      <a href="#trends">Trends</a>
       <a href="#archief">Archief</a>
       <a href="#zoek" aria-keyshortcuts="/">Zoek <kbd>/</kbd></a>
     </nav>
@@ -417,7 +467,7 @@ footer { margin-top: 96px; }
   <footer>
     <div class="foot mono">
       <span>© 2026 Proef</span>
-      <span>Trenddata van Pinterest, Google en TikTok</span>
+      <span>Trenddata van Google Trends, Pinterest en TikTok · <a href="#zo-meten-we">Hoe meten we dit?</a></span>
     </div>
   </footer>
 </div>
@@ -538,7 +588,56 @@ footer { margin-top: 96px; }
     return box;
   }
   const native = (r) => r.native ? h("p", { class: "native", lang: /[가-힯]/.test(r.native) ? "ko" : "ja" }, r.native, r.roman ? h("em", { lang: "nl", text: r.roman }) : null) : null;
-  const trend = (r) => r.trend ? h("div", { class: "trend" }, h("b", { text: r.trend.source ? "Gezien op " + r.trend.source : "Veel gemaakt" }), h("p", { text: r.trend.text })) : null;
+  // gemeten trend (spark) als die er is, anders de redactionele trend-tekst
+  const QUIET = new Set(["Stabiel", "Dalend"]);
+  const geoText = (g) => g === "NL" ? "Nederland" : "wereldwijd";
+  const monthFmt = new Intl.DateTimeFormat("nl-NL", { month: "short", year: "numeric" });
+  function sparkSvg(sp, opts = {}) {
+    const W = 520, H = 100, all = opts.prev ? sp.weeks.concat(sp.prev || []) : sp.weeks;
+    const max = Math.max(1, ...all), n = sp.weeks.length;
+    const pts = (v) => v.map((y, i) => (i ? "L" : "M") + (i * W / (n - 1)).toFixed(1) + " " + (H - y / max * H).toFixed(1)).join(" ");
+    const last = sp.weeks[n - 1];
+    const el = h("span");
+    el.innerHTML = `<svg class="spark" viewBox="0 -4 ${W} ${H + 8}" preserveAspectRatio="none" role="img" aria-label="${opts.label || ""}">`
+      + (opts.prev && sp.prev ? `<path class="prev" d="${pts(sp.prev)}"/>` : "")
+      + `<path class="ln" d="${pts(sp.weeks)}"/><path class="dot" d="M${W} ${(H - last / max * H).toFixed(1)}h0"/></svg>`;
+    return el.firstChild;
+  }
+  const sparkLabel = (sp) => `Zoekinteresse in “${sp.term}”, ${geoText(sp.geo)}, afgelopen 12 maanden. ${sp.label}: ${sp.text}`;
+  // trendlabel: pijltje + woord, rood als het de goede kant op gaat, grijs als het stil of dalend is
+  const ARROW = { Nieuw: "✦", Seizoen: "↻", Piek: "▲", Stijgt: "↗", Stabiel: "→", Dalend: "↘" };
+  const tl = (label) => h("span", { class: "tl" + (QUIET.has(label) ? " quiet" : "") }, h("i", { "aria-hidden": "true", text: ARROW[label] || "•" }), label);
+  const chip = (sp) => tl(sp.label);
+  // home: label met een klein lijntje ernaast; receptpagina (big): grote grafiek met vorig jaar als stippellijn
+  const trend = (r, opts = {}) => {
+    const sp = r.spark;
+    if (sp && sp.weeks && opts.line) return h("a", { class: "trend line", href: "#waarom" }, chip(sp), h("span", { text: sp.text }));
+    if (sp && sp.weeks) return h("div", { class: "trend has-spark" },
+      h("div", { class: "row" }, chip(sp), sparkSvg(sp, { label: sparkLabel(sp) })),
+      h("p", { text: sp.text }));
+    return r.trend ? h("div", { class: "trend" }, h("b", { text: r.trend.source ? "Gezien op " + r.trend.source : "Veel gemaakt" }), h("p", { text: r.trend.text })) : null;
+  };
+  // de cijfers achter het label, onderaan bij "Waarom deze week"
+  // "Waarom deze week" met gemeten trend: grafiek, één zin over het netwerk, één bronregel
+  const linkList = (items) => items.flatMap((x, i) => [i ? (i === items.length - 1 ? " en " : ", ") : "", h("a", { href: x.url, target: "_blank", rel: "noopener", text: x.text })]);
+  function whyTrend(r) {
+    const sp = r.spark, net = sp.network;
+    const start = monthFmt.format(new Date(sp.start + "T12:00:00"));
+    const cooks = net && net.posts.length ? [
+      `${net.sources} van de ${net.of} koks die we volgen maakten er de afgelopen ${net.days} dagen iets mee: `,
+      ...linkList(net.posts.slice(0, 3).map((p) => ({ url: p.url, text: p.name }))), "."]
+      : net ? [`Geen van de ${net.of} koks die we volgen maakte er de afgelopen ${net.days} dagen iets mee.`] : null;
+    const also = (r.links || []).map((l) => ({ url: l.url, text: l.label.split(" · ")[0] }));
+    return [
+      sparkSvg(sp, { prev: true, label: sparkLabel(sp) + " De stippellijn is het jaar ervoor." }),
+      h("div", { class: "spark-axis", "aria-hidden": "true" }, h("span", { text: start }), h("span", { text: "- - vorig jaar" }), h("span", { text: "nu" })),
+      cooks ? h("p", { class: "why-line" }, ...cooks) : null,
+      h("p", { class: "why-src" },
+        `Zoekdata: Google Trends, ${geoText(sp.geo)}, “${sp.term}”, tot ${fmtDate(sp.asOf)}. `,
+        ...(also.length ? ["Ook gezien bij ", ...linkList(also), ". "] : []),
+        h("a", { href: "#zo-meten-we", text: "Hoe meten we dit?" })),
+    ];
+  }
   const metaline = (...items) => h("div", { class: "metaline mono" }, items.filter(Boolean).map((t) => h("span", { text: t })));
 
   /* ---------- Home ---------- */
@@ -647,7 +746,7 @@ footer { margin-top: 96px; }
           h("header", null, h("span", { class: "no", text: recipeNo(r) }), h("div", null, native(r), h("h1", { text: r.title }))),
           h("div", { class: "metaline mono" }, h("span", { class: "stepper" }, minus, out, plus), h("span", { text: r.minutes + " min" }), r.category ? h("span", { text: r.category }) : null),
           h("p", { class: "dek", text: r.dek || "" }),
-          trend(r),
+          trend(r, { line: true }),
           (r.tags || []).length ? h("div", { class: "tags" }, r.tags.map((t) => h("a", { href: "#zoek/" + encodeURIComponent(t.toLowerCase()), text: t }))) : null,
           h("div", { class: "stack" },
             h("section", { "aria-labelledby": "ing-t" },
@@ -658,7 +757,9 @@ footer { margin-top: 96px; }
               h("ol", { class: "steps" }, (r.steps || []).map((s) => h("li", null, h("span", { text: s })))),
               r.tip ? h("aside", { class: "tip" }, h("span", { class: "label", text: "Tip" }), r.tip) : null,
               f ? h("p", { class: "ferm-link" }, "Zelf maken? ", h("a", { href: "#fermentatie-" + ed.id, text: "Fermentatie van de week: " + f.title + " →" })) : null),
-            whyText || (r.links || []).length ? h("aside", { class: "why", "aria-labelledby": "why-t" },
+            r.spark && r.spark.weeks ? h("aside", { class: "why", id: "waarom", "aria-labelledby": "why-t" },
+              h("span", { class: "label", id: "why-t", text: "Waarom deze week" }), ...whyTrend(r))
+            : whyText || (r.links || []).length ? h("aside", { class: "why", "aria-labelledby": "why-t" },
               h("span", { class: "label", id: "why-t", text: "Waarom deze week" }),
               whyText ? h("p", { text: whyText }) : null,
               (r.links || []).length ? h("ul", { class: "links" }, r.links.map((l) => h("li", null, h("a", { href: l.url, target: "_blank", rel: "noopener", text: l.label + " ↗" })))) : null) : null))),
@@ -672,6 +773,71 @@ footer { margin-top: 96px; }
     $("home").hidden = true; $("detail-view").hidden = false;
     state.lastSlug = r.slug;
     window.scrollTo(0, 0);
+  }
+
+  /* ---------- Hoe meten we trends? ---------- */
+  const LABELS = [
+    ["Nieuw", "Het afgelopen jaar volop gezocht, daarvoor bijna niet."],
+    ["Seizoen", "Komt elk jaar rond deze tijd terug, en zit nu hoog."],
+    ["Piek", "Zo vaak gezocht als in vijf jaar niet, en vaker dan vorig jaar."],
+    ["Stijgt", "Minstens anderhalf keer zo vaak gezocht als in dezelfde weken vorig jaar."],
+    ["Stabiel", "Ongeveer even vaak gezocht als vorig jaar."],
+    ["Dalend", "Duidelijk minder gezocht dan vorig jaar."],
+  ];
+  function showMethod() {
+    $("detail-view").replaceChildren(h("article", null,
+      h("a", { class: "back mono", href: "#deze-week", text: "← Deze week" }),
+      h("div", { class: "card sheet method" },
+        h("p", { class: "kicker", text: "Over Proef" }),
+        h("h1", { text: "Hoe meten we trends?" }),
+        h("p", { class: "dek", text: "Een recept noemen we pas trending als de zoekdata dat laat zien. Bij elk recept staat daarom een label en een lijn: hoe vaak mensen het afgelopen jaar naar dit gerecht zochten." }),
+        h("div", { class: "prose-1" },
+          h("p", { text: "Per recept kiezen we een zoekterm zoals mensen hem intypen, bijvoorbeeld “zuppa toscana”. We halen elke week de cijfers op bij Google Trends. Is er in Nederland genoeg data, dan gebruiken we Nederland; anders kijken we wereldwijd." }),
+          h("p", { text: "Google geeft geen aantallen, maar een score van 0 tot 100 per zoekterm. Daarom vergelijken we een gerecht alleen met zichzelf: de laatste vier volle weken tegenover dezelfde weken vorig jaar, en tegenover het laagste punt van het afgelopen jaar. De lopende week telt niet mee." }),
+          h("p", { text: "De lijn toont de afgelopen 12 maanden, de stippellijn op de receptpagina het jaar ervoor. De rode stip is de laatste volle week." }),
+          h("p", { text: "Daarnaast volgen we een netwerk van koks, foodbloggers en magazines, met oud-redacteuren van Bon Appétit en delicious. in de kern. Elke week lezen we hun nieuwe recepten. Bij elk recept tellen we hoeveel van hen de afgelopen 30 dagen iets met dit gerecht publiceerden; elke kok telt één keer." })),
+        h("h2", { class: "mono colhead", text: "De labels" }),
+        h("dl", { class: "labels" }, LABELS.map(([l, t]) => h("div", null, h("dt", null, tl(l)), h("dd", { text: t })))),
+        h("p", { class: "why", text: "Staat er een recept met “Dalend” in Proef? Dan kozen we het om iets anders: het seizoen, weinig werk, of omdat kinderen het lusten. Het label laat eerlijk zien hoe het ervoor staat." }))));
+    document.title = "Hoe meten we trends? · Proef";
+    $("home").hidden = true; $("detail-view").hidden = false;
+    window.scrollTo(0, 0);
+  }
+
+  /* ---------- Trends: wat koks nu maken (data/buzz.json) ---------- */
+  async function showTrends() {
+    const ed = state.editions[0];
+    const ours = ed.recipes.filter((r) => r.spark && r.spark.weeks);
+    const list = h("ol", { class: "buzz" }, h("li", { class: "status", text: "Even laden…" }));
+    $("detail-view").replaceChildren(h("article", null,
+      h("a", { class: "back mono", href: "#deze-week", text: "← Deze week" }),
+      h("div", { class: "card sheet trends" },
+        h("p", { class: "kicker", text: "Trends" }),
+        h("h1", { text: "Wat koks nu maken" }),
+        h("p", { class: "dek", id: "buzz-dek", text: "Gerechten waar de afgelopen 30 dagen meerdere koks, foodbloggers en magazines die we volgen tegelijk over publiceerden." }),
+        list,
+        ours.length ? h("section", { class: "ours" },
+          h("h2", { class: "mono colhead", text: `Deze week in Proef · Nº ${pad(ed.number)}` }),
+          h("ul", { class: "ours-list" }, ours.map((r) => h("li", null,
+            h("a", { href: "#" + r.slug, text: r.title }),
+            h("span", { class: "row" }, chip(r.spark), sparkSvg(r.spark, { label: sparkLabel(r.spark) })),
+            h("span", { class: "txt", text: r.spark.text }))))) : null,
+        h("p", { class: "trend-src" }, h("a", { href: "#zo-meten-we", text: "Hoe meten we dit?" })))));
+    document.title = "Trends · Proef";
+    $("home").hidden = true; $("detail-view").hidden = false;
+    window.scrollTo(0, 0);
+    try {
+      const b = await fetch("data/buzz.json", { cache: "no-cache" }).then((r) => r.json());
+      $("buzz-dek").textContent = `Gerechten waar de afgelopen ${b.window} dagen meerdere van de ${b.sources} koks, foodbloggers en magazines die we volgen tegelijk over publiceerden. Bijgewerkt ${fmtDate(b.generated)}.`;
+      list.replaceChildren(...b.rising.slice(0, 15).map((x, i) => h("li", null,
+        h("span", { class: "no", text: pad(i + 1) }),
+        h("div", null,
+          h("strong", { text: x.phrase }),
+          h("span", { class: "meta" }, x.google ? tl(x.google.label) : null, h("span", { class: "mono", text: `${x.sources} koks${x.before ? " · was " + nf.format(x.before) : " · nieuw"}` })),
+          h("ul", { class: "links" }, x.posts.slice(0, 3).map((p) => h("li", null, h("a", { href: p.url, target: "_blank", rel: "noopener" }, h("b", { text: p.name }), " · " + p.title + " ↗"))))))));
+    } catch (e) {
+      list.replaceChildren(h("li", { class: "status", text: "De trenddata is nu niet te laden." }));
+    }
   }
 
   /* ---------- Fermentatie ---------- */
@@ -746,7 +912,7 @@ footer { margin-top: 96px; }
         kind: "recipe", r, ed, href: "#" + r.slug, title: r.title, minutes: r.minutes, tint: tintClass(r), glyph: r.glyph || "食",
         tags: (r.tags || []).map(norm), category: norm(r.category),
         ings: (r.ingredients || []).map((i) => ({ text: norm(i.item), label: i.item })),
-        fields: [[norm(r.title), 6], [norm([r.native, r.roman, r.glyph].join(" ")), 5], [norm((r.tags || []).join(" ") + " " + r.category), 4], [norm((r.ingredients || []).map((i) => i.item).join(" ")), 3], [norm([r.dek, r.trend?.text, r.signal?.text].join(" ")), 2], [norm((r.steps || []).join(" ") + " " + (r.tip || "")), 1]],
+        fields: [[norm(r.title), 6], [norm([r.native, r.roman, r.glyph].join(" ")), 5], [norm((r.tags || []).join(" ") + " " + r.category), 4], [norm((r.ingredients || []).map((i) => i.item).join(" ")), 3], [norm([r.dek, r.trend?.text, r.spark?.text, r.spark?.label, r.signal?.text].join(" ")), 2], [norm((r.steps || []).join(" ") + " " + (r.tip || "")), 1]],
         keys: new Set(words((r.ingredients || []).map((i) => i.item).join(" "))),
       });
       const f = ed.ferment;
@@ -911,6 +1077,8 @@ footer { margin-top: 96px; }
     if ($("search").open) closeSearch(true);
     state.lastHash = location.hash;
     if (state.bySlug.has(hsh)) return showRecipe(state.bySlug.get(hsh));
+    if (hsh === "zo-meten-we") return showMethod();
+    if (hsh === "trends") return showTrends();
     if (hsh === "fermentatie" || hsh.startsWith("fermentatie-")) {
       const ed = hsh === "fermentatie" ? state.editions.find((e) => e.ferment) : state.editions.find((e) => "fermentatie-" + e.id === hsh);
       if (ed && ed.ferment) return showFerment(ed);

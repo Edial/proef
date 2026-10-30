@@ -5,7 +5,8 @@ Wat erin komt:
   1. de cijfers die de redactie vond (`signals` per recept, `watch` op editieniveau), zoals ze in de editie staan;
   2. Google Trends voor de zoektermen van deze editie (`trendTerms` per recept, `watch[].term`):
      interesse per week over 5 jaar (NL en wereldwijd) en de snelst stijgende verwante zoekopdrachten;
-  3. een korte update (3 maanden) voor de zoektermen van de vorige 4 edities, zodat hun lijn doorloopt.
+  3. een korte update (3 maanden) voor de zoektermen van de vorige 4 edities, zodat hun lijn doorloopt;
+  4. daarna zet het per recept een trendlabel, zin en sparkline (`spark`) in de editie, via trends_spark.py.
 
 Google Trends schaalt elke reeks naar 0–100 binnen die zoekterm, dat land en dat tijdvenster (kolom `window`);
 vergelijk dus alleen waarden met dezelfde term, geo en window. Bestaande meetpunten worden bijgewerkt, niet verdubbeld.
@@ -49,7 +50,7 @@ class Trends:
                     raise
                 time.sleep(20 * (attempt + 1))
 
-    def fetch(self, term, geo, window):
+    def fetch(self, term, geo, window, related=True):
         req = {"comparisonItem": [{"keyword": term, "geo": geo, "time": window}], "category": 0, "property": ""}
         widgets = {w["id"]: w for w in self._get("explore", {"hl": "nl-NL", "tz": "-60", "req": json.dumps(req)})["widgets"]}
         base = {"hl": "nl-NL", "tz": "-60"}
@@ -57,7 +58,7 @@ class Trends:
         points = [(dt.datetime.fromtimestamp(int(p["time"]), dt.timezone.utc).date().isoformat(), p["value"][0])
                   for p in ts["default"]["timelineData"] if p.get("hasData", [True])[0]]
         rising = []
-        if "RELATED_QUERIES" in widgets:
+        if related and "RELATED_QUERIES" in widgets:
             rq = self._get("widgetdata/relatedsearches", {**base, "req": json.dumps(widgets["RELATED_QUERIES"]["request"]), "token": widgets["RELATED_QUERIES"]["token"]})
             lists = rq["default"]["rankedList"]
             if len(lists) > 1:
@@ -148,6 +149,13 @@ def main():
 
     save(rows)
     print(f"{CSV.relative_to(ROOT)}: {len(rows)} regels ({len(rows) - n0:+d}).")
+
+    # 4. trendlabel en sparkline per recept in de editie (zie trends_spark.py)
+    import trends_spark
+    print("\n".join(trends_spark.apply(ed)))
+    with path.open("w") as f:
+        json.dump(ed, f, ensure_ascii=False, indent=2)
+        f.write("\n")
     return 0
 
 

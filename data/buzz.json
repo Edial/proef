@@ -1,0 +1,825 @@
+{
+ "generated": "2026-10-30",
+ "sources": 112,
+ "window": 30,
+ "base": 60,
+ "rising": [
+  {
+   "phrase": "sweet potato",
+   "sources": 8,
+   "before": 0.5,
+   "rise": 7.5,
+   "core": 1,
+   "posts": [
+    {
+     "name": "Two Peas & Their Pod",
+     "title": "Sweet Potato Kale Breakfast Casserole",
+     "url": "https://www.twopeasandtheirpod.com/sweet-potato-kale-breakfast-casserole/",
+     "date": "2026-10-28",
+     "tier": "network"
+    },
+    {
+     "name": "Simply Recipes",
+     "title": "Sweet Potato Dump Cake",
+     "url": "https://www.simplyrecipes.com/sweet-potato-dump-cake-recipe-11838163",
+     "date": "2026-10-28",
+     "tier": "network"
+    },
+    {
+     "name": "Foxes Love Lemons",
+     "title": "Roasted Sweet Potato Salad With Feta And Maple-Mustard Vinaigrette",
+     "url": "https://foxeslovelemons.com/roasted-sweet-potato-salad/",
+     "date": "2026-10-28",
+     "tier": "network"
+    },
+    {
+     "name": "Taste",
+     "title": "Sweet Potato Gnocchi Are an Affordable Luxury",
+     "url": "https://tastecooking.com/sweet-potato-gnocchi-are-an-affordable-luxury/",
+     "date": "2026-10-27",
+     "tier": "network"
+    },
+    {
+     "name": "Skinnytaste",
+     "title": "This Warm Sweet Potato Quinoa Bowl Tastes Like Fall",
+     "url": "https://www.skinnytaste.com/sweet-potato-quinoa-breakfast-bowl/?adt_ei=*|EMAIL|*",
+     "date": "2026-10-21",
+     "tier": "network"
+    },
+    {
+     "name": "Well Plated",
+     "title": "Sweet Potato Souffle",
+     "url": "https://www.wellplated.com/sweet-potato-souffle/",
+     "date": "2026-10-20",
+     "tier": "network"
+    }
+   ],
+   "google": {
+    "label": "Stijgt",
+    "text": "Anderhalf keer zo vaak gezocht als vorig jaar.",
+    "geo": "NL"
+   }
+  },
+  {
+   "phrase": "slow cooker",
+   "sources": 8,
+   "before": 0.5,
+   "rise": 7.5,
+   "core": 0,
+   "posts": [
+    {
+     "name": "The Recipe Critic",
+     "title": "Slow Cooker Steak and Potatoes",
+     "url": "https://therecipecritic.com/slow-cooker-steak-and-potatoes/",
+     "date": "2026-10-28",
+     "tier": "network"
+    },
+    {
+     "name": "Simply Recipes",
+     "title": "The Slow Cooker Mistake That Could Ruin Your Dinner",
+     "url": "https://www.simplyrecipes.com/slow-cooker-mistake-12182877",
+     "date": "2026-10-27",
+     "tier": "network"
+    },
+    {
+     "name": "Ambitious Kitchen",
+     "title": "Healing Curry Butternut Squash Lentil Soup (with a slow cooker option!)",
+     "url": "https://www.ambitiouskitchen.com/healing-thai-butternut-squash-lentil-soup/",
+     "date": "2026-10-27",
+     "tier": "network"
+    },
+    {
+     "name": "Gimme Some Oven",
+     "title": "Slow Cooker Mashed Potatoes",
+     "url": "https://www.gimmesomeoven.com/slow-cooker-mashed-potatoes-recipe/",
+     "date": "2026-10-22",
+     "tier": "network"
+    },
+    {
+     "name": "Noble Pig",
+     "title": "Slow Cooker Mississippi Pork Roast",
+     "url": "https://noblepig.com/slow-cooker-mississippi-pork-roast-the-best/",
+     "date": "2026-10-15",
+     "tier": "network"
+    },
+    {
+     "name": "Dishing Out Health",
+     "title": "Slow Cooker Broccoli-Cheddar Chicken and Rice",
+     "url": "https://dishingouthealth.com/slow-cooker-chicken-and-rice/?utm_source=rss&utm_medium=rss&utm_campaign=slow-cooker-chicken-and-rice",
+     "date": "2026-10-14",
+     "tier": "network"
+    }
+   ],
+   "google": {
+    "label": "Stijgt",
+    "text": "Anderhalf keer zo vaak gezocht als vorig jaar.",
+    "geo": "NL"
+   }
+  },
+  {
+   "phrase": "brown butter",
+   "sources": 8,
+   "before": 1.0,
+   "rise": 7.0,
+   "core": 2,
+   "posts": [
+    {
+     "name": "Ambitious Kitchen",
+     "title": "Brown Butter Orange Pumpkin Muffins with Orange Glaze",
+     "url": "https://www.ambitiouskitchen.com/orange-pumpkin-muffins/",
+     "date": "2026-10-28",
+     "tier": "network"
+    },
+    {
+     "name": "Pailin Chongchitnant",
+     "title": "BONUS: Epic Brown Butter Rice Krispie Treats",
+     "url": "https://hot-thai-kitchen.com/epic-rice-krispies-squares/",
+     "date": "2026-10-27",
+     "tier": "core"
+    },
+    {
+     "name": "Noble Pig",
+     "title": "Brown Butter Chocolate Chip Cookies",
+     "url": "https://noblepig.com/brown-butter-chocolate-chip-cookies/",
+     "date": "2026-10-24",
+     "tier": "network"
+    },
+    {
+     "name": "David Lebovitz",
+     "title": "Brown Butter Financiers",
+     "url": "https://www.davidlebovitz.com/brown-pastry-browned-butter-financiers-recipe-french/",
+     "date": "2026-10-24",
+     "tier": "core"
+    },
+    {
+     "name": "Bigger Bolder Baking",
+     "title": "Brown Butter Pie Crust",
+     "url": "https://www.biggerbolderbaking.com/brown-butter-pie-crust/",
+     "date": "2026-10-24",
+     "tier": "network"
+    },
+    {
+     "name": "Food & Wine",
+     "title": "Snacking Pound Cake with Brown Butter Icing",
+     "url": "https://www.foodandwine.com/snacking-pound-cake-11983856",
+     "date": "2026-10-21",
+     "tier": "network"
+    }
+   ],
+   "google": {
+    "label": "Piek",
+    "text": "Zo vaak gezocht als in vijf jaar niet.",
+    "geo": "world"
+   }
+  },
+  {
+   "phrase": "chicken and rice",
+   "sources": 4,
+   "before": 0.0,
+   "rise": 4.0,
+   "core": 0,
+   "posts": [
+    {
+     "name": "Two Peas & Their Pod",
+     "title": "Salsa Verde Chicken and Rice",
+     "url": "https://www.twopeasandtheirpod.com/salsa-verde-chicken-and-rice/",
+     "date": "2026-10-26",
+     "tier": "network"
+    },
+    {
+     "name": "Dishing Out Health",
+     "title": "Slow Cooker Broccoli-Cheddar Chicken and Rice",
+     "url": "https://dishingouthealth.com/slow-cooker-chicken-and-rice/?utm_source=rss&utm_medium=rss&utm_campaign=slow-cooker-chicken-and-rice",
+     "date": "2026-10-14",
+     "tier": "network"
+    },
+    {
+     "name": "Cookin Canuck",
+     "title": "One Pot Chicken and Rice",
+     "url": "https://www.cookincanuck.com/one-pot-chicken-and-rice/",
+     "date": "2026-10-07",
+     "tier": "network"
+    },
+    {
+     "name": "A Couple Cooks",
+     "title": "Easy Chicken and Rice (One Pot!)",
+     "url": "https://www.acouplecooks.com/chicken-and-rice-recipe/",
+     "date": "2026-10-01",
+     "tier": "network"
+    }
+   ],
+   "google": {
+    "label": "Stabiel",
+    "text": "Iets vaker gezocht dan vorig jaar.",
+    "geo": "world"
+   }
+  },
+  {
+   "phrase": "pecan pie",
+   "sources": 4,
+   "before": 0.0,
+   "rise": 4.0,
+   "core": 0,
+   "posts": [
+    {
+     "name": "Simply Recipes",
+     "title": "The Best Pecan Pie",
+     "url": "https://www.simplyrecipes.com/recipes/pecan_pie/",
+     "date": "2026-10-29",
+     "tier": "network"
+    },
+    {
+     "name": "Kitchen Sanctuary",
+     "title": "Pecan Pie",
+     "url": "https://www.kitchensanctuary.com/pecan-pie/",
+     "date": "2026-10-27",
+     "tier": "network"
+    },
+    {
+     "name": "Lazy Cat Kitchen",
+     "title": "Vegan pecan pie bars",
+     "url": "https://www.lazycatkitchen.com/vegan-pecan-pie-bars/",
+     "date": "2026-10-24",
+     "tier": "network"
+    },
+    {
+     "name": "Laura's Bakery",
+     "title": "Pecan pie",
+     "url": "https://www.laurasbakery.nl/pecan-pie/",
+     "date": "2026-10-02",
+     "tier": "network"
+    }
+   ],
+   "google": {
+    "label": "Stabiel",
+    "text": "Iets minder gezocht dan vorig jaar.",
+    "geo": "world"
+   }
+  },
+  {
+   "phrase": "air fryer",
+   "sources": 5,
+   "before": 1.5,
+   "rise": 3.5,
+   "core": 1,
+   "posts": [
+    {
+     "name": "Serious Eats",
+     "title": "Which Ninja Air Fryer Should You Buy? I Made Nearly 10 Pounds of French Fries to Find Out",
+     "url": "https://www.seriouseats.com/best-ninja-air-fryers-11865307",
+     "date": "2026-10-29",
+     "tier": "core"
+    },
+    {
+     "name": "Fit Foodie Finds",
+     "title": "Air Fryer Parmesan Acorn Squash",
+     "url": "https://fitfoodiefinds.com/air-fryer-parmesan-acorn-squash/?adt_ei={{ subscriber.email_address }}",
+     "date": "2026-10-19",
+     "tier": "network"
+    },
+    {
+     "name": "Bigger Bolder Baking",
+     "title": "Air Fryer Scone",
+     "url": "https://www.biggerbolderbaking.com/air-fryer-scone/",
+     "date": "2026-10-15",
+     "tier": "network"
+    },
+    {
+     "name": "Gimme Some Oven",
+     "title": "Air Fryer Chicken Breasts",
+     "url": "https://www.gimmesomeoven.com/air-fryer-chicken-breasts/",
+     "date": "2026-10-13",
+     "tier": "network"
+    },
+    {
+     "name": "Rachel Phipps",
+     "title": "Air Fryer Leftover Focaccia Croutons",
+     "url": "https://www.rachelphipps.com/2026/10/air-fryer-leftover-focaccia-croutons.html",
+     "date": "2026-10-01",
+     "tier": "network"
+    }
+   ],
+   "google": {
+    "label": "Stijgt",
+    "text": "Anderhalf keer zo vaak gezocht als vorig jaar.",
+    "geo": "NL"
+   }
+  },
+  {
+   "phrase": "butternut squash",
+   "sources": 4,
+   "before": 0.5,
+   "rise": 3.5,
+   "core": 0,
+   "posts": [
+    {
+     "name": "Ambitious Kitchen",
+     "title": "Butternut Squash Bacon Spinach Quiche",
+     "url": "https://www.ambitiouskitchen.com/butternut-squash-quiche/",
+     "date": "2026-10-29",
+     "tier": "network"
+    },
+    {
+     "name": "Food & Wine",
+     "title": "Butternut Squash Steaks au Poivre",
+     "url": "https://www.foodandwine.com/butternut-squash-steaks-au-poivre-12184299",
+     "date": "2026-10-24",
+     "tier": "network"
+    },
+    {
+     "name": "Love and Lemons",
+     "title": "Butternut Squash Gnocchi",
+     "url": "https://www.loveandlemons.com/butternut-squash-gnocchi/",
+     "date": "2026-10-06",
+     "tier": "network"
+    },
+    {
+     "name": "Fit Foodie Finds",
+     "title": "Crispy Lentil and Butternut Squash Salad",
+     "url": "https://fitfoodiefinds.com/crispy-lentil-and-butternut-squash-salad/?adt_ei={{ subscriber.email_address }}",
+     "date": "2026-10-03",
+     "tier": "network"
+    }
+   ],
+   "google": {
+    "label": "Seizoen",
+    "text": "Elk najaar terug: nu vier keer zo vaak gezocht als in de zomer.",
+    "geo": "world"
+   }
+  },
+  {
+   "phrase": "chocolate chip",
+   "sources": 4,
+   "before": 0.5,
+   "rise": 3.5,
+   "core": 0,
+   "posts": [
+    {
+     "name": "Noble Pig",
+     "title": "Brown Butter Chocolate Chip Cookies",
+     "url": "https://noblepig.com/brown-butter-chocolate-chip-cookies/",
+     "date": "2026-10-24",
+     "tier": "network"
+    },
+    {
+     "name": "Once Upon a Chef",
+     "title": "Tahini Chocolate Chip Cookies",
+     "url": "https://www.onceuponachef.com/recipes/tahini-chocolate-chip-cookies.html",
+     "date": "2026-10-18",
+     "tier": "network"
+    },
+    {
+     "name": "Taste",
+     "title": "Oatmeal Apricot Cookies to Rival Your Favorite Chocolate Chip Cookie",
+     "url": "https://tastecooking.com/oatmeal-apricot-cookies-to-rival-your-favorite-chocolate-chip-cookie/",
+     "date": "2026-10-12",
+     "tier": "network"
+    },
+    {
+     "name": "Sally's Baking Addiction",
+     "title": "Mini Pumpkin Chocolate Chip Muffins",
+     "url": "https://sallysbakingaddiction.com/mini-pumpkin-chocolate-chip-muffins/",
+     "date": "2026-10-11",
+     "tier": "network"
+    }
+   ],
+   "google": {
+    "label": "Stijgt",
+    "text": "Anderhalf keer zo vaak gezocht als vorig jaar.",
+    "geo": "NL"
+   }
+  },
+  {
+   "phrase": "noodle soup",
+   "sources": 4,
+   "before": 0.5,
+   "rise": 3.5,
+   "core": 2,
+   "posts": [
+    {
+     "name": "The Woks of Life",
+     "title": "Tom Yum Noodle Soup (Kuay Teow Tom Yum)",
+     "url": "https://thewoksoflife.com/tom-yum-noodle-soup-kuay-teow-tom-yum/?adt_ei=*|EMAIL|*",
+     "date": "2026-10-23",
+     "tier": "core"
+    },
+    {
+     "name": "Omnivore's Cookbook",
+     "title": "Curry Noodle Soup with Popcorn Chicken",
+     "url": "https://omnivorescookbook.com/curry-noodle-soup-popcorn-chicken/",
+     "date": "2026-10-21",
+     "tier": "core"
+    },
+    {
+     "name": "Feasting at Home",
+     "title": "Creamy Chicken Noodle Soup",
+     "url": "https://www.feastingathome.com/creamy-chicken-noodle-soup/",
+     "date": "2026-10-14",
+     "tier": "network"
+    },
+    {
+     "name": "Lazy Cat Kitchen",
+     "title": "Thai red curry noodle soup",
+     "url": "https://www.lazycatkitchen.com/thai-red-curry-noodle-soup/",
+     "date": "2026-10-04",
+     "tier": "network"
+    }
+   ],
+   "google": {
+    "label": "Stabiel",
+    "text": "Iets vaker gezocht dan vorig jaar.",
+    "geo": "NL"
+   }
+  },
+  {
+   "phrase": "mashed potatoes",
+   "sources": 3,
+   "before": 0.0,
+   "rise": 3.0,
+   "core": 0,
+   "posts": [
+    {
+     "name": "Simply Recipes",
+     "title": "Garlic Mashed Potatoes",
+     "url": "https://www.simplyrecipes.com/recipes/garlic_mashed_potatoes/",
+     "date": "2026-10-26",
+     "tier": "network"
+    },
+    {
+     "name": "Gimme Some Oven",
+     "title": "Slow Cooker Mashed Potatoes",
+     "url": "https://www.gimmesomeoven.com/slow-cooker-mashed-potatoes-recipe/",
+     "date": "2026-10-22",
+     "tier": "network"
+    },
+    {
+     "name": "Platings and Pairings",
+     "title": "Twice Baked Mashed Potatoes",
+     "url": "https://www.platingsandpairings.com/twice-baked-mashed-potato/",
+     "date": "2026-10-08",
+     "tier": "network"
+    }
+   ],
+   "google": {
+    "label": "Stabiel",
+    "text": "Even vaak gezocht als vorig jaar.",
+    "geo": "NL"
+   }
+  },
+  {
+   "phrase": "peanut butter",
+   "sources": 3,
+   "before": 0.0,
+   "rise": 3.0,
+   "core": 1,
+   "posts": [
+    {
+     "name": "Dinner, then Dessert",
+     "title": "Moist and Tender Peanut Butter Bread!",
+     "url": "https://dinnerthendessert.com/peanut-butter-bread/",
+     "date": "2026-10-30",
+     "tier": "network"
+    },
+    {
+     "name": "Pailin Chongchitnant",
+     "title": "Peanut Butter is NOT a Thai Ingredient",
+     "url": "https://www.youtube.com/shorts/ygQ-Waqwh58",
+     "date": "2026-10-16",
+     "tier": "core"
+    },
+    {
+     "name": "Joy the Baker",
+     "title": "Flourless Monster Cookies: Chewy Peanut Butter Oatmeal Cookies",
+     "url": "https://joythebaker.com/2026/10/flourless-monster-cookies-chewy-peanut-butter-oatmeal-cookies/",
+     "date": "2026-10-06",
+     "tier": "network"
+    }
+   ],
+   "google": {
+    "label": "Stijgt",
+    "text": "Anderhalf keer zo vaak gezocht als vorig jaar.",
+    "geo": "NL"
+   }
+  },
+  {
+   "phrase": "pumpkin pasta",
+   "sources": 3,
+   "before": 0.0,
+   "rise": 3.0,
+   "core": 1,
+   "posts": [
+    {
+     "name": "Bon Appétit",
+     "title": "Creamy Pumpkin Pasta",
+     "url": "https://www.bonappetit.com/recipe/creamy-pumpkin-pasta",
+     "date": "2026-10-28",
+     "tier": "core"
+    },
+    {
+     "name": "Fit Foodie Finds",
+     "title": "Creamy Cottage Cheese Pumpkin Pasta",
+     "url": "https://fitfoodiefinds.com/cottage-cheese-pumpkin-pasta/?adt_ei={{ subscriber.email_address }}",
+     "date": "2026-10-11",
+     "tier": "network"
+    },
+    {
+     "name": "The Clever Carrot",
+     "title": "Sourdough Pumpkin Pasta From Scratch",
+     "url": "https://www.theclevercarrot.com/2026/10/sourdough-pumpkin-pasta-from-scratch/",
+     "date": "2026-10-10",
+     "tier": "network"
+    }
+   ],
+   "google": {
+    "label": "Seizoen",
+    "text": "Elk najaar terug: nu vier keer zo vaak gezocht als in het voorjaar.",
+    "geo": "world"
+   }
+  },
+  {
+   "phrase": "cream cheese",
+   "sources": 3,
+   "before": 0.0,
+   "rise": 3.0,
+   "core": 0,
+   "posts": [
+    {
+     "name": "Foxes Love Lemons",
+     "title": "Savory Pumpkin Dip With Cream Cheese And Parmesan",
+     "url": "https://foxeslovelemons.com/creamy-pumpkin-parmesan-dip/",
+     "date": "2026-10-14",
+     "tier": "network"
+    },
+    {
+     "name": "Iowa Girl Eats",
+     "title": "Gluten-Free Pumpkin Cake Bars with Cream Cheese Frosting",
+     "url": "https://iowagirleats.com/gluten-free-pumpkin-cake-bars-with-cream-cheese-frosting/",
+     "date": "2026-10-07",
+     "tier": "network"
+    },
+    {
+     "name": "Dinner at the Zoo",
+     "title": "Pumpkin Cake with Cream Cheese Frosting",
+     "url": "https://www.dinneratthezoo.com/pumpkin-cake/",
+     "date": "2026-10-01",
+     "tier": "network"
+    }
+   ],
+   "google": {
+    "label": "Stabiel",
+    "text": "Even vaak gezocht als vorig jaar.",
+    "geo": "NL"
+   }
+  },
+  {
+   "phrase": "pumpkin cake",
+   "sources": 3,
+   "before": 0.0,
+   "rise": 3.0,
+   "core": 0,
+   "posts": [
+    {
+     "name": "Iowa Girl Eats",
+     "title": "Gluten-Free Pumpkin Cake Bars with Cream Cheese Frosting",
+     "url": "https://iowagirleats.com/gluten-free-pumpkin-cake-bars-with-cream-cheese-frosting/",
+     "date": "2026-10-07",
+     "tier": "network"
+    },
+    {
+     "name": "King Arthur Baking",
+     "title": "16 pumpkin recipes, from cakes and cookies to bars and bread: We've got a marbled pumpkin cake, chewy pumpkin cookies, and even pumpkin milk bread.",
+     "url": "https://www.kingarthurbaking.com/blog/2026/10/05/pumpkin-recipes",
+     "date": "2026-10-05",
+     "tier": "network"
+    },
+    {
+     "name": "Dinner at the Zoo",
+     "title": "Pumpkin Cake with Cream Cheese Frosting",
+     "url": "https://www.dinneratthezoo.com/pumpkin-cake/",
+     "date": "2026-10-01",
+     "tier": "network"
+    }
+   ],
+   "google": {
+    "label": "Seizoen",
+    "text": "Elk najaar terug: nu acht keer zo vaak gezocht als in de zomer.",
+    "geo": "world"
+   }
+  },
+  {
+   "phrase": "pumpkin pie",
+   "sources": 3,
+   "before": 0.0,
+   "rise": 3.0,
+   "core": 0,
+   "posts": [
+    {
+     "name": "Dinner, then Dessert",
+     "title": "Light, fluffy dip with that tastes like pumpkin pie!",
+     "url": "https://dinnerthendessert.com/pumpkin-fluff-dip/",
+     "date": "2026-10-28",
+     "tier": "network"
+    },
+    {
+     "name": "Simply Recipes",
+     "title": "Homemade Pumpkin Pie",
+     "url": "https://www.simplyrecipes.com/pumpkin-pie-recipe-5101769",
+     "date": "2026-10-27",
+     "tier": "network"
+    },
+    {
+     "name": "Okonomi Kitchen",
+     "title": "Kabocha Pumpkin Pie Bars",
+     "url": "https://www.okonomikitchen.com/kabocha-pumpkin-pie-bars/",
+     "date": "2026-10-27",
+     "tier": "network"
+    }
+   ],
+   "google": {
+    "label": "Seizoen",
+    "text": "Elk najaar terug: nu acht keer zo vaak gezocht als in de zomer.",
+    "geo": "world"
+   }
+  },
+  {
+   "phrase": "meal plan",
+   "sources": 3,
+   "before": 0.0,
+   "rise": 3.0,
+   "core": 0,
+   "posts": [
+    {
+     "name": "The Recipe Critic",
+     "title": "Weekly Meal Plan #111",
+     "url": "https://therecipecritic.com/weekly-meal-plan-111/",
+     "date": "2026-10-30",
+     "tier": "network"
+    },
+    {
+     "name": "Spend With Pennies",
+     "title": "Weekly Meal Plan Nov 2, 2026",
+     "url": "https://www.spendwithpennies.com/weekly-meal-plan-nov-2-2026/",
+     "date": "2026-10-28",
+     "tier": "network"
+    },
+    {
+     "name": "Skinnytaste",
+     "title": "Free 7 Day Healthy Meal Plan (Oct 26-Nov 1)",
+     "url": "https://www.skinnytaste.com/free-7-day-healthy-meal-plan-oct-26-nov-1/?adt_ei=*|EMAIL|*",
+     "date": "2026-10-23",
+     "tier": "network"
+    }
+   ]
+  },
+  {
+   "phrase": "hot honey",
+   "sources": 3,
+   "before": 0.5,
+   "rise": 2.5,
+   "core": 1,
+   "posts": [
+    {
+     "name": "Love and Lemons",
+     "title": "Hot Honey",
+     "url": "https://www.loveandlemons.com/hot-honey-recipe/",
+     "date": "2026-10-27",
+     "tier": "network"
+    },
+    {
+     "name": "Noble Pig",
+     "title": "Fried Goat Cheese Balls with Cranberry Hot Honey",
+     "url": "https://noblepig.com/fried-goat-cheese-balls/",
+     "date": "2026-10-16",
+     "tier": "network"
+    },
+    {
+     "name": "Molly Baz",
+     "title": "Hot Honey Corn and Cottage Cheese Scones",
+     "url": "https://mollybaz.com/crunchy-corn-and-cottage-cheese-scones/",
+     "date": "2026-09-30",
+     "tier": "core"
+    }
+   ]
+  },
+  {
+   "phrase": "sheet pan",
+   "sources": 3,
+   "before": 0.5,
+   "rise": 2.5,
+   "core": 1,
+   "posts": [
+    {
+     "name": "Budget Bytes",
+     "title": "13 Easy Sheet Pan Dinners",
+     "url": "https://www.budgetbytes.com/sheet-pan-dinners/",
+     "date": "2026-10-24",
+     "tier": "network"
+    },
+    {
+     "name": "The Woks of Life",
+     "title": "Sheet Pan Red Curry Chicken",
+     "url": "https://thewoksoflife.com/sheet-pan-red-curry-chicken/?adt_ei=*|EMAIL|*",
+     "date": "2026-10-09",
+     "tier": "core"
+    },
+    {
+     "name": "Dishing Out Health",
+     "title": "Sheet Pan Gnocchi with Sausage and Whipped Ricotta",
+     "url": "https://dishingouthealth.com/sheet-pan-gnocchi-with-sausage/?utm_source=rss&utm_medium=rss&utm_campaign=sheet-pan-gnocchi-with-sausage",
+     "date": "2026-10-07",
+     "tier": "network"
+    }
+   ]
+  },
+  {
+   "phrase": "stir fry",
+   "sources": 3,
+   "before": 0.5,
+   "rise": 2.5,
+   "core": 0,
+   "posts": [
+    {
+     "name": "Sudachi Recipes",
+     "title": "15+ Japanese Stir Fry Dishes for Easy Weeknight Dinners",
+     "url": "https://sudachirecipes.com/japanese-stir-fry-dishes/",
+     "date": "2026-10-29",
+     "tier": "network"
+    },
+    {
+     "name": "Rachel Phipps",
+     "title": "Japanese Mushroom, Tofu & Egg Stir Fry",
+     "url": "https://www.rachelphipps.com/2026/10/japanese-mushroom-tofu-and-egg-stir-fry-ankake-sauce.html",
+     "date": "2026-10-22",
+     "tier": "network"
+    },
+    {
+     "name": "Platings and Pairings",
+     "title": "Ground Pork Stir Fry",
+     "url": "https://www.platingsandpairings.com/ground-pork-stir-fry/",
+     "date": "2026-10-20",
+     "tier": "network"
+    }
+   ]
+  },
+  {
+   "phrase": "cottage cheese",
+   "sources": 3,
+   "before": 1.0,
+   "rise": 2.0,
+   "core": 2,
+   "posts": [
+    {
+     "name": "Bon Appétit",
+     "title": "Cottage Cheese Meatballs and More Recipes We Made This Week",
+     "url": "https://www.bonappetit.com/story/recipes-bon-appetit-editors-cooked-october-2026",
+     "date": "2026-10-30",
+     "tier": "core"
+    },
+    {
+     "name": "Fit Foodie Finds",
+     "title": "Blueberry Cottage Cheese Danish",
+     "url": "https://fitfoodiefinds.com/blueberry-cottage-cheese-danish/?adt_ei={{ subscriber.email_address }}",
+     "date": "2026-10-18",
+     "tier": "network"
+    },
+    {
+     "name": "Molly Baz",
+     "title": "Hot Honey Corn and Cottage Cheese Scones",
+     "url": "https://mollybaz.com/crunchy-corn-and-cottage-cheese-scones/",
+     "date": "2026-09-30",
+     "tier": "core"
+    }
+   ]
+  },
+  {
+   "phrase": "banana bread",
+   "sources": 3,
+   "before": 1.0,
+   "rise": 2.0,
+   "core": 0,
+   "posts": [
+    {
+     "name": "Joy the Baker",
+     "title": "The Sunday Five On Math, Rumors, and Banana Bread Syrup | 10.18.26",
+     "url": "https://joythebaker.com/2026/10/the-sunday-five-on-math-rumors-and-banana-bread-syrup-101826/",
+     "date": "2026-10-18",
+     "tier": "network"
+    },
+    {
+     "name": "Okonomi Kitchen",
+     "title": "Salted Maple Banana Bread",
+     "url": "https://www.okonomikitchen.com/salted-maple-banana-bread/",
+     "date": "2026-10-02",
+     "tier": "network"
+    },
+    {
+     "name": "A Couple Cooks",
+     "title": "Pumpkin Banana Bread",
+     "url": "https://www.acouplecooks.com/pumpkin-banana-bread/",
+     "date": "2026-10-01",
+     "tier": "network"
+    }
+   ]
+  }
+ ]
+}

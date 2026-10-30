@@ -1,0 +1,30 @@
+name: Bronnen ophalen
+
+# Elke vrijdagnacht de feeds van data/sources.csv lezen, zodat de routine op zaterdag een verse data/buzz.json heeft.
+on:
+  schedule:
+    - cron: "0 22 * * 5"   # vrijdag 22:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  harvest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Nieuwe bronnen controleren
+        run: python3 scripts/check_sources.py
+      - name: Feeds ophalen
+        run: python3 scripts/harvest.py --google 15
+      - name: Opslaan
+        run: |
+          git config user.name "proef-bot"
+          git config user.email "proef-bot@users.noreply.github.com"
+          git add data/sources.csv data/posts.csv data/buzz.json
+          git diff --cached --quiet || git commit -m "Bronnen opgehaald ($(date -u +%F))"
+          git push
