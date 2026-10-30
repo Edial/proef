@@ -234,22 +234,12 @@ img { display: block; max-width: 100%; }
 .find:hover { color: var(--ink); }
 .find span { flex: 1; }
 kbd { font-family: var(--mono); font-style: normal; font-size: 11px; border: 1px solid var(--rule); border-radius: 3px; padding: 1px 6px; color: var(--muted); }
-.shelf { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
-.issue { display: flex; flex-direction: column; background: var(--sheet); min-width: 0; }
-.issue .cov { background: var(--cover); color: var(--cream); padding: 10px 12px; display: flex; flex-direction: column; aspect-ratio: 4 / 3; text-decoration: none; }
-.issue .cov .cjk { font-size: 40px; margin-top: auto; }
-.issue .cov .row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
-.issue .cov .logo { font-size: 17px; }
-.issue .cov .mono { font-size: 9.5px; }
-.issue .cov .mono { color: rgba(248,245,238,.7); }
-.issue .cov:hover .logo { opacity: .8; }
-.issue ul { list-style: none; margin: 0; padding: 8px 12px 10px; font-size: 13px; line-height: 1.3; }
-.issue li { padding: 2px 0; display: flex; gap: 6px; }
-.issue li a { text-decoration: none; }
-.issue li a:hover { text-decoration: underline; }
-.issue .dot { flex: none; width: 6px; height: 6px; margin-top: 5px; background: var(--bg); }
-.issue li.f a { font-style: italic; }
-.issue li.f .dot { background: var(--hanko); border-radius: 50%; }
+.shelf { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 12px; }
+/* archief: per editie één groot vlak in de omslagkleur */
+.issue { display: flex; flex-direction: column; justify-content: space-between; aspect-ratio: 1; padding: 14px 16px; background: var(--cover); color: var(--cover-ink, var(--cream)); text-decoration: none; transition: transform .2s ease; }
+.issue:hover { transform: translateY(-3px); }
+.issue .cjk { font-size: 72px; }
+.issue .when { opacity: .8; }
 .empty { color: var(--muted); padding: 16px; font-style: italic; }
 
 /* ---------- Recept ---------- */
@@ -433,7 +423,7 @@ footer { margin-top: 96px; }
   .pager strong { font-size: 17px; }
   .pager a { padding: 14px 16px; }
   .shelf { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .issue .cov .cjk { font-size: 36px; }
+  .issue .cjk { font-size: 56px; }
   #search { margin-top: 12px; max-height: calc(100vh - 24px); }
   .s-top input { font-size: 19px; }
   .s-hint { display: none; }
@@ -935,17 +925,13 @@ footer { margin-top: 96px; }
 
   /* ---------- Archief: plank met edities ---------- */
   function renderShelf() {
-    $("shelf").replaceChildren(...state.editions.map((ed) => {
-      const latest = ed === state.editions[0];
-      return h("article", { class: "issue " + coverClass(ed) },
-        h("a", { class: "cov", href: latest ? "#deze-week" : "#editie-" + ed.id, "aria-label": `Editie ${ed.number}, week ${ed.week}` },
-          h("div", { class: "row" }, wordmark("span", "logo"), h("span", { class: "mono", text: "Nº " + pad(ed.number) })),
-          h("span", { class: "cjk", "aria-hidden": "true", text: ed.cover?.glyph || "旬" }),
-          h("span", { class: "mono", text: `Week ${ed.week} · ${fmtDate(ed.date)}` })),
-        h("ul", null,
-          ed.recipes.map((r) => h("li", null, h("span", { class: "dot " + tintClass(r), "aria-hidden": "true" }), h("a", { href: recipeHref(r.slug), text: r.title }))),
-          ed.ferment ? h("li", { class: "f" }, h("span", { class: "dot", "aria-hidden": "true" }), h("a", { href: "#fermentatie-" + ed.id, text: ed.ferment.title })) : null));
-    }));
+    $("shelf").replaceChildren(...state.editions.map((ed) => h("a", {
+      class: "issue " + coverClass(ed), href: ed === state.editions[0] ? "#deze-week" : "#editie-" + ed.id,
+      "aria-label": `Editie ${ed.number}, week ${ed.week}, ${fmtDate(ed.date)}`,
+    },
+      h("span", { class: "mono", text: "Nº " + pad(ed.number) }),
+      h("span", { class: "cjk", "aria-hidden": "true", text: ed.cover?.glyph || "旬" }),
+      h("span", { class: "mono when", text: `Week ${ed.week} · ${fmtDate(ed.date)}` }))));
   }
 
   /* ---------- Zoekindex ---------- */
