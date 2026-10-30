@@ -224,7 +224,7 @@ img { display: block; max-width: 100%; }
 .ferm-teaser .go { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
 
 /* Editiebalk: welke editie, en bladeren */
-.issuebar { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; color: var(--muted); }
+.issuebar { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; color: var(--muted); }
 .issuebar nav { display: flex; gap: 18px; }
 .issuebar a { text-decoration: none; color: var(--muted); }
 .issuebar a:hover { color: var(--ink); }
@@ -255,7 +255,8 @@ kbd { font-family: var(--mono); font-style: normal; font-size: 11px; border: 1px
 .empty { color: var(--muted); padding: 16px; font-style: italic; }
 
 /* ---------- Recept ---------- */
-.back { display: inline-block; margin-bottom: 18px; text-decoration: none; color: var(--muted); }
+/* zelfde ruimte onder de kop als de editieregel op home */
+.back { display: block; width: fit-content; margin-bottom: 16px; text-decoration: none; color: var(--muted); }
 .back:hover { color: var(--ink); }
 .spread { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--gap); align-items: start; }
 .spread .left { display: flex; flex-direction: column; gap: 10px; position: sticky; top: 16px; }
