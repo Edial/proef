@@ -168,10 +168,6 @@ img { display: block; max-width: 100%; }
 .top nav a { position: relative; font-family: var(--sans); font-size: 15.5px; font-weight: 500; text-decoration: none; color: var(--ink); white-space: nowrap; padding-block: 6px; }
 .top nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--hanko); transform: scaleX(0); transform-origin: left; transition: transform .2s ease; }
 .top nav a:hover::after, .top nav a[aria-current="page"]::after { transform: scaleX(1); }
-.top nav .search { display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; border: 1px solid var(--ink); border-radius: 99px; }
-.top nav .search::after { display: none; }
-.top nav .search:hover { background: var(--ink); color: var(--sheet); }
-.top nav .search:hover kbd { color: var(--sheet); border-color: currentColor; }
 .notice { font-family: var(--sans); font-size: 14px; color: var(--muted); margin-bottom: 12px; }
 
 /* ---------- Home ---------- */
@@ -385,7 +381,11 @@ kbd { font-family: var(--mono); font-style: normal; font-size: 11px; border: 1px
 .status { padding-block: 48px; color: var(--muted); font-style: italic; }
 .toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--board); font-family: var(--mono); font-size: 12px; padding: 10px 16px; border-radius: 2px; z-index: 10; }
 footer { margin-top: 96px; }
-.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-block: 18px 36px; border-top: 1px solid var(--ink); color: var(--muted); }
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 24px; padding-block: 18px 36px; border-top: 1px solid var(--ink); color: var(--muted); }
+.foot-links { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 22px; }
+.foot-links a { color: var(--ink); text-decoration: none; }
+.foot-links a:hover { text-decoration: underline; }
+.foot-search { display: inline-flex; align-items: center; gap: 6px; }
 
 @media (max-width: 1000px) {
   .mast, .lead { grid-column: span 12; }
@@ -402,9 +402,6 @@ footer { margin-top: 96px; }
   .top nav { width: 100%; gap: 22px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
   .top nav::-webkit-scrollbar { display: none; }
   .top nav a { font-size: 15px; }
-  .top { position: relative; }
-  .top nav .search { position: absolute; top: 18px; right: 0; }
-  .top nav .search kbd { display: none; }
   .tile { grid-column: span 12 !important; }
   .mast .logo { font-size: 52px; }
   .lead .duo { min-height: 230px; }
@@ -465,8 +462,6 @@ footer { margin-top: 96px; }
       <a href="#deze-week">Deze week</a>
       <a href="#fermentatie">Fermentatie</a>
       <a href="#trends">Trends</a>
-      <a href="#archief">Archief</a>
-      <a href="#zoek" class="search" aria-keyshortcuts="/">Zoek <kbd>/</kbd></a>
     </nav>
   </header>
 
@@ -492,7 +487,7 @@ footer { margin-top: 96px; }
   <footer>
     <div class="foot mono">
       <span>© 2026 Proef</span>
-      <span>Trenddata van Google Trends, Pinterest en TikTok · <a href="#zo-meten-we">Hoe meten we dit?</a></span>
+      <span class="foot-links"><a href="#zoek" class="foot-search" aria-keyshortcuts="/">Zoek <kbd>/</kbd></a><a href="#archief">Archief</a><span>Trenddata van Google Trends, Pinterest en TikTok · <a href="#zo-meten-we">Hoe meten we dit?</a></span></span>
     </div>
   </footer>
 </div>
@@ -1114,8 +1109,8 @@ footer { margin-top: 96px; }
   }
 
   function markNav(hsh) {
-    const key = hsh.startsWith("fermentatie") ? "fermentatie" : hsh === "trends" || hsh === "zo-meten-we" ? "trends" : hsh === "archief" ? "archief"
-      : hsh.startsWith("zoek") ? "" : "deze-week";
+    const key = hsh.startsWith("fermentatie") ? "fermentatie" : hsh === "trends" || hsh === "zo-meten-we" ? "trends"
+      : hsh.startsWith("zoek") || hsh === "archief" ? "" : "deze-week";
     for (const a of document.querySelectorAll(".top nav a")) {
       if (a.getAttribute("href") === "#" + key) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
     }
