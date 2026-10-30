@@ -1,0 +1,1212 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Wrap van drie ingrediënten: cottage cheese en eieren, glad gemixt en dun gebakken. Zonder bloem en vol eiwit.">
+<title>Cottage cheese flatbread · Proef</title>
+<base href="../../">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Serif+KR:wght@700;900&display=swap">
+<style>
+:root {
+  --board: #E8E4DB;
+  --sheet: #F8F5EE;
+  --ink: #1F1D1A;
+  --muted: #7A7366;
+  --rule: #DDD6C8;
+  /* vaste kleuren: tekst op navy of op een gekleurde kaart */
+  --cream: #F8F5EE;
+  --ink-cover: #1F1D1A;
+  --dark: #1F1D1A;
+  --navy: #2E4A6B;
+  --hanko: #C4372C;
+  --ok: #3F6B4F;
+  --persimmon: #D8693E;
+  --mustard: #F0B23B;
+  --blush: #EBC9BA;
+  --sage: #BFD3C7;
+  --sky: #A9C4DE;
+  --serif: "Fraunces", Georgia, serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --cjk: "Noto Serif JP", "Noto Serif KR", serif;
+  --gap: 12px;
+  --maxw: 1200px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --board: #161412; --sheet: #211E1A; --ink: #EEE9DF; --muted: #A39B8E; --rule: #37322B; --navy: #2B4562; --ok: #8FBF9F; --ink-cover: #3A352E;
+  }
+}
+:root[data-theme="dark"] {
+  --board: #161412; --sheet: #211E1A; --ink: #EEE9DF; --muted: #A39B8E; --rule: #37322B; --navy: #2B4562; --ok: #8FBF9F; --ink-cover: #3A352E;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--board); color: var(--ink);
+  font-family: var(--serif); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased;
+  padding: 0 max(16px, env(safe-area-inset-right, 0px)) 0 max(16px, env(safe-area-inset-left, 0px));
+}
+@media (min-width: 760px) { body { padding-left: 24px; padding-right: 24px; } }
+.wrap { max-width: var(--maxw); margin-inline: auto; }
+a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--hanko); outline-offset: 3px; }
+h1, h2, h3, h4 { margin: 0; font-weight: 400; text-wrap: balance; }
+p { margin: 0; }
+img { display: block; max-width: 100%; }
+
+.mono { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; font-variant-numeric: tabular-nums; }
+.label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.kicker { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--hanko); }
+.cjk { font-family: var(--cjk); font-weight: 900; line-height: 1; }
+.card { background: var(--sheet); }
+.no { font-family: var(--serif); color: var(--persimmon); font-variant-numeric: lining-nums; }
+.hanko { display: inline-grid; place-items: center; flex: none; width: 28px; height: 28px; background: var(--hanko); color: var(--cream); font-family: var(--cjk); font-weight: 700; font-size: 16px; line-height: 1; border-radius: 2px; }
+.native { font-family: var(--cjk); font-weight: 700; font-size: 13px; color: var(--muted); }
+.native em { font-family: var(--serif); font-weight: 400; font-style: italic; margin-left: 6px; }
+.metaline { display: flex; flex-wrap: wrap; gap: 4px 12px; color: var(--muted); }
+.metaline span + span::before { content: "·"; margin-right: 12px; }
+.colhead { color: var(--muted); margin-bottom: 8px; }
+
+/* Trending: in woorden waarom het in de editie staat */
+.trend { border-top: 1px solid var(--rule); padding-top: 10px; }
+.trend b { display: block; margin-bottom: 3px; font-family: var(--mono); font-weight: 500; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--hanko); }
+.trend p { margin: 0; font-style: italic; font-size: 15px; line-height: 1.4; color: var(--muted); }
+/* gemeten trend: label, sparkline (12 maanden) en één zin, uit Google Trends (scripts/trends_spark.py) */
+.tl { display: inline-flex; align-items: baseline; gap: 5px; font-style: normal; font-family: var(--mono); font-weight: 500; font-size: 10.5px; line-height: 1.5; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; color: var(--hanko); }
+.tl i { font-style: normal; font-size: 12px; letter-spacing: 0; }
+.tl.quiet { color: var(--muted); }
+.spark { display: block; width: 100%; height: 34px; overflow: visible; color: var(--ink); }
+.trend .row { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+.trend .row .spark { flex: none; width: 84px; height: 18px; }
+.spark path { fill: none; vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round; }
+.spark .ln { stroke: currentColor; stroke-width: 1.5; }
+.spark .prev { stroke: currentColor; stroke-width: 1; stroke-dasharray: 2 3; opacity: .4; }
+.spark .dot { stroke: var(--hanko); stroke-width: 6; }
+.trend.line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-top: 14px; padding-top: 10px; text-decoration: none; color: var(--muted); font-style: italic; font-size: 15px; }
+.trend.line:hover span:last-child { text-decoration: underline; text-decoration-thickness: 1px; }
+.why .spark { height: 110px; margin: 14px 0 4px; color: var(--ink); }
+.spark-axis { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.why-line { margin: 16px 0 0; font-family: var(--serif); font-size: 16px; line-height: 1.5; color: var(--ink); max-width: 60ch; }
+.why-src { margin: 8px 0 0; font-size: 12.5px; line-height: 1.5; color: var(--muted); max-width: 70ch; }
+.why-line a, .why-src a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .2em; }
+@media (max-width: 640px) { .why .spark { height: 90px; } }
+.trend-src { margin: 10px 0 0; font-family: var(--mono); font-size: 10.5px; letter-spacing: .04em; color: var(--muted); }
+.trend-src a { color: var(--ink); }
+.method .dek { max-width: 62ch; }
+.method .prose-1 { margin: 18px 0 28px; max-width: 62ch; font-size: 16px; }
+.method .prose-1 p + p { margin-top: 12px; }
+.method .labels { display: grid; gap: 10px; margin: 0 0 8px; }
+.method .labels div { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 12px; align-items: baseline; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
+.method .labels dd { margin: 0; font-size: 15.5px; }
+.trends .dek { max-width: 62ch; }
+.glance { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin: 26px 0 34px; padding: 18px 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); }
+.glance b { display: block; font-weight: 400; font-size: 40px; line-height: 1; color: var(--ink); }
+.glance .mono { display: block; margin-top: 8px; color: var(--muted); font-size: 10.5px; }
+.buzz { list-style: none; margin: 4px 0 0; padding: 0; }
+.buzz > li { display: grid; grid-template-columns: 44px minmax(0, 1fr) 180px; gap: 8px 20px; padding: 20px 0; border-top: 1px solid var(--rule); }
+.buzz .no { font-size: 24px; line-height: 1.1; }
+.buzz strong { display: block; font-weight: 400; font-size: 26px; line-height: 1.1; letter-spacing: -0.01em; }
+.buzz .g { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin: 8px 0 0; font-style: italic; font-size: 15.5px; color: var(--ink); }
+.buzz .g.quiet { color: var(--muted); }
+.buzz .meta { margin: 6px 0 0; color: var(--muted); }
+.buzz .links { margin-top: 10px; }
+.buzz .side { padding-top: 6px; }
+.buzz .side .spark { height: 46px; }
+.buzz .side .cap { display: block; margin-top: 4px; font-size: 10px; color: var(--muted); }
+.buzz .links b, .ours-list b { font-weight: 500; }
+.trends .ours { margin-top: 36px; }
+.ours-list { list-style: none; margin: 0; padding: 0; }
+.ours-list li { display: grid; grid-template-columns: minmax(0, 1.2fr) auto minmax(0, 1.6fr); gap: 16px; align-items: center; padding: 10px 0; border-top: 1px solid var(--rule); }
+.ours-list li > a { font-size: 17px; text-decoration: none; }
+.ours-list .row { display: flex; align-items: center; gap: 10px; }
+.ours-list .spark { width: 84px; height: 18px; }
+.ours-list .txt { font-style: italic; font-size: 14.5px; color: var(--muted); }
+
+/* Receptkleuren */
+.t-sage      { --bg: var(--sage);      --hi: var(--sage);  --lo: #2E4A6B; }
+.t-sky       { --bg: var(--sky);       --hi: var(--sky);   --lo: #2E4A6B; }
+.t-blush     { --bg: var(--blush);     --hi: #F3DACE;      --lo: #7E3A2C; }
+.t-persimmon { --bg: var(--persimmon); --hi: #FAD2B4;      --lo: #9C3F1F; }
+.t-mustard   { --bg: var(--mustard);   --hi: #F7D27E;      --lo: #5B3D10; }
+
+/* Foto: duotoon in de receptkleur met drukraster; hover toont het origineel */
+.duo { position: relative; overflow: hidden; background: var(--hi); isolation: isolate; }
+.duo .lift { position: absolute; inset: 0; display: block; mix-blend-mode: multiply; }
+.duo img { width: 100%; height: 100%; object-fit: cover; }
+.duo .lift img { filter: grayscale(1) contrast(1.08) brightness(1.08); }
+.duo::after { content: ""; position: absolute; inset: 0; background: var(--lo); mix-blend-mode: lighten; pointer-events: none; }
+.duo::before { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: .2; mix-blend-mode: multiply; background-image: radial-gradient(circle, #000 0.7px, transparent 1.3px); background-size: 4px 4px; transition: opacity .5s ease; }
+/* origineel: een onbewerkte kopie (zonder duotoon en zonder ophelderen) die erover heen infadet */
+.duo .orig { position: absolute; inset: 0; z-index: 1; opacity: 0; transition: opacity .5s ease; }
+@media (hover: hover) {
+  .duo:hover .orig { opacity: 1; }
+  .duo:hover::before { opacity: 0; }
+}
+.duo.color .orig, .duo.scrolled .orig { opacity: 1; }
+.duo.color::before, .duo.scrolled::before { opacity: 0; }
+/* receptfoto: filter gaat snel weg zodra je scrolt; op mobiel met de scroll mee (--mix 0..1) */
+.duo.scrub:not(.color) .orig { opacity: var(--mix, 0); transition: none; }
+.duo.scrub:not(.color)::before { opacity: calc(.2 * (1 - var(--mix, 0))); transition: none; }
+.spread .left .duo .orig, .spread .left .duo::before { transition-duration: .6s; transition-timing-function: cubic-bezier(.2, .7, .3, 1); }
+.duo .glyph { position: absolute; top: 16px; right: 18px; z-index: 3; color: var(--cream); }
+.duo .fallback { position: absolute; inset: 0; display: grid; place-items: center; font-size: clamp(64px, 12vw, 140px); color: var(--lo); }
+
+.seigaiha { background-color: #2E4A6B; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='20'%3E%3Cg fill='none' stroke='%23F8F5EE' stroke-width='1.4'%3E%3Cg%3E%3Ccircle cx='20' cy='0' r='19' fill='%232E4A6B'/%3E%3Ccircle cx='20' cy='0' r='14'/%3E%3Ccircle cx='20' cy='0' r='9'/%3E%3Ccircle cx='20' cy='0' r='4'/%3E%3C/g%3E%3Cg%3E%3Ccircle cx='0' cy='10' r='19' fill='%232E4A6B'/%3E%3Ccircle cx='0' cy='10' r='14'/%3E%3Ccircle cx='0' cy='10' r='9'/%3E%3Ccircle cx='0' cy='10' r='4'/%3E%3Ccircle cx='40' cy='10' r='19' fill='%232E4A6B'/%3E%3Ccircle cx='40' cy='10' r='14'/%3E%3Ccircle cx='40' cy='10' r='9'/%3E%3Ccircle cx='40' cy='10' r='4'/%3E%3C/g%3E%3Cg%3E%3Ccircle cx='20' cy='20' r='19' fill='%232E4A6B'/%3E%3Ccircle cx='20' cy='20' r='14'/%3E%3Ccircle cx='20' cy='20' r='9'/%3E%3Ccircle cx='20' cy='20' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); background-size: 40px 20px; }
+
+/* Kop */
+.top { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-block: 22px 18px; margin-bottom: 20px; border-bottom: 1px solid var(--ink); }
+.wordmark { display: block; height: 1em; width: auto; aspect-ratio: 307 / 104; }
+.top .brand { display: block; font-size: 38px; color: var(--ink); text-decoration: none; }
+.top nav { display: flex; align-items: center; gap: 30px; }
+.top nav a { position: relative; font-family: var(--sans); font-size: 15.5px; font-weight: 500; text-decoration: none; color: var(--ink); white-space: nowrap; padding-block: 6px; }
+.top nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--hanko); transform: scaleX(0); transform-origin: left; transition: transform .2s ease; }
+.top nav a:hover::after, .top nav a[aria-current="page"]::after { transform: scaleX(1); }
+.notice { font-family: var(--sans); font-size: 14px; color: var(--muted); margin-bottom: 12px; }
+
+/* ---------- Home ---------- */
+.home { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gap); }
+/* omslagkleur per editie */
+.c-navy { --cover: var(--navy); } .c-ink { --cover: var(--ink-cover); } .c-kaki { --cover: #A9512F; } .c-moss { --cover: #3D5A47; }
+.mast { grid-column: span 4; background: var(--cover, var(--navy)); color: var(--cream); padding: 28px 26px 24px; display: flex; flex-direction: column; min-height: 540px; }
+.mast .logo { margin: 0; font-size: 64px; line-height: 1; }
+.mast .tagline { margin-top: 14px; font-size: 18px; line-height: 1.35; max-width: 22ch; }
+.mast .sub { margin-top: 12px; color: rgba(248,245,238,.65); }
+.mast .glyph { font-size: 190px; margin: auto 0 0 -6px; padding-top: 28px; }
+.mast .bottom { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-top: 22px; }
+.mast .intro { font-style: italic; font-size: 15px; line-height: 1.5; color: rgba(248,245,238,.85); max-width: 32ch; }
+
+.lead { grid-column: span 8; display: grid; grid-template-rows: minmax(0, 1fr) auto; text-decoration: none; min-width: 0; }
+.lead .duo { min-height: 340px; }
+.lead .body { padding: 22px 26px 26px; display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 0 18px; }
+.lead .no { font-size: 56px; line-height: .9; }
+.lead h2 { margin-top: 4px; font-size: 36px; line-height: 1.05; letter-spacing: -0.02em; }
+.lead .dek { margin: 8px 0 14px; font-size: 16px; color: var(--muted); font-style: italic; max-width: 56ch; }
+.lead .trend { margin-top: 14px; }
+.lead:hover h2, .tile:hover h2, .ferm-teaser:hover h2 { text-decoration: underline; text-decoration-thickness: 1px; }
+
+.tile { grid-column: span 3; display: flex; flex-direction: column; text-decoration: none; background: var(--bg); color: var(--dark); min-width: 0; }
+.tile .duo { aspect-ratio: 4 / 3; }
+.tile .body { padding: 16px 18px 18px; display: flex; flex-direction: column; flex: 1; }
+.tile .no { font-size: 15px; color: var(--dark); }
+.tile h2 { margin-top: 4px; font-size: 21px; line-height: 1.12; letter-spacing: -0.01em; }
+.tile .metaline { margin-top: 10px; color: rgba(31,29,26,.72); }
+.tile .trend { margin-top: auto; padding-top: 10px; border-top-color: rgba(31,29,26,.25); }
+.tile .body > .metaline { margin-bottom: 16px; }
+.tile .trend b { color: var(--dark); }
+.tile .spark { color: var(--lo); }
+.tile .tl { color: var(--dark); }
+.tile .tl.quiet { color: rgba(31,29,26,.6); }
+.tile .trend p { color: rgba(31,29,26,.78); }
+.tile.t-persimmon { color: var(--cream); }
+.tile.t-persimmon .no, .tile.t-persimmon .trend b { color: var(--cream); }
+.tile.t-persimmon .metaline, .tile.t-persimmon .trend p { color: rgba(248,245,238,.88); }
+.tile.t-persimmon .trend { border-top-color: rgba(248,245,238,.4); }
+.tile.t-persimmon .spark { color: var(--cream); }
+.tile.t-persimmon .tl { color: var(--cream); }
+.tile.t-persimmon .tl.quiet { color: rgba(248,245,238,.75); }
+
+.ferm-teaser { grid-column: span 12; display: grid; grid-template-columns: minmax(160px, 3fr) auto minmax(0, 7fr) auto; gap: 40px; align-items: center; text-decoration: none; padding-right: 36px; }
+.ferm-teaser .seigaiha { align-self: stretch; min-height: 220px; }
+.ferm-teaser .cjk { font-size: 120px; }
+.ferm-teaser h2 { margin-top: 6px; font-size: 40px; line-height: 1.05; letter-spacing: -0.02em; }
+.ferm-teaser p:not(.kicker) { margin-top: 10px; font-style: italic; color: var(--muted); font-size: 18px; max-width: 46ch; }
+.ferm-teaser .go { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+
+/* Editiebalk: welke editie, en bladeren */
+.issuebar { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; color: var(--muted); }
+.issuebar nav { display: flex; gap: 18px; }
+.issuebar a { text-decoration: none; color: var(--muted); }
+.issuebar a:hover { color: var(--ink); }
+
+/* Archief: een plank met edities */
+.archive { margin-top: 96px; }
+.archive-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+.archive h2 { font-size: 36px; letter-spacing: -0.02em; margin-top: 6px; }
+.find { display: flex; align-items: center; gap: 14px; min-width: min(100%, 360px); font: inherit; font-size: 16px; font-style: italic; color: var(--muted); background: var(--sheet); border: 0; padding: 14px 16px; cursor: pointer; text-align: left; }
+.find:hover { color: var(--ink); }
+.find span { flex: 1; }
+kbd { font-family: var(--mono); font-style: normal; font-size: 11px; border: 1px solid var(--rule); border-radius: 3px; padding: 1px 6px; color: var(--muted); }
+.shelf { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+.issue { display: flex; flex-direction: column; background: var(--sheet); min-width: 0; }
+.issue .cov { background: var(--cover); color: var(--cream); padding: 10px 12px; display: flex; flex-direction: column; aspect-ratio: 4 / 3; text-decoration: none; }
+.issue .cov .cjk { font-size: 40px; margin-top: auto; }
+.issue .cov .row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.issue .cov .logo { font-size: 17px; }
+.issue .cov .mono { font-size: 9.5px; }
+.issue .cov .mono { color: rgba(248,245,238,.7); }
+.issue .cov:hover .logo { opacity: .8; }
+.issue ul { list-style: none; margin: 0; padding: 8px 12px 10px; font-size: 13px; line-height: 1.3; }
+.issue li { padding: 2px 0; display: flex; gap: 6px; }
+.issue li a { text-decoration: none; }
+.issue li a:hover { text-decoration: underline; }
+.issue .dot { flex: none; width: 6px; height: 6px; margin-top: 5px; background: var(--bg); }
+.issue li.f a { font-style: italic; }
+.issue li.f .dot { background: var(--hanko); border-radius: 50%; }
+.empty { color: var(--muted); padding: 16px; font-style: italic; }
+
+/* ---------- Recept ---------- */
+/* zelfde ruimte onder de kop als de editieregel op home */
+.back { display: block; width: fit-content; margin-bottom: 16px; text-decoration: none; color: var(--muted); }
+.back:hover { color: var(--ink); }
+.spread { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--gap); align-items: start; }
+.spread .left { display: flex; flex-direction: column; gap: 10px; position: sticky; top: 16px; }
+.spread .left .duo { aspect-ratio: 4 / 5; }
+.spread .left .glyph { font-size: 72px; }
+.credit { font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.credit a { text-decoration: none; }
+.credit a:hover { color: var(--ink); }
+.sheet { padding: 32px 34px 34px; min-width: 0; }
+.sheet header { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0 18px; align-items: end; padding-bottom: 16px; }
+.sheet header .no { font-size: 64px; line-height: .85; }
+.sheet h1 { margin-top: 4px; font-size: 38px; line-height: 1; letter-spacing: -0.02em; }
+.sheet > .metaline { padding: 10px 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); color: var(--ink); align-items: center; }
+.sheet .dek { font-style: italic; color: var(--muted); font-size: 17px; margin-top: 18px; max-width: 60ch; }
+.sheet .trend { margin-top: 12px; }
+.stack { display: grid; gap: 32px; margin-top: 28px; }
+.stack .why { margin-top: 0; }
+.cols { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 36px; margin-top: 28px; }
+.head-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.copy { font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: .25em; }
+.copy:hover { color: var(--ink); }
+.stepper { display: inline-flex; align-items: center; gap: 8px; }
+.stepper button { font-family: var(--mono); font-size: 13px; width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--rule); background: transparent; color: var(--ink); cursor: pointer; line-height: 1; padding: 0; }
+.stepper button:hover:not(:disabled) { border-color: var(--ink); }
+.stepper button:disabled { opacity: .35; cursor: default; }
+.stepper output { min-width: 9ch; text-align: center; }
+.ing-group { padding: 16px 0 4px; }
+.ingr { list-style: none; margin: 0; padding: 0; font-family: var(--mono); font-size: 12.5px; }
+.ingr li { display: grid; grid-template-columns: 9ch minmax(0, 1fr); gap: 16px; padding: 7px 0; border-bottom: 1px solid var(--rule); line-height: 1.4; }
+.ingr .q { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.steps { list-style: none; margin: 0; padding: 0; counter-reset: s; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 8px; margin-bottom: 12px; font-size: 15.5px; line-height: 1.5; }
+.steps li::before { content: counter(s); color: var(--hanko); }
+.tip { margin-top: 20px; border-left: 2px solid var(--persimmon); padding: 2px 0 2px 14px; font-style: italic; font-size: 15px; color: var(--muted); }
+.tip .label { display: block; font-style: normal; color: var(--ink); margin-bottom: 2px; }
+.why { margin-top: 28px; padding-top: 14px; border-top: 1px solid var(--rule); font-family: var(--sans); font-size: 14px; line-height: 1.5; color: var(--muted); }
+.why .label { display: block; color: var(--ink); margin-bottom: 4px; }
+.links { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 4px; font-family: var(--mono); font-size: 11px; letter-spacing: .04em; }
+.links a { text-decoration: none; color: var(--ink); border-bottom: 1px solid var(--rule); }
+.links a:hover { border-color: var(--ink); }
+.ferm-link { margin-top: 16px; font-family: var(--sans); font-size: 14.5px; color: var(--muted); }
+.pager { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap); margin-top: var(--gap); }
+.pager a { text-decoration: none; display: grid; gap: 4px; padding: 18px 22px; }
+.pager a:hover strong { text-decoration: underline; text-decoration-thickness: 1px; }
+.pager .next { text-align: right; }
+.pager strong { font-weight: 400; font-size: 21px; letter-spacing: -0.01em; }
+
+/* ---------- Fermentatie ---------- */
+.ferm { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: var(--gap); align-items: start; }
+.ferm-side { position: sticky; top: 16px; display: flex; flex-direction: column; }
+.ferm-side .seigaiha { height: 72px; }
+.ferm-side .in { padding: 26px 26px 28px; }
+.ferm-side .big { font-size: 132px; margin: 6px 0 22px -4px; }
+.ferm-side h1 { margin: 6px 0 2px; font-size: 44px; line-height: 1; letter-spacing: -0.025em; }
+.ferm-side .lede { font-style: italic; color: var(--muted); font-size: 16px; margin-top: 14px; }
+.facts { list-style: none; margin: 22px 0 0; padding: 0; border-top: 1px solid var(--rule); }
+.facts li { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--rule); font-family: var(--mono); font-size: 12px; text-align: right; }
+.facts li span:first-child { color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-size: 11px; text-align: left; }
+.ferm-side .used { display: block; margin-top: 18px; font-size: 15px; text-decoration: none; }
+.ferm-side .used:hover { text-decoration: underline; }
+.ferm-side .used .no { margin-right: 6px; }
+.ferm-main { padding: 34px 36px 36px; min-width: 0; }
+.ferm-main section + section { margin-top: 40px; }
+.prose { columns: 2; column-gap: 32px; font-size: 16px; }
+.prose p { margin: 0 0 12px; break-inside: avoid; }
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); position: relative; }
+.timeline::before { content: ""; position: absolute; left: 0; right: 0; top: 5px; height: 1px; background: var(--ink); }
+.timeline li { position: relative; padding: 24px 14px 0 0; }
+.timeline li::before { content: ""; position: absolute; top: 0; left: 0; width: 11px; height: 11px; border-radius: 50%; background: var(--sheet); border: 1px solid var(--ink); }
+.timeline li.now::before { background: var(--hanko); border-color: var(--hanko); }
+.timeline .when { display: block; }
+.timeline b { display: block; font-weight: 500; font-size: 16px; margin: 2px 0; line-height: 1.3; }
+.timeline .txt { display: block; color: var(--muted); font-size: 13.5px; line-height: 1.4; }
+.checks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; border-top: 1px solid var(--ink); padding-top: 16px; }
+.checks div { font-size: 14.5px; line-height: 1.5; }
+.checks .mono { display: block; margin-bottom: 4px; }
+.checks .ok { color: var(--ok); } .checks .bad { color: var(--hanko); } .checks .kid { color: var(--muted); }
+
+/* Tags en "Meer zoals dit" */
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.tags a { font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; text-decoration: none; padding: 4px 9px; border: 1px solid var(--rule); border-radius: 99px; color: var(--muted); }
+.tags a:hover { border-color: var(--ink); color: var(--ink); }
+.related { margin-top: 56px; }
+.related > .head-row { margin-bottom: 12px; }
+.related h2 { font-size: 24px; letter-spacing: -0.01em; }
+.related-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); }
+.mini { display: grid; grid-template-columns: 96px minmax(0, 1fr); background: var(--bg); color: var(--dark); text-decoration: none; min-width: 0; }
+.mini .duo { aspect-ratio: 1; }
+.mini .body { padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.mini strong { font-weight: 400; font-size: 17px; line-height: 1.15; }
+.mini:hover strong { text-decoration: underline; text-decoration-thickness: 1px; }
+.mini .why-rel { font-family: var(--sans); font-size: 12px; line-height: 1.35; color: rgba(31,29,26,.7); margin-top: auto; }
+.mini .mono { color: rgba(31,29,26,.65); font-size: 10.5px; }
+.mini.t-persimmon { color: var(--cream); }
+.mini.t-persimmon .why-rel, .mini.t-persimmon .mono { color: rgba(248,245,238,.85); }
+
+/* Zoeken (toets /) */
+#search { width: min(720px, calc(100vw - 24px)); max-height: min(80vh, 760px); margin: 9vh auto auto; padding: 0; border: 0; background: var(--sheet); color: var(--ink); box-shadow: 0 30px 80px rgba(0,0,0,.25); display: none; flex-direction: column; overflow: hidden; }
+#search[open] { display: flex; }
+#search::backdrop { background: rgba(22,20,18,.55); }
+.s-top { display: flex; align-items: center; gap: 12px; padding: 18px 22px 14px; border-bottom: 1px solid var(--ink); }
+.s-top .cjk { font-size: 22px; font-weight: 700; color: var(--hanko); }
+.s-top input { flex: 1; min-width: 0; font: inherit; font-size: 22px; letter-spacing: -0.01em; color: var(--ink); background: transparent; border: 0; padding: 4px 0; }
+.s-top input:focus { outline: none; }
+.s-top input::placeholder { color: var(--muted); font-style: italic; }
+.s-close { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); background: none; border: 0; cursor: pointer; padding: 4px; }
+.s-chips { display: flex; gap: 6px; flex-wrap: wrap; padding: 12px 22px; border-bottom: 1px solid var(--rule); }
+.s-chips button { font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; padding: 5px 10px; border: 1px solid var(--rule); border-radius: 99px; background: transparent; color: var(--ink); cursor: pointer; }
+.s-chips button:hover, .s-chips button.on { border-color: var(--ink); background: var(--ink); color: var(--sheet); }
+.s-chips .dice { border-color: var(--hanko); color: var(--hanko); }
+.s-hint { padding: 10px 22px 0; font-family: var(--sans); font-size: 12.5px; color: var(--muted); }
+.s-results { list-style: none; margin: 0; padding: 8px 10px 14px; overflow-y: auto; }
+.s-results li a { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 10px 12px; text-decoration: none; }
+.s-results li a.sel, .s-results li a:hover { background: var(--board); }
+.s-results .sw { width: 40px; height: 40px; display: grid; place-items: center; background: var(--bg, var(--hanko)); color: var(--dark); font-size: 20px; }
+.s-results .sw.t-persimmon, .s-results .sw.ferm { color: var(--cream); }
+.s-results .sw.ferm { background: #2E4A6B; }
+.s-results strong { display: block; font-weight: 400; font-size: 17px; line-height: 1.2; }
+.s-results .meta { display: block; font-family: var(--sans); font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+.s-results .meta b { font-weight: 500; color: var(--ink); }
+.s-results .no { font-size: 15px; }
+.s-group { padding: 10px 12px 4px; }
+.s-empty { padding: 18px 12px; color: var(--muted); font-style: italic; }
+
+/* Status en voet */
+.status { padding-block: 48px; color: var(--muted); font-style: italic; }
+.toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--board); font-family: var(--mono); font-size: 12px; padding: 10px 16px; border-radius: 2px; z-index: 10; }
+footer { margin-top: 96px; }
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 24px; padding-block: 18px 36px; border-top: 1px solid var(--ink); color: var(--muted); }
+.foot-links { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 22px; }
+.foot-links a { color: var(--ink); text-decoration: none; }
+.foot-links a:hover { text-decoration: underline; }
+.foot-search { display: inline-flex; align-items: center; gap: 6px; }
+
+@media (max-width: 1000px) {
+  .mast, .lead { grid-column: span 12; }
+  .mast { min-height: 0; } .mast .glyph { font-size: 120px; }
+  .tile { grid-column: span 6 !important; }
+  .spread, .ferm, .archive { grid-template-columns: minmax(0, 1fr); }
+  .spread .left, .ferm-side { position: static; }
+  .spread .left .duo { aspect-ratio: 1; }
+  .related-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .top { flex-direction: column; align-items: start; gap: 10px; padding-block: 16px 10px; }
+  .top .brand { font-size: 32px; }
+  .top nav { width: 100%; gap: 22px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+  .top nav::-webkit-scrollbar { display: none; }
+  .top nav a { font-size: 15px; }
+  .tile { grid-column: span 12 !important; }
+  .mast .logo { font-size: 52px; }
+  .lead .duo { min-height: 230px; }
+  .lead .body { grid-template-columns: minmax(0, 1fr); padding: 20px; } .lead .no { font-size: 40px; }
+  .lead h2 { font-size: 28px; }
+  .ferm-teaser { grid-template-columns: 72px minmax(0, 1fr); gap: 18px; padding-right: 18px; }
+  .ferm-teaser .seigaiha { min-height: 150px; }
+  .ferm-teaser h2 { font-size: 28px; }
+  .ferm-teaser p:not(.kicker) { font-size: 16px; }
+  .ferm-teaser .cjk, .ferm-teaser .go { display: none; }
+  .sheet, .ferm-main { padding: 24px 18px; }
+  .ferm-side .in, .archive .side { padding: 22px 18px; }
+  #archive-list { padding: 6px 18px; }
+  .sheet header .no { font-size: 46px; } .sheet h1 { font-size: 28px; }
+  .ferm-side .big { font-size: 96px; } .ferm-side h1 { font-size: 34px; }
+  .cols, .checks { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .ours-list li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .glance { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .glance b { font-size: 32px; }
+  .buzz > li { grid-template-columns: 34px minmax(0, 1fr); }
+  .buzz .side { grid-column: 2; max-width: 220px; }
+  .buzz strong { font-size: 22px; }
+  .prose { columns: 1; }
+  .timeline { grid-template-columns: minmax(0, 1fr); }
+  .timeline::before { top: 0; bottom: 0; left: 5px; right: auto; width: 1px; height: auto; }
+  .timeline li { padding: 0 0 18px 26px; }
+  .pager strong { font-size: 17px; }
+  .pager a { padding: 14px 16px; }
+  .shelf { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .issue .cov .cjk { font-size: 36px; }
+  #search { margin-top: 12px; max-height: calc(100vh - 24px); }
+  .s-top input { font-size: 19px; }
+  .s-hint { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .duo .orig, .duo::before, .spread .left .duo .orig, .spread .left .duo::before { transition: none; }
+}
+</style>
+<!-- gemaakt door scripts/build_pages.py, niet met de hand bewerken -->
+<link rel="canonical" href="https://edial.github.io/proef/recept/cottage-cheese-flatbread/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Proef">
+<meta property="og:title" content="Cottage cheese flatbread">
+<meta property="og:description" content="Wrap van drie ingrediënten: cottage cheese en eieren, glad gemixt en dun gebakken. Zonder bloem en vol eiwit.">
+<meta property="og:url" content="https://edial.github.io/proef/recept/cottage-cheese-flatbread/">
+<meta property="og:image" content="https://api.flavournetwork.ca/wp-content/uploads/2024/06/cottage-cheese-flatbread-feature-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Recipe", "name": "Cottage cheese flatbread", "description": "Wrap van drie ingrediënten: cottage cheese en eieren, glad gemixt en dun gebakken. Zonder bloem en vol eiwit.", "image": ["https://api.flavournetwork.ca/wp-content/uploads/2024/06/cottage-cheese-flatbread-feature-image.jpg"], "url": "https://edial.github.io/proef/recept/cottage-cheese-flatbread/", "inLanguage": "nl", "datePublished": "2026-10-24", "author": {"@type": "Organization", "name": "Proef", "url": "https://edial.github.io/proef/"}, "recipeCategory": "Lunch", "keywords": "Weinig werk, Kindvriendelijk", "recipeYield": "2 personen", "totalTime": "PT45M", "recipeIngredient": ["250 g cottage cheese", "2 eieren (M)", "30 g belegen kaas, geraspt", "2 g gedroogde oregano", "snuf zout en zwarte peper", "100 g hummus", "150 g gegrilde kipfilet of geroosterde kikkererwten", "40 g rucola", "0,5 komkommer, in dunne reepjes"], "recipeInstructions": [{"@type": "HowToStep", "text": "Verwarm de oven voor op 200 °C (hetelucht 180 °C). Bekleed een bakplaat met bakpapier en vet het papier licht in."}, {"@type": "HowToStep", "text": "Mix cottage cheese, eieren, kaas, oregano, zout en peper met een staafmixer helemaal glad."}, {"@type": "HowToStep", "text": "Giet het beslag op het bakpapier en strijk het uit tot een rechthoek van ongeveer 30 × 35 cm en 3 tot 4 mm dik."}, {"@type": "HowToStep", "text": "Bak 30 tot 35 minuten, tot het beslag stevig is en de randen goudbruin zijn."}, {"@type": "HowToStep", "text": "Laat 5 minuten afkoelen en trek de flatbread daarna voorzichtig los van het papier."}, {"@type": "HowToStep", "text": "Halveer de plaat. Besmeer elke helft met hummus, beleg met kip, rucola en komkommer en rol strak op."}], "isBasedOn": "https://www.flavournetwork.ca/recipe/cottage-cheese-flatbread/"}</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="proef-logo" viewBox="0 0 307 104">
+    <g fill="currentColor">
+      <path d="M 27.29 66.79 C 27.25 66.91 27.21 67.04 27.17 67.17 L 27.17 92.54 C 27.17 93.55 27.66 94.67 27.88 95.2 C 33.48 97.73 34.42 95.71 38.34 97.96 C 38.37 98.28 38.8 100.5 36.1 100.5 L 30.1 100.5 L 4.7 100.5 C 2.39 100.5 2.22 98.9 2.19 98.84 C 3.45 95.99 5 97.83 11.17 95.26 C 11.44 94.65 12.03 93.35 12.03 92.43 L 12.03 77.24 L 12.03 13.62 C 12.03 6.68 0.41 11.17 2.7 5.75 C 2.73 5.74 3.54 5.38 4.23 5.38 L 9.83 5.38 L 35.63 5.37 L 41.63 5.49 C 41.82 5.49 47.82 6.54 51.05 7.35 C 52.06 7.6 51.72 7.41 53.54 8.02 C 53.62 8.05 55.26 8.63 55.96 8.9 C 56.1 8.95 56.31 9.04 56.7 9.2 C 81.87 19.11 84.28 47.17 70.05 60.45 C 61.17 68.75 47.24 70.44 35.12 68.35 C 31.11 67.66 28.56 66.55 28.41 66.57 C 27.5 66.66 28.17 66.55 27.29 66.79 Z M 27.6 9.11 C 27.59 9.13 27.17 9.67 27.17 10.2 L 27.17 46.99 L 27.17 60.98 C 27.17 61.1 27.22 62.17 28.18 62.9 C 29.19 63.68 51.85 71.1 60.8 53.04 C 61.24 52.14 62.46 48.58 62.73 47.61 C 63.25 45.77 63.29 45.58 63.51 41.89 C 63.59 40.65 63.63 39.98 63.64 39.5 C 63.99 19.79 50.16 8.92 34.94 8.92 L 29.95 8.92 C 28.06 8.92 28.7 8.89 27.6 9.11 Z"/>
+      <path d="M 103.02 52.73 C 103.45 51.87 108.17 37.37 119.95 37.37 C 127.41 37.37 131.72 41.82 131.72 49.08 C 131.72 55.68 128.38 57.81 125.06 57.81 C 114.82 57.81 122.76 44.94 114.44 44.94 C 106.69 44.94 103.5 57.42 103.5 59.3 L 103.5 64.89 C 103.5 64.95 102.9 67.62 102.9 67.79 L 102.9 92.39 C 102.9 99.16 111.8 95.09 113.76 98.89 C 113.73 98.95 113.6 100.5 111.44 100.5 L 91.84 100.5 L 84.44 100.5 C 82.37 100.5 82.06 98.98 82.04 98.93 C 83.91 95.96 89.52 98.02 89.52 93.33 L 89.52 83.13 L 89.52 48.31 C 89.52 47.73 89.32 46.95 89.32 46.93 C 86.3 44.63 84.67 46.79 81.69 44.98 C 81.77 43.92 81.42 44.1 82.92 43.07 C 83.52 42.65 98.91 38.03 99.25 38.03 C 99.34 38.03 102.56 37.57 102.56 40.53 L 102.56 48.93 C 102.56 51.99 102.65 51.88 103.02 52.73 Z"/>
+      <path d="M 166.75 101.86 C 149.29 102.72 136.43 91.36 133.75 75.62 C 133.4 73.56 133.46 71.18 133.46 70.04 L 133.46 65.04 C 133.46 61.83 138.02 42.89 156.94 38.34 C 158.42 37.99 160.78 37.44 160.86 37.44 L 165.86 37.44 C 165.95 37.44 167.88 37.29 170.46 37.54 C 179.41 38.39 184.75 43.11 185.68 43.81 C 194.68 50.63 198.47 60.57 197.78 71.81 C 197.46 77.12 196.37 87.26 185.26 95.57 C 183.54 96.85 181.4 98.78 176.2 100.37 C 172.62 101.47 171.48 101.53 166.75 101.86 Z M 169.97 98.05 C 171.45 97.67 175.76 97.01 178.96 93.37 C 185.2 86.29 184.97 73.46 182.79 63.32 C 181.54 57.5 177.63 41.02 163.61 41.02 C 151.41 41.02 148.22 52.51 147.6 56.29 C 147.28 58.17 146.99 61.95 147.36 67.45 C 147.5 69.6 147.5 70.95 147.62 71.84 C 149.2 83.34 155.15 98.26 167.59 98.26 C 169.2 98.26 169.54 98.12 169.97 98.05 Z"/>
+      <path d="M 215.12 66.93 C 214.27 74.1 218.62 93.3 237.52 93.3 C 253.09 93.3 255.27 80.27 256.75 79.74 C 257.71 79.39 257.71 79.67 258.03 79.71 C 259.05 82.08 257.48 86.5 255.86 89.42 C 245.35 108.36 209.04 106.44 203.36 79.23 C 203.33 79.11 203.3 78.92 203.2 78.44 C 203.08 77.83 202.81 76.74 202.7 75.9 C 202.5 74.43 202.44 71.31 202.51 68.71 C 202.53 68.22 202.53 67.92 202.54 67.71 C 202.66 65.06 203.37 61.21 204.43 57.94 C 207.56 48.31 216.15 37.13 233.48 37.31 C 248.08 37.45 254.36 46.23 256.62 51.98 C 257.17 53.37 258.55 56.41 258.55 60.88 C 258.55 61.02 259.37 66.55 254.23 66.55 L 243.83 66.55 L 216.24 66.56 C 215.65 66.56 215.14 66.92 215.12 66.93 Z M 215.07 63.11 C 215.09 63.12 215.73 63.57 216.15 63.57 L 230.94 63.57 L 242.15 63.57 C 245.7 63.57 245.05 59.6 245.05 59.34 C 245.05 51.06 240.84 40.75 231.58 40.75 C 219.83 40.75 215.27 52.88 215.07 63.11 Z"/>
+      <path d="M 272.63 39.4 C 272.63 32.25 266.36 29.08 266.36 19.1 C 266.36 6.34 277.7 2.26 283.75 2.26 C 284.68 2.26 285.6 2.27 286.52 2.35 C 289.67 2.64 293.28 3.63 295.44 6.09 C 295.92 6.63 296.31 7.24 296.6 7.91 C 296.95 8.75 297.05 9.37 297.7 10.11 C 298.41 10.91 299.32 11.53 300.11 12.26 C 301.22 13.29 302.18 14.48 302.92 15.81 C 303.68 17.17 304.31 18.84 304.47 20.4 C 304.75 23.21 303.7 26.26 301.26 27.84 C 300.65 28.23 299.97 28.51 299.26 28.66 C 295.88 29.38 292.79 27.08 291.47 24.09 C 290.75 22.47 290.56 20.66 290.65 18.91 C 290.75 17 291.27 15.16 292.07 13.44 C 292.63 12.24 293.38 11.06 293.32 9.68 C 293.32 9.51 293.32 9.33 293.27 9.16 C 292.92 7.89 291.19 6.89 290.08 6.42 C 289.26 6.06 288.4 5.8 287.53 5.61 C 286.3 5.35 285.01 5.18 283.75 5.18 C 277.51 5.18 274.57 9.64 274.57 14.9 C 274.57 25.72 284.16 29.52 285.35 39.4 L 285.35 40.5 L 272.63 40.5 Z M 263.4 39.4 L 298.2 39.4 C 299.6 39.4 300.25 40 300.25 40.8 C 300.25 41.75 299.4 42.55 298.5 42.8 C 297.8 43 297 43.05 296 43.05 L 285.94 43.05 L 285.94 46.5 L 272.66 46.5 L 272.66 46.1 C 272.66 45.2 271.9 44.5 270.8 44.05 L 263.9 42.35 C 263.1 42.15 262.55 41.6 262.55 40.85 C 262.55 40.1 262.8 39.4 263.4 39.4 Z M 272.66 45.5 L 285.94 45.5 C 285.94 67.5 288.4 78 288.4 90 C 288.4 96.44 286.58 101.5 279.3 101.5 C 272.02 101.5 270.2 96.44 270.2 90 C 270.2 78 272.66 67.5 272.66 45.5 Z"/>
+    </g>
+  </symbol>
+</svg>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#deze-week" aria-label="Proef, deze week"><svg class="wordmark" viewBox="0 0 307 104" aria-hidden="true" id="top-logo"></svg></a>
+    <nav aria-label="Hoofdmenu">
+      <a href="#deze-week">Deze week</a>
+      <a href="#fermentatie">Fermentatie</a>
+      <a href="#trends">Trends</a>
+    </nav>
+  </header>
+
+  <main id="home">
+    <p class="notice" id="edition-notice" hidden>Je bekijkt een eerdere editie. <a href="#deze-week">Naar deze week →</a></p>
+    <div class="issuebar mono" id="issuebar"></div>
+    <div class="home" id="features"><p class="status" id="status">Recepten laden…</p></div>
+
+    <section class="archive" id="archief" aria-labelledby="archief-titel">
+      <div class="archive-head">
+        <div>
+          <p class="kicker">Archief</p>
+          <h2 id="archief-titel">Alle edities</h2>
+        </div>
+        <button type="button" class="find" id="find"><span>Zoek op gerecht, ingrediënt of wat je in huis hebt</span><kbd>/</kbd></button>
+      </div>
+      <div class="shelf" id="shelf"></div>
+    </section>
+  </main>
+
+  <main id="detail-view" hidden></main>
+
+  <footer>
+    <div class="foot mono">
+      <span>© 2026 Proef</span>
+      <span class="foot-links"><a href="#zoek" class="foot-search" aria-keyshortcuts="/">Zoek <kbd>/</kbd></a><a href="#archief">Archief</a><span>Trenddata van Google Trends, Pinterest en TikTok · <a href="#zo-meten-we">Hoe meten we dit?</a></span></span>
+    </div>
+  </footer>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<dialog id="search" aria-label="Zoeken">
+  <div class="s-top">
+    <span class="cjk" aria-hidden="true">探</span>
+    <input id="q" type="search" placeholder="kimchi, onder 30 min, of: kool, ei, rijst" autocomplete="off" aria-controls="s-results" aria-label="Zoek in alle recepten">
+    <button type="button" class="s-close" id="s-close">Esc</button>
+  </div>
+  <div class="s-chips" id="s-chips"></div>
+  <p class="s-hint">Tip: typ wat je in huis hebt, gescheiden door komma's. Dan zie je wat je ermee kunt maken.</p>
+  <ul class="s-results" id="s-results" role="listbox"></ul>
+</dialog>
+
+<script>
+(() => {
+  "use strict";
+  const state = { editions: [], bySlug: new Map(), lastSlug: null };
+  const $ = (id) => document.getElementById(id);
+
+  /* ---------- DOM-hulp ---------- */
+  function h(tag, attrs, ...kids) {
+    const el = document.createElement(tag);
+    if (attrs) for (const [k, v] of Object.entries(attrs)) {
+      if (v == null || v === false) continue;
+      if (k === "class") el.className = v;
+      else if (k === "text") el.textContent = v;
+      else if (k.startsWith("on")) el.addEventListener(k.slice(2), v);
+      else el.setAttribute(k, v === true ? "" : v);
+    }
+    for (const kid of kids.flat()) if (kid != null && kid !== false) el.append(kid instanceof Node ? kid : document.createTextNode(String(kid)));
+    return el;
+  }
+  const pad = (n) => String(n).padStart(2, "0");
+  // recepten hebben een eigen adres, recept/<slug>/ (pagina's van scripts/build_pages.py); de rest blijft #…
+  const BASE = new URL(document.baseURI).pathname;
+  const recipeHref = (slug) => "recept/" + slug + "/";
+  const recipePath = () => (location.pathname.startsWith(BASE) ? location.pathname.slice(BASE.length) : "").match(/^recept\/([^/]+)\/?$/);
+  function go(url) { if (new URL(url, document.baseURI).href !== location.href) history.pushState(null, "", url); route(); }
+  const dateFmt = new Intl.DateTimeFormat("nl-NL", { day: "numeric", month: "long", year: "numeric" });
+  const fmtDate = (iso) => dateFmt.format(new Date(iso + "T12:00:00"));
+  const nf = new Intl.NumberFormat("nl-NL", { maximumFractionDigits: 1 });
+  const singular = { personen: "persoon", glazen: "glas", koekjes: "koekje", stuks: "stuk", porties: "portie" };
+  const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+
+  function fmtQty(ing, factor) {
+    if (ing.qty == null) return "";
+    let v = ing.fixed ? ing.qty : ing.qty * factor;
+    const u = ing.unit || "";
+    if (u === "g" || u === "ml") {
+      if (v < 10) v = Math.round(v * 2) / 2;
+      else if (v < 100) v = Math.round(v);
+      else if (v < 1000) v = Math.round(v / 5) * 5;
+      else v = Math.round(v / 10) * 10;
+      if (v <= 0) v = 0.5;
+      if (v >= 1000) return nf.format(v / 1000) + (u === "g" ? " kg" : " l");
+      return nf.format(v) + " " + u;
+    }
+    v = Math.round(v * 2) / 2;
+    if (v <= 0) v = 0.5;
+    const whole = Math.floor(v), half = v - whole > 0;
+    return (whole ? String(whole) : "") + (half ? "½" : "") + (u ? " " + u : "");
+  }
+
+  /* ---------- Bouwstenen ---------- */
+  // oude kleurnamen uit eerdere edities blijven werken
+  const TINTS = { sage: "sage", sky: "sky", blush: "blush", persimmon: "persimmon", mustard: "mustard", lavender: "sky", peach: "blush", rose: "persimmon", butter: "mustard" };
+  const tintClass = (r) => "t-" + (TINTS[r.tint] || "sage");
+  const SEASONS = [[[12, 1, 2], "Winter", "冬"], [[3, 4, 5], "Lente", "春"], [[6, 7, 8], "Zomer", "夏"], [[9, 10, 11], "Herfst", "秋"]];
+  const season = (iso) => { const m = new Date(iso + "T12:00:00").getMonth() + 1; return SEASONS.find(([ms]) => ms.includes(m)); };
+  const COVERS = ["navy", "ink", "kaki", "moss"];
+  const coverClass = (ed) => "c-" + (COVERS.includes(ed.cover?.color) ? ed.cover.color : COVERS[(ed.number - 1) % COVERS.length]);
+  const servingsText = (r, n) => { const lab = r.servingsLabel || "personen"; return n + " " + (n === 1 ? singular[lab] || lab : lab); };
+  const recipeNo = (r) => pad(r._edition.recipes.indexOf(r) + 1);
+
+  // per foto een gamma-filter (photoGamma uit de editie), zodat alle foto's even licht zijn
+  function liftFilter(g) {
+    const id = "lift-" + String(g).replace(".", "_");
+    if (!document.getElementById(id)) {
+      const ns = "http://www.w3.org/2000/svg";
+      let defs = document.getElementById("lift-defs");
+      if (!defs) {
+        const svg = document.createElementNS(ns, "svg");
+        svg.setAttribute("aria-hidden", "true");
+        svg.style.cssText = "position:absolute;width:0;height:0";
+        defs = svg.appendChild(document.createElementNS(ns, "defs"));
+        defs.id = "lift-defs";
+        document.body.append(svg);
+      }
+      const f = defs.appendChild(document.createElementNS(ns, "filter"));
+      f.id = id; f.setAttribute("color-interpolation-filters", "sRGB");
+      const ct = f.appendChild(document.createElementNS(ns, "feComponentTransfer"));
+      for (const c of ["R", "G", "B"]) {
+        const fn = ct.appendChild(document.createElementNS(ns, "feFunc" + c));
+        fn.setAttribute("type", "gamma"); fn.setAttribute("exponent", g);
+      }
+    }
+    return `url(#${id})`;
+  }
+
+  // woordmerk uit het symbool #proef-logo (kleur via currentColor)
+  function wordmark(tag, cls) {
+    const el = h(tag, { class: cls, "aria-label": "Proef" });
+    el.innerHTML = '<svg class="wordmark" viewBox="0 0 307 104" aria-hidden="true">' + $("proef-logo").innerHTML + "</svg>";
+    return el;
+  }
+
+  function photo(r, opts = {}) {
+    const box = h("div", { class: "duo " + tintClass(r) });
+    const fallback = () => box.replaceChildren(h("span", { class: "fallback cjk", "aria-hidden": "true", text: r.glyph || "食" }));
+    if (r.photo) {
+      const img = h("img", { src: r.photo, alt: opts.alt === false ? "" : "Foto van " + r.title + (r.photoCredit ? " (" + r.photoCredit.label + ")" : ""), loading: opts.eager ? "eager" : "lazy", referrerpolicy: "no-referrer", decoding: "async" });
+      img.addEventListener("error", fallback, { once: true });
+      const g = Number(r.photoGamma);
+      box.append(h("span", { class: "lift", style: g > 0 && g !== 1 ? "filter:" + liftFilter(g) : null }, img),
+        h("img", { class: "orig", src: r.photo, alt: "", "aria-hidden": "true", loading: img.loading, referrerpolicy: "no-referrer", decoding: "async" }));
+      if (opts.glyph && r.glyph) box.append(h("span", { class: "glyph cjk", "aria-hidden": "true", text: r.glyph }));
+      // aanraakschermen: tik om de echte kleuren te zien
+      box.addEventListener("click", (e) => { if (matchMedia("(hover: none)").matches && !box.closest("a")) { e.preventDefault(); box.classList.toggle("color"); } });
+    } else fallback();
+    return box;
+  }
+  const native = (r) => r.native ? h("p", { class: "native", lang: /[가-힯]/.test(r.native) ? "ko" : "ja" }, r.native, r.roman ? h("em", { lang: "nl", text: r.roman }) : null) : null;
+  // gemeten trend (spark) als die er is, anders de redactionele trend-tekst
+  const QUIET = new Set(["Stabiel", "Dalend"]);
+  const geoText = (g) => g === "NL" ? "Nederland" : "wereldwijd";
+  const monthFmt = new Intl.DateTimeFormat("nl-NL", { month: "short", year: "numeric" });
+  function sparkSvg(sp, opts = {}) {
+    const W = 520, H = 100, all = opts.prev ? sp.weeks.concat(sp.prev || []) : sp.weeks;
+    const max = Math.max(1, ...all), n = sp.weeks.length;
+    const pts = (v) => v.map((y, i) => (i ? "L" : "M") + (i * W / (n - 1)).toFixed(1) + " " + (H - y / max * H).toFixed(1)).join(" ");
+    const last = sp.weeks[n - 1];
+    const el = h("span");
+    el.innerHTML = `<svg class="spark" viewBox="0 -4 ${W} ${H + 8}" preserveAspectRatio="none" role="img" aria-label="${opts.label || ""}">`
+      + (opts.prev && sp.prev ? `<path class="prev" d="${pts(sp.prev)}"/>` : "")
+      + `<path class="ln" d="${pts(sp.weeks)}"/><path class="dot" d="M${W} ${(H - last / max * H).toFixed(1)}h0"/></svg>`;
+    return el.firstChild;
+  }
+  const sparkLabel = (sp) => `Zoekinteresse in “${sp.term}”, ${geoText(sp.geo)}, afgelopen 12 maanden. ${sp.label}: ${sp.text}`;
+  // trendlabel: pijltje + woord, rood als het de goede kant op gaat, grijs als het stil of dalend is
+  const ARROW = { Nieuw: "✦", Seizoen: "↻", Piek: "▲", Stijgt: "↗", Stabiel: "→", Dalend: "↘" };
+  const tl = (label) => h("span", { class: "tl" + (QUIET.has(label) ? " quiet" : "") }, h("i", { "aria-hidden": "true", text: ARROW[label] || "•" }), label);
+  const chip = (sp) => tl(sp.label);
+  // home: label met een klein lijntje ernaast; receptpagina (big): grote grafiek met vorig jaar als stippellijn
+  const trend = (r, opts = {}) => {
+    const sp = r.spark;
+    if (sp && sp.weeks && opts.line) return h("a", { class: "trend line", href: recipeHref(r.slug) + "#waarom", onclick: (e) => { e.preventDefault(); $("waarom")?.scrollIntoView({ behavior: "smooth" }); } }, chip(sp), h("span", { text: sp.text }));
+    if (sp && sp.weeks) return h("div", { class: "trend has-spark" },
+      h("div", { class: "row" }, chip(sp), sparkSvg(sp, { label: sparkLabel(sp) })),
+      h("p", { text: sp.text }));
+    return r.trend ? h("div", { class: "trend" }, h("b", { text: r.trend.source ? "Gezien op " + r.trend.source : "Veel gemaakt" }), h("p", { text: r.trend.text })) : null;
+  };
+  // de cijfers achter het label, onderaan bij "Waarom deze week"
+  // "Waarom deze week" met gemeten trend: grafiek, één zin over het netwerk, één bronregel
+  const linkList = (items) => items.flatMap((x, i) => [i ? (i === items.length - 1 ? " en " : ", ") : "", h("a", { href: x.url, target: "_blank", rel: "noopener", text: x.text })]);
+  function whyTrend(r) {
+    const sp = r.spark, net = sp.network;
+    const start = monthFmt.format(new Date(sp.start + "T12:00:00"));
+    const cooks = net && net.posts.length ? [
+      `${net.sources} van de ${net.of} koks die we volgen maakten er de afgelopen ${net.days} dagen iets mee: `,
+      ...linkList(net.posts.slice(0, 3).map((p) => ({ url: p.url, text: p.name }))), "."]
+      : net ? [`Geen van de ${net.of} koks die we volgen maakte er de afgelopen ${net.days} dagen iets mee.`] : null;
+    const also = (r.links || []).map((l) => ({ url: l.url, text: l.label.split(" · ")[0] }));
+    return [
+      sparkSvg(sp, { prev: true, label: sparkLabel(sp) + " De stippellijn is het jaar ervoor." }),
+      h("div", { class: "spark-axis", "aria-hidden": "true" }, h("span", { text: start }), h("span", { text: "- - vorig jaar" }), h("span", { text: "nu" })),
+      cooks ? h("p", { class: "why-line" }, ...cooks) : null,
+      h("p", { class: "why-src" },
+        `Zoekdata: Google Trends, ${geoText(sp.geo)}, “${sp.term}”, tot ${fmtDate(sp.asOf)}. `,
+        ...(also.length ? ["Ook gezien bij ", ...linkList(also), ". "] : []),
+        h("a", { href: "#zo-meten-we", text: "Hoe meten we dit?" })),
+    ];
+  }
+  const metaline = (...items) => h("div", { class: "metaline mono" }, items.filter(Boolean).map((t) => h("span", { text: t })));
+
+  /* ---------- Home ---------- */
+  function tileSpans(n) {
+    // verdeel de kaarten over rijen van max. 4, zo gelijk mogelijk
+    const rows = Math.ceil(n / 4), spans = [];
+    for (let i = 0, left = n; i < rows; i++) { const c = Math.ceil(left / (rows - i)); for (let k = 0; k < c; k++) spans.push(12 / c); left -= c; }
+    return spans;
+  }
+
+  function showHome(ed, target) {
+    $("detail-view").hidden = true; $("home").hidden = false;
+    const latest = ed === state.editions[0];
+    $("edition-notice").hidden = latest;
+    const [, sName, sGlyph] = season(ed.date);
+    const [lead, ...rest] = ed.recipes;
+    const spans = tileSpans(rest.length);
+    const i = state.editions.indexOf(ed), newer = state.editions[i - 1], older = state.editions[i + 1];
+    $("issuebar").replaceChildren(
+      h("span", { text: `${latest ? "Deze week" : "Editie"} · Nº ${pad(ed.number)} · ${fmtDate(ed.date)}` }),
+      h("nav", { "aria-label": "Edities" },
+        older ? h("a", { href: "#editie-" + older.id, text: `← Nº ${pad(older.number)}` }) : null,
+        newer ? h("a", { href: newer === state.editions[0] ? "#deze-week" : "#editie-" + newer.id, text: `Nº ${pad(newer.number)} →` }) : null));
+    document.title = latest ? "Proef" : `Proef Nº ${pad(ed.number)} · week ${ed.week}`;
+    const box = $("features");
+    box.replaceChildren(...[
+      h("section", { class: "mast " + coverClass(ed), "aria-label": "Editie" },
+        wordmark("h1", "logo"),
+        h("p", { class: "tagline", text: "Elke week vijf trending recepten die kinderen ook lekker vinden." }),
+        h("p", { class: "sub mono", text: `Nº ${pad(ed.number)} · Week ${ed.week} · ${sName} ${ed.year}` }),
+        h("div", { class: "glyph cjk", "aria-hidden": "true", text: ed.cover?.glyph || "旬" }),
+        h("div", { class: "bottom" },
+          h("p", { class: "intro", text: ed.intro || "" }),
+          h("span", { class: "hanko", title: sName, "aria-hidden": "true", text: sGlyph }))),
+      lead ? h("a", { class: "card lead", href: recipeHref(lead.slug), id: "f-" + lead.slug },
+        photo(lead, { eager: true }),
+        h("div", { class: "body" },
+          h("span", { class: "no", text: "01" }),
+          h("div", null, native(lead), h("h2", { text: lead.title }), h("p", { class: "dek", text: lead.dek || "" }),
+            metaline(servingsText(lead, lead.servings), lead.minutes + " min", lead.category), trend(lead)))) : null,
+      ...rest.map((r, i) => h("a", { class: "tile " + tintClass(r), href: recipeHref(r.slug), id: "f-" + r.slug, style: `grid-column: span ${spans[i]}` },
+        photo(r),
+        h("div", { class: "body" },
+          h("span", { class: "no", text: pad(i + 2) }),
+          h("h2", { text: r.title }),
+          metaline(servingsText(r, r.servings), r.minutes + " min"),
+          trend(r)))),
+      ed.ferment ? h("a", { class: "card ferm-teaser", href: "#fermentatie-" + ed.id },
+        h("div", { class: "seigaiha", "aria-hidden": "true" }),
+        h("span", { class: "cjk", "aria-hidden": "true", text: ed.ferment.glyph || "酵" }),
+        h("div", null, h("p", { class: "kicker", text: "Fermentatie van de week" }), h("h2", { text: ed.ferment.title }), h("p", { text: ed.ferment.teaser || "" })),
+        h("span", { class: "go", "aria-hidden": "true", text: "Lees →" })) : null,
+    ].filter(Boolean));
+    if (target === "archief") $("archief").scrollIntoView();
+    else if (state.lastSlug && $("f-" + state.lastSlug)) $("f-" + state.lastSlug).scrollIntoView({ block: "center" });
+    else window.scrollTo(0, 0);
+    state.lastSlug = null;
+  }
+
+  /* ---------- Recept ---------- */
+  function ingredientList(list, factor) {
+    const groups = []; let cur = null;
+    for (const ing of list || []) { const g = ing.group || ""; if (!cur || cur.name !== g) { cur = { name: g, items: [] }; groups.push(cur); } cur.items.push(ing); }
+    const cells = [], box = h("div");
+    for (const grp of groups) {
+      if (grp.name) box.append(h("p", { class: "label ing-group", text: grp.name }));
+      box.append(h("ul", { class: "ingr" }, grp.items.map((ing) => { const q = h("span", { class: "q", text: fmtQty(ing, factor) }); cells.push([q, ing]); return h("li", null, q, h("span", { text: ing.item })); })));
+    }
+    return { box, cells, groups };
+  }
+
+  function showRecipe(r) {
+    const ed = r._edition;
+    const base = r.servings || 1, step = base >= 8 ? Math.max(1, Math.round(base / 4)) : 1;
+    let n = base;
+    const out = h("output", { "aria-live": "polite" });
+    const minus = h("button", { type: "button", "aria-label": "Minder", text: "−" });
+    const plus = h("button", { type: "button", "aria-label": "Meer", text: "+" });
+    const ings = ingredientList(r.ingredients, 1);
+    const update = () => {
+      out.textContent = servingsText(r, n);
+      minus.disabled = n - step < step; plus.disabled = n + step > base * 4;
+      for (const [q, ing] of ings.cells) q.textContent = fmtQty(ing, n / base);
+    };
+    minus.addEventListener("click", () => { n = Math.max(step, n - step); update(); });
+    plus.addEventListener("click", () => { n = Math.min(base * 4, n + step); update(); });
+    update();
+
+    const copyBtn = h("button", { type: "button", class: "copy", text: "Kopieer lijst" });
+    copyBtn.addEventListener("click", () => {
+      const lines = [`${r.title} (${servingsText(r, n)})`];
+      for (const grp of ings.groups) { if (grp.name) lines.push("", grp.name); for (const ing of grp.items) { const q = fmtQty(ing, n / base); lines.push("- " + (q ? q + " " : "") + ing.item); } }
+      copyText(lines.join("\n"));
+    });
+
+    const idx = ed.recipes.indexOf(r), prev = ed.recipes[idx - 1], next = ed.recipes[idx + 1];
+    const f = ed.ferment && ed.ferment.usedIn === r.slug ? ed.ferment : null;
+    const whyText = r.signal?.text;
+    $("detail-view").replaceChildren(h("article", null,
+      h("a", { class: "back mono", href: "#editie-" + ed.id, text: `← Nº ${pad(ed.number)} · week ${ed.week}` }),
+      h("div", { class: "spread" },
+        h("figure", { class: "left", style: "margin:0" },
+          photo(r, { glyph: true, eager: true }),
+          r.photoCredit ? h("figcaption", { class: "credit" }, "Foto en origineel recept: ", h("a", { href: r.photoCredit.url, target: "_blank", rel: "noopener", text: r.photoCredit.label + " ↗" })) : null),
+        h("div", { class: "card sheet" },
+          h("header", null, h("span", { class: "no", text: recipeNo(r) }), h("div", null, native(r), h("h1", { text: r.title }))),
+          h("div", { class: "metaline mono" }, h("span", { class: "stepper" }, minus, out, plus), h("span", { text: r.minutes + " min" }), r.category ? h("span", { text: r.category }) : null),
+          h("p", { class: "dek", text: r.dek || "" }),
+          trend(r, { line: true }),
+          (r.tags || []).length ? h("div", { class: "tags" }, r.tags.map((t) => h("a", { href: "#zoek/" + encodeURIComponent(t.toLowerCase()), text: t }))) : null,
+          h("div", { class: "stack" },
+            h("section", { "aria-labelledby": "ing-t" },
+              h("div", { class: "head-row" }, h("h2", { class: "mono colhead", id: "ing-t", text: "Ingrediënten" }), copyBtn),
+              ings.box),
+            h("section", { "aria-labelledby": "steps-t" },
+              h("h2", { class: "mono colhead", id: "steps-t", text: "Bereiding" }),
+              h("ol", { class: "steps" }, (r.steps || []).map((s) => h("li", null, h("span", { text: s })))),
+              r.tip ? h("aside", { class: "tip" }, h("span", { class: "label", text: "Tip" }), r.tip) : null,
+              f ? h("p", { class: "ferm-link" }, "Zelf maken? ", h("a", { href: "#fermentatie-" + ed.id, text: "Fermentatie van de week: " + f.title + " →" })) : null),
+            r.spark && r.spark.weeks ? h("aside", { class: "why", id: "waarom", "aria-labelledby": "why-t" },
+              h("span", { class: "label", id: "why-t", text: "Waarom deze week" }), ...whyTrend(r))
+            : whyText || (r.links || []).length ? h("aside", { class: "why", "aria-labelledby": "why-t" },
+              h("span", { class: "label", id: "why-t", text: "Waarom deze week" }),
+              whyText ? h("p", { text: whyText }) : null,
+              (r.links || []).length ? h("ul", { class: "links" }, r.links.map((l) => h("li", null, h("a", { href: l.url, target: "_blank", rel: "noopener", text: l.label + " ↗" })))) : null) : null))),
+      h("nav", { class: "pager", "aria-label": "Andere recepten" },
+        prev ? h("a", { class: "card", href: recipeHref(prev.slug) }, h("span", { class: "label", text: "← Vorige" }), h("strong", { text: prev.title })) : h("span"),
+        next ? h("a", { class: "card next", href: recipeHref(next.slug) }, h("span", { class: "label", text: "Volgende →" }), h("strong", { text: next.title }))
+          : ed.ferment ? h("a", { class: "card next", href: "#fermentatie-" + ed.id }, h("span", { class: "label", text: "Fermentatie →" }), h("strong", { text: ed.ferment.title })) : h("span")),
+      relatedBlock(r)
+    ));
+    document.title = r.title + " · Proef";
+    $("home").hidden = true; $("detail-view").hidden = false;
+    state.lastSlug = r.slug;
+    window.scrollTo(0, 0);
+  }
+
+  /* ---------- Hoe meten we trends? ---------- */
+  const LABELS = [
+    ["Nieuw", "Het afgelopen jaar volop gezocht, daarvoor bijna niet."],
+    ["Seizoen", "Komt elk jaar rond deze tijd terug, en zit nu hoog."],
+    ["Piek", "Zo vaak gezocht als in vijf jaar niet, en vaker dan vorig jaar."],
+    ["Stijgt", "Minstens anderhalf keer zo vaak gezocht als in dezelfde weken vorig jaar."],
+    ["Stabiel", "Ongeveer even vaak gezocht als vorig jaar."],
+    ["Dalend", "Duidelijk minder gezocht dan vorig jaar."],
+  ];
+  function showMethod() {
+    $("detail-view").replaceChildren(h("article", null,
+      h("a", { class: "back mono", href: "#deze-week", text: "← Deze week" }),
+      h("div", { class: "card sheet method" },
+        h("p", { class: "kicker", text: "Over Proef" }),
+        h("h1", { text: "Hoe meten we trends?" }),
+        h("p", { class: "dek", text: "Een recept noemen we pas trending als de zoekdata dat laat zien. Bij elk recept staat daarom een label en een lijn: hoe vaak mensen het afgelopen jaar naar dit gerecht zochten." }),
+        h("div", { class: "prose-1" },
+          h("p", { text: "Per recept kiezen we een zoekterm zoals mensen hem intypen, bijvoorbeeld “zuppa toscana”. We halen elke week de cijfers op bij Google Trends. Is er in Nederland genoeg data, dan gebruiken we Nederland; anders kijken we wereldwijd." }),
+          h("p", { text: "Google geeft geen aantallen, maar een score van 0 tot 100 per zoekterm. Daarom vergelijken we een gerecht alleen met zichzelf: de laatste vier volle weken tegenover dezelfde weken vorig jaar, en tegenover het laagste punt van het afgelopen jaar. De lopende week telt niet mee." }),
+          h("p", { text: "De lijn toont de afgelopen 12 maanden, de stippellijn op de receptpagina het jaar ervoor. De rode stip is de laatste volle week." }),
+          h("p", { text: "Daarnaast volgen we een netwerk van koks, foodbloggers en magazines, met oud-redacteuren van Bon Appétit en delicious. in de kern. Elke week lezen we hun nieuwe recepten. Bij elk recept tellen we hoeveel van hen de afgelopen 30 dagen iets met dit gerecht publiceerden; elke kok telt één keer." })),
+        h("h2", { class: "mono colhead", text: "De labels" }),
+        h("dl", { class: "labels" }, LABELS.map(([l, t]) => h("div", null, h("dt", null, tl(l)), h("dd", { text: t })))),
+        h("p", { class: "why", text: "Staat er een recept met “Dalend” in Proef? Dan kozen we het om iets anders: het seizoen, weinig werk, of omdat kinderen het lusten. Het label laat eerlijk zien hoe het ervoor staat." }))));
+    document.title = "Hoe meten we trends? · Proef";
+    $("home").hidden = true; $("detail-view").hidden = false;
+    window.scrollTo(0, 0);
+  }
+
+  /* ---------- Trends: wat koks nu maken (data/buzz.json) ---------- */
+  const GOOD = new Set(["Nieuw", "Seizoen", "Piek", "Stijgt"]);
+  const cap = (t) => t.charAt(0).toUpperCase() + t.slice(1);
+  function riser(x, i, total) {
+    const g = x.google;
+    return h("li", null,
+      h("span", { class: "no", text: pad(i + 1) }),
+      h("div", { class: "main" },
+        h("strong", { text: cap(x.phrase) }),
+        g ? h("p", { class: "g" }, tl(g.label), h("span", { text: g.text })) : h("p", { class: "g quiet", text: "Te weinig zoekdata bij Google om iets over te zeggen." }),
+        h("p", { class: "mono meta", text: `${x.sources} van ${total} koks · ${x.before ? "was " + nf.format(x.before) : "eerder geen"}${x.core ? ` · ${x.core} uit de kern` : ""}` }),
+        h("ul", { class: "links" }, x.posts.slice(0, 3).map((p) => h("li", null, h("a", { href: p.url, target: "_blank", rel: "noopener" }, h("b", { text: p.name }), " · " + p.title + " ↗"))))),
+      h("div", { class: "side" },
+        g && g.weeks ? sparkSvg({ weeks: g.weeks }, { label: `Zoekinteresse in “${x.phrase}”, ${geoText(g.geo)}, afgelopen 12 maanden. ${g.label}: ${g.text}` }) : null,
+        g ? h("span", { class: "mono cap", text: `Google · ${g.geo === "NL" ? "NL" : "wereld"} · 12 mnd` }) : null));
+  }
+  async function showTrends() {
+    const ed = state.editions[0];
+    const ours = ed.recipes.filter((r) => r.spark && r.spark.weeks);
+    const head = h("div", { class: "glance" });
+    const list = h("ol", { class: "buzz" }, h("li", { class: "status", text: "Even laden…" }));
+    const kicker = h("p", { class: "kicker", text: "Trends" });
+    $("detail-view").replaceChildren(h("article", null,
+      h("a", { class: "back mono", href: "#deze-week", text: "← Deze week" }),
+      h("div", { class: "card sheet trends" },
+        kicker,
+        h("h1", { text: "Wat koks nu maken" }),
+        h("p", { class: "dek", text: "Elke week lezen we de nieuwe recepten van de koks, foodbloggers en magazines die we volgen. Hier zie je welke gerechten nu bij meerdere van hen tegelijk opduiken, en of mensen er op Google ook naar zoeken." }),
+        head,
+        h("h2", { class: "mono colhead", text: "Stijgt bij de koks" }),
+        list,
+        ours.length ? h("section", { class: "ours" },
+          h("h2", { class: "mono colhead", text: `Deze week in Proef · Nº ${pad(ed.number)}` }),
+          h("ul", { class: "ours-list" }, ours.map((r) => h("li", null,
+            h("a", { href: recipeHref(r.slug), text: r.title }),
+            h("span", { class: "row" }, chip(r.spark), sparkSvg(r.spark, { label: sparkLabel(r.spark) })),
+            h("span", { class: "txt", text: r.spark.text }))))) : null,
+        h("p", { class: "trend-src" }, "Koks: een uitgezocht netwerk, met oud-redacteuren van Bon Appétit en delicious. in de kern. Zoekdata: Google Trends. ", h("a", { href: "#zo-meten-we", text: "Hoe meten we dit?" })))));
+    document.title = "Trends · Proef";
+    $("home").hidden = true; $("detail-view").hidden = false;
+    window.scrollTo(0, 0);
+    try {
+      const b = await fetch("data/buzz.json", { cache: "no-cache" }).then((r) => r.json());
+      const top = b.rising.slice(0, 15);
+      const confirmed = top.filter((x) => x.google && GOOD.has(x.google.label)).length;
+      kicker.textContent = `Trends · bijgewerkt ${fmtDate(b.generated)}`;
+      const stat = (n, label) => h("div", null, h("b", { text: n }), h("span", { class: "mono", text: label }));
+      head.replaceChildren(
+        stat(String(b.sources), `bronnen gevolgd${b.core ? ` · ${b.core} in de kern` : ""}`),
+        stat(b.posts ? nf.format(b.posts) : "—", `nieuwe recepten, ${b.window} dagen`),
+        stat(`${confirmed}/${top.length}`, "stijgers ook gezocht op Google"));
+      list.replaceChildren(...top.map((x, i) => riser(x, i, b.sources)));
+    } catch (e) {
+      list.replaceChildren(h("li", { class: "status", text: "De trenddata is nu niet te laden." }));
+    }
+  }
+
+  /* ---------- Fermentatie ---------- */
+  function showFerment(ed) {
+    const f = ed.ferment;
+    const used = f.usedIn ? state.bySlug.get(f.usedIn) : null;
+    const ings = ingredientList(f.ingredients, 1);
+    const copyBtn = h("button", { type: "button", class: "copy", text: "Kopieer lijst" });
+    copyBtn.addEventListener("click", () => copyText([`${f.title} (${f.yield || "1 pot"})`, ...(f.ingredients || []).map((i) => "- " + (fmtQty(i, 1) ? fmtQty(i, 1) + " " : "") + i.item)].join("\n")));
+    const last = ed.recipes[ed.recipes.length - 1];
+    $("detail-view").replaceChildren(h("article", null,
+      h("a", { class: "back mono", href: "#editie-" + ed.id, text: `← Nº ${pad(ed.number)} · week ${ed.week}` }),
+      h("div", { class: "ferm" },
+        h("aside", { class: "card ferm-side" },
+          h("div", { class: "seigaiha", "aria-hidden": "true" }),
+          h("div", { class: "in" },
+            h("p", { class: "kicker", text: `Fermentatie van de week · Nº ${pad(f.number || ed.number)}` }),
+            h("div", { class: "big cjk", "aria-hidden": "true", text: f.glyph || "酵" }),
+            native(f),
+            h("h1", { text: f.title }),
+            h("p", { class: "lede", text: f.lede || "" }),
+            (f.facts || []).length ? h("ul", { class: "facts" }, f.facts.map((x) => h("li", null, h("span", { text: x.label }), h("span", { text: x.value })))) : null,
+            used ? h("a", { class: "used", href: recipeHref(used.slug) }, h("span", { class: "no", text: recipeNo(used) }), "Deze week in " + used.title + " →") : null)),
+        h("div", { class: "card ferm-main" },
+          (f.science || []).length ? h("section", null, h("h2", { class: "mono colhead", text: "Wat er gebeurt" }), h("div", { class: "prose" }, f.science.map((p) => h("p", { text: p })))) : null,
+          (f.timeline || []).length ? h("section", null, h("h2", { class: "mono colhead", text: "In de pot" }),
+            h("ol", { class: "timeline" }, f.timeline.map((t) => h("li", { class: t.now ? "now" : null }, h("span", { class: "when mono colhead", text: t.when }), h("b", { text: t.title }), h("span", { class: "txt", text: t.text }))))) : null,
+          h("section", { class: "cols" },
+            h("div", null, h("div", { class: "head-row" }, h("h2", { class: "mono colhead", text: "Ingrediënten" }), copyBtn), ings.box),
+            h("div", null, h("h2", { class: "mono colhead", text: "Zo doe je het" }), h("ol", { class: "steps" }, (f.steps || []).map((s) => h("li", null, h("span", { text: s })))))),
+          h("section", { class: "checks" },
+            f.ok ? h("div", null, h("span", { class: "mono ok", text: "Goed teken" }), f.ok) : null,
+            f.bad ? h("div", null, h("span", { class: "mono bad", text: "Weggooien als" }), f.bad) : null,
+            f.kids ? h("div", null, h("span", { class: "mono kid", text: "Met kinderen" }), f.kids) : null),
+          (f.sources || []).length ? h("section", { class: "why", style: "margin-top:28px" },
+            h("span", { class: "label", text: "Veilig fermenteren · bronnen" }),
+            h("p", { text: "Gecontroleerd tegen de richtlijnen van universiteiten en het National Center for Home Food Preservation. Twijfel je? Gooi het weg." }),
+            h("ul", { class: "links" }, f.sources.map((l) => h("li", null, h("a", { href: l.url, target: "_blank", rel: "noopener", text: l.label + " ↗" }))))) : null)),
+      h("nav", { class: "pager", "aria-label": "Andere recepten" },
+        last ? h("a", { class: "card", href: recipeHref(last.slug) }, h("span", { class: "label", text: "← Vorige" }), h("strong", { text: last.title })) : h("span"),
+        h("a", { class: "card next", href: "#editie-" + ed.id }, h("span", { class: "label", text: "Editie →" }), h("strong", { text: `Nº ${pad(ed.number)} · week ${ed.week}` })))
+    ));
+    document.title = f.title + " · Fermentatie · Proef";
+    $("home").hidden = true; $("detail-view").hidden = false;
+    state.lastSlug = null;
+    window.scrollTo(0, 0);
+  }
+
+  /* ---------- Archief: plank met edities ---------- */
+  function renderShelf() {
+    $("shelf").replaceChildren(...state.editions.map((ed) => {
+      const latest = ed === state.editions[0];
+      return h("article", { class: "issue " + coverClass(ed) },
+        h("a", { class: "cov", href: latest ? "#deze-week" : "#editie-" + ed.id, "aria-label": `Editie ${ed.number}, week ${ed.week}` },
+          h("div", { class: "row" }, wordmark("span", "logo"), h("span", { class: "mono", text: "Nº " + pad(ed.number) })),
+          h("span", { class: "cjk", "aria-hidden": "true", text: ed.cover?.glyph || "旬" }),
+          h("span", { class: "mono", text: `Week ${ed.week} · ${fmtDate(ed.date)}` })),
+        h("ul", null,
+          ed.recipes.map((r) => h("li", null, h("span", { class: "dot " + tintClass(r), "aria-hidden": "true" }), h("a", { href: recipeHref(r.slug), text: r.title }))),
+          ed.ferment ? h("li", { class: "f" }, h("span", { class: "dot", "aria-hidden": "true" }), h("a", { href: "#fermentatie-" + ed.id, text: ed.ferment.title })) : null));
+    }));
+  }
+
+  /* ---------- Zoekindex ---------- */
+  // woorden die in ingrediënten wel staan maar niets zeggen over het gerecht
+  const STOP = new Set("een het de en of in op met van voor naar uit tot aan bij om als zonder plus liefst ca extra vers verse fijn fijngesneden fijngehakt gehakt geraspt gesneden ringetjes reepjes stukken stukjes partjes blokjes plakjes gekookte gekookt gebakken grote kleine grof dun dunne half halve heel hele snufje naar smaak koud koude warm warme dag oud oude diepvries".split(" "));
+  const words = (s) => norm(s).split(/[^a-z0-9぀-ヿ㐀-鿿가-힯-]+/).map((w) => w.replace(/^-+|-+$/g, "")).filter((w) => w.length > 2 && !STOP.has(w));
+  function indexItems() {
+    const items = [];
+    for (const ed of state.editions) {
+      for (const r of ed.recipes) items.push({
+        kind: "recipe", r, ed, href: recipeHref(r.slug), title: r.title, minutes: r.minutes, tint: tintClass(r), glyph: r.glyph || "食",
+        tags: (r.tags || []).map(norm), category: norm(r.category),
+        ings: (r.ingredients || []).map((i) => ({ text: norm(i.item), label: i.item })),
+        fields: [[norm(r.title), 6], [norm([r.native, r.roman, r.glyph].join(" ")), 5], [norm((r.tags || []).join(" ") + " " + r.category), 4], [norm((r.ingredients || []).map((i) => i.item).join(" ")), 3], [norm([r.dek, r.trend?.text, r.spark?.text, r.spark?.label, r.signal?.text].join(" ")), 2], [norm((r.steps || []).join(" ") + " " + (r.tip || "")), 1]],
+        keys: new Set(words((r.ingredients || []).map((i) => i.item).join(" "))),
+      });
+      const f = ed.ferment;
+      if (f) items.push({
+        kind: "ferment", ed, href: "#fermentatie-" + ed.id, title: f.title, minutes: null, tint: "ferm", glyph: f.glyph || "酵",
+        tags: ["fermentatie", "fermenteren", "zelf maken"], category: "fermentatie",
+        ings: (f.ingredients || []).map((i) => ({ text: norm(i.item), label: i.item })),
+        fields: [[norm(f.title), 6], [norm([f.native, f.roman, f.glyph, "fermentatie fermenteren ferment"].join(" ")), 5], [norm((f.ingredients || []).map((i) => i.item).join(" ")), 3], [norm([f.lede, ...(f.science || [])].join(" ")), 2], [norm((f.steps || []).join(" ")), 1]],
+        keys: new Set(words((f.ingredients || []).map((i) => i.item).join(" "))),
+      });
+    }
+    return items;
+  }
+
+  /* ---------- Meer zoals dit ---------- */
+  function relatedBlock(r) {
+    const all = state.index || (state.index = indexItems());
+    const me = all.find((x) => x.r === r);
+    const scored = all.filter((x) => x.kind === "recipe" && x.r !== r).map((x) => {
+      const sharedIng = [...x.keys].filter((k) => me.keys.has(k));
+      const sharedTags = x.tags.filter((t) => me.tags.includes(t));
+      const score = sharedIng.length * 3 + sharedTags.length * 2 + (x.category === me.category ? 1 : 0) + (x.ed !== r._edition ? 0.5 : 0);
+      const reason = sharedIng.length ? "Ook met " + sharedIng.slice(0, 2).join(" en ") : sharedTags.length ? "Ook " + (x.r.tags.find((t) => norm(t) === sharedTags[0]) || "").toLowerCase() : "Ook " + (x.r.category || "").toLowerCase();
+      return { x, score, reason };
+    }).filter((s) => s.score > 0).sort((a, b) => b.score - a.score).slice(0, 3);
+    if (!scored.length) return null;
+    return h("section", { class: "related", "aria-labelledby": "rel-t" },
+      h("div", { class: "head-row" }, h("h2", { id: "rel-t", text: "Meer zoals dit" }), h("a", { class: "mono", href: "#archief", style: "color:var(--muted);text-decoration:none", text: "Alle edities →" })),
+      h("div", { class: "related-grid" }, scored.map(({ x, reason }) => h("a", { class: "mini " + x.tint, href: x.href },
+        photo(x.r, { alt: false }),
+        h("div", { class: "body" },
+          h("span", { class: "mono", text: `Nº ${pad(x.ed.number)} · ${x.minutes} min` }),
+          h("strong", { text: x.title }),
+          h("span", { class: "why-rel", text: reason }))))));
+  }
+
+  /* ---------- Zoeken ---------- */
+  const CHIPS = [
+    ["Onder 30 min", "onder 30 min"], ["Kindvriendelijk", "kindvriendelijk"], ["Aziatisch", "aziatisch"], ["Weinig werk", "weinig werk"],
+    ["Seizoen", "seizoen"], ["Soep", "soep"], ["Uit de oven", "oven"], ["Fermentatie", "fermentatie"],
+  ];
+  const ALIASES = { kind: "kindvriendelijk", kinderen: "kindvriendelijk", kids: "kindvriendelijk", makkelijk: "weinig werk", simpel: "weinig werk", lui: "weinig werk", aziatisch: "aziatisch", azie: "aziatisch", koreaans: "aziatisch", japans: "aziatisch", chinees: "aziatisch", herfst: "seizoen", seizoensgroente: "seizoen", ferment: "fermentatie", fermenteren: "fermentatie" };
+
+  function parseQuery(raw) {
+    let q = norm(raw).trim(), max = null;
+    const m = q.match(/(?:onder|binnen|max|<)\s*(\d+)\s*(?:min(?:uten)?)?|(\d+)\s*min(?:uten)?/);
+    if (m) { max = +(m[1] || m[2]); q = q.replace(m[0], " "); }
+    if (/\bsnel\b/.test(q)) { max = max || 30; q = q.replace(/\bsnel\b/, " "); }
+    const pantry = q.includes(",");
+    const terms = (pantry ? q.split(",") : q.split(/\s+(?=(?:[^"]*"[^"]*")*[^"]*$)/)).map((t) => t.replace(/"/g, "").trim()).filter(Boolean);
+    // "weinig werk" als één term houden
+    const joined = [];
+    for (let i = 0; i < terms.length; i++) { const two = terms[i] + " " + (terms[i + 1] || ""); if (!pantry && two === "weinig werk") { joined.push(two); i++; } else joined.push(terms[i]); }
+    return { max, pantry, terms: joined.map((t) => ALIASES[t] || t) };
+  }
+
+  // korte woorden (ei, ui) alleen aan het begin van een woord; langere ook midden in samenstellingen (boerenkool)
+  const hit = (text, t) => t.length > 3 ? text.includes(t) : new RegExp("(^|[^a-z])" + t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).test(text);
+  function search(raw) {
+    const all = state.index || (state.index = indexItems());
+    const { max, pantry, terms } = parseQuery(raw);
+    const out = [];
+    for (const x of all) {
+      if (max && (x.minutes == null || x.minutes > max)) continue;
+      if (pantry) {
+        const have = terms.filter((t) => x.ings.some((i) => hit(i.text, t)));
+        if (!have.length) continue;
+        const rest = x.ings.length - have.length;
+        out.push({ x, score: have.length * 10 - rest * 0.3, why: [h("b", { text: "Je hebt: " }), have.join(", "), ` · nog ${Math.max(rest, 0)} andere ingrediënten`] });
+        continue;
+      }
+      let score = 0, why = null, ok = true;
+      for (const t of terms) {
+        let best = 0;
+        for (const [text, w] of x.fields) if (hit(text, t)) best = Math.max(best, w);
+        if (x.tags.includes(t) || x.category === t) best = Math.max(best, 5);
+        if (!best) { ok = false; break; }
+        score += best;
+        if (!why) { const ing = x.ings.find((i) => hit(i.text, t)); if (ing && best <= 3) why = [h("b", { text: "Bevat: " }), ing.label]; }
+      }
+      if (!ok) continue;
+      if (!terms.length) score = 1;
+      out.push({ x, score: score + (x.ed === state.editions[0] ? 0.5 : 0), why });
+    }
+    return out.sort((a, b) => b.score - a.score);
+  }
+
+  let sel = -1;
+  function renderResults() {
+    const raw = $("q").value, list = $("s-results");
+    const res = raw.trim() ? search(raw) : search("").filter((s) => s.x.ed === state.editions[0]);
+    sel = res.length ? 0 : -1;
+    for (const b of $("s-chips").querySelectorAll("button[data-q]")) b.classList.toggle("on", norm(raw).includes(b.dataset.q));
+    list.replaceChildren(
+      ...(raw.trim() ? [] : [h("li", { class: "s-group label", text: "Deze week" })]),
+      ...(res.length ? res.slice(0, 30).map((s, i) => h("li", { role: "option" },
+        h("a", { href: s.x.href, class: i === 0 ? "sel" : null },
+          h("span", { class: "sw cjk " + s.x.tint, "aria-hidden": "true", text: s.x.glyph }),
+          h("span", null, h("strong", { text: s.x.title }),
+            h("span", { class: "meta" }, s.why || [s.x.kind === "ferment" ? "Fermentatie van de week" : s.x.r.category, s.x.minutes ? ` · ${s.x.minutes} min` : ""])),
+          h("span", { class: "no", text: "Nº " + pad(s.x.ed.number) }))))
+        : [h("li", { class: "s-empty", text: parseQuery(raw).pantry ? "Hier kun je nog niets mee maken. Probeer een ander ingrediënt." : "Niets gevonden. Probeer een ingrediënt, of typ wat je in huis hebt met komma's ertussen." })]));
+  }
+  function moveSel(d) {
+    const links = [...$("s-results").querySelectorAll("a")];
+    if (!links.length) return;
+    links[sel]?.classList.remove("sel");
+    sel = (sel + d + links.length) % links.length;
+    links[sel].classList.add("sel"); links[sel].scrollIntoView({ block: "nearest" });
+  }
+  function openSearch(q = "") {
+    const dlg = $("search");
+    if (!dlg.open) dlg.showModal();
+    $("q").value = q; renderResults(); $("q").focus();
+  }
+  function closeSearch(go) {
+    const dlg = $("search");
+    if (dlg.open) dlg.close();
+    if (!go && location.hash.startsWith("#zoek")) history.replaceState(null, "", state.lastUrl || BASE);
+  }
+  function surprise() {
+    const pool = state.editions.flatMap((e) => e.recipes);
+    const r = pool[Math.floor(Math.random() * pool.length)];
+    closeSearch(true); go(recipeHref(r.slug));
+  }
+  function initSearch() {
+    $("s-chips").replaceChildren(...CHIPS.map(([label, q]) => h("button", { type: "button", "data-q": q, text: label, onclick: () => { const cur = $("q").value.trim(); $("q").value = norm(cur).includes(q) ? cur.replace(new RegExp(q, "i"), "").trim() : (cur ? cur + " " : "") + q; renderResults(); $("q").focus(); } })),
+      h("button", { type: "button", class: "dice", text: "Verras me", onclick: surprise }));
+    $("q").addEventListener("input", () => { renderResults(); history.replaceState(null, "", "#zoek/" + encodeURIComponent($("q").value)); });
+    $("q").addEventListener("keydown", (e) => {
+      if (e.key === "ArrowDown") { e.preventDefault(); moveSel(1); }
+      else if (e.key === "ArrowUp") { e.preventDefault(); moveSel(-1); }
+      else if (e.key === "Enter") { const a = $("s-results").querySelectorAll("a")[sel]; if (a) { e.preventDefault(); closeSearch(true); go(a.href); } }
+    });
+    $("s-results").addEventListener("click", (e) => { if (e.target.closest("a")) closeSearch(true); });
+    $("s-close").addEventListener("click", () => closeSearch());
+    $("search").addEventListener("cancel", (e) => { e.preventDefault(); closeSearch(); });
+    $("search").addEventListener("click", (e) => { if (e.target === $("search")) closeSearch(); });
+    $("find").addEventListener("click", () => openSearch());
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "/" || e.metaKey || e.ctrlKey || e.altKey) return;
+      if (e.target instanceof Element && e.target.closest("input, textarea, select, [contenteditable]")) return;
+      e.preventDefault(); openSearch();
+    });
+  }
+
+  let toastTimer;
+  function toast(msg) { const t = $("toast"); t.textContent = msg; t.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.hidden = true; }, 2200); }
+  function copyText(text) {
+    const done = () => toast("Boodschappenlijst gekopieerd");
+    const fallback = () => { const ta = h("textarea", { "aria-hidden": "true" }); ta.value = text; ta.style.cssText = "position:fixed;opacity:0;left:0;top:0"; document.body.append(ta); ta.select(); let ok = false; try { ok = document.execCommand("copy"); } catch (e) { ok = false; } ta.remove(); toast(ok ? "Boodschappenlijst gekopieerd" : "Kopiëren lukt hier niet. Selecteer de lijst handmatig."); };
+    try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+  }
+
+  function markNav(hsh) {
+    const key = hsh.startsWith("fermentatie") ? "fermentatie" : hsh === "trends" || hsh === "zo-meten-we" ? "trends"
+      : hsh.startsWith("zoek") || hsh === "archief" ? "" : "deze-week";
+    for (const a of document.querySelectorAll(".top nav a")) {
+      if (a.getAttribute("href") === "#" + key) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+    }
+  }
+
+  const HASH_ROUTE = /^(zoek(\/.*)?|zo-meten-we|trends|deze-week|archief|fermentatie(-.*)?|editie-.*)$/;
+  function route() {
+    if (!state.editions.length) return;
+    const hsh = decodeURIComponent(location.hash.slice(1));
+    // oude links (#slug) naar het eigen adres van het recept
+    if (state.bySlug.has(hsh)) { history.replaceState(null, "", recipeHref(hsh)); return route(); }
+    const path = recipePath();
+    if (path && state.bySlug.has(decodeURIComponent(path[1])) && !HASH_ROUTE.test(hsh)) {
+      markNav("");
+      state.lastUrl = location.pathname + location.search + location.hash;
+      if ($("search").open) closeSearch(true);
+      showRecipe(state.bySlug.get(decodeURIComponent(path[1])));
+      if (hsh && $(hsh)) $(hsh).scrollIntoView();
+      return;
+    }
+    markNav(hsh);
+    if (hsh === "zoek" || hsh.startsWith("zoek/")) {
+      if ($("detail-view").hidden && !$("features").querySelector(".mast")) showHome(state.editions[0], "");
+      return openSearch(hsh.slice(5));
+    }
+    if ($("search").open) closeSearch(true);
+    state.lastUrl = location.pathname + location.search + location.hash;
+    if (hsh === "zo-meten-we") return showMethod();
+    if (hsh === "trends") return showTrends();
+    if (hsh === "fermentatie" || hsh.startsWith("fermentatie-")) {
+      const ed = hsh === "fermentatie" ? state.editions.find((e) => e.ferment) : state.editions.find((e) => "fermentatie-" + e.id === hsh);
+      if (ed && ed.ferment) return showFerment(ed);
+    }
+    let ed = state.editions[0];
+    if (hsh.startsWith("editie-")) { const f = state.editions.find((e) => "editie-" + e.id === hsh); if (f) ed = f; }
+    if (hsh === "deze-week") state.lastSlug = null;
+    showHome(ed, hsh);
+  }
+
+  $("top-logo").innerHTML = $("proef-logo").innerHTML;
+
+  async function load() {
+    try {
+      const res = await fetch("editions/index.json", { cache: "no-cache" });
+      if (!res.ok) throw new Error("index");
+      const idx = await res.json();
+      const eds = await Promise.all((idx.editions || []).map((id) => fetch(`editions/${id}.json`, { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).catch(() => null)));
+      state.editions = eds.filter((e) => e && Array.isArray(e.recipes)).sort((a, b) => b.number - a.number);
+      for (const ed of state.editions) for (const r of ed.recipes) { r._edition = ed; state.bySlug.set(r.slug, r); }
+      if (!state.editions.length) throw new Error("leeg");
+      renderShelf();
+      route();
+    } catch (e) {
+      $("status").textContent = "De recepten konden niet worden geladen. Ververs de pagina om het opnieuw te proberen.";
+    }
+  }
+
+  // links binnen de site zonder herladen: pushState + route; terug/vooruit via popstate
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest("a");
+    if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || a.target || a.hasAttribute("download")) return;
+    const url = new URL(a.href, location.href);
+    if (url.origin !== location.origin || !url.pathname.startsWith(BASE)) return;
+    const rel = url.pathname.slice(BASE.length);
+    if (rel && !/^recept\/[^/]+\/?$/.test(rel)) return;
+    e.preventDefault();
+    go(url.href);
+  });
+  window.addEventListener("popstate", route);
+  // receptpagina: na een klein stukje scrollen verschijnt de foto in kleur
+  // (op mobiel loopt de overgang mee met het scrollen, anders is de foto al weg voor je het ziet)
+  const narrow = matchMedia("(max-width: 1000px)");
+  addEventListener("scroll", () => {
+    const d = document.querySelector(".spread .left .duo"); if (!d) return;
+    if (narrow.matches) { d.classList.add("scrub"); d.style.setProperty("--mix", Math.min(1, scrollY / (d.offsetHeight * 0.45)).toFixed(3)); }
+    else { d.classList.remove("scrub"); d.classList.toggle("scrolled", scrollY > 24); }
+  }, { passive: true });
+  initSearch();
+  load();
+})();
+</script>
+</body>
+</html>

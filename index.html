@@ -6,6 +6,7 @@
 <meta name="color-scheme" content="light dark">
 <meta name="description" content="Elke zaterdag vijf trending recepten: weinig werk, veel Aziatisch, groente van het seizoen en goed te maken voor kinderen. Plus elke week een fermentatie voor thuis. Alles in grammen en milliliters.">
 <title>Proef</title>
+<base href="./">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -233,19 +234,20 @@ img { display: block; max-width: 100%; }
 .find:hover { color: var(--ink); }
 .find span { flex: 1; }
 kbd { font-family: var(--mono); font-style: normal; font-size: 11px; border: 1px solid var(--rule); border-radius: 3px; padding: 1px 6px; color: var(--muted); }
-.shelf { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--gap); }
+.shelf { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
 .issue { display: flex; flex-direction: column; background: var(--sheet); min-width: 0; }
-.issue .cov { background: var(--cover); color: var(--cream); padding: 16px 18px 14px; display: flex; flex-direction: column; aspect-ratio: 4 / 3.4; text-decoration: none; }
-.issue .cov .cjk { font-size: 72px; margin-top: auto; }
+.issue .cov { background: var(--cover); color: var(--cream); padding: 10px 12px; display: flex; flex-direction: column; aspect-ratio: 4 / 3; text-decoration: none; }
+.issue .cov .cjk { font-size: 40px; margin-top: auto; }
 .issue .cov .row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
-.issue .cov .logo { font-size: 24px; }
+.issue .cov .logo { font-size: 17px; }
+.issue .cov .mono { font-size: 9.5px; }
 .issue .cov .mono { color: rgba(248,245,238,.7); }
 .issue .cov:hover .logo { opacity: .8; }
-.issue ul { list-style: none; margin: 0; padding: 12px 18px 16px; font-size: 15px; line-height: 1.35; }
-.issue li { padding: 4px 0; display: flex; gap: 8px; }
+.issue ul { list-style: none; margin: 0; padding: 8px 12px 10px; font-size: 13px; line-height: 1.3; }
+.issue li { padding: 2px 0; display: flex; gap: 6px; }
 .issue li a { text-decoration: none; }
 .issue li a:hover { text-decoration: underline; }
-.issue .dot { flex: none; width: 8px; height: 8px; margin-top: 7px; background: var(--bg); }
+.issue .dot { flex: none; width: 6px; height: 6px; margin-top: 5px; background: var(--bg); }
 .issue li.f a { font-style: italic; }
 .issue li.f .dot { background: var(--hanko); border-radius: 50%; }
 .empty { color: var(--muted); padding: 16px; font-style: italic; }
@@ -431,8 +433,7 @@ footer { margin-top: 96px; }
   .pager strong { font-size: 17px; }
   .pager a { padding: 14px 16px; }
   .shelf { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .issue .cov .cjk { font-size: 52px; }
-  .issue ul { padding: 10px 12px 12px; font-size: 14px; }
+  .issue .cov .cjk { font-size: 36px; }
   #search { margin-top: 12px; max-height: calc(100vh - 24px); }
   .s-top input { font-size: 19px; }
   .s-hint { display: none; }
@@ -457,7 +458,7 @@ footer { margin-top: 96px; }
 
 <div class="wrap">
   <header class="top">
-    <a class="brand" href="#deze-week" aria-label="Proef, deze week"><svg class="wordmark" viewBox="0 0 307 104" aria-hidden="true"><use href="#proef-logo"/></svg></a>
+    <a class="brand" href="#deze-week" aria-label="Proef, deze week"><svg class="wordmark" viewBox="0 0 307 104" aria-hidden="true" id="top-logo"></svg></a>
     <nav aria-label="Hoofdmenu">
       <a href="#deze-week">Deze week</a>
       <a href="#fermentatie">Fermentatie</a>
@@ -524,6 +525,11 @@ footer { margin-top: 96px; }
     return el;
   }
   const pad = (n) => String(n).padStart(2, "0");
+  // recepten hebben een eigen adres, recept/<slug>/ (pagina's van scripts/build_pages.py); de rest blijft #…
+  const BASE = new URL(document.baseURI).pathname;
+  const recipeHref = (slug) => "recept/" + slug + "/";
+  const recipePath = () => (location.pathname.startsWith(BASE) ? location.pathname.slice(BASE.length) : "").match(/^recept\/([^/]+)\/?$/);
+  function go(url) { if (new URL(url, document.baseURI).href !== location.href) history.pushState(null, "", url); route(); }
   const dateFmt = new Intl.DateTimeFormat("nl-NL", { day: "numeric", month: "long", year: "numeric" });
   const fmtDate = (iso) => dateFmt.format(new Date(iso + "T12:00:00"));
   const nf = new Intl.NumberFormat("nl-NL", { maximumFractionDigits: 1 });
@@ -588,7 +594,7 @@ footer { margin-top: 96px; }
   // woordmerk uit het symbool #proef-logo (kleur via currentColor)
   function wordmark(tag, cls) {
     const el = h(tag, { class: cls, "aria-label": "Proef" });
-    el.innerHTML = '<svg class="wordmark" viewBox="0 0 307 104" aria-hidden="true"><use href="#proef-logo"/></svg>';
+    el.innerHTML = '<svg class="wordmark" viewBox="0 0 307 104" aria-hidden="true">' + $("proef-logo").innerHTML + "</svg>";
     return el;
   }
 
@@ -631,7 +637,7 @@ footer { margin-top: 96px; }
   // home: label met een klein lijntje ernaast; receptpagina (big): grote grafiek met vorig jaar als stippellijn
   const trend = (r, opts = {}) => {
     const sp = r.spark;
-    if (sp && sp.weeks && opts.line) return h("a", { class: "trend line", href: "#waarom" }, chip(sp), h("span", { text: sp.text }));
+    if (sp && sp.weeks && opts.line) return h("a", { class: "trend line", href: recipeHref(r.slug) + "#waarom", onclick: (e) => { e.preventDefault(); $("waarom")?.scrollIntoView({ behavior: "smooth" }); } }, chip(sp), h("span", { text: sp.text }));
     if (sp && sp.weeks) return h("div", { class: "trend has-spark" },
       h("div", { class: "row" }, chip(sp), sparkSvg(sp, { label: sparkLabel(sp) })),
       h("p", { text: sp.text }));
@@ -692,13 +698,13 @@ footer { margin-top: 96px; }
         h("div", { class: "bottom" },
           h("p", { class: "intro", text: ed.intro || "" }),
           h("span", { class: "hanko", title: sName, "aria-hidden": "true", text: sGlyph }))),
-      lead ? h("a", { class: "card lead", href: "#" + lead.slug, id: "f-" + lead.slug },
+      lead ? h("a", { class: "card lead", href: recipeHref(lead.slug), id: "f-" + lead.slug },
         photo(lead, { eager: true }),
         h("div", { class: "body" },
           h("span", { class: "no", text: "01" }),
           h("div", null, native(lead), h("h2", { text: lead.title }), h("p", { class: "dek", text: lead.dek || "" }),
             metaline(servingsText(lead, lead.servings), lead.minutes + " min", lead.category), trend(lead)))) : null,
-      ...rest.map((r, i) => h("a", { class: "tile " + tintClass(r), href: "#" + r.slug, id: "f-" + r.slug, style: `grid-column: span ${spans[i]}` },
+      ...rest.map((r, i) => h("a", { class: "tile " + tintClass(r), href: recipeHref(r.slug), id: "f-" + r.slug, style: `grid-column: span ${spans[i]}` },
         photo(r),
         h("div", { class: "body" },
           h("span", { class: "no", text: pad(i + 2) }),
@@ -784,8 +790,8 @@ footer { margin-top: 96px; }
               whyText ? h("p", { text: whyText }) : null,
               (r.links || []).length ? h("ul", { class: "links" }, r.links.map((l) => h("li", null, h("a", { href: l.url, target: "_blank", rel: "noopener", text: l.label + " ↗" })))) : null) : null))),
       h("nav", { class: "pager", "aria-label": "Andere recepten" },
-        prev ? h("a", { class: "card", href: "#" + prev.slug }, h("span", { class: "label", text: "← Vorige" }), h("strong", { text: prev.title })) : h("span"),
-        next ? h("a", { class: "card next", href: "#" + next.slug }, h("span", { class: "label", text: "Volgende →" }), h("strong", { text: next.title }))
+        prev ? h("a", { class: "card", href: recipeHref(prev.slug) }, h("span", { class: "label", text: "← Vorige" }), h("strong", { text: prev.title })) : h("span"),
+        next ? h("a", { class: "card next", href: recipeHref(next.slug) }, h("span", { class: "label", text: "Volgende →" }), h("strong", { text: next.title }))
           : ed.ferment ? h("a", { class: "card next", href: "#fermentatie-" + ed.id }, h("span", { class: "label", text: "Fermentatie →" }), h("strong", { text: ed.ferment.title })) : h("span")),
       relatedBlock(r)
     ));
@@ -858,7 +864,7 @@ footer { margin-top: 96px; }
         ours.length ? h("section", { class: "ours" },
           h("h2", { class: "mono colhead", text: `Deze week in Proef · Nº ${pad(ed.number)}` }),
           h("ul", { class: "ours-list" }, ours.map((r) => h("li", null,
-            h("a", { href: "#" + r.slug, text: r.title }),
+            h("a", { href: recipeHref(r.slug), text: r.title }),
             h("span", { class: "row" }, chip(r.spark), sparkSvg(r.spark, { label: sparkLabel(r.spark) })),
             h("span", { class: "txt", text: r.spark.text }))))) : null,
         h("p", { class: "trend-src" }, "Koks: een uitgezocht netwerk, met oud-redacteuren van Bon Appétit en delicious. in de kern. Zoekdata: Google Trends. ", h("a", { href: "#zo-meten-we", text: "Hoe meten we dit?" })))));
@@ -901,7 +907,7 @@ footer { margin-top: 96px; }
             h("h1", { text: f.title }),
             h("p", { class: "lede", text: f.lede || "" }),
             (f.facts || []).length ? h("ul", { class: "facts" }, f.facts.map((x) => h("li", null, h("span", { text: x.label }), h("span", { text: x.value })))) : null,
-            used ? h("a", { class: "used", href: "#" + used.slug }, h("span", { class: "no", text: recipeNo(used) }), "Deze week in " + used.title + " →") : null)),
+            used ? h("a", { class: "used", href: recipeHref(used.slug) }, h("span", { class: "no", text: recipeNo(used) }), "Deze week in " + used.title + " →") : null)),
         h("div", { class: "card ferm-main" },
           (f.science || []).length ? h("section", null, h("h2", { class: "mono colhead", text: "Wat er gebeurt" }), h("div", { class: "prose" }, f.science.map((p) => h("p", { text: p })))) : null,
           (f.timeline || []).length ? h("section", null, h("h2", { class: "mono colhead", text: "In de pot" }),
@@ -918,7 +924,7 @@ footer { margin-top: 96px; }
             h("p", { text: "Gecontroleerd tegen de richtlijnen van universiteiten en het National Center for Home Food Preservation. Twijfel je? Gooi het weg." }),
             h("ul", { class: "links" }, f.sources.map((l) => h("li", null, h("a", { href: l.url, target: "_blank", rel: "noopener", text: l.label + " ↗" }))))) : null)),
       h("nav", { class: "pager", "aria-label": "Andere recepten" },
-        last ? h("a", { class: "card", href: "#" + last.slug }, h("span", { class: "label", text: "← Vorige" }), h("strong", { text: last.title })) : h("span"),
+        last ? h("a", { class: "card", href: recipeHref(last.slug) }, h("span", { class: "label", text: "← Vorige" }), h("strong", { text: last.title })) : h("span"),
         h("a", { class: "card next", href: "#editie-" + ed.id }, h("span", { class: "label", text: "Editie →" }), h("strong", { text: `Nº ${pad(ed.number)} · week ${ed.week}` })))
     ));
     document.title = f.title + " · Fermentatie · Proef";
@@ -937,7 +943,7 @@ footer { margin-top: 96px; }
           h("span", { class: "cjk", "aria-hidden": "true", text: ed.cover?.glyph || "旬" }),
           h("span", { class: "mono", text: `Week ${ed.week} · ${fmtDate(ed.date)}` })),
         h("ul", null,
-          ed.recipes.map((r) => h("li", null, h("span", { class: "dot " + tintClass(r), "aria-hidden": "true" }), h("a", { href: "#" + r.slug, text: r.title }))),
+          ed.recipes.map((r) => h("li", null, h("span", { class: "dot " + tintClass(r), "aria-hidden": "true" }), h("a", { href: recipeHref(r.slug), text: r.title }))),
           ed.ferment ? h("li", { class: "f" }, h("span", { class: "dot", "aria-hidden": "true" }), h("a", { href: "#fermentatie-" + ed.id, text: ed.ferment.title })) : null));
     }));
   }
@@ -950,7 +956,7 @@ footer { margin-top: 96px; }
     const items = [];
     for (const ed of state.editions) {
       for (const r of ed.recipes) items.push({
-        kind: "recipe", r, ed, href: "#" + r.slug, title: r.title, minutes: r.minutes, tint: tintClass(r), glyph: r.glyph || "食",
+        kind: "recipe", r, ed, href: recipeHref(r.slug), title: r.title, minutes: r.minutes, tint: tintClass(r), glyph: r.glyph || "食",
         tags: (r.tags || []).map(norm), category: norm(r.category),
         ings: (r.ingredients || []).map((i) => ({ text: norm(i.item), label: i.item })),
         fields: [[norm(r.title), 6], [norm([r.native, r.roman, r.glyph].join(" ")), 5], [norm((r.tags || []).join(" ") + " " + r.category), 4], [norm((r.ingredients || []).map((i) => i.item).join(" ")), 3], [norm([r.dek, r.trend?.text, r.spark?.text, r.spark?.label, r.signal?.text].join(" ")), 2], [norm((r.steps || []).join(" ") + " " + (r.tip || "")), 1]],
@@ -1072,12 +1078,12 @@ footer { margin-top: 96px; }
   function closeSearch(go) {
     const dlg = $("search");
     if (dlg.open) dlg.close();
-    if (!go && location.hash.startsWith("#zoek")) history.replaceState(null, "", state.lastHash || location.pathname + location.search);
+    if (!go && location.hash.startsWith("#zoek")) history.replaceState(null, "", state.lastUrl || BASE);
   }
   function surprise() {
     const pool = state.editions.flatMap((e) => e.recipes);
     const r = pool[Math.floor(Math.random() * pool.length)];
-    closeSearch(true); location.hash = r.slug;
+    closeSearch(true); go(recipeHref(r.slug));
   }
   function initSearch() {
     $("s-chips").replaceChildren(...CHIPS.map(([label, q]) => h("button", { type: "button", "data-q": q, text: label, onclick: () => { const cur = $("q").value.trim(); $("q").value = norm(cur).includes(q) ? cur.replace(new RegExp(q, "i"), "").trim() : (cur ? cur + " " : "") + q; renderResults(); $("q").focus(); } })),
@@ -1086,7 +1092,7 @@ footer { margin-top: 96px; }
     $("q").addEventListener("keydown", (e) => {
       if (e.key === "ArrowDown") { e.preventDefault(); moveSel(1); }
       else if (e.key === "ArrowUp") { e.preventDefault(); moveSel(-1); }
-      else if (e.key === "Enter") { const a = $("s-results").querySelectorAll("a")[sel]; if (a) { e.preventDefault(); closeSearch(true); location.hash = a.getAttribute("href"); } }
+      else if (e.key === "Enter") { const a = $("s-results").querySelectorAll("a")[sel]; if (a) { e.preventDefault(); closeSearch(true); go(a.href); } }
     });
     $("s-results").addEventListener("click", (e) => { if (e.target.closest("a")) closeSearch(true); });
     $("s-close").addEventListener("click", () => closeSearch());
@@ -1116,17 +1122,28 @@ footer { margin-top: 96px; }
     }
   }
 
+  const HASH_ROUTE = /^(zoek(\/.*)?|zo-meten-we|trends|deze-week|archief|fermentatie(-.*)?|editie-.*)$/;
   function route() {
     if (!state.editions.length) return;
     const hsh = decodeURIComponent(location.hash.slice(1));
+    // oude links (#slug) naar het eigen adres van het recept
+    if (state.bySlug.has(hsh)) { history.replaceState(null, "", recipeHref(hsh)); return route(); }
+    const path = recipePath();
+    if (path && state.bySlug.has(decodeURIComponent(path[1])) && !HASH_ROUTE.test(hsh)) {
+      markNav("");
+      state.lastUrl = location.pathname + location.search + location.hash;
+      if ($("search").open) closeSearch(true);
+      showRecipe(state.bySlug.get(decodeURIComponent(path[1])));
+      if (hsh && $(hsh)) $(hsh).scrollIntoView();
+      return;
+    }
     markNav(hsh);
     if (hsh === "zoek" || hsh.startsWith("zoek/")) {
       if ($("detail-view").hidden && !$("features").querySelector(".mast")) showHome(state.editions[0], "");
       return openSearch(hsh.slice(5));
     }
     if ($("search").open) closeSearch(true);
-    state.lastHash = location.hash;
-    if (state.bySlug.has(hsh)) return showRecipe(state.bySlug.get(hsh));
+    state.lastUrl = location.pathname + location.search + location.hash;
     if (hsh === "zo-meten-we") return showMethod();
     if (hsh === "trends") return showTrends();
     if (hsh === "fermentatie" || hsh.startsWith("fermentatie-")) {
@@ -1138,6 +1155,8 @@ footer { margin-top: 96px; }
     if (hsh === "deze-week") state.lastSlug = null;
     showHome(ed, hsh);
   }
+
+  $("top-logo").innerHTML = $("proef-logo").innerHTML;
 
   async function load() {
     try {
@@ -1155,7 +1174,18 @@ footer { margin-top: 96px; }
     }
   }
 
-  window.addEventListener("hashchange", route);
+  // links binnen de site zonder herladen: pushState + route; terug/vooruit via popstate
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest("a");
+    if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || a.target || a.hasAttribute("download")) return;
+    const url = new URL(a.href, location.href);
+    if (url.origin !== location.origin || !url.pathname.startsWith(BASE)) return;
+    const rel = url.pathname.slice(BASE.length);
+    if (rel && !/^recept\/[^/]+\/?$/.test(rel)) return;
+    e.preventDefault();
+    go(url.href);
+  });
+  window.addEventListener("popstate", route);
   // receptpagina: na een klein stukje scrollen verschijnt de foto in kleur
   // (op mobiel loopt de overgang mee met het scrollen, anders is de foto al weg voor je het ziet)
   const narrow = matchMedia("(max-width: 1000px)");

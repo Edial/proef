@@ -37,7 +37,7 @@ Vijf recepten die deze week trending zijn, plus één Fermentatie van de week. W
    - Komt er bij een recept "Dalend" uit, dan mag dat: het label is eerlijk. Kies wel liever recepten die de data steunt.
 7. **Omslag:** `cover.color` is anders dan vorige week (`navy`, `ink`, `kaki`, `moss`). `cover.glyph` is één teken voor het thema van de week (standaard 旬, "in het seizoen").
 8. **Controleer:** `python3 scripts/check_photos.py editions/<id>.json` (alle foto's moeten werken), daarna `python3 scripts/photo_light.py editions/<id>.json` (zet `photoGamma`, zodat alle foto's even licht zijn; vereist `pip install pillow`) en `python3 scripts/check_edition.py` (0 fouten).
-9. **Publiceer:** voeg het id vooraan toe in `editions/index.json`, commit (met `data/trends.csv` erbij) als `Proef: editie NN (week WW)` en push naar `main`. GitHub Pages zet het binnen een paar minuten live.
+9. **Publiceer:** voeg het id vooraan toe in `editions/index.json`, draai `python3 scripts/build_pages.py`, commit (met `data/trends.csv` en `recept/` erbij) als `Proef: editie NN (week WW)` en push naar `main`. GitHub Pages zet het binnen een paar minuten live.
 
 ## Wekelijkse run (Claude-routine): zuinig werken
 
@@ -48,7 +48,7 @@ De routine draait elke zaterdag om 06:00. Elke stap kost tokens, en alles wat je
 3. **Zoeken:** meestal niet nodig, de kandidaten staan in de samenvatting. Gebruik WebSearch alleen voor wat ontbreekt (bijvoorbeeld een Aziatisch recept als de kern er deze week geen heeft), in `standard`-modus, **maximaal 4 zoekopdrachten**.
 4. **Pagina's openen:** maximaal 10 keer WebFetch, alleen voor pagina's die je echt gebruikt (bronrecept, trendbron). Vraag in de prompt alleen wat je nodig hebt.
 5. **Ferment:** kies uit de bibliotheek in FERMENTATIE.md §9, geen nieuw onderzoek. Schrijf het ferment met de cijfers uit de tabel. De bronlinks controleert `check_photos.py`.
-6. **Schrijf de editie in één keer** met Write. Draai daarna `python3 scripts/check_photos.py editions/<id>.json`, `python3 scripts/photo_light.py editions/<id>.json`, `python3 scripts/trends_collect.py editions/<id>.json` en als laatste `python3 scripts/check_edition.py` (die controleert dan ook de trendlabels). Lees van `trends_collect.py` alleen de laatste regels. Herstel alleen wat de scripts melden.
+6. **Schrijf de editie in één keer** met Write. Draai daarna `python3 scripts/check_photos.py editions/<id>.json`, `python3 scripts/photo_light.py editions/<id>.json`, `python3 scripts/trends_collect.py editions/<id>.json` `python3 scripts/check_edition.py` (die controleert dan ook de trendlabels) en als laatste `python3 scripts/build_pages.py` (maakt de eigen pagina per recept in `recept/<slug>/`). Lees van `trends_collect.py` alleen de laatste regels. Herstel alleen wat de scripts melden.
 7. **Publiceer** zoals in stap 9 hierboven en sluit af met een verslag van hooguit 15 regels.
 
 ## Bronnen
