@@ -13,6 +13,7 @@ import csv
 import datetime as dt
 import pathlib
 import sys
+import time
 
 import feeds
 
@@ -57,9 +58,13 @@ def main():
     with CSV.open(newline="") as f:
         rows = list(csv.DictReader(f))
     todo = [i for i, r in enumerate(rows) if "--all" in sys.argv or not r["checked"]]
+    slow = [i for i in todo if "substack.com" in rows[i]["site"] + rows[i]["feed"]]  # Substack: één voor één
     with cf.ThreadPoolExecutor(16) as pool:
-        for i, row in zip(todo, pool.map(check, [rows[i] for i in todo])):
+        for i, row in zip([i for i in todo if i not in slow], pool.map(check, [rows[i] for i in todo if i not in slow])):
             rows[i] = row
+    for i in slow:
+        rows[i] = check(rows[i])
+        time.sleep(1.5)
     with CSV.open("w", newline="") as f:
         w = csv.DictWriter(f, rows[0].keys())
         w.writeheader()

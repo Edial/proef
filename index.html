@@ -179,7 +179,11 @@ img { display: block; max-width: 100%; }
 .mast .logo { margin: 0; font-size: 64px; line-height: 1; }
 .mast .tagline { margin-top: 14px; font-size: 18px; line-height: 1.35; max-width: 22ch; }
 .mast .sub { margin-top: 12px; color: rgba(248,245,238,.65); }
-.mast .glyph { font-size: 190px; margin: auto 0 0 -6px; padding-top: 28px; }
+.mast .kou-wrap { display: flex; align-items: flex-end; gap: 18px; margin-top: auto; padding-top: 28px; }
+.kou { writing-mode: vertical-rl; text-orientation: upright; line-height: 1; letter-spacing: .04em; }
+.mast .kou.big { font-size: 76px; }
+.mast .kou-nl { margin: 0; font-style: italic; font-size: 15px; line-height: 1.4; color: rgba(248,245,238,.85); max-width: 14ch; }
+.mast .kou-nl .mono { display: block; margin-bottom: 6px; font-style: normal; font-size: 10.5px; color: rgba(248,245,238,.65); }
 .mast .bottom { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-top: 22px; }
 .mast .intro { font-style: italic; font-size: 15px; line-height: 1.5; color: rgba(248,245,238,.85); max-width: 32ch; }
 
@@ -239,7 +243,7 @@ kbd { font-family: var(--mono); font-style: normal; font-size: 11px; border: 1px
 /* archief: per editie één groot vlak in de omslagkleur */
 .issue { display: flex; flex-direction: column; justify-content: space-between; aspect-ratio: 1; padding: 14px 16px; background: var(--cover); color: var(--cover-ink, var(--cream)); text-decoration: none; transition: transform .2s ease; }
 .issue:hover { transform: translateY(-3px); }
-.issue .cjk { font-size: 72px; }
+.issue .kou.small { font-size: 30px; align-self: flex-start; }
 .issue .when { opacity: .8; }
 .empty { color: var(--muted); padding: 16px; font-style: italic; }
 
@@ -382,7 +386,7 @@ footer { margin-top: 96px; }
 
 @media (max-width: 1000px) {
   .mast, .lead { grid-column: span 12; }
-  .mast { min-height: 0; } .mast .glyph { font-size: 120px; }
+  .mast { min-height: 0; } .mast .kou.big { font-size: 60px; }
   .tile { grid-column: span 6 !important; }
   .spread, .ferm, .archive { grid-template-columns: minmax(0, 1fr); }
   .spread .left, .ferm-side { position: static; }
@@ -424,7 +428,7 @@ footer { margin-top: 96px; }
   .pager strong { font-size: 17px; }
   .pager a { padding: 14px 16px; }
   .shelf { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .issue .cjk { font-size: 56px; }
+  .issue .kou.small { font-size: 24px; }
   #search { margin-top: 12px; max-height: calc(100vh - 24px); }
   .s-top input { font-size: 19px; }
   .s-hint { display: none; }
@@ -552,6 +556,14 @@ footer { margin-top: 96px; }
   const tintClass = (r) => "t-" + (TINTS[r.tint] || "sage");
   const SEASONS = [[[12, 1, 2], "Winter", "冬"], [[3, 4, 5], "Lente", "春"], [[6, 7, 8], "Zomer", "夏"], [[9, 10, 11], "Herfst", "秋"]];
   const season = (iso) => { const m = new Date(iso + "T12:00:00").getMonth() + 1; return SEASONS.find(([ms]) => ms.includes(m)); };
+  // 72 microseizoenen (七十二候): elke editie krijgt het microseizoen van zijn verschijningsdatum als omslagteken
+  const KOU = [["02-04","立春","東風解凍","Harukaze kōri o toku","De oostenwind laat het ijs smelten"],["02-09","立春","黄鶯睍睆","Kōō kenkan su","De struikzangers zingen"],["02-14","立春","魚上氷","Uo kōri o izuru","Het ijs breekt, de vissen komen boven"],["02-19","雨水","土脉潤起","Tsuchi no shō uruoi okoru","Regen maakt de aarde vochtig"],["02-24","雨水","霞始靆","Kasumi hajimete tanabiku","De eerste nevel hangt over het land"],["03-01","雨水","草木萌動","Sōmoku mebae izuru","Bomen en planten lopen uit"],["03-06","啓蟄","蟄虫啓戸","Sugomori mushito o hiraku","Insecten ontwaken uit hun winterslaap"],["03-11","啓蟄","桃始笑","Momo hajimete saku","De perzikbomen gaan bloeien"],["03-16","啓蟄","菜虫化蝶","Namushi chō to naru","Rupsen worden koolwitjes"],["03-21","春分","雀始巣","Suzume hajimete sukū","Mussen beginnen aan hun nest"],["03-26","春分","櫻始開","Sakura hajimete saku","De kersenbloesem gaat open"],["03-31","春分","雷乃発声","Kaminari sunawachi koe o hassu","In de verte rommelt de donder"],["04-05","清明","玄鳥至","Tsubame kitaru","De zwaluwen komen terug"],["04-10","清明","鴻雁北","Kōgan kaeru","Wilde ganzen trekken naar het noorden"],["04-15","清明","虹始見","Niji hajimete arawaru","De eerste regenbogen verschijnen"],["04-20","穀雨","葭始生","Ashi hajimete shōzu","Het riet schiet op"],["04-25","穀雨","霜止出苗","Shimo yamite nae izuru","De vorst is voorbij, de rijst kiemt"],["04-30","穀雨","牡丹華","Botan hana saku","De pioenen bloeien"],["05-05","立夏","蛙始鳴","Kawazu hajimete naku","De kikkers beginnen te kwaken"],["05-10","立夏","蚯蚓出","Mimizu izuru","Regenwormen komen boven"],["05-15","立夏","竹笋生","Takenoko shōzu","Bamboescheuten schieten op"],["05-21","小満","蚕起食桑","Kaiko okite kuwa o hamu","Zijderupsen eten van de moerbei"],["05-26","小満","紅花栄","Benibana sakau","De saffloer staat in volle bloei"],["05-31","小満","麦秋至","Mugi no toki itaru","De gerst is rijp"],["06-06","芒種","蟷螂生","Kamakiri shōzu","Bidsprinkhanen komen uit het ei"],["06-11","芒種","腐草為螢","Kusaretaru kusa hotaru to naru","Vuurvliegjes stijgen op uit het gras"],["06-16","芒種","梅子黄","Ume no mi kibamu","De ume-pruimen kleuren geel"],["06-21","夏至","乃東枯","Natsukarekusa karuru","De brunel verwelkt"],["06-27","夏至","菖蒲華","Ayame hana saku","De irissen bloeien"],["07-02","夏至","半夏生","Hange shōzu","De pinellia komt op"],["07-07","小暑","温風至","Atsukaze itaru","Warme winden waaien"],["07-12","小暑","蓮始開","Hasu hajimete hiraku","De lotus gaat open"],["07-17","小暑","鷹乃学習","Taka sunawachi waza o narau","Jonge haviken leren vliegen"],["07-23","大暑","桐始結花","Kiri hajimete hana o musubu","De paulownia zet zaad"],["07-29","大暑","土潤溽暑","Tsuchi uruōte mushi atsushi","De grond is vochtig, de lucht drukkend"],["08-03","大暑","大雨時行","Taiu tokidoki furu","Zware regen valt"],["08-08","立秋","涼風至","Suzukaze itaru","Koele winden waaien"],["08-13","立秋","寒蝉鳴","Higurashi naku","De avondcicaden zingen"],["08-18","立秋","蒙霧升降","Fukaki kiri matō","Dikke mist hangt over het land"],["08-23","処暑","綿柎開","Wata no hana shibe hiraku","De katoenbollen gaan open"],["08-28","処暑","天地始粛","Tenchi hajimete samushi","De hitte neemt eindelijk af"],["09-02","処暑","禾乃登","Kokumono sunawachi minoru","De rijst is rijp"],["09-08","白露","草露白","Kusa no tsuyu shiroshi","Witte dauw glinstert op het gras"],["09-13","白露","鶺鴒鳴","Sekirei naku","De kwikstaarten zingen"],["09-18","白露","玄鳥去","Tsubame saru","De zwaluwen vertrekken naar het zuiden"],["09-23","秋分","雷乃収声","Kaminari sunawachi koe o osamu","De donder zwijgt"],["09-28","秋分","蟄虫坏戸","Mushi kakurete to o fusagu","Insecten sluiten hun holen"],["10-03","秋分","水始涸","Mizu hajimete karuru","De velden worden drooggelegd"],["10-08","寒露","鴻雁来","Kōgan kitaru","De wilde ganzen komen terug"],["10-13","寒露","菊花開","Kiku no hana hiraku","De chrysanten bloeien"],["10-18","寒露","蟋蟀在戸","Kirigirisu to ni ari","Krekels tjirpen bij de deur"],["10-23","霜降","霜始降","Shimo hajimete furu","De eerste rijp valt"],["10-28","霜降","霎時施","Kosame tokidoki furu","Af en toe valt een zachte regen"],["11-02","霜降","楓蔦黄","Momiji tsuta kibamu","Esdoorn en klimop kleuren geel"],["11-07","立冬","山茶始開","Tsubaki hajimete hiraku","De camelia's gaan bloeien"],["11-12","立冬","地始凍","Chi hajimete kōru","De grond begint te bevriezen"],["11-17","立冬","金盞香","Kinsenka saku","De narcissen bloeien"],["11-22","小雪","虹蔵不見","Niji kakurete miezu","De regenbogen verdwijnen"],["11-27","小雪","朔風払葉","Kitakaze konoha o harau","De noordenwind blaast de bomen kaal"],["12-02","小雪","橘始黄","Tachibana hajimete kibamu","De tachibana-citrus kleurt geel"],["12-07","大雪","閉塞成冬","Sora samuku fuyu to naru","De lucht blijft koud, de winter begint"],["12-12","大雪","熊蟄穴","Kuma ana ni komoru","Beren kruipen in hun hol"],["12-17","大雪","鱖魚群","Sake no uo muragaru","Zalmen trekken in scholen de rivier op"],["12-22","冬至","乃東生","Natsukarekusa shōzu","De brunel komt op"],["12-27","冬至","麋角解","Sawashika no tsuno otsuru","Herten werpen hun gewei af"],["01-01","冬至","雪下出麦","Yuki watarite mugi nobiru","Gerst kiemt onder de sneeuw"],["01-05","小寒","芹乃栄","Seri sunawachi sakau","De waterpeterselie groeit welig"],["01-10","小寒","水泉動","Shimizu atataka o fukumu","Bevroren bronnen stromen weer"],["01-15","小寒","雉始雊","Kiji hajimete naku","De fazanten beginnen te roepen"],["01-20","大寒","款冬華","Fuki no hana saku","Het hoefblad bloeit"],["01-25","大寒","水沢腹堅","Sawamizu kōri tsumeru","Beken krijgen een dikke ijslaag"],["01-30","大寒","鶏始乳","Niwatori hajimete toya ni tsuku","De kippen gaan weer leggen"]];
+  function kouFor(iso) {
+    const md = iso.slice(5, 10), sorted = [...KOU].sort((a, b) => a[0].localeCompare(b[0]));
+    const k = [...sorted].reverse().find((x) => x[0] <= md) || sorted[sorted.length - 1];
+    return { sekki: k[1], kanji: k[2], romaji: k[3], nl: k[4] };
+  }
+  const kouEl = (ed, cls) => { const k = kouFor(ed.date); return h("span", { class: "kou cjk " + cls, lang: "ja", title: `${k.kanji} · ${k.romaji} · ${k.nl}`, text: k.kanji }); };
   const COVERS = ["navy", "ink", "kaki", "moss"];
   const coverClass = (ed) => "c-" + (COVERS.includes(ed.cover?.color) ? ed.cover.color : COVERS[(ed.number - 1) % COVERS.length]);
   const servingsText = (r, n) => { const lab = r.servingsLabel || "personen"; return n + " " + (n === 1 ? singular[lab] || lab : lab); };
@@ -685,7 +697,8 @@ footer { margin-top: 96px; }
         wordmark("h1", "logo"),
         h("p", { class: "tagline", text: "Elke week vijf trending recepten die kinderen ook lekker vinden." }),
         h("p", { class: "sub mono", text: `Nº ${pad(ed.number)} · Week ${ed.week} · ${sName} ${ed.year}` }),
-        h("div", { class: "glyph cjk", "aria-hidden": "true", text: ed.cover?.glyph || "旬" }),
+        h("div", { class: "kou-wrap" }, kouEl(ed, "big"),
+          h("p", { class: "kou-nl" }, h("span", { class: "mono", text: `${kouFor(ed.date).sekki} · microseizoen` }), kouFor(ed.date).nl + ".")),
         h("div", { class: "bottom" },
           h("p", { class: "intro", text: ed.intro || "" }),
           h("span", { class: "hanko", title: sName, "aria-hidden": "true", text: sGlyph }))),
@@ -931,7 +944,7 @@ footer { margin-top: 96px; }
       "aria-label": `Editie ${ed.number}, week ${ed.week}, ${fmtDate(ed.date)}`,
     },
       h("span", { class: "mono", text: "Nº " + pad(ed.number) }),
-      h("span", { class: "cjk", "aria-hidden": "true", text: ed.cover?.glyph || "旬" }),
+      kouEl(ed, "small"),
       h("span", { class: "mono when", text: `Week ${ed.week} · ${fmtDate(ed.date)}` }))));
   }
 

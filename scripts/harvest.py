@@ -16,6 +16,7 @@ import json
 import pathlib
 import re
 import sys
+import time
 
 import feeds
 
@@ -163,8 +164,12 @@ def main():
     sources = load_sources()
     posts = load_posts()
     n0 = len(posts)
+    slow = [s for s in sources if "substack.com" in s["feed"]]  # Substack geeft snel 429: één voor één
     with cf.ThreadPoolExecutor(16) as pool:
-        results = [x for batch in pool.map(fetch, sources) for x in batch]
+        results = [x for batch in pool.map(fetch, [s for s in sources if s not in slow]) for x in batch]
+    for s in slow:
+        results += fetch(s)
+        time.sleep(1.5)
     for src, kind, p in results:
         if not p["published"]:
             continue

@@ -3,6 +3,8 @@ import datetime as dt
 import email.utils
 import html
 import re
+import time
+import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -13,8 +15,14 @@ NS = {"atom": "http://www.w3.org/2005/Atom", "media": "http://search.yahoo.com/m
 
 def get(url, timeout=15, limit=3_000_000):
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "*/*", "Cookie": "CONSENT=YES+1; SOCS=CAI"})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return r.geturl(), r.read(limit).decode("utf-8", "replace")
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return r.geturl(), r.read(limit).decode("utf-8", "replace")
+        except urllib.error.HTTPError as e:
+            if e.code != 429 or attempt == 2:
+                raise
+            time.sleep(6 * (attempt + 1))  # te veel verzoeken (Substack): even wachten
 
 
 def looks_like_feed(text):

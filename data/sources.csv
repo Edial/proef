@@ -1,18 +1,18 @@
 id,name,tier,affiliation,site,feed,youtube,lang,country,focus,paywall,status,last_post,items,checked
 claire-saffitz,Claire Saffitz,core,Bon Appétit (oud),https://www.clairesaffitz.com,,ClaireSaffitzxDessertPerson,en,US,bakken,,geen-feed,,0,2026-10-30
 molly-baz,Molly Baz,core,Bon Appétit (oud),https://www.mollybaz.com,https://mollybaz.com/feed/,,en,US,thuiskoken,,ok,2026-10-21,10,2026-10-30
-andy-baraghani,Andy Baraghani,core,Bon Appétit (oud),https://www.andybaraghani.com,,,en,US,"thuiskoken,midden-oosten",,geen-feed,,0,2026-10-30
+andy-baraghani,Andy Baraghani,core,Bon Appétit (oud),https://andybaraghani.substack.com,,,en,US,"thuiskoken,midden-oosten",,geen-feed,,0,
 carla-lalli-music,Carla Lalli Music,core,Bon Appétit (oud),https://carlalallimusic.substack.com,https://carlalalli.substack.com/feed,CarlaLalliMusic,en,US,thuiskoken,,ok,2026-10-27,20,2026-10-30
 alison-roman,Alison Roman,core,Bon Appétit (oud),https://alisoneroman.substack.com,https://alisoneroman.substack.com/feed,UCP2dODeygZWBJe2xoby-XzQ,en,US,thuiskoken,,ok,2026-10-05,35,2026-10-30
-sohla-el-waylly,Sohla El-Waylly,core,Bon Appétit (oud),https://www.sohla.com,https://sohla.com/feed,sohlaelwaylly,en,US,techniek,,stil,2026-05-25,10,2026-10-30
+sohla-el-waylly,Sohla El-Waylly,core,Bon Appétit (oud),https://sohla.substack.com,https://sohla.substack.com/feed,sohlaelwaylly,en,US,techniek,,ok,2026-10-28,20,2026-10-30
 priya-krishna,Priya Krishna,core,Bon Appétit (oud),https://www.priyakrishna.com,,,en,US,"indiaas,gezin",,geen-feed,,0,2026-10-30
-rick-martinez,Rick Martinez,core,Bon Appétit (oud),https://www.rickmartinez.com,,rickmartinezcooks,en,MX,mexicaans,,onbereikbaar,,0,2026-10-30
+rick-martinez,Rick Martinez,core,Bon Appétit (oud),https://rickmartinez.substack.com,https://rickmartinez.substack.com/feed,rickmartinezcooks,en,MX,mexicaans,,stil,2025-02-04,1,2026-10-30
 brad-leone,Brad Leone,core,Bon Appétit (oud),https://www.bradleone.com,,UC1NFFogiT88Uhmidrz8Ypnw,en,US,fermentatie,,ok,2026-10-29,15,2026-10-30
 gaby-melian,Gaby Melian,core,Bon Appétit (oud),https://www.gabymelian.com,,,en,US,latijns-amerikaans,,geen-feed,,0,2026-10-30
 chris-morocco,Chris Morocco,core,Bon Appétit (oud),https://www.chrismorocco.com,,,en,US,thuiskoken,,geen-feed,,0,2026-10-30
 dawn-perry,Dawn Perry,core,Bon Appétit (oud),https://dawnperry.substack.com,https://dawnperry.substack.com/feed,,en,US,"gezin,doordeweeks",,ok,2026-08-17,2,2026-10-30
-amiel-stanek,Amiel Stanek,core,Bon Appétit (oud),https://amielstanek.substack.com,,,en,US,thuiskoken,,onbereikbaar,,0,2026-10-30
-christina-chaey,Christina Chaey,core,Bon Appétit (oud),https://christinachaey.substack.com,,,en,US,koreaans,,geen-feed,,0,2026-10-30
+amiel-stanek,Amiel Stanek,core,Bon Appétit (oud),https://amielstanek.substack.com,,,en,US,thuiskoken,,geen-feed,,0,2026-10-30
+christina-chaey,Christina Chaey,core,Bon Appétit (oud),https://gentlefoods.substack.com,https://gentlefoods.substack.com/feed,,en,US,koreaans,,ok,2026-10-29,20,2026-10-30
 kendra-vaculin,Kendra Vaculin,core,Bon Appétit (oud),https://kendravaculin.substack.com,,,en,US,doordeweeks,,geen-feed,,0,2026-10-30
 emma-laperruque,Emma Laperruque,core,Bon Appétit (oud),https://emmalaperruque.substack.com,,,en,US,doordeweeks,,onbereikbaar,,0,2026-10-30
 bon-app-tit,Bon Appétit,core,Bon Appétit,https://www.bonappetit.com,https://www.bonappetit.com/feed/rss,bonappetit,en,US,magazine,,ok,2026-10-30,30,2026-10-30
@@ -160,3 +160,5 @@ gewoon-wat-liefs,Gewoon Wat Liefs,network,,https://www.gewoonwatliefs.nl,,,nl,NL
 kookmutsjes,Kookmutsjes,network,,https://www.kookmutsjes.com,https://kookmutsjes.com/feed/,,nl,NL,thuiskoken,,ok,2026-10-29,10,2026-10-30
 ohmyfoodness,OhMyFoodness,network,,https://www.ohmyfoodness.nl,https://ohmyfoodness.nl/feed/,,nl,NL,thuiskoken,,ok,2026-10-30,7,2026-10-30
 culy,Culy,network,,https://www.culy.nl,https://www.culy.nl/feed/,,nl,NL,magazine,,ok,2026-10-30,12,2026-10-30
+ali-slagle,Ali Slagle,core,Bon Appétit/NYT Cooking (te checken),https://alislagle.substack.com,https://alislagle.substack.com/feed,,en,US,doordeweeks,,ok,2026-10-29,20,2026-10-30
+rebecca-firkser,Rebecca Firkser,core,Food52/Bon Appétit (te checken),https://rebeccafirkser.substack.com,https://rebeccafirkser.substack.com/feed,,en,US,thuiskoken,,ok,2026-10-27,20,2026-10-30
