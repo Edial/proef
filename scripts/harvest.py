@@ -153,7 +153,7 @@ def add_google(rising, n):
     for r in rising[:n]:
         try:
             s = trend_check.check(g, r["phrase"])
-            r["google"] = {"label": s["label"], "text": s["text"], "geo": s["geo"]} if s else None
+            r["google"] = {"label": s["label"], "text": s["text"], "geo": s["geo"], "yoy": s["yoy"], "weeks": s["weeks"]} if s else None
         except Exception as e:  # noqa: BLE001
             print(f"FOUT  {r['phrase']}: {type(e).__name__}"[:100])
 
@@ -181,7 +181,10 @@ def main():
     b = buzz(posts, today)
     if "--google" in sys.argv:
         add_google(b, int(sys.argv[sys.argv.index("--google") + 1]))
-    BUZZ.write_text(json.dumps({"generated": today.isoformat(), "sources": len(sources), "window": WINDOW, "base": BASE, "rising": b},
+    recent = [p for p in posts.values() if 0 <= (today - day(p["published"])).days <= WINDOW]
+    BUZZ.write_text(json.dumps({"generated": today.isoformat(), "sources": len(sources), "window": WINDOW, "base": BASE,
+                                "core": sum(s["tier"] == "core" for s in sources), "posts": len(recent),
+                                "posters": len({p["source"] for p in recent}), "rising": b},
                                ensure_ascii=False, indent=1) + "\n")
     print(f"{len(sources)} bronnen gelezen, {len(posts)} berichten bewaard ({len(posts) - n0:+d}).")
     print("Stijgt in het netwerk:", ", ".join(f"{r['phrase']} ({r['sources']})" for r in b[:12]))
