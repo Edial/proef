@@ -192,14 +192,15 @@ img { display: block; max-width: 100%; }
 .lead .trend { margin-top: 14px; }
 .lead:hover h2, .tile:hover h2, .ferm-teaser:hover h2 { text-decoration: underline; text-decoration-thickness: 1px; }
 
-.tile { grid-column: span 3; display: flex; flex-direction: column; text-decoration: none; background: var(--bg); color: var(--dark); min-width: 0; }
+/* tegels naast elkaar delen hun rijen (subgrid): foto, nummer, titel, gegevens en trend staan altijd op dezelfde hoogte */
+.tile { grid-column: span 3; grid-row: span 5; display: grid; grid-template-rows: subgrid; row-gap: 0; text-decoration: none; background: var(--bg); color: var(--dark); min-width: 0; }
 .tile .duo { aspect-ratio: 4 / 3; }
-.tile .body { padding: 16px 18px 18px; display: flex; flex-direction: column; flex: 1; }
-.tile .no { font-size: 15px; color: var(--dark); }
+.tile .body { display: contents; }
+.tile .body > * { margin-inline: 18px; }
+.tile .no { padding-top: 16px; font-size: 15px; color: var(--dark); }
 .tile h2 { margin-top: 4px; font-size: 21px; line-height: 1.12; letter-spacing: -0.01em; }
-.tile .metaline { margin-top: 10px; color: rgba(31,29,26,.72); }
-.tile .trend { margin-top: auto; padding-top: 10px; border-top-color: rgba(31,29,26,.25); }
-.tile .body > .metaline { margin-bottom: 16px; }
+.tile .metaline { margin-top: 10px; margin-bottom: 16px; align-self: start; color: rgba(31,29,26,.72); }
+.tile .trend { margin-bottom: 18px; padding-top: 10px; border-top-color: rgba(31,29,26,.25); }
 .tile .trend b { color: var(--dark); }
 .tile .spark { color: var(--lo); }
 .tile .tl { color: var(--dark); }
