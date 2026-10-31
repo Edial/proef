@@ -15,3 +15,4 @@ Minimalistisch weekmagazine: elke zaterdag vijf trending recepten. Weinig werk, 
 - `data/sources.csv`: de koks, bloggers en magazines die we volgen (kern: oud-Bon Appétit en delicious.). Elke vrijdagnacht leest een GitHub Action hun feeds (`scripts/harvest.py`) naar `data/posts.csv` en `data/buzz.json`. Lezers zien het op `#trends`.
 - `data/trends.csv` bewaart elke week de trenddata (cijfers uit de bronnen en Google Trends) voor een later dashboard. Bijwerken met `python3 scripts/trends_collect.py editions/<id>.json`.
 - Op de site opent `/` de zoekfunctie. Je kunt zoeken op gerecht, ingrediënt, tag, tijd ("onder 30 min") of wat je in huis hebt ("kool, ei, rijst").
+- Na elke push van een editie meet de GitHub Action *Trends en foto's meten* (`.github/workflows/meten.yml`) de trendlabels, sparklines en lichtheid van de foto's, en bouwt de receptpagina's opnieuw. De wekelijkse routine kan zelf niet bij Google Trends of de receptsites.

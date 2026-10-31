@@ -1,0 +1,54 @@
+name: Trends en foto's meten
+
+# De wekelijkse routine draait in een omgeving zonder toegang tot Google Trends en de receptsites.
+# Daarom meet GitHub zelf: na elke push van een editie (of met de hand) de trendlabels en sparklines
+# (trends_collect.py), de lichtheid van de foto's (photo_light.py) en daarna de receptpagina's (build_pages.py).
+on:
+  push:
+    branches: [main]
+    paths: ["editions/*.json"]
+  workflow_dispatch:
+    inputs:
+      edition:
+        description: "Editie-id (leeg = nieuwste uit editions/index.json)"
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: meten
+  cancel-in-progress: false
+
+jobs:
+  meten:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pillow
+      - name: Welke editie
+        id: ed
+        run: |
+          ID="${{ github.event.inputs.edition }}"
+          if [ -z "$ID" ]; then ID=$(python3 -c "import json;print(json.load(open('editions/index.json'))['editions'][0])"); fi
+          echo "file=editions/$ID.json" >> "$GITHUB_OUTPUT"
+      - name: Google Trends
+        run: python3 scripts/trends_collect.py ${{ steps.ed.outputs.file }} || echo "Google Trends mislukt, niet blokkerend"
+      - name: Foto's even licht
+        run: python3 scripts/photo_light.py ${{ steps.ed.outputs.file }} || echo "photo_light mislukt, niet blokkerend"
+      - name: Controle en receptpagina's
+        run: |
+          python3 scripts/check_edition.py
+          python3 scripts/build_pages.py
+      - name: Opslaan
+        run: |
+          git config user.name "proef-bot"
+          git config user.email "proef-bot@users.noreply.github.com"
+          git add editions/ data/trends.csv recept/
+          git diff --cached --quiet && exit 0
+          git commit -m "Trends en foto's gemeten (${{ steps.ed.outputs.file }})"
+          git pull --rebase origin main
+          git push
