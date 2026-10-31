@@ -22,6 +22,7 @@ Laatst gecontroleerd: 24 oktober 2026.
 - **Eindconcentratie 2 tot 5 % van het gewicht van de groente.** Onder ongeveer 1,7 % wordt kool zacht of slijmerig.
 - Ruwe controle: zuurkool is 3 eetlepels zout per 5 pond kool, dat is ruim **2 % op gewicht** (ca. 54 g op 2,3 kg). Kimchi wordt vaak eerst sterker gezouten en daarna afgespoeld. Het zout dat achterblijft valt dan binnen 2 tot 5 %.
 - **Pekel om bij te vullen:** bij een ferment in pekel (wortel, radijs, augurk) dezelfde sterkte als de pekel van het recept. Bij droog gezouten kool (zuurkool, kimchi) 20 g zout per liter. Kook het water altijd en laat het afkoelen.
+- **Proef rekent zout over groente + water samen.** De lezer weegt de pot met groente en water en vult dat gewicht in op de site; het zout is een vast percentage daarvan. Voor groente in pekel is dat **2,5 %**: gelijk aan een pekel van 5 % op evenveel groente als water, en het klopt ook als de pot voller of leger zit. Nooit onder 2 %.
 - Stukken of hele groente in pekel: **5 %** (50 g per liter). Geraspte of fijngesneden groente: **3 %** (University of Illinois Extension).
 - Gebruik **geen zoutvervanger** (kaliumchloride): dat smaakt bitter.
 
@@ -97,7 +98,7 @@ Een nieuw ferment toevoegen mag alleen als het onder §1 valt en je **minstens t
 | **Zuurkool** (witte kool of spitskool) | 22 g per kg kool (ruim 2 %), droog door de kool kneden tot er vocht komt | 3–4 weken, 20–22 °C; bij 15–18 °C 5–6 weken | koelkast, binnen 2 maanden op | NCHFP Sauerkraut · Oregon State SP 50-745 |
 | **Augurken met dille** | pekel per liter water: 75 g zout + 30 ml azijn (5 %); ca. 950 g augurkjes, 2 mm van de bloemkant eraf | 3–4 weken, 20–22 °C | koelkast, binnen 3 maanden op | NCHFP Dill Pickles · NCHFP Problems |
 | **Radijs in pekel** | pekel 5 %: 50 g zout per liter water | tot het zuur ruikt, **pH-strip verplicht: 4,6 of lager** (meestal na enkele dagen) | koelkast, binnen 1 maand op | UCI SSIHI tabel · UC Inyo-Mono brine math |
-| **Gefermenteerde wortel met gember** (staafjes) | pekel 5 %: 50 g zout per liter water; bijvullen met dezelfde pekel | 10–14 dagen, 20–22 °C; ruikt het na 3 weken niet zuur, dan weggooien. pH-strip: 4,6 of lager | koelkast, binnen 1 maand op | Illinois Extension · UC Davis · gebruikt in Nº 02 (test) |
+| **Gefermenteerde wortel met gember** (staafjes) | 2,5 % van groente + water samen (= pekel 5 % bij half wortel, half water); bijvullen met 25 g zout per liter | 10–14 dagen, 20–22 °C; ruikt het na 3 weken niet zuur, dan weggooien. pH-strip: 4,6 of lager | koelkast, binnen 1 maand op | Illinois Extension · UC Davis · gebruikt in Nº 02 (test) |
 | **Bloemkool of sperziebonen in pekel** | pekel 5 %: 50 g zout per liter water (Illinois: stukken 5 %; UCI noemt 2 %, Proef neemt de strengste) | tot het zuur ruikt, meestal 1–2 weken, **pH-strip verplicht: 4,6 of lager** | koelkast, binnen 1 maand op | Illinois Extension · UCI SSIHI tabel |
 
 **Nog niet in de lijst:**

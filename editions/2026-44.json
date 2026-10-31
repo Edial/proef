@@ -1540,9 +1540,9 @@
     "glyph": "酵",
     "native": "人参の塩水漬け",
     "roman": "ninjin no shiomizu-zuke, ‘wortel in pekel’",
-    "lede": "Wortelstaafjes in een pekel van vijf procent zout, met plakjes gember. Na twee weken zijn ze fris, zuur en nog knapperig: een snack voor de koelkast en een frisse hap naast pittige kip.",
+    "lede": "Wortelstaafjes in pekel met plakjes gember. Het zout is 2,5 % van groente en water samen. Na twee weken zijn ze fris, zuur en nog knapperig: een snack voor de koelkast en een frisse hap naast pittige kip.",
     "teaser": "Wortelstaafjes in pekel, na twee weken zuur en knapperig.",
-    "yield": "1 pot van 1 liter",
+    "yield": "ca. 1 kg groente + water (1 pot van 1 liter)",
     "facts": [
       {
         "label": "Pot",
@@ -1571,9 +1571,9 @@
     ],
     "usedIn": "rode-curry-kip-pompoen-traybake",
     "science": [
-      "Op wortel zitten van nature melkzuurbacteriën. In een pekel van 5 % zout krijgen rotbacteriën weinig kans, maar melkzuurbacteriën kunnen er goed tegen. Ze eten de suikers uit de wortel en maken er melkzuur en koolzuurgas van: daarom wordt het vocht troebel en zie je bubbels.",
+      "Op wortel zitten van nature melkzuurbacteriën. In zout water (2,5 % zout over groente en water samen) krijgen rotbacteriën weinig kans, maar melkzuurbacteriën kunnen er goed tegen. Ze eten de suikers uit de wortel en maken er melkzuur en koolzuurgas van: daarom wordt het vocht troebel en zie je bubbels.",
       "Het zuur is wat het veilig maakt. Onder een pH van 4,6 kan de bacterie die botulisme veroorzaakt niet groeien. Wortel is van zichzelf weinig zuur, dus meet het na met een pH-strip voordat je gaat eten.",
-      "Hele staafjes houden hun bite beter dan geraspte wortel. Geraspt kan ook, maar dan met minder zout (3 %); Proef houdt het bij staafjes in 5 %-pekel."
+      "Hele staafjes houden hun bite beter dan geraspte wortel. Proef rekent het zout over groente en water samen: 2,5 % daarvan geeft dezelfde eindconcentratie als een pekel van 5 % op evenveel wortel als water, maar klopt ook als je pot voller of leger zit."
     ],
     "timeline": [
       {
@@ -1601,7 +1601,9 @@
       {
         "qty": 500,
         "unit": "g",
-        "item": "winterpeen, geschild, in staafjes van 1 cm dik en 2 cm korter dan de pot hoog is"
+        "item": "winterpeen, geschild, in staafjes van 1 cm dik en 2 cm korter dan de pot hoog is",
+        "base": true,
+        "key": "wortel"
       },
       {
         "qty": 30,
@@ -1616,24 +1618,30 @@
       {
         "qty": 500,
         "unit": "ml",
-        "item": "water (kraanwater of gefilterd)"
+        "item": "water (kraanwater of gefilterd), zoveel als nodig om de wortel onder te zetten",
+        "base": true,
+        "key": "water"
       },
       {
         "qty": 25,
         "unit": "g",
-        "item": "zeezout zonder jodium of antiklontermiddel, gewogen"
+        "item": "zeezout zonder jodium of antiklontermiddel, gewogen",
+        "salt": true,
+        "key": "zout"
       },
       {
         "qty": 1,
         "unit": "",
-        "item": "pH-strip of -meter (bereik tot minstens 3–6)"
+        "item": "pH-strip of -meter (bereik tot minstens 3–6)",
+        "fixed": true
       }
     ],
     "steps": [
-      "Was een glazen pot van 1 liter, het deksel en een klein glazen gewichtje of schoteltje in heet sop en spoel na met heel heet water.",
-      "Maak de pekel: los 25 g zout op in 500 ml water (5 %). Maak meer pekel in dezelfde verhouding (50 g zout per liter) als je moet bijvullen.",
-      "Zet de wortelstaafjes rechtop en strak in de pot, met de gember en knoflook ertussen. Laat 5 cm ruimte vrij onder de rand.",
-      "Giet de pekel erover tot alle wortel minstens 2 cm onder staat. Leg het gewichtje erop zodat niets boven het vocht uitkomt. Vul zo nodig bij met pekel van 5 %.",
+      "Was een glazen pot, het deksel en een klein glazen gewichtje of schoteltje in heet sop en spoel na met heel heet water. Een pot van 1 liter past bij ongeveer 1 kg groente + water.",
+      "Zet de pot op de weegschaal en zet die op 0. Zet de wortelstaafjes rechtop en strak in de pot, met de gember en knoflook ertussen.",
+      "Giet water in de pot tot alle wortel minstens 2 cm onder staat. Laat 5 cm ruimte onder de rand. Lees de weegschaal af: dat is groente + water samen. Vul dat gewicht in bij ‘Hoeveel maak je?’.",
+      "Giet het water af in een kan en los er {zout} zout in op. Giet de pekel terug over de wortel.",
+      "Leg het gewichtje erop zodat niets boven het vocht uitkomt. Vul zo nodig bij met pekel van dezelfde sterkte: 25 g zout per liter gekookt en afgekoeld water.",
       "Leg het deksel er losjes op, of gebruik een fermentatiedeksel, zodat het gas kan ontsnappen. Zet de pot op een bord tegen overlopen.",
       "Laat 10 tot 14 dagen staan bij 20 tot 22 °C, uit de zon. Kijk elke dag: laat gas ontsnappen en druk alles weer onder het vocht.",
       "Ruik en proef na 10 dagen. Meet de pH met een strip: 4,6 of lager is goed. Ruikt het na 3 weken nog steeds niet zuur, gooi het dan weg.",

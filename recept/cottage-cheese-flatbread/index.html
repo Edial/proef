@@ -373,6 +373,60 @@ kbd { font-family: var(--mono); font-style: normal; font-size: 11px; border: 1px
 .checks div { font-size: 14.5px; line-height: 1.5; }
 .checks .mono { display: block; margin-bottom: 4px; }
 .checks .ok { color: var(--ok); } .checks .bad { color: var(--hanko); } .checks .kid { color: var(--muted); }
+/* hoeveelheid kiezen: groente + water samen, zout rekent mee */
+.sizer { margin: 0 0 22px; padding: 16px 18px 14px; border: 1px solid var(--ink); background: var(--board); }
+.sizer .label { color: var(--ink); }
+.sizer .row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: 10px; }
+.sizer .field { display: inline-flex; align-items: baseline; gap: 6px; font-family: var(--mono); font-size: 13px; }
+.sizer input { width: 8ch; font: 400 24px/1.1 var(--serif); color: var(--ink); background: var(--sheet); border: 1px solid var(--rule); padding: 4px 8px; text-align: right; -moz-appearance: textfield; }
+.sizer input::-webkit-outer-spin-button, .sizer input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.sizer .presets { display: flex; flex-wrap: wrap; gap: 6px; }
+.sizer .presets button { font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; padding: 5px 9px; border: 1px solid var(--rule); border-radius: 99px; background: transparent; color: var(--ink); cursor: pointer; }
+.sizer .presets button:hover, .sizer .presets button.on { border-color: var(--ink); background: var(--ink); color: var(--sheet); }
+.sizer .salt { margin-top: 12px; font-size: 15px; line-height: 1.45; }
+.sizer .salt b { font-weight: 600; }
+.sizer .how { margin-top: 6px; font-family: var(--sans); font-size: 13px; line-height: 1.5; color: var(--muted); }
+.steps .qv { font-weight: 600; white-space: nowrap; }
+
+/* Trends: seizoen bovenaan, compact */
+.season { margin: 26px 0 8px; padding: 16px 0 18px; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 18px 36px; }
+.season h2 { grid-column: 1 / -1; font-weight: 400; font-size: 24px; letter-spacing: -0.01em; }
+.season h2 .mono { font-size: 10.5px; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; margin-left: 10px; }
+.veg { margin: 6px 0 0; display: grid; gap: 6px; }
+.veg div { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 10px; align-items: baseline; padding: 6px 0; border-bottom: 1px solid var(--rule); }
+.veg dt { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.veg .new dt { color: var(--ok); } .veg .last dt { color: var(--persimmon); }
+.veg dd { margin: 0; font-size: 15px; line-height: 1.45; }
+.veg .new dd { font-weight: 500; }
+.veg span[title] { border-bottom: 1px dotted var(--muted); cursor: help; }
+.fish { list-style: none; margin: 6px 0 0; padding: 0; font-size: 14px; }
+.fish li { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; gap: 8px; align-items: baseline; padding: 4px 0; border-bottom: 1px solid var(--rule); }
+.fish .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--muted); transform: translateY(-1px); }
+.fish .groen .dot { background: #3F8F5A; } .fish .oranje .dot { background: #E0902F; } .fish .rood .dot { background: var(--hanko); }
+.fish a { text-decoration: none; color: var(--ink); }
+.fish a:hover { text-decoration: underline; }
+.fish small { color: var(--muted); font-size: 12px; margin-left: 4px; }
+.fish .r { font-family: var(--mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+.fish .groen .r { color: #3F8F5A; } .fish .rood .r { color: var(--hanko); } .fish .oranje .r { color: #B86E1A; }
+.season .src { grid-column: 1 / -1; font-family: var(--mono); font-size: 10px; letter-spacing: .03em; color: var(--muted); line-height: 1.5; }
+.season .src a { color: var(--ink); }
+.buzz.compact > li { grid-template-columns: 32px minmax(0, 1fr) 140px; gap: 2px 16px; padding: 11px 0; align-items: start; }
+.buzz.compact .no { font-size: 17px; }
+.buzz.compact strong { font-size: 19px; display: inline; margin-right: 10px; }
+.buzz.compact .g { display: inline-flex; margin: 0; font-size: 14px; }
+.buzz.compact .meta { margin: 3px 0 0; font-size: 10.5px; }
+.buzz.compact details { margin-top: 3px; }
+.buzz.compact summary { cursor: pointer; font-family: var(--mono); font-size: 10.5px; letter-spacing: .04em; color: var(--muted); }
+.buzz.compact summary:hover { color: var(--ink); }
+.buzz.compact .links { margin-top: 6px; }
+.buzz.compact .side { padding-top: 2px; }
+.buzz.compact .side .spark { height: 30px; }
+@media (max-width: 760px) {
+  .season { grid-template-columns: minmax(0, 1fr); }
+  .buzz.compact > li { grid-template-columns: 26px minmax(0, 1fr); }
+  .buzz.compact .side { grid-column: 2; max-width: 200px; }
+}
+
 
 /* Tags en "Meer zoals dit" */
 .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
@@ -901,37 +955,52 @@ footer { margin-top: 96px; }
     return h("li", null,
       h("span", { class: "no", text: pad(i + 1) }),
       h("div", { class: "main" },
-        h("strong", { text: cap(x.phrase) }),
-        g ? h("p", { class: "g" }, tl(g.label), h("span", { text: g.text })) : h("p", { class: "g quiet", text: "Te weinig zoekdata bij Google om iets over te zeggen." }),
+        h("div", null, h("strong", { text: cap(x.phrase) }),
+          g ? h("span", { class: "g" }, tl(g.label), h("span", { text: g.text })) : h("span", { class: "g quiet", text: "Te weinig zoekdata." })),
         h("p", { class: "mono meta", text: `${x.sources} van ${total} koks · ${x.before ? "was " + nf.format(x.before) : "eerder geen"}${x.core ? ` · ${x.core} uit de kern` : ""}` }),
-        h("ul", { class: "links" }, x.posts.slice(0, 3).map((p) => h("li", null, h("a", { href: p.url, target: "_blank", rel: "noopener" }, h("b", { text: p.name }), " · " + p.title + " ↗"))))),
+        x.posts.length ? h("details", null, h("summary", { text: `${Math.min(3, x.posts.length)} recepten ↓` }),
+          h("ul", { class: "links" }, x.posts.slice(0, 3).map((p) => h("li", null, h("a", { href: p.url, target: "_blank", rel: "noopener" }, h("b", { text: p.name }), " · " + p.title + " ↗"))))) : null),
       h("div", { class: "side" },
         g && g.weeks ? sparkSvg({ weeks: g.weeks }, { label: `Zoekinteresse in “${x.phrase}”, ${geoText(g.geo)}, afgelopen 12 maanden. ${g.label}: ${g.text}` }) : null,
         g ? h("span", { class: "mono cap", text: `Google · ${g.geo === "NL" ? "NL" : "wereld"} · 12 mnd` }) : null));
   }
-  // groente en fruit die nu in Nederland groeien of uit de bewaring komen (data/seizoen.json)
+
+  // seizoen bovenaan Trends: groente en fruit uit Nederland, en vis en schaaldieren met hun VISwijzer-kleur (data/seizoen.json)
+  const RATING = { groen: "Goede keus", oranje: "Tweede keus", rood: "Liever niet" };
   async function loadSeason(box) {
     try {
       const d = await fetch("data/seizoen.json", { cache: "no-cache" }).then((r) => r.json());
       const m = new Date().getMonth() + 1, prev = m === 1 ? 12 : m - 1, next = m === 12 ? 1 : m + 1;
       const mName = new Intl.DateTimeFormat("nl-NL", { month: "long" }).format(new Date());
-      const chip = (i, fresh) => {
-        const isNew = fresh && !i.oogst.includes(prev) && !i.bewaring.includes(prev);
-        const last = !i.oogst.includes(next) && !i.bewaring.includes(next);
-        return h("li", { class: isNew ? "new" : last ? "last" : null }, i.naam, isNew ? h("small", { text: "nieuw" }) : last ? h("small", { text: "laatste weken" }) : null);
-      };
-      // nieuw eerst, daarna de rest, wat bijna voorbij is achteraan
-      const rank = (i, fresh) => (fresh && !i.oogst.includes(prev) && !i.bewaring.includes(prev) ? 0 : !i.oogst.includes(next) && !i.bewaring.includes(next) ? 2 : 1);
-      const group = (title, list, fresh) => list.length ? h("div", { class: "land-group" }, h("h3", { class: "mono", text: title }),
-        h("ul", { class: "chips" }, [...list].sort((a, b) => rank(a, fresh) - rank(b, fresh)).map((i) => chip(i, fresh)))) : null;
+      const has = (i, x) => i.oogst.includes(x) || i.bewaring.includes(x);
+      const phase = (i) => !has(i, prev) ? "new" : !has(i, next) ? "last" : "";
+      const names = (xs) => xs.map((i) => i.naam).sort((a, b) => a.localeCompare(b, "nl")).join(", ");
+      const row = (cls, label, xs) => xs.length ? h("div", { class: cls }, h("dt", { class: "mono", text: label }), h("dd", { text: names(xs) })) : null;
       const veg = d.items.filter((i) => i.soort === "groente" && i.oogst.includes(m));
-      const fruit = d.items.filter((i) => i.soort === "fruit" && i.oogst.includes(m));
+      const fruit = d.items.filter((i) => i.soort !== "groente" && i.oogst.includes(m));
       const stored = d.items.filter((i) => !i.oogst.includes(m) && i.bewaring.includes(m));
+      const order = { groen: 0, oranje: 1, null: 2, rood: 3 };
+      const fish = ((d.vis && d.vis.items) || []).filter((x) => x.months.includes(m)).sort((a, b) => order[a.rating] - order[b.rating] || a.name.localeCompare(b.name, "nl"));
+      const link = (url, text) => h("a", { href: url, target: "_blank", rel: "noopener", text });
+      const seasonSrc = d.vis ? d.vis.sources.filter((l, i, a) => /VLAM|Mossel|Nieuwe|Favorflav|Oester/i.test(l.label) && a.findIndex((y) => y.label.split(" · ")[0] === l.label.split(" · ")[0]) === i) : [];
       box.replaceChildren(
-        h("h2", { class: "mono colhead", text: `Van het land · ${mName}` }),
-        h("p", { class: "dek", text: "Wat er nu in Nederland groeit, en wat er uit de schuur komt. Daar kiezen we de recepten bij." }),
-        group("Groente, vers", veg, true), group("Fruit en noten, vers", fruit, true), group("Uit de bewaring", stored, false),
-        h("p", { class: "trend-src" }, "Bron: ", h("a", { href: d.bronUrl, target: "_blank", rel: "noopener", text: "seizoenskalender GoodFood / Leefmilieu Brussel ↗" }), ", zelfde klimaat als Nederland."));
+        h("h2", null, "Nu in het seizoen", h("span", { class: "mono", text: mName })),
+        h("div", null,
+          h("p", { class: "label", text: `Van het land · ${veg.length + fruit.length + stored.length}` }),
+          h("dl", { class: "veg" },
+            row("new", "Groente, nieuw", veg.filter((i) => phase(i) === "new")),
+            row("full", "Groente", veg.filter((i) => phase(i) === "")),
+            row("last", "Laatste weken", [...veg, ...fruit].filter((i) => phase(i) === "last")),
+            row("full", "Fruit en noten", fruit.filter((i) => phase(i) !== "last")),
+            row("full", "Uit de bewaring", stored))),
+        fish.length ? h("div", null,
+          h("p", { class: "label", text: `Vis en schaaldieren · ${fish.length}` }),
+          h("ul", { class: "fish" }, fish.map((x) => h("li", { class: x.rating || "onbekend", title: [x.variant, x.note].filter(Boolean).join(". ") },
+            h("span", { class: "dot", "aria-hidden": "true" }),
+            h("span", null, x.url ? link(x.url, x.name) : x.name, h("small", { text: x.variant })),
+            h("span", { class: "r", text: RATING[x.rating] || "Niet bevestigd" }))))) : null,
+        h("p", { class: "src" }, "Groente en fruit: ", link(d.bronUrl, "seizoenskalender GoodFood / Leefmilieu Brussel"), ", zelfde klimaat als Nederland. ",
+          d.vis ? [d.vis.about + " Seizoenen: ", ...seasonSrc.flatMap((l, i) => [i ? ", " : "", link(l.url, l.label.split(" · ")[0])]), "."] : null));
     } catch (e) { box.remove(); }
   }
 
@@ -939,9 +1008,9 @@ footer { margin-top: 96px; }
     const ed = state.editions[0];
     const ours = ed.recipes.filter((r) => r.spark && r.spark.weeks);
     const head = h("div", { class: "glance" });
-    const list = h("ol", { class: "buzz" }, h("li", { class: "status", text: "Even laden…" }));
+    const list = h("ol", { class: "buzz compact" }, h("li", { class: "status", text: "Even laden…" }));
     const kicker = h("p", { class: "kicker", text: "Trends" });
-    const seasonBox = h("section", { class: "land" });
+    const seasonBox = h("section", { class: "season", "aria-label": "Nu in het seizoen" });
     loadSeason(seasonBox);
     $("detail-view").replaceChildren(h("article", null,
       h("a", { class: "back mono", href: "#deze-week", text: "← Deze week" }),
@@ -949,10 +1018,10 @@ footer { margin-top: 96px; }
         kicker,
         h("h1", { text: "Wat koks nu maken" }),
         h("p", { class: "dek", text: "Elke week lezen we de nieuwe recepten van de koks, foodbloggers en magazines die we volgen. Hier zie je welke gerechten nu bij meerdere van hen tegelijk opduiken, en of mensen er op Google ook naar zoeken." }),
+        seasonBox,
         head,
         h("h2", { class: "mono colhead", text: "Stijgt bij de koks" }),
         list,
-        seasonBox,
         ours.length ? h("section", { class: "ours" },
           h("h2", { class: "mono colhead", text: `Deze week in Proef · Nº ${pad(ed.number)}` }),
           h("ul", { class: "ours-list" }, ours.map((r) => h("li", null,
@@ -1044,14 +1113,60 @@ footer { margin-top: 96px; }
   }
 
   /* ---------- Fermentatie ---------- */
+  // Hoeveel maak je? Je vult het gewicht van groente + water samen in; zout en de rest rekenen mee.
+  // In de editie: ingrediënten met "base": true tellen mee voor dat gewicht, het zout is het ingrediënt met "salt": true
+  // (of anders het eerste met "zout" in grammen). In stappen wordt {key} vervangen door de hoeveelheid van het
+  // ingrediënt met die "key", en {totaal} door het gekozen gewicht.
+  const isWeight = (i) => i.qty != null && (i.unit === "g" || i.unit === "ml");
+  const stepText = (s) => String(s).replace(/\{[a-z]+\}/g, "").replace(/\s+([,.)])/g, "$1");
+  function fermSizer(f) {
+    const list = f.ingredients || [];
+    let base = list.filter((i) => i.base && isWeight(i));
+    const salt = list.find((i) => i.salt) || list.find((i) => /zout/i.test(i.item) && i.unit === "g");
+    if (!base.length) base = list.filter((i) => isWeight(i) && i !== salt && !i.fixed && /water|kool|wortel|peen|radijs|augurk|groente|bloemkool|bonen|biet/i.test(i.item));
+    const def = Math.round(base.reduce((n, i) => n + i.qty, 0)) || 1000;
+    const pct = salt ? salt.qty / def * 100 : null;
+    let total = def;
+    const ings = ingredientList(list, 1);
+    const input = h("input", { type: "number", inputmode: "numeric", min: "100", max: "20000", step: "50", value: String(def), "aria-label": "Gewicht groente + water samen, in gram" });
+    const presets = [0.5, 1, 1.5, 2, 3].map((m) => Math.round(def * m / 50) * 50).filter((v, i, a) => v >= 100 && a.indexOf(v) === i);
+    const btns = presets.map((v) => { const b = h("button", { type: "button", text: nf.format(v) + " g" }); b.addEventListener("click", () => { input.value = String(v); update(); }); return b; });
+    const saltLine = h("p", { class: "salt" });
+    const rinse = f.saltMode === "afspoelen";
+    const stepsBox = h("ol", { class: "steps" });
+    const fmtKey = (key) => { if (key === "totaal") return nf.format(total) + " g"; const i = list.find((x) => x.key === key); return i ? fmtQty(i, total / def) : ""; };
+    function update() {
+      const v = Number(input.value);
+      total = v >= 50 && v <= 50000 ? Math.round(v) : def;
+      const factor = total / def;
+      for (const [q, ing] of ings.cells) q.textContent = fmtQty(ing, factor);
+      for (const b of btns) b.classList.toggle("on", Number(b.textContent.replace(/\D/g, "")) === total);
+      saltLine.replaceChildren(...(salt ? [
+        "Zout: ", h("b", { text: fmtQty(salt, factor) }),
+        rinse ? ` om de groente mee te zouten. Je spoelt het na het zouten weer af.` : ` (${nf.format(Math.round(pct * 10) / 10)} % van ${nf.format(total)} g groente + water).`] : ["Rekent alle ingrediënten om."]));
+      stepsBox.replaceChildren(...(f.steps || []).map((s) => h("li", null, h("span", null, ...String(s).split(/(\{[a-z]+\})/).map((part) => /^\{[a-z]+\}$/.test(part) ? h("b", { class: "qv", text: fmtKey(part.slice(1, -1)) }) : part)))));
+    }
+    input.addEventListener("input", update);
+    const box = h("div", { class: "sizer" },
+      h("p", { class: "label", text: "Hoeveel maak je?" }),
+      h("div", { class: "row" }, h("label", { class: "field" }, input, h("span", { text: "g groente + water" })), h("div", { class: "presets" }, btns)),
+      saltLine,
+      h("p", { class: "how", text: rinse
+        ? "Weeg de groente en het water uit het recept samen. Alle hoeveelheden, ook het zout, rekenen mee."
+        : "Zet de pot op de weegschaal op 0, doe de groente erin en giet water erbij tot alles onder staat. Wat de weegschaal dan aangeeft, vul je hier in: zo klopt het zout altijd, hoe groot je pot ook is." }));
+    update();
+    return { box, ings, steps: stepsBox, total: () => total, factor: () => total / def };
+  }
+
   function showFerment(ed) {
     const f = ed.ferment;
     const pairs = state.editions.flatMap((e) => e.recipes).filter((r) => pairsWith(f, r));
     const ferms = allFerments(), at = ferms.findIndex((x) => x.ed === ed);
     const newer = ferms[at - 1], older = ferms[at + 1];
-    const ings = ingredientList(f.ingredients, 1);
+    const sz = fermSizer(f);
+    const ings = sz.ings;
     const copyBtn = h("button", { type: "button", class: "copy", text: "Kopieer lijst" });
-    copyBtn.addEventListener("click", () => copyText([`${f.title} (${f.yield || "1 pot"})`, ...(f.ingredients || []).map((i) => "- " + (fmtQty(i, 1) ? fmtQty(i, 1) + " " : "") + i.item)].join("\n")));
+    copyBtn.addEventListener("click", () => copyText([`${f.title} (${nf.format(sz.total())} g groente + water)`, ...(f.ingredients || []).map((i) => "- " + (fmtQty(i, sz.factor()) ? fmtQty(i, sz.factor()) + " " : "") + i.item)].join("\n")));
     $("detail-view").replaceChildren(h("article", null,
       h("a", { class: "back mono", href: "#editie-" + ed.id, text: `← Nº ${pad(ed.number)} · week ${ed.week}` }),
       h("div", { class: "ferm" },
@@ -1072,8 +1187,8 @@ footer { margin-top: 96px; }
           (f.timeline || []).length ? h("section", null, h("h2", { class: "mono colhead", text: "In de pot" }),
             h("ol", { class: "timeline" }, f.timeline.map((t) => h("li", { class: t.now ? "now" : null }, h("span", { class: "when mono colhead", text: t.when }), h("b", { text: t.title }), h("span", { class: "txt", text: t.text }))))) : null,
           h("section", { class: "cols" },
-            h("div", null, h("div", { class: "head-row" }, h("h2", { class: "mono colhead", text: "Ingrediënten" }), copyBtn), ings.box),
-            h("div", null, h("h2", { class: "mono colhead", text: "Zo doe je het" }), h("ol", { class: "steps" }, (f.steps || []).map((s) => h("li", null, h("span", { text: s })))))),
+            h("div", null, sz.box, h("div", { class: "head-row" }, h("h2", { class: "mono colhead", text: "Ingrediënten" }), copyBtn), ings.box),
+            h("div", null, h("h2", { class: "mono colhead", text: "Zo doe je het" }), sz.steps)),
           h("section", { class: "checks" },
             f.ok ? h("div", null, h("span", { class: "mono ok", text: "Goed teken" }), f.ok) : null,
             f.bad ? h("div", null, h("span", { class: "mono bad", text: "Weggooien als" }), f.bad) : null,
@@ -1127,7 +1242,7 @@ footer { margin-top: 96px; }
         kind: "ferment", ed, href: "#fermentatie-" + ed.id, title: f.title, minutes: null, tint: "ferm", glyph: f.glyph || "酵",
         tags: ["fermentatie", "fermenteren", "zelf maken"], category: "fermentatie",
         ings: (f.ingredients || []).map((i) => ({ text: norm(i.item), label: i.item })),
-        fields: [[norm(f.title), 6], [norm([f.native, f.roman, f.glyph, "fermentatie fermenteren ferment"].join(" ")), 5], [norm((f.ingredients || []).map((i) => i.item).join(" ")), 3], [norm([f.lede, ...(f.science || [])].join(" ")), 2], [norm((f.steps || []).join(" ")), 1]],
+        fields: [[norm(f.title), 6], [norm([f.native, f.roman, f.glyph, "fermentatie fermenteren ferment"].join(" ")), 5], [norm((f.ingredients || []).map((i) => i.item).join(" ")), 3], [norm([f.lede, ...(f.science || [])].join(" ")), 2], [norm((f.steps || []).map(stepText).join(" ")), 1]],
         keys: new Set(words((f.ingredients || []).map((i) => i.item).join(" "))),
       });
     }

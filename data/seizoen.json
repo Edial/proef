@@ -966,5 +966,366 @@
    ],
    "bewaring": []
   }
- ]
+ ],
+ "vis": {
+  "sources": [
+   {
+    "label": "Good Fish · VISwijzerposter juli 2023 (Goede keus / Vermijden)",
+    "url": "https://www.goodfish.nl/app/uploads/2023/08/VISwijzerposter-2023-A2.pdf"
+   },
+   {
+    "label": "Good Fish · Fish to avoid",
+    "url": "https://www.goodfish.nl/en/fish-to-avoid/"
+   },
+   {
+    "label": "Good Fish · VISwijzer soortenlijst",
+    "url": "https://www.goodfish.nl/en/search/"
+   },
+   {
+    "label": "Good Fish · Schol (boomkor RED)",
+    "url": "https://www.goodfish.nl/en/fishtype/european-plaice/"
+   },
+   {
+    "label": "Good Fish · Tong",
+    "url": "https://www.goodfish.nl/en/fishtype/common-sole/"
+   },
+   {
+    "label": "Good Fish · Paling",
+    "url": "https://www.goodfish.nl/en/fishtype/eel-european/"
+   },
+   {
+    "label": "NOS · Makreel op rood in VISwijzer (8 april 2025)",
+    "url": "https://nos.nl/l/2562869"
+   },
+   {
+    "label": "VLAM · Viskalender (seizoenen Noordzeevis)",
+    "url": "https://www.gezondheid.be/files/VLAM_viskalender_NL.pdf"
+   },
+   {
+    "label": "MAX Vandaag · Mosselseizoen (juli 2024)",
+    "url": "https://www.maxvandaag.nl/sessies/themas/eten-drinken/wanneer-zijn-mosselen-op-hun-lekkerst/"
+   },
+   {
+    "label": "MAX Vandaag · Hollandse Nieuwe 2026",
+    "url": "https://www.maxvandaag.nl/sessies/themas/eten-drinken/hoe-zit-het-waarom-heet-een-hollandse-nieuwe-eigenlijk-zo/"
+   },
+   {
+    "label": "Favorflav · Oosterscheldekreeft seizoen 2026",
+    "url": "https://favorflav.com/en/new/about-the-oosterschelde-lobster-1/"
+   },
+   {
+    "label": "Welingelichte Kringen · Kreeftencrisis Oosterschelde (okt 2024)",
+    "url": "https://www.welingelichtekringen.nl/natuur-en-milieu/kreeftencrisis-in-de-oosterschelde-ze-zijn-bijna-allemaal-weg-of-dood"
+   },
+   {
+    "label": "Webwoordenboek · Oesterseizoen",
+    "url": "https://webwoordenboek.nl/kenniscentrum/welke-maand-oesters-eten"
+   }
+  ],
+  "about": "Kleur volgens de Good Fish VISwijzer (poster juli 2023, makreel april 2025). Groen is een goede keus, rood liever niet, grijs is niet bevestigd. De actuele kleur staat op goodfish.nl.",
+  "items": [
+   {
+    "name": "Mosselen",
+    "kind": "schelpdier",
+    "months": [
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     1,
+     2,
+     3,
+     4
+    ],
+    "rating": "groen",
+    "variant": "Zeeuwse mosselen (bodemcultuur Oosterschelde/Grevelingen, vaak MSC)",
+    "note": "Op de VISwijzerposter (juli 2023) een 'Goede keus'; op hun best van september tot november.",
+    "url": "https://www.goodfish.nl/app/uploads/2023/08/VISwijzerposter-2023-A2.pdf"
+   },
+   {
+    "name": "Oesters (creuse)",
+    "kind": "schelpdier",
+    "months": [
+     9,
+     10,
+     11,
+     12,
+     1,
+     2,
+     3,
+     4
+    ],
+    "rating": "groen",
+    "variant": "Zeeuwse creuses (Oosterschelde, kweek)",
+    "note": "Poster 2023 noemt 'Mossel/Oester' een Goede keus; seizoensbron geeft algemeen september–april.",
+    "url": "https://www.goodfish.nl/app/uploads/2023/08/VISwijzerposter-2023-A2.pdf"
+   },
+   {
+    "name": "Zeeuwse platte oester",
+    "kind": "schelpdier",
+    "months": [
+     9,
+     10,
+     11,
+     12,
+     1,
+     2,
+     3,
+     4
+    ],
+    "rating": "groen",
+    "variant": "Zeeuwse platte (bodemcultuur Oosterschelde, MSC)",
+    "note": "Rating volgt de algemene 'Oester: Goede keus' van poster 2023; de soortpagina toont het eindoordeel niet leesbaar.",
+    "url": "https://www.goodfish.nl/app/uploads/2023/08/VISwijzerposter-2023-A2.pdf"
+   },
+   {
+    "name": "Noordzeegarnalen",
+    "kind": "schaaldier",
+    "months": [
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12
+    ],
+    "rating": "groen",
+    "variant": "Hollandse garnalen, Noordzee/Waddenzee, MSC",
+    "note": "Poster 2023: 'Hollandse garnaal' Goede keus; MSC-gecertificeerd sinds 2017.",
+    "url": "https://www.goodfish.nl/app/uploads/2023/08/VISwijzerposter-2023-A2.pdf"
+   },
+   {
+    "name": "Noordzeekrab",
+    "kind": "schaaldier",
+    "months": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10
+    ],
+    "rating": "groen",
+    "variant": "Noordzee, korven",
+    "note": "Poster 2023: Goede keus. Maanden indicatief, niet met een bron bevestigd.",
+    "url": "https://www.goodfish.nl/app/uploads/2023/08/VISwijzerposter-2023-A2.pdf"
+   },
+   {
+    "name": "Oosterscheldekreeft",
+    "kind": "schaaldier",
+    "months": [
+     4,
+     5,
+     6,
+     7
+    ],
+    "rating": null,
+    "variant": "Oosterschelde, korven (seizoen ca. 30 maart–15 juli)",
+    "note": "VISwijzer beoordeelt alleen Kanaal/Noorse kreeft, niet de Oosterschelde; vangsten zijn sinds 2024 ingestort.",
+    "url": "https://favorflav.com/en/new/about-the-oosterschelde-lobster-1/"
+   },
+   {
+    "name": "Haring (Hollandse Nieuwe)",
+    "kind": "vis",
+    "months": [
+     6,
+     7,
+     8
+    ],
+    "rating": "groen",
+    "variant": "Noordzee, pelagische trawl, MSC",
+    "note": "Poster 2023: Goede keus. Hollandse Nieuwe vanaf medio juni, vangst mei t/m 31 augustus.",
+    "url": "https://www.goodfish.nl/app/uploads/2023/08/VISwijzerposter-2023-A2.pdf"
+   },
+   {
+    "name": "Makreel",
+    "kind": "vis",
+    "months": [
+     6,
+     7,
+     8,
+     9
+    ],
+    "rating": "rood",
+    "variant": "Noordoost-Atlantische makreel",
+    "note": "Sinds april 2025 rood door overbevissing; maanden indicatief, niet bevestigd.",
+    "url": "https://nos.nl/l/2562869"
+   },
+   {
+    "name": "Schol",
+    "kind": "vis",
+    "months": [
+     6,
+     7,
+     8,
+     9,
+     10
+    ],
+    "rating": "rood",
+    "variant": "Noordzee, boomkor (gangbaar in NL)",
+    "note": "Good Fish geeft schol en tong met boomkor 'RED', ook met MSC; kleur voor flyshoot/zegen niet te bevestigen.",
+    "url": "https://www.goodfish.nl/en/fishtype/european-plaice/"
+   },
+   {
+    "name": "Tong",
+    "kind": "vis",
+    "months": [
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12
+    ],
+    "rating": "rood",
+    "variant": "Noordzee, boomkor",
+    "note": "Boomkortong is rood en sliptong 'vermijden'; kies volwassen zeetong, eventueel met kieuwnet gevangen (kleur onbevestigd).",
+    "url": "https://www.goodfish.nl/en/fishtype/common-sole/"
+   },
+   {
+    "name": "Kabeljauw",
+    "kind": "vis",
+    "months": [
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12
+    ],
+    "rating": "rood",
+    "variant": "Noordzee",
+    "note": "Noordzeekabeljauw: vermijden (kies MSC of wijting als alternatief).",
+    "url": "https://www.goodfish.nl/en/fish-to-avoid/"
+   },
+   {
+    "name": "Wijting",
+    "kind": "vis",
+    "months": [
+     1,
+     2,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12
+    ],
+    "rating": "groen",
+    "variant": "Noordzee",
+    "note": "Poster 2023: Goede keus; Good Fish raadt wijting aan als alternatief voor kabeljauw.",
+    "url": "https://www.goodfish.nl/app/uploads/2023/08/VISwijzerposter-2023-A2.pdf"
+   },
+   {
+    "name": "Schelvis",
+    "kind": "vis",
+    "months": [
+     1,
+     2,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12
+    ],
+    "rating": "groen",
+    "variant": "Noordzee",
+    "note": "Poster 2023: Goede keus.",
+    "url": "https://www.goodfish.nl/app/uploads/2023/08/VISwijzerposter-2023-A2.pdf"
+   },
+   {
+    "name": "Tarbot",
+    "kind": "vis",
+    "months": [
+     1,
+     2,
+     3,
+     9,
+     10,
+     11,
+     12
+    ],
+    "rating": "groen",
+    "variant": "Noordzee (wild)",
+    "note": "Poster 2023: Goede keus; de volledige VISwijzer beoordeelt kieuwnet en boomkor apart (kleuren niet te bevestigen).",
+    "url": "https://www.goodfish.nl/app/uploads/2023/08/VISwijzerposter-2023-A2.pdf"
+   },
+   {
+    "name": "Griet",
+    "kind": "vis",
+    "months": [
+     7,
+     8,
+     9,
+     10,
+     11,
+     12
+    ],
+    "rating": null,
+    "variant": "Noordzee",
+    "note": "Staat op de VISwijzer, maar de kleur kon niet worden bevestigd.",
+    "url": "https://www.goodfish.nl/en/search/"
+   },
+   {
+    "name": "Schar",
+    "kind": "vis",
+    "months": [
+     1,
+     2,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12
+    ],
+    "rating": null,
+    "variant": "Noordzee",
+    "note": "Staat op de VISwijzer, maar de kleur kon niet worden bevestigd.",
+    "url": "https://www.goodfish.nl/en/search/"
+   },
+   {
+    "name": "Grauwe poon",
+    "kind": "vis",
+    "months": [
+     1,
+     2,
+     3,
+     10,
+     11,
+     12
+    ],
+    "rating": "rood",
+    "variant": "Noordzee",
+    "note": "Poster 2023: vermijden, bestand niet duurzaam; kies Engelse poon met flyshoot. Maanden komen van rode poon (VLAM).",
+    "url": "https://www.goodfish.nl/app/uploads/2023/08/VISwijzerposter-2023-A2.pdf"
+   },
+   {
+    "name": "Zeebaars",
+    "kind": "vis",
+    "months": [
+     1,
+     2,
+     3,
+     4,
+     9,
+     10,
+     11,
+     12
+    ],
+    "rating": "rood",
+    "variant": "Wild Noordzee / kweek zonder keurmerk",
+    "note": "Poster 2023: vermijden; kies zeebaars met ASC- of BIO-keurmerk.",
+    "url": "https://www.goodfish.nl/app/uploads/2023/08/VISwijzerposter-2023-A2.pdf"
+   }
+  ]
+ }
 }

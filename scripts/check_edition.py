@@ -127,6 +127,27 @@ def check_ferment(f, where, recipes, seen):
             err(where, "zout moet in grammen gewogen worden (FERMENTATIE.md §2)")
         if "jodium" not in s.get("item", "").lower():
             err(where, "zout moet 'zonder jodium' vermelden (FERMENTATIE.md §2)")
+    # Hoeveel maak je?: groente + water (base) en zout moeten herkenbaar zijn, zout 2–5 % van dat gewicht
+    ings = f.get("ingredients", [])
+    base = [i for i in ings if i.get("base")]
+    if not base:
+        err(where, "geen ingrediënten met \"base\": true (groente en water die samen het gewicht voor 'Hoeveel maak je?' vormen)")
+    for i in base:
+        if i.get("unit") not in ("g", "ml") or not isinstance(i.get("qty"), (int, float)):
+            err(where, f"base-ingrediënt '{i.get('item')}' moet in g of ml")
+    salt = [i for i in ings if i.get("salt")]
+    if len(salt) != 1:
+        err(where, "precies één ingrediënt moet \"salt\": true hebben")
+    elif base and f.get("saltMode") != "afspoelen":
+        total = sum(i.get("qty") or 0 for i in base)
+        pct = salt[0]["qty"] / total * 100 if total else 0
+        if not 2 <= pct <= 5:
+            err(where, f"zout is {pct:.1f} % van groente + water; moet 2–5 % zijn (FERMENTATIE.md §2)")
+    keys = {i.get("key") for i in ings if i.get("key")} | {"totaal"}
+    for s in f.get("steps", []):
+        for k in re.findall(r"\{([a-z]+)\}", s):
+            if k not in keys:
+                err(where, f"stap gebruikt {{{k}}}, maar geen ingrediënt heeft \"key\": \"{k}\"")
     text = " ".join(f.get("steps", []) + [x.get("text", "") for x in f.get("timeline", [])] + [x.get("value", "") for x in f.get("facts", [])]).lower()
     checks = [
         (r"1[89]\s?[–-]\s?2[0-2]\s?°c|\b(18|19|20|21|22)\s?°c", "geen aanrecht-temperatuur tussen 18 en 22 °C (§3)"),

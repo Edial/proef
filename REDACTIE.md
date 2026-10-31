@@ -91,11 +91,18 @@ De routine draait elke zaterdag om 06:00. Elke stap kost tokens, en alles wat je
     "facts": [{ "label": "Aanrecht", "value": "1–2 dagen, 18–22 °C" }],
     "usedIn": "slug-van-een-recept",
     "science": ["…"], "timeline": [{ "when": "Dag 0", "title": "…", "text": "…", "now": false }],
-    "ingredients": [{ "qty": 20, "unit": "g", "item": "zeezout zonder jodium …" }],
-    "steps": ["…"], "ok": "…", "bad": "…", "kids": "…",
+    "saltMode": "afspoelen",                   // alleen als het zout na het zouten wordt afgespoeld (kimchi)
+    "ingredients": [
+      { "qty": 500, "unit": "g", "item": "winterpeen …", "base": true, "key": "wortel" },
+      { "qty": 500, "unit": "ml", "item": "water …", "base": true, "key": "water" },
+      { "qty": 25, "unit": "g", "item": "zeezout zonder jodium …", "salt": true, "key": "zout" }
+    ],
+    "steps": ["Los {zout} zout op in …"], "ok": "…", "bad": "…", "kids": "…",
     "sources": [{ "label": "…", "url": "https://…" }]
   }
 }
 ```
 
 Eenheden: alleen `g`, `ml` of leeg (stuks). Geen kopjes, ounces of °F.
+
+**Ferment: Hoeveel maak je?** Op de fermentatiepagina vult de lezer het gewicht van groente + water samen in, en het zout en de rest rekenen mee. Daarom: groente en water in g/ml met `"base": true`, precies één zout met `"salt": true`, en het zout moet 2–5 % van het totaal van de base-ingrediënten zijn (behalve bij `"saltMode": "afspoelen"`). Schrijf in de stappen `{zout}` (of een andere `key`) in plaats van een vast getal, dan rekent dat ook mee. `check_edition.py` controleert dit.

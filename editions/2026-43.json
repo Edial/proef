@@ -1323,7 +1323,7 @@
     "roman": "mak-gimchi, ‘snelle kimchi’",
     "lede": "Kimchi zonder gedoe: de kool gaat in stukken in plaats van in hele kroppen. Eén pot, een half uur werk, en na drie dagen eet je hem al.",
     "teaser": "Eén pot, een half uur werk, na drie dagen klaar.",
-    "yield": "1 pot van 1,5 liter",
+    "yield": "ca. 1,25 kg groente + water (1 pot van 1,5 liter)",
     "facts": [
       {
         "label": "Pot",
@@ -1385,14 +1385,18 @@
     ],
     "ingredients": [
       {
-        "qty": 1,
-        "unit": "",
-        "item": "Chinese kool (ca. 1 kg)"
+        "qty": 1000,
+        "unit": "g",
+        "item": "Chinese kool (een krop weegt ongeveer 1 kg)",
+        "base": true,
+        "key": "kool"
       },
       {
         "qty": 40,
         "unit": "g",
-        "item": "zeezout zonder jodium of antiklontermiddel, gewogen"
+        "item": "zeezout zonder jodium of antiklontermiddel, gewogen",
+        "salt": true,
+        "key": "zout"
       },
       {
         "qty": 15,
@@ -1402,7 +1406,9 @@
       {
         "qty": 150,
         "unit": "ml",
-        "item": "water"
+        "item": "water",
+        "base": true,
+        "key": "water"
       },
       {
         "qty": 25,
@@ -1422,7 +1428,7 @@
       {
         "qty": 20,
         "unit": "g",
-        "item": "knoflook (ca. 5 tenen), geraspt"
+        "item": "knoflook, geraspt (5 g per teen)"
       },
       {
         "qty": 10,
@@ -1432,7 +1438,8 @@
       {
         "qty": 100,
         "unit": "g",
-        "item": "daikon of winterpeen, in reepjes"
+        "item": "daikon of winterpeen, in reepjes",
+        "base": true
       },
       {
         "qty": 4,
@@ -1443,7 +1450,7 @@
     "steps": [
       "Was een glazen pot van 1,5 liter, het deksel en een klein schoteltje of gewicht in heet sop en spoel na met heel heet water.",
       "Snijd de kool in de lengte in vieren, haal de harde kern eruit en snijd in stukken van 4 cm. Was en laat uitlekken.",
-      "Hussel de kool met het zout in een grote kom. Laat 2 uur staan en schep elk half uur om. Hij is klaar als een stuk buigt zonder te knappen.",
+      "Hussel de kool met {zout} zout in een grote kom. Laat 2 uur staan en schep elk half uur om. Hij is klaar als een stuk buigt zonder te knappen.",
       "Kook intussen rijstebloem en water al roerend 2 minuten tot een dunne pap. Laat afkoelen en roer gochugaru, vissaus, suiker, knoflook en gember erdoor.",
       "Spoel de kool 3 keer in koud water en laat 20 minuten uitlekken. Meng met daikon, lente-ui en de pasta. Gebruik handschoenen.",
       "Druk alles stevig in de pot tot het vocht erboven staat en leg het schoteltje of gewicht erop. Laat 5 cm ruimte tot de rand en draai het deksel er losjes op.",
@@ -1466,6 +1473,7 @@
         "label": "NCHFP · Containers, covers and weights",
         "url": "https://nchfp.uga.edu/how/ferment/general-information-on-fermenting/suitable-containers-covers-and-weights-for-fermenting-food/"
       }
-    ]
+    ],
+    "saltMode": "afspoelen"
   }
 }
