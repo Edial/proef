@@ -42,7 +42,7 @@ def buzz_and_core():
     if bz.exists():
         b = json.loads(bz.read_text())
         print(f"\nSTIJGT IN HET NETWERK ({b['sources']} bronnen, opgehaald {b['generated']}; aantal koks laatste {b['window']} dagen, (ervoor)):")
-        for r in b["rising"][:25]:
+        for r in b["rising"][:40]:
             ex = "; ".join(f"{p['name']}: {p['title']} {p['url']}" for p in r["posts"][:2])
             g = r.get("google")
             gl = f" google={g['label']}[{g['geo']}]" if g else (" google=te weinig data" if "google" in r else "")
