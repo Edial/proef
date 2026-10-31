@@ -1,0 +1,970 @@
+{
+ "bron": "Seizoenskalender groenten en fruit, GoodFood / Leefmilieu Brussel (2025): zelfde klimaat als Nederland. Producten met beperkte lokale productie zijn weggelaten.",
+ "bronUrl": "https://goodfood.brussels/sites/default/files/inline-files/Kalender%20van%20seizoensgroenten%20en%20-fruit%20-%20versie%202025.pdf",
+ "items": [
+  {
+   "naam": "aardbeien",
+   "soort": "fruit",
+   "oogst": [
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "frambozen",
+   "soort": "fruit",
+   "oogst": [
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "kersen",
+   "soort": "fruit",
+   "oogst": [
+    6,
+    7
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "morellen",
+   "soort": "fruit",
+   "oogst": [
+    7
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "bramen",
+   "soort": "fruit",
+   "oogst": [
+    7,
+    8
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "blauwe bessen",
+   "soort": "fruit",
+   "oogst": [
+    7,
+    8
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "mirabellen",
+   "soort": "fruit",
+   "oogst": [
+    8,
+    9
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "pruimen",
+   "soort": "fruit",
+   "oogst": [
+    8,
+    9,
+    10
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "reine-claudes",
+   "soort": "fruit",
+   "oogst": [
+    8,
+    9
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "peren",
+   "soort": "fruit",
+   "oogst": [
+    8,
+    9,
+    10
+   ],
+   "bewaring": [
+    11,
+    12,
+    1,
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "naam": "appels",
+   "soort": "fruit",
+   "oogst": [
+    8,
+    9,
+    10
+   ],
+   "bewaring": [
+    11,
+    12,
+    1,
+    2,
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "naam": "hazelnoten",
+   "soort": "fruit",
+   "oogst": [
+    9,
+    10
+   ],
+   "bewaring": [
+    11,
+    12,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ]
+  },
+  {
+   "naam": "walnoten",
+   "soort": "fruit",
+   "oogst": [
+    9,
+    10
+   ],
+   "bewaring": [
+    11,
+    12,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ]
+  },
+  {
+   "naam": "tamme kastanjes",
+   "soort": "fruit",
+   "oogst": [
+    9,
+    10,
+    11,
+    12,
+    1,
+    2
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "knoflook",
+   "soort": "groente",
+   "oogst": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "bewaring": [
+    9,
+    10,
+    11,
+    12,
+    1,
+    2
+   ]
+  },
+  {
+   "naam": "asperges",
+   "soort": "groente",
+   "oogst": [
+    4,
+    5,
+    6
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "snijbiet",
+   "soort": "groente",
+   "oogst": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "wortels",
+   "soort": "groente",
+   "oogst": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "bewaring": [
+    1,
+    2
+   ]
+  },
+  {
+   "naam": "bleekselderij",
+   "soort": "groente",
+   "oogst": [
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "bewaring": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "naam": "kervel",
+   "soort": "groente",
+   "oogst": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "champignons",
+   "soort": "groente",
+   "oogst": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "oesterzwammen",
+   "soort": "groente",
+   "oogst": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "witlof",
+   "soort": "groente",
+   "oogst": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3,
+    4
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "Chinese kool",
+   "soort": "groente",
+   "oogst": [
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "spruitjes",
+   "soort": "groente",
+   "oogst": [
+    9,
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "bloemkool",
+   "soort": "groente",
+   "oogst": [
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "boerenkool",
+   "soort": "groente",
+   "oogst": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "paksoi",
+   "soort": "groente",
+   "oogst": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "savooiekool",
+   "soort": "groente",
+   "oogst": [
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    1,
+    2,
+    3,
+    4
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "waterkers",
+   "soort": "groente",
+   "oogst": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3,
+    4
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "sjalotten",
+   "soort": "groente",
+   "oogst": [
+    7,
+    8,
+    9
+   ],
+   "bewaring": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "naam": "spinazie",
+   "soort": "groente",
+   "oogst": [
+    8,
+    9,
+    10,
+    11,
+    12,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "veldsla",
+   "soort": "groente",
+   "oogst": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "knolraap",
+   "soort": "groente",
+   "oogst": [
+    6,
+    7,
+    8,
+    9
+   ],
+   "bewaring": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "naam": "uien",
+   "soort": "groente",
+   "oogst": [
+    7,
+    8,
+    9
+   ],
+   "bewaring": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "naam": "doperwten",
+   "soort": "groente",
+   "oogst": [
+    5,
+    6,
+    7
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "peterseliewortel",
+   "soort": "groente",
+   "oogst": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "prei",
+   "soort": "groente",
+   "oogst": [
+    9,
+    10,
+    11,
+    12,
+    1,
+    2,
+    3,
+    4
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "peultjes",
+   "soort": "groente",
+   "oogst": [
+    5,
+    6,
+    7
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "rammenas",
+   "soort": "groente",
+   "oogst": [
+    9,
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "postelein",
+   "soort": "groente",
+   "oogst": [
+    3,
+    4,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "winterpostelein",
+   "soort": "groente",
+   "oogst": [
+    10,
+    11,
+    12,
+    1,
+    2
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "radijs",
+   "soort": "groente",
+   "oogst": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "rucola",
+   "soort": "groente",
+   "oogst": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "koolraap",
+   "soort": "groente",
+   "oogst": [
+    10,
+    11
+   ],
+   "bewaring": [
+    12,
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "naam": "sla",
+   "soort": "groente",
+   "oogst": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "mizuna",
+   "soort": "groente",
+   "oogst": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3,
+    4
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "schorseneren",
+   "soort": "groente",
+   "oogst": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "aardpeer",
+   "soort": "groente",
+   "oogst": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "artisjok",
+   "soort": "groente",
+   "oogst": [
+    7,
+    8,
+    9,
+    10
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "aubergine",
+   "soort": "groente",
+   "oogst": [
+    7,
+    8,
+    9,
+    10
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "bieten",
+   "soort": "groente",
+   "oogst": [
+    7,
+    8,
+    9,
+    10
+   ],
+   "bewaring": [
+    11,
+    12
+   ]
+  },
+  {
+   "naam": "broccoli",
+   "soort": "groente",
+   "oogst": [
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "andijvie",
+   "soort": "groente",
+   "oogst": [
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "witte kool",
+   "soort": "groente",
+   "oogst": [
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "spitskool",
+   "soort": "groente",
+   "oogst": [
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "koolrabi",
+   "soort": "groente",
+   "oogst": [
+    7,
+    8,
+    9,
+    10
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "rodekool",
+   "soort": "groente",
+   "oogst": [
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "komkommer",
+   "soort": "groente",
+   "oogst": [
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "courgette",
+   "soort": "groente",
+   "oogst": [
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "venkel",
+   "soort": "groente",
+   "oogst": [
+    7,
+    8,
+    9,
+    10
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "sperziebonen",
+   "soort": "groente",
+   "oogst": [
+    7,
+    8,
+    9,
+    10
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "maïs",
+   "soort": "groente",
+   "oogst": [
+    8,
+    9,
+    10
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "paprika",
+   "soort": "groente",
+   "oogst": [
+    7,
+    8,
+    9,
+    10
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "tomaten",
+   "soort": "groente",
+   "oogst": [
+    7,
+    8,
+    9,
+    10
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "butternut",
+   "soort": "groente",
+   "oogst": [
+    9,
+    10
+   ],
+   "bewaring": [
+    11,
+    12
+   ]
+  },
+  {
+   "naam": "pompoen",
+   "soort": "groente",
+   "oogst": [
+    9,
+    10,
+    11
+   ],
+   "bewaring": [
+    12
+   ]
+  },
+  {
+   "naam": "kastanjepompoen",
+   "soort": "groente",
+   "oogst": [
+    9,
+    10
+   ],
+   "bewaring": [
+    11,
+    12
+   ]
+  },
+  {
+   "naam": "pastinaak",
+   "soort": "groente",
+   "oogst": [
+    10,
+    11
+   ],
+   "bewaring": [
+    12,
+    1,
+    2
+   ]
+  },
+  {
+   "naam": "knolselderij",
+   "soort": "groente",
+   "oogst": [
+    9,
+    10
+   ],
+   "bewaring": [
+    11,
+    12,
+    1
+   ]
+  },
+  {
+   "naam": "radicchio",
+   "soort": "groente",
+   "oogst": [
+    9,
+    10,
+    11
+   ],
+   "bewaring": []
+  },
+  {
+   "naam": "romanesco",
+   "soort": "groente",
+   "oogst": [
+    9,
+    10
+   ],
+   "bewaring": []
+  }
+ ]
+}

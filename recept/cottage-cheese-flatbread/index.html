@@ -123,6 +123,53 @@ img { display: block; max-width: 100%; }
 .buzz .side .cap { display: block; margin-top: 4px; font-size: 10px; color: var(--muted); }
 .buzz .links b, .ours-list b { font-weight: 500; }
 .trends .ours { margin-top: 36px; }
+.land { margin-top: 40px; padding-top: 4px; }
+.land .dek { margin: 4px 0 6px; max-width: 62ch; }
+.land-group { margin-top: 16px; }
+.land-group h3 { margin: 0 0 8px; font-size: 10.5px; color: var(--muted); }
+.chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.chips li { padding: 4px 11px; border: 1px solid var(--rule); border-radius: 99px; font-size: 15px; line-height: 1.3; }
+.chips li small { margin-left: 6px; font-family: var(--mono); font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.chips li.new { border-color: var(--hanko); }
+.chips li.new small { color: var(--hanko); }
+/* microseizoenen */
+.seasons .now { display: flex; align-items: flex-end; gap: 22px; margin: 22px 0 6px; padding: 22px 24px; background: var(--cover, var(--navy)); color: var(--cream); width: fit-content; }
+.seasons .now .kou { font-size: 64px; }
+.seasons .now .mono { margin: 0; color: rgba(248,245,238,.7); font-size: 10.5px; }
+.seasons .now .nl { margin: 6px 0 2px; font-size: 22px; line-height: 1.2; max-width: 18ch; }
+.seasons .now .romaji { margin: 0; font-style: italic; color: rgba(248,245,238,.75); font-size: 14px; }
+.seasons .prose-1 { margin: 22px 0 30px; max-width: 62ch; font-size: 16.5px; }
+.seasons .prose-1 p + p { margin-top: 12px; }
+.seasons .shun { font-style: italic; color: var(--muted); }
+.sekki-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 22px 26px; }
+.sekki h3 { margin: 0 0 6px; padding-bottom: 6px; border-bottom: 1px solid var(--ink); font-weight: 400; font-size: 17px; }
+.sekki h3 .cjk { font-size: 15px; margin-right: 4px; }
+.sekki ol { list-style: none; margin: 0; padding: 0; }
+.sekki li { display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: 2px 10px; padding: 7px 0; border-bottom: 1px solid var(--rule); }
+.sekki li .when { grid-row: span 2; font-size: 10px; color: var(--muted); padding-top: 3px; }
+.sekki li .k { font-size: 15px; }
+.sekki li .nl { font-size: 14px; line-height: 1.35; color: var(--muted); }
+.sekki li .eds { grid-column: 2; display: flex; gap: 8px; }
+.sekki li .eds a { font-size: 10px; color: var(--hanko); text-decoration: none; }
+.sekki li.is-now { background: color-mix(in srgb, var(--hanko) 8%, transparent); }
+.sekki li.is-now .nl { color: var(--ink); }
+.mast .kou-nl a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .2em; }
+/* fermentatie: past erbij, kaarten, overzicht */
+.pair { margin-top: 22px; }
+.pair .label, .ferm-side .pairs .label { display: block; margin-bottom: 8px; color: var(--muted); font-size: 10.5px; }
+.ferm-side .pairs { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--rule); }
+.ferm-side .pairs .used { margin-top: 6px; }
+.ferm-card { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 14px; align-items: center; padding: 14px 16px; text-decoration: none; color: var(--ink); border: 1px solid var(--rule); }
+.ferm-card .cjk { display: grid; place-items: center; width: 64px; height: 64px; background: var(--navy); color: var(--cream); font-size: 34px; }
+.ferm-card .txt { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.ferm-card .mono { font-size: 10px; color: var(--muted); }
+.ferm-card strong { font-weight: 400; font-size: 19px; line-height: 1.15; }
+.ferm-card em { font-size: 14px; color: var(--muted); }
+.ferm-card:hover strong { text-decoration: underline; text-decoration-thickness: 1px; }
+.ferm-card.small { background: transparent; }
+.ferm-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-top: 18px; }
+.more-ferm { margin-top: 48px; }
+.more-ferm h2 { font-size: 26px; font-weight: 400; margin: 0; }
 .ours-list { list-style: none; margin: 0; padding: 0; }
 .ours-list li { display: grid; grid-template-columns: minmax(0, 1.2fr) auto minmax(0, 1.6fr); gap: 16px; align-items: center; padding: 10px 0; border-top: 1px solid var(--rule); }
 .ours-list li > a { font-size: 17px; text-decoration: none; }
@@ -290,7 +337,6 @@ kbd { font-family: var(--mono); font-style: normal; font-size: 11px; border: 1px
 .links { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 4px; font-family: var(--mono); font-size: 11px; letter-spacing: .04em; }
 .links a { text-decoration: none; color: var(--ink); border-bottom: 1px solid var(--rule); }
 .links a:hover { border-color: var(--ink); }
-.ferm-link { margin-top: 16px; font-family: var(--sans); font-size: 14.5px; color: var(--muted); }
 .pager { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap); margin-top: var(--gap); }
 .pager a { text-decoration: none; display: grid; gap: 4px; padding: 18px 22px; }
 .pager a:hover strong { text-decoration: underline; text-decoration-thickness: 1px; }
@@ -573,6 +619,9 @@ footer { margin-top: 96px; }
     const k = [...sorted].reverse().find((x) => x[0] <= md) || sorted[sorted.length - 1];
     return { sekki: k[1], kanji: k[2], romaji: k[3], nl: k[4] };
   }
+  const SEKKI = { 立春: "Begin van de lente", 雨水: "Regenwater", 啓蟄: "Insecten ontwaken", 春分: "Lente-evening", 清明: "Helder en licht", 穀雨: "Graanregen", 立夏: "Begin van de zomer", 小満: "Het graan zwelt", 芒種: "Graan in de aar", 夏至: "Zomerzonnewende", 小暑: "Kleine hitte", 大暑: "Grote hitte", 立秋: "Begin van de herfst", 処暑: "De hitte wijkt", 白露: "Witte dauw", 秋分: "Herfst-evening", 寒露: "Koude dauw", 霜降: "De rijp daalt", 立冬: "Begin van de winter", 小雪: "Kleine sneeuw", 大雪: "Grote sneeuw", 冬至: "Winterzonnewende", 小寒: "Kleine kou", 大寒: "Grote kou" };
+  const MONTHS = ["jan", "feb", "mrt", "apr", "mei", "jun", "jul", "aug", "sep", "okt", "nov", "dec"];
+  const md = (x) => `${+x.slice(3)} ${MONTHS[+x.slice(0, 2) - 1]}`;
   const kouEl = (ed, cls) => { const k = kouFor(ed.date); return h("span", { class: "kou cjk " + cls, lang: "ja", title: `${k.kanji} · ${k.romaji} · ${k.nl}`, text: k.kanji }); };
   const COVERS = ["navy", "ink", "kaki", "moss"];
   const coverClass = (ed) => "c-" + (COVERS.includes(ed.cover?.color) ? ed.cover.color : COVERS[(ed.number - 1) % COVERS.length]);
@@ -708,7 +757,7 @@ footer { margin-top: 96px; }
         h("p", { class: "tagline", text: "Elke week vijf trending recepten die kinderen ook lekker vinden." }),
         h("p", { class: "sub mono", text: `Nº ${pad(ed.number)} · Week ${ed.week} · ${sName} ${ed.year}` }),
         h("div", { class: "kou-wrap" }, kouEl(ed, "big"),
-          h("p", { class: "kou-nl" }, h("span", { class: "mono", text: `${kouFor(ed.date).sekki} · microseizoen` }), kouFor(ed.date).nl + ".")),
+          h("p", { class: "kou-nl" }, h("span", { class: "mono", text: `${kouFor(ed.date).sekki} · microseizoen` }), kouFor(ed.date).nl + ". ", h("a", { href: "#microseizoenen", text: "Wat is dit?" }))),
         h("div", { class: "bottom" },
           h("p", { class: "intro", text: ed.intro || "" }),
           h("span", { class: "hanko", title: sName, "aria-hidden": "true", text: sGlyph }))),
@@ -774,7 +823,7 @@ footer { margin-top: 96px; }
     });
 
     const idx = ed.recipes.indexOf(r), prev = ed.recipes[idx - 1], next = ed.recipes[idx + 1];
-    const f = ed.ferment && ed.ferment.usedIn === r.slug ? ed.ferment : null;
+    const pair = allFerments().find((x) => pairsWith(x.f, r));
     const whyText = r.signal?.text;
     $("detail-view").replaceChildren(h("article", null,
       h("a", { class: "back mono", href: "#editie-" + ed.id, text: `← Nº ${pad(ed.number)} · week ${ed.week}` }),
@@ -796,7 +845,7 @@ footer { margin-top: 96px; }
               h("h2", { class: "mono colhead", id: "steps-t", text: "Bereiding" }),
               h("ol", { class: "steps" }, (r.steps || []).map((s) => h("li", null, h("span", { text: s })))),
               r.tip ? h("aside", { class: "tip" }, h("span", { class: "label", text: "Tip" }), r.tip) : null,
-              f ? h("p", { class: "ferm-link" }, "Zelf maken? ", h("a", { href: "#fermentatie-" + ed.id, text: "Fermentatie van de week: " + f.title + " →" })) : null),
+              pair ? h("aside", { class: "pair" }, h("span", { class: "mono label", text: "Dit past er goed bij" }), fermCard(pair, "small")) : null),
             r.spark && r.spark.weeks ? h("aside", { class: "why", id: "waarom", "aria-labelledby": "why-t" },
               h("span", { class: "label", id: "why-t", text: "Waarom deze week" }), ...whyTrend(r))
             : whyText || (r.links || []).length ? h("aside", { class: "why", "aria-labelledby": "why-t" },
@@ -806,7 +855,7 @@ footer { margin-top: 96px; }
       h("nav", { class: "pager", "aria-label": "Andere recepten" },
         prev ? h("a", { class: "card", href: recipeHref(prev.slug) }, h("span", { class: "label", text: "← Vorige" }), h("strong", { text: prev.title })) : h("span"),
         next ? h("a", { class: "card next", href: recipeHref(next.slug) }, h("span", { class: "label", text: "Volgende →" }), h("strong", { text: next.title }))
-          : ed.ferment ? h("a", { class: "card next", href: "#fermentatie-" + ed.id }, h("span", { class: "label", text: "Fermentatie →" }), h("strong", { text: ed.ferment.title })) : h("span")),
+          : h("a", { class: "card next", href: "#editie-" + ed.id }, h("span", { class: "label", text: "Editie →" }), h("strong", { text: `Nº ${pad(ed.number)} · week ${ed.week}` }))),
       relatedBlock(r)
     ));
     document.title = r.title + " · Proef";
@@ -860,12 +909,40 @@ footer { margin-top: 96px; }
         g && g.weeks ? sparkSvg({ weeks: g.weeks }, { label: `Zoekinteresse in “${x.phrase}”, ${geoText(g.geo)}, afgelopen 12 maanden. ${g.label}: ${g.text}` }) : null,
         g ? h("span", { class: "mono cap", text: `Google · ${g.geo === "NL" ? "NL" : "wereld"} · 12 mnd` }) : null));
   }
+  // groente en fruit die nu in Nederland groeien of uit de bewaring komen (data/seizoen.json)
+  async function loadSeason(box) {
+    try {
+      const d = await fetch("data/seizoen.json", { cache: "no-cache" }).then((r) => r.json());
+      const m = new Date().getMonth() + 1, prev = m === 1 ? 12 : m - 1, next = m === 12 ? 1 : m + 1;
+      const mName = new Intl.DateTimeFormat("nl-NL", { month: "long" }).format(new Date());
+      const chip = (i, fresh) => {
+        const isNew = fresh && !i.oogst.includes(prev) && !i.bewaring.includes(prev);
+        const last = !i.oogst.includes(next) && !i.bewaring.includes(next);
+        return h("li", { class: isNew ? "new" : last ? "last" : null }, i.naam, isNew ? h("small", { text: "nieuw" }) : last ? h("small", { text: "laatste weken" }) : null);
+      };
+      // nieuw eerst, daarna de rest, wat bijna voorbij is achteraan
+      const rank = (i, fresh) => (fresh && !i.oogst.includes(prev) && !i.bewaring.includes(prev) ? 0 : !i.oogst.includes(next) && !i.bewaring.includes(next) ? 2 : 1);
+      const group = (title, list, fresh) => list.length ? h("div", { class: "land-group" }, h("h3", { class: "mono", text: title }),
+        h("ul", { class: "chips" }, [...list].sort((a, b) => rank(a, fresh) - rank(b, fresh)).map((i) => chip(i, fresh)))) : null;
+      const veg = d.items.filter((i) => i.soort === "groente" && i.oogst.includes(m));
+      const fruit = d.items.filter((i) => i.soort === "fruit" && i.oogst.includes(m));
+      const stored = d.items.filter((i) => !i.oogst.includes(m) && i.bewaring.includes(m));
+      box.replaceChildren(
+        h("h2", { class: "mono colhead", text: `Van het land · ${mName}` }),
+        h("p", { class: "dek", text: "Wat er nu in Nederland groeit, en wat er uit de schuur komt. Daar kiezen we de recepten bij." }),
+        group("Groente, vers", veg, true), group("Fruit en noten, vers", fruit, true), group("Uit de bewaring", stored, false),
+        h("p", { class: "trend-src" }, "Bron: ", h("a", { href: d.bronUrl, target: "_blank", rel: "noopener", text: "seizoenskalender GoodFood / Leefmilieu Brussel ↗" }), ", zelfde klimaat als Nederland."));
+    } catch (e) { box.remove(); }
+  }
+
   async function showTrends() {
     const ed = state.editions[0];
     const ours = ed.recipes.filter((r) => r.spark && r.spark.weeks);
     const head = h("div", { class: "glance" });
     const list = h("ol", { class: "buzz" }, h("li", { class: "status", text: "Even laden…" }));
     const kicker = h("p", { class: "kicker", text: "Trends" });
+    const seasonBox = h("section", { class: "land" });
+    loadSeason(seasonBox);
     $("detail-view").replaceChildren(h("article", null,
       h("a", { class: "back mono", href: "#deze-week", text: "← Deze week" }),
       h("div", { class: "card sheet trends" },
@@ -875,6 +952,7 @@ footer { margin-top: 96px; }
         head,
         h("h2", { class: "mono colhead", text: "Stijgt bij de koks" }),
         list,
+        seasonBox,
         ours.length ? h("section", { class: "ours" },
           h("h2", { class: "mono colhead", text: `Deze week in Proef · Nº ${pad(ed.number)}` }),
           h("ul", { class: "ours-list" }, ours.map((r) => h("li", null,
@@ -901,14 +979,79 @@ footer { margin-top: 96px; }
     }
   }
 
+  /* ---------- Microseizoenen: uitleg en het hele jaar ---------- */
+  function showSeasons() {
+    const sorted = [...KOU];  // in volgorde vanaf 立春 (4 februari)
+    const now = kouFor(new Date().toISOString().slice(0, 10));
+    const byKou = new Map();
+    for (const ed of state.editions) { const k = kouFor(ed.date).kanji; if (!byKou.has(k)) byKou.set(k, []); byKou.get(k).push(ed); }
+    const groups = [];
+    sorted.forEach((k, i) => { const end = sorted[(i + 1) % 72][0]; (groups[Math.floor(i / 3)] ||= { sekki: k[1], kou: [] }).kou.push({ k, end }); });
+    const until = (end) => { const d = new Date("2026-" + end + "T12:00:00"); d.setDate(d.getDate() - 1); return `${d.getDate()} ${MONTHS[d.getMonth()]}`; };
+    $("detail-view").replaceChildren(h("article", null,
+      h("a", { class: "back mono", href: "#deze-week", text: "← Deze week" }),
+      h("div", { class: "card sheet seasons" },
+        h("p", { class: "kicker", text: "七十二候 · Microseizoenen" }),
+        h("h1", { text: "Tweeënzeventig seizoenen" }),
+        h("div", { class: "now" },
+          h("span", { class: "kou cjk", lang: "ja", text: now.kanji }),
+          h("div", null,
+            h("p", { class: "mono", text: `Nu · ${now.sekki} ${SEKKI[now.sekki] || ""}` }),
+            h("p", { class: "nl", text: now.nl + "." }),
+            h("p", { class: "romaji", text: now.romaji }))),
+        h("div", { class: "prose-1" },
+          h("p", { text: "In Japan telt het jaar niet vier seizoenen, maar tweeënzeventig. Elk duurt een dag of vijf, en elk draagt een naam die zegt wat er buiten gebeurt: de eerste rijp valt, de kikkers beginnen te kwaken, de wilde ganzen komen terug. Het jaar is geen kalender van maanden, maar van kleine veranderingen die je pas ziet als je goed kijkt." }),
+          h("p", { text: "Het idee komt uit het oude China. Daar werd het jaar verdeeld in vierentwintig zonnetermijnen (節氣), elk van ongeveer vijftien dagen, en elke termijn weer in drie. In Japan kregen die korte seizoenen eigen namen, die passen bij het Japanse land: de pruimen die geel kleuren, de camelia's die opengaan, de zalm die de rivier op trekt." }),
+          h("p", { text: "Proef verschijnt elke zaterdag. Op de omslag staat het microseizoen van die dag. Omdat een microseizoen vijf dagen duurt en wij om de zeven dagen verschijnen, heeft elke week een ander teken; pas een jaar later, in dezelfde week, komt het terug. Zo lees je aan het archief de seizoenen af." }),
+          h("p", { class: "shun", text: "旬 (shun) is het moment waarop iets op zijn best is: de eerste asperges, de laatste pruimen. Daar koken we naar." })),
+        h("h2", { class: "mono colhead", text: "Het hele jaar" }),
+        h("div", { class: "sekki-grid" }, groups.map((g) => h("section", { class: "sekki" },
+          h("h3", null, h("span", { class: "cjk", lang: "ja", text: g.sekki }), " ", h("span", { text: SEKKI[g.sekki] || "" })),
+          h("ol", null, g.kou.map(({ k, end }) => {
+            const eds = byKou.get(k[2]) || [];
+            return h("li", { class: k[2] === now.kanji ? "is-now" : null },
+              h("span", { class: "mono when", text: `${md(k[0])} – ${until(end)}` }),
+              h("span", { class: "cjk k", lang: "ja", text: k[2] }),
+              h("span", { class: "nl", text: k[4] }),
+              eds.length ? h("span", { class: "eds" }, eds.map((ed) => h("a", { class: "mono", href: ed === state.editions[0] ? "#deze-week" : "#editie-" + ed.id, text: "Nº " + pad(ed.number) }))) : null);
+          }))))))));
+    document.title = "Microseizoenen · Proef";
+    $("home").hidden = true; $("detail-view").hidden = false;
+    window.scrollTo(0, 0);
+  }
+
+  /* ---------- Fermentatie: wat er goed bij past ---------- */
+  // een recept past bij een ferment als het ferment erin gebruikt wordt (usedIn) of als het in de ingrediënten staat
+  const fermKeys = (f) => (f.keywords || [f.title.toLowerCase().split(/[-\s]/).pop()]).map((w) => w.toLowerCase());
+  const pairsWith = (f, r) => f.usedIn === r.slug || fermKeys(f).some((k) => (r.ingredients || []).some((i) => i.item.toLowerCase().includes(k)));
+  const allFerments = () => state.editions.filter((e) => e.ferment).map((e) => ({ ed: e, f: e.ferment }));
+  const fermCard = ({ ed, f }, cls = "") => h("a", { class: "card ferm-card " + cls, href: "#fermentatie-" + ed.id },
+    h("span", { class: "cjk", "aria-hidden": "true", text: f.glyph || "酵" }),
+    h("span", { class: "txt" }, h("span", { class: "mono", text: `Nº ${pad(f.number || ed.number)} · week ${ed.week}` }), h("strong", { text: f.title }), f.teaser ? h("em", { text: f.teaser }) : null));
+
+  function showFerments() {
+    const list = allFerments();
+    $("detail-view").replaceChildren(h("article", null,
+      h("a", { class: "back mono", href: "#deze-week", text: "← Deze week" }),
+      h("div", { class: "card sheet" },
+        h("p", { class: "kicker", text: "Fermentatie" }),
+        h("h1", { text: "Alle fermentaties" }),
+        h("p", { class: "dek", text: `Elke week één pot. ${list.length === 1 ? "Dit is de eerste; elke zaterdag komt er een bij." : list.length + " tot nu toe, de nieuwste eerst."}` }),
+        h("div", { class: "ferm-grid" }, list.map((x) => fermCard(x))))));
+    document.title = "Alle fermentaties · Proef";
+    $("home").hidden = true; $("detail-view").hidden = false;
+    window.scrollTo(0, 0);
+  }
+
   /* ---------- Fermentatie ---------- */
   function showFerment(ed) {
     const f = ed.ferment;
-    const used = f.usedIn ? state.bySlug.get(f.usedIn) : null;
+    const pairs = state.editions.flatMap((e) => e.recipes).filter((r) => pairsWith(f, r));
+    const ferms = allFerments(), at = ferms.findIndex((x) => x.ed === ed);
+    const newer = ferms[at - 1], older = ferms[at + 1];
     const ings = ingredientList(f.ingredients, 1);
     const copyBtn = h("button", { type: "button", class: "copy", text: "Kopieer lijst" });
     copyBtn.addEventListener("click", () => copyText([`${f.title} (${f.yield || "1 pot"})`, ...(f.ingredients || []).map((i) => "- " + (fmtQty(i, 1) ? fmtQty(i, 1) + " " : "") + i.item)].join("\n")));
-    const last = ed.recipes[ed.recipes.length - 1];
     $("detail-view").replaceChildren(h("article", null,
       h("a", { class: "back mono", href: "#editie-" + ed.id, text: `← Nº ${pad(ed.number)} · week ${ed.week}` }),
       h("div", { class: "ferm" },
@@ -921,7 +1064,9 @@ footer { margin-top: 96px; }
             h("h1", { text: f.title }),
             h("p", { class: "lede", text: f.lede || "" }),
             (f.facts || []).length ? h("ul", { class: "facts" }, f.facts.map((x) => h("li", null, h("span", { text: x.label }), h("span", { text: x.value })))) : null,
-            used ? h("a", { class: "used", href: recipeHref(used.slug) }, h("span", { class: "no", text: recipeNo(used) }), "Deze week in " + used.title + " →") : null)),
+            pairs.length ? h("div", { class: "pairs" },
+              h("span", { class: "mono label", text: "Dit past er goed bij" }),
+              pairs.slice(0, 4).map((r) => h("a", { class: "used", href: recipeHref(r.slug) }, h("span", { class: "no", text: r._edition === ed ? recipeNo(r) : "Nº " + pad(r._edition.number) }), r.title + " →"))) : null)),
         h("div", { class: "card ferm-main" },
           (f.science || []).length ? h("section", null, h("h2", { class: "mono colhead", text: "Wat er gebeurt" }), h("div", { class: "prose" }, f.science.map((p) => h("p", { text: p })))) : null,
           (f.timeline || []).length ? h("section", null, h("h2", { class: "mono colhead", text: "In de pot" }),
@@ -937,9 +1082,14 @@ footer { margin-top: 96px; }
             h("span", { class: "label", text: "Veilig fermenteren · bronnen" }),
             h("p", { text: "Gecontroleerd tegen de richtlijnen van universiteiten en het National Center for Home Food Preservation. Twijfel je? Gooi het weg." }),
             h("ul", { class: "links" }, f.sources.map((l) => h("li", null, h("a", { href: l.url, target: "_blank", rel: "noopener", text: l.label + " ↗" }))))) : null)),
-      h("nav", { class: "pager", "aria-label": "Andere recepten" },
-        last ? h("a", { class: "card", href: recipeHref(last.slug) }, h("span", { class: "label", text: "← Vorige" }), h("strong", { text: last.title })) : h("span"),
-        h("a", { class: "card next", href: "#editie-" + ed.id }, h("span", { class: "label", text: "Editie →" }), h("strong", { text: `Nº ${pad(ed.number)} · week ${ed.week}` })))
+      h("nav", { class: "pager", "aria-label": "Andere fermentaties" },
+        older ? h("a", { class: "card", href: "#fermentatie-" + older.ed.id }, h("span", { class: "label", text: "← Vorige fermentatie" }), h("strong", { text: older.f.title })) : h("span"),
+        newer ? h("a", { class: "card next", href: "#fermentatie-" + newer.ed.id }, h("span", { class: "label", text: "Volgende fermentatie →" }), h("strong", { text: newer.f.title }))
+          : h("a", { class: "card next", href: "#editie-" + ed.id }, h("span", { class: "label", text: "Editie →" }), h("strong", { text: `Nº ${pad(ed.number)} · week ${ed.week}` }))),
+      h("section", { class: "more-ferm", "aria-labelledby": "mf-t" },
+        h("div", { class: "head-row" }, h("h2", { id: "mf-t", text: "Meer fermentaties" }), h("a", { class: "mono", href: "#fermentaties", style: "color:var(--muted);text-decoration:none", text: `Alle fermentaties (${ferms.length}) →` })),
+        ferms.length > 1 ? h("div", { class: "ferm-grid" }, ferms.filter((x) => x.ed !== ed).slice(0, 4).map((x) => fermCard(x)))
+          : h("p", { class: "dek", text: "Dit is de eerste fermentatie van Proef. Elke zaterdag komt er een bij." }))
     ));
     document.title = f.title + " · Fermentatie · Proef";
     $("home").hidden = true; $("detail-view").hidden = false;
@@ -1132,7 +1282,7 @@ footer { margin-top: 96px; }
     }
   }
 
-  const HASH_ROUTE = /^(zoek(\/.*)?|zo-meten-we|trends|deze-week|archief|fermentatie(-.*)?|editie-.*)$/;
+  const HASH_ROUTE = /^(zoek(\/.*)?|zo-meten-we|trends|microseizoenen|deze-week|archief|fermentaties|fermentatie(-.*)?|editie-.*)$/;
   function route() {
     if (!state.editions.length) return;
     const hsh = decodeURIComponent(location.hash.slice(1));
@@ -1156,6 +1306,8 @@ footer { margin-top: 96px; }
     state.lastUrl = location.pathname + location.search + location.hash;
     if (hsh === "zo-meten-we") return showMethod();
     if (hsh === "trends") return showTrends();
+    if (hsh === "microseizoenen") return showSeasons();
+    if (hsh === "fermentaties") return showFerments();
     if (hsh === "fermentatie" || hsh.startsWith("fermentatie-")) {
       const ed = hsh === "fermentatie" ? state.editions.find((e) => e.ferment) : state.editions.find((e) => "fermentatie-" + e.id === hsh);
       if (ed && ed.ferment) return showFerment(ed);
