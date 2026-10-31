@@ -20,7 +20,7 @@ jobs:
       - name: Nieuwe bronnen controleren
         run: python3 scripts/check_sources.py
       - name: Feeds ophalen
-        run: python3 scripts/harvest.py --google 15
+        run: python3 scripts/harvest.py --google 40
       - name: Opslaan
         run: |
           git config user.name "proef-bot"
