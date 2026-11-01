@@ -246,8 +246,7 @@ img { display: block; max-width: 100%; }
 /* tegels naast elkaar delen hun rijen (subgrid): foto, nummer, titel, gegevens en trend staan altijd op dezelfde hoogte */
 .tile { grid-column: span 3; grid-row: span 5; display: grid; grid-template-rows: subgrid; row-gap: 0; text-decoration: none; background: var(--bg); color: var(--dark); min-width: 0; }
 .tile .duo { aspect-ratio: 4 / 3; }
-.tile .body { display: contents; }
-.tile .body > * { margin-inline: 18px; }
+.tile > :not(.duo) { margin-inline: 18px; }
 .tile .no { padding-top: 16px; font-size: 15px; color: var(--dark); }
 .tile h2 { margin-top: 4px; font-size: 21px; line-height: 1.12; letter-spacing: -0.01em; }
 .tile .metaline { margin-top: 10px; margin-bottom: 16px; align-self: start; color: rgba(31,29,26,.72); }
@@ -499,7 +498,7 @@ footer { margin-top: 96px; }
   .top nav { width: 100%; gap: 22px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
   .top nav::-webkit-scrollbar { display: none; }
   .top nav a { font-size: 15px; }
-  .tile { grid-column: span 12 !important; }
+  .tile { grid-column: span 12 !important; grid-row: auto; display: flex; flex-direction: column; }
   .mast .logo { font-size: 52px; }
   .lead .duo { min-height: 230px; }
   .lead .body { grid-template-columns: minmax(0, 1fr); padding: 20px; } .lead .no { font-size: 40px; }
@@ -812,12 +811,12 @@ footer { margin-top: 96px; }
           h("div", null, native(lead), h("h2", { text: lead.title }), h("p", { class: "dek", text: lead.dek || "" }),
             metaline(servingsText(lead, lead.servings), lead.minutes + " min", lead.category), trend(lead)))) : null,
       ...rest.map((r, i) => h("a", { class: "tile " + tintClass(r), href: recipeHref(r.slug), id: "f-" + r.slug, style: `grid-column: span ${spans[i]}` },
+        // geen tussenlaag: de regels zijn directe kinderen van de tegel, zodat subgrid ook in Safari werkt
         photo(r),
-        h("div", { class: "body" },
-          h("span", { class: "no", text: pad(i + 2) }),
-          h("h2", { text: r.title }),
-          metaline(servingsText(r, r.servings), r.minutes + " min"),
-          trend(r)))),
+        h("span", { class: "no", text: pad(i + 2) }),
+        h("h2", { text: r.title }),
+        metaline(servingsText(r, r.servings), r.minutes + " min"),
+        trend(r) || h("span", { class: "trend-empty" }))),
       ed.ferment ? h("a", { class: "card ferm-teaser", href: "#fermentatie-" + ed.id },
         h("div", { class: "seigaiha", "aria-hidden": "true" }),
         h("span", { class: "cjk", "aria-hidden": "true", text: ed.ferment.glyph || "酵" }),
