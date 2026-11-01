@@ -1,0 +1,30 @@
+name: Instagram testen
+
+# Met de hand starten: controleert of de Instagram-koppeling werkt (secrets IG_TOKEN en IG_USER_ID)
+# en toont de laatste posts van één account. Schrijft niets weg.
+on:
+  workflow_dispatch:
+    inputs:
+      account:
+        description: "Instagram-account om te testen (zakelijk of creator)"
+        required: false
+        default: "thewoksoflife"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Token en account
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+        run: python3 scripts/instagram.py check
+      - name: Laatste posts
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+        run: python3 scripts/instagram.py "${{ github.event.inputs.account }}"
