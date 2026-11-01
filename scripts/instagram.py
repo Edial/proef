@@ -7,7 +7,8 @@ leest publieke posts van andere zakelijke en creator-accounts. Voor je eigen acc
 geen App Review nodig.
 
 Nodig (als omgevingsvariabelen of GitHub-secrets):
-  IG_TOKEN     toegangstoken met instagram_basic en pages_read_engagement (bij voorkeur van een systeemgebruiker)
+  IG_TOKEN     toegangstoken met instagram_basic, instagram_manage_insights en pages_read_engagement
+               (en ads_read als je paginarol via Business Manager loopt)
   IG_USER_ID   het id van JOUW Instagram professioneel account (niet de gebruikersnaam)
 
 Gebruik:
