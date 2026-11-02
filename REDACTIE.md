@@ -20,7 +20,7 @@ Vijf recepten die deze week trending zijn, plus één Fermentatie van de week. W
    - niet meer dan 60 minuten, tenzij de oven het werk doet;
    - verschillende categorieën: niet vijf hoofdgerechten;
    - geen gerecht dat al in een eerdere editie stond (de validator controleert slugs, controleer ook de gerechten zelf).
-3. **Per recept:** open het bronrecept (bij voorkeur van een kernbron, en nooit achter een betaalmuur) met een foto (`photo` = directe https-link naar de afbeelding, `photoCredit` = naam en link). Herschrijf het in eigen woorden, reken alles om naar g/ml/°C en controleer of de hoeveelheden kloppen voor het aantal personen.
+3. **Per recept:** open het bronrecept (bij voorkeur van een kernbron, en nooit achter een betaalmuur) met een foto (`photo` = directe https-link naar de afbeelding, `photoCredit` = naam en link). De foto wordt getoond vanaf die site en nooit gekopieerd. Weigert de site dat (check_photos meldt een fout), kies dan een andere foto of een ander recept, en omzeil het niet. Kwam het recept via Instagram, zoek het dan op de eigen site van de maker (blog, Substack, NYT Cooking) en gebruik de foto daarvan, nooit een foto van Instagram zelf. Herschrijf het in eigen woorden, reken alles om naar g/ml/°C en controleer of de hoeveelheden kloppen voor het aantal personen.
 4. **Vormgeving per recept:**
    - `tint`: gebruik elke kleur één keer (`sage`, `sky`, `blush`, `persimmon`, `mustard`). Kies de kleur die bij het gerecht past.
    - `glyph`: één Japans of Koreaans teken dat het gerecht samenvat (bijv. 汁 soep, 밥 rijst, 麺 noedels, 菜 groente, 卵 ei).

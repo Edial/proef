@@ -707,11 +707,11 @@ footer { margin-top: 96px; }
     const box = h("div", { class: "duo " + tintClass(r) });
     const fallback = () => box.replaceChildren(h("span", { class: "fallback cjk", "aria-hidden": "true", text: r.glyph || "食" }));
     if (r.photo) {
-      const img = h("img", { src: r.photo, alt: opts.alt === false ? "" : "Foto van " + r.title + (r.photoCredit ? " (" + r.photoCredit.label + ")" : ""), loading: opts.eager ? "eager" : "lazy", referrerpolicy: "no-referrer", decoding: "async" });
+      const img = h("img", { src: r.photo, alt: opts.alt === false ? "" : "Foto van " + r.title + (r.photoCredit ? " (" + r.photoCredit.label + ")" : ""), loading: opts.eager ? "eager" : "lazy", referrerpolicy: "strict-origin-when-cross-origin", decoding: "async" });
       img.addEventListener("error", fallback, { once: true });
       const g = Number(r.photoGamma);
       box.append(h("span", { class: "lift", style: g > 0 && g !== 1 ? "filter:" + liftFilter(g) : null }, img),
-        h("img", { class: "orig", src: r.photo, alt: "", "aria-hidden": "true", loading: img.loading, referrerpolicy: "no-referrer", decoding: "async" }));
+        h("img", { class: "orig", src: r.photo, alt: "", "aria-hidden": "true", loading: img.loading, referrerpolicy: "strict-origin-when-cross-origin", decoding: "async" }));
       if (opts.glyph && r.glyph) box.append(h("span", { class: "glyph cjk", "aria-hidden": "true", text: r.glyph }));
       // aanraakschermen: tik om de echte kleuren te zien
       box.addEventListener("click", (e) => { if (matchMedia("(hover: none)").matches && !box.closest("a")) { e.preventDefault(); box.classList.toggle("color"); } });

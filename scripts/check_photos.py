@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Controleert in één keer of foto's en bronlinks van een editie bereikbaar zijn.
 
+De check vraagt alles op zoals een lezer van Proef dat doet: de site ziet dat het voor edial.github.io is.
+Weigert een site dat, dan wil die niet dat de foto elders staat: kies dan een andere foto of een ander recept.
+
 Gebruik: python3 scripts/check_photos.py editions/2026-44.json   (exit 1 als een foto niet werkt)
 """
 import concurrent.futures as cf
@@ -9,12 +12,14 @@ import sys
 import urllib.request
 
 UA = "Mozilla/5.0 (Proef link check)"
+REFERER = "https://edial.github.io/"  # wat de browser meestuurt (referrerpolicy strict-origin-when-cross-origin)
 
 
 def probe(url):
     for method in ("HEAD", "GET"):
         try:
-            req = urllib.request.Request(url, method=method, headers={"User-Agent": UA, "Range": "bytes=0-1023"})
+            headers = {"User-Agent": UA, "Range": "bytes=0-1023", "Referer": REFERER}
+            req = urllib.request.Request(url, method=method, headers=headers)
             with urllib.request.urlopen(req, timeout=20) as res:
                 return res.status, res.headers.get("Content-Type", "")
         except Exception as e:  # noqa: BLE001
