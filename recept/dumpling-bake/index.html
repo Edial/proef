@@ -205,6 +205,17 @@ img { display: block; max-width: 100%; }
 .spread .left .duo .orig, .spread .left .duo::before { transition-duration: .6s; transition-timing-function: cubic-bezier(.2, .7, .3, 1); }
 .duo .glyph { position: absolute; top: 16px; right: 18px; z-index: 3; color: var(--cream); }
 .duo .fallback { position: absolute; inset: 0; display: grid; place-items: center; font-size: clamp(64px, 12vw, 140px); color: var(--lo); }
+/* Video: eerst de foto met een knop; pas na een klik laadt de speler van het platform */
+.duo .play { position: absolute; left: 16px; bottom: 16px; z-index: 4; display: inline-flex; align-items: center; gap: 10px; padding: 11px 18px 11px 14px; border: 0; border-radius: 999px; background: var(--cream); color: #1F1D1A; /* ligt op de foto: in licht en donker hetzelfde */ font-size: 12px; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; box-shadow: 0 1px 2px rgba(0, 0, 0, .12); transition: transform .15s ease; }
+.duo .play:hover { transform: translateY(-1px); }
+.duo .play:focus-visible { outline: 2px solid var(--hanko); outline-offset: 2px; }
+.duo .play .tri { border-style: solid; border-width: 6px 0 6px 10px; border-color: transparent transparent transparent var(--hanko); }
+.duo .vid { position: absolute; left: 10px; bottom: 10px; z-index: 4; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--cream); box-shadow: 0 1px 2px rgba(0, 0, 0, .12); }
+.duo .vid .tri { margin-left: 2px; border-style: solid; border-width: 5px 0 5px 8px; border-color: transparent transparent transparent var(--hanko); }
+.video { background: var(--lo); }
+.video iframe { display: block; width: 100%; height: 100%; border: 0; }
+.video:not(.vertical) { aspect-ratio: 16 / 9; }
+.video.vertical { aspect-ratio: 9 / 16; height: min(82svh, 177.78cqi); align-self: center; }
 
 .seigaiha { background-color: #2E4A6B; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='20'%3E%3Cg fill='none' stroke='%23F8F5EE' stroke-width='1.4'%3E%3Cg%3E%3Ccircle cx='20' cy='0' r='19' fill='%232E4A6B'/%3E%3Ccircle cx='20' cy='0' r='14'/%3E%3Ccircle cx='20' cy='0' r='9'/%3E%3Ccircle cx='20' cy='0' r='4'/%3E%3C/g%3E%3Cg%3E%3Ccircle cx='0' cy='10' r='19' fill='%232E4A6B'/%3E%3Ccircle cx='0' cy='10' r='14'/%3E%3Ccircle cx='0' cy='10' r='9'/%3E%3Ccircle cx='0' cy='10' r='4'/%3E%3Ccircle cx='40' cy='10' r='19' fill='%232E4A6B'/%3E%3Ccircle cx='40' cy='10' r='14'/%3E%3Ccircle cx='40' cy='10' r='9'/%3E%3Ccircle cx='40' cy='10' r='4'/%3E%3C/g%3E%3Cg%3E%3Ccircle cx='20' cy='20' r='19' fill='%232E4A6B'/%3E%3Ccircle cx='20' cy='20' r='14'/%3E%3Ccircle cx='20' cy='20' r='9'/%3E%3Ccircle cx='20' cy='20' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); background-size: 40px 20px; }
 
@@ -298,7 +309,7 @@ kbd { font-family: var(--mono); font-style: normal; font-size: 11px; border: 1px
 .back { display: block; width: fit-content; margin-bottom: 16px; text-decoration: none; color: var(--muted); }
 .back:hover { color: var(--ink); }
 .spread { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--gap); align-items: start; }
-.spread .left { display: flex; flex-direction: column; gap: 10px; position: sticky; top: 16px; }
+.spread .left { display: flex; flex-direction: column; gap: 10px; position: sticky; top: 16px; container-type: inline-size; }
 .spread .left .duo { aspect-ratio: 4 / 5; }
 .spread .left .glyph { font-size: 72px; }
 .credit { font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
@@ -723,12 +734,32 @@ footer { margin-top: 96px; }
       box.append(h("span", { class: "lift", style: g > 0 && g !== 1 ? "filter:" + liftFilter(g) : null }, img),
         h("img", { class: "orig", src: r.photo, alt: "", "aria-hidden": "true", loading: img.loading, referrerpolicy: "strict-origin-when-cross-origin", decoding: "async" }));
       if (opts.glyph && r.glyph) box.append(h("span", { class: "glyph cjk", "aria-hidden": "true", text: r.glyph }));
+      if (opts.badge && r.video) box.append(h("span", { class: "vid", role: "img", "aria-label": "met video" }, h("span", { class: "tri" })));
       // aanraakschermen: tik om de echte kleuren te zien
       box.addEventListener("click", (e) => { if (matchMedia("(hover: none)").matches && !box.closest("a")) { e.preventDefault(); box.classList.toggle("color"); } });
     } else fallback();
     return box;
   }
-  const native = (r) => r.native ? h("p", { class: "native", lang: /[가-힯]/.test(r.native) ? "ko" : "ja" }, r.native, r.roman ? h("em", { lang: "nl", text: r.roman }) : null) : null;
+  // video van de maker zelf: tot je klikt, laadt er niets van het platform (geen cookies, geen tracking)
+  const VIDEO = {
+    youtube: { name: "YouTube", vertical: false, src: (id) => "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0&playsinline=1" },
+    instagram: { name: "Instagram", vertical: true, src: (id) => "https://www.instagram.com/p/" + id + "/embed/" },
+    tiktok: { name: "TikTok", vertical: true, src: (id) => "https://www.tiktok.com/player/v1/" + id + "?autoplay=1&rel=0" },
+  };
+  function withVideo(r, box) {
+    const v = r.video && VIDEO[r.video.platform];
+    if (!v) return box;
+    const by = r.photoCredit ? " van " + r.photoCredit.label : "";
+    box.append(h("button", { type: "button", class: "play mono", "aria-label": "Speel de video" + by + " af op " + v.name,
+      onclick: (e) => {
+        e.stopPropagation();
+        const vertical = r.video.vertical ?? v.vertical;
+        box.replaceWith(h("div", { class: "video " + tintClass(r) + (vertical ? " vertical" : "") },
+          h("iframe", { src: v.src(r.video.id), title: "Video: " + r.title + by, allow: "autoplay; encrypted-media; picture-in-picture; fullscreen", referrerpolicy: "strict-origin-when-cross-origin" })));
+      } }, h("span", { class: "tri", "aria-hidden": "true" }), "Bekijk de video"));
+    return box;
+  }
+  const native =(r) => r.native ? h("p", { class: "native", lang: /[가-힯]/.test(r.native) ? "ko" : "ja" }, r.native, r.roman ? h("em", { lang: "nl", text: r.roman }) : null) : null;
   // gemeten trend (spark) als die er is, anders de redactionele trend-tekst
   const QUIET = new Set(["Stabiel", "Dalend"]);
   const geoText = (g) => g === "NL" ? "Nederland" : "wereldwijd";
@@ -815,14 +846,14 @@ footer { margin-top: 96px; }
           h("p", { class: "intro", text: ed.intro || "" }),
           h("span", { class: "hanko", title: sName, "aria-hidden": "true", text: sGlyph }))),
       lead ? h("a", { class: "card lead", href: recipeHref(lead.slug), id: "f-" + lead.slug },
-        photo(lead, { eager: true }),
+        photo(lead, { eager: true, badge: true }),
         h("div", { class: "body" },
           h("span", { class: "no", text: "01" }),
           h("div", null, native(lead), h("h2", { text: lead.title }), h("p", { class: "dek", text: lead.dek || "" }),
             metaline(servingsText(lead, lead.servings), lead.minutes + " min", lead.category), trend(lead)))) : null,
       ...rest.map((r, i) => h("a", { class: "tile " + tintClass(r), href: recipeHref(r.slug), id: "f-" + r.slug, style: `grid-column: span ${spans[i]}` },
         // geen tussenlaag: de regels zijn directe kinderen van de tegel, zodat subgrid ook in Safari werkt
-        photo(r),
+        photo(r, { badge: true }),
         h("span", { class: "no", text: pad(i + 2) }),
         h("h2", { text: r.title }),
         metaline(servingsText(r, r.servings), r.minutes + " min"),
@@ -882,8 +913,9 @@ footer { margin-top: 96px; }
       h("a", { class: "back mono", href: "#editie-" + ed.id, text: `← Nº ${pad(ed.number)} · week ${ed.week}` }),
       h("div", { class: "spread" },
         h("figure", { class: "left", style: "margin:0" },
-          photo(r, { glyph: true, eager: true }),
-          r.photoCredit ? h("figcaption", { class: "credit" }, "Foto en origineel recept: ", h("a", { href: r.photoCredit.url, target: "_blank", rel: "noopener", text: r.photoCredit.label + " ↗" })) : null),
+          withVideo(r, photo(r, { glyph: true, eager: true })),
+          r.photoCredit ? h("figcaption", { class: "credit" }, "Foto en origineel recept: ", h("a", { href: r.photoCredit.url, target: "_blank", rel: "noopener", text: r.photoCredit.label + " ↗" }),
+            r.video && VIDEO[r.video.platform] ? [" · ", h("a", { href: r.video.url, target: "_blank", rel: "noopener", text: "Video op " + VIDEO[r.video.platform].name + " ↗" })] : null) : null),
         h("div", { class: "card sheet" },
           h("header", null, h("span", { class: "no", text: recipeNo(r) }), h("div", null, native(r), h("h1", { text: r.title }))),
           h("div", { class: "metaline mono" }, h("span", { class: "stepper" }, minus, out, plus), h("span", { text: r.minutes + " min" }), r.category ? h("span", { text: r.category }) : null),

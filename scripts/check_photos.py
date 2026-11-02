@@ -9,6 +9,7 @@ Gebruik: python3 scripts/check_photos.py editions/2026-44.json   (exit 1 als een
 import concurrent.futures as cf
 import json
 import sys
+import urllib.parse
 import urllib.request
 
 UA = "Mozilla/5.0 (Proef link check)"
@@ -27,6 +28,17 @@ def probe(url):
     return None, f"{type(err).__name__}: {err}"[:80]
 
 
+def embed_check(video):
+    """Het oEmbed-adres van het platform: dat geeft een fout als de maker insluiten heeft uitgezet.
+    Instagram vraagt daarvoor een token; daar controleren we alleen of de post bestaat."""
+    url = urllib.parse.quote(video.get("url", ""), safe="")
+    if video.get("platform") == "youtube":
+        return "https://www.youtube.com/oembed?format=json&url=" + url
+    if video.get("platform") == "tiktok":
+        return "https://www.tiktok.com/oembed?url=" + url
+    return video.get("url", "")
+
+
 def main():
     if len(sys.argv) != 2:
         print(__doc__)
@@ -35,6 +47,8 @@ def main():
     checks = []
     for r in ed.get("recipes", []):
         checks.append(("foto", r["slug"], r.get("photo", ""), True))
+        if r.get("video"):
+            checks.append(("video", r["slug"], embed_check(r["video"]), False))
         for link in r.get("links", []) + ([r["photoCredit"]] if r.get("photoCredit") else []):
             checks.append(("link", r["slug"], link.get("url", ""), False))
     for s in (ed.get("ferment") or {}).get("sources", []):
@@ -44,9 +58,9 @@ def main():
         for (kind, slug, url, must_be_image), (status, info) in zip(checks, pool.map(lambda c: probe(c[2]), checks)):
             ok = status is not None and status < 400 and (not must_be_image or info.startswith("image/"))
             if not ok:
-                bad += kind == "foto"
-                print(f"FOUT  {kind:4} {slug}: {url} -> {status or ''} {info}")
-    print(f"{len(checks)} links gecontroleerd, {bad} foto('s) werken niet.")
+                bad += kind in ("foto", "video")
+                print(f"FOUT  {kind:5} {slug}: {url} -> {status or ''} {info}")
+    print(f"{len(checks)} links gecontroleerd, {bad} foto('s) of video's werken niet.")
     return 1 if bad else 0
 
 

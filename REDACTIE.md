@@ -20,7 +20,7 @@ Vijf recepten die deze week trending zijn, plus één Fermentatie van de week. W
    - niet meer dan 60 minuten, tenzij de oven het werk doet;
    - verschillende categorieën: niet vijf hoofdgerechten;
    - geen gerecht dat al in een eerdere editie stond (de validator controleert slugs, controleer ook de gerechten zelf).
-3. **Per recept:** open het bronrecept (bij voorkeur van een kernbron, en nooit achter een betaalmuur) met een foto (`photo` = directe https-link naar de afbeelding, `photoCredit` = naam en link). De foto wordt getoond vanaf die site en nooit gekopieerd. Weigert de site dat (check_photos meldt een fout), kies dan een andere foto of een ander recept, en omzeil het niet. Kwam het recept via Instagram, zoek het dan op de eigen site van de maker (blog, Substack, NYT Cooking) en gebruik de foto daarvan, nooit een foto van Instagram zelf. Herschrijf het in eigen woorden, reken alles om naar g/ml/°C en controleer of de hoeveelheden kloppen voor het aantal personen.
+3. **Per recept:** open het bronrecept (bij voorkeur van een kernbron, en nooit achter een betaalmuur) met een foto (`photo` = directe https-link naar de afbeelding, `photoCredit` = naam en link). De foto wordt getoond vanaf die site en nooit gekopieerd. Weigert de site dat (check_photos meldt een fout), kies dan een andere foto of een ander recept, en omzeil het niet. Kwam het recept via Instagram, zoek het dan op de eigen site van de maker (blog, Substack, NYT Cooking) en gebruik de foto daarvan, nooit een foto van Instagram zelf. **Video (optioneel):** heeft de maker zelf een video van dit recept (eigen kanaal op YouTube, Instagram of TikTok), zet die in `video` met `platform`, `id` en `url`. Een video staat naast het recept, nooit in plaats ervan. Kies een recept met video alleen als er een geschreven versie is (blog, beschrijving of caption) met hoeveelheden. Schat nooit hoeveelheden uit een video. Zet `vertical: false` bij een liggende video op Instagram of TikTok; YouTube Shorts krijgen `vertical: true`. De foto blijft nodig voor de tegels; bij YouTube mag dat de thumbnail van de video zijn (`https://i.ytimg.com/vi/<id>/maxresdefault.jpg`). Herschrijf het in eigen woorden, reken alles om naar g/ml/°C en controleer of de hoeveelheden kloppen voor het aantal personen.
 4. **Vormgeving per recept:**
    - `tint`: gebruik elke kleur één keer (`sage`, `sky`, `blush`, `persimmon`, `mustard`). Kies de kleur die bij het gerecht past.
    - `glyph`: één Japans of Koreaans teken dat het gerecht samenvat (bijv. 汁 soep, 밥 rijst, 麺 noedels, 菜 groente, 卵 ei).
@@ -80,6 +80,7 @@ De routine draait elke zaterdag om 06:00. Elke stap kost tokens, en alles wat je
       "signals": [{ "source": "Pinterest", "metric": "search-growth", "value": 2, "unit": "x", "period": "2026 vs 2025", "geo": "world", "url": "https://…", "note": "…" }],
       "links": [{ "label": "…", "url": "https://…" }],
       "photo": "https://…jpg", "photoCredit": { "label": "…", "url": "https://…" },
+      "video": { "platform": "youtube", "id": "Lf44Fk7H24s", "url": "https://www.youtube.com/watch?v=Lf44Fk7H24s" },  // optioneel, zie stap 3
       "photoGamma": 0.62,  // door scripts/photo_light.py, niet zelf invullen
       "ingredients": [{ "qty": 200, "unit": "g", "item": "…", "group": "Saus (optioneel)" }],
       "steps": ["…"], "tip": "…"

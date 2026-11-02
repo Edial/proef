@@ -887,6 +887,11 @@
         "label": "Maangchi",
         "url": "https://www.maangchi.com/recipe/kimchi-bokkeumbap"
       },
+      "video": {
+        "platform": "youtube",
+        "id": "Lf44Fk7H24s",
+        "url": "https://www.youtube.com/watch?v=Lf44Fk7H24s"
+      },
       "glyph": "밥",
       "native": "김치볶음밥",
       "roman": "kimchi bokkeumbap",

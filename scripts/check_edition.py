@@ -46,6 +46,26 @@ def check_ingredients(items, where):
             err(w, f"eenheid '{ing.get('unit')}' is niet metrisch (alleen g, ml of leeg)")
 
 
+VIDEO_IDS = {"youtube": r"[\w-]{11}", "instagram": r"[\w-]{5,40}", "tiktok": r"\d{8,25}"}
+
+
+def check_video(v, where):
+    """Optioneel: een video van de maker zelf. Het recept staat er altijd ook in tekst bij (ingredients en steps)."""
+    if v is None:
+        return
+    if not isinstance(v, dict):
+        return err(where, "video moet een object zijn met platform, id en url")
+    platform = v.get("platform")
+    if platform not in VIDEO_IDS:
+        return err(where, f"video.platform '{platform}' is onbekend ({', '.join(VIDEO_IDS)})")
+    if not re.fullmatch(VIDEO_IDS[platform], str(v.get("id", ""))):
+        err(where, f"video.id '{v.get('id')}' is geen geldig {platform}-id")
+    if not str(v.get("url", "")).startswith("https://"):
+        err(where, "video.url moet een https-link zijn")
+    if "vertical" in v and not isinstance(v["vertical"], bool):
+        err(where, "video.vertical moet true of false zijn")
+
+
 def check_recipe(r, where, seen):
     need(r, ["slug", "title", "dek", "category", "minutes", "servings", "ingredients", "steps", "photo", "photoCredit", "tint", "glyph", "trend"], where)
     slug = r.get("slug", "")
@@ -62,6 +82,7 @@ def check_recipe(r, where, seen):
         err(where, "glyph moet precies één teken zijn")
     if not str(r.get("photo", "")).startswith("https://"):
         err(where, "photo moet een https-link zijn")
+    check_video(r.get("video"), where)
     t = r.get("trend") or {}
     if r.get("trend") and not (t.get("text") and t.get("source")):
         err(where, "trend heeft 'source' en 'text' nodig")
