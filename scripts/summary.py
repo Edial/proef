@@ -51,10 +51,32 @@ def buzz_and_core():
     if posts.exists():
         since = (dt.date.today() - dt.timedelta(days=21)).isoformat()
         with posts.open(newline="") as f:
-            core = [p for p in csv.DictReader(f) if p["tier"] == "core" and p["published"] >= since]
-        print(f"\nNIEUW BIJ DE KERNBRONNEN (laatste 21 dagen, {len(core)} berichten; kies hier minstens 3 recepten uit):")
+            rows = list(csv.DictReader(f))
+        core = [p for p in rows if p["tier"] == "core" and p["published"] >= since and p["kind"] != "instagram"]
+        print(f"\nNIEUW BIJ DE KERNBRONNEN (laatste 21 dagen, {len(core)} recepten van hun eigen site; kies hier minstens 3 recepten uit):")
         for p in core[:60]:
             print(f"- {p['published']} {p['name']}: {p['title']} {p['url']}")
+        instagram_hits(rows)
+
+
+def instagram_hits(rows, days=14, top=12):
+    """Instagram-posts die het veel beter doen dan normaal voor die kok (likes + reacties t.o.v. de mediaan van
+    het account). Zo tellen kleine koks even zwaar als grote. Alleen een signaal: het recept zelf komt van de eigen site."""
+    import statistics
+    ig = [p for p in rows if p["kind"] == "instagram" and p["views"].isdigit()]
+    per = {}
+    for p in ig:
+        per.setdefault(p["source"], []).append(int(p["views"]))
+    med = {s: statistics.median(v) for s, v in per.items() if len(v) >= 8}
+    since = (dt.date.today() - dt.timedelta(days=days)).isoformat()
+    hits = [(int(p["views"]) / med[p["source"]], p) for p in ig
+            if p["published"] >= since and med.get(p["source"]) and int(p["views"]) >= 2 * med[p["source"]]]
+    hits.sort(key=lambda x: -x[0])
+    if hits:
+        print(f"\nUITSCHIETERS OP INSTAGRAM (laatste {days} dagen, minstens 2× zoveel reacties als normaal voor die kok; "
+              "alleen een signaal, zoek het recept op de eigen site van de maker):")
+    for r, p in hits[:top]:
+        print(f"- {p['published']} {p['name']} ({r:.1f}× normaal): {p['title']} {p['url']}")
 
 
 def main():

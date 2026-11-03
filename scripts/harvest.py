@@ -41,6 +41,8 @@ i me we you us top review get got just really very more most all any every one t
 like tastes taste style inspired version copycat edition finds roundup things heres whats what why need know should probably missing told chef
 de het een en van met voor in op aan bij uit zo je jouw mijn onze deze dit dat die wat hoe maak maken recept recepten
 lekker lekkere makkelijk makkelijke snel snelle simpel simpele gezond gezonde heerlijk heerlijke week weekend dag avond
+ive im youre dont cant thats lets ever almost years year big news test link bio comment comments giveaway today tonight
+heel veel echt nieuwe nieuw alle vandaag
 """.split())
 
 
@@ -139,6 +141,7 @@ def buzz(posts, today):
         if n < 3:
             continue
         ex = sorted(examples[ph], key=lambda p: p["published"], reverse=True)
+        ex.sort(key=lambda p: p["kind"] == "instagram")  # per bron liever de receptpagina dan de Instagram-post
         seen, posts_out = set(), []
         for p in ex:
             if p["source"] in seen:
