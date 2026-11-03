@@ -224,7 +224,9 @@ def main():
         add_google(b, int(sys.argv[sys.argv.index("--google") + 1]))
     recent = [p for p in posts.values() if 0 <= (today - day(p["published"])).days <= WINDOW]
     BUZZ.write_text(json.dumps({"generated": today.isoformat(), "sources": len(sources), "window": WINDOW, "base": BASE,
-                                "core": sum(s["tier"] == "core" for s in sources), "posts": len(recent),
+                                "core": sum(s["tier"] == "core" for s in sources),
+                                "posts": sum(p["kind"] != "instagram" for p in recent),  # recepten (site/YouTube), zo staat het op de site
+                                "instagram": sum(p["kind"] == "instagram" for p in recent),
                                 "posters": len({p["source"] for p in recent}), "rising": b},
                                ensure_ascii=False, indent=1) + "\n")
     print(f"{len(sources)} bronnen gelezen, {len(posts)} berichten bewaard ({len(posts) - n0:+d}).")
