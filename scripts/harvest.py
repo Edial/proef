@@ -43,6 +43,7 @@ de het een en van met voor in op aan bij uit zo je jouw mijn onze deze dit dat d
 lekker lekkere makkelijk makkelijke snel snelle simpel simpele gezond gezonde heerlijk heerlijke week weekend dag avond
 ive im youre dont cant thats lets ever almost years year big news test link bio comment comments giveaway today tonight
 heel veel echt nieuwe nieuw alle vandaag
+has been was were will would could had have does did can
 """.split())
 
 
