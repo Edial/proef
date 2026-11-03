@@ -162,13 +162,13 @@ ohmyfoodness,OhMyFoodness,network,,https://www.ohmyfoodness.nl,https://ohmyfoodn
 culy,Culy,network,,https://www.culy.nl,https://www.culy.nl/feed/,,,nl,NL,magazine,,ok,2026-10-30,12,2026-10-30
 ali-slagle,Ali Slagle,core,Bon Appétit/NYT Cooking (te checken),https://alislagle.substack.com,https://alislagle.substack.com/feed,,,en,US,doordeweeks,,ok,2026-10-29,20,2026-10-30
 rebecca-firkser,Rebecca Firkser,core,Food52/Bon Appétit (te checken),https://rebeccafirkser.substack.com,https://rebeccafirkser.substack.com/feed,,rebeccafirkser,en,US,thuiskoken,,ok,2026-10-27,20,2026-10-30
-america-s-test-kitchen,America's Test Kitchen,network,,https://www.americastestkitchen.com,,,testkitchen,en,US,techniek,ja,,,,
-feedfeed,Feedfeed,network,,https://thefeedfeed.com,,,thefeedfeed,en,US,community,,,,,
-noah-tanen,Noah Tanen,core,Food52,https://noahtanen.substack.com,,,noahtanen,en,US,thuiskoken,,,,,
-carolina-gelen,Carolina Gelen,core,Food52 (oud),https://carolinagelen.com,,,carolinagelen,en,US,doordeweeks,,,,,
-lauren-dozier,Lauren Dozier,network,Food52,https://linktr.ee/lauren_dozier,,,lauren_dozier,en,US,bakken,,,,,
-anna-stockwell,Anna Stockwell,network,Epicurious,https://linktr.ee/acstockwell,,,acstockwell,en,US,bakken,,,,,
-ella-henry,Ella Henry (Glow with Ella),network,,https://linktr.ee/glowwithella,,,glowwithella,en,US,"seizoen,gezond",,,,,
-ryan-nordheimer,Ryan Nordheimer,network,,https://linktr.ee/ryannordheimer,,,ryannordheimer,en,US,doordeweeks,,,,,
-olivia-tiedemann,Olivia Tiedemann,network,,https://sites.prh.com/eatliketherich,,,oliviatied,en,US,thuiskoken,,,,,
-georgie-mullen,Georgie Mullen (georgieeats),network,,https://linktr.ee/georgieeats,,,georgieeats,en,GB,seizoen,,,,,
+america-s-test-kitchen,America's Test Kitchen,network,,https://www.americastestkitchen.com,,,testkitchen,en,US,techniek,ja,geen-feed,,0,2026-11-03
+feedfeed,Feedfeed,network,,https://thefeedfeed.com,,,thefeedfeed,en,US,community,,onbereikbaar,,0,2026-11-03
+noah-tanen,Noah Tanen,core,Food52,https://noahtanen.substack.com,,,noahtanen,en,US,thuiskoken,,onbereikbaar,,0,2026-11-03
+carolina-gelen,Carolina Gelen,core,Food52 (oud),https://carolinagelen.com,https://carolinagelen.com/feed/,,carolinagelen,en,US,doordeweeks,,stil,2026-04-01,10,2026-11-03
+lauren-dozier,Lauren Dozier,network,Food52,https://linktr.ee/lauren_dozier,,,lauren_dozier,en,US,bakken,,geen-feed,,0,2026-11-03
+anna-stockwell,Anna Stockwell,network,Epicurious,https://linktr.ee/acstockwell,,,acstockwell,en,US,bakken,,geen-feed,,0,2026-11-03
+ella-henry,Ella Henry (Glow with Ella),network,,https://linktr.ee/glowwithella,,,glowwithella,en,US,"seizoen,gezond",,geen-feed,,0,2026-11-03
+ryan-nordheimer,Ryan Nordheimer,network,,https://linktr.ee/ryannordheimer,,,ryannordheimer,en,US,doordeweeks,,geen-feed,,0,2026-11-03
+olivia-tiedemann,Olivia Tiedemann,network,,https://sites.prh.com/eatliketherich,,,oliviatied,en,US,thuiskoken,,geen-feed,,0,2026-11-03
+georgie-mullen,Georgie Mullen (georgieeats),network,,https://linktr.ee/georgieeats,,,georgieeats,en,GB,seizoen,,geen-feed,,0,2026-11-03
