@@ -15,6 +15,8 @@ Gebruik:
   python3 scripts/instagram.py check                  controleert token en account
   python3 scripts/instagram.py thewoksoflife          toont de laatste posts van één account
   python3 scripts/instagram.py bronnen                controleert alle handles in data/sources.csv
+  python3 scripts/instagram.py profiel a b c          naam, website en bereik van nieuwe accounts (om toe te voegen)
+  python3 scripts/instagram.py noemt food52           welke accounts food52 het vaakst noemt (de koks erachter)
 harvest.py gebruikt read() en zet de posts in data/posts.csv met kind=instagram.
 
 Limiet: Business Discovery telt mee in de Platform Rate Limit van Meta (200 calls per uur per gebruiker).
@@ -91,6 +93,30 @@ def read(handle, limit=25):
     return [p for p in out if p["title"]]
 
 
+def profile(handle, limit=12):
+    """Naam, website, volgers en gemiddelde reacties: genoeg om te beslissen of een account erbij moet."""
+    f = (f"business_discovery.username({handle}){{username,name,website,biography,followers_count,media_count,"
+         f"media.limit({limit}){{like_count,comments_count,timestamp}}}}")
+    d = _get(os.environ["IG_USER_ID"], {"fields": f})["business_discovery"]
+    m = d.get("media", {}).get("data", [])
+    eng = [(x.get("like_count") or 0) + (x.get("comments_count") or 0) for x in m]
+    return {"username": d["username"], "name": d.get("name", ""), "website": d.get("website", ""),
+            "bio": " ".join((d.get("biography") or "").split())[:90], "followers": d.get("followers_count"),
+            "last": m[0]["timestamp"][:10] if m else "", "avg": round(sum(eng) / len(eng)) if eng else 0}
+
+
+def mentions(handle, limit=50):
+    """Telt de @namen in de laatste onderschriften van een account, bijvoorbeeld de koks achter een magazine."""
+    f = f"business_discovery.username({handle}){{media.limit({limit}){{caption}}}}"
+    caps = [x.get("caption") or "" for x in _get(os.environ["IG_USER_ID"], {"fields": f})["business_discovery"]["media"]["data"]]
+    count = {}
+    for c in caps:
+        for h in set(re.findall(r"(?<![\w.])@([A-Za-z0-9._]{2,30})", c)):
+            h = h.rstrip(".").lower()
+            count[h] = count.get(h, 0) + 1
+    return len(caps), sorted(count.items(), key=lambda x: -x[1])
+
+
 def main():
     if not enabled():
         sys.exit("Zet eerst IG_TOKEN en IG_USER_ID (zie de uitleg bovenin dit bestand).")
@@ -98,6 +124,21 @@ def main():
     if arg == "check":
         me = _get(os.environ["IG_USER_ID"], {"fields": "username,followers_count,media_count"})
         print(f"OK: verbonden als @{me['username']} ({me.get('followers_count')} volgers, {me.get('media_count')} posts).")
+        return
+    if arg == "profiel":
+        for h in sys.argv[2:]:
+            try:
+                p = profile(h.lstrip("@"))
+                print(f"OK    @{p['username']:22} {p['followers']:>9} volgers  gem. {p['avg']:>6} reacties  laatste {p['last']}  "
+                      f"{p['name'][:30]} | {p['website'] or '-'} | {p['bio']}")
+            except Exception as e:  # noqa: BLE001
+                print(f"FOUT  @{h.lstrip('@'):22} {e}"[:160])
+            time.sleep(0.3)
+        return
+    if arg == "noemt":
+        for h in sys.argv[2:]:
+            n, top = mentions(h.lstrip("@"))
+            print(f"@{h.lstrip('@')} noemt in {n} posts:", ", ".join(f"@{k} ({v})" for k, v in top[:30]))
         return
     if arg == "bronnen":
         ok = 0
