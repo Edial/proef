@@ -29,13 +29,6 @@
      "tier": "core"
     },
     {
-     "name": "Bon Appétit",
-     "title": "Japanese Sweet Potato Chaat",
-     "url": "https://www.bonappetit.com/recipe/japanese-sweet-potato-chaat",
-     "date": "2026-10-30",
-     "tier": "core"
-    },
-    {
      "name": "Epicurious",
      "title": "Japanese Sweet Potato Chaat",
      "url": "https://www.epicurious.com/recipes/food/views/ba-syn-japanese-sweet-potato-chaat",
@@ -43,16 +36,23 @@
      "tier": "core"
     },
     {
-     "name": "Sabrina Ghayour",
-     "title": "Had to make my Sweet Potato & Feta Kuku from Persiana One - a Persian egg-based sort of Tortilla which originally has 4 classic flavours in",
-     "url": "https://www.instagram.com/p/DfFgKoziD0L/",
-     "date": "2026-10-29",
+     "name": "Bon Appétit",
+     "title": "Japanese Sweet Potato Chaat",
+     "url": "https://www.bonappetit.com/recipe/japanese-sweet-potato-chaat",
+     "date": "2026-10-30",
      "tier": "core"
     },
     {
      "name": "Two Peas & Their Pod",
      "title": "Sweet Potato Kale Breakfast Casserole",
      "url": "https://www.twopeasandtheirpod.com/sweet-potato-kale-breakfast-casserole/",
+     "date": "2026-10-28",
+     "tier": "network"
+    },
+    {
+     "name": "Simply Recipes",
+     "title": "Sweet Potato Dump Cake",
+     "url": "https://www.simplyrecipes.com/sweet-potato-dump-cake-recipe-11838163",
      "date": "2026-10-28",
      "tier": "network"
     }
@@ -154,17 +154,17 @@
      "tier": "network"
     },
     {
-     "name": "Just One Cookbook",
-     "title": "Cozy Japanese Oxtail Oden in Your Slow Cooker!",
-     "url": "https://www.instagram.com/reel/Dekvf59zQeZ/",
-     "date": "2026-10-16",
-     "tier": "core"
-    },
-    {
      "name": "Noble Pig",
      "title": "Slow Cooker Mississippi Pork Roast",
      "url": "https://noblepig.com/slow-cooker-mississippi-pork-roast-the-best/",
      "date": "2026-10-15",
+     "tier": "network"
+    },
+    {
+     "name": "Dishing Out Health",
+     "title": "Slow Cooker Broccoli-Cheddar Chicken and Rice",
+     "url": "https://dishingouthealth.com/slow-cooker-chicken-and-rice/?utm_source=rss&utm_medium=rss&utm_campaign=slow-cooker-chicken-and-rice",
+     "date": "2026-10-14",
      "tier": "network"
     }
    ],
@@ -258,13 +258,6 @@
      "tier": "core"
     },
     {
-     "name": "Deb Perelman",
-     "title": "A deeply toasty brown butter, brown sugar caramel tart with salted peanuts in a crisp shortbread shell.",
-     "url": "https://www.instagram.com/p/De7rzoHiZA5/",
-     "date": "2026-10-25",
-     "tier": "core"
-    },
-    {
      "name": "Noble Pig",
      "title": "Brown Butter Chocolate Chip Cookies",
      "url": "https://noblepig.com/brown-butter-chocolate-chip-cookies/",
@@ -277,6 +270,13 @@
      "url": "https://www.davidlebovitz.com/brown-pastry-browned-butter-financiers-recipe-french/",
      "date": "2026-10-24",
      "tier": "core"
+    },
+    {
+     "name": "Bigger Bolder Baking",
+     "title": "Brown Butter Pie Crust",
+     "url": "https://www.biggerbolderbaking.com/brown-butter-pie-crust/",
+     "date": "2026-10-24",
+     "tier": "network"
     }
    ],
    "google": {
@@ -355,13 +355,6 @@
      "tier": "core"
     },
     {
-     "name": "Deb Perelman",
-     "title": "If you woke up craving pumpkin pie just because it’s November 1st, but will not actually be making pumpkin pie on November 1st, I’ve got you",
-     "url": "https://www.instagram.com/p/DfM9INklc9x/",
-     "date": "2026-11-01",
-     "tier": "core"
-    },
-    {
      "name": "Dinner, then Dessert",
      "title": "Light, fluffy dip with that tastes like pumpkin pie!",
      "url": "https://dinnerthendessert.com/pumpkin-fluff-dip/",
@@ -381,6 +374,13 @@
      "url": "https://www.okonomikitchen.com/kabocha-pumpkin-pie-bars/",
      "date": "2026-10-27",
      "tier": "network"
+    },
+    {
+     "name": "Deb Perelman",
+     "title": "If you woke up craving pumpkin pie just because it’s November 1st, but will not actually be making pumpkin pie on November 1st, I’ve got you",
+     "url": "https://www.instagram.com/p/DfM9INklc9x/",
+     "date": "2026-11-01",
+     "tier": "core"
     },
     {
      "name": "Food52",
@@ -459,24 +459,17 @@
    "core": 4,
    "posts": [
     {
-     "name": "Omnivore's Cookbook",
-     "title": "Warm up with a comforting bowl of Curry Noodle Soup!",
-     "url": "https://www.instagram.com/p/DfKeFmAiLU1/",
-     "date": "2026-10-31",
-     "tier": "core"
-    },
-    {
      "name": "The Woks of Life",
-     "title": "Tom Yum Noodle Soup (Kuay Teow Tom Yum) is a hearty, tangy, delicious Thai noodle soup that’s surprisingly simple to put together.",
-     "url": "https://www.instagram.com/p/De4j7u8G9_c/",
-     "date": "2026-10-24",
+     "title": "Tom Yum Noodle Soup (Kuay Teow Tom Yum)",
+     "url": "https://thewoksoflife.com/tom-yum-noodle-soup-kuay-teow-tom-yum/?adt_ei=*|EMAIL|*",
+     "date": "2026-10-23",
      "tier": "core"
     },
     {
-     "name": "Deb Perelman",
-     "title": "A cozy chicken noodle soup with buoyant, tender meatballs, all of the noodles your heart desires (ours desire a lot) and a speed of assembly",
-     "url": "https://www.instagram.com/p/DesJqHGCUU6/",
-     "date": "2026-10-19",
+     "name": "Omnivore's Cookbook",
+     "title": "Curry Noodle Soup with Popcorn Chicken",
+     "url": "https://omnivorescookbook.com/curry-noodle-soup-popcorn-chicken/",
+     "date": "2026-10-21",
      "tier": "core"
     },
     {
@@ -487,18 +480,25 @@
      "tier": "network"
     },
     {
-     "name": "Just One Cookbook",
-     "title": "Easy Japanese Noodle Soup in 20 Minutes!",
-     "url": "https://www.instagram.com/reel/Dec_hzlh21u/",
-     "date": "2026-10-13",
-     "tier": "core"
-    },
-    {
      "name": "Lazy Cat Kitchen",
      "title": "Thai red curry noodle soup",
      "url": "https://www.lazycatkitchen.com/thai-red-curry-noodle-soup/",
      "date": "2026-10-04",
      "tier": "network"
+    },
+    {
+     "name": "Deb Perelman",
+     "title": "A cozy chicken noodle soup with buoyant, tender meatballs, all of the noodles your heart desires (ours desire a lot) and a speed of assembly",
+     "url": "https://www.instagram.com/p/DesJqHGCUU6/",
+     "date": "2026-10-19",
+     "tier": "core"
+    },
+    {
+     "name": "Just One Cookbook",
+     "title": "Easy Japanese Noodle Soup in 20 Minutes!",
+     "url": "https://www.instagram.com/reel/Dec_hzlh21u/",
+     "date": "2026-10-13",
+     "tier": "core"
     }
    ],
    "google": {
@@ -674,16 +674,16 @@
    "core": 4,
    "posts": [
     {
-     "name": "Bon Appétit",
+     "name": "Epicurious",
      "title": "Japanese Sweet Potato Chaat",
-     "url": "https://www.bonappetit.com/recipe/japanese-sweet-potato-chaat",
+     "url": "https://www.epicurious.com/recipes/food/views/ba-syn-japanese-sweet-potato-chaat",
      "date": "2026-10-30",
      "tier": "core"
     },
     {
-     "name": "Epicurious",
+     "name": "Bon Appétit",
      "title": "Japanese Sweet Potato Chaat",
-     "url": "https://www.epicurious.com/recipes/food/views/ba-syn-japanese-sweet-potato-chaat",
+     "url": "https://www.bonappetit.com/recipe/japanese-sweet-potato-chaat",
      "date": "2026-10-30",
      "tier": "core"
     },
@@ -695,17 +695,17 @@
      "tier": "network"
     },
     {
-     "name": "Just One Cookbook",
-     "title": "Easy Japanese Sweet Potato Rice in Your Rice Cooker!",
-     "url": "https://www.instagram.com/p/Desc53SmREA/",
-     "date": "2026-10-19",
-     "tier": "core"
-    },
-    {
      "name": "Chopstick Chronicles",
      "title": "Satsumaimo Cookies (Japanese Sweet Potato Cookies)",
      "url": "https://www.chopstickchronicles.com/satsumaimo-cookies-japanese-sweet-potato-cookies/",
      "date": "2026-10-07",
+     "tier": "core"
+    },
+    {
+     "name": "Just One Cookbook",
+     "title": "Easy Japanese Sweet Potato Rice in Your Rice Cooker!",
+     "url": "https://www.instagram.com/p/Desc53SmREA/",
+     "date": "2026-10-19",
      "tier": "core"
     }
    ],
@@ -1000,13 +1000,6 @@
      "tier": "core"
     },
     {
-     "name": "I Am A Food Blog",
-     "title": "i dream of opening a giant air fryer shop like how we have chinese bbq shops now, with a giant air fryer and this char siu on the menu.",
-     "url": "https://www.instagram.com/p/DfA13M-kuGj/",
-     "date": "2026-10-27",
-     "tier": "core"
-    },
-    {
      "name": "Fit Foodie Finds",
      "title": "Air Fryer Parmesan Acorn Squash",
      "url": "https://fitfoodiefinds.com/air-fryer-parmesan-acorn-squash/?adt_ei={{ subscriber.email_address }}",
@@ -1026,6 +1019,13 @@
      "url": "https://www.gimmesomeoven.com/air-fryer-chicken-breasts/",
      "date": "2026-10-13",
      "tier": "network"
+    },
+    {
+     "name": "I Am A Food Blog",
+     "title": "i dream of opening a giant air fryer shop like how we have chinese bbq shops now, with a giant air fryer and this char siu on the menu.",
+     "url": "https://www.instagram.com/p/DfA13M-kuGj/",
+     "date": "2026-10-27",
+     "tier": "core"
     }
    ],
    "google": {
@@ -1104,13 +1104,6 @@
      "tier": "core"
     },
     {
-     "name": "Molly Baz",
-     "title": "to the butternut squash soup hive : I see you, and I raise you a bowl of this honey nut squash and corn soup.",
-     "url": "https://www.instagram.com/reel/DfKhdcDhUKW/",
-     "date": "2026-10-31",
-     "tier": "core"
-    },
-    {
      "name": "Ambitious Kitchen",
      "title": "Butternut Squash Bacon Spinach Quiche",
      "url": "https://www.ambitiouskitchen.com/butternut-squash-quiche/",
@@ -1130,6 +1123,13 @@
      "url": "https://www.loveandlemons.com/butternut-squash-gnocchi/",
      "date": "2026-10-06",
      "tier": "network"
+    },
+    {
+     "name": "Molly Baz",
+     "title": "to the butternut squash soup hive : I see you, and I raise you a bowl of this honey nut squash and corn soup.",
+     "url": "https://www.instagram.com/reel/DfKhdcDhUKW/",
+     "date": "2026-10-31",
+     "tier": "core"
     }
    ],
    "google": {
@@ -1222,16 +1222,16 @@
      "tier": "network"
     },
     {
-     "name": "Deb Perelman",
-     "title": "Cubes of sweet potatoes roasted with so much spice, it almost forms a crust, atop a schmear of refried black beans, finished with lime, avoc",
-     "url": "https://www.instagram.com/p/Dee1AvdlWzj/",
+     "name": "The Kitchn",
+     "title": "With caramelized outsides and creamy insides, these fondant sweet potatoes will melt in your mouth.",
+     "url": "https://www.instagram.com/reel/DeejLBlj02C/",
      "date": "2026-10-14",
      "tier": "core"
     },
     {
-     "name": "The Kitchn",
-     "title": "With caramelized outsides and creamy insides, these fondant sweet potatoes will melt in your mouth.",
-     "url": "https://www.instagram.com/reel/DeejLBlj02C/",
+     "name": "Deb Perelman",
+     "title": "Cubes of sweet potatoes roasted with so much spice, it almost forms a crust, atop a schmear of refried black beans, finished with lime, avoc",
+     "url": "https://www.instagram.com/p/Dee1AvdlWzj/",
      "date": "2026-10-14",
      "tier": "core"
     }
@@ -1312,13 +1312,6 @@
      "tier": "network"
     },
     {
-     "name": "I Am A Food Blog",
-     "title": "these homemade stuffed chocolate chip cookies were the one time mike was actually right when he was like \"we have dubai chocolate at home\" l",
-     "url": "https://www.instagram.com/p/De2sBvFD083/",
-     "date": "2026-10-23",
-     "tier": "core"
-    },
-    {
      "name": "Once Upon a Chef",
      "title": "Tahini Chocolate Chip Cookies",
      "url": "https://www.onceuponachef.com/recipes/tahini-chocolate-chip-cookies.html",
@@ -1338,6 +1331,13 @@
      "url": "https://sallysbakingaddiction.com/mini-pumpkin-chocolate-chip-muffins/",
      "date": "2026-10-11",
      "tier": "network"
+    },
+    {
+     "name": "I Am A Food Blog",
+     "title": "these homemade stuffed chocolate chip cookies were the one time mike was actually right when he was like \"we have dubai chocolate at home\" l",
+     "url": "https://www.instagram.com/p/De2sBvFD083/",
+     "date": "2026-10-23",
+     "tier": "core"
     }
    ],
    "google": {
@@ -1409,13 +1409,6 @@
    "core": 4,
    "posts": [
     {
-     "name": "Bon Appétit",
-     "title": "Japanese Sweet Potato Chaat",
-     "url": "https://www.bonappetit.com/recipe/japanese-sweet-potato-chaat",
-     "date": "2026-10-30",
-     "tier": "core"
-    },
-    {
      "name": "Epicurious",
      "title": "Japanese Sweet Potato Chaat",
      "url": "https://www.epicurious.com/recipes/food/views/ba-syn-japanese-sweet-potato-chaat",
@@ -1423,10 +1416,10 @@
      "tier": "core"
     },
     {
-     "name": "Just One Cookbook",
-     "title": "Easy Japanese Sweet Potato Rice in Your Rice Cooker!",
-     "url": "https://www.instagram.com/p/Desc53SmREA/",
-     "date": "2026-10-19",
+     "name": "Bon Appétit",
+     "title": "Japanese Sweet Potato Chaat",
+     "url": "https://www.bonappetit.com/recipe/japanese-sweet-potato-chaat",
+     "date": "2026-10-30",
      "tier": "core"
     },
     {
@@ -1434,6 +1427,13 @@
      "title": "Satsumaimo Cookies (Japanese Sweet Potato Cookies)",
      "url": "https://www.chopstickchronicles.com/satsumaimo-cookies-japanese-sweet-potato-cookies/",
      "date": "2026-10-07",
+     "tier": "core"
+    },
+    {
+     "name": "Just One Cookbook",
+     "title": "Easy Japanese Sweet Potato Rice in Your Rice Cooker!",
+     "url": "https://www.instagram.com/p/Desc53SmREA/",
+     "date": "2026-10-19",
      "tier": "core"
     }
    ],
@@ -1506,18 +1506,18 @@
    "core": 2,
    "posts": [
     {
-     "name": "I Am A Food Blog",
-     "title": "Easy Green Bean Casserole From Scratch",
-     "url": "https://iamafoodblog.com/green-bean-casserole/",
-     "date": "2026-11-03",
-     "tier": "core"
-    },
-    {
      "name": "Simply Recipes",
      "title": "The 1-Ingredient Upgrade for Better Green Bean Casserole",
      "url": "https://www.simplyrecipes.com/one-ingredient-upgrade-green-bean-casserole-11879433",
      "date": "2026-11-03",
      "tier": "network"
+    },
+    {
+     "name": "I Am A Food Blog",
+     "title": "Easy Green Bean Casserole From Scratch",
+     "url": "https://iamafoodblog.com/green-bean-casserole/",
+     "date": "2026-11-03",
+     "tier": "core"
     },
     {
      "name": "Rainbow Plant Life",
@@ -1596,103 +1596,6 @@
    }
   },
   {
-   "phrase": "peanut butter",
-   "sources": 4,
-   "before": 0.0,
-   "rise": 4.0,
-   "core": 2,
-   "posts": [
-    {
-     "name": "Dinner, then Dessert",
-     "title": "Moist and Tender Peanut Butter Bread!",
-     "url": "https://dinnerthendessert.com/peanut-butter-bread/",
-     "date": "2026-10-30",
-     "tier": "network"
-    },
-    {
-     "name": "Deb Perelman",
-     "title": "SALTED PEANUT BUTTER COOKIES The best peanut butter cookies have five ingredients, no flour, no dairy, are hand-mixed and heavenly each time",
-     "url": "https://www.instagram.com/reel/DfH4F-FTiiu/",
-     "date": "2026-10-30",
-     "tier": "core"
-    },
-    {
-     "name": "Pailin Chongchitnant",
-     "title": "Peanut Butter is NOT a Thai Ingredient",
-     "url": "https://www.youtube.com/shorts/ygQ-Waqwh58",
-     "date": "2026-10-16",
-     "tier": "core"
-    },
-    {
-     "name": "Joy the Baker",
-     "title": "Flourless Monster Cookies: Chewy Peanut Butter Oatmeal Cookies",
-     "url": "https://joythebaker.com/2026/10/flourless-monster-cookies-chewy-peanut-butter-oatmeal-cookies/",
-     "date": "2026-10-06",
-     "tier": "network"
-    }
-   ],
-   "google": {
-    "label": "Stijgt",
-    "text": "Anderhalf keer zo vaak gezocht als vorig jaar.",
-    "geo": "NL",
-    "yoy": 1.52,
-    "weeks": [
-     18,
-     15,
-     13,
-     17,
-     17,
-     16,
-     16,
-     13,
-     13,
-     16,
-     19,
-     18,
-     20,
-     19,
-     18,
-     17,
-     15,
-     17,
-     18,
-     18,
-     16,
-     19,
-     14,
-     16,
-     16,
-     18,
-     15,
-     18,
-     17,
-     17,
-     16,
-     20,
-     20,
-     17,
-     27,
-     29,
-     18,
-     15,
-     12,
-     17,
-     24,
-     44,
-     40,
-     100,
-     81,
-     38,
-     53,
-     32,
-     17,
-     18,
-     20,
-     21
-    ]
-   }
-  },
-  {
    "phrase": "pumpkin spice",
    "sources": 4,
    "before": 0.0,
@@ -1707,18 +1610,18 @@
      "tier": "network"
     },
     {
-     "name": "Brenda Kookt",
-     "title": "PUMPKIN SPICE CAKE 🎃",
-     "url": "https://www.instagram.com/reel/DfH1h-qBICj/",
-     "date": "2026-10-30",
-     "tier": "core"
-    },
-    {
      "name": "OhMyFoodness",
      "title": "Pumpkin Spice Latte recept",
      "url": "https://ohmyfoodness.nl/pumpkin-spice-latte/",
      "date": "2026-10-19",
      "tier": "network"
+    },
+    {
+     "name": "Brenda Kookt",
+     "title": "PUMPKIN SPICE CAKE 🎃",
+     "url": "https://www.instagram.com/reel/DfH1h-qBICj/",
+     "date": "2026-10-30",
+     "tier": "core"
     },
     {
      "name": "Hetty Lui McKinnon",
@@ -1790,12 +1693,116 @@
    }
   },
   {
+   "phrase": "peanut butter",
+   "sources": 4,
+   "before": 0.0,
+   "rise": 4.0,
+   "core": 2,
+   "posts": [
+    {
+     "name": "Dinner, then Dessert",
+     "title": "Moist and Tender Peanut Butter Bread!",
+     "url": "https://dinnerthendessert.com/peanut-butter-bread/",
+     "date": "2026-10-30",
+     "tier": "network"
+    },
+    {
+     "name": "Pailin Chongchitnant",
+     "title": "Peanut Butter is NOT a Thai Ingredient",
+     "url": "https://www.youtube.com/shorts/ygQ-Waqwh58",
+     "date": "2026-10-16",
+     "tier": "core"
+    },
+    {
+     "name": "Joy the Baker",
+     "title": "Flourless Monster Cookies: Chewy Peanut Butter Oatmeal Cookies",
+     "url": "https://joythebaker.com/2026/10/flourless-monster-cookies-chewy-peanut-butter-oatmeal-cookies/",
+     "date": "2026-10-06",
+     "tier": "network"
+    },
+    {
+     "name": "Deb Perelman",
+     "title": "SALTED PEANUT BUTTER COOKIES The best peanut butter cookies have five ingredients, no flour, no dairy, are hand-mixed and heavenly each time",
+     "url": "https://www.instagram.com/reel/DfH4F-FTiiu/",
+     "date": "2026-10-30",
+     "tier": "core"
+    }
+   ],
+   "google": {
+    "label": "Stijgt",
+    "text": "Anderhalf keer zo vaak gezocht als vorig jaar.",
+    "geo": "NL",
+    "yoy": 1.52,
+    "weeks": [
+     18,
+     15,
+     13,
+     17,
+     17,
+     16,
+     16,
+     13,
+     13,
+     16,
+     19,
+     18,
+     20,
+     19,
+     18,
+     17,
+     15,
+     17,
+     18,
+     18,
+     16,
+     19,
+     14,
+     16,
+     16,
+     18,
+     15,
+     18,
+     17,
+     17,
+     16,
+     20,
+     20,
+     17,
+     27,
+     29,
+     18,
+     15,
+     12,
+     17,
+     24,
+     44,
+     40,
+     100,
+     81,
+     38,
+     53,
+     32,
+     17,
+     18,
+     20,
+     21
+    ]
+   }
+  },
+  {
    "phrase": "fried rice",
    "sources": 4,
    "before": 0.0,
    "rise": 4.0,
    "core": 3,
    "posts": [
+    {
+     "name": "Kitchen Sanctuary",
+     "title": "Yeung Chow Fried Rice",
+     "url": "https://www.kitchensanctuary.com/special-fried-rice/",
+     "date": "2026-10-14",
+     "tier": "network"
+    },
     {
      "name": "My Korean Kitchen",
      "title": "Kimchi fried rice is good, but have you tried making it with radish kimchi?",
@@ -1816,13 +1823,6 @@
      "url": "https://www.instagram.com/p/DekmpsjE3e8/",
      "date": "2026-10-16",
      "tier": "core"
-    },
-    {
-     "name": "Kitchen Sanctuary",
-     "title": "Yeung Chow Fried Rice",
-     "url": "https://www.kitchensanctuary.com/special-fried-rice/",
-     "date": "2026-10-14",
-     "tier": "network"
     }
    ],
    "google": {
@@ -1887,103 +1887,6 @@
    }
   },
   {
-   "phrase": "ive ever",
-   "sources": 4,
-   "before": 0.0,
-   "rise": 4.0,
-   "core": 2,
-   "posts": [
-    {
-     "name": "Rainbow Plant Life",
-     "title": "Vegan Green Bean Casserole (best I’ve ever had)",
-     "url": "https://rainbowplantlife.com/vegan-green-bean-casserole/",
-     "date": "2026-10-29",
-     "tier": "network"
-    },
-    {
-     "name": "Simply Recipes",
-     "title": "The Pioneer Woman’s Pecan Pie Is the Best and Easiest Version I’ve Ever Made",
-     "url": "https://www.simplyrecipes.com/ree-drummond-pecan-pie-review-12161374",
-     "date": "2026-10-28",
-     "tier": "network"
-    },
-    {
-     "name": "Molly Baz",
-     "title": "this might be the most random and also most delicious marinade I’ve ever made so I just thought you should know about it ….",
-     "url": "https://www.instagram.com/reel/DfDKTfgzwu9/",
-     "date": "2026-10-28",
-     "tier": "core"
-    },
-    {
-     "name": "Deb Perelman",
-     "title": "APPLE CIDER CARAMELS This is the best candy I’ve ever made, compacting a whole bottle of fresh apple cider into a salt-flecked, cinnamony, b",
-     "url": "https://www.instagram.com/reel/De4lxkFzsXx/",
-     "date": "2026-10-24",
-     "tier": "core"
-    }
-   ],
-   "google": {
-    "label": "Piek",
-    "text": "Zo vaak gezocht als in vijf jaar niet.",
-    "geo": "world",
-    "yoy": 2.34,
-    "weeks": [
-     43,
-     44,
-     41,
-     38,
-     45,
-     45,
-     44,
-     44,
-     45,
-     49,
-     47,
-     44,
-     50,
-     47,
-     49,
-     49,
-     47,
-     44,
-     59,
-     53,
-     49,
-     57,
-     54,
-     54,
-     57,
-     56,
-     57,
-     55,
-     52,
-     62,
-     60,
-     59,
-     55,
-     60,
-     63,
-     63,
-     66,
-     70,
-     72,
-     66,
-     72,
-     73,
-     74,
-     78,
-     83,
-     92,
-     81,
-     84,
-     84,
-     100,
-     92,
-     94
-    ]
-   }
-  },
-  {
    "phrase": "fluffy scrambled eggs",
    "sources": 3,
    "before": 0.0,
@@ -1998,18 +1901,18 @@
      "tier": "core"
     },
     {
-     "name": "Bon Appétit",
-     "title": "Meet soboro don, a Japanese rice bowl loaded with savory ground beef, fluffy scrambled eggs, crunchy veggies, and avocado.",
-     "url": "https://www.instagram.com/p/De7vy3tAbOz/",
-     "date": "2026-10-25",
-     "tier": "core"
-    },
-    {
      "name": "Simply Recipes",
      "title": "How To Cook Fluffy Scrambled Eggs Every Time, According to an Egg Farmer",
      "url": "https://www.simplyrecipes.com/how-to-cook-the-fluffiest-scrambled-eggs-egg-farmer-12152518",
      "date": "2026-10-23",
      "tier": "network"
+    },
+    {
+     "name": "Bon Appétit",
+     "title": "Meet soboro don, a Japanese rice bowl loaded with savory ground beef, fluffy scrambled eggs, crunchy veggies, and avocado.",
+     "url": "https://www.instagram.com/p/De7vy3tAbOz/",
+     "date": "2026-10-25",
+     "tier": "core"
     }
    ],
    "google": {
@@ -2081,18 +1984,18 @@
    "core": 1,
    "posts": [
     {
-     "name": "I Am A Food Blog",
-     "title": "Easy Green Bean Casserole From Scratch",
-     "url": "https://iamafoodblog.com/green-bean-casserole/",
-     "date": "2026-11-03",
-     "tier": "core"
-    },
-    {
      "name": "Simply Recipes",
      "title": "The 1-Ingredient Upgrade for Better Green Bean Casserole",
      "url": "https://www.simplyrecipes.com/one-ingredient-upgrade-green-bean-casserole-11879433",
      "date": "2026-11-03",
      "tier": "network"
+    },
+    {
+     "name": "I Am A Food Blog",
+     "title": "Easy Green Bean Casserole From Scratch",
+     "url": "https://iamafoodblog.com/green-bean-casserole/",
+     "date": "2026-11-03",
+     "tier": "core"
     },
     {
      "name": "Rainbow Plant Life",
@@ -2254,96 +2157,6 @@
    }
   },
   {
-   "phrase": "cook in november",
-   "sources": 3,
-   "before": 0.0,
-   "rise": 3.0,
-   "core": 0,
-   "posts": [
-    {
-     "name": "Ambitious Kitchen",
-     "title": "30 Seasonal Recipes to Cook in November",
-     "url": "https://www.ambitiouskitchen.com/comforting-recipes-to-cook-in-november/",
-     "date": "2026-10-31",
-     "tier": "network"
-    },
-    {
-     "name": "Downshiftology",
-     "title": "What To Cook In November",
-     "url": "https://downshiftology.com/what-to-cook-in-november/",
-     "date": "2026-10-30",
-     "tier": "network"
-    },
-    {
-     "name": "Half Baked Harvest",
-     "title": "30 Recipes to Cook in November 2026.",
-     "url": "https://www.halfbakedharvest.com/30-recipes-to-cook-in-november-2026/",
-     "date": "2026-10-28",
-     "tier": "network"
-    }
-   ],
-   "google": {
-    "label": "Dalend",
-    "text": "Half zo vaak gezocht als vorig jaar.",
-    "geo": "world",
-    "yoy": 0.55,
-    "weeks": [
-     53,
-     46,
-     56,
-     100,
-     36,
-     12,
-     8,
-     5,
-     4,
-     5,
-     6,
-     8,
-     11,
-     12,
-     6,
-     10,
-     8,
-     8,
-     8,
-     15,
-     10,
-     12,
-     12,
-     7,
-     9,
-     11,
-     16,
-     16,
-     12,
-     13,
-     12,
-     13,
-     15,
-     12,
-     10,
-     12,
-     9,
-     10,
-     9,
-     7,
-     7,
-     7,
-     9,
-     10,
-     12,
-     16,
-     21,
-     11,
-     6,
-     5,
-     4,
-     6
-    ]
-   }
-  },
-  {
    "phrase": "brussels sprouts",
    "sources": 3,
    "before": 0.0,
@@ -2430,6 +2243,96 @@
      12,
      11,
      11
+    ]
+   }
+  },
+  {
+   "phrase": "cook in november",
+   "sources": 3,
+   "before": 0.0,
+   "rise": 3.0,
+   "core": 0,
+   "posts": [
+    {
+     "name": "Ambitious Kitchen",
+     "title": "30 Seasonal Recipes to Cook in November",
+     "url": "https://www.ambitiouskitchen.com/comforting-recipes-to-cook-in-november/",
+     "date": "2026-10-31",
+     "tier": "network"
+    },
+    {
+     "name": "Downshiftology",
+     "title": "What To Cook In November",
+     "url": "https://downshiftology.com/what-to-cook-in-november/",
+     "date": "2026-10-30",
+     "tier": "network"
+    },
+    {
+     "name": "Half Baked Harvest",
+     "title": "30 Recipes to Cook in November 2026.",
+     "url": "https://www.halfbakedharvest.com/30-recipes-to-cook-in-november-2026/",
+     "date": "2026-10-28",
+     "tier": "network"
+    }
+   ],
+   "google": {
+    "label": "Dalend",
+    "text": "Half zo vaak gezocht als vorig jaar.",
+    "geo": "world",
+    "yoy": 0.55,
+    "weeks": [
+     53,
+     46,
+     56,
+     100,
+     36,
+     12,
+     8,
+     5,
+     4,
+     5,
+     6,
+     8,
+     11,
+     12,
+     6,
+     10,
+     8,
+     8,
+     8,
+     15,
+     10,
+     12,
+     12,
+     7,
+     9,
+     11,
+     16,
+     16,
+     12,
+     13,
+     12,
+     13,
+     15,
+     12,
+     10,
+     12,
+     9,
+     10,
+     9,
+     7,
+     7,
+     7,
+     9,
+     10,
+     12,
+     16,
+     21,
+     11,
+     6,
+     5,
+     4,
+     6
     ]
    }
   },
@@ -2524,96 +2427,6 @@
    }
   },
   {
-   "phrase": "pumpkin pasta",
-   "sources": 3,
-   "before": 0.0,
-   "rise": 3.0,
-   "core": 1,
-   "posts": [
-    {
-     "name": "Bon Appétit",
-     "title": "Creamy Pumpkin Pasta",
-     "url": "https://www.bonappetit.com/recipe/creamy-pumpkin-pasta",
-     "date": "2026-10-28",
-     "tier": "core"
-    },
-    {
-     "name": "Fit Foodie Finds",
-     "title": "Creamy Cottage Cheese Pumpkin Pasta",
-     "url": "https://fitfoodiefinds.com/cottage-cheese-pumpkin-pasta/?adt_ei={{ subscriber.email_address }}",
-     "date": "2026-10-11",
-     "tier": "network"
-    },
-    {
-     "name": "The Clever Carrot",
-     "title": "Sourdough Pumpkin Pasta From Scratch",
-     "url": "https://www.theclevercarrot.com/2026/10/sourdough-pumpkin-pasta-from-scratch/",
-     "date": "2026-10-10",
-     "tier": "network"
-    }
-   ],
-   "google": {
-    "label": "Seizoen",
-    "text": "Elk najaar terug: nu vier keer zo vaak gezocht als in het voorjaar.",
-    "geo": "world",
-    "yoy": 0.96,
-    "weeks": [
-     72,
-     63,
-     54,
-     48,
-     37,
-     30,
-     28,
-     25,
-     27,
-     27,
-     23,
-     23,
-     23,
-     22,
-     29,
-     35,
-     24,
-     20,
-     23,
-     20,
-     23,
-     23,
-     26,
-     26,
-     26,
-     25,
-     30,
-     27,
-     31,
-     25,
-     30,
-     32,
-     24,
-     24,
-     27,
-     22,
-     24,
-     23,
-     22,
-     23,
-     27,
-     29,
-     29,
-     42,
-     47,
-     57,
-     70,
-     77,
-     77,
-     82,
-     82,
-     98
-    ]
-   }
-  },
-  {
    "phrase": "caramel apple",
    "sources": 3,
    "before": 0.0,
@@ -2700,6 +2513,96 @@
      64,
      73,
      87
+    ]
+   }
+  },
+  {
+   "phrase": "pumpkin pasta",
+   "sources": 3,
+   "before": 0.0,
+   "rise": 3.0,
+   "core": 1,
+   "posts": [
+    {
+     "name": "Bon Appétit",
+     "title": "Creamy Pumpkin Pasta",
+     "url": "https://www.bonappetit.com/recipe/creamy-pumpkin-pasta",
+     "date": "2026-10-28",
+     "tier": "core"
+    },
+    {
+     "name": "Fit Foodie Finds",
+     "title": "Creamy Cottage Cheese Pumpkin Pasta",
+     "url": "https://fitfoodiefinds.com/cottage-cheese-pumpkin-pasta/?adt_ei={{ subscriber.email_address }}",
+     "date": "2026-10-11",
+     "tier": "network"
+    },
+    {
+     "name": "The Clever Carrot",
+     "title": "Sourdough Pumpkin Pasta From Scratch",
+     "url": "https://www.theclevercarrot.com/2026/10/sourdough-pumpkin-pasta-from-scratch/",
+     "date": "2026-10-10",
+     "tier": "network"
+    }
+   ],
+   "google": {
+    "label": "Seizoen",
+    "text": "Elk najaar terug: nu vier keer zo vaak gezocht als in het voorjaar.",
+    "geo": "world",
+    "yoy": 0.96,
+    "weeks": [
+     72,
+     63,
+     54,
+     48,
+     37,
+     30,
+     28,
+     25,
+     27,
+     27,
+     23,
+     23,
+     23,
+     22,
+     29,
+     35,
+     24,
+     20,
+     23,
+     20,
+     23,
+     23,
+     26,
+     26,
+     26,
+     25,
+     30,
+     27,
+     31,
+     25,
+     30,
+     32,
+     24,
+     24,
+     27,
+     22,
+     24,
+     23,
+     22,
+     23,
+     27,
+     29,
+     29,
+     42,
+     47,
+     57,
+     70,
+     77,
+     77,
+     82,
+     82,
+     98
     ]
    }
   },
@@ -2884,182 +2787,182 @@
    }
   },
   {
-   "phrase": "almost years",
-   "sources": 3,
-   "before": 0.0,
-   "rise": 3.0,
-   "core": 2,
-   "posts": [
-    {
-     "name": "Felicity Cloake",
-     "title": "Friday was pieday — first pie n mash for almost 20 years in the company of my old mucker from Penpusher days, the poet and pie aficionado ti",
-     "url": "https://www.instagram.com/p/DfPeHvmiLtB/",
-     "date": "2026-11-02",
-     "tier": "core"
-    },
-    {
-     "name": "Food & Wine",
-     "title": "I Was a Chef Who Couldn’t Bake for Almost 10 Years, but This Simple Bread Kit Turned Me Into a Sourdough Pro",
-     "url": "https://www.foodandwine.com/nordic-ware-bread-baking-kit-review-12196374",
-     "date": "2026-10-28",
-     "tier": "network"
-    },
-    {
-     "name": "RecipeTin Eats",
-     "title": "A little appreciation post for JB jb_recipetin , who’s been with us almost 6 years!!",
-     "url": "https://www.instagram.com/p/DeVMeqCExK9/",
-     "date": "2026-10-10",
-     "tier": "core"
-    }
-   ],
-   "google": {
-    "label": "Stijgt",
-    "text": "Twee keer zo vaak gezocht als vorig jaar.",
-    "geo": "world",
-    "yoy": 2.07,
-    "weeks": [
-     32,
-     33,
-     34,
-     26,
-     40,
-     37,
-     39,
-     26,
-     29,
-     36,
-     43,
-     43,
-     54,
-     53,
-     48,
-     51,
-     60,
-     54,
-     55,
-     51,
-     59,
-     83,
-     64,
-     69,
-     64,
-     62,
-     68,
-     75,
-     96,
-     100,
-     78,
-     72,
-     75,
-     73,
-     60,
-     70,
-     62,
-     78,
-     61,
-     56,
-     55,
-     55,
-     59,
-     65,
-     65,
-     79,
-     88,
-     72,
-     67,
-     64,
-     59,
-     62
-    ]
-   }
-  },
-  {
-   "phrase": "test kitchen",
+   "phrase": "crispy skin",
    "sources": 3,
    "before": 0.0,
    "rise": 3.0,
    "core": 3,
    "posts": [
     {
-     "name": "Bon Appétit",
-     "title": "Ever wondered what it’s like inside the Bon Appétit Test Kitchen?",
-     "url": "https://www.instagram.com/p/DfQeSFkFruv/",
-     "date": "2026-11-02",
+     "name": "Just One Cookbook",
+     "title": "Easy Yuzu Kosho Chicken with Crispy Skin!",
+     "url": "https://www.instagram.com/p/DfQl_uLmPPa/",
+     "date": "2026-11-03",
      "tier": "core"
     },
     {
-     "name": "Food52",
-     "title": "A country ham from bentonsbacon made its way into the Test Kitchen, where noahtanen cooks it with red-eye gravy and serves it with grits, bi",
-     "url": "https://www.instagram.com/reel/DfNLFlsDHvC/",
-     "date": "2026-11-01",
+     "name": "Sabrina Ghayour",
+     "title": "Dinner lately (on repeat) Roast chicken with crispy skin and a good Caesar salad and a decent baguette on the side from birleybakery Can’t s",
+     "url": "https://www.instagram.com/p/DfAVjRHIIDW/",
+     "date": "2026-10-27",
      "tier": "core"
     },
     {
-     "name": "Ottolenghi",
-     "title": "We invited nataliechassay (aka Queen of Salads) into the Test Kitchen to make one of our favourite salads from SIMPLE TOO: a bavette steak s",
-     "url": "https://www.instagram.com/reel/DfC3W6Svnu5/",
-     "date": "2026-10-28",
+     "name": "Omnivore's Cookbook",
+     "title": "Crispy skin, juicy chicken, and a glossy homemade teriyaki glaze 🍗✨",
+     "url": "https://www.instagram.com/reel/DeeiE8VNCGY/",
+     "date": "2026-10-14",
      "tier": "core"
     }
    ],
    "google": {
-    "label": "Dalend",
-    "text": "Een derde minder gezocht dan vorig jaar.",
+    "label": "Stabiel",
+    "text": "Iets vaker gezocht dan vorig jaar.",
     "geo": "world",
-    "yoy": 0.66,
+    "yoy": 1.18,
     "weeks": [
-     44,
+     34,
+     38,
      46,
-     58,
-     73,
-     53,
-     48,
-     52,
-     51,
-     45,
-     42,
-     46,
-     47,
-     48,
-     47,
-     56,
-     73,
-     62,
-     50,
-     48,
-     46,
-     54,
-     67,
-     74,
-     76,
-     58,
-     77,
-     96,
      100,
-     68,
-     70,
-     72,
-     72,
-     86,
-     86,
-     58,
-     52,
-     40,
-     48,
-     47,
-     40,
-     42,
-     45,
+     36,
+     35,
+     38,
+     57,
+     43,
      39,
-     47,
-     45,
-     58,
-     69,
+     39,
+     38,
+     36,
+     38,
+     39,
+     40,
+     40,
+     39,
+     44,
      41,
-     31,
-     27,
-     23,
-     24
+     44,
+     54,
+     57,
+     59,
+     49,
+     48,
+     56,
+     66,
+     63,
+     54,
+     56,
+     60,
+     57,
+     49,
+     45,
+     41,
+     36,
+     43,
+     46,
+     45,
+     51,
+     43,
+     39,
+     50,
+     47,
+     46,
+     56,
+     48,
+     39,
+     43,
+     40,
+     39
+    ]
+   }
+  },
+  {
+   "phrase": "chili crisp",
+   "sources": 3,
+   "before": 0.0,
+   "rise": 3.0,
+   "core": 3,
+   "posts": [
+    {
+     "name": "Epicurious",
+     "title": "Chili Crisp Yogurt Chicken",
+     "url": "https://www.epicurious.com/recipes/food/views/ba-syn-chili-crisp-yogurt-chicken",
+     "date": "2026-10-20",
+     "tier": "core"
+    },
+    {
+     "name": "Food52",
+     "title": "How to Turn Leftover Pumpkin Seeds Into Chili Crisp",
+     "url": "https://www.youtube.com/shorts/TGGTH0tC2zA",
+     "date": "2026-10-16",
+     "tier": "core"
+    },
+    {
+     "name": "Bon Appétit",
+     "title": "rebeccafirkser's Chili Crisp Yogurt Chicken puts your favorite jarred chili crisp to work and turns yesterday’s leftover rice into pure gold",
+     "url": "https://www.instagram.com/p/DfFgGyNAeKg/",
+     "date": "2026-10-29",
+     "tier": "core"
+    }
+   ],
+   "google": {
+    "label": "Stabiel",
+    "text": "Iets vaker gezocht dan vorig jaar.",
+    "geo": "world",
+    "yoy": 1.18,
+    "weeks": [
+     42,
+     40,
+     43,
+     39,
+     42,
+     46,
+     41,
+     42,
+     53,
+     61,
+     57,
+     57,
+     54,
+     55,
+     52,
+     61,
+     59,
+     61,
+     64,
+     60,
+     67,
+     71,
+     66,
+     69,
+     69,
+     64,
+     73,
+     83,
+     83,
+     89,
+     100,
+     81,
+     78,
+     70,
+     56,
+     54,
+     55,
+     61,
+     61,
+     56,
+     61,
+     52,
+     54,
+     62,
+     53,
+     61,
+     61,
+     56,
+     49,
+     43,
+     46,
+     52
     ]
    }
   },
@@ -3154,186 +3057,6 @@
    }
   },
   {
-   "phrase": "chili crisp",
-   "sources": 3,
-   "before": 0.0,
-   "rise": 3.0,
-   "core": 3,
-   "posts": [
-    {
-     "name": "Bon Appétit",
-     "title": "rebeccafirkser's Chili Crisp Yogurt Chicken puts your favorite jarred chili crisp to work and turns yesterday’s leftover rice into pure gold",
-     "url": "https://www.instagram.com/p/DfFgGyNAeKg/",
-     "date": "2026-10-29",
-     "tier": "core"
-    },
-    {
-     "name": "Epicurious",
-     "title": "Chili Crisp Yogurt Chicken",
-     "url": "https://www.epicurious.com/recipes/food/views/ba-syn-chili-crisp-yogurt-chicken",
-     "date": "2026-10-20",
-     "tier": "core"
-    },
-    {
-     "name": "Food52",
-     "title": "How to Turn Leftover Pumpkin Seeds Into Chili Crisp",
-     "url": "https://www.youtube.com/shorts/TGGTH0tC2zA",
-     "date": "2026-10-16",
-     "tier": "core"
-    }
-   ],
-   "google": {
-    "label": "Stabiel",
-    "text": "Iets vaker gezocht dan vorig jaar.",
-    "geo": "world",
-    "yoy": 1.18,
-    "weeks": [
-     42,
-     40,
-     43,
-     39,
-     42,
-     46,
-     41,
-     42,
-     53,
-     61,
-     57,
-     57,
-     54,
-     55,
-     52,
-     61,
-     59,
-     61,
-     64,
-     60,
-     67,
-     71,
-     66,
-     69,
-     69,
-     64,
-     73,
-     83,
-     83,
-     89,
-     100,
-     81,
-     78,
-     70,
-     56,
-     54,
-     55,
-     61,
-     61,
-     56,
-     61,
-     52,
-     54,
-     62,
-     53,
-     61,
-     61,
-     56,
-     49,
-     43,
-     46,
-     52
-    ]
-   }
-  },
-  {
-   "phrase": "crispy skin",
-   "sources": 3,
-   "before": 0.0,
-   "rise": 3.0,
-   "core": 3,
-   "posts": [
-    {
-     "name": "Just One Cookbook",
-     "title": "Easy Yuzu Kosho Chicken with Crispy Skin!",
-     "url": "https://www.instagram.com/p/DfQl_uLmPPa/",
-     "date": "2026-11-03",
-     "tier": "core"
-    },
-    {
-     "name": "Sabrina Ghayour",
-     "title": "Dinner lately (on repeat) Roast chicken with crispy skin and a good Caesar salad and a decent baguette on the side from birleybakery Can’t s",
-     "url": "https://www.instagram.com/p/DfAVjRHIIDW/",
-     "date": "2026-10-27",
-     "tier": "core"
-    },
-    {
-     "name": "Omnivore's Cookbook",
-     "title": "Crispy skin, juicy chicken, and a glossy homemade teriyaki glaze 🍗✨",
-     "url": "https://www.instagram.com/reel/DeeiE8VNCGY/",
-     "date": "2026-10-14",
-     "tier": "core"
-    }
-   ],
-   "google": {
-    "label": "Stabiel",
-    "text": "Iets vaker gezocht dan vorig jaar.",
-    "geo": "world",
-    "yoy": 1.18,
-    "weeks": [
-     34,
-     38,
-     46,
-     100,
-     36,
-     35,
-     38,
-     57,
-     43,
-     39,
-     39,
-     38,
-     36,
-     38,
-     39,
-     40,
-     40,
-     39,
-     44,
-     41,
-     44,
-     54,
-     57,
-     59,
-     49,
-     48,
-     56,
-     66,
-     63,
-     54,
-     56,
-     60,
-     57,
-     49,
-     45,
-     41,
-     36,
-     43,
-     46,
-     45,
-     51,
-     43,
-     39,
-     50,
-     47,
-     46,
-     56,
-     48,
-     39,
-     43,
-     40,
-     39
-    ]
-   }
-  },
-  {
    "phrase": "spice cake",
    "sources": 3,
    "before": 0.0,
@@ -3348,18 +3071,18 @@
      "tier": "network"
     },
     {
-     "name": "Brenda Kookt",
-     "title": "PUMPKIN SPICE CAKE 🎃",
-     "url": "https://www.instagram.com/reel/DfH1h-qBICj/",
-     "date": "2026-10-30",
-     "tier": "core"
-    },
-    {
      "name": "Budget Bytes",
      "title": "Apple Spice Cake",
      "url": "https://www.budgetbytes.com/apple-spice-cake/",
      "date": "2026-10-16",
      "tier": "network"
+    },
+    {
+     "name": "Brenda Kookt",
+     "title": "PUMPKIN SPICE CAKE 🎃",
+     "url": "https://www.instagram.com/reel/DfH1h-qBICj/",
+     "date": "2026-10-30",
+     "tier": "core"
     }
    ],
    "google": {
@@ -3514,96 +3237,6 @@
    }
   },
   {
-   "phrase": "heel veel",
-   "sources": 3,
-   "before": 0.0,
-   "rise": 3.0,
-   "core": 2,
-   "posts": [
-    {
-     "name": "Miljuschka",
-     "title": "Het pompoen seizoen is hier 🎃 Mijn moestuin staat er vol mee en dat betekent dat er heel veel pompoen recepten uit mijn keuken vliegen!",
-     "url": "https://www.instagram.com/p/DfKMHi8DA9r/",
-     "date": "2026-10-31",
-     "tier": "core"
-    },
-    {
-     "name": "Uit Pauline's Keuken",
-     "title": "Voor mijn gevoel at ik deze maand heel veel taart en als ik mijn filmrol bekijk, klopt dat ook.",
-     "url": "https://www.instagram.com/p/DfG45Q_iKuv/",
-     "date": "2026-10-30",
-     "tier": "core"
-    },
-    {
-     "name": "Culy",
-     "title": "Een van de bekendste Italiaanse restaurants van Amsterdam krijgt een zusje (met heel veel pasta en wijn)",
-     "url": "https://www.culy.nl/nieuws/het-zusje-van-toscanini-capri-enoteca-e-cucina-opent-binnenkort/",
-     "date": "2026-10-29",
-     "tier": "network"
-    }
-   ],
-   "google": {
-    "label": "Piek",
-    "text": "Zo vaak gezocht als in vijf jaar niet.",
-    "geo": "NL",
-    "yoy": 2.14,
-    "weeks": [
-     50,
-     46,
-     46,
-     42,
-     49,
-     54,
-     42,
-     49,
-     52,
-     55,
-     55,
-     52,
-     53,
-     50,
-     54,
-     48,
-     57,
-     56,
-     57,
-     56,
-     61,
-     54,
-     58,
-     61,
-     57,
-     57,
-     65,
-     60,
-     66,
-     64,
-     73,
-     56,
-     69,
-     68,
-     69,
-     71,
-     70,
-     73,
-     75,
-     78,
-     71,
-     67,
-     72,
-     74,
-     79,
-     91,
-     95,
-     100,
-     87,
-     99,
-     93,
-     97
-    ]
-   }
-  },
-  {
    "phrase": "rice bowl",
    "sources": 3,
    "before": 0.0,
@@ -3611,25 +3244,25 @@
    "core": 2,
    "posts": [
     {
-     "name": "Bon Appétit",
-     "title": "Meet soboro don, a Japanese rice bowl loaded with savory ground beef, fluffy scrambled eggs, crunchy veggies, and avocado.",
-     "url": "https://www.instagram.com/p/De7vy3tAbOz/",
-     "date": "2026-10-25",
-     "tier": "core"
-    },
-    {
-     "name": "I Am A Food Blog",
-     "title": "chat rice bowl has been promoted to soup and now it thinks it’s better than us",
-     "url": "https://www.instagram.com/p/De7nBzBkssv/",
-     "date": "2026-10-25",
-     "tier": "core"
-    },
-    {
      "name": "Okonomi Kitchen",
      "title": "Sansho Au Poivre Chicken Rice Bowl",
      "url": "https://www.okonomikitchen.com/sansho-au-poivre-chicken-rice/",
      "date": "2026-10-22",
      "tier": "network"
+    },
+    {
+     "name": "I Am A Food Blog",
+     "title": "Tiktok Salmon Rice Bowl",
+     "url": "https://iamafoodblog.com/tiktok-salmon-rice-bowl/",
+     "date": "2026-10-21",
+     "tier": "core"
+    },
+    {
+     "name": "Bon Appétit",
+     "title": "Meet soboro don, a Japanese rice bowl loaded with savory ground beef, fluffy scrambled eggs, crunchy veggies, and avocado.",
+     "url": "https://www.instagram.com/p/De7vy3tAbOz/",
+     "date": "2026-10-25",
+     "tier": "core"
     }
    ],
    "google": {
@@ -3690,96 +3323,6 @@
      57,
      63,
      59
-    ]
-   }
-  },
-  {
-   "phrase": "big news",
-   "sources": 3,
-   "before": 0.0,
-   "rise": 3.0,
-   "core": 3,
-   "posts": [
-    {
-     "name": "Gaby Melian",
-     "title": "Big news from Gaby’s Kitchen!",
-     "url": "https://www.instagram.com/reel/Dekct5ntdEh/",
-     "date": "2026-10-16",
-     "tier": "core"
-    },
-    {
-     "name": "Sabrina Ghayour",
-     "title": "BIG NEWS I’m working with waitrose & thedishpatch 😍 Together with chefrickstein michel_roux_jr angelacooking andioliver chefatulkochhar we’v",
-     "url": "https://www.instagram.com/p/Dee3sHniBlR/",
-     "date": "2026-10-14",
-     "tier": "core"
-    },
-    {
-     "name": "The Kitchn",
-     "title": "BIG news.",
-     "url": "https://www.instagram.com/reel/DeR4rBXzdmd/",
-     "date": "2026-10-09",
-     "tier": "core"
-    }
-   ],
-   "google": {
-    "label": "Dalend",
-    "text": "Bijna niet meer gezocht, vergeleken met vorig jaar.",
-    "geo": "world",
-    "yoy": 0.12,
-    "weeks": [
-     64,
-     62,
-     69,
-     80,
-     92,
-     83,
-     57,
-     38,
-     38,
-     36,
-     33,
-     33,
-     34,
-     27,
-     24,
-     24,
-     27,
-     34,
-     31,
-     28,
-     25,
-     28,
-     30,
-     26,
-     22,
-     27,
-     34,
-     31,
-     20,
-     21,
-     22,
-     22,
-     26,
-     31,
-     23,
-     23,
-     18,
-     21,
-     19,
-     16,
-     16,
-     15,
-     16,
-     16,
-     18,
-     22,
-     28,
-     16,
-     11,
-     8,
-     8,
-     7
     ]
    }
   },
@@ -3895,6 +3438,13 @@
      "tier": "network"
     },
     {
+     "name": "Joy the Baker",
+     "title": "The Sunday Five On Math, Rumors, and Banana Bread Syrup | 10.18.26",
+     "url": "https://joythebaker.com/2026/10/the-sunday-five-on-math-rumors-and-banana-bread-syrup-101826/",
+     "date": "2026-10-18",
+     "tier": "network"
+    },
+    {
      "name": "I Am A Food Blog",
      "title": "spoopy scary banana bread latte for your cozy home cafe feels 👀 banana bread syrup recipe link in bio",
      "url": "https://www.instagram.com/p/DfDiey9mT9z/",
@@ -3907,15 +3457,68 @@
      "url": "https://www.instagram.com/reel/De7Z8JbBDfr/",
      "date": "2026-10-25",
      "tier": "core"
-    },
-    {
-     "name": "Joy the Baker",
-     "title": "The Sunday Five On Math, Rumors, and Banana Bread Syrup | 10.18.26",
-     "url": "https://joythebaker.com/2026/10/the-sunday-five-on-math-rumors-and-banana-bread-syrup-101826/",
-     "date": "2026-10-18",
-     "tier": "network"
     }
-   ]
+   ],
+   "google": {
+    "label": "Stabiel",
+    "text": "Even vaak gezocht als vorig jaar.",
+    "geo": "NL",
+    "yoy": 0.92,
+    "weeks": [
+     57,
+     48,
+     47,
+     44,
+     53,
+     60,
+     42,
+     46,
+     48,
+     47,
+     48,
+     59,
+     63,
+     65,
+     96,
+     100,
+     95,
+     50,
+     51,
+     56,
+     58,
+     54,
+     52,
+     49,
+     60,
+     70,
+     56,
+     66,
+     41,
+     47,
+     51,
+     65,
+     70,
+     49,
+     52,
+     53,
+     59,
+     54,
+     71,
+     63,
+     73,
+     55,
+     51,
+     75,
+     82,
+     61,
+     81,
+     60,
+     59,
+     35,
+     47,
+     47
+    ]
+   }
   },
   {
    "phrase": "chicken and rice",
@@ -3945,7 +3548,67 @@
      "date": "2026-10-07",
      "tier": "network"
     }
-   ]
+   ],
+   "google": {
+    "label": "Dalend",
+    "text": "Een kwart minder gezocht dan vorig jaar.",
+    "geo": "NL",
+    "yoy": 0.72,
+    "weeks": [
+     13,
+     17,
+     10,
+     0,
+     21,
+     22,
+     0,
+     13,
+     0,
+     21,
+     15,
+     14,
+     10,
+     20,
+     24,
+     28,
+     19,
+     10,
+     17,
+     13,
+     12,
+     14,
+     10,
+     12,
+     10,
+     16,
+     13,
+     0,
+     13,
+     10,
+     14,
+     15,
+     25,
+     16,
+     19,
+     24,
+     19,
+     15,
+     17,
+     13,
+     20,
+     16,
+     21,
+     100,
+     70,
+     32,
+     45,
+     14,
+     12,
+     0,
+     8,
+     11
+    ]
+   }
   },
   {
    "phrase": "chicken noodle",
@@ -3954,6 +3617,13 @@
    "rise": 2.5,
    "core": 2,
    "posts": [
+    {
+     "name": "Feasting at Home",
+     "title": "Creamy Chicken Noodle Soup",
+     "url": "https://www.feastingathome.com/creamy-chicken-noodle-soup/",
+     "date": "2026-10-14",
+     "tier": "network"
+    },
     {
      "name": "Serious Eats",
      "title": "🥣 We Tested 9 Canned Chicken Noodle Soups—Our winner had tender chicken and a comforting, savory broth.",
@@ -3967,15 +3637,68 @@
      "url": "https://www.instagram.com/p/DesJqHGCUU6/",
      "date": "2026-10-19",
      "tier": "core"
-    },
-    {
-     "name": "Feasting at Home",
-     "title": "Creamy Chicken Noodle Soup",
-     "url": "https://www.feastingathome.com/creamy-chicken-noodle-soup/",
-     "date": "2026-10-14",
-     "tier": "network"
     }
-   ]
+   ],
+   "google": {
+    "label": "Seizoen",
+    "text": "Elk najaar terug: nu twee keer zo vaak gezocht als in de zomer.",
+    "geo": "world",
+    "yoy": 0.98,
+    "weeks": [
+     76,
+     82,
+     70,
+     58,
+     84,
+     76,
+     73,
+     63,
+     87,
+     76,
+     71,
+     88,
+     83,
+     64,
+     58,
+     61,
+     60,
+     52,
+     46,
+     45,
+     45,
+     52,
+     48,
+     52,
+     47,
+     44,
+     46,
+     41,
+     43,
+     38,
+     39,
+     41,
+     34,
+     35,
+     31,
+     30,
+     31,
+     37,
+     34,
+     37,
+     38,
+     40,
+     43,
+     47,
+     53,
+     61,
+     73,
+     68,
+     64,
+     70,
+     71,
+     69
+    ]
+   }
   },
   {
    "phrase": "roast chicken",
@@ -3985,17 +3708,17 @@
    "core": 3,
    "posts": [
     {
-     "name": "Georgina Hayden",
-     "title": "Your new favourite roast chicken",
-     "url": "https://www.instagram.com/reel/DfMQDXExsA8/",
-     "date": "2026-11-01",
-     "tier": "core"
-    },
-    {
      "name": "Serious Eats",
      "title": "Spatchcocked (Butterflied) Roast Chicken Recipe",
      "url": "https://www.seriouseats.com/butterflied-roasted-chicken-with-quick-jus-recipe",
      "date": "2026-10-30",
+     "tier": "core"
+    },
+    {
+     "name": "Georgina Hayden",
+     "title": "Your new favourite roast chicken",
+     "url": "https://www.instagram.com/reel/DfMQDXExsA8/",
+     "date": "2026-11-01",
      "tier": "core"
     },
     {
@@ -4005,7 +3728,67 @@
      "date": "2026-10-28",
      "tier": "core"
     }
-   ]
+   ],
+   "google": {
+    "label": "Dalend",
+    "text": "Nog maar een kwart zo vaak gezocht als vorig jaar.",
+    "geo": "NL",
+    "yoy": 0.27,
+    "weeks": [
+     28,
+     30,
+     30,
+     66,
+     42,
+     51,
+     34,
+     83,
+     31,
+     32,
+     35,
+     28,
+     50,
+     55,
+     66,
+     78,
+     61,
+     26,
+     0,
+     29,
+     38,
+     30,
+     26,
+     40,
+     22,
+     28,
+     22,
+     31,
+     0,
+     0,
+     27,
+     29,
+     25,
+     21,
+     47,
+     52,
+     25,
+     0,
+     25,
+     38,
+     37,
+     45,
+     50,
+     100,
+     74,
+     48,
+     35,
+     29,
+     0,
+     0,
+     14,
+     23
+    ]
+   }
   },
   {
    "phrase": "cream cheese",
@@ -4014,13 +3797,6 @@
    "rise": 2.5,
    "core": 1,
    "posts": [
-    {
-     "name": "Deb Perelman",
-     "title": "I think we deserve cake, a spiced, dreamy, single-layer cozy cake with a generous swoosh of cinnamon cream cheese frosting on top just becau",
-     "url": "https://www.instagram.com/p/DezYdYnlYh-/",
-     "date": "2026-10-22",
-     "tier": "core"
-    },
     {
      "name": "Foxes Love Lemons",
      "title": "Savory Pumpkin Dip With Cream Cheese And Parmesan",
@@ -4034,8 +3810,75 @@
      "url": "https://iowagirleats.com/gluten-free-pumpkin-cake-bars-with-cream-cheese-frosting/",
      "date": "2026-10-07",
      "tier": "network"
+    },
+    {
+     "name": "Deb Perelman",
+     "title": "I think we deserve cake, a spiced, dreamy, single-layer cozy cake with a generous swoosh of cinnamon cream cheese frosting on top just becau",
+     "url": "https://www.instagram.com/p/DezYdYnlYh-/",
+     "date": "2026-10-22",
+     "tier": "core"
     }
-   ]
+   ],
+   "google": {
+    "label": "Stabiel",
+    "text": "Even vaak gezocht als vorig jaar.",
+    "geo": "NL",
+    "yoy": 0.97,
+    "weeks": [
+     46,
+     32,
+     34,
+     38,
+     49,
+     45,
+     55,
+     70,
+     43,
+     42,
+     48,
+     44,
+     46,
+     49,
+     67,
+     67,
+     57,
+     45,
+     45,
+     53,
+     40,
+     52,
+     44,
+     32,
+     30,
+     32,
+     36,
+     32,
+     32,
+     32,
+     37,
+     39,
+     43,
+     38,
+     53,
+     54,
+     41,
+     42,
+     41,
+     49,
+     51,
+     32,
+     32,
+     100,
+     86,
+     57,
+     58,
+     35,
+     33,
+     33,
+     37,
+     36
+    ]
+   }
   },
   {
    "phrase": "instant pot",
@@ -4045,13 +3888,6 @@
    "core": 2,
    "posts": [
     {
-     "name": "My Korean Kitchen",
-     "title": "Korean braised short ribs usually take hours, but the Instant Pot makes things so much easier!",
-     "url": "https://www.instagram.com/p/DfPeKSWgT2N/",
-     "date": "2026-11-02",
-     "tier": "core"
-    },
-    {
      "name": "Natasha's Kitchen",
      "title": "Instant Pot Chili That Tastes Like It Simmered All Day ⏰",
      "url": "https://natashaskitchen.com/instant-pot-chili/?adt_ei={{ subscriber.email_address }}",
@@ -4060,9 +3896,16 @@
     },
     {
      "name": "Omnivore's Cookbook",
-     "title": "These Instant Pot chicken meatballs are juicy, tender, and packed with savory flavor from shiitake mushrooms, green onions, and rich oyster",
-     "url": "https://www.instagram.com/p/De9-8S1CXKi/",
-     "date": "2026-10-26",
+     "title": "Instant Pot Meatballs (Chinese Style)",
+     "url": "https://omnivorescookbook.com/instant-pot-meatballs/",
+     "date": "2026-10-14",
+     "tier": "core"
+    },
+    {
+     "name": "My Korean Kitchen",
+     "title": "Korean braised short ribs usually take hours, but the Instant Pot makes things so much easier!",
+     "url": "https://www.instagram.com/p/DfPeKSWgT2N/",
+     "date": "2026-11-02",
      "tier": "core"
     }
    ]
@@ -4074,13 +3917,6 @@
    "rise": 2.5,
    "core": 2,
    "posts": [
-    {
-     "name": "My Korean Kitchen",
-     "title": "Korean braised short ribs usually take hours, but the Instant Pot makes things so much easier!",
-     "url": "https://www.instagram.com/p/DfPeKSWgT2N/",
-     "date": "2026-11-02",
-     "tier": "core"
-    },
     {
      "name": "Red House Spice",
      "title": "Tomato Braised Beef Short Ribs (番茄炖牛小排)",
@@ -4094,36 +3930,43 @@
      "url": "https://www.foodandwine.com/recipes/soy-braised-short-ribs",
      "date": "2026-10-20",
      "tier": "network"
+    },
+    {
+     "name": "My Korean Kitchen",
+     "title": "Korean braised short ribs usually take hours, but the Instant Pot makes things so much easier!",
+     "url": "https://www.instagram.com/p/DfPeKSWgT2N/",
+     "date": "2026-11-02",
+     "tier": "core"
     }
    ]
   },
   {
-   "phrase": "pecan pie",
+   "phrase": "bean soup",
    "sources": 3,
    "before": 0.5,
    "rise": 2.5,
-   "core": 0,
+   "core": 1,
    "posts": [
     {
-     "name": "Simply Recipes",
-     "title": "The Best Pecan Pie",
-     "url": "https://www.simplyrecipes.com/recipes/pecan_pie/",
-     "date": "2026-10-29",
+     "name": "The Mediterranean Dish",
+     "title": "Easy Black Bean Soup (35 Minute Recipe)",
+     "url": "https://www.themediterraneandish.com/black-bean-soup/",
+     "date": "2026-11-02",
      "tier": "network"
     },
     {
-     "name": "Kitchen Sanctuary",
-     "title": "Pecan Pie",
-     "url": "https://www.kitchensanctuary.com/pecan-pie/",
-     "date": "2026-10-27",
+     "name": "Budget Bytes",
+     "title": "Ham and Bean Soup",
+     "url": "https://www.budgetbytes.com/chunky-ham-and-bean-soup/",
+     "date": "2026-10-28",
      "tier": "network"
     },
     {
-     "name": "Lazy Cat Kitchen",
-     "title": "Vegan pecan pie bars",
-     "url": "https://www.lazycatkitchen.com/vegan-pecan-pie-bars/",
-     "date": "2026-10-24",
-     "tier": "network"
+     "name": "Omnivore's Cookbook",
+     "title": "Red Bean Soup (红豆汤)",
+     "url": "https://omnivorescookbook.com/red-bean-soup/",
+     "date": "2026-10-15",
+     "tier": "core"
     }
    ]
   },
@@ -4158,32 +4001,32 @@
    ]
   },
   {
-   "phrase": "bean soup",
+   "phrase": "pecan pie",
    "sources": 3,
    "before": 0.5,
    "rise": 2.5,
-   "core": 1,
+   "core": 0,
    "posts": [
     {
-     "name": "The Mediterranean Dish",
-     "title": "Easy Black Bean Soup (35 Minute Recipe)",
-     "url": "https://www.themediterraneandish.com/black-bean-soup/",
-     "date": "2026-11-02",
+     "name": "Simply Recipes",
+     "title": "The Best Pecan Pie",
+     "url": "https://www.simplyrecipes.com/recipes/pecan_pie/",
+     "date": "2026-10-29",
      "tier": "network"
     },
     {
-     "name": "Budget Bytes",
-     "title": "Ham and Bean Soup",
-     "url": "https://www.budgetbytes.com/chunky-ham-and-bean-soup/",
-     "date": "2026-10-28",
+     "name": "Kitchen Sanctuary",
+     "title": "Pecan Pie",
+     "url": "https://www.kitchensanctuary.com/pecan-pie/",
+     "date": "2026-10-27",
      "tier": "network"
     },
     {
-     "name": "Omnivore's Cookbook",
-     "title": "Cozy up with a comforting bowl of Chinese Red Bean Soup!",
-     "url": "https://www.instagram.com/p/De7LmiaFNOc/",
-     "date": "2026-10-25",
-     "tier": "core"
+     "name": "Lazy Cat Kitchen",
+     "title": "Vegan pecan pie bars",
+     "url": "https://www.lazycatkitchen.com/vegan-pecan-pie-bars/",
+     "date": "2026-10-24",
+     "tier": "network"
     }
    ]
   },
@@ -4262,18 +4105,18 @@
      "tier": "network"
     },
     {
-     "name": "I Am A Food Blog",
-     "title": "these homemade stuffed chocolate chip cookies were the one time mike was actually right when he was like \"we have dubai chocolate at home\" l",
-     "url": "https://www.instagram.com/p/De2sBvFD083/",
-     "date": "2026-10-23",
-     "tier": "core"
-    },
-    {
      "name": "Once Upon a Chef",
      "title": "Tahini Chocolate Chip Cookies",
      "url": "https://www.onceuponachef.com/recipes/tahini-chocolate-chip-cookies.html",
      "date": "2026-10-18",
      "tier": "network"
+    },
+    {
+     "name": "I Am A Food Blog",
+     "title": "these homemade stuffed chocolate chip cookies were the one time mike was actually right when he was like \"we have dubai chocolate at home\" l",
+     "url": "https://www.instagram.com/p/De2sBvFD083/",
+     "date": "2026-10-23",
+     "tier": "core"
     }
    ]
   },
@@ -4285,17 +4128,17 @@
    "core": 3,
    "posts": [
     {
-     "name": "Deb Perelman",
-     "title": "Chickpeas, sausage, and kale simmered in a spicy tomato sauce then finished with melted and blistered mozzarella and pecorino, and scooped o",
-     "url": "https://www.instagram.com/p/DfNPfwtCV2h/",
-     "date": "2026-11-01",
-     "tier": "core"
-    },
-    {
      "name": "Serious Eats",
      "title": "For Richer Stews, More Flavorful Tomato Sauce, and Fragrant Rice, Add This Familiar Baking Spice",
      "url": "https://www.seriouseats.com/how-to-cook-with-cinnamon-12189115",
      "date": "2026-10-26",
+     "tier": "core"
+    },
+    {
+     "name": "Deb Perelman",
+     "title": "Chickpeas, sausage, and kale simmered in a spicy tomato sauce then finished with melted and blistered mozzarella and pecorino, and scooped o",
+     "url": "https://www.instagram.com/p/DfNPfwtCV2h/",
+     "date": "2026-11-01",
      "tier": "core"
     },
     {
@@ -4322,18 +4165,18 @@
      "tier": "network"
     },
     {
-     "name": "Deb Perelman",
-     "title": "APPLE CIDER CARAMELS This is the best candy I’ve ever made, compacting a whole bottle of fresh apple cider into a salt-flecked, cinnamony, b",
-     "url": "https://www.instagram.com/reel/De4lxkFzsXx/",
-     "date": "2026-10-24",
-     "tier": "core"
-    },
-    {
      "name": "Love and Lemons",
      "title": "Apple Cider Margarita",
      "url": "https://www.loveandlemons.com/apple-cider-margarita/",
      "date": "2026-10-22",
      "tier": "network"
+    },
+    {
+     "name": "Deb Perelman",
+     "title": "APPLE CIDER CARAMELS This is the best candy I’ve ever made, compacting a whole bottle of fresh apple cider into a salt-flecked, cinnamony, b",
+     "url": "https://www.instagram.com/reel/De4lxkFzsXx/",
+     "date": "2026-10-24",
+     "tier": "core"
     }
    ]
   }
