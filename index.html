@@ -1248,6 +1248,41 @@ footer { margin-top: 96px; }
   // woorden die in ingrediënten wel staan maar niets zeggen over het gerecht
   const STOP = new Set("een het de en of in op met van voor naar uit tot aan bij om als zonder plus liefst ca extra vers verse fijn fijngesneden fijngehakt gehakt geraspt gesneden ringetjes reepjes stukken stukjes partjes blokjes plakjes gekookte gekookt gebakken grote kleine grof dun dunne half halve heel hele snufje naar smaak koud koude warm warme dag oud oude diepvries".split(" "));
   const words = (s) => norm(s).split(/[^a-z0-9぀-ヿ㐀-鿿가-힯-]+/).map((w) => w.replace(/^-+|-+$/g, "")).filter((w) => w.length > 2 && !STOP.has(w));
+  // Hoofdingrediënten: waar een gerecht om draait. Zout, peper, olie, bouillon, knoflook en kruiden staan er niet in.
+  // Telt als het in de titel of dek staat, of als er minstens 100 g/ml of hele stuks van in gaan (wat tussen haakjes staat
+  // telt niet: "dumplings (kip of groente)"). true = alleen als het in de titel zelf staat.
+  const MAINS = [
+    ["zoete aardappel", /zoete aardappel/], ["aardappel", /aardappel/], ["gehakt", /(runder|varkens|kip|lams|half-om-half)gehakt|gehaktbal/],
+    ["kip", /kip/], ["worst", /worst|salsiccia|chorizo/], ["spek", /\bspek|pancetta/], ["garnalen", /garnal/], ["zalm", /zalm/],
+    ["vis", /kabeljauw|schelvis|makreel|tonijn|\bvis\b/], ["tofu", /tofu/], ["ei", /\bei\b|\beieren\b/], ["rijst", /\brijst\b/],
+    ["noedels", /noedel|udon|ramen\b|soba\b/], ["pasta", /\bpasta\b|spaghetti|penne|rigatoni|orzo|macaroni|tagliatelle/],
+    ["dumplings", /dumpling|gyoza/], ["pompoen", /pompoen|butternut|kabocha/], ["boerenkool", /boerenkool/], ["bloemkool", /bloemkool/],
+    ["spruitjes", /spruit/], ["kool", /\bkool\b|spitskool|savooiekool|chinese kool|cabbage/], ["paksoi", /paksoi/], ["spinazie", /spinazie/],
+    ["broccoli", /broccoli/], ["prei", /\bprei/], ["wortel", /wortel|winterpeen|\bpeen\b/], ["paddenstoelen", /champignon|paddenstoel|shiitake|oesterzwam/],
+    ["doperwten", /doperwt/], ["kikkererwten", /kikkererwt/], ["bonen", /bonen\b/], ["linzen", /linzen/], ["kimchi", /kimchi/],
+    ["cottage cheese", /cottage cheese/], ["chocolade", /chocola/],
+    ["tomaat", /tomaat|tomaten/, true], ["kaas", /kaas/, true], ["kokos", /kokos/, true], ["appel", /\bappel/, true], ["banaan", /banaan|bananen/, true],
+  ];
+  function mainsIn(text, titleOnlyToo) {
+    let t = " " + norm(text).replace(/\([^)]*\)/g, " ").replace(/[a-z-]*bouillon/g, " ").replace(/kippen-\s/g, " ") + " ";
+    const out = [];
+    for (const [label, re, titleOnly] of MAINS) {
+      if (titleOnly && !titleOnlyToo) continue;
+      if (re.test(t)) { out.push(label); t = t.replace(new RegExp(re.source, "g"), " "); }
+    }
+    return out;
+  }
+  function mainsOf(r) {
+    const found = new Set([...mainsIn(r.title, true), ...mainsIn(r.dek || "", false)]);
+    for (const i of r.ingredients || []) {
+      const item = norm(i.item);
+      const big = (i.unit === "g" || i.unit === "ml") ? i.qty >= 100
+        : !i.unit && i.qty && !/handje|snuf|teen|takje|blaadje|scheut|vel\b/.test(item);
+      if (!big) continue;
+      for (const m of mainsIn(item, false)) if (m !== "ei" || i.qty >= 2) found.add(m);
+    }
+    return found;
+  }
   function indexItems() {
     const items = [];
     for (const ed of state.editions) {
@@ -1256,7 +1291,7 @@ footer { margin-top: 96px; }
         tags: (r.tags || []).map(norm), category: norm(r.category),
         ings: (r.ingredients || []).map((i) => ({ text: norm(i.item), label: i.item })),
         fields: [[norm(r.title), 6], [norm([r.native, r.roman, r.glyph].join(" ")), 5], [norm((r.tags || []).join(" ") + " " + r.category), 4], [norm((r.ingredients || []).map((i) => i.item).join(" ")), 3], [norm([r.dek, r.trend?.text, r.spark?.text, r.spark?.label, r.signal?.text].join(" ")), 2], [norm((r.steps || []).join(" ") + " " + (r.tip || "")), 1]],
-        keys: new Set(words((r.ingredients || []).map((i) => i.item).join(" "))),
+        mains: mainsOf(r),
       });
       const f = ed.ferment;
       if (f) items.push({
@@ -1275,10 +1310,11 @@ footer { margin-top: 96px; }
     const all = state.index || (state.index = indexItems());
     const me = all.find((x) => x.r === r);
     const scored = all.filter((x) => x.kind === "recipe" && x.r !== r).map((x) => {
-      const sharedIng = [...x.keys].filter((k) => me.keys.has(k));
+      // Eerst gerechten met hetzelfde hoofdingrediënt; anders lijken ze op elkaar in tags of soort gerecht (zonder uitlegregel).
+      const shared = [...x.mains].filter((k) => me.mains.has(k));
       const sharedTags = x.tags.filter((t) => me.tags.includes(t));
-      const score = sharedIng.length * 3 + sharedTags.length * 2 + (x.category === me.category ? 1 : 0) + (x.ed !== r._edition ? 0.5 : 0);
-      const reason = sharedIng.length ? "Ook met " + sharedIng.slice(0, 2).join(" en ") : sharedTags.length ? "Ook " + (x.r.tags.find((t) => norm(t) === sharedTags[0]) || "").toLowerCase() : "Ook " + (x.r.category || "").toLowerCase();
+      const score = shared.length * 4 + sharedTags.length + (x.category === me.category ? 1 : 0) + (x.ed !== r._edition ? 0.5 : 0);
+      const reason = shared.length ? "Ook met " + shared.slice(0, 2).join(" en ") : "";
       return { x, score, reason };
     }).filter((s) => s.score > 0).sort((a, b) => b.score - a.score).slice(0, 3);
     if (!scored.length) return null;
@@ -1289,7 +1325,7 @@ footer { margin-top: 96px; }
         h("div", { class: "body" },
           h("span", { class: "mono", text: `Nº ${pad(x.ed.number)} · ${x.minutes} min` }),
           h("strong", { text: x.title }),
-          h("span", { class: "why-rel", text: reason }))))));
+          reason ? h("span", { class: "why-rel", text: reason }) : null)))));
   }
 
   /* ---------- Zoeken ---------- */
