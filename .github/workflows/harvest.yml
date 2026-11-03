@@ -20,6 +20,9 @@ jobs:
       - name: Nieuwe bronnen controleren
         run: python3 scripts/check_sources.py
       - name: Feeds ophalen
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
         run: python3 scripts/harvest.py --google 40
       - name: Opslaan
         run: |

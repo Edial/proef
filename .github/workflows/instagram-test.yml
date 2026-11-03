@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       account:
-        description: "Instagram-account om te testen (zakelijk of creator)"
+        description: "Instagram-account om te testen (zakelijk of creator), of 'bronnen' voor alle handles in data/sources.csv"
         required: false
         default: "thewoksoflife"
 

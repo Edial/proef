@@ -54,7 +54,8 @@ De routine draait elke zaterdag om 06:00. Elke stap kost tokens, en alles wat je
 ## Bronnen
 
 - `data/sources.csv`: alle koks, bloggers en magazines die we volgen. `tier` is `core` (receptbron, met oud-Bon Appétit en delicious. in de kern) of `network` (alleen voor de meting). `python3 scripts/check_sources.py` zoekt nieuwe feeds en zet de status; met `--all` controleer je alles opnieuw (eens per kwartaal).
-- Nieuwe bron toevoegen: een regel met `id`, `name`, `tier`, `affiliation`, `site`, `lang`, `country`, `focus` (en eventueel `youtube` met de @-naam), de rest leeg. Daarna `check_sources.py`.
+- Nieuwe bron toevoegen: een regel met `id`, `name`, `tier`, `affiliation`, `site`, `lang`, `country`, `focus` (en eventueel `youtube` met de @-naam en `instagram` met de gebruikersnaam zonder @), de rest leeg. Daarna `check_sources.py`.
+- **Instagram:** de harvest leest ook de posts van elke bron met een `instagram`-handle, ook als die bron geen werkende feed heeft. Dat werkt alleen voor zakelijke en creator-accounts. Controleren: start de Action *Instagram testen* met `bronnen` als account; een handle met FOUT haal je weg of verbeter je.
 - `data/posts.csv` en `data/buzz.json` maakt `scripts/harvest.py`; niet met de hand bewerken.
 
 ## Velden van een editie

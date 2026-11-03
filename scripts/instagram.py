@@ -14,17 +14,25 @@ Nodig (als omgevingsvariabelen of GitHub-secrets):
 Gebruik:
   python3 scripts/instagram.py check                  controleert token en account
   python3 scripts/instagram.py thewoksoflife          toont de laatste posts van één account
+  python3 scripts/instagram.py bronnen                controleert alle handles in data/sources.csv
 harvest.py gebruikt read() en zet de posts in data/posts.csv met kind=instagram.
+
+Limiet: Business Discovery telt mee in de Platform Rate Limit van Meta (200 calls per uur per gebruiker).
+Eén call per handle per week blijft daar ruim onder.
 """
+import csv
 import datetime as dt
 import json
 import os
+import pathlib
+import re
 import sys
 import time
 import urllib.error
 import urllib.parse
 import urllib.request
 
+ROOT = pathlib.Path(__file__).resolve().parent.parent
 API = "https://graph.facebook.com/v26.0"
 MEDIA = "caption,like_count,comments_count,timestamp,permalink,media_type"
 
@@ -44,14 +52,28 @@ def _get(path, params):
             msg = json.load(e).get("error", {}).get("message", "")
         except Exception:  # noqa: BLE001
             msg = ""
-        raise RuntimeError(f"HTTP {e.code}: {msg}"[:200]) from None
+        err = RateLimited if "limit" in msg.lower() else RuntimeError
+        raise err(f"HTTP {e.code}: {msg}"[:200]) from None
+
+
+class RateLimited(RuntimeError):
+    """Meta zegt: te veel verzoeken. Dan stoppen we voor deze run, de rest van de harvest gaat door."""
 
 
 def title_from(caption):
-    """Eerste regel van het onderschrift, zonder hashtags en mentions: meestal de naam van het gerecht."""
+    """Eerste zin van het onderschrift, zonder hashtags en mentions: meestal de naam van het gerecht.
+    Alleen de eerste zin, zodat lange onderschriften de woordcombinaties in buzz.json niet vervuilen."""
     first = next((line for line in (caption or "").splitlines() if line.strip()), "")
+    first = re.split(r"(?<=[.!?])\s", first.strip(), maxsplit=1)[0]
     words = [w for w in first.split() if not w.startswith(("#", "@"))]
     return " ".join(words)[:140]
+
+
+def handles():
+    """[(bron-id, naam, tier, handle)] voor elke bron in data/sources.csv met een `instagram`-handle."""
+    with (ROOT / "data" / "sources.csv").open(newline="") as f:
+        return [(r["id"], r["name"], r["tier"], r["instagram"].strip().lstrip("@"))
+                for r in csv.DictReader(f) if r.get("instagram", "").strip()]
 
 
 def read(handle, limit=25):
@@ -76,6 +98,23 @@ def main():
     if arg == "check":
         me = _get(os.environ["IG_USER_ID"], {"fields": "username,followers_count,media_count"})
         print(f"OK: verbonden als @{me['username']} ({me.get('followers_count')} volgers, {me.get('media_count')} posts).")
+        return
+    if arg == "bronnen":
+        ok = 0
+        for sid, name, tier, h in handles():
+            try:
+                posts = read(h, 5)
+                last = max((p["published"] for p in posts), default=None)
+                print(f"OK    @{h:28} {tier:7} {posts[0]['followers'] if posts else '-':>9} volgers  laatste {last:%Y-%m-%d}" if last
+                      else f"LEEG  @{h:28} {tier:7} geen posts met onderschrift")
+                ok += 1
+            except RateLimited as e:
+                print(f"LIMIET bereikt bij @{h}: {e}")
+                break
+            except Exception as e:  # noqa: BLE001
+                print(f"FOUT  @{h:28} {tier:7} {sid}: {e}"[:160])
+            time.sleep(0.3)
+        print(f"{ok} van {len(handles())} handles werken.")
         return
     for p in read(arg.lstrip("@"), 10):
         print(f"{p['published']:%Y-%m-%d}  {p['views'] or '–':>7}  {p['title'][:70]}")

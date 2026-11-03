@@ -6,6 +6,10 @@ Buzz: per woordcombinatie (2–3 woorden uit de titels) tellen we hoeveel versch
 afgelopen 30 dagen over publiceerden, tegenover de 60 dagen daarvoor. Eén bron telt één keer, hoe vaak
 die ook post. Draait elke vrijdagnacht als GitHub Action; de routine leest op zaterdag alleen buzz.json.
 
+Instagram: bronnen met een `instagram`-handle worden ook gelezen (scripts/instagram.py, Business Discovery), als
+IG_TOKEN en IG_USER_ID gezet zijn. Dat telt ook voor bronnen zonder werkende feed: die doen dan alleen via
+Instagram mee. Zonder token slaat de harvest Instagram over.
+
 Gebruik: python3 scripts/harvest.py              (alleen feeds)
          python3 scripts/harvest.py --google 15   (plus Google Trends-label voor de 15 grootste stijgers)
 """
@@ -19,6 +23,7 @@ import sys
 import time
 
 import feeds
+import instagram
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SOURCES = ROOT / "data" / "sources.csv"
@@ -39,9 +44,14 @@ lekker lekkere makkelijk makkelijke snel snelle simpel simpele gezond gezonde he
 """.split())
 
 
+def has_feed(src):
+    return src["status"] in ("ok", "stil")
+
+
 def load_sources():
+    ig = instagram.enabled()
     with SOURCES.open(newline="") as f:
-        return [r for r in csv.DictReader(f) if r["status"] in ("ok", "stil")]
+        return [r for r in csv.DictReader(f) if has_feed(r) or (ig and r.get("instagram", "").strip())]
 
 
 def load_posts():
@@ -53,6 +63,8 @@ def load_posts():
 
 def fetch(src):
     out = []
+    if not has_feed(src):
+        return out
     targets = [("site", src["feed"])] if src["feed"] else []
     if src["youtube"].startswith("UC"):
         targets.append(("youtube", feeds.youtube_feed(src["youtube"])))
@@ -62,6 +74,26 @@ def fetch(src):
                 out.append((src, kind, p))
         except Exception as e:  # noqa: BLE001
             print(f"FOUT  {src['name']}: {type(e).__name__}: {e}"[:110], file=sys.stderr)
+    return out
+
+
+def fetch_instagram(sources):
+    """Eén voor één, met een korte pauze: Business Discovery telt mee in de rate limit van Meta."""
+    out, ok, todo = [], 0, [s for s in sources if s.get("instagram", "").strip()]
+    if not instagram.enabled():
+        print("Instagram overgeslagen: IG_TOKEN of IG_USER_ID ontbreekt.")
+        return out
+    for src in todo:
+        try:
+            out += [(src, "instagram", p) for p in instagram.read(src["instagram"].strip().lstrip("@"))]
+            ok += 1
+        except instagram.RateLimited as e:
+            print(f"Instagram: limiet bereikt na {ok} accounts ({e}); de rest volgende week.", file=sys.stderr)
+            break
+        except Exception as e:  # noqa: BLE001
+            print(f"FOUT  {src['name']} (Instagram): {e}"[:110], file=sys.stderr)
+        time.sleep(0.3)
+    print(f"Instagram: {ok} van {len(todo)} accounts gelezen, {len(out)} posts.")
     return out
 
 
@@ -164,12 +196,13 @@ def main():
     sources = load_sources()
     posts = load_posts()
     n0 = len(posts)
-    slow = [s for s in sources if "substack.com" in s["feed"]]  # Substack geeft snel 429: één voor één
+    slow = [s for s in sources if "substack.com" in s["feed"] and has_feed(s)]  # Substack geeft snel 429: één voor één
     with cf.ThreadPoolExecutor(16) as pool:
         results = [x for batch in pool.map(fetch, [s for s in sources if s not in slow]) for x in batch]
     for s in slow:
         results += fetch(s)
         time.sleep(1.5)
+    results += fetch_instagram(sources)
     for src, kind, p in results:
         if not p["published"]:
             continue
