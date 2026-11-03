@@ -109,11 +109,22 @@ def mentions(handle, limit=50):
     """Telt de @namen in de laatste onderschriften van een account, bijvoorbeeld de koks achter een magazine."""
     f = f"business_discovery.username({handle}){{media.limit({limit}){{caption}}}}"
     caps = [x.get("caption") or "" for x in _get(os.environ["IG_USER_ID"], {"fields": f})["business_discovery"]["media"]["data"]]
+    # De API laat het @-teken weg ("where noahtanen cooks it"). Daarom: woorden in kleine letters die als
+    # bezitsvorm staan (noahtanen's) of na by/from/where/with/chef/and, en woorden met een punt, _ of cijfer.
+    pat = re.compile(r"(?:\b(?:by|from|where|with|chef|and|via|of|to|on)\s+([a-z][a-z0-9._]{3,29})\b)"
+                     r"|(?:\b([a-z][a-z0-9._]{3,29})['’]s\b)|(?:@?\b([a-z][a-z0-9]*[._][a-z0-9._]+|[a-z]+\d+[a-z0-9]*)\b)")
+    common = set("""about after again also amazing another around baking because before best better bread brown butter cake
+        cheese chicken chocolate classic coffee cook cooking cream crispy dinner each easy every everyone fall favorite flavor
+        food fresh friends from garlic good great have home into just kitchen like little make making more most much night
+        only other over perfect recipe recipes right salad sauce season simple some soup spicy sugar sweet test that their
+        them then these they thing things this those time today together tomato turkey very week what when where which while
+        with your yours pumpkin apple apples potato potatoes pasta rice thanksgiving holiday holidays cookies pie pies""".split())
     count = {}
     for c in caps:
-        for h in set(re.findall(r"(?<![\w.])@([A-Za-z0-9._]{2,30})", c)):
-            h = h.rstrip(".").lower()
-            count[h] = count.get(h, 0) + 1
+        for m in set(pat.findall(c)):
+            h = next(x for x in m if x).rstrip(".").lower()
+            if h not in common and not h.endswith(("ing", "ed", "ly")):
+                count[h] = count.get(h, 0) + 1
     return len(caps), sorted(count.items(), key=lambda x: -x[1])
 
 
