@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""Maakt de nieuwsbrief van een editie: mail/<id>/index.html plus een sparkline-PNG per recept.
+"""Maakt de nieuwsbrief van een editie: mail/<id>/mail.html (voor Laposta), index.html (webversie op de site)
+en een sparkline-PNG per recept.
 
 Mail-HTML is geen gewone webpagina: alleen tabellen en inline stijlen, geen SVG (Gmail haalt dat weg) en geen
 JavaScript. De sparklines worden daarom PNG's (Pillow), net als het logo (mail/proef-logo.png). Alles wordt
 geladen vanaf de site, dus de map mail/ moet live staan voordat Laposta de mail verstuurt.
 
-Laposta vult de vaste links: /tag/unsubscribe (afmelden) en /tag/web (bekijken in de browser).
+Laposta zet de links /tag/unsubscribe en /tag/web in mail.html om in de afmeld- en webversielink
+(de <lp-…>-tags werken alleen in sjablonen, niet in campagne-inhoud via de API).
 
 Onderwerp en previewtekst staan in de editie: "mail": {"subject": "…", "preview": "…"} (zie REDACTIE.md).
 
@@ -154,11 +156,7 @@ def build(ed, base, subject=None, preview=None):
   {"".join(recipe_block(r, base, mail_url) for r in ed["recipes"])}
   {ferment}
   <tr><td style="padding:6px 0 0;border-top:1px solid {INK};font-family:{SANS};font-size:12.5px;line-height:1.6;color:{MUTED};">
-    <p style="margin:14px 0 0;">Je krijgt deze mail omdat je je hebt aangemeld op <a href="{esc(base)}" style="color:{MUTED};">edial.github.io/proef</a>. Elke zaterdag vijf trending recepten, gemeten met Google Trends en wat koks nu maken.</p>
-    <p style="margin:10px 0 0;font-family:{MONO};font-size:11px;letter-spacing:.08em;text-transform:uppercase;">
-      <a href="http://clients.laposta.nl/tag/unsubscribe" style="color:{INK};">Afmelden</a> &nbsp;·&nbsp;
-      <a href="http://clients.laposta.nl/tag/web" style="color:{INK};">Bekijk in je browser</a> &nbsp;·&nbsp;
-      <a href="{esc(base)}#privacy" style="color:{INK};">Privacy</a></p>
+    @@FOOTER@@
   </td></tr>
 </table>
 </td></tr>
@@ -166,7 +164,18 @@ def build(ed, base, subject=None, preview=None):
 </body>
 </html>
 """
-    (out / "index.html").write_text(page)
+    small = f'font-family:{MONO};font-size:11px;letter-spacing:.08em;text-transform:uppercase;'
+    privacy = f'<a href="{esc(base)}#privacy" style="color:{INK};">Privacy</a>'
+    # mail (Laposta): /tag/unsubscribe en /tag/web zet Laposta bij het versturen om in de afmeld- en webversielink
+    mail_footer = (f'<p style="margin:14px 0 0;">Je krijgt deze mail omdat je je hebt aangemeld op <a href="{esc(base)}" style="color:{MUTED};">edial.github.io/proef</a>. '
+                   f'Elke zaterdag vijf trending recepten, gemeten met Google Trends en wat koks nu maken.</p>'
+                   f'<p style="margin:10px 0 0;{small}"><a href="/tag/unsubscribe" style="color:{INK};">Afmelden</a> &nbsp;·&nbsp; '
+                   f'<a href="/tag/web" style="color:{INK};">Bekijk in je browser</a> &nbsp;·&nbsp; {privacy}</p>')
+    # web (de site): geen afmeldlink, wel aanmelden
+    web_footer = (f'<p style="margin:14px 0 0;">Dit is de nieuwsbrief van Proef, elke zaterdag met vijf trending recepten. Wil je hem ook krijgen?</p>'
+                  f'<p style="margin:10px 0 0;{small}"><a href="{esc(base)}#nieuwsbrief" style="color:{INK};">Aanmelden</a> &nbsp;·&nbsp; {privacy}</p>')
+    (out / "mail.html").write_text(page.replace("@@FOOTER@@", mail_footer))
+    (out / "index.html").write_text(page.replace("@@FOOTER@@", web_footer))
     meta = {"subject": subject, "previewtext": pre[:120], "url": f"{SITE}mail/{ed['id']}/"}
     (out / "mail.json").write_text(json.dumps(meta, ensure_ascii=False, indent=1) + "\n")
     return out, meta, len(page.encode())

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Zet de nieuwsbrief van een editie klaar in Laposta en stuurt een testmail of verstuurt hem echt.
 
-Eerst `python3 scripts/newsletter.py <id>`: dat maakt mail/<id>/index.html en mail.json (onderwerp, preview).
+Eerst `python3 scripts/newsletter.py <id>`: dat maakt mail/<id>/mail.html en mail.json (onderwerp, preview).
 Plaatjes (logo, sparklines) komen van de site, dus mail/ moet live staan voordat iemand de mail opent.
 
 Nodig (omgevingsvariabelen of GitHub-secrets; adressen staan bewust niet in deze openbare repo):
@@ -68,13 +68,13 @@ def main():
         sys.exit(__doc__)
     mode, eid = sys.argv[1], sys.argv[2]
     folder = ROOT / "mail" / eid
-    if not (folder / "index.html").exists():
+    if not (folder / "mail.html").exists():
         sys.exit(f"Eerst: python3 scripts/newsletter.py {eid}")
     meta = json.loads((folder / "mail.json").read_text())
     cid, new = campaign_for(eid, meta, mode == "test")
     if not new:  # onderwerp kan sinds de vorige keer veranderd zijn
         call("POST", f"campaign/{cid}", [("subject", meta["subject"]), ("previewtext", meta["previewtext"][:120])])
-    res = call("POST", f"campaign/{cid}/content", [("html", (folder / "index.html").read_text())])
+    res = call("POST", f"campaign/{cid}/content", [("html", (folder / "mail.html").read_text())])
     report = (res.get("campaign") or {}).get("report") or res.get("report")
     print(f"campagne {cid} ({'nieuw' if new else 'bijgewerkt'}): {meta['subject']}")
     if report:
