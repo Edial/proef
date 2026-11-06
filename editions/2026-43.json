@@ -546,7 +546,17 @@
           "posts": [],
           "of": 112
         }
-      }
+      },
+      "photoSet": [
+        {
+          "w": 768,
+          "url": "https://foxeslovelemons.com/wp-content/uploads/2025/11/One-Pan-Dumpling-DinnerOne-Pot-Dumpling-Recipe-Foxes-Love-Lemons-768x512.jpg"
+        },
+        {
+          "w": 1200,
+          "url": "https://foxeslovelemons.com/wp-content/uploads/2025/11/One-Pan-Dumpling-DinnerOne-Pot-Dumpling-Recipe-Foxes-Love-Lemons.jpg"
+        }
+      ]
     },
     {
       "slug": "zuppa-toscana",

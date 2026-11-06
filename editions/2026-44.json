@@ -371,7 +371,37 @@
           "of": 116
         }
       },
-      "photoGamma": 0.35
+      "photoGamma": 0.35,
+      "photoSet": [
+        {
+          "w": 380,
+          "url": "https://omnivorescookbook.com/wp-content/uploads/2026/10/200322_Curry-Noodle-With-Popcorn-Chicken_550-380x380.jpg"
+        },
+        {
+          "w": 480,
+          "url": "https://omnivorescookbook.com/wp-content/uploads/2026/10/200322_Curry-Noodle-With-Popcorn-Chicken_550-480x480.jpg"
+        },
+        {
+          "w": 500,
+          "url": "https://omnivorescookbook.com/wp-content/uploads/2026/10/200322_Curry-Noodle-With-Popcorn-Chicken_550-500x500.jpg"
+        },
+        {
+          "w": 600,
+          "url": "https://omnivorescookbook.com/wp-content/uploads/2026/10/200322_Curry-Noodle-With-Popcorn-Chicken_550-600x600.jpg"
+        },
+        {
+          "w": 760,
+          "url": "https://omnivorescookbook.com/wp-content/uploads/2026/10/200322_Curry-Noodle-With-Popcorn-Chicken_550-760x760.jpg"
+        },
+        {
+          "w": 768,
+          "url": "https://omnivorescookbook.com/wp-content/uploads/2026/10/200322_Curry-Noodle-With-Popcorn-Chicken_550-768x768.jpg"
+        },
+        {
+          "w": 1200,
+          "url": "https://omnivorescookbook.com/wp-content/uploads/2026/10/200322_Curry-Noodle-With-Popcorn-Chicken_550.jpg"
+        }
+      ]
     },
     {
       "slug": "rode-curry-kip-pompoen-traybake",
@@ -652,7 +682,21 @@
           "of": 116
         }
       },
-      "photoGamma": 0.35
+      "photoGamma": 0.35,
+      "photoSet": [
+        {
+          "w": 500,
+          "url": "https://thewoksoflife.com/wp-content/uploads/2026/05/thai-red-curry-sheet-pan-chicken-6-500x500.jpg"
+        },
+        {
+          "w": 1095,
+          "url": "https://thewoksoflife.com/wp-content/uploads/2026/05/thai-red-curry-sheet-pan-chicken-6-1095x1536.jpg"
+        },
+        {
+          "w": 1200,
+          "url": "https://thewoksoflife.com/wp-content/uploads/2026/05/thai-red-curry-sheet-pan-chicken-6.jpg"
+        }
+      ]
     },
     {
       "slug": "gestoomd-ei-garnalen-tofu",
@@ -883,7 +927,21 @@
           "of": 116
         }
       },
-      "photoGamma": 0.85
+      "photoGamma": 0.85,
+      "photoSet": [
+        {
+          "w": 500,
+          "url": "https://thewoksoflife.com/wp-content/uploads/2026/05/steamed-egg-shrimp-tofu-7-500x500.jpg"
+        },
+        {
+          "w": 1106,
+          "url": "https://thewoksoflife.com/wp-content/uploads/2026/05/steamed-egg-shrimp-tofu-7-1106x1536.jpg"
+        },
+        {
+          "w": 1200,
+          "url": "https://thewoksoflife.com/wp-content/uploads/2026/05/steamed-egg-shrimp-tofu-7.jpg"
+        }
+      ]
     },
     {
       "slug": "zoete-aardappel-chaat",
@@ -1200,7 +1258,37 @@
           "of": 116
         }
       },
-      "photoGamma": 0.45
+      "photoGamma": 0.45,
+      "photoSet": [
+        {
+          "w": 480,
+          "url": "https://assets.bonappetit.com/photos/6ae3918b0d426ac7a4fa1d9b/16:9/w_480,c_limit/20250707-East2East-1465.RG_select.jpg"
+        },
+        {
+          "w": 640,
+          "url": "https://assets.bonappetit.com/photos/6ae3918b0d426ac7a4fa1d9b/16:9/w_640,c_limit/20250707-East2East-1465.RG_select.jpg"
+        },
+        {
+          "w": 768,
+          "url": "https://assets.bonappetit.com/photos/6ae3918b0d426ac7a4fa1d9b/16:9/w_768,c_limit/20250707-East2East-1465.RG_select.jpg"
+        },
+        {
+          "w": 800,
+          "url": "https://assets.bonappetit.com/photos/6ae3918b0d426ac7a4fa1d9b/16:9/w_800,c_limit/20250707-East2East-1465.RG_select.jpg"
+        },
+        {
+          "w": 1024,
+          "url": "https://assets.bonappetit.com/photos/6ae3918b0d426ac7a4fa1d9b/16:9/w_1024,c_limit/20250707-East2East-1465.RG_select.jpg"
+        },
+        {
+          "w": 1200,
+          "url": "https://assets.bonappetit.com/photos/6ae3918b0d426ac7a4fa1d9b/16:9/w_1200,c_limit/20250707-East2East-1465.RG_select.jpg"
+        },
+        {
+          "w": 1536,
+          "url": "https://assets.bonappetit.com/photos/6ae3918b0d426ac7a4fa1d9b/16:9/w_1536,c_limit/20250707-East2East-1465.RG_select.jpg"
+        }
+      ]
     },
     {
       "slug": "bruine-boter-chocoladekoekjes",

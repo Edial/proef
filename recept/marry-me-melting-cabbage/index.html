@@ -8,10 +8,12 @@
 <title>Marry Me Melting Cabbage · Proef</title>
 <base href="../../">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Serif+KR:wght@700;900&display=swap">
+<link rel="preload" href="editions/index.json" as="fetch" crossorigin="anonymous">
+<!-- fonts:start (gemaakt door scripts/fonts.py) -->
+<link rel="preload" href="assets/fonts/fraunces-normal-latin-9e5095.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-normal-latin-bec94a.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<!-- fonts:end -->
 <style>
 :root {
   --board: #E8E4DB;
@@ -197,7 +199,8 @@ img { display: block; max-width: 100%; }
 .duo { position: relative; overflow: hidden; background: var(--hi); isolation: isolate; }
 .duo .lift { position: absolute; inset: 0; display: block; }
 .duo img { width: 100%; height: 100%; object-fit: cover; }
-.duo .lift img { filter: saturate(.9) contrast(.95); }
+.duo .lift img { filter: saturate(.9) contrast(.95); opacity: 0; transition: opacity .4s ease; }
+.duo .lift img.ld { opacity: 1; }
 .duo:has(.lift)::before, .duo:has(.lift)::after { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; transition: opacity .5s ease; }
 .duo:has(.lift)::before { background: var(--lo); mix-blend-mode: lighten; opacity: .5; }
 .duo:has(.lift)::after { background: var(--bg); mix-blend-mode: color; opacity: .42; }
@@ -497,6 +500,17 @@ kbd { font-family: var(--mono); font-style: normal; font-size: 11px; border: 1px
 
 /* Status en voet */
 .status { padding-block: 48px; color: var(--muted); font-style: italic; }
+/* skelet tijdens het laden: dezelfde vlakken als de homepage, met een zachte glans */
+.sk { background: var(--sheet); position: relative; overflow: hidden; }
+.sk-mast { grid-column: span 4; min-height: 540px; background: var(--ink-cover); }
+.sk-lead { grid-column: span 8; min-height: 540px; }
+.sk-tile { grid-column: span 3; height: 360px; }
+.sk::after { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, transparent 30%, rgba(255,255,255,.35) 50%, transparent 70%); transform: translateX(-100%); }
+@media (prefers-reduced-motion: no-preference) { .sk::after { animation: sheen 1.4s ease-in-out infinite; } }
+@keyframes sheen { to { transform: translateX(100%); } }
+@media (max-width: 1000px) { .sk-mast, .sk-lead { grid-column: span 12; min-height: 260px; } .sk-tile { grid-column: span 6; } }
+@media (max-width: 640px) { .sk-tile { grid-column: span 12; } }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--board); font-family: var(--mono); font-size: 12px; padding: 10px 16px; border-radius: 2px; z-index: 10; }
 /* Nieuwsbrief: staat als vaste HTML in de pagina (niet via JS), zodat Laposta's validate.js het formulier bij het laden vindt */
 .signup { margin-top: 96px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 460px); gap: 20px 48px; align-items: end; background: var(--sheet); padding: 32px; }
@@ -660,7 +674,11 @@ footer { margin-top: 96px; }
   <main id="home">
     <p class="notice" id="edition-notice" hidden>Je bekijkt een eerdere editie. <a href="#deze-week">Naar deze week →</a></p>
     <div class="issuebar mono" id="issuebar"></div>
-    <div class="home" id="features"><p class="status" id="status">Recepten laden…</p></div>
+    <div class="home" id="features" aria-busy="true">
+      <div class="sk sk-mast" aria-hidden="true"></div><div class="sk sk-lead" aria-hidden="true"></div>
+      <div class="sk sk-tile" aria-hidden="true"></div><div class="sk sk-tile" aria-hidden="true"></div><div class="sk sk-tile" aria-hidden="true"></div><div class="sk sk-tile" aria-hidden="true"></div>
+      <p class="sr-only" id="status">Recepten laden…</p>
+    </div>
 
     <section class="archive" id="archief" aria-labelledby="archief-titel">
       <div class="archive-head">
@@ -870,11 +888,17 @@ footer { margin-top: 96px; }
     const box = h("div", { class: "duo " + tintClass(r) });
     const fallback = () => box.replaceChildren(h("span", { class: "fallback cjk", "aria-hidden": "true", text: r.glyph || "食" }));
     if (r.photo) {
-      const img = h("img", { src: r.photo, alt: opts.alt === false ? "" : "Foto van " + r.title + (r.photoCredit ? " (" + r.photoCredit.label + ")" : ""), loading: opts.eager ? "eager" : "lazy", referrerpolicy: "strict-origin-when-cross-origin", decoding: "async" });
+      // kleinere officiële versies van de bron (scripts/photo_small.py): de browser kiest de maat die past
+      const set = (r.photoSet || []).filter((x) => x && x.url && x.w);
+      const srcset = set.length ? set.map((x) => `${x.url} ${x.w}w`).join(", ") : null;
+      const sizes = srcset ? opts.sizes || "(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 300px" : null;
+      // volgorde telt: loading, referrerpolicy en srcset moeten er vóór src op staan, anders laadt de browser meteen het origineel
+      const img = h("img", { alt: opts.alt === false ? "" : "Foto van " + r.title + (r.photoCredit ? " (" + r.photoCredit.label + ")" : ""), loading: opts.eager ? "eager" : "lazy", fetchpriority: opts.eager ? "high" : null, decoding: "async", referrerpolicy: "strict-origin-when-cross-origin", sizes, srcset, src: r.photo });
       img.addEventListener("error", fallback, { once: true });
+      img.addEventListener("load", () => img.classList.add("ld"), { once: true });
       const g = Number(r.photoGamma);
       box.append(h("span", { class: "lift", style: g > 0 && g !== 1 ? "filter:" + liftFilter(g) : null }, img),
-        h("img", { class: "orig", src: r.photo, alt: "", "aria-hidden": "true", loading: img.loading, referrerpolicy: "strict-origin-when-cross-origin", decoding: "async" }));
+        h("img", { class: "orig", alt: "", "aria-hidden": "true", loading: img.loading, decoding: "async", referrerpolicy: "strict-origin-when-cross-origin", sizes, srcset, src: r.photo }));
       if (opts.glyph && r.glyph) box.append(h("span", { class: "glyph cjk", "aria-hidden": "true", text: r.glyph }));
       if (opts.badge && r.video) box.append(h("span", { class: "vid", role: "img", "aria-label": "met video" }, h("span", { class: "tri" })));
       // aanraakschermen: tik om de echte kleuren te zien
@@ -988,7 +1012,7 @@ footer { margin-top: 96px; }
           h("p", { class: "intro", text: ed.intro || "" }),
           h("span", { class: "hanko", title: sName, "aria-hidden": "true", text: sGlyph }))),
       lead ? h("a", { class: "card lead", href: recipeHref(lead.slug), id: "f-" + lead.slug },
-        photo(lead, { eager: true, badge: true }),
+        photo(lead, { eager: true, badge: true, sizes: "(max-width: 1000px) 100vw, 800px" }),
         h("div", { class: "body" },
           h("span", { class: "no", text: "01" }),
           h("div", null, native(lead), h("h2", { text: lead.title }), h("p", { class: "dek", text: lead.dek || "" }),
@@ -1062,7 +1086,7 @@ footer { margin-top: 96px; }
       h("a", { class: "back mono", href: "#editie-" + ed.id, text: `← Nº ${pad(ed.number)} · week ${ed.week}` }),
       h("div", { class: "spread" },
         h("figure", { class: "left", style: "margin:0" },
-          withVideo(r, photo(r, { glyph: true, eager: true })),
+          withVideo(r, photo(r, { glyph: true, eager: true, sizes: "(max-width: 1000px) 100vw, 480px" })),
           r.photoCredit ? h("figcaption", { class: "credit" }, "Foto en origineel recept: ", h("a", { href: r.photoCredit.url, target: "_blank", rel: "noopener", text: r.photoCredit.label + " ↗" }),
             r.video && VIDEO[r.video.platform] ? [" · ", h("a", { href: r.video.url, target: "_blank", rel: "noopener", text: "Video op " + VIDEO[r.video.platform].name + " ↗" })] : null) : null),
         h("div", { class: "card sheet" },
@@ -1165,7 +1189,6 @@ footer { margin-top: 96px; }
           "Proef gebruikt geen cookies, geen advertenties en geen bezoekersstatistieken. Wel zien deze partijen je IP-adres, zoals bij elke website die iets van hen laadt:",
           list(
             "GitHub (Verenigde Staten): de site staat op GitHub Pages.",
-            "Google (Verenigde Staten): de lettertypen komen van Google Fonts.",
             "Laposta (Nederland): het aanmeldformulier laadt een script tegen spam.",
             "De sites van de makers: foto's bij recepten worden van hun site geladen. Die site ziet ook dat je via Proef komt.",
             "YouTube, Instagram of TikTok: een video laadt pas als je op afspelen klikt. Vanaf dan gelden de regels van dat platform.")),
@@ -1533,7 +1556,7 @@ footer { margin-top: 96px; }
     return h("section", { class: "related", "aria-labelledby": "rel-t" },
       h("div", { class: "head-row" }, h("h2", { id: "rel-t", text: "Meer zoals dit" }), h("a", { class: "mono", href: "#archief", style: "color:var(--muted);text-decoration:none", text: "Alle edities →" })),
       h("div", { class: "related-grid" }, scored.map(({ x, reason }) => h("a", { class: "mini " + x.tint, href: x.href },
-        photo(x.r, { alt: false }),
+        photo(x.r, { alt: false, sizes: "(max-width: 1000px) 30vw, 160px" }),
         h("div", { class: "body" },
           h("span", { class: "mono", text: `Nº ${pad(x.ed.number)} · ${x.minutes} min` }),
           h("strong", { text: x.title }),
@@ -1826,12 +1849,13 @@ footer { margin-top: 96px; }
       const idx = await res.json();
       const eds = await Promise.all((idx.editions || []).map((id) => fetch(`editions/${id}.json`, { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).catch(() => null)));
       state.editions = eds.filter((e) => e && Array.isArray(e.recipes)).sort((a, b) => b.number - a.number);
+      $("features").removeAttribute("aria-busy");
       for (const ed of state.editions) for (const r of ed.recipes) { r._edition = ed; state.bySlug.set(r.slug, r); }
       if (!state.editions.length) throw new Error("leeg");
       renderShelf();
       route();
     } catch (e) {
-      $("status").textContent = "De recepten konden niet worden geladen. Ververs de pagina om het opnieuw te proberen.";
+      $("features").replaceChildren(h("p", { class: "status", id: "status", text: "De recepten konden niet worden geladen. Ververs de pagina om het opnieuw te proberen." }));
     }
   }
 

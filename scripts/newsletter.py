@@ -97,7 +97,8 @@ def recipe_card(r, base, mail_url):
     tint = r.get("tint") if r.get("tint") in TINTS else "sage"
     alt = esc(f"Foto van {r['title']}")
     if r.get("photo"):
-        ph = esc(r["photo"])
+        sizes = [x for x in r.get("photoSet") or [] if x.get("w", 0) >= 2 * COL]
+        ph = esc(min(sizes, key=lambda x: x["w"])["url"] if sizes else r["photo"])  # kleinste maat die scherp genoeg is
         pic = (f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>'
                f'<td class="pic" height="{PIC}" background="{ph}" style="height:{PIC}px;background-color:{TINTS[tint][0]};'
                f'background-image:url(\'{ph}\');background-size:cover;background-position:center;">'
