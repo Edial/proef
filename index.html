@@ -548,39 +548,14 @@ html.pop-open, html.pop-open body { overflow: hidden; }
 .steps li.done { color: var(--muted); }
 .steps li.done::before { content: "✓"; color: var(--ok); font-weight: 600; }
 .ingr li[role="checkbox"]:focus-visible, .steps li[role="checkbox"]:focus-visible { outline: 2px solid var(--hanko); outline-offset: 2px; }
-/* stempel na het aanmelden */
-.signup-done { display: flex; align-items: center; gap: 14px; }
-.signup-done[hidden] { display: none; }
-.done-stamp { width: 42px; height: 42px; font-size: 23px; transform: rotate(-4deg); }
 @media (prefers-reduced-motion: no-preference) {
-  /* sparkline tekent zichzelf, daarna plopt de stip */
-  .spark.draw { clip-path: inset(-12px 100% -12px -12px); }
-  .spark.draw.drawn { clip-path: inset(-12px -12px -12px -12px); transition: clip-path .9s cubic-bezier(.3, .7, .2, 1); }
-  .spark.draw.drawn .dot { animation: dot-pop .5s .75s both; }
-  /* hanko drukt als een stempel */
-  .hanko.stamp { animation: stamp .55s cubic-bezier(.3, .7, .2, 1); }
-  @media (hover: hover) { .hanko:hover { animation: stamp .55s cubic-bezier(.3, .7, .2, 1); } }
-  .done-stamp { animation: stamp-in .6s .25s cubic-bezier(.2, .8, .3, 1.2) both; }
   /* getallen tikken mee bij meer of minder personen */
   .q.tick { animation: tick .32s ease; }
   /* fermentatie bruist: belletjes in het golfpatroon */
   .seigaiha.fizz .bub { animation: rise var(--t, 2.4s) var(--d, 0s) ease-in both; }
 }
-.hanko { cursor: default; }
 .seigaiha { position: relative; overflow: hidden; }
 .seigaiha .bub { position: absolute; bottom: -14px; width: var(--s, 8px); height: var(--s, 8px); border: 1.5px solid rgba(248,245,238,.85); border-radius: 50%; opacity: 0; pointer-events: none; }
-@keyframes dot-pop { 0% { stroke-width: 0; } 60% { stroke-width: 11; } 100% { stroke-width: 6; } }
-@keyframes stamp {
-  0% { transform: scale(1) rotate(0); }
-  30% { transform: scale(1.22) rotate(-7deg); box-shadow: 0 6px 14px rgba(0,0,0,.18); }
-  55% { transform: scale(.9) rotate(2deg); box-shadow: 0 0 0 0 rgba(196,55,44,.45); }
-  100% { transform: scale(1) rotate(0); box-shadow: 0 0 0 12px rgba(196,55,44,0); }
-}
-@keyframes stamp-in {
-  0% { opacity: 0; transform: scale(2.4) rotate(-16deg); }
-  70% { opacity: 1; transform: scale(.92) rotate(-3deg); }
-  100% { opacity: 1; transform: scale(1) rotate(-4deg); }
-}
 @keyframes tick { 0% { transform: translateY(-5px); opacity: .2; } 100% { transform: none; opacity: 1; } }
 @keyframes rise {
   0% { opacity: 0; transform: translate(0, 0); }
@@ -711,7 +686,7 @@ footer { margin-top: 96px; }
       <input class="signup-trap" type="email" name="email" autocomplete="new-password" tabindex="-1" aria-hidden="true">
       <p class="signup-note">We gebruiken je adres alleen voor deze nieuwsbrief (<a href="#privacy">privacy</a>). Verzonden via Laposta, met servers in Nederland.</p>
     </form>
-    <p class="signup-done" id="signup-done" hidden><span class="hanko done-stamp" aria-hidden="true">済</span><span>Je bent aangemeld voor de nieuwsbrief van Proef. Afmelden kan onderaan elke mail.</span></p>
+    <p class="signup-done" id="signup-done" hidden>Je bent aangemeld voor de nieuwsbrief van Proef. Afmelden kan onderaan elke mail.</p>
   </section>
 
   <footer>
@@ -1694,17 +1669,8 @@ footer { margin-top: 96px; }
     document.documentElement.classList.remove("pop-open");
     document.documentElement.style.paddingRight = "";
   }
-  // sparklines tekenen zichzelf zodra ze in beeld komen; de golven van de fermentatie bruisen even.
-  // De sparkline zelf is dan nog weggeclipt (en telt voor de browser als onzichtbaar), dus we kijken naar het blok eromheen.
-  const IO = "IntersectionObserver" in window;
-  const drawObs = IO ? new IntersectionObserver((entries) => {
-    for (const e of entries) {
-      if (!e.isIntersecting) continue;
-      drawObs.unobserve(e.target);
-      e.target.querySelectorAll(".spark.draw").forEach((sp) => sp.classList.add("drawn"));
-    }
-  }, { rootMargin: "0px 0px -10% 0px" }) : null;
-  const seen = IO ? new IntersectionObserver((entries) => {
+  // de golven van de fermentatie bruisen even als ze in beeld komen (of bij hover)
+  const seen = "IntersectionObserver" in window ? new IntersectionObserver((entries) => {
     for (const e of entries) if (e.isIntersecting) { seen.unobserve(e.target); fizz(e.target); }
   }, { threshold: 0.6 }) : null;
   function fizz(el) {
@@ -1721,18 +1687,10 @@ footer { margin-top: 96px; }
   }
   function enhance(node) {
     if (node.nodeType !== 1) return;
-    const sparks = node.matches(".spark") ? [node] : node.querySelectorAll(".spark");
-    for (const sp of sparks) if (drawObs && !calm.matches && !sp.classList.contains("draw") && sp.parentElement) { sp.classList.add("draw"); drawObs.observe(sp.parentElement); }
     const waves = node.matches(".seigaiha") ? [node] : node.querySelectorAll(".seigaiha");
     for (const w of waves) { if (seen) seen.observe(w); w.addEventListener("mouseenter", () => fizz(w)); }
   }
   new MutationObserver((muts) => { for (const m of muts) m.addedNodes.forEach(enhance); }).observe(document.body, { childList: true, subtree: true });
-  // hanko: tikken drukt de stempel (hover doet het met CSS)
-  document.addEventListener("click", (e) => {
-    const hk = e.target.closest(".hanko");
-    if (!hk || calm.matches) return;
-    hk.classList.remove("stamp"); void hk.offsetWidth; hk.classList.add("stamp");
-  });
   // mise en place: afvinken van ingrediënten en stappen, onthouden tot morgen (per recept of fermentatie)
   const today = () => new Date().toISOString().slice(0, 10);
   const miseKey = () => "proef-mise:" + location.pathname + location.hash.replace(/^#(waarom)?$/, "");
