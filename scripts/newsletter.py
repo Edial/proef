@@ -2,9 +2,14 @@
 """Maakt de nieuwsbrief van een editie: mail/<id>/mail.html (voor Laposta), index.html (webversie op de site)
 en een sparkline-PNG per recept.
 
+Opbouw: twee kolommen op desktop (5 recepten + de fermentatie, 2×3 vakken), op een telefoon onder elkaar.
+Elk beeld is even hoog: de foto staat als achtergrond in een vak van vaste hoogte (cover), met daarover
+mail/overlay-<tint>.png, een waas in de tint van het recept met een puntraster. Zo lijkt het op het filter van
+de site (duotoon + raster), zonder de foto te kopiëren: die komt nog steeds van de bron.
+
 Mail-HTML is geen gewone webpagina: alleen tabellen en inline stijlen, geen SVG (Gmail haalt dat weg) en geen
-JavaScript. De sparklines worden daarom PNG's (Pillow), net als het logo (mail/proef-logo.png). Alles wordt
-geladen vanaf de site, dus de map mail/ moet live staan voordat Laposta de mail verstuurt.
+JavaScript. Sparklines, logo en overlays zijn daarom PNG's, geladen vanaf de site: de map mail/ moet live
+staan voordat Laposta de mail verstuurt.
 
 Laposta zet de links /tag/unsubscribe en /tag/web in mail.html om in de afmeld- en webversielink
 (de <lp-…>-tags werken alleen in sjablonen, niet in campagne-inhoud via de API).
@@ -25,11 +30,11 @@ from PIL import Image, ImageDraw
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = "https://edial.github.io/proef/"
 
-INK, MUTED, RULE, BOARD, SHEET, CREAM, HANKO = "#1F1D1A", "#7A7366", "#DDD6C8", "#E8E4DB", "#F8F5EE", "#F8F5EE", "#C4372C"
-# tint van het recept: achtergrond, tekst, lijnkleur (zelfde als de tegels op de site)
+INK, MUTED, RULE, SHEET, CREAM, HANKO = "#1F1D1A", "#7A7366", "#DDD6C8", "#F8F5EE", "#F8F5EE", "#C4372C"
+# licht en donker van elke tint, zoals --hi en --lo op de site
 TINTS = {
-    "sage": ("#BFD3C7", INK, "#2E4A6B"), "sky": ("#A9C4DE", INK, "#2E4A6B"), "blush": ("#EBC9BA", INK, "#7E3A2C"),
-    "persimmon": ("#D8693E", CREAM, CREAM), "mustard": ("#F0B23B", INK, "#5B3D10"),
+    "sage": ("#BFD3C7", "#2E4A6B"), "sky": ("#A9C4DE", "#2E4A6B"), "blush": ("#F3DACE", "#7E3A2C"),
+    "persimmon": ("#FAD2B4", "#9C3F1F"), "mustard": ("#F7D27E", "#5B3D10"),
 }
 ARROW = {"Nieuw": "✦", "Seizoen": "↻", "Piek": "▲", "Stijgt": "↗", "Stabiel": "→", "Dalend": "↘"}
 GOOD = {"Nieuw", "Seizoen", "Piek", "Stijgt"}
@@ -38,25 +43,45 @@ MONTHS = "januari februari maart april mei juni juli augustus september oktober 
 SERIF = "Georgia, 'Times New Roman', serif"
 SANS = "Helvetica, Arial, sans-serif"
 MONO = "'IBM Plex Mono', Menlo, Consolas, 'Courier New', monospace"
+CJK = "'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', 'Noto Serif CJK JP', 'MS Mincho', serif"
+COL, PIC = 280, 200  # breedte van een vak en hoogte van elk beeld (px)
 
 
 def esc(s):
     return html.escape(str(s or ""), quote=True)
 
 
-def spark_png(weeks, color, path, w=120, h=28):
+def rgb(h):
+    return tuple(int(h[i:i + 2], 16) for i in (1, 3, 5))
+
+
+def spark_png(weeks, path, w=84, h=18):
     """Lijn van 12 maanden met een rode stip op de laatste week, 2× zo scherp voor retina-schermen."""
     s = 8  # eerst groot tekenen, dan verkleinen: gladde lijnen
-    W, H, pad = w * s, h * s, 4 * s
+    W, H, pad = w * s, h * s, 3 * s
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
     top = max(1, max(weeks))
     xs = [pad + i * (W - 2 * pad) / (len(weeks) - 1) for i in range(len(weeks))]
     ys = [H - pad - v / top * (H - 2 * pad) for v in weeks]
-    d.line(list(zip(xs, ys)), fill=color, width=int(1.6 * s), joint="curve")
-    r = 3 * s
+    d.line(list(zip(xs, ys)), fill=INK, width=int(1.4 * s), joint="curve")
+    r = int(2.6 * s)
     d.ellipse([xs[-1] - r, ys[-1] - r, xs[-1] + r, ys[-1] + r], fill=HANKO)
     img.resize((w * 2, h * 2), Image.LANCZOS).save(path, optimize=True)
+
+
+def overlay_png(tint, path):
+    """Eigen beeld over de foto: waas in de tint (een kwart richting de donkere kleur, 60% dekking) en een fijn
+    puntraster van 4 px, zoals het filter op de site. Alleen de waas en de puntjes, geen foto."""
+    hi, lo = (rgb(c) for c in TINTS[tint])
+    wash = tuple(round(a * .75 + b * .25) for a, b in zip(hi, lo))
+    W, H = COL * 2, PIC * 2
+    img = Image.new("RGBA", (W, H), wash + (153,))
+    d = ImageDraw.Draw(img)
+    for y in range(0, H, 8):
+        for x in range(0, W, 8):
+            d.ellipse([x + 3, y + 3, x + 5, y + 5], fill=(0, 0, 0, 34))
+    img.save(path, optimize=True)
 
 
 def nice_date(iso):
@@ -64,71 +89,89 @@ def nice_date(iso):
     return f"{int(d)} {MONTHS[int(m) - 1]} {y}"
 
 
-def recipe_block(r, base, mail_url):
-    bg, fg, line = TINTS.get(r.get("tint"), (SHEET, INK, INK))
-    soft = "rgba(248,245,238,.85)" if fg == CREAM else "rgba(31,29,26,.72)"
+def card(pic, meta, title, url, extra=""):
+    """Eén vak: beeld van vaste hoogte, daaronder soort en tijd, titel en wat er verder bij hoort."""
+    return f"""<div class="col" style="display:inline-block;width:100%;max-width:{COL + 20}px;vertical-align:top;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding:0 10px 34px;text-align:left;">
+  <a href="{esc(url)}" style="display:block;text-decoration:none;">{pic}</a>
+  <div style="margin:12px 0 0;font-family:{MONO};font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:{MUTED};">{esc(meta)}</div>
+  <div style="margin:5px 0 0;font-family:{SERIF};font-size:19px;line-height:1.25;"><a href="{esc(url)}" style="color:{INK};text-decoration:none;">{esc(title)}</a></div>
+  {extra}
+</td></tr></table>
+</div>"""
+
+
+def recipe_card(r, base, mail_url):
     url = f"{base}recept/{r['slug']}/"
-    credit = (r.get("photoCredit") or {}).get("label")
-    photo = ""
+    tint = r.get("tint") if r.get("tint") in TINTS else "sage"
+    alt = esc(f"Foto van {r['title']}")
     if r.get("photo"):
-        photo = (f'<tr><td style="padding:0;background:{bg};"><a href="{esc(url)}"><img src="{esc(r["photo"])}" width="600" alt="Foto van {esc(r["title"])}" '
-                 f'style="display:block;width:100%;max-width:600px;height:auto;border:0;"></a></td></tr>')
+        ph = esc(r["photo"])
+        pic = (f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>'
+               f'<td class="pic" height="{PIC}" background="{ph}" style="height:{PIC}px;background-color:{TINTS[tint][0]};'
+               f'background-image:url(\'{ph}\');background-size:cover;background-position:center;">'
+               f'<img src="{esc(base)}mail/overlay-{tint}.png" width="{COL}" height="{PIC}" alt="{alt}" '
+               f'style="display:block;width:100%;height:{PIC}px;border:0;"></td></tr></table>')
+    else:
+        pic = (f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>'
+               f'<td height="{PIC}" align="center" style="height:{PIC}px;background:{TINTS[tint][0]};color:{TINTS[tint][1]};'
+               f'font-family:{CJK};font-size:72px;line-height:1;">{esc(r.get("glyph") or "食")}</td></tr></table>')
     sp = r.get("spark") or {}
     trend = ""
     if sp.get("weeks"):
         label = sp.get("label", "")
-        lc = (HANKO if fg == INK else CREAM) if label in GOOD else soft
-        trend = (f'<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:16px 0 0;border-top:1px solid {soft};width:100%;"><tr>'
-                 f'<td width="1%" style="padding:10px 12px 0 0;white-space:nowrap;font-family:{MONO};font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:{lc};vertical-align:middle;">'
-                 f'{ARROW.get(label, "•")}&nbsp;{esc(label)}</td>'
-                 f'<td style="padding:10px 0 0;vertical-align:middle;width:120px;"><img src="{esc(mail_url)}{esc(r["slug"])}.png" width="120" height="28" alt="" style="display:block;border:0;"></td>'
-                 f'<td width="100%" style="padding:10px 0 0;">&nbsp;</td></tr>'
-                 f'<tr><td colspan="3" style="padding:4px 0 0;font-family:{SERIF};font-style:italic;font-size:15px;line-height:1.4;color:{soft};">{esc(sp.get("text"))}</td></tr></table>')
+        lc = HANKO if label in GOOD else MUTED
+        trend = (f'<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:10px 0 0;"><tr>'
+                 f'<td style="padding:0 10px 0 0;white-space:nowrap;font-family:{MONO};font-size:10.5px;letter-spacing:.08em;'
+                 f'text-transform:uppercase;color:{lc};vertical-align:middle;">{ARROW.get(label, "•")}&nbsp;{esc(label)}</td>'
+                 f'<td style="vertical-align:middle;"><img src="{esc(mail_url)}{esc(r["slug"])}.png" width="84" height="18" alt="" style="display:block;border:0;"></td>'
+                 f'</tr></table>'
+                 f'<div style="margin:4px 0 0;font-family:{SERIF};font-style:italic;font-size:14px;line-height:1.4;color:{MUTED};">{esc(sp.get("text"))}</div>')
+    pc = r.get("photoCredit") or {}
+    credit = (f'<div style="margin:8px 0 0;font-family:{SANS};font-size:11px;color:{MUTED};">Foto: '
+              f'<a href="{esc(pc.get("url") or url)}" style="color:{MUTED};">{esc(pc["label"])}</a></div>') if pc.get("label") else ""
     meta = " · ".join(x for x in [r.get("category", ""), f'{r["minutes"]} min' if r.get("minutes") else ""] if x)
-    return f"""
-<tr><td style="padding:0 0 28px;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:{bg};">
-    {photo}
-    <tr><td style="padding:22px 24px 24px;background:{bg};color:{fg};">
-      <div style="font-family:{MONO};font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:{soft};">{esc(meta)}</div>
-      <h2 style="margin:8px 0 0;font-family:{SERIF};font-weight:normal;font-size:26px;line-height:1.15;letter-spacing:-.01em;color:{fg};">
-        <a href="{esc(url)}" style="color:{fg};text-decoration:none;">{esc(r["title"])}</a></h2>
-      <p style="margin:10px 0 0;font-family:{SERIF};font-size:16px;line-height:1.5;color:{fg};">{esc(r.get("dek"))}</p>
-      {trend}
-      <p style="margin:18px 0 0;font-family:{MONO};font-size:12px;letter-spacing:.1em;text-transform:uppercase;">
-        <a href="{esc(url)}" style="color:{fg};text-decoration:underline;text-underline-offset:3px;">Naar het recept →</a></p>
-      {f'<p style="margin:10px 0 0;font-family:{SANS};font-size:11.5px;color:{soft};">Naar een recept van {esc(credit)}</p>' if credit else ""}
-    </td></tr>
-  </table>
-</td></tr>"""
+    return card(pic, meta, r["title"], url, trend + credit)
+
+
+def ferment_card(f, ed, base):
+    url = f"{base}#fermentatie-{ed['id']}"
+    pic = (f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>'
+           f'<td height="{PIC}" align="center" style="height:{PIC}px;background:{INK};color:{CREAM};'
+           f'font-family:{CJK};font-size:76px;line-height:1;">{esc(f.get("glyph") or "酵")}</td></tr></table>')
+    extra = f'<div style="margin:8px 0 0;font-family:{SERIF};font-style:italic;font-size:14px;line-height:1.4;color:{MUTED};">{esc(f.get("teaser") or f.get("lede"))}</div>'
+    return card(pic, "Fermentatie van de week", f["title"], url, extra)
+
+
+def grid(cards):
+    """Twee vakken per rij; in Outlook voor Windows (mso) met een tabel eromheen, elders inline-block."""
+    rows = []
+    for i in range(0, len(cards), 2):
+        pair = cards[i:i + 2]
+        inner = f'<!--[if mso]></td><td width="{COL + 20}" valign="top"><![endif]-->'.join(pair)
+        rows.append(f'<tr><td style="padding:0;font-size:0;text-align:left;">'
+                    f'<!--[if mso]><table role="presentation" width="{2 * (COL + 20)}" cellpadding="0" cellspacing="0" border="0"><tr><td width="{COL + 20}" valign="top"><![endif]-->'
+                    f'{inner}<!--[if mso]></td></tr></table><![endif]--></td></tr>')
+    return "\n".join(rows)
 
 
 def build(ed, base, subject=None, preview=None):
     out = ROOT / "mail" / ed["id"]
     out.mkdir(parents=True, exist_ok=True)
+    for t in TINTS:
+        if not (ROOT / "mail" / f"overlay-{t}.png").exists():
+            overlay_png(t, ROOT / "mail" / f"overlay-{t}.png")
     mail_url = f"{base}mail/{ed['id']}/"
     for r in ed["recipes"]:
-        sp = r.get("spark") or {}
-        if sp.get("weeks"):
-            spark_png(sp["weeks"], TINTS.get(r.get("tint"), (0, 0, INK))[2], out / f"{r['slug']}.png")
-    f = ed.get("ferment")
-    ferment = ""
-    if f:
-        ferment = f"""
-<tr><td style="padding:0 0 28px;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:{INK};">
-    <tr><td style="padding:26px 24px;color:{CREAM};">
-      <div style="font-family:{MONO};font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#E8A07A;">Fermentatie van de week</div>
-      <h2 style="margin:8px 0 0;font-family:{SERIF};font-weight:normal;font-size:26px;line-height:1.15;color:{CREAM};">{esc(f["title"])}</h2>
-      <p style="margin:10px 0 0;font-family:{SERIF};font-size:16px;line-height:1.5;color:{CREAM};">{esc(f.get("teaser") or f.get("lede"))}</p>
-      <p style="margin:18px 0 0;font-family:{MONO};font-size:12px;letter-spacing:.1em;text-transform:uppercase;">
-        <a href="{esc(base)}#fermentatie-{esc(ed["id"])}" style="color:{CREAM};text-decoration:underline;text-underline-offset:3px;">Zo maak je het →</a></p>
-    </td></tr>
-  </table>
-</td></tr>"""
+        if (r.get("spark") or {}).get("weeks"):
+            spark_png(r["spark"]["weeks"], out / f"{r['slug']}.png")
+    cards = [recipe_card(r, base, mail_url) for r in ed["recipes"]]
+    if ed.get("ferment"):
+        cards.append(ferment_card(ed["ferment"], ed, base))
     m = ed.get("mail") or {}
     pre = preview or m.get("preview") or ed["intro"].split(". ")[0].rstrip(".") + "."
     subject = subject or m.get("subject") or f"Proef Nº {ed['number']:02d}: {ed['recipes'][0]['title']} en nog vier recepten"
+    small = f"font-family:{MONO};font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;"
     page = f"""<!doctype html>
 <html lang="nl">
 <head>
@@ -137,26 +180,25 @@ def build(ed, base, subject=None, preview=None):
 <meta name="color-scheme" content="light">
 <meta name="supported-color-schemes" content="light">
 <title>{esc(subject)}</title>
+<style>
+  @media (max-width: 620px) {{ .col {{ max-width: 100% !important; }} }}
+</style>
 </head>
-<body style="margin:0;padding:0;background:{BOARD};">
+<body style="margin:0;padding:0;background:{SHEET};">
 <div style="display:none;max-height:0;overflow:hidden;opacity:0;">{esc(pre)}</div>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:{BOARD};">
-<tr><td align="center" style="padding:24px 12px;">
-<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:600px;">
-  <tr><td style="padding:4px 0 18px;border-bottom:1px solid {INK};">
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
-      <td style="vertical-align:bottom;"><a href="{esc(base)}"><img src="{esc(base)}mail/proef-logo.png" width="118" height="40" alt="Proef" style="display:block;border:0;"></a></td>
-      <td align="right" style="vertical-align:bottom;font-family:{MONO};font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:{MUTED};">Nº {ed['number']:02d} · week {ed['week']}<br>{esc(nice_date(ed['date']))}</td>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:{SHEET};">
+<tr><td align="center" style="padding:28px 8px 32px;">
+<table role="presentation" width="{2 * (COL + 20)}" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:{2 * (COL + 20)}px;">
+  <tr><td style="padding:0 10px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-bottom:1px solid {INK};"><tr>
+      <td style="padding:0 0 14px;vertical-align:bottom;"><a href="{esc(base)}"><img src="{esc(base)}mail/proef-logo.png" width="94" height="32" alt="Proef" style="display:block;border:0;"></a></td>
+      <td align="right" style="padding:0 0 14px;vertical-align:bottom;{small}color:{MUTED};">Nº {ed['number']:02d} · {esc(nice_date(ed['date']))}</td>
     </tr></table>
   </td></tr>
-  <tr><td style="padding:26px 0 28px;">
-    <div style="font-family:{MONO};font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:{HANKO};">Deze week</div>
-    <p style="margin:10px 0 0;font-family:{SERIF};font-size:21px;line-height:1.45;color:{INK};">{esc(ed["intro"])}</p>
-  </td></tr>
-  {"".join(recipe_block(r, base, mail_url) for r in ed["recipes"])}
-  {ferment}
-  <tr><td style="padding:6px 0 0;border-top:1px solid {INK};font-family:{SANS};font-size:12.5px;line-height:1.6;color:{MUTED};">
-    @@FOOTER@@
+  <tr><td style="padding:22px 10px 30px;font-family:{SERIF};font-size:17px;line-height:1.55;color:{INK};">{esc(ed["intro"])}</td></tr>
+  {grid(cards)}
+  <tr><td style="padding:0 10px;">
+    <div style="border-top:1px solid {INK};padding:14px 0 0;font-family:{SANS};font-size:12px;line-height:1.6;color:{MUTED};">@@FOOTER@@</div>
   </td></tr>
 </table>
 </td></tr>
@@ -164,16 +206,14 @@ def build(ed, base, subject=None, preview=None):
 </body>
 </html>
 """
-    small = f'font-family:{MONO};font-size:11px;letter-spacing:.08em;text-transform:uppercase;'
     privacy = f'<a href="{esc(base)}#privacy" style="color:{INK};">Privacy</a>'
     # mail (Laposta): /tag/unsubscribe en /tag/web zet Laposta bij het versturen om in de afmeld- en webversielink
-    mail_footer = (f'<p style="margin:14px 0 0;">Je krijgt deze mail omdat je je hebt aangemeld op <a href="{esc(base)}" style="color:{MUTED};">edial.github.io/proef</a>. '
-                   f'Elke zaterdag vijf trending recepten, gemeten met Google Trends en wat koks nu maken.</p>'
-                   f'<p style="margin:10px 0 0;{small}"><a href="/tag/unsubscribe" style="color:{INK};">Afmelden</a> &nbsp;·&nbsp; '
-                   f'<a href="/tag/web" style="color:{INK};">Bekijk in je browser</a> &nbsp;·&nbsp; {privacy}</p>')
+    mail_footer = (f'Je krijgt deze mail omdat je je hebt aangemeld op <a href="{esc(base)}" style="color:{MUTED};">edial.github.io/proef</a>.'
+                   f'<div style="margin:8px 0 0;{small}"><a href="/tag/unsubscribe" style="color:{INK};">Afmelden</a> &nbsp;·&nbsp; '
+                   f'<a href="/tag/web" style="color:{INK};">Bekijk in je browser</a> &nbsp;·&nbsp; {privacy}</div>')
     # web (de site): geen afmeldlink, wel aanmelden
-    web_footer = (f'<p style="margin:14px 0 0;">Dit is de nieuwsbrief van Proef, elke zaterdag met vijf trending recepten. Wil je hem ook krijgen?</p>'
-                  f'<p style="margin:10px 0 0;{small}"><a href="{esc(base)}#nieuwsbrief" style="color:{INK};">Aanmelden</a> &nbsp;·&nbsp; {privacy}</p>')
+    web_footer = (f'Dit is de nieuwsbrief van Proef: elke zaterdag vijf trending recepten en een fermentatie.'
+                  f'<div style="margin:8px 0 0;{small}"><a href="{esc(base)}#nieuwsbrief" style="color:{INK};">Aanmelden</a> &nbsp;·&nbsp; {privacy}</div>')
     (out / "mail.html").write_text(page.replace("@@FOOTER@@", mail_footer))
     (out / "index.html").write_text(page.replace("@@FOOTER@@", web_footer))
     meta = {"subject": subject, "previewtext": pre[:120], "url": f"{SITE}mail/{ed['id']}/"}
