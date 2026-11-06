@@ -106,6 +106,13 @@ img { display: block; max-width: 100%; }
 .method .labels { display: grid; gap: 10px; margin: 0 0 8px; }
 .method .labels div { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 12px; align-items: baseline; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
 .method .labels dd { margin: 0; font-size: 15.5px; }
+.privacy h2.colhead { margin-top: 26px; }
+.privacy .prose-1 { margin: 6px 0 0; }
+.privacy .prose-1 ul { margin: 8px 0 0; padding-left: 1.1em; }
+.privacy .prose-1 li + li { margin-top: 6px; }
+.privacy .updated { margin-top: 30px; color: var(--muted); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+.reveal { font-size: 12px; letter-spacing: .06em; padding: 3px 10px; border: 1px solid var(--ink); border-radius: 99px; background: transparent; color: var(--ink); cursor: pointer; vertical-align: 1px; }
+.reveal:hover, .reveal:focus-visible { background: var(--ink); color: var(--board); }
 .trends .dek { max-width: 62ch; }
 .glance { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin: 26px 0 34px; padding: 18px 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); }
 .glance b { display: block; font-weight: 400; font-size: 40px; line-height: 1; color: var(--ink); }
@@ -497,6 +504,7 @@ kbd { font-family: var(--mono); font-style: normal; font-size: 11px; border: 1px
 .signup-row button { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; padding: 12px 20px; border: 0; border-radius: 0; background: var(--ink); color: var(--board); cursor: pointer; }
 .signup-row button:hover, .signup-row button:focus-visible { background: var(--hanko); color: var(--cream); }
 .signup-note { font-family: var(--sans); font-size: 12.5px; line-height: 1.45; color: var(--muted); margin-top: 8px; }
+.signup-note a { color: inherit; text-underline-offset: .2em; }
 .signup-trap { position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; }
 .signup-done { grid-column: 1 / -1; font-size: 20px; margin: 0; }
 .signup + footer { margin-top: 48px; }
@@ -636,7 +644,7 @@ footer { margin-top: 96px; }
       </div>
       <!-- valkuil voor spambots (van Laposta): mensen zien dit veld niet en vullen het dus ook niet in -->
       <input class="signup-trap" type="email" name="email" autocomplete="new-password" tabindex="-1" aria-hidden="true">
-      <p class="signup-note">We gebruiken je adres alleen voor deze nieuwsbrief. Verzonden via Laposta, met servers in Nederland.</p>
+      <p class="signup-note">We gebruiken je adres alleen voor deze nieuwsbrief (<a href="#privacy">privacy</a>). Verzonden via Laposta, met servers in Nederland.</p>
     </form>
     <p class="signup-done" id="signup-done" hidden>Je bent aangemeld voor de nieuwsbrief van Proef. Afmelden kan onderaan elke mail.</p>
   </section>
@@ -644,7 +652,7 @@ footer { margin-top: 96px; }
   <footer>
     <div class="foot mono">
       <span>© 2026 Proef</span>
-      <span class="foot-links"><a href="#zoek" class="foot-search" aria-keyshortcuts="/">Zoek <kbd>/</kbd></a><a href="#archief">Archief</a><span>Trenddata van Google Trends, Pinterest en TikTok · <a href="#zo-meten-we">Hoe meten we dit?</a></span></span>
+      <span class="foot-links"><a href="#zoek" class="foot-search" aria-keyshortcuts="/">Zoek <kbd>/</kbd></a><a href="#archief">Archief</a><a href="#privacy">Privacy</a><span>Trenddata van Google Trends, Pinterest en TikTok · <a href="#zo-meten-we">Hoe meten we dit?</a></span></span>
     </div>
   </footer>
 </div>
@@ -1032,6 +1040,59 @@ footer { margin-top: 96px; }
         h("dl", { class: "labels" }, LABELS.map(([l, t]) => h("div", null, h("dt", null, tl(l)), h("dd", { text: t })))),
         h("p", { class: "why", text: "Staat er een recept met “Dalend” in Proef? Dan kozen we het om iets anders: het seizoen, weinig werk, of omdat kinderen het lusten. Het label laat eerlijk zien hoe het ervoor staat." }))));
     document.title = "Hoe meten we trends? · Proef";
+    $("home").hidden = true; $("detail-view").hidden = false;
+    window.scrollTo(0, 0);
+  }
+
+  /* ---------- Privacy ---------- */
+  // Het contactadres staat niet als tekst in de site of de repo (tegen adresverzamelaars). Het wordt pas na een klik
+  // opgebouwd uit deze gecodeerde tekens.
+  const MAIL = [114, 115, 126, 118, 123, 115, 87, 112, 122, 118, 126, 123, 57, 116, 120, 122];
+  function contactButton() {
+    const b = h("button", { type: "button", class: "reveal mono", text: "Toon e-mailadres" });
+    b.addEventListener("click", () => {
+      const a = MAIL.map((c) => String.fromCharCode(c ^ 23)).join("");
+      const link = h("a", { href: "mailto:" + a, text: a });
+      b.replaceWith(link);
+      link.focus();
+    });
+    return b;
+  }
+  function showPrivacy() {
+    const sec = (title, ...ps) => [h("h2", { class: "mono colhead", text: title }),
+      h("div", { class: "prose-1" }, ...ps.map((p) => (typeof p === "string" ? h("p", { text: p }) : p)))];
+    const list = (...items) => h("ul", null, ...items.map((t) => h("li", { text: t })));
+    $("detail-view").replaceChildren(h("article", null,
+      h("a", { class: "back mono", href: "#deze-week", text: "← Deze week" }),
+      h("div", { class: "card sheet method privacy" },
+        h("p", { class: "kicker", text: "Privacyverklaring" }),
+        h("h1", { text: "Privacy" }),
+        h("p", { class: "dek", text: "Proef verzamelt zo weinig mogelijk. Hier lees je wat er met je gegevens gebeurt als je de site bezoekt of je aanmeldt voor de nieuwsbrief." }),
+        ...sec("Wie is verantwoordelijk",
+          h("p", null, "Proef wordt gemaakt door Edial Dekker. Vragen over je gegevens? Mail naar ", contactButton(), ".")),
+        ...sec("De nieuwsbrief",
+          "Meld je je aan, dan bewaren we je e-mailadres. Laposta legt daarbij de datum en tijd, je IP-adres en de pagina van aanmelding vast. Zo kunnen we laten zien dat jij je zelf hebt aangemeld.",
+          "We gebruiken je adres alleen om je de nieuwsbrief van Proef te sturen. We verkopen het niet en delen het met niemand anders.",
+          "Dat doen we op basis van je toestemming (artikel 6 lid 1 onder a AVG). Je trekt die in door je af te melden met de link onderaan elke nieuwsbrief.",
+          "Laposta houdt bij of een nieuwsbrief is afgeleverd, geopend en of er op links is geklikt. Dat gebruiken we alleen om te zien welke recepten aanslaan.",
+          "Om nep-aanmeldingen tegen te houden, stuurt het formulier bij het aanmelden mee hoe lang het open was en of er met muis of toetsenbord is gewerkt."),
+        ...sec("Hoe lang we het bewaren",
+          "Zolang je bent aangemeld. Meld je je af, dan sturen we je niets meer. Laposta bewaart dan alleen dat je je hebt afgemeld, zodat je niet per ongeluk opnieuw mail krijgt. Wil je dat je adres helemaal verdwijnt, mail ons dan."),
+        ...sec("De website",
+          "Proef gebruikt geen cookies, geen advertenties en geen bezoekersstatistieken. Wel zien deze partijen je IP-adres, zoals bij elke website die iets van hen laadt:",
+          list(
+            "GitHub (Verenigde Staten): de site staat op GitHub Pages.",
+            "Google (Verenigde Staten): de lettertypen komen van Google Fonts.",
+            "Laposta (Nederland): het aanmeldformulier laadt een script tegen spam.",
+            "De sites van de makers: foto's bij recepten worden van hun site geladen. Die site ziet ook dat je via Proef komt.",
+            "YouTube, Instagram of TikTok: een video laadt pas als je op afspelen klikt. Vanaf dan gelden de regels van dat platform.")),
+        ...sec("Wie je gegevens verwerkt",
+          "Laposta verstuurt de nieuwsbrief en bewaart de lijst met e-mailadressen op servers in Nederland. Je e-mailadres komt verder nergens terecht."),
+        ...sec("Je rechten",
+          h("p", null, "Je mag je gegevens inzien, laten verbeteren of verwijderen, en bezwaar maken tegen het gebruik. Mail ons daarvoor. Ben je het niet eens met hoe we met je gegevens omgaan, dan kun je een klacht indienen bij de ",
+            h("a", { href: "https://www.autoriteitpersoonsgegevens.nl", target: "_blank", rel: "noopener", text: "Autoriteit Persoonsgegevens" }), ".")),
+        h("p", { class: "mono updated", text: "Bijgewerkt op 6 november 2026" }))));
+    document.title = "Privacy · Proef";
     $("home").hidden = true; $("detail-view").hidden = false;
     window.scrollTo(0, 0);
   }
@@ -1516,13 +1577,13 @@ footer { margin-top: 96px; }
 
   function markNav(hsh) {
     const key = hsh.startsWith("fermentatie") ? "fermentatie" : hsh === "trends" || hsh === "zo-meten-we" ? "trends"
-      : hsh.startsWith("zoek") || hsh === "archief" ? "" : "deze-week";
+      : hsh.startsWith("zoek") || hsh === "archief" || hsh === "privacy" ? "" : "deze-week";
     for (const a of document.querySelectorAll(".top nav a")) {
       if (a.getAttribute("href") === "#" + key) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
     }
   }
 
-  const HASH_ROUTE = /^(zoek(\/.*)?|zo-meten-we|trends|microseizoenen|deze-week|archief|fermentaties|fermentatie(-.*)?|editie-.*)$/;
+  const HASH_ROUTE = /^(zoek(\/.*)?|zo-meten-we|privacy|trends|microseizoenen|deze-week|archief|fermentaties|fermentatie(-.*)?|editie-.*)$/;
   function route() {
     if (!state.editions.length) return;
     const hsh = decodeURIComponent(location.hash.slice(1));
@@ -1545,6 +1606,7 @@ footer { margin-top: 96px; }
     if ($("search").open) closeSearch(true);
     state.lastUrl = location.pathname + location.search + location.hash;
     if (hsh === "zo-meten-we") return showMethod();
+    if (hsh === "privacy") return showPrivacy();
     if (hsh === "trends") return showTrends();
     if (hsh === "microseizoenen") return showSeasons();
     if (hsh === "fermentaties") return showFerments();
