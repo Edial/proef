@@ -191,25 +191,24 @@ img { display: block; max-width: 100%; }
 .t-persimmon { --bg: var(--persimmon); --hi: #FAD2B4;      --lo: #9C3F1F; }
 .t-mustard   { --bg: var(--mustard);   --hi: #F7D27E;      --lo: #5B3D10; }
 
-/* Foto: duotoon in de receptkleur met drukraster; hover toont het origineel */
+/* Foto: de echte foto, iets gedempt en even licht gemaakt (photoGamma op .lift), met twee lagen in de receptkleur:
+   de schaduwen naar de donkere tint (lighten) en een kleurlaag (color: verandert alleen de kleurtoon, niet de lichtheid).
+   Hover, tikken of scrollen haalt de lagen weg en toont de foto zonder tint. */
 .duo { position: relative; overflow: hidden; background: var(--hi); isolation: isolate; }
-.duo .lift { position: absolute; inset: 0; display: block; mix-blend-mode: multiply; }
+.duo .lift { position: absolute; inset: 0; display: block; }
 .duo img { width: 100%; height: 100%; object-fit: cover; }
-.duo .lift img { filter: grayscale(1) contrast(1.08) brightness(1.08); }
-.duo::after { content: ""; position: absolute; inset: 0; background: var(--lo); mix-blend-mode: lighten; pointer-events: none; }
-.duo::before { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: .2; mix-blend-mode: multiply; background-image: radial-gradient(circle, #000 0.7px, transparent 1.3px); background-size: 4px 4px; transition: opacity .5s ease; }
-/* origineel: een onbewerkte kopie (zonder duotoon en zonder ophelderen) die erover heen infadet */
-.duo .orig { position: absolute; inset: 0; z-index: 1; opacity: 0; transition: opacity .5s ease; }
+.duo .lift img { filter: saturate(.9) contrast(.95); }
+.duo:has(.lift)::before, .duo:has(.lift)::after { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; transition: opacity .5s ease; }
+.duo:has(.lift)::before { background: var(--lo); mix-blend-mode: lighten; opacity: .5; }
+.duo:has(.lift)::after { background: var(--bg); mix-blend-mode: color; opacity: .42; }
 @media (hover: hover) {
-  .duo:hover .orig { opacity: 1; }
-  .duo:hover::before { opacity: 0; }
+  .duo:hover::before, .duo:hover::after { opacity: 0; }
 }
-.duo.color .orig, .duo.scrolled .orig { opacity: 1; }
-.duo.color::before, .duo.scrolled::before { opacity: 0; }
-/* receptfoto: filter gaat snel weg zodra je scrolt; op mobiel met de scroll mee (--mix 0..1) */
-.duo.scrub:not(.color) .orig { opacity: var(--mix, 0); transition: none; }
-.duo.scrub:not(.color)::before { opacity: calc(.2 * (1 - var(--mix, 0))); transition: none; }
-.spread .left .duo .orig, .spread .left .duo::before { transition-duration: .6s; transition-timing-function: cubic-bezier(.2, .7, .3, 1); }
+.duo.color::before, .duo.color::after, .duo.scrolled::before, .duo.scrolled::after { opacity: 0; }
+/* receptfoto: tint gaat snel weg zodra je scrolt; op mobiel met de scroll mee (--mix 0..1) */
+.duo.scrub:not(.color)::before { opacity: calc(.5 * (1 - var(--mix, 0))); transition: none; }
+.duo.scrub:not(.color)::after { opacity: calc(.42 * (1 - var(--mix, 0))); transition: none; }
+.spread .left .duo::before, .spread .left .duo::after { transition-duration: .6s; transition-timing-function: cubic-bezier(.2, .7, .3, 1); }
 .duo .glyph { position: absolute; top: 16px; right: 18px; z-index: 3; color: var(--cream); }
 .duo .fallback { position: absolute; inset: 0; display: grid; place-items: center; font-size: clamp(64px, 12vw, 140px); color: var(--lo); }
 /* Video: eerst de foto met een knop; pas na een klik laadt de speler van het platform */
@@ -570,7 +569,7 @@ footer { margin-top: 96px; }
   .s-hint { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .duo .orig, .duo::before, .spread .left .duo .orig, .spread .left .duo::before { transition: none; }
+  .duo::before, .duo::after, .spread .left .duo::before, .spread .left .duo::after { transition: none; }
 }
 </style>
 <!-- gemaakt door scripts/build_pages.py, niet met de hand bewerken -->
@@ -797,8 +796,7 @@ footer { margin-top: 96px; }
       const img = h("img", { src: r.photo, alt: opts.alt === false ? "" : "Foto van " + r.title + (r.photoCredit ? " (" + r.photoCredit.label + ")" : ""), loading: opts.eager ? "eager" : "lazy", referrerpolicy: "strict-origin-when-cross-origin", decoding: "async" });
       img.addEventListener("error", fallback, { once: true });
       const g = Number(r.photoGamma);
-      box.append(h("span", { class: "lift", style: g > 0 && g !== 1 ? "filter:" + liftFilter(g) : null }, img),
-        h("img", { class: "orig", src: r.photo, alt: "", "aria-hidden": "true", loading: img.loading, referrerpolicy: "strict-origin-when-cross-origin", decoding: "async" }));
+      box.append(h("span", { class: "lift", style: g > 0 && g !== 1 ? "filter:" + liftFilter(g) : null }, img));
       if (opts.glyph && r.glyph) box.append(h("span", { class: "glyph cjk", "aria-hidden": "true", text: r.glyph }));
       if (opts.badge && r.video) box.append(h("span", { class: "vid", role: "img", "aria-label": "met video" }, h("span", { class: "tri" })));
       // aanraakschermen: tik om de echte kleuren te zien
