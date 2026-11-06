@@ -470,7 +470,7 @@ kbd { font-family: var(--mono); font-style: normal; font-size: 11px; border: 1px
 /* Zoeken (toets /) */
 #search { width: min(720px, calc(100vw - 24px)); max-height: min(80vh, 760px); margin: 9vh auto auto; padding: 0; border: 0; background: var(--sheet); color: var(--ink); box-shadow: 0 30px 80px rgba(0,0,0,.25); display: none; flex-direction: column; overflow: hidden; }
 #search[open] { display: flex; }
-#search::backdrop { background: rgba(22,20,18,.55); }
+#search::backdrop { background: rgba(22,20,18,.32); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
 .s-top { display: flex; align-items: center; gap: 12px; padding: 18px 22px 14px; border-bottom: 1px solid var(--ink); }
 .s-top .cjk { font-size: 22px; font-weight: 700; color: var(--hanko); }
 .s-top input { flex: 1; min-width: 0; font: inherit; font-size: 22px; letter-spacing: -0.01em; color: var(--ink); background: transparent; border: 0; padding: 4px 0; }
@@ -537,6 +537,56 @@ html.pop-open, html.pop-open body { overflow: hidden; }
   .pop { width: 100%; max-width: none; margin: auto 0 0; padding: 26px 16px calc(18px + env(safe-area-inset-bottom, 0px)); max-height: 92vh; }
   .pop h2 { font-size: 28px; }
   .pop .signup-row { flex-direction: column; }
+}
+/* ---------- Kleine details. Alleen met beweging als het apparaat niet om minder beweging vraagt. ---------- */
+/* mise en place: ingrediënt of stap aantikken = afvinken; een inktstreep door het ingrediënt */
+.ingr li[role="checkbox"], .steps li[role="checkbox"] { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.ingr .ink { background: linear-gradient(currentColor, currentColor) no-repeat 0 58% / 0 1.5px; transition: background-size .35s ease, color .3s ease; }
+.ingr li.got .ink { background-size: 100% 1.5px; color: var(--muted); }
+.ingr li.got .q { color: var(--muted); }
+.steps li { transition: color .3s ease; }
+.steps li.done { color: var(--muted); }
+.steps li.done::before { content: "✓"; color: var(--ok); font-weight: 600; }
+.ingr li[role="checkbox"]:focus-visible, .steps li[role="checkbox"]:focus-visible { outline: 2px solid var(--hanko); outline-offset: 2px; }
+/* stempel na het aanmelden */
+.signup-done { display: flex; align-items: center; gap: 14px; }
+.signup-done[hidden] { display: none; }
+.done-stamp { width: 42px; height: 42px; font-size: 23px; transform: rotate(-4deg); }
+@media (prefers-reduced-motion: no-preference) {
+  /* sparkline tekent zichzelf, daarna plopt de stip */
+  .spark.draw { clip-path: inset(-12px 100% -12px -12px); }
+  .spark.draw.drawn { clip-path: inset(-12px -12px -12px -12px); transition: clip-path .9s cubic-bezier(.3, .7, .2, 1); }
+  .spark.draw.drawn .dot { animation: dot-pop .5s .75s both; }
+  /* hanko drukt als een stempel */
+  .hanko.stamp { animation: stamp .55s cubic-bezier(.3, .7, .2, 1); }
+  @media (hover: hover) { .hanko:hover { animation: stamp .55s cubic-bezier(.3, .7, .2, 1); } }
+  .done-stamp { animation: stamp-in .6s .25s cubic-bezier(.2, .8, .3, 1.2) both; }
+  /* getallen tikken mee bij meer of minder personen */
+  .q.tick { animation: tick .32s ease; }
+  /* fermentatie bruist: belletjes in het golfpatroon */
+  .seigaiha.fizz .bub { animation: rise var(--t, 2.4s) var(--d, 0s) ease-in both; }
+}
+.hanko { cursor: default; }
+.seigaiha { position: relative; overflow: hidden; }
+.seigaiha .bub { position: absolute; bottom: -14px; width: var(--s, 8px); height: var(--s, 8px); border: 1.5px solid rgba(248,245,238,.85); border-radius: 50%; opacity: 0; pointer-events: none; }
+@keyframes dot-pop { 0% { stroke-width: 0; } 60% { stroke-width: 11; } 100% { stroke-width: 6; } }
+@keyframes stamp {
+  0% { transform: scale(1) rotate(0); }
+  30% { transform: scale(1.22) rotate(-7deg); box-shadow: 0 6px 14px rgba(0,0,0,.18); }
+  55% { transform: scale(.9) rotate(2deg); box-shadow: 0 0 0 0 rgba(196,55,44,.45); }
+  100% { transform: scale(1) rotate(0); box-shadow: 0 0 0 12px rgba(196,55,44,0); }
+}
+@keyframes stamp-in {
+  0% { opacity: 0; transform: scale(2.4) rotate(-16deg); }
+  70% { opacity: 1; transform: scale(.92) rotate(-3deg); }
+  100% { opacity: 1; transform: scale(1) rotate(-4deg); }
+}
+@keyframes tick { 0% { transform: translateY(-5px); opacity: .2; } 100% { transform: none; opacity: 1; } }
+@keyframes rise {
+  0% { opacity: 0; transform: translate(0, 0); }
+  15% { opacity: 1; }
+  55% { transform: translate(var(--x, 6px), -130px); }
+  100% { opacity: 0; transform: translate(calc(var(--x, 6px) * -1), -260px); }
 }
 footer { margin-top: 96px; }
 .foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 24px; padding-block: 18px 36px; border-top: 1px solid var(--ink); color: var(--muted); }
@@ -671,7 +721,7 @@ footer { margin-top: 96px; }
       <input class="signup-trap" type="email" name="email" autocomplete="new-password" tabindex="-1" aria-hidden="true">
       <p class="signup-note">We gebruiken je adres alleen voor deze nieuwsbrief (<a href="#privacy">privacy</a>). Verzonden via Laposta, met servers in Nederland.</p>
     </form>
-    <p class="signup-done" id="signup-done" hidden>Je bent aangemeld voor de nieuwsbrief van Proef. Afmelden kan onderaan elke mail.</p>
+    <p class="signup-done" id="signup-done" hidden><span class="hanko done-stamp" aria-hidden="true">済</span><span>Je bent aangemeld voor de nieuwsbrief van Proef. Afmelden kan onderaan elke mail.</span></p>
   </section>
 
   <footer>
@@ -988,13 +1038,20 @@ footer { margin-top: 96px; }
   }
 
   /* ---------- Recept ---------- */
+  const calm = matchMedia("(prefers-reduced-motion: reduce)");
+  function setQty(q, text) {  // alleen als het getal verandert: kort meetikken
+    if (q.textContent === text) return;
+    q.textContent = text;
+    if (calm.matches) return;
+    q.classList.remove("tick"); void q.offsetWidth; q.classList.add("tick");
+  }
   function ingredientList(list, factor) {
     const groups = []; let cur = null;
     for (const ing of list || []) { const g = ing.group || ""; if (!cur || cur.name !== g) { cur = { name: g, items: [] }; groups.push(cur); } cur.items.push(ing); }
     const cells = [], box = h("div");
     for (const grp of groups) {
       if (grp.name) box.append(h("p", { class: "label ing-group", text: grp.name }));
-      box.append(h("ul", { class: "ingr" }, grp.items.map((ing) => { const q = h("span", { class: "q", text: fmtQty(ing, factor) }); cells.push([q, ing]); return h("li", null, q, h("span", { text: ing.item })); })));
+      box.append(h("ul", { class: "ingr" }, grp.items.map((ing) => { const q = h("span", { class: "q", text: fmtQty(ing, factor) }); cells.push([q, ing]); return h("li", { role: "checkbox", "aria-checked": "false", tabindex: "0" }, q, h("span", null, h("span", { class: "ink", text: ing.item }))); })));
     }
     return { box, cells, groups };
   }
@@ -1010,7 +1067,7 @@ footer { margin-top: 96px; }
     const update = () => {
       out.textContent = servingsText(r, n);
       minus.disabled = n - step < step; plus.disabled = n + step > base * 4;
-      for (const [q, ing] of ings.cells) q.textContent = fmtQty(ing, n / base);
+      for (const [q, ing] of ings.cells) setQty(q, fmtQty(ing, n / base));
     };
     minus.addEventListener("click", () => { n = Math.max(step, n - step); update(); });
     plus.addEventListener("click", () => { n = Math.min(base * 4, n + step); update(); });
@@ -1045,7 +1102,7 @@ footer { margin-top: 96px; }
               ings.box),
             h("section", { "aria-labelledby": "steps-t" },
               h("h2", { class: "mono colhead", id: "steps-t", text: "Bereiding" }),
-              h("ol", { class: "steps" }, (r.steps || []).map((s) => h("li", null, h("span", { text: s })))),
+              h("ol", { class: "steps" }, (r.steps || []).map((s) => h("li", { role: "checkbox", "aria-checked": "false", tabindex: "0" }, h("span", { text: s })))),
               r.tip ? h("aside", { class: "tip" }, h("span", { class: "label", text: "Tip" }), r.tip) : null,
               pair ? h("aside", { class: "pair" }, h("span", { class: "mono label", text: "Dit past er goed bij" }), fermCard(pair, "small")) : null),
             r.spark && r.spark.weeks ? h("aside", { class: "why", id: "waarom", "aria-labelledby": "why-t" },
@@ -1340,7 +1397,7 @@ footer { margin-top: 96px; }
       const v = Number(input.value);
       total = v >= 50 && v <= 50000 ? Math.round(v) : def;
       const factor = total / def;
-      for (const [q, ing] of ings.cells) q.textContent = fmtQty(ing, factor);
+      for (const [q, ing] of ings.cells) setQty(q, fmtQty(ing, factor));
       for (const b of btns) b.classList.toggle("on", Number(b.textContent.replace(/\D/g, "")) === total);
       saltLine.replaceChildren(...(salt ? [
         "Zout: ", h("b", { text: fmtQty(salt, factor) }),
@@ -1584,7 +1641,7 @@ footer { margin-top: 96px; }
   }
   function openSearch(q = "") {
     const dlg = $("search");
-    if (!dlg.open) dlg.showModal();
+    if (!dlg.open) { lockScroll(); dlg.showModal(); }
     $("q").value = q; renderResults(); $("q").focus();
   }
   function closeSearch(go) {
@@ -1609,6 +1666,7 @@ footer { margin-top: 96px; }
     $("s-results").addEventListener("click", (e) => { if (e.target.closest("a")) closeSearch(true); });
     $("s-close").addEventListener("click", () => closeSearch());
     $("search").addEventListener("cancel", (e) => { e.preventDefault(); closeSearch(); });
+    $("search").addEventListener("close", unlockScroll);
     $("search").addEventListener("click", (e) => { if (e.target === $("search")) closeSearch(); });
     $("find").addEventListener("click", () => openSearch());
     document.addEventListener("keydown", (e) => {
@@ -1633,6 +1691,88 @@ footer { margin-top: 96px; }
       if (a.getAttribute("href") === "#" + key) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
     }
   }
+
+  /* ---------- Kleine details ---------- */
+  // pagina vastzetten achter een venster (pop-up, zoeken); ruimte van de scrollbalk opvullen zodat niets verspringt
+  function lockScroll() {
+    const root = document.documentElement, bar = innerWidth - root.clientWidth;
+    if (bar > 0) root.style.paddingRight = bar + "px";
+    root.classList.add("pop-open");
+  }
+  function unlockScroll() {
+    if ($("search").open || $("signup-pop").open) return;
+    document.documentElement.classList.remove("pop-open");
+    document.documentElement.style.paddingRight = "";
+  }
+  // sparklines tekenen zichzelf zodra ze in beeld komen; de golven van de fermentatie bruisen even.
+  // De sparkline zelf is dan nog weggeclipt (en telt voor de browser als onzichtbaar), dus we kijken naar het blok eromheen.
+  const IO = "IntersectionObserver" in window;
+  const drawObs = IO ? new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (!e.isIntersecting) continue;
+      drawObs.unobserve(e.target);
+      e.target.querySelectorAll(".spark.draw").forEach((sp) => sp.classList.add("drawn"));
+    }
+  }, { rootMargin: "0px 0px -10% 0px" }) : null;
+  const seen = IO ? new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) { seen.unobserve(e.target); fizz(e.target); }
+  }, { threshold: 0.6 }) : null;
+  function fizz(el) {
+    if (calm.matches || el.classList.contains("fizz")) return;
+    el.querySelectorAll(".bub").forEach((b) => b.remove());
+    for (let i = 0; i < 7; i++) {
+      const b = document.createElement("span");
+      b.className = "bub";
+      b.style.cssText = `left:${8 + Math.random() * 84}%;--s:${5 + Math.random() * 7}px;--t:${1.8 + Math.random() * 1.3}s;--d:${Math.random() * .9}s;--x:${(Math.random() * 16 - 8).toFixed(1)}px`;
+      el.append(b);
+    }
+    el.classList.add("fizz");
+    setTimeout(() => el.classList.remove("fizz"), 3800);
+  }
+  function enhance(node) {
+    if (node.nodeType !== 1) return;
+    const sparks = node.matches(".spark") ? [node] : node.querySelectorAll(".spark");
+    for (const sp of sparks) if (drawObs && !calm.matches && !sp.classList.contains("draw") && sp.parentElement) { sp.classList.add("draw"); drawObs.observe(sp.parentElement); }
+    const waves = node.matches(".seigaiha") ? [node] : node.querySelectorAll(".seigaiha");
+    for (const w of waves) { if (seen) seen.observe(w); w.addEventListener("mouseenter", () => fizz(w)); }
+  }
+  new MutationObserver((muts) => { for (const m of muts) m.addedNodes.forEach(enhance); }).observe(document.body, { childList: true, subtree: true });
+  // hanko: tikken drukt de stempel (hover doet het met CSS)
+  document.addEventListener("click", (e) => {
+    const hk = e.target.closest(".hanko");
+    if (!hk || calm.matches) return;
+    hk.classList.remove("stamp"); void hk.offsetWidth; hk.classList.add("stamp");
+  });
+  // mise en place: afvinken van ingrediënten en stappen, onthouden tot morgen (per recept of fermentatie)
+  const today = () => new Date().toISOString().slice(0, 10);
+  const miseKey = () => "proef-mise:" + location.pathname + location.hash.replace(/^#(waarom)?$/, "");
+  function miseSave() {
+    const lists = [...$("detail-view").querySelectorAll(".ingr li[role=checkbox], .steps li[role=checkbox]")];
+    const on = lists.map((li, i) => (li.getAttribute("aria-checked") === "true" ? i : -1)).filter((i) => i >= 0);
+    try { on.length ? localStorage.setItem(miseKey(), JSON.stringify({ d: today(), on })) : localStorage.removeItem(miseKey()); } catch (e) {}
+  }
+  function setupMise() {
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem(miseKey()) || "null"); } catch (e) {}
+    if (!saved || saved.d !== today()) return;
+    const lists = [...$("detail-view").querySelectorAll(".ingr li[role=checkbox], .steps li[role=checkbox]")];
+    for (const i of saved.on) if (lists[i]) tick(lists[i], true);
+  }
+  function tick(li, on) {
+    li.setAttribute("aria-checked", on ? "true" : "false");
+    li.classList.toggle(li.closest(".steps") ? "done" : "got", on);
+  }
+  $("detail-view").addEventListener("click", (e) => {
+    const li = e.target.closest('.ingr li[role="checkbox"], .steps li[role="checkbox"]');
+    if (!li || e.target.closest("a, button, input")) return;
+    tick(li, li.getAttribute("aria-checked") !== "true");
+    miseSave();
+  });
+  $("detail-view").addEventListener("keydown", (e) => {
+    const li = e.target.closest('.ingr li[role="checkbox"], .steps li[role="checkbox"]');
+    if (!li || (e.key !== " " && e.key !== "Enter")) return;
+    e.preventDefault(); tick(li, li.getAttribute("aria-checked") !== "true"); miseSave();
+  });
 
   /* ---------- Nieuwsbrief-pop-up: bij de derde pagina, niet voor wie via de mail komt, al is aangemeld of hem wegklikte ---------- */
   const POP_KEY = "proef-pop", POP_AT = 3, POP_REST = 30 * 864e5;
@@ -1659,10 +1799,7 @@ footer { margin-top: 96px; }
   function openPop() {
     const d = $("signup-pop"), s = popGet();
     if (!d || d.open || $("search").open || s.sub || (s.closed && Date.now() - s.closed < POP_REST)) return;
-    // pagina erachter vastzetten; ruimte van de scrollbalk opvullen zodat niets verspringt
-    const root = document.documentElement, bar = innerWidth - root.clientWidth;
-    if (bar > 0) root.style.paddingRight = bar + "px";
-    root.classList.add("pop-open");
+    lockScroll();
     d.showModal();
     d.focus();  // focus op het venster zelf, niet op de sluitknop
   }
@@ -1670,8 +1807,7 @@ footer { margin-top: 96px; }
     const d = $("signup-pop");
     const shut = () => { if (d.open) d.close(); };
     d.addEventListener("close", () => {
-      document.documentElement.classList.remove("pop-open");
-      document.documentElement.style.paddingRight = "";
+      unlockScroll();
       const s = popGet(); if (!s.sub) { s.closed = Date.now(); popSet(s); }
     });
     d.querySelector(".pop-close").addEventListener("click", shut);
@@ -1697,6 +1833,7 @@ footer { margin-top: 96px; }
       state.lastUrl = location.pathname + location.search + location.hash;
       if ($("search").open) closeSearch(true);
       showRecipe(state.bySlug.get(decodeURIComponent(path[1])));
+      setupMise();
       if (hsh && $(hsh)) $(hsh).scrollIntoView();
       return;
     }
@@ -1714,7 +1851,7 @@ footer { margin-top: 96px; }
     if (hsh === "fermentaties") return showFerments();
     if (hsh === "fermentatie" || hsh.startsWith("fermentatie-")) {
       const ed = hsh === "fermentatie" ? state.editions.find((e) => e.ferment) : state.editions.find((e) => "fermentatie-" + e.id === hsh);
-      if (ed && ed.ferment) return showFerment(ed);
+      if (ed && ed.ferment) { showFerment(ed); return setupMise(); }
     }
     let ed = state.editions[0];
     if (hsh.startsWith("editie-")) { const f = state.editions.find((e) => "editie-" + e.id === hsh); if (f) ed = f; }
