@@ -626,9 +626,9 @@ footer { margin-top: 96px; }
       </div>
       <!-- valkuil voor spambots (van Laposta): mensen zien dit veld niet en vullen het dus ook niet in -->
       <input class="signup-trap" type="email" name="email" autocomplete="new-password" tabindex="-1" aria-hidden="true">
-      <p class="signup-note">Je krijgt eerst een mail om je aanmelding te bevestigen. Verzonden via Laposta, met servers in Nederland.</p>
+      <p class="signup-note">We gebruiken je adres alleen voor deze nieuwsbrief. Verzonden via Laposta, met servers in Nederland.</p>
     </form>
-    <p class="signup-done" id="signup-done" hidden>Bijna klaar. Kijk in je mail en bevestig je aanmelding met de link die we je net stuurden.</p>
+    <p class="signup-done" id="signup-done" hidden>Je bent aangemeld voor de nieuwsbrief van Proef. Afmelden kan onderaan elke mail.</p>
   </section>
 
   <footer>
@@ -649,7 +649,7 @@ footer { margin-top: 96px; }
     document.querySelector(".signup-form").hidden = true;
     document.getElementById("signup-done").hidden = false;
     var t = document.getElementById("toast");
-    t.textContent = "Bijna klaar: bevestig je aanmelding via de mail die we je net stuurden.";
+    t.textContent = "Je bent aangemeld voor de nieuwsbrief.";
     t.hidden = false;
     setTimeout(function () { t.hidden = true; }, 9000);
   })();
