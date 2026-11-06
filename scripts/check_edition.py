@@ -223,7 +223,7 @@ def main():
             if m.get("preview") is not None and (not isinstance(m["preview"], str) or len(m["preview"]) > 120):
                 err(where, "mail.preview mag hooguit 120 tekens zijn")
         elif ed.get("number", 0) >= 3:
-            warn(where, "mail.subject ontbreekt: de nieuwsbrief krijgt dan een standaard onderwerp")
+            err(where, "mail.subject ontbreekt: schrijf een onderwerpregel voor de nieuwsbrief (REDACTIE.md stap 7)")
         if str(ed.get("date", "")) >= "2026-11-07":
             core = sum((SOURCES.get(r.get("source") or "") or {}).get("tier") == "core" for r in ed.get("recipes", []))
             if core < 3:
