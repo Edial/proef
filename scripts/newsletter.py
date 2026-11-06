@@ -22,6 +22,7 @@ Gebruik: python3 scripts/newsletter.py                     (nieuwste editie uit 
 import html
 import json
 import pathlib
+import re
 import sys
 
 from PIL import Image, ImageDraw
@@ -145,6 +146,16 @@ def grid(cards):
     return "\n".join(rows)
 
 
+def tag_links(page, eid):
+    """Links naar de site in de mail krijgen utm_medium=email: zo weet de site dat de lezer al abonnee is
+    (geen aanmeld-pop-up) en zie je in statistieken wat de mail oplevert. De site haalt ze daarna uit de url."""
+    utm = f"utm_source=nieuwsbrief&utm_medium=email&utm_campaign={eid}"
+    def one(m):
+        url, frag = m.group(1), m.group(2) or ""
+        return f'href="{url}{"&" if "?" in url else "?"}{utm}{frag}"'
+    return re.sub(r'href="(' + re.escape(SITE) + r'[^"#]*)(#[^"]*)?"', one, page)
+
+
 def build(ed, base, subject=None, preview=None):
     out = ROOT / "mail" / ed["id"]
     out.mkdir(parents=True, exist_ok=True)
@@ -203,7 +214,7 @@ def build(ed, base, subject=None, preview=None):
     # web (de site): geen afmeldlink, wel aanmelden
     web_footer = (f'Dit is de nieuwsbrief van Proef: elke zaterdag vijf trending recepten en een fermentatie.'
                   f'<div style="margin:8px 0 0;{small}"><a href="{esc(base)}#nieuwsbrief" style="color:{INK};">Aanmelden</a> &nbsp;·&nbsp; {privacy}</div>')
-    (out / "mail.html").write_text(page.replace("@@FOOTER@@", mail_footer))
+    (out / "mail.html").write_text(tag_links(page.replace("@@FOOTER@@", mail_footer), ed["id"]))
     (out / "index.html").write_text(page.replace("@@FOOTER@@", web_footer))
     meta = {"subject": subject, "previewtext": pre[:120], "url": f"{SITE}mail/{ed['id']}/"}
     (out / "mail.json").write_text(json.dumps(meta, ensure_ascii=False, indent=1) + "\n")

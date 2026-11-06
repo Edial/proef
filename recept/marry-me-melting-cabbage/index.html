@@ -517,6 +517,26 @@ kbd { font-family: var(--mono); font-style: normal; font-size: 11px; border: 1px
   .signup h2 { font-size: 28px; }
   .signup-row { flex-direction: column; }
 }
+/* Nieuwsbrief-pop-up (na de derde pagina; vaste HTML zodat Laposta's validate.js het formulier vindt) */
+.pop { width: min(540px, calc(100vw - 32px)); max-height: calc(100vh - 32px); margin: auto; padding: 30px 30px 24px; border: 0; background: var(--sheet); color: var(--ink); box-shadow: 0 24px 60px rgba(22,20,18,.28); overflow: auto; }
+.pop::backdrop { background: rgba(22,20,18,.5); }
+.pop:focus { outline: none; }
+.pop h2 { font-size: 34px; letter-spacing: -0.02em; line-height: 1.05; margin-top: 6px; }
+.pop-dek { font-style: italic; color: var(--muted); margin: 8px 0 0; font-size: 18px; line-height: 1.4; }
+.pop-usp { list-style: none; margin: 18px 0 20px; padding: 0; border-top: 1px solid var(--rule); }
+.pop-usp li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 8px; padding: 9px 0; border-bottom: 1px solid var(--rule); font-size: 15.5px; line-height: 1.4; }
+.pop-usp li::before { content: "✓"; font-family: var(--mono); font-size: 13px; color: var(--hanko); line-height: 1.7; }
+.pop-usp b { font-weight: 600; }
+.pop-close { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border: 0; border-radius: 50%; background: transparent; color: var(--muted); font-size: 22px; line-height: 1; cursor: pointer; }
+.pop-close:hover, .pop-close:focus-visible { color: var(--ink); background: var(--board); }
+.pop .signup-note { margin-top: 10px; }
+.pop-later { display: block; margin: 14px auto 0; border: 0; background: transparent; color: var(--muted); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; }
+.pop-later:hover { color: var(--ink); text-decoration: underline; }
+@media (max-width: 640px) {
+  .pop { width: 100%; max-width: none; margin: auto 0 0; padding: 26px 16px calc(18px + env(safe-area-inset-bottom, 0px)); max-height: 92vh; }
+  .pop h2 { font-size: 28px; }
+  .pop .signup-row { flex-direction: column; }
+}
 footer { margin-top: 96px; }
 .foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 24px; padding-block: 18px 36px; border-top: 1px solid var(--ink); color: var(--muted); }
 .foot-links { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 22px; }
@@ -666,6 +686,7 @@ footer { margin-top: 96px; }
   (function () {
     var q = new URLSearchParams(location.search);
     if (!q.has("aangemeld")) return;
+    try { var ps = JSON.parse(localStorage.getItem("proef-pop") || "{}"); ps.sub = 1; localStorage.setItem("proef-pop", JSON.stringify(ps)); } catch (e) {}
     q.delete("aangemeld");
     history.replaceState(null, "", location.pathname + (String(q) ? "?" + q : "") + location.hash);
     document.querySelector(".signup-form").hidden = true;
@@ -678,6 +699,33 @@ footer { margin-top: 96px; }
 </script>
 <!-- Laposta: vraagt bij versturen een eenmalig token op en lost een kleine rekenpuzzel op (spambeveiliging) -->
 <script src="https://proef.email-provider.eu/subscribe/check/validate.js" defer></script>
+
+<dialog id="signup-pop" class="pop" aria-labelledby="pop-t" tabindex="-1">
+  <button type="button" class="pop-close" aria-label="Sluiten">×</button>
+  <p class="kicker">Gratis nieuwsbrief</p>
+  <h2 id="pop-t">Elke zaterdag in je mail</h2>
+  <p class="pop-dek">Vijf recepten die nu trending zijn, en die je kinderen ook lusten.</p>
+  <ul class="pop-usp">
+    <li><span><b>Echt trending.</b> We volgen zo'n 150 koks, foodblogs en Instagram-accounts en checken Google Trends.</span></li>
+    <li><span><b>Weinig werk.</b> Hooguit een uur, of de oven doet het werk.</span></li>
+    <li><span><b>Voor het hele gezin.</b> Bij elk recept een tip voor de kinderversie.</span></li>
+    <li><span><b>Seizoensgroente en veel Aziatisch.</b> Alles in gram, milliliter en °C.</span></li>
+    <li><span><b>Plus een fermentatie</b> die je veilig thuis maakt.</span></li>
+  </ul>
+  <form class="signup-form pop-form" method="post" action="https://proef.email-provider.eu/subscribe/post/v2/index.php" accept-charset="utf-8">
+    <input type="hidden" name="next" value="https://edial.github.io/proef/?aangemeld=1">
+    <input type="hidden" name="a" value="7um5neuxfq">
+    <input type="hidden" name="l" value="ug5tljseab">
+    <label for="pop-email">E-mailadres</label>
+    <div class="signup-row">
+      <input name="GPrZXRiK0H" id="pop-email" type="email" autocomplete="email" required placeholder="naam@voorbeeld.nl">
+      <button type="submit">Aanmelden</button>
+    </div>
+    <input class="signup-trap" type="email" name="email" autocomplete="new-password" tabindex="-1" aria-hidden="true">
+    <p class="signup-note">Gratis. Afmelden kan onderaan elke mail (<a href="#privacy">privacy</a>).</p>
+  </form>
+  <button type="button" class="pop-later mono">Nee, dank je</button>
+</dialog>
 
 <dialog id="search" aria-label="Zoeken">
   <div class="s-top">
@@ -908,7 +956,7 @@ footer { margin-top: 96px; }
     box.replaceChildren(...[
       h("section", { class: "mast " + coverClass(ed), "aria-label": "Editie" },
         wordmark("h1", "logo"),
-        h("p", { class: "tagline", text: "Elke week vijf trending recepten die kinderen ook lekker vinden." }),
+        h("p", { class: "tagline", text: "Vijf recepten die nu trending zijn, en die je kinderen ook lusten." }),
         h("p", { class: "sub mono", text: `Nº ${pad(ed.number)} · Week ${ed.week} · ${sName} ${ed.year}` }),
         h("div", { class: "kou-wrap" }, kouEl(ed, "big"),
           h("p", { class: "kou-nl" }, h("span", { class: "mono", text: `${kouFor(ed.date).sekki} · microseizoen` }), kouFor(ed.date).nl + ". ", h("a", { href: "#microseizoenen", text: "Wat is dit?" }))),
@@ -1587,12 +1635,55 @@ footer { margin-top: 96px; }
     }
   }
 
+  /* ---------- Nieuwsbrief-pop-up: bij de derde pagina, niet voor wie via de mail komt, al is aangemeld of hem wegklikte ---------- */
+  const POP_KEY = "proef-pop", POP_AT = 3, POP_REST = 30 * 864e5;
+  const popGet = () => { try { return JSON.parse(localStorage.getItem(POP_KEY) || "{}"); } catch (e) { return {}; } };
+  const popSet = (s) => { try { localStorage.setItem(POP_KEY, JSON.stringify(s)); } catch (e) {} };
+  (() => {
+    // links in de nieuwsbrief hebben utm_medium=email: dit is een abonnee. Daarna de url weer schoon.
+    const q = new URLSearchParams(location.search);
+    if (q.get("utm_medium") !== "email") return;
+    const s = popGet(); s.sub = 1; popSet(s);
+    for (const k of [...q.keys()]) if (k.startsWith("utm_")) q.delete(k);
+    history.replaceState(null, "", location.pathname + (String(q) ? "?" + q : "") + location.hash);
+  })();
+  let popLast = null;
+  function countView(key) {
+    if (key === popLast) return;
+    popLast = key;
+    const s = popGet();
+    if (s.sub || (s.closed && Date.now() - s.closed < POP_REST)) return;
+    s.views = (s.views || 0) + 1;
+    popSet(s);
+    if (s.views >= POP_AT) setTimeout(openPop, 1500);
+  }
+  function openPop() {
+    const d = $("signup-pop"), s = popGet();
+    if (!d || d.open || $("search").open || s.sub || (s.closed && Date.now() - s.closed < POP_REST)) return;
+    d.showModal();
+    d.focus();  // focus op het venster zelf, niet op de sluitknop
+  }
+  {
+    const d = $("signup-pop");
+    const shut = () => { if (d.open) d.close(); };
+    d.addEventListener("close", () => { const s = popGet(); if (!s.sub) { s.closed = Date.now(); popSet(s); } });
+    d.querySelector(".pop-close").addEventListener("click", shut);
+    d.querySelector(".pop-later").addEventListener("click", shut);
+    d.addEventListener("click", (e) => {  // klik naast de pop-up (op de achtergrond) sluit hem
+      const r = d.getBoundingClientRect();
+      if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) shut();
+    });
+    d.querySelector("form").addEventListener("submit", () => { const s = popGet(); s.sub = 1; popSet(s); });
+    d.querySelector('a[href="#privacy"]').addEventListener("click", shut);
+  }
+
   const HASH_ROUTE = /^(zoek(\/.*)?|zo-meten-we|privacy|trends|microseizoenen|deze-week|archief|fermentaties|fermentatie(-.*)?|editie-.*)$/;
   function route() {
     if (!state.editions.length) return;
     const hsh = decodeURIComponent(location.hash.slice(1));
     // oude links (#slug) naar het eigen adres van het recept
     if (state.bySlug.has(hsh)) { history.replaceState(null, "", recipeHref(hsh)); return route(); }
+    if (!hsh.startsWith("zoek")) countView(location.pathname + "#" + hsh);
     const path = recipePath();
     if (path && state.bySlug.has(decodeURIComponent(path[1])) && !HASH_ROUTE.test(hsh)) {
       markNav("");
