@@ -1,0 +1,92 @@
+name: Nieuwsbrief
+
+# Na de meting van een nieuwe editie (trendlabels en sparklines staan dan in de editie):
+# 1. maakt scripts/newsletter.py de mail (mail/<id>/), 2. die gaat live op de site (plaatjes in de mail komen daarvandaan),
+# 3. scripts/laposta.py zet de campagne "Proef <id>" klaar in Laposta en stuurt een testmail naar de redactie.
+# Versturen naar de lijst doe je dan in Laposta. Wil je dat het vanzelf gaat: zet de repository-variabele
+# NIEUWSBRIEF op "versturen" (Settings → Secrets and variables → Actions → Variables).
+# Een editie wordt nooit twee keer verstuurd: laposta.py stopt als "Proef <id>" al verstuurd is.
+#
+# Nodig als secrets: LAPOSTA_API_KEY, LAPOSTA_FROM_EMAIL (goedgekeurd afzendadres) en LAPOSTA_TEST_EMAIL (redactie).
+on:
+  workflow_run:
+    workflows: ["Trends en foto's meten"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      edition:
+        description: "Editie-id (leeg = nieuwste uit editions/index.json)"
+        required: false
+      mode:
+        description: "klaarzetten (met testmail) of versturen"
+        required: false
+        default: klaarzetten
+        type: choice
+        options: [klaarzetten, versturen]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: nieuwsbrief
+  cancel-in-progress: false
+
+jobs:
+  mail:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    env:
+      EDITION_INPUT: ${{ github.event.inputs.edition }}
+      MODE: ${{ github.event.inputs.mode || (vars.NIEUWSBRIEF == 'versturen' && 'versturen') || 'klaarzetten' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pillow
+      - name: Secrets aanwezig?
+        env:
+          LAPOSTA_API_KEY: ${{ secrets.LAPOSTA_API_KEY }}
+          LAPOSTA_FROM_EMAIL: ${{ secrets.LAPOSTA_FROM_EMAIL }}
+        run: |
+          [ -n "$LAPOSTA_API_KEY" ] || { echo "::error::Secret LAPOSTA_API_KEY ontbreekt"; exit 1; }
+          [ -n "$LAPOSTA_FROM_EMAIL" ] || { echo "::error::Secret LAPOSTA_FROM_EMAIL ontbreekt"; exit 1; }
+      - name: Mail maken
+        id: make
+        run: |
+          ID="$EDITION_INPUT"
+          if [ -z "$ID" ]; then ID=$(python3 -c "import json;print(json.load(open('editions/index.json'))['editions'][0])"); fi
+          echo "id=$ID" >> "$GITHUB_OUTPUT"
+          python3 scripts/newsletter.py "$ID"
+      - name: Live zetten
+        run: |
+          git config user.name "proef-bot"
+          git config user.email "proef-bot@users.noreply.github.com"
+          git add mail/
+          if ! git diff --cached --quiet; then
+            git commit -m "Nieuwsbrief gemaakt (${{ steps.make.outputs.id }})"
+            git pull --rebase origin main
+            git push
+          fi
+      - name: Wachten tot de site bijgewerkt is
+        run: |
+          ID="${{ steps.make.outputs.id }}"
+          for i in $(seq 1 60); do
+            if curl -sf "https://edial.github.io/proef/mail/$ID/mail.json?t=$i" | cmp -s - "mail/$ID/mail.json"; then echo "live"; exit 0; fi
+            sleep 10
+          done
+          echo "::error::De mail staat na 10 minuten nog niet op de site"; exit 1
+      - name: Laposta
+        env:
+          LAPOSTA_API_KEY: ${{ secrets.LAPOSTA_API_KEY }}
+          LAPOSTA_FROM_EMAIL: ${{ secrets.LAPOSTA_FROM_EMAIL }}
+          LAPOSTA_TEST_EMAIL: ${{ secrets.LAPOSTA_TEST_EMAIL }}
+        run: |
+          ID="${{ steps.make.outputs.id }}"
+          if [ "$MODE" = "versturen" ]; then
+            python3 scripts/laposta.py send "$ID"
+          else
+            python3 scripts/laposta.py prepare "$ID" "$LAPOSTA_TEST_EMAIL"
+          fi

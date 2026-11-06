@@ -10,9 +10,11 @@ Nodig (omgevingsvariabelen of GitHub-secrets; adressen staan bewust niet in deze
   LAPOSTA_FROM_NAME    afzendernaam (standaard: Proef)
   LAPOSTA_LIST         lijst-id (standaard: ug5tljseab, de lijst Proef)
 
-Gebruik: python3 scripts/laposta.py test 2026-44 naam@example.net    testmail (campagne blijft onverzonden)
-         python3 scripts/laposta.py send 2026-44                      echt versturen naar de lijst
-Dezelfde editie hergebruikt dezelfde, nog niet verzonden campagne. Een editie wordt nooit twee keer verstuurd.
+Gebruik: python3 scripts/laposta.py prepare 2026-45 [naam@example.net]  echte campagne klaarzetten (+ testmail), niet versturen
+         python3 scripts/laposta.py send 2026-45                         echt versturen naar de lijst
+         python3 scripts/laposta.py test 2026-45 naam@example.net        losse testcampagne "(test)" met testmail
+Dezelfde editie hergebruikt dezelfde, nog niet verzonden campagne. Een editie wordt nooit twee keer verstuurd:
+is "Proef <id>" al verstuurd, dan stoppen prepare en send zonder iets te doen.
 """
 import base64
 import json
@@ -45,14 +47,16 @@ def call(method, path, data=None):
 
 
 def campaign_for(eid, meta, test):
-    """Hergebruik de onverzonden campagne van deze editie, of maak er een."""
+    """Hergebruik de onverzonden campagne van deze editie, of maak er een. Stopt als de editie al verstuurd is."""
     name = f"Proef {eid}" + (" (test)" if test else "")
-    for x in call("GET", "campaign").get("data", []):
-        c = x["campaign"]
-        if c.get("name") == name and not c.get("delivery_started"):
+    campaigns = [x["campaign"] for x in call("GET", "campaign").get("data", [])]
+    sent = [c for c in campaigns if c.get("name") == f"Proef {eid}" and (c.get("delivery_started") or c.get("delivery_requested"))]
+    if sent and not test:
+        print(f"Editie {eid} is al verstuurd of ingepland ({sent[0].get('delivery_started') or sent[0].get('delivery_requested')}). Niets gedaan.")
+        sys.exit(0)
+    for c in campaigns:
+        if c.get("name") == name and not c.get("delivery_started") and not c.get("delivery_requested"):
             return c["campaign_id"], False
-        if c.get("name") == f"Proef {eid}" and c.get("delivery_started") and not test:
-            sys.exit(f"Editie {eid} is al verstuurd ({c['delivery_started']}). Niets gedaan.")
     sender = os.environ.get("LAPOSTA_FROM_EMAIL")
     if not sender:
         sys.exit("Zet LAPOSTA_FROM_EMAIL (een in Laposta goedgekeurd afzendadres).")
@@ -64,7 +68,7 @@ def campaign_for(eid, meta, test):
 
 
 def main():
-    if len(sys.argv) < 3 or sys.argv[1] not in ("test", "send") or (sys.argv[1] == "test" and len(sys.argv) < 4):
+    if len(sys.argv) < 3 or sys.argv[1] not in ("test", "prepare", "send") or (sys.argv[1] == "test" and len(sys.argv) < 4):
         sys.exit(__doc__)
     mode, eid = sys.argv[1], sys.argv[2]
     folder = ROOT / "mail" / eid
@@ -79,9 +83,11 @@ def main():
     print(f"campagne {cid} ({'nieuw' if new else 'bijgewerkt'}): {meta['subject']}")
     if report:
         print("Laposta meldt bij het importeren:", json.dumps(report, ensure_ascii=False))
-    if mode == "test":
-        call("POST", f"campaign/{cid}/action/testmail", [("email", sys.argv[3])])
-        print("testmail verstuurd")
+    if mode in ("test", "prepare"):
+        if len(sys.argv) > 3 and sys.argv[3]:
+            call("POST", f"campaign/{cid}/action/testmail", [("email", sys.argv[3])])
+            print("testmail verstuurd")
+        print("klaargezet in Laposta, nog niet verstuurd naar de lijst" if mode == "prepare" else "testcampagne bijgewerkt")
     else:
         call("POST", f"campaign/{cid}/action/send")
         print("verstuurd naar de lijst")
