@@ -3,12 +3,11 @@
 en een sparkline-PNG per recept.
 
 Opbouw: twee kolommen op desktop (5 recepten + de fermentatie, 2×3 vakken), op een telefoon onder elkaar.
-Elk beeld is even hoog: de foto staat als achtergrond in een vak van vaste hoogte (cover), met daarover
-mail/overlay-<tint>.png, een waas in de tint van het recept met een puntraster. Zo lijkt het op het filter van
-de site (duotoon + raster), zonder de foto te kopiëren: die komt nog steeds van de bron.
+Elk beeld is even hoog: de foto staat als achtergrond in een vak van vaste hoogte (cover), met daarover een
+doorzichtige afbeelding (mail/blank.png) die het vak zijn maat en alt-tekst geeft. De foto komt van de bron.
 
 Mail-HTML is geen gewone webpagina: alleen tabellen en inline stijlen, geen SVG (Gmail haalt dat weg) en geen
-JavaScript. Sparklines, logo en overlays zijn daarom PNG's, geladen vanaf de site: de map mail/ moet live
+JavaScript. Sparklines en logo zijn daarom PNG's, geladen vanaf de site: de map mail/ moet live
 staan voordat Laposta de mail verstuurt.
 
 Laposta zet de links /tag/unsubscribe en /tag/web in mail.html om in de afmeld- en webversielink
@@ -70,18 +69,9 @@ def spark_png(weeks, path, w=84, h=18):
     img.resize((w * 2, h * 2), Image.LANCZOS).save(path, optimize=True)
 
 
-def overlay_png(tint, path):
-    """Eigen beeld over de foto: waas in de tint (een kwart richting de donkere kleur, 60% dekking) en een fijn
-    puntraster van 4 px, zoals het filter op de site. Alleen de waas en de puntjes, geen foto."""
-    hi, lo = (rgb(c) for c in TINTS[tint])
-    wash = tuple(round(a * .75 + b * .25) for a, b in zip(hi, lo))
-    W, H = COL * 2, PIC * 2
-    img = Image.new("RGBA", (W, H), wash + (153,))
-    d = ImageDraw.Draw(img)
-    for y in range(0, H, 8):
-        for x in range(0, W, 8):
-            d.ellipse([x + 3, y + 3, x + 5, y + 5], fill=(0, 0, 0, 34))
-    img.save(path, optimize=True)
+def blank_png(path):
+    """Doorzichtige pixel: houdt het fotovak op maat en draagt de alt-tekst."""
+    Image.new("RGBA", (1, 1), (0, 0, 0, 0)).save(path)
 
 
 def nice_date(iso):
@@ -110,7 +100,7 @@ def recipe_card(r, base, mail_url):
         pic = (f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>'
                f'<td class="pic" height="{PIC}" background="{ph}" style="height:{PIC}px;background-color:{TINTS[tint][0]};'
                f'background-image:url(\'{ph}\');background-size:cover;background-position:center;">'
-               f'<img src="{esc(base)}mail/overlay-{tint}.png" width="{COL}" height="{PIC}" alt="{alt}" '
+               f'<img src="{esc(base)}mail/blank.png" width="{COL}" height="{PIC}" alt="{alt}" '
                f'style="display:block;width:100%;height:{PIC}px;border:0;"></td></tr></table>')
     else:
         pic = (f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>'
@@ -158,9 +148,8 @@ def grid(cards):
 def build(ed, base, subject=None, preview=None):
     out = ROOT / "mail" / ed["id"]
     out.mkdir(parents=True, exist_ok=True)
-    for t in TINTS:
-        if not (ROOT / "mail" / f"overlay-{t}.png").exists():
-            overlay_png(t, ROOT / "mail" / f"overlay-{t}.png")
+    if not (ROOT / "mail" / "blank.png").exists():
+        blank_png(ROOT / "mail" / "blank.png")
     mail_url = f"{base}mail/{ed['id']}/"
     for r in ed["recipes"]:
         if (r.get("spark") or {}).get("weeks"):
