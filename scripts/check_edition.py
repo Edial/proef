@@ -216,6 +216,14 @@ def main():
             err(where, f"geen geldige JSON: {e}")
             continue
         need(ed, ["id", "number", "year", "week", "date", "intro", "recipes"], where)
+        m = ed.get("mail")
+        if m is not None:
+            if not isinstance(m.get("subject"), str) or not 10 <= len(m["subject"]) <= 70:
+                err(where, "mail.subject moet tekst zijn van 10 tot 70 tekens (langer valt weg in de inbox)")
+            if m.get("preview") is not None and (not isinstance(m["preview"], str) or len(m["preview"]) > 120):
+                err(where, "mail.preview mag hooguit 120 tekens zijn")
+        elif ed.get("number", 0) >= 3:
+            warn(where, "mail.subject ontbreekt: de nieuwsbrief krijgt dan een standaard onderwerp")
         if str(ed.get("date", "")) >= "2026-11-07":
             core = sum((SOURCES.get(r.get("source") or "") or {}).get("tier") == "core" for r in ed.get("recipes", []))
             if core < 3:

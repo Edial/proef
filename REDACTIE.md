@@ -35,9 +35,10 @@ Vijf recepten die deze week trending zijn, plus één Fermentatie van de week. W
    - Na het schrijven: `python3 scripts/trends_collect.py editions/<id>.json`. Dat zet alles in `data/trends.csv` en haalt Google Trends op (5 jaar per week, NL en wereldwijd, plus stijgende zoekopdrachten). Mislukt Google Trends, dan blokkeert dat de editie niet.
    - Hetzelfde script zet per recept `spark` in de editie: een gemeten label (Nieuw, Seizoen, Piek, Stijgt, Stabiel of Dalend), één zin en de lijn van 12 maanden. **Schrijf `spark` nooit zelf.** De site toont het label in plaats van `trend`; `trend.text` is alleen nog de terugval als er geen zoekdata is. Kies de eerste `trendTerms` dus zo specifiek mogelijk: het gerecht zelf, niet de hoofdingrediënt.
    - Komt er bij een recept "Dalend" uit, dan mag dat: het label is eerlijk. Kies wel liever recepten die de data steunt.
-7. **Omslag:** `cover.color` is anders dan vorige week (`navy`, `ink`, `kaki`, `moss`). Het teken op de omslag volgt vanzelf uit de datum: het microseizoen (七十二候) van die zaterdag, met de Nederlandse vertaling erbij. `cover.glyph` is niet meer nodig.
-8. **Controleer:** `python3 scripts/check_photos.py editions/<id>.json` (alle foto's moeten werken), daarna `python3 scripts/photo_light.py editions/<id>.json` (zet `photoGamma`, zodat alle foto's even licht zijn; vereist `pip install pillow`) en `python3 scripts/check_edition.py` (0 fouten).
-9. **Publiceer:** voeg het id vooraan toe in `editions/index.json`, draai `python3 scripts/build_pages.py`, commit (met `data/trends.csv` en `recept/` erbij) als `Proef: editie NN (week WW)` en push naar `main`. GitHub Pages zet het binnen een paar minuten live.
+7. **Nieuwsbrief:** zet op editieniveau `"mail": {"subject": "…", "preview": "…"}`. De onderwerpregel is pakkend en gaat over déze editie: noem één of twee gerechten of wat het seizoen doet, met één of twee passende emoji (🎃 🍜 🥢 🍠 🔥). Hooguit 70 tekens, liefst rond de 50, want de rest valt weg in de inbox. Geen hypewoorden en geen "Proef Nº" (dat staat al in de mail). `preview` (hooguit 120 tekens) noemt de andere recepten. Goed: "🍜 Popcornkip in je noedelsoep, pompoen uit de oven 🎃".
+8. **Omslag:** `cover.color` is anders dan vorige week (`navy`, `ink`, `kaki`, `moss`). Het teken op de omslag volgt vanzelf uit de datum: het microseizoen (七十二候) van die zaterdag, met de Nederlandse vertaling erbij. `cover.glyph` is niet meer nodig.
+9. **Controleer:** `python3 scripts/check_photos.py editions/<id>.json` (alle foto's moeten werken), daarna `python3 scripts/photo_light.py editions/<id>.json` (zet `photoGamma`, zodat alle foto's even licht zijn; vereist `pip install pillow`) en `python3 scripts/check_edition.py` (0 fouten).
+10. **Publiceer:** voeg het id vooraan toe in `editions/index.json`, draai `python3 scripts/build_pages.py`, commit (met `data/trends.csv` en `recept/` erbij) als `Proef: editie NN (week WW)` en push naar `main`. GitHub Pages zet het binnen een paar minuten live.
 
 ## Wekelijkse run (Claude-routine): zuinig werken
 
@@ -49,7 +50,7 @@ De routine draait elke zaterdag om 06:00. Elke stap kost tokens, en alles wat je
 4. **Pagina's openen:** maximaal 10 keer WebFetch, alleen voor pagina's die je echt gebruikt (bronrecept, trendbron). Vraag in de prompt alleen wat je nodig hebt.
 5. **Ferment:** kies uit de bibliotheek in FERMENTATIE.md §9, geen nieuw onderzoek. Schrijf het ferment met de cijfers uit de tabel. De bronlinks controleert `check_photos.py`.
 6. **Schrijf de editie in één keer** met Write. Draai daarna `python3 scripts/check_photos.py editions/<id>.json`, `python3 scripts/photo_light.py editions/<id>.json`, `python3 scripts/trends_collect.py editions/<id>.json` `python3 scripts/check_edition.py` (die controleert dan ook de trendlabels) en als laatste `python3 scripts/build_pages.py` (maakt de eigen pagina per recept in `recept/<slug>/`). Lees van `trends_collect.py` alleen de laatste regels. Herstel alleen wat de scripts melden.
-7. **Publiceer** zoals in stap 9 hierboven en sluit af met een verslag van hooguit 15 regels.
+7. **Publiceer** zoals in stap 10 hierboven en sluit af met een verslag van hooguit 15 regels.
 
 ## Bronnen
 
@@ -65,6 +66,7 @@ De routine draait elke zaterdag om 06:00. Elke stap kost tokens, en alles wat je
   "id": "2026-44", "number": 2, "year": 2026, "week": 44, "date": "2026-10-31",
   "intro": "Twee zinnen over deze week. Herhaal niet de vaste tagline (vijf trending recepten, kindvriendelijk) en niet grammen/milliliters.",
   "cover": { "color": "ink", "glyph": "旬" },
+  "mail": { "subject": "🍜 Popcornkip in je noedelsoep, pompoen uit de oven 🎃", "preview": "Plus gestoomd ei met garnalen en koekjes met bruine boter." },
   "watch": [{ "term": "butter board", "source": "TikTok", "url": "https://…", "note": "gezien, niet gekozen" }],
   "recipes": [
     {
