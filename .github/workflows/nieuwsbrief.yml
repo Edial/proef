@@ -3,8 +3,8 @@ name: Nieuwsbrief
 # Na de meting van een nieuwe editie (trendlabels en sparklines staan dan in de editie):
 # 1. maakt scripts/newsletter.py de mail (mail/<id>/), 2. die gaat live op de site (plaatjes in de mail komen daarvandaan),
 # 3. scripts/laposta.py verstuurt de campagne "Proef <id>" via Laposta naar de lijst.
-# Automatisch versturen gebeurt alleen voor een editie van de afgelopen 3 dagen; een oudere editie wordt alleen
-# klaargezet. Wil je eerst zelf kijken: zet de repository-variabele NIEUWSBRIEF op "klaarzetten"
+# Automatisch versturen gebeurt alleen voor een editie van de afgelopen 3 dagen; voor een oudere editie gebeurt
+# er niets. Wil je eerst zelf kijken: zet de repository-variabele NIEUWSBRIEF op "klaarzetten"
 # (Settings → Secrets and variables → Actions → Variables); dan komt er een testmail en verstuur je in Laposta.
 # Een editie wordt nooit twee keer verstuurd: laposta.py stopt als "Proef <id>" al verstuurd is.
 #
@@ -43,11 +43,26 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
+      - name: Welke editie, en is hij nieuw?
+        id: ed
+        run: |
+          ID="$EDITION_INPUT"
+          if [ -z "$ID" ]; then ID=$(python3 -c "import json;print(json.load(open('editions/index.json'))['editions'][0])"); fi
+          AGE=$(python3 -c "import json,datetime as d;e=json.load(open('editions/$ID.json'));print((d.date.today()-d.date.fromisoformat(e['date'])).days)")
+          echo "id=$ID" >> "$GITHUB_OUTPUT"
+          # automatisch (na een meting) alleen voor een editie van de afgelopen 3 dagen; een oude editie die opnieuw
+          # gemeten wordt (bijvoorbeeld na een aanpassing) krijgt geen mail en geen campagne
+          if [ "${{ github.event_name }}" != "workflow_dispatch" ] && [ "$AGE" -gt 3 ]; then
+            echo "Editie $ID is $AGE dagen oud: geen nieuwsbrief."; echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
       - uses: actions/setup-python@v5
+        if: steps.ed.outputs.skip != 'true'
         with:
           python-version: "3.12"
       - run: pip install pillow
+        if: steps.ed.outputs.skip != 'true'
       - name: Secrets aanwezig?
+        if: steps.ed.outputs.skip != 'true'
         env:
           LAPOSTA_API_KEY: ${{ secrets.LAPOSTA_API_KEY }}
           LAPOSTA_FROM_EMAIL: ${{ secrets.LAPOSTA_FROM_EMAIL }}
@@ -56,12 +71,13 @@ jobs:
           [ -n "$LAPOSTA_FROM_EMAIL" ] || { echo "::error::Secret LAPOSTA_FROM_EMAIL ontbreekt"; exit 1; }
       - name: Mail maken
         id: make
+        if: steps.ed.outputs.skip != 'true'
         run: |
-          ID="$EDITION_INPUT"
-          if [ -z "$ID" ]; then ID=$(python3 -c "import json;print(json.load(open('editions/index.json'))['editions'][0])"); fi
+          ID="${{ steps.ed.outputs.id }}"
           echo "id=$ID" >> "$GITHUB_OUTPUT"
           python3 scripts/newsletter.py "$ID"
       - name: Live zetten
+        if: steps.ed.outputs.skip != 'true'
         run: |
           git config user.name "proef-bot"
           git config user.email "proef-bot@users.noreply.github.com"
@@ -72,6 +88,7 @@ jobs:
             git push
           fi
       - name: Wachten tot de site bijgewerkt is
+        if: steps.ed.outputs.skip != 'true'
         run: |
           ID="${{ steps.make.outputs.id }}"
           for i in $(seq 1 60); do
@@ -80,17 +97,13 @@ jobs:
           done
           echo "::error::De mail staat na 10 minuten nog niet op de site"; exit 1
       - name: Laposta
+        if: steps.ed.outputs.skip != 'true'
         env:
           LAPOSTA_API_KEY: ${{ secrets.LAPOSTA_API_KEY }}
           LAPOSTA_FROM_EMAIL: ${{ secrets.LAPOSTA_FROM_EMAIL }}
           LAPOSTA_TEST_EMAIL: ${{ secrets.LAPOSTA_TEST_EMAIL }}
         run: |
           ID="${{ steps.make.outputs.id }}"
-          # vangnet: nooit vanzelf een oude editie versturen (bijvoorbeeld als een oude editie later wordt aangepast)
-          if [ "$MODE" = "versturen" ] && [ "${{ github.event_name }}" != "workflow_dispatch" ]; then
-            AGE=$(python3 -c "import json,datetime as d;e=json.load(open('editions/$ID.json'));print((d.date.today()-d.date.fromisoformat(e['date'])).days)")
-            if [ "$AGE" -gt 3 ]; then echo "Editie $ID is $AGE dagen oud: alleen klaarzetten."; MODE=klaarzetten; fi
-          fi
           if [ "$MODE" = "versturen" ]; then
             python3 scripts/laposta.py send "$ID"
           else
