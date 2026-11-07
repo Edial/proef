@@ -40,7 +40,8 @@ jobs:
         run: |
           ID="${{ github.event.inputs.edition }}"
           if [ -z "$ID" ]; then ID=$(ls editions/ | grep -E '^[0-9]{4}-[0-9]{2}\.json$' | sort | tail -1 | sed 's/\.json$//'); fi
-          CONCEPT=$(python3 -c "import json,sys;print('true' if sys.argv[1] not in json.load(open('editions/index.json'))['editions'] else 'false')" "$ID")
+          # concept = nog niet in index.json, of er wel in maar nog nooit gemeten (vanaf editie 4): dan toetsen we eerst
+          CONCEPT=$(python3 -c "import json,sys;i=sys.argv[1];e=json.load(open('editions/'+i+'.json'));pub=i in json.load(open('editions/index.json'))['editions'];fresh=e.get('number',0)>=4 and not e.get('trendUitzondering') and not any(r.get('spark') for r in e.get('recipes',[]));print('true' if (not pub or fresh) else 'false')" "$ID")
           echo "id=$ID" >> "$GITHUB_OUTPUT"
           echo "file=editions/$ID.json" >> "$GITHUB_OUTPUT"
           echo "concept=$CONCEPT" >> "$GITHUB_OUTPUT"
@@ -76,6 +77,10 @@ jobs:
         if: steps.ed.outputs.concept == 'true' && steps.gate.outputs.ok == 'true'
         run: |
           python3 -c "import json,sys;p='editions/index.json';d=json.load(open(p));d['editions']=[sys.argv[1]]+[x for x in d['editions'] if x!=sys.argv[1]];open(p,'w').write(json.dumps(d,ensure_ascii=False,indent=2)+'\n')" "${{ steps.ed.outputs.id }}"
+      - name: Niet live zolang de regel niet gehaald is
+        if: steps.gate.outputs.ok == 'false'
+        run: |
+          python3 -c "import json,sys;p='editions/index.json';d=json.load(open(p));d['editions']=[x for x in d['editions'] if x!=sys.argv[1]];open(p,'w').write(json.dumps(d,ensure_ascii=False,indent=2)+'\n')" "${{ steps.ed.outputs.id }}"
       - name: Controle en receptpagina's
         run: |
           if [ "${{ steps.gate.outputs.ok }}" = "true" ]; then python3 scripts/check_edition.py; fi

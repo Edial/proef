@@ -274,6 +274,11 @@ def main():
                 err(where, "mail.preview mag hooguit 120 tekens zijn")
         elif ed.get("number", 0) >= 3:
             err(where, "mail.subject ontbreekt: schrijf een onderwerpregel voor de nieuwsbrief (REDACTIE.md stap 7)")
+        # nog niet gemeten maar wel in index.json: dan zou het live staan zonder dat de trendregel getoetst is
+        if eid != concept and (ed.get("number") or 0) >= TREND_RULE_FROM and not ed.get("trendUitzondering") \
+                and not any(r.get("spark") for r in ed.get("recipes", [])):
+            err(where, "staat in editions/index.json maar is nog niet gemeten. Haal het id uit editions/index.json: "
+                       "GitHub zet de editie zelf live na de meting, als de trendregel klopt (REDACTIE.md stap 10).")
         if str(ed.get("date", "")) >= "2026-11-07":
             core = sum((SOURCES.get(r.get("source") or "") or {}).get("tier") == "core" for r in ed.get("recipes", []))
             if core < 3:
