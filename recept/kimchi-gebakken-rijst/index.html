@@ -210,8 +210,9 @@ img { display: block; max-width: 100%; }
   .duo:hover .orig { opacity: 1; }
   .duo:hover::before, .duo:hover::after { opacity: 0; }
 }
-.duo.color .orig, .duo.scrolled .orig { opacity: 1; }
-.duo.color::before, .duo.color::after, .duo.scrolled::before, .duo.scrolled::after { opacity: 0; }
+.duo.color .orig, .duo.scrolled .orig, .duo.mid .orig { opacity: 1; }
+.duo.color::before, .duo.color::after, .duo.scrolled::before, .duo.scrolled::after, .duo.mid::before, .duo.mid::after { opacity: 0; }
+.duo.mid .orig, .duo.mid::before, .duo.mid::after { transition-duration: .7s; }
 /* receptfoto: tint gaat snel weg zodra je scrolt; op mobiel met de scroll mee (--mix 0..1) */
 .duo.scrub:not(.color) .orig { opacity: var(--mix, 0); transition: none; }
 .duo.scrub:not(.color)::before { opacity: calc(.5 * (1 - var(--mix, 0))); transition: none; }
@@ -882,6 +883,10 @@ footer { margin-top: 96px; }
     return el;
   }
 
+  // mobiel (geen hover): een strook van 20% midden in het scherm; een foto die daarin valt, toont zijn echte kleuren
+  const midBand = "IntersectionObserver" in window && matchMedia("(hover: none)").matches
+    ? new IntersectionObserver((entries) => { for (const e of entries) e.target.classList.toggle("mid", e.isIntersecting); }, { rootMargin: "-40% 0px -40% 0px" })
+    : null;
   function photo(r, opts = {}) {
     const box = h("div", { class: "duo " + tintClass(r) });
     const fallback = () => box.replaceChildren(h("span", { class: "fallback cjk", "aria-hidden": "true", text: r.glyph || "食" }));
@@ -899,8 +904,10 @@ footer { margin-top: 96px; }
         h("img", { class: "orig", alt: "", "aria-hidden": "true", loading: img.loading, decoding: "async", referrerpolicy: "strict-origin-when-cross-origin", sizes, srcset, src: r.photo }));
       if (opts.glyph && r.glyph) box.append(h("span", { class: "glyph cjk", "aria-hidden": "true", text: r.glyph }));
       if (opts.badge && r.video) box.append(h("span", { class: "vid", role: "img", "aria-label": "met video" }, h("span", { class: "tri" })));
-      // aanraakschermen: tik om de echte kleuren te zien
+      // aanraakschermen: tik om de echte kleuren te zien (foto's die geen link zijn), en de foto die midden in
+      // beeld staat, toont vanzelf zijn echte kleuren (niet de grote receptfoto: die kleurt al mee met scrollen)
       box.addEventListener("click", (e) => { if (matchMedia("(hover: none)").matches && !box.closest("a")) { e.preventDefault(); box.classList.toggle("color"); } });
+      if (midBand && !opts.hero) midBand.observe(box);
     } else fallback();
     return box;
   }
@@ -1084,7 +1091,7 @@ footer { margin-top: 96px; }
       h("a", { class: "back mono", href: "#editie-" + ed.id, text: `← Nº ${pad(ed.number)} · week ${ed.week}` }),
       h("div", { class: "spread" },
         h("figure", { class: "left", style: "margin:0" },
-          withVideo(r, photo(r, { glyph: true, eager: true, sizes: "(max-width: 1000px) 100vw, 480px" })),
+          withVideo(r, photo(r, { glyph: true, eager: true, hero: true, sizes: "(max-width: 1000px) 100vw, 480px" })),
           r.photoCredit ? h("figcaption", { class: "credit" }, "Foto en origineel recept: ", h("a", { href: r.photoCredit.url, target: "_blank", rel: "noopener", text: r.photoCredit.label + " ↗" }),
             r.video && VIDEO[r.video.platform] ? [" · ", h("a", { href: r.video.url, target: "_blank", rel: "noopener", text: "Video op " + VIDEO[r.video.platform].name + " ↗" })] : null) : null),
         h("div", { class: "card sheet" },

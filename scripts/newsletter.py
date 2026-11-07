@@ -25,12 +25,14 @@ import pathlib
 import re
 import sys
 
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFilter
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = "https://edial.github.io/proef/"
 
 INK, MUTED, RULE, SHEET, CREAM, HANKO = "#1F1D1A", "#7A7366", "#DDD6C8", "#F8F5EE", "#F8F5EE", "#C4372C"
+# donkere modus (Apple Mail, iPhone, Outlook): zelfde kleuren als de site in het donker
+D_BG, D_INK, D_MUTED, D_RULE, D_CARD = "#161412", "#EEE9DF", "#A39B8E", "#4A443B", "#2B2620"
 # licht en donker van elke tint, zoals --hi en --lo op de site
 TINTS = {
     "sage": ("#BFD3C7", "#2E4A6B"), "sky": ("#A9C4DE", "#2E4A6B"), "blush": ("#F3DACE", "#7E3A2C"),
@@ -55,19 +57,49 @@ def rgb(h):
     return tuple(int(h[i:i + 2], 16) for i in (1, 3, 5))
 
 
-def spark_png(weeks, path, w=84, h=18):
-    """Lijn van 12 maanden met een rode stip op de laatste week, 2× zo scherp voor retina-schermen."""
+def spark_png(weeks, path, dark_path, w=84, h=18):
+    """Lijn van 12 maanden met een rode stip op de laatste week, 2× zo scherp voor retina-schermen.
+    Twee versies: licht (inkt met een dun crème randje, zodat hij ook zichtbaar blijft als Gmail de mail donker
+    maakt) en donker (crème lijn) voor mailprogramma's met een echte donkere modus."""
     s = 8  # eerst groot tekenen, dan verkleinen: gladde lijnen
     W, H, pad = w * s, h * s, 3 * s
-    img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    d = ImageDraw.Draw(img)
     top = max(1, max(weeks))
     xs = [pad + i * (W - 2 * pad) / (len(weeks) - 1) for i in range(len(weeks))]
     ys = [H - pad - v / top * (H - 2 * pad) for v in weeks]
-    d.line(list(zip(xs, ys)), fill=INK, width=int(1.4 * s), joint="curve")
-    r = int(2.6 * s)
-    d.ellipse([xs[-1] - r, ys[-1] - r, xs[-1] + r, ys[-1] + r], fill=HANKO)
-    img.resize((w * 2, h * 2), Image.LANCZOS).save(path, optimize=True)
+    pts, r = list(zip(xs, ys)), int(2.6 * s)
+    for out, line, halo in ((path, INK, CREAM), (dark_path, D_INK, None)):
+        img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        d = ImageDraw.Draw(img)
+        if halo:
+            d.line(pts, fill=halo, width=int(3.4 * s), joint="curve")
+            d.ellipse([xs[-1] - r - s, ys[-1] - r - s, xs[-1] + r + s, ys[-1] + r + s], fill=halo)
+        d.line(pts, fill=line, width=int(1.4 * s), joint="curve")
+        d.ellipse([xs[-1] - r, ys[-1] - r, xs[-1] + r, ys[-1] + r], fill=HANKO)
+        img.resize((w * 2, h * 2), Image.LANCZOS).save(out, optimize=True)
+
+
+def logo_pngs():
+    """Logo voor de mail: mail/proef-logo.png (inkt met een crème randje, zie spark_png) en
+    mail/proef-logo-dark.png (crème). Gemaakt uit mail/proef-logo-src.png (inkt op transparant)."""
+    src = ROOT / "mail" / "proef-logo-src.png"
+    if not src.exists():
+        return
+    ink = Image.open(src).convert("RGBA")
+    a = ink.split()[3]
+    halo = Image.new("RGBA", ink.size, rgb(CREAM) + (0,))
+    halo.putalpha(a.filter(ImageFilter.MaxFilter(5)))
+    light = Image.alpha_composite(halo, ink)
+    light.save(ROOT / "mail" / "proef-logo.png", optimize=True)
+    dark = Image.new("RGBA", ink.size, rgb(D_INK) + (0,))
+    dark.putalpha(a)
+    dark.save(ROOT / "mail" / "proef-logo-dark.png", optimize=True)
+
+
+def pair(light, dark, w, h, alt, extra=""):
+    """Twee afbeeldingen: de lichte standaard, de donkere alleen zichtbaar in donkere modus (CSS .lt/.dk)."""
+    return (f'<img class="lt" src="{esc(light)}" width="{w}" height="{h}" alt="{esc(alt)}" style="display:block;border:0;{extra}">'
+            f'<!--[if !mso]><!--><img class="dk" src="{esc(dark)}" width="{w}" height="{h}" alt="{esc(alt)}" '
+            f'style="display:none;max-height:0;overflow:hidden;border:0;{extra}"><!--<![endif]-->')
 
 
 def blank_png(path):
@@ -85,8 +117,8 @@ def card(pic, meta, title, url, extra=""):
     return f"""<div class="col" style="display:inline-block;width:100%;max-width:{COL + 20}px;vertical-align:top;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding:0 10px 34px;text-align:left;">
   <a href="{esc(url)}" style="display:block;text-decoration:none;">{pic}</a>
-  <div style="margin:12px 0 0;font-family:{MONO};font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:{MUTED};">{esc(meta)}</div>
-  <div style="margin:5px 0 0;font-family:{SERIF};font-size:19px;line-height:1.25;"><a href="{esc(url)}" style="color:{INK};text-decoration:none;">{esc(title)}</a></div>
+  <div class="mu" style="margin:12px 0 0;font-family:{MONO};font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:{MUTED};">{esc(meta)}</div>
+  <div style="margin:5px 0 0;font-family:{SERIF};font-size:19px;line-height:1.25;"><a class="ik" href="{esc(url)}" style="color:{INK};text-decoration:none;">{esc(title)}</a></div>
   {extra}
 </td></tr></table>
 </div>"""
@@ -111,17 +143,19 @@ def recipe_card(r, base, mail_url):
     sp = r.get("spark") or {}
     trend = ""
     if sp.get("weeks"):
+        slug = r["slug"]
+        spark_img = pair(f"{mail_url}{slug}.png", f"{mail_url}{slug}-dark.png", 84, 18, "")
         label = sp.get("label", "")
         lc = HANKO if label in GOOD else MUTED
         trend = (f'<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:10px 0 0;"><tr>'
                  f'<td style="padding:0 10px 0 0;white-space:nowrap;font-family:{MONO};font-size:10.5px;letter-spacing:.08em;'
                  f'text-transform:uppercase;color:{lc};vertical-align:middle;">{ARROW.get(label, "•")}&nbsp;{esc(label)}</td>'
-                 f'<td style="vertical-align:middle;"><img src="{esc(mail_url)}{esc(r["slug"])}.png" width="84" height="18" alt="" style="display:block;border:0;"></td>'
+                 f'<td style="vertical-align:middle;">{spark_img}</td>'
                  f'</tr></table>'
-                 f'<div style="margin:4px 0 0;font-family:{SERIF};font-style:italic;font-size:14px;line-height:1.4;color:{MUTED};">{esc(sp.get("text"))}</div>')
+                 f'<div class="mu" style="margin:4px 0 0;font-family:{SERIF};font-style:italic;font-size:14px;line-height:1.4;color:{MUTED};">{esc(sp.get("text"))}</div>')
     pc = r.get("photoCredit") or {}
-    credit = (f'<div style="margin:8px 0 0;font-family:{SANS};font-size:11px;color:{MUTED};">Foto: '
-              f'<a href="{esc(pc.get("url") or url)}" style="color:{MUTED};">{esc(pc["label"])}</a></div>') if pc.get("label") else ""
+    credit = (f'<div class="mu" style="margin:8px 0 0;font-family:{SANS};font-size:11px;color:{MUTED};">Foto: '
+              f'<a class="mu" href="{esc(pc.get("url") or url)}" style="color:{MUTED};">{esc(pc["label"])}</a></div>') if pc.get("label") else ""
     meta = " · ".join(x for x in [r.get("category", ""), f'{r["minutes"]} min' if r.get("minutes") else ""] if x)
     return card(pic, meta, r["title"], url, trend + credit)
 
@@ -129,9 +163,9 @@ def recipe_card(r, base, mail_url):
 def ferment_card(f, ed, base):
     url = f"{base}#fermentatie-{ed['id']}"
     pic = (f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>'
-           f'<td height="{PIC}" align="center" style="height:{PIC}px;background:{INK};color:{CREAM};'
+           f'<td class="fm" height="{PIC}" align="center" style="height:{PIC}px;background:{INK};color:{CREAM};'
            f'font-family:{CJK};font-size:76px;line-height:1;">{esc(f.get("glyph") or "酵")}</td></tr></table>')
-    extra = f'<div style="margin:8px 0 0;font-family:{SERIF};font-style:italic;font-size:14px;line-height:1.4;color:{MUTED};">{esc(f.get("teaser") or f.get("lede"))}</div>'
+    extra = f'<div class="mu" style="margin:8px 0 0;font-family:{SERIF};font-style:italic;font-size:14px;line-height:1.4;color:{MUTED};">{esc(f.get("teaser") or f.get("lede"))}</div>'
     return card(pic, "Fermentatie van de week", f["title"], url, extra)
 
 
@@ -163,9 +197,10 @@ def build(ed, base, subject=None, preview=None):
     if not (ROOT / "mail" / "blank.png").exists():
         blank_png(ROOT / "mail" / "blank.png")
     mail_url = f"{base}mail/{ed['id']}/"
+    logo_pngs()
     for r in ed["recipes"]:
         if (r.get("spark") or {}).get("weeks"):
-            spark_png(r["spark"]["weeks"], out / f"{r['slug']}.png")
+            spark_png(r["spark"]["weeks"], out / f"{r['slug']}.png", out / f"{r['slug']}-dark.png")
     cards = [recipe_card(r, base, mail_url) for r in ed["recipes"]]
     if ed.get("ferment"):
         cards.append(ferment_card(ed["ferment"], ed, base))
@@ -178,28 +213,45 @@ def build(ed, base, subject=None, preview=None):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light">
-<meta name="supported-color-schemes" content="light">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark">
 <title>{esc(subject)}</title>
 <style>
+  :root {{ color-scheme: light dark; supported-color-schemes: light dark; }}
   @media (max-width: 620px) {{ .col {{ max-width: 100% !important; }} }}
+  /* donkere modus (Apple Mail, iPhone, Outlook): donkere achtergrond, lichte tekst, lichte afbeeldingen */
+  @media (prefers-color-scheme: dark) {{
+    .bg {{ background: {D_BG} !important; }}
+    .ik {{ color: {D_INK} !important; }}
+    .mu {{ color: {D_MUTED} !important; }}
+    .bd {{ border-color: {D_RULE} !important; }}
+    .fm {{ background: {D_CARD} !important; }}
+    .lt {{ display: none !important; }}
+    .dk {{ display: block !important; max-height: none !important; overflow: visible !important; }}
+  }}
+  /* Outlook.com en Outlook-apps in donkere modus */
+  [data-ogsb] .bg {{ background: {D_BG} !important; }}
+  [data-ogsc] .ik {{ color: {D_INK} !important; }}
+  [data-ogsc] .mu {{ color: {D_MUTED} !important; }}
+  [data-ogsc] .lt {{ display: none !important; }}
+  [data-ogsc] .dk {{ display: block !important; max-height: none !important; overflow: visible !important; }}
 </style>
 </head>
-<body style="margin:0;padding:0;background:{SHEET};">
+<body class="bg" style="margin:0;padding:0;background:{SHEET};">
 <div style="display:none;max-height:0;overflow:hidden;opacity:0;">{esc(pre)}</div>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:{SHEET};">
-<tr><td align="center" style="padding:28px 8px 32px;">
+<table class="bg" role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:{SHEET};">
+<tr><td class="bg" align="center" style="padding:28px 8px 32px;">
 <table role="presentation" width="{2 * (COL + 20)}" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:{2 * (COL + 20)}px;">
   <tr><td style="padding:0 10px;">
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-bottom:1px solid {INK};"><tr>
-      <td style="padding:0 0 14px;vertical-align:bottom;"><a href="{esc(base)}"><img src="{esc(base)}mail/proef-logo.png" width="94" height="32" alt="Proef" style="display:block;border:0;"></a></td>
-      <td align="right" style="padding:0 0 14px;vertical-align:bottom;{small}color:{MUTED};">Nº {ed['number']:02d} · {esc(nice_date(ed['date']))}</td>
+    <table class="bd" role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-bottom:1px solid {INK};"><tr>
+      <td style="padding:0 0 14px;vertical-align:bottom;"><a href="{esc(base)}">{pair(f"{base}mail/proef-logo.png", f"{base}mail/proef-logo-dark.png", 94, 32, "Proef")}</a></td>
+      <td class="mu" align="right" style="padding:0 0 14px;vertical-align:bottom;{small}color:{MUTED};">Nº {ed['number']:02d} · {esc(nice_date(ed['date']))}</td>
     </tr></table>
   </td></tr>
-  <tr><td style="padding:22px 10px 30px;font-family:{SERIF};font-size:17px;line-height:1.55;color:{INK};">{esc(ed["intro"])}</td></tr>
+  <tr><td class="ik" style="padding:22px 10px 30px;font-family:{SERIF};font-size:17px;line-height:1.55;color:{INK};">{esc(ed["intro"])}</td></tr>
   {grid(cards)}
   <tr><td style="padding:0 10px;">
-    <div style="border-top:1px solid {INK};padding:14px 0 0;font-family:{SANS};font-size:12px;line-height:1.6;color:{MUTED};">@@FOOTER@@</div>
+    <div class="bd mu" style="border-top:1px solid {INK};padding:14px 0 0;font-family:{SANS};font-size:12px;line-height:1.6;color:{MUTED};">@@FOOTER@@</div>
   </td></tr>
 </table>
 </td></tr>
@@ -207,14 +259,14 @@ def build(ed, base, subject=None, preview=None):
 </body>
 </html>
 """
-    privacy = f'<a href="{esc(base)}#privacy" style="color:{INK};">Privacy</a>'
+    privacy = f'<a class="ik" href="{esc(base)}#privacy" style="color:{INK};">Privacy</a>'
     # mail (Laposta): /tag/unsubscribe en /tag/web zet Laposta bij het versturen om in de afmeld- en webversielink
-    mail_footer = (f'Je krijgt deze mail omdat je je hebt aangemeld op <a href="{esc(base)}" style="color:{MUTED};">edial.github.io/proef</a>.'
-                   f'<div style="margin:8px 0 0;{small}"><a href="/tag/unsubscribe" style="color:{INK};">Afmelden</a> &nbsp;·&nbsp; '
-                   f'<a href="/tag/web" style="color:{INK};">Bekijk in je browser</a> &nbsp;·&nbsp; {privacy}</div>')
+    mail_footer = (f'Je krijgt deze mail omdat je je hebt aangemeld op <a class="mu" href="{esc(base)}" style="color:{MUTED};">edial.github.io/proef</a>.'
+                   f'<div style="margin:8px 0 0;{small}"><a class="ik" href="/tag/unsubscribe" style="color:{INK};">Afmelden</a> &nbsp;·&nbsp; '
+                   f'<a class="ik" href="/tag/web" style="color:{INK};">Bekijk in je browser</a> &nbsp;·&nbsp; {privacy}</div>')
     # web (de site): geen afmeldlink, wel aanmelden
     web_footer = (f'Dit is de nieuwsbrief van Proef: elke zaterdag vijf trending recepten en een fermentatie.'
-                  f'<div style="margin:8px 0 0;{small}"><a href="{esc(base)}#nieuwsbrief" style="color:{INK};">Aanmelden</a> &nbsp;·&nbsp; {privacy}</div>')
+                  f'<div style="margin:8px 0 0;{small}"><a class="ik" href="{esc(base)}#nieuwsbrief" style="color:{INK};">Aanmelden</a> &nbsp;·&nbsp; {privacy}</div>')
     (out / "mail.html").write_text(tag_links(page.replace("@@FOOTER@@", mail_footer), ed["id"]))
     (out / "index.html").write_text(page.replace("@@FOOTER@@", web_footer))
     meta = {"subject": subject, "previewtext": pre[:120], "url": f"{SITE}mail/{ed['id']}/"}
