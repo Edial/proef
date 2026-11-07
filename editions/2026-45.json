@@ -1,0 +1,984 @@
+{
+  "id": "2026-45",
+  "number": 3,
+  "year": 2026,
+  "week": 45,
+  "date": "2026-11-07",
+  "intro": "De kool is binnen en de oven mag weer lang aan. Deze week een zure, frisse noedelsoep, Japanse koolrolletjes in tomatensaus en een pompoentaart die je een dag van tevoren bakt.",
+  "cover": {
+    "color": "kaki"
+  },
+  "mail": {
+    "subject": "🍜 Tom yum-noedels en Japanse koolrolletjes 🎃",
+    "preview": "Plus Japanse paddenstoelenrijst, zoete aardappel uit de oven en pompoentaart. Ferment: zuurkool."
+  },
+  "watch": [
+    {
+      "term": "sweet potato pie",
+      "source": "Ambitious Kitchen",
+      "url": "https://www.ambitiouskitchen.com/sweet-potato-pie/",
+      "note": "zoete aardappel is de grootste stijger (18 koks), als taart niet gekozen naast de pompoentaart"
+    },
+    {
+      "term": "brown butter potatoes",
+      "source": "Molly Baz",
+      "url": "https://mollybaz.com/petit-potato-balls-with-brown-butter-and-bay/",
+      "note": "bruine boter staat op Piek; recept zit achter de betaalmuur van The Club"
+    },
+    {
+      "term": "honey balsamic roasted carrots",
+      "source": "Serious Eats",
+      "url": "https://www.seriouseats.com/honey-balsamic-roasted-carrots-recipe",
+      "note": "seizoensgroente, site was niet te openen"
+    },
+    {
+      "term": "sheet pan vegetables",
+      "source": "Two Peas & Their Pod",
+      "url": "https://www.twopeasandtheirpod.com/fall-harvest-sheet-pan-vegetables/",
+      "note": "sheet pan: Google-label Nieuw in NL"
+    },
+    {
+      "term": "dan dan dumplings",
+      "source": "Food & Wine",
+      "url": "https://www.instagram.com/reel/DfXjbD8D_G9/",
+      "note": "Instagram-uitschieter, 9,9× zoveel reacties als normaal",
+      "signals": [
+        {
+          "source": "Instagram",
+          "metric": "engagement",
+          "value": 9.9,
+          "unit": "x",
+          "period": "november 2026",
+          "geo": "world",
+          "url": "https://www.instagram.com/reel/DfXjbD8D_G9/",
+          "note": "reacties t.o.v. normaal voor Food & Wine"
+        }
+      ]
+    },
+    {
+      "term": "slow cooker",
+      "source": "BBC Good Food",
+      "url": "https://www.bbcgoodfood.com/howto/guide/good-food-best-ever-slow-cooker-recipes",
+      "note": "10 koks, Google-label Stijgt in NL; geen geschikt kernrecept"
+    },
+    {
+      "term": "chicken broccoli stir fry",
+      "source": "China Sichuan Food",
+      "url": "https://www.chinasichuanfood.com/chicken-broccoli-stir-fry/",
+      "note": "eerst gekozen, maar de site weigert het tonen van de foto (403)"
+    }
+  ],
+  "recipes": [
+    {
+      "slug": "tom-yum-noedelsoep-gehakt",
+      "title": "Tom yum-noedelsoep met varkensgehakt",
+      "dek": "Heldere bouillon met citroengras, rijstnoedels en gehakt. Zuur, zoet en zout maak je in de kom, de pit aan tafel.",
+      "category": "Soep",
+      "minutes": 50,
+      "servings": 4,
+      "tags": [
+        "Aziatisch",
+        "Kindvriendelijk",
+        "Weinig werk"
+      ],
+      "tint": "sky",
+      "glyph": "麺",
+      "native": "",
+      "roman": "",
+      "trend": {
+        "source": "The Woks of Life",
+        "text": "Noedelsoep staat nu bij meer koks op het menu."
+      },
+      "signal": {
+        "source": "Proef-netwerk",
+        "text": "Noedelsoep kwam de afgelopen maand bij zes koks uit ons netwerk voorbij, waarvan vier kernbronnen; de maand ervoor bij één. Google Trends meldt dat er in Nederland meer naar gezocht wordt. Deze Thaise versie van The Woks of Life is de minst bekende en de makkelijkst aan te passen voor kinderen."
+      },
+      "source": "the-woks-of-life",
+      "trendTerms": [
+        "tom yum noodle soup",
+        "noodle soup"
+      ],
+      "signals": [
+        {
+          "source": "Proef-netwerk",
+          "metric": "listed",
+          "value": 6,
+          "unit": "koks",
+          "period": "laatste 30 dagen",
+          "geo": "world",
+          "url": "https://thewoksoflife.com/tom-yum-noodle-soup-kuay-teow-tom-yum/",
+          "note": "noodle soup: 6 koks (ervoor 1,0), waarvan 4 kernbronnen; Google: Stijgt [NL]"
+        }
+      ],
+      "links": [
+        {
+          "label": "The Woks of Life · Tom Yum Noodle Soup (Kuay Teow Tom Yum)",
+          "url": "https://thewoksoflife.com/tom-yum-noodle-soup-kuay-teow-tom-yum/"
+        },
+        {
+          "label": "The Recipe Critic · Chicken Noodle Soup",
+          "url": "https://therecipecritic.com/chicken-noodle-soup-recipe/"
+        }
+      ],
+      "photo": "https://thewoksoflife.com/wp-content/uploads/2026/05/tom-yum-noodle-soup-11.jpg",
+      "photoCredit": {
+        "label": "The Woks of Life",
+        "url": "https://thewoksoflife.com/tom-yum-noodle-soup-kuay-teow-tom-yum/"
+      },
+      "ingredients": [
+        {
+          "group": "Bouillon",
+          "qty": 2400,
+          "unit": "ml",
+          "item": "kippen- of varkensbouillon"
+        },
+        {
+          "group": "Bouillon",
+          "qty": 2,
+          "unit": "",
+          "item": "stengels citroengras, gekneusd en in stukken van 5 cm"
+        },
+        {
+          "group": "Bouillon",
+          "qty": 10,
+          "unit": "",
+          "item": "korianderstelen (met wortel als je die hebt)"
+        },
+        {
+          "group": "Bouillon",
+          "qty": 12,
+          "unit": "",
+          "item": "visballetjes (optioneel, Aziatische supermarkt)"
+        },
+        {
+          "group": "Chili-azijn",
+          "qty": 6,
+          "unit": "",
+          "item": "rode Thaise pepertjes, fijngehakt"
+        },
+        {
+          "group": "Chili-azijn",
+          "qty": 120,
+          "unit": "ml",
+          "item": "witte azijn"
+        },
+        {
+          "group": "Noedels en gehakt",
+          "qty": 450,
+          "unit": "g",
+          "item": "varkensgehakt"
+        },
+        {
+          "group": "Noedels en gehakt",
+          "qty": 450,
+          "unit": "g",
+          "item": "dunne gedroogde rijstnoedels (pho-dikte)"
+        },
+        {
+          "group": "Per kom verdelen",
+          "qty": 30,
+          "unit": "g",
+          "item": "suiker"
+        },
+        {
+          "group": "Per kom verdelen",
+          "qty": 60,
+          "unit": "ml",
+          "item": "vissaus"
+        },
+        {
+          "group": "Per kom verdelen",
+          "qty": 90,
+          "unit": "ml",
+          "item": "versgeperst limoensap (ca. 3 limoenen)"
+        },
+        {
+          "group": "Per kom verdelen",
+          "qty": 30,
+          "unit": "g",
+          "item": "geroosterde ongezouten pinda's, fijngehakt"
+        },
+        {
+          "group": "Per kom verdelen",
+          "qty": 2,
+          "unit": "",
+          "item": "lente-uitjes, fijngesneden"
+        },
+        {
+          "group": "Per kom verdelen",
+          "qty": 10,
+          "unit": "g",
+          "item": "koriander, gehakt"
+        },
+        {
+          "group": "Per kom verdelen",
+          "qty": 2,
+          "unit": "g",
+          "item": "chilivlokken (optioneel, voor de volwassenen)"
+        },
+        {
+          "group": "Knoflookolie (optioneel)",
+          "qty": 60,
+          "unit": "ml",
+          "item": "neutrale olie"
+        },
+        {
+          "group": "Knoflookolie (optioneel)",
+          "qty": 7,
+          "unit": "",
+          "item": "tenen knoflook, fijngehakt"
+        }
+      ],
+      "steps": [
+        "Breng de bouillon met het citroengras, de korianderstelen en de visballetjes aan de kook. Zet het vuur laag en laat met een deksel trekken terwijl je de rest maakt.",
+        "Doe de gehakte pepertjes in een schaaltje met de azijn en laat minstens 15 minuten staan: dit is de chili-azijn voor aan tafel.",
+        "Knoflookolie: verwarm de olie met de knoflook op middelhoog vuur tot de knoflook lichtgoud is. Haal direct van het vuur, hij kleurt nog na.",
+        "Breng een grote pan water aan de kook. Kook het gehakt erin, los geroerd met een vork, tot het niet meer roze is (2–3 minuten). Schep het eruit en verdeel over vier kommen. Kook in hetzelfde water de noedels beetgaar volgens de verpakking en giet af.",
+        "Verdeel suiker, vissaus, limoensap, pinda's, lente-ui en koriander over de kommen. Chilivlokken alleen in de kommen van wie dat wil.",
+        "Leg de noedels in de kommen, schep de hete bouillon met de visballetjes erover (citroengras en stelen eruit vissen) en sprenkel er wat knoflookolie op. Roer goed door en voeg aan tafel chili-azijn toe naar smaak."
+      ],
+      "tip": "Laat voor kinderen de chilivlokken weg en gebruik de helft van het limoensap: de soep is dan mild en zoetzuur. Iedereen maakt zijn eigen kom op smaak met de chili-azijn."
+    },
+    {
+      "slug": "kinoko-gohan-paddenstoelenrijst",
+      "title": "Japanse rijst met paddenstoelen",
+      "dek": "Kinoko gohan: rijst die samen met shiitake, shimeji en oesterzwam gaar wordt in dashi en soja, met een klontje boter erdoor.",
+      "category": "Lunch",
+      "minutes": 60,
+      "servings": 4,
+      "tags": [
+        "Aziatisch",
+        "Kindvriendelijk",
+        "Weinig werk",
+        "Seizoen"
+      ],
+      "tint": "sage",
+      "glyph": "茸",
+      "native": "きのこご飯",
+      "roman": "kinoko gohan",
+      "trend": {
+        "source": "Instagram",
+        "text": "Paddenstoelen zijn nu op hun best, dus komt dit terug."
+      },
+      "signal": {
+        "source": "Just One Cookbook",
+        "text": "Nami van Just One Cookbook zette haar paddenstoelenrijst eind oktober opnieuw op Instagram, als herfstgerecht met twintig minuten werk. In Japan is kinoko gohan een vast najaarsgerecht; in Nederland liggen shiitake, oesterzwam en shimeji nu volop in de winkel."
+      },
+      "source": "just-one-cookbook",
+      "trendTerms": [
+        "takikomi gohan",
+        "japanese mushroom rice"
+      ],
+      "signals": [
+        {
+          "source": "Instagram",
+          "metric": "listed",
+          "period": "31 oktober 2026",
+          "geo": "world",
+          "url": "https://www.instagram.com/reel/DfKMsEmzQNn/",
+          "note": "Just One Cookbook: Easy Japanese Mushroom Rice with Just 20 Minutes of Hands-On Time"
+        }
+      ],
+      "links": [
+        {
+          "label": "Just One Cookbook · Japanese Mushroom Rice",
+          "url": "https://www.justonecookbook.com/japanese-mushroom-rice/"
+        },
+        {
+          "label": "Just One Cookbook op Instagram",
+          "url": "https://www.instagram.com/reel/DfKMsEmzQNn/"
+        }
+      ],
+      "photo": "https://www.justonecookbook.com/wp-content/uploads/2022/07/Japanese-Mushroom-Rice-8988-I.jpg",
+      "photoCredit": {
+        "label": "Namiko Hirasawa Chen",
+        "url": "https://www.justonecookbook.com/japanese-mushroom-rice/"
+      },
+      "ingredients": [
+        {
+          "qty": 200,
+          "unit": "g",
+          "item": "gemengde paddenstoelen (shiitake, shimeji, koningsoesterzwam)"
+        },
+        {
+          "qty": 300,
+          "unit": "g",
+          "item": "Japanse rondkorrelige rijst (sushirijst)"
+        },
+        {
+          "qty": 3,
+          "unit": "g",
+          "item": "verse gember, geraspt"
+        },
+        {
+          "qty": 1,
+          "unit": "",
+          "item": "teen knoflook, fijngehakt"
+        },
+        {
+          "group": "Kookvocht (samen 400 ml)",
+          "qty": 30,
+          "unit": "ml",
+          "item": "sojasaus"
+        },
+        {
+          "group": "Kookvocht (samen 400 ml)",
+          "qty": 30,
+          "unit": "ml",
+          "item": "mirin"
+        },
+        {
+          "group": "Kookvocht (samen 400 ml)",
+          "qty": 30,
+          "unit": "ml",
+          "item": "sake (of water)"
+        },
+        {
+          "group": "Kookvocht (samen 400 ml)",
+          "qty": 310,
+          "unit": "ml",
+          "item": "dashi (van instantkorrels of zelfgemaakt)"
+        },
+        {
+          "group": "Kookvocht (samen 400 ml)",
+          "qty": 1.5,
+          "unit": "g",
+          "item": "zout"
+        },
+        {
+          "group": "Erbij",
+          "qty": 28,
+          "unit": "g",
+          "item": "ongezouten boter"
+        },
+        {
+          "group": "Erbij",
+          "qty": 5,
+          "unit": "",
+          "item": "sprieten bieslook, fijngesneden"
+        },
+        {
+          "group": "Erbij",
+          "qty": null,
+          "unit": "",
+          "item": "zeezoutvlokken (optioneel)"
+        }
+      ],
+      "steps": [
+        "Borstel de paddenstoelen schoon. Snijd de oesterzwam in stukken van 4 cm en dan in de lengte in dunne plakken. Snijd de voet van de shimeji en trek ze uit elkaar. Haal de steeltjes van de shiitake en snijd de hoedjes in plakjes.",
+        "Was de rijst in een kom koud water: water erop, direct afgieten, dan 15–20 seconden met je vingers rondroeren, nieuw water erop en afgieten. Herhaal tot het water bijna helder is. Laat goed uitlekken en doe de rijst in een pan met dik deksel (of de rijstkoker).",
+        "Meng soja, mirin en sake in een maatbeker en vul aan met dashi tot precies 400 ml. Giet over de rijst, voeg het zout, de gember en de knoflook toe en strijk de rijst vlak.",
+        "Leg de paddenstoelen bovenop de rijst, niet doorroeren. Laat met het deksel erop 20–30 minuten weken.",
+        "Breng op middelhoog vuur aan de kook tot er flink stoom ontsnapt (10–12 minuten). Zet het vuur laag en laat 12–15 minuten garen. Haal van het vuur en laat nog 15 minuten met het deksel erop staan. In een rijstkoker: gewone stand en daarna 10 minuten laten rusten.",
+        "Leg de helft van de boter op de paddenstoelen, doe het deksel er even op en laat smelten. Strooi bieslook en eventueel zeezout erover en schep de rijst luchtig om met een snijdende beweging. Geef de rest van de boter erbij."
+      ],
+      "tip": "Kinderen kunnen de shimeji uit elkaar trekken en de paddenstoelen op de rijst leggen. Lust je kind geen stukken paddenstoel, snijd ze dan extra klein: de smaak zit toch al in de rijst."
+    },
+    {
+      "slug": "japanse-koolrolletjes-tomatensaus",
+      "title": "Japanse koolrolletjes in tomatensaus",
+      "dek": "Rōru kyabetsu: koolbladeren om gehakt met panko en nootmuskaat, zacht gestoofd in tomaat en bouillon. Japans huiskamereten.",
+      "category": "Hoofdgerecht",
+      "minutes": 90,
+      "servings": 4,
+      "servingsLabel": "personen (12 rolletjes)",
+      "tags": [
+        "Aziatisch",
+        "Kindvriendelijk",
+        "Seizoen"
+      ],
+      "tint": "blush",
+      "glyph": "巻",
+      "native": "ロールキャベツ",
+      "roman": "rōru kyabetsu",
+      "trend": {
+        "source": "Instagram",
+        "text": "Nu de kool binnen is, wordt dit weer veel gestoofd."
+      },
+      "signal": {
+        "source": "Just One Cookbook",
+        "text": "Nami van Just One Cookbook zette deze week haar koolrolletjes in tomatensaus opnieuw op Instagram. Tomatensaus kwam deze maand bij vier kernbronnen voorbij, en Google Trends meldt dat er in Nederland meer naar gezocht wordt. Witte kool en savooiekool zijn nu op hun best."
+      },
+      "source": "just-one-cookbook",
+      "trendTerms": [
+        "cabbage rolls",
+        "stuffed cabbage rolls"
+      ],
+      "signals": [
+        {
+          "source": "Proef-netwerk",
+          "metric": "listed",
+          "value": 4,
+          "unit": "koks",
+          "period": "laatste 30 dagen",
+          "geo": "world",
+          "url": "https://www.justonecookbook.com/stuffed-cabbage-rolls/",
+          "note": "tomato sauce: 4 koks (ervoor 0,5), waarvan 4 kernbronnen; Google: Stijgt [NL]"
+        },
+        {
+          "source": "Instagram",
+          "metric": "listed",
+          "period": "6 november 2026",
+          "geo": "world",
+          "url": "https://www.instagram.com/reel/DfYZBXFzRY3/",
+          "note": "Just One Cookbook: Cozy Japanese Stuffed Cabbage Rolls, Simmered in Tomato Sauce"
+        }
+      ],
+      "links": [
+        {
+          "label": "Just One Cookbook · Stuffed Cabbage Rolls",
+          "url": "https://www.justonecookbook.com/stuffed-cabbage-rolls/"
+        },
+        {
+          "label": "Skinnytaste · Braised Cabbage",
+          "url": "https://www.skinnytaste.com/braised-cabbage/"
+        }
+      ],
+      "photo": "https://www.justonecookbook.com/wp-content/uploads/2020/04/Japanese-Stuffed-Cabbage-Rolls-5942-I.jpg",
+      "photoCredit": {
+        "label": "Namiko Hirasawa Chen",
+        "url": "https://www.justonecookbook.com/stuffed-cabbage-rolls/"
+      },
+      "ingredients": [
+        {
+          "qty": 1,
+          "unit": "",
+          "item": "groene kool of savooiekool (ca. 1 kg)"
+        },
+        {
+          "qty": 3,
+          "unit": "g",
+          "item": "zout, voor het kookwater"
+        },
+        {
+          "group": "Vulling",
+          "qty": 0.5,
+          "unit": "",
+          "item": "ui, fijngesnipperd"
+        },
+        {
+          "group": "Vulling",
+          "qty": 15,
+          "unit": "ml",
+          "item": "olijfolie"
+        },
+        {
+          "group": "Vulling",
+          "qty": 450,
+          "unit": "g",
+          "item": "half-om-halfgehakt"
+        },
+        {
+          "group": "Vulling",
+          "qty": 1,
+          "unit": "",
+          "item": "ei"
+        },
+        {
+          "group": "Vulling",
+          "qty": 20,
+          "unit": "g",
+          "item": "panko"
+        },
+        {
+          "group": "Vulling",
+          "qty": 30,
+          "unit": "ml",
+          "item": "melk"
+        },
+        {
+          "group": "Vulling",
+          "qty": 1,
+          "unit": "g",
+          "item": "geraspte nootmuskaat"
+        },
+        {
+          "group": "Vulling",
+          "qty": 4,
+          "unit": "g",
+          "item": "zout"
+        },
+        {
+          "group": "Vulling",
+          "qty": 8,
+          "unit": "g",
+          "item": "bloem, om te bestuiven"
+        },
+        {
+          "group": "Saus",
+          "qty": 15,
+          "unit": "ml",
+          "item": "olijfolie"
+        },
+        {
+          "group": "Saus",
+          "qty": 2,
+          "unit": "",
+          "item": "laurierblaadjes"
+        },
+        {
+          "group": "Saus",
+          "qty": 1,
+          "unit": "",
+          "item": "teen knoflook, fijngehakt"
+        },
+        {
+          "group": "Saus",
+          "qty": 400,
+          "unit": "g",
+          "item": "tomatenblokjes uit blik"
+        },
+        {
+          "group": "Saus",
+          "qty": 15,
+          "unit": "ml",
+          "item": "witte wijn (of water)"
+        },
+        {
+          "group": "Saus",
+          "qty": 2,
+          "unit": "g",
+          "item": "zout, en zwarte peper"
+        },
+        {
+          "group": "Saus",
+          "qty": 240,
+          "unit": "ml",
+          "item": "kippen- of groentebouillon"
+        },
+        {
+          "group": "Saus",
+          "qty": 7,
+          "unit": "g",
+          "item": "ongezouten boter"
+        },
+        {
+          "group": "Saus",
+          "qty": null,
+          "unit": "",
+          "item": "peterselie, gehakt"
+        }
+      ],
+      "steps": [
+        "Fruit de ui in 15 ml olijfolie op middelhoog vuur zacht en glazig, 4–6 minuten. Laat afkoelen.",
+        "Breng een grote pan water aan de kook met 3 g zout. Snijd de harde kern uit de kool en dompel de hele kool onder. Haal na ongeveer 5 minuten met een tang de buitenste bladeren eraf zodra ze soepel zijn, en ga zo door tot je 12 grote bladeren hebt. Koel ze in koud water en dep droog.",
+        "Snijd de dikke nerf onderaan elk blad in een V-vorm weg. Hak de nerven fijn.",
+        "Meng het gehakt met de ui, de gehakte nerven, het ei, panko, melk, nootmuskaat, 4 g zout en wat peper tot het plakkerig is. Zet 15–30 minuten in de koelkast; dan blijft de vulling sappiger.",
+        "Verdeel de vulling in 12 porties. Leg een blad neer, laat de onderkant waar de nerf zat iets overlappen, bestuif met een beetje bloem en leg er een portie op bij de steelkant. Rol strak op en vouw de zijkanten naar binnen. Zet eventueel vast met een cocktailprikker.",
+        "Verhit 15 ml olijfolie in een brede pan met dikke bodem. Bak laurier en knoflook even tot het geurt en roer de tomaten, wijn, 2 g zout en wat peper erdoor. Breng aan de kook.",
+        "Leg de rolletjes met de naad naar beneden dicht naast elkaar in de saus. Vul gaten op met overgebleven kool, zodat ze niet gaan schuiven. Giet de bouillon erbij.",
+        "Leg een vel bakpapier of aluminiumfolie direct op de rolletjes (een Japans ‘drukdeksel’), doe het deksel erop en breng aan de kook. Laat 30 minuten zacht stoven op laag vuur. Roer de boter door de saus en serveer met peterselie en rijst of brood."
+      ],
+      "tip": "Kinderen kunnen goed rollen: geef ze een blad, een bolletje vulling en laat ze het pakketje dichtvouwen. De saus is mild; snijd voor kleine kinderen een rolletje open, dan koelt het sneller af."
+    },
+    {
+      "slug": "gekarameliseerde-zoete-aardappel-oven",
+      "title": "Gekarameliseerde zoete aardappel uit de oven",
+      "dek": "Halve zoete aardappels met de snijkant op de bakplaat, tot ze in hun eigen stroop karamelliseren. Twee ingrediënten en de oven.",
+      "category": "Bijgerecht",
+      "minutes": 70,
+      "servings": 4,
+      "tags": [
+        "Kindvriendelijk",
+        "Weinig werk"
+      ],
+      "tint": "mustard",
+      "glyph": "焼",
+      "native": "焼き芋",
+      "roman": "yaki-imo",
+      "trend": {
+        "source": "I Am A Food Blog",
+        "text": "Zoete aardappel staat nu bij de meeste koks op het menu."
+      },
+      "signal": {
+        "source": "Proef-netwerk",
+        "text": "Zoete aardappel is deze maand de grootste stijger in ons netwerk: achttien koks, waarvan vijf kernbronnen, tegen één de maand ervoor. Google Trends meldt dat er in Nederland meer naar gezocht wordt. Stephanie van I Am A Food Blog bakt ze zo traag dat het suiker eruit komt en aan de snijkant karamelliseert, zoals bij Japanse yaki-imo."
+      },
+      "source": "i-am-a-food-blog",
+      "trendTerms": [
+        "caramelized sweet potatoes",
+        "sweet potato"
+      ],
+      "signals": [
+        {
+          "source": "Proef-netwerk",
+          "metric": "listed",
+          "value": 18,
+          "unit": "koks",
+          "period": "laatste 30 dagen",
+          "geo": "world",
+          "url": "https://iamafoodblog.com/caramelized-sweet-potatoes/",
+          "note": "sweet potato: 18 koks (ervoor 1,0), waarvan 5 kernbronnen; Google: Stijgt [NL]"
+        },
+        {
+          "source": "Proef-netwerk",
+          "metric": "listed",
+          "value": 8,
+          "unit": "koks",
+          "period": "laatste 30 dagen",
+          "geo": "world",
+          "url": "https://iamafoodblog.com/caramelized-sweet-potatoes/",
+          "note": "sweet potatoes: 8 koks (ervoor 1,0), waarvan 5 kernbronnen; Google: Stijgt [world]"
+        }
+      ],
+      "links": [
+        {
+          "label": "I Am A Food Blog · Caramelized Sweet Potatoes",
+          "url": "https://iamafoodblog.com/caramelized-sweet-potatoes/"
+        },
+        {
+          "label": "Well Plated · Sweet Potato Gratin",
+          "url": "https://www.wellplated.com/sweet-potato-gratin/"
+        }
+      ],
+      "photo": "https://iamafoodblog.com/wp-content/uploads/2026/11/caramelized-sweet-potatoes-0559w.jpg",
+      "photoCredit": {
+        "label": "Stephanie Le (I Am A Food Blog)",
+        "url": "https://iamafoodblog.com/caramelized-sweet-potatoes/"
+      },
+      "ingredients": [
+        {
+          "qty": 600,
+          "unit": "g",
+          "item": "zoete aardappels (2 middelgrote), geboend en drooggedept"
+        },
+        {
+          "qty": 30,
+          "unit": "ml",
+          "item": "neutrale olie"
+        },
+        {
+          "qty": null,
+          "unit": "",
+          "item": "zeezoutvlokken"
+        }
+      ],
+      "steps": [
+        "Verwarm de oven voor op 190 °C met het rooster in het midden. Bekleed een bakplaat met bakpapier.",
+        "Snijd van de aardappels de puntjes af en halveer ze in de lengte. Wrijf ze rondom in met de olie.",
+        "Leg ze met de snijkant naar beneden op de bakplaat, minstens 5 cm uit elkaar. Bestrooi met een beetje zeezout.",
+        "Bak 45–60 minuten. Prik na 45 minuten met een satéprikker: glijdt die er makkelijk in en bubbelt er donkere stroop langs de randen, dan zijn ze klaar.",
+        "Laat 10 minuten op de bakplaat rusten, zodat de karamel loslaat. Draai ze om met een dunne spatel, bestrooi met nog wat zeezout en serveer."
+      ],
+      "tip": "Voor kinderen is dit snoep: laat ze zelf de olie erop smeren. Wil je er een maaltijd van maken, schep er dan wat yoghurt en sesamzaad op of serveer ze naast de koolrolletjes."
+    },
+    {
+      "slug": "pompoentaart-gecondenseerde-melk",
+      "title": "Pompoentaart met gecondenseerde melk",
+      "dek": "Een gladde, kruidige vulling van pompoen, eieren en gecondenseerde melk in een voorgebakken bodem. Wiebelt uit de oven en wordt in de koelkast stevig.",
+      "category": "Gebak",
+      "minutes": 150,
+      "servings": 8,
+      "servingsLabel": "stukken",
+      "tags": [
+        "Kindvriendelijk",
+        "Seizoen"
+      ],
+      "tint": "persimmon",
+      "glyph": "瓜",
+      "native": "パンプキンパイ",
+      "roman": "panpukin pai",
+      "trend": {
+        "source": "Bon Appétit",
+        "text": "Pompoentaart wordt nu gebakken, zoals elk jaar rond deze tijd."
+      },
+      "signal": {
+        "source": "Proef-netwerk",
+        "text": "Pompoentaart staat deze maand bij acht koks uit ons netwerk, waarvan drie kernbronnen. Google Trends noemt het een seizoensgerecht. Bon Appétit maakt de vulling met gecondenseerde melk en ahornsiroop, en bakt hem op lage temperatuur, zodat hij niet scheurt."
+      },
+      "source": "bon-app-tit",
+      "trendTerms": [
+        "pumpkin pie"
+      ],
+      "signals": [
+        {
+          "source": "Proef-netwerk",
+          "metric": "listed",
+          "value": 8,
+          "unit": "koks",
+          "period": "laatste 30 dagen",
+          "geo": "world",
+          "url": "https://www.bonappetit.com/recipe/best-pumpkin-pie",
+          "note": "pumpkin pie: 8 koks (ervoor 0,0), waarvan 3 kernbronnen; Google: Seizoen [world]"
+        },
+        {
+          "source": "Instagram",
+          "metric": "engagement",
+          "value": 17.2,
+          "unit": "x",
+          "period": "november 2026",
+          "geo": "world",
+          "url": "https://www.instagram.com/p/DfYFxdgF4H2/",
+          "note": "America's Test Kitchen over gladde pompoentaart: 17,2× zoveel reacties als normaal"
+        }
+      ],
+      "links": [
+        {
+          "label": "Bon Appétit · BA's Best Pumpkin Pie",
+          "url": "https://www.bonappetit.com/recipe/best-pumpkin-pie"
+        },
+        {
+          "label": "America's Test Kitchen · Pumpkin pie op Instagram",
+          "url": "https://www.instagram.com/p/DfYFxdgF4H2/"
+        }
+      ],
+      "photo": "https://assets.bonappetit.com/photos/6525c6972eedd20d811b4590/16:9/w_1280,c_limit/20230823-1123-THANKSGIVING-WELL-583-LEDE.jpg",
+      "photoCredit": {
+        "label": "Bon Appétit",
+        "url": "https://www.bonappetit.com/recipe/best-pumpkin-pie"
+      },
+      "ingredients": [
+        {
+          "group": "Bodem",
+          "qty": 190,
+          "unit": "g",
+          "item": "bloem, plus wat om te bestuiven"
+        },
+        {
+          "group": "Bodem",
+          "qty": 10,
+          "unit": "g",
+          "item": "suiker"
+        },
+        {
+          "group": "Bodem",
+          "qty": 3,
+          "unit": "g",
+          "item": "zout"
+        },
+        {
+          "group": "Bodem",
+          "qty": 140,
+          "unit": "g",
+          "item": "koude ongezouten boter, in blokjes"
+        },
+        {
+          "group": "Bodem",
+          "qty": 70,
+          "unit": "ml",
+          "item": "ijskoud water"
+        },
+        {
+          "group": "Bodem",
+          "qty": 1,
+          "unit": "",
+          "item": "ei, losgeklopt, om in te smeren"
+        },
+        {
+          "group": "Vulling",
+          "qty": 2,
+          "unit": "",
+          "item": "eieren, op kamertemperatuur"
+        },
+        {
+          "group": "Vulling",
+          "qty": 1,
+          "unit": "",
+          "item": "eidooier"
+        },
+        {
+          "group": "Vulling",
+          "qty": 67,
+          "unit": "g",
+          "item": "suiker"
+        },
+        {
+          "group": "Vulling",
+          "qty": 3,
+          "unit": "g",
+          "item": "kaneel"
+        },
+        {
+          "group": "Vulling",
+          "qty": 2,
+          "unit": "g",
+          "item": "zout"
+        },
+        {
+          "group": "Vulling",
+          "qty": 1,
+          "unit": "g",
+          "item": "gemberpoeder"
+        },
+        {
+          "group": "Vulling",
+          "qty": 0.5,
+          "unit": "g",
+          "item": "kruidnagelpoeder"
+        },
+        {
+          "group": "Vulling",
+          "qty": 0.5,
+          "unit": "g",
+          "item": "geraspte nootmuskaat"
+        },
+        {
+          "group": "Vulling",
+          "qty": 450,
+          "unit": "g",
+          "item": "pompoenpuree zonder suiker (blik, of zelf gemaakt van geroosterde flespompoen)"
+        },
+        {
+          "group": "Vulling",
+          "qty": 200,
+          "unit": "g",
+          "item": "gezoete gecondenseerde melk"
+        },
+        {
+          "group": "Vulling",
+          "qty": 80,
+          "unit": "ml",
+          "item": "slagroom"
+        },
+        {
+          "group": "Vulling",
+          "qty": 30,
+          "unit": "ml",
+          "item": "ahornsiroop"
+        },
+        {
+          "group": "Vulling",
+          "qty": 10,
+          "unit": "ml",
+          "item": "vanille-extract"
+        },
+        {
+          "qty": null,
+          "unit": "",
+          "item": "opgeklopte slagroom, om erbij te geven"
+        }
+      ],
+      "steps": [
+        "Bodem: meng bloem, suiker en zout. Wrijf de boter er met je vingertoppen door tot er stukjes ter grootte van erwten overblijven. Sprenkel het water erover en kneed kort tot een deeg. Maak er een platte schijf van en laat minstens 1 uur in de koelkast rusten.",
+        "Verwarm de oven voor op 220 °C. Rol het deeg op een met bloem bestoven werkblad uit tot een cirkel van 35 cm en leg het in een taartvorm van 23 cm. Laat de randen erin zakken, snijd af tot 2,5 cm over de rand, vouw dat naar binnen en knijp de rand mooi. Zet 30 minuten in de koelkast.",
+        "Bekleed de bodem met bakpapier en vul met bakbonen of droge bonen. Bak 25–35 minuten tot de rand droog is en net kleurt. Haal papier en bonen eruit, zet de oven op 175 °C, smeer de binnenkant in met losgeklopt ei en bak nog 10–15 minuten tot de bodem gaar en lichtbruin is. Laat afkoelen.",
+        "Zet de oven op 165 °C. Klop in een kom de 2 eieren en de dooier los. Klop in een grote kom suiker, kaneel, zout, gember, kruidnagel en nootmuskaat klontvrij. Klop de eieren, pompoenpuree, gecondenseerde melk, slagroom, ahornsiroop en vanille erdoor tot het glad is.",
+        "Giet de vulling in de afgekoelde bodem. Bak 60–75 minuten, tot de randen stevig en iets gerezen zijn en het midden nog als pudding wiebelt. Hij wordt na het bakken nog stevig.",
+        "Laat minstens 3 uur afkoelen op een rooster voor je hem aansnijdt. Serveer met opgeklopte slagroom."
+      ],
+      "tip": "Kinderen kunnen de kruiden afwegen, de vulling kloppen en de bonen op het bakpapier strooien. Bak de taart een dag van tevoren: koud uit de koelkast snijdt hij het mooist."
+    }
+  ],
+  "ferment": {
+    "number": 3,
+    "slug": "zuurkool-witte-kool",
+    "title": "Zuurkool",
+    "glyph": "酵",
+    "native": "ザワークラウト",
+    "roman": "zawākurauto",
+    "lede": "Fijngesneden witte kool met 2,2 % zout, gekneed tot hij in zijn eigen vocht staat. Na drie à vier weken op het aanrecht is hij fris zuur en nog knapperig: heel anders dan zuurkool uit de zak.",
+    "teaser": "Witte kool en zout, na vier weken fris zuur en knapperig.",
+    "yield": "ca. 1 kg kool (1 pot van 1,5 liter)",
+    "facts": [
+      {
+        "label": "Pot",
+        "value": "1,5 liter, glas"
+      },
+      {
+        "label": "Werk",
+        "value": "30 min"
+      },
+      {
+        "label": "Aanrecht",
+        "value": "3–4 weken, 20–22 °C; bij 15–18 °C 5–6 weken"
+      },
+      {
+        "label": "Klaar",
+        "value": "als het zuur ruikt en smaakt en de pH 4,6 of lager is"
+      },
+      {
+        "label": "Bewaren",
+        "value": "koelkast, binnen 2 maanden op"
+      },
+      {
+        "label": "Niveau",
+        "value": "Beginner"
+      }
+    ],
+    "science": [
+      "Op koolbladeren leven van nature melkzuurbacteriën. Het zout trekt vocht uit de kool, en in dat zoute vocht krijgen rotbacteriën weinig kans, terwijl melkzuurbacteriën er goed tegen kunnen. Ze eten de suikers uit de kool en maken er melkzuur en koolzuurgas van.",
+      "Er werken verschillende bacteriën na elkaar: eerst soorten die veel gas maken (daarom bubbelt het de eerste week), daarna soorten die meer zuur maken. Daarom duurt goede zuurkool weken en geen dagen, en daarom smaakt hij na vier weken anders dan na één.",
+      "Het zuur maakt het veilig: onder een pH van 4,6 kan de bacterie die botulisme veroorzaakt niet groeien. Te weinig zout of te warm gisten geeft zachte, slijmerige of rotte kool. Weeg het zout daarom en houd het aanrecht onder 22 °C."
+    ],
+    "timeline": [
+      {
+        "when": "Dag 0",
+        "title": "Inmaken",
+        "text": "Kool snijden, zout erdoor kneden tot er vocht komt, aandrukken in de pot, gewicht erop."
+      },
+      {
+        "when": "Dag 1–7",
+        "title": "Bubbels",
+        "text": "Het vocht wordt troebel en het bubbelt. Elke dag even het gas laten ontsnappen en controleren of alles onder staat."
+      },
+      {
+        "when": "Week 2–3",
+        "title": "Zuur",
+        "text": "De bubbels nemen af en de geur wordt fris zuur. Proef met een schone vork."
+      },
+      {
+        "when": "Week 3–4",
+        "title": "Klaar",
+        "text": "Zuur genoeg? Meet de pH en zet de pot in de koelkast."
+      }
+    ],
+    "ingredients": [
+      {
+        "qty": 1000,
+        "unit": "g",
+        "item": "witte kool of spitskool, schoongemaakt gewogen (zonder buitenste bladeren en kern)",
+        "base": true,
+        "key": "kool"
+      },
+      {
+        "qty": 22,
+        "unit": "g",
+        "item": "zeezout zonder jodium en zonder antiklontermiddel",
+        "salt": true,
+        "key": "zout"
+      },
+      {
+        "qty": 5,
+        "unit": "g",
+        "item": "karwijzaad (optioneel)"
+      },
+      {
+        "group": "Pekel om bij te vullen (alleen als nodig)",
+        "qty": 25,
+        "unit": "g",
+        "item": "zout per liter water (zonder jodium)"
+      }
+    ],
+    "steps": [
+      "Was een glazen pot van 1,5 liter, het deksel en een klein glazen gewichtje (of een zakje met pekel) in heet sop en spoel na met heel heet water. Gebruik geen koper, messing of zink.",
+      "Haal de buitenste bladeren en de kern van de kool. Bewaar één groot schoon blad. Snijd de kool in dunne reepjes van ongeveer 2 mm en weeg hem: reken dan het zout uit, {zout} g voor deze hoeveelheid.",
+      "Doe de kool in een grote kom, strooi het zout en eventueel de karwij erover en kneed 5–10 minuten stevig, tot er een laagje vocht onderin de kom staat.",
+      "Druk de kool laag voor laag stevig aan in de pot, met al het vocht. Laat minstens 5 cm ruimte onder de rand. Leg het bewaarde blad erop en zet het gewicht erop: de kool moet helemaal onder het vocht staan.",
+      "Staat de kool na een dag nog niet onder, vul dan bij met pekel van 25 g zout per liter water.",
+      "Leg het deksel losjes op de pot, of draai het dicht en laat elke dag even het gas ontsnappen. Zet de pot op een bord op een plek van 20–22 °C, uit de zon.",
+      "Kijk elke dag of alles onder het vocht staat en schep een eventueel wit vliesje eraf. Na 3 weken proeven: ruikt en smaakt hij zuur, meet dan met een pH-strip. Bij 4,6 of lager is hij klaar.",
+      "Zet de pot in de koelkast (4 °C of kouder), met de kool onder het vocht, en eet hem binnen 2 maanden op. Altijd met een schone vork uit de pot scheppen."
+    ],
+    "ok": "Bubbels, gesis bij het openen, een frisse zure geur en troebel vocht. Een vlak wit, grijs of roze vliesje op het vocht (kahmgist) is onschuldig: schep het eraf en controleer dat alles onder staat. Iets zachtere kool die schoon en zuur ruikt, is veilig.",
+    "bad": "Pluizige schimmel (groen, blauw, zwart, bruin of wit pluis), een slijmerige laag of kool, of een rotte geur in plaats van een zure: dan alles weggooien, ook als het maar een plekje is. Ook weggooien als de pH boven 4,6 blijft.",
+    "kids": "Kinderen kunnen de kool kneden (met schone handen) en zien hoe er uit droge kool vanzelf vocht komt. Laat ze elke dag de bubbels bekijken en de pH-strip naast de kleurenkaart houden.",
+    "sources": [
+      {
+        "label": "National Center for Home Food Preservation · Sauerkraut",
+        "url": "https://nchfp.uga.edu/how/ferment/recipes/sauerkraut/"
+      },
+      {
+        "label": "Oregon State University Extension · Sauerkraut: problems and solutions",
+        "url": "https://extension.oregonstate.edu/food/preservation/sauerkraut-problems-solutions"
+      },
+      {
+        "label": "NCHFP · Containers, covers and weights",
+        "url": "https://nchfp.uga.edu/how/ferment/general-information-on-fermenting/suitable-containers-covers-and-weights-for-fermenting-food/"
+      },
+      {
+        "label": "UC Davis · Troubleshooting fermented vegetables",
+        "url": "https://ucfoodsafety.ucdavis.edu/sites/g/files/dgvnsk7366/files/media/documents/Troubleshooting%20fermented%20fruits%20and%20vegetables%20FINAL.pdf"
+      }
+    ]
+  }
+}
