@@ -25,12 +25,15 @@ import pathlib
 import re
 import sys
 
-from PIL import Image, ImageDraw, ImageFilter
+from PIL import Image, ImageDraw
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = "https://edial.github.io/proef/"
 
 INK, MUTED, RULE, SHEET, CREAM, HANKO = "#1F1D1A", "#7A7366", "#DDD6C8", "#F8F5EE", "#F8F5EE", "#C4372C"
+# logo en sparklines zonder randje: kleuren die op licht én op een donkere achtergrond leesbaar zijn. Gmail kan in
+# donkere modus niet wisselen naar de donkere plaatjes, dus de standaardversie moet in beide goed staan.
+SPARK = "#8C8478"
 # donkere modus (Apple Mail, iPhone, Outlook): zelfde kleuren als de site in het donker
 D_BG, D_INK, D_MUTED, D_RULE, D_CARD = "#161412", "#EEE9DF", "#A39B8E", "#4A443B", "#2B2620"
 # licht en donker van elke tint, zoals --hi en --lo op de site
@@ -59,40 +62,34 @@ def rgb(h):
 
 def spark_png(weeks, path, dark_path, w=84, h=18):
     """Lijn van 12 maanden met een rode stip op de laatste week, 2× zo scherp voor retina-schermen.
-    Twee versies: licht (inkt met een dun crème randje, zodat hij ook zichtbaar blijft als Gmail de mail donker
-    maakt) en donker (crème lijn) voor mailprogramma's met een echte donkere modus."""
+    Twee versies, allebei zonder randje: standaard warmgrijs (leesbaar op licht én als Gmail de mail donker maakt)
+    en lichter warmgrijs voor mailprogramma's met een echte donkere modus."""
     s = 8  # eerst groot tekenen, dan verkleinen: gladde lijnen
     W, H, pad = w * s, h * s, 3 * s
     top = max(1, max(weeks))
     xs = [pad + i * (W - 2 * pad) / (len(weeks) - 1) for i in range(len(weeks))]
     ys = [H - pad - v / top * (H - 2 * pad) for v in weeks]
     pts, r = list(zip(xs, ys)), int(2.6 * s)
-    for out, line, halo in ((path, INK, CREAM), (dark_path, D_INK, None)):
+    for out, line in ((path, SPARK), (dark_path, D_MUTED)):
         img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
         d = ImageDraw.Draw(img)
-        if halo:
-            d.line(pts, fill=halo, width=int(3.4 * s), joint="curve")
-            d.ellipse([xs[-1] - r - s, ys[-1] - r - s, xs[-1] + r + s, ys[-1] + r + s], fill=halo)
         d.line(pts, fill=line, width=int(1.4 * s), joint="curve")
         d.ellipse([xs[-1] - r, ys[-1] - r, xs[-1] + r, ys[-1] + r], fill=HANKO)
         img.resize((w * 2, h * 2), Image.LANCZOS).save(out, optimize=True)
 
 
 def logo_pngs():
-    """Logo voor de mail: mail/proef-logo.png (inkt met een crème randje, zie spark_png) en
-    mail/proef-logo-dark.png (crème). Gemaakt uit mail/proef-logo-src.png (inkt op transparant)."""
+    """Logo voor de mail, zonder randje: mail/proef-logo.png (hanko-rood, leesbaar op licht én in de donkere modus
+    van Gmail) en mail/proef-logo-dark.png (crème, voor mailprogramma's die zelf wisselen).
+    Gemaakt uit mail/proef-logo-src.png (inkt op transparant)."""
     src = ROOT / "mail" / "proef-logo-src.png"
     if not src.exists():
         return
-    ink = Image.open(src).convert("RGBA")
-    a = ink.split()[3]
-    halo = Image.new("RGBA", ink.size, rgb(CREAM) + (0,))
-    halo.putalpha(a.filter(ImageFilter.MaxFilter(5)))
-    light = Image.alpha_composite(halo, ink)
-    light.save(ROOT / "mail" / "proef-logo.png", optimize=True)
-    dark = Image.new("RGBA", ink.size, rgb(D_INK) + (0,))
-    dark.putalpha(a)
-    dark.save(ROOT / "mail" / "proef-logo-dark.png", optimize=True)
+    a = Image.open(src).convert("RGBA").split()[3]
+    for name, color in (("proef-logo.png", HANKO), ("proef-logo-dark.png", D_INK)):
+        img = Image.new("RGBA", a.size, rgb(color) + (0,))
+        img.putalpha(a)
+        img.save(ROOT / "mail" / name, optimize=True)
 
 
 def pair(light, dark, w, h, alt, extra=""):
