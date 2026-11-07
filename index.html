@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<meta name="description" content="Elke zaterdag vijf trending recepten: weinig werk, veel Aziatisch, groente van het seizoen en goed te maken voor kinderen. Plus elke week een fermentatie voor thuis. Alles in grammen en milliliters.">
+<meta name="description" content="Vijf trending recepten van het seizoen. De kinderen eten mee. Elke zaterdag nieuw: weinig werk, veel Aziatisch, plus een fermentatie voor thuis. Alles in grammen en milliliters.">
 <title>Proef</title>
 <base href="./">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -250,7 +250,7 @@ img { display: block; max-width: 100%; }
 .c-navy { --cover: var(--navy); } .c-ink { --cover: var(--ink-cover); } .c-kaki { --cover: #A9512F; } .c-moss { --cover: #3D5A47; }
 .mast { grid-column: span 4; background: var(--cover, var(--navy)); color: var(--cream); padding: 28px 26px 24px; display: flex; flex-direction: column; min-height: 540px; }
 .mast .logo { margin: 0; font-size: 64px; line-height: 1; }
-.mast .tagline { margin-top: 14px; font-size: 18px; line-height: 1.35; max-width: 22ch; }
+.mast .tagline { margin-top: 14px; font-size: 18px; line-height: 1.35; max-width: 24ch; text-wrap: balance; }
 .mast .sub { margin-top: 12px; color: rgba(248,245,238,.65); }
 .mast .kou-wrap { display: flex; align-items: flex-end; gap: 18px; margin-top: auto; padding-top: 28px; }
 .kou { writing-mode: vertical-rl; text-orientation: upright; line-height: 1; letter-spacing: .04em; }
@@ -330,23 +330,15 @@ kbd { font-family: var(--mono); font-style: normal; font-size: 11px; border: 1px
 .credit { font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .credit a { text-decoration: none; }
 .credit a:hover { color: var(--ink); }
-/* De maker: wie het recept en de foto's maakte (data/makers.json). Voorstel A, B of C via ?kaart=a|b|c */
+/* De maker: wie het recept en de foto's maakte (data/makers.json) */
 .avatar { flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: var(--hi); color: var(--lo); }
 .avatar img { width: 100%; height: 100%; object-fit: cover; }
 .avatar .ini { font-family: var(--serif); font-size: 19px; line-height: 1; }
 .maker a { text-decoration: none; }
 .maker a:hover { text-decoration: underline; }
 .maker .links { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 10.5px; }
-/* Byline onder de titel, zoals in een tijdschrift */
-.byline { display: flex; align-items: center; gap: 12px; padding: 0 0 14px; }
-.byline .avatar { width: 34px; height: 34px; }
-.byline .avatar .ini { font-size: 16px; }
-.byline .who { font-style: italic; font-size: 16px; line-height: 1.3; color: var(--muted); }
-.byline .who b { font-weight: 400; font-style: normal; color: var(--ink); }
-.byline .links { margin-top: 3px; color: var(--muted); }
-/* Kaart over de maker: onder de inleiding (versie 1) of direct onder de titel (versie 2) */
-.mcard { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0 16px; align-items: center; margin-top: 18px; padding: 16px 18px; border: 1px solid var(--rule); }
-.mcard.top { margin: 0 0 16px; }
+/* Kaart over de maker, direct onder de titel */
+.mcard { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0 16px; align-items: center; margin: 0 0 16px; padding: 16px 18px; border: 1px solid var(--rule); }
 .mcard > .label { grid-column: 1 / -1; margin-bottom: 10px; }
 .mcard .avatar { width: 56px; height: 56px; }
 .mcard .avatar .ini { font-size: 26px; }
@@ -731,7 +723,7 @@ footer { margin-top: 96px; }
     <div>
       <p class="kicker">Nieuwsbrief</p>
       <h2 id="signup-t">Elke zaterdag in je mail</h2>
-      <p class="signup-dek">Vijf recepten en een fermentatie, zodra de nieuwe editie er is. Afmelden kan onderaan elke mail.</p>
+      <p class="signup-dek">Vijf trending recepten van het seizoen en een fermentatie, zodra de nieuwe editie er is. Afmelden kan onderaan elke mail.</p>
     </div>
     <!-- Laposta-aanmeldformulier (lijst Proef). Geen API-sleutel nodig: het formulier post naar Laposta. -->
     <form class="signup-form" method="post" action="https://proef.email-provider.eu/subscribe/post/v2/index.php" accept-charset="utf-8">
@@ -781,7 +773,7 @@ footer { margin-top: 96px; }
   <button type="button" class="pop-close" aria-label="Sluiten">×</button>
   <p class="kicker">Gratis nieuwsbrief</p>
   <h2 id="pop-t">Elke zaterdag in je mail</h2>
-  <p class="pop-dek">Vijf recepten die nu trending zijn, en die je kinderen ook lusten.</p>
+  <p class="pop-dek">Vijf trending recepten van het seizoen. De kinderen eten mee.</p>
   <ul class="pop-usp">
     <li><span><b>Echt trending.</b> Gekozen uit wat zo'n 150 koks, foodblogs en Instagram-accounts nu maken.</span></li>
     <li><span><b>Weinig werk.</b> Hooguit een uur, of de oven doet het werk.</span></li>
@@ -965,8 +957,6 @@ footer { margin-top: 96px; }
     return box;
   }
   /* ---------- De maker van het recept (data/makers.json, gemaakt door scripts/build_pages.py) ---------- */
-  // versie 1: byline onder de titel + kaart onder de inleiding; versie 2: kaart direct onder de titel. Kies met ?kaart=2
-  const KAART = new URLSearchParams(location.search).get("kaart") === "2" ? 2 : 1;
   const hostOf = (u) => { try { return new URL(u).hostname.replace(/^www\./, ""); } catch { return ""; } };
   const ext = (href, text, cls) => href ? h("a", { href, target: "_blank", rel: "noopener", class: cls, text: text + " ↗" }) : null;
   function makerOf(r) {
@@ -995,12 +985,8 @@ footer { margin-top: 96px; }
     ext(m.url, "Origineel recept"), videoLink(r),
     m.instagram ? ext("https://www.instagram.com/" + m.instagram + "/", "Instagram") : null,
     m.site ? ext(m.site, m.host) : null);
-  // byline onder de titel: wie het maakte en de link naar het origineel
-  const makerByline = (m, r) => h("div", { class: "maker byline" }, avatar(m, r),
-    h("div", null, h("p", { class: "who" }, "Naar een recept van ", h("b", { text: m.name })),
-      h("p", { class: "links mono" }, m.org ? h("span", { text: m.org }) : null, ext(m.url, "Origineel recept"))));
-  // kaart: wie het is, waar je meer vindt en hoe vaak die al in Proef stond
-  const makerCard = (m, r, top) => h("aside", { class: "maker mcard" + (top ? " top" : ""), "aria-label": "Over de maker" },
+  // kaart direct onder de titel: wie het recept en de foto's maakte, waar je meer vindt en hoe vaak die al in Proef stond
+  const makerCard = (m, r) => h("aside", { class: "maker mcard", "aria-label": "Over de maker" },
     h("span", { class: "label", text: "Recept en foto's van" }),
     avatar(m, r),
     h("div", null, h("strong", { text: m.name }),
@@ -1124,7 +1110,7 @@ footer { margin-top: 96px; }
     box.replaceChildren(...[
       h("section", { class: "mast " + coverClass(ed), "aria-label": "Editie" },
         wordmark("h1", "logo"),
-        h("p", { class: "tagline", text: "Vijf recepten die nu trending zijn, en die je kinderen ook lusten." }),
+        h("p", { class: "tagline", text: "Vijf trending recepten van het seizoen. De kinderen eten mee." }),
         h("p", { class: "sub mono", text: `Nº ${pad(ed.number)} · Week ${ed.week} · ${sName} ${ed.year}` }),
         h("div", { class: "kou-wrap" }, kouEl(ed, "big"),
           h("p", { class: "kou-nl" }, h("span", { class: "mono", text: `${kouFor(ed.date).sekki} · microseizoen` }), kouFor(ed.date).nl + ". ", h("a", { href: "#microseizoenen", text: "Wat is dit?" }))),
@@ -1211,10 +1197,9 @@ footer { margin-top: 96px; }
           gallery(r)),
         h("div", { class: "card sheet" },
           h("header", null, h("span", { class: "no", text: recipeNo(r) }), h("div", null, native(r), h("h1", { text: r.title }))),
-          maker ? (KAART === 2 ? makerCard(maker, r, true) : makerByline(maker, r)) : null,
+          maker ? makerCard(maker, r) : null,
           h("div", { class: "metaline mono" }, h("span", { class: "stepper" }, minus, out, plus), h("span", { text: r.minutes + " min" }), r.category ? h("span", { text: r.category }) : null),
           h("p", { class: "dek", text: r.dek || "" }),
-          maker && KAART === 1 ? makerCard(maker, r) : null,
           trend(r, { line: true }),
           (r.tags || []).length ? h("div", { class: "tags" }, r.tags.map((t) => h("a", { href: "#zoek/" + encodeURIComponent(t.toLowerCase()), text: t }))) : null,
           h("div", { class: "stack" },

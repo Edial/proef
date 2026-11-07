@@ -265,7 +265,7 @@ def build(ed, base, subject=None, preview=None):
                    f'<div style="margin:8px 0 0;{small}"><a class="ik" href="/tag/unsubscribe" style="color:{INK};">Afmelden</a> &nbsp;·&nbsp; '
                    f'<a class="ik" href="/tag/web" style="color:{INK};">Bekijk in je browser</a> &nbsp;·&nbsp; {privacy}</div>')
     # web (de site): geen afmeldlink, wel aanmelden
-    web_footer = (f'Dit is de nieuwsbrief van Proef: elke zaterdag vijf trending recepten en een fermentatie.'
+    web_footer = (f'Dit is de nieuwsbrief van Proef: elke zaterdag vijf trending recepten van het seizoen (de kinderen eten mee) en een fermentatie.'
                   f'<div style="margin:8px 0 0;{small}"><a class="ik" href="{esc(base)}#nieuwsbrief" style="color:{INK};">Aanmelden</a> &nbsp;·&nbsp; {privacy}</div>')
     (out / "mail.html").write_text(tag_links(page.replace("@@FOOTER@@", mail_footer), ed["id"]))
     (out / "index.html").write_text(page.replace("@@FOOTER@@", web_footer))

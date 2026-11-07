@@ -1,6 +1,6 @@
 # Proef
 
-Minimalistisch weekmagazine: elke zaterdag vijf trending recepten. Weinig werk, veel Aziatisch, groente van het seizoen en goed te maken voor kinderen. Alles in grammen, milliliters en °C.
+Minimalistisch weekmagazine. *Vijf trending recepten van het seizoen. De kinderen eten mee.* Elke zaterdag nieuw: weinig werk, veel Aziatisch. Alles in grammen, milliliters en °C.
 
 - Site: https://edial.github.io/proef/
 - Edities: `editions/<jaar>-<week>.json`, lijst in `editions/index.json`

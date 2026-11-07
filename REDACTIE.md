@@ -4,7 +4,7 @@ Elke zaterdag verschijnt een nieuwe editie van Proef. Dit document is de vaste w
 
 ## Wat Proef is
 
-Vijf recepten die deze week trending zijn, plus één Fermentatie van de week. Weinig werk, veel Aziatisch, groente van het seizoen en goed te maken met kinderen. Alles in grammen, milliliters en °C. De recepten zijn in eigen woorden in het Nederlands herschreven. Foto's worden getoond vanaf de bron, met naam en link, en niet gekopieerd.
+Tagline: *Vijf trending recepten van het seizoen. De kinderen eten mee.* Vijf recepten die deze week trending zijn, plus één Fermentatie van de week. Weinig werk, veel Aziatisch, groente van het seizoen en goed te maken met kinderen. Alles in grammen, milliliters en °C. De recepten zijn in eigen woorden in het Nederlands herschreven. Foto's worden getoond vanaf de bron, met naam en link, en niet gekopieerd.
 
 ## Stappen
 
@@ -65,7 +65,7 @@ De routine draait elke zaterdag om 06:00. Elke stap kost tokens, en alles wat je
 ```jsonc
 {
   "id": "2026-44", "number": 2, "year": 2026, "week": 44, "date": "2026-10-31",
-  "intro": "Twee zinnen over deze week. Herhaal niet de vaste tagline (vijf trending recepten, kindvriendelijk) en niet grammen/milliliters.",
+  "intro": "Twee zinnen over deze week. Herhaal niet de vaste tagline (vijf trending recepten van het seizoen, de kinderen eten mee) en niet grammen/milliliters.",
   "cover": { "color": "ink", "glyph": "旬" },
   "mail": { "subject": "🍜 Popcornkip in je noedelsoep, pompoen uit de oven 🎃", "preview": "Plus gestoomd ei met garnalen en koekjes met bruine boter." },
   "watch": [{ "term": "butter board", "source": "TikTok", "url": "https://…", "note": "gezien, niet gekozen" }],
