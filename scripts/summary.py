@@ -31,7 +31,8 @@ def next_edition(eds):
         "id": eid, "date": sat.isoformat(), "year": y, "week": w,
         "number": max((e["number"] for e in eds), default=0) + 1,
         "cover.color (suggestie)": color,
-        "bestaat al": any(e["id"] == eid for e in eds),
+        # ook een concept (nog niet live, wacht op de meting of haalde de trendregel niet) telt: niet opnieuw maken
+        "bestaat al": any(e["id"] == eid for e in eds) or (ED / f"{eid}.json").exists(),
     }
 
 
@@ -42,6 +43,8 @@ def buzz_and_core():
     if bz.exists():
         b = json.loads(bz.read_text())
         print(f"\nSTIJGT IN HET NETWERK ({b['sources']} bronnen, opgehaald {b['generated']}; aantal koks laatste {b['window']} dagen, (ervoor)):")
+        print("  TRENDREGEL: minstens 3 recepten horen bij een stijger met google=Nieuw, Seizoen, Piek of Stijgt, met die stijger als "
+              "EERSTE trendTerm (letterlijk zoals hier). Anders gaat de editie niet live.")
         for r in b["rising"][:40]:
             ex = "; ".join(f"{p['name']}: {p['title']} {p['url']}" for p in r["posts"][:2])
             g = r.get("google")

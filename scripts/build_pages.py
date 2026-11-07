@@ -3,7 +3,7 @@
 
 Elke pagina is index.html met <base href="../../">, plus eigen titel, beschrijving, deelvoorbeeld
 (og:/twitter:) en receptgegevens voor Google (schema.org Recipe). De site zelf toont daarna het recept.
-Daarnaast data/makers.json: per recept de maker (kok, blog of magazine uit data/sources.csv, met naam, foto en bio)
+Daarnaast sitemap.xml (voorpagina en alle receptpagina's, voor Google Search Console) en data/makers.json: per recept de maker (kok, blog of magazine uit data/sources.csv, met naam, foto en bio)
 voor het kaartje op de receptpagina. Een recept zonder `source` vindt zijn maker via de website van photoCredit.url.
 Draai na elke wijziging aan index.html, een editie of data/sources.csv; de controle op GitHub faalt als iets verouderd is.
 
@@ -64,12 +64,23 @@ def page(template, r, ed):
         '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False).replace("</", "<\\/") + "</script>",
     ])
     out = template.replace('<base href="./">', '<base href="../../">', 1)
+    out = re.sub(r"<!-- deelvoorbeeld:start.*?<!-- deelvoorbeeld:end -->\n", "", out, count=1, flags=re.S)  # dat van de homepage
     out = re.sub(r"<title>.*?</title>", f"<title>{e(title)}</title>", out, count=1, flags=re.S)
     out = re.sub(r'<meta name="description" content="[^"]*">', f'<meta name="description" content="{e(desc)}">', out, count=1)
     return out.replace("</head>", head + "\n</head>", 1)
 
 
 MAKERS = ROOT / "data" / "makers.json"
+SITEMAP = ROOT / "sitemap.xml"
+
+
+def sitemap(items):
+    """Voorpagina en receptpagina's. (robots.txt kan niet: die telt alleen in de hoofdmap van een domein,
+    niet onder /proef/. Dien de sitemap daarom in via Google Search Console.)"""
+    newest = max((d for _, d in items), default="")
+    urls = [(SITE, newest)] + [(f"{SITE}recept/{slug}/", d) for slug, d in items]
+    rows = "".join(f"  <url><loc>{html.escape(u)}</loc><lastmod>{d}</lastmod></url>\n" for u, d in urls)
+    return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{rows}</urlset>\n'
 
 
 def host(url):
@@ -102,17 +113,18 @@ def build():
     template = (ROOT / "index.html").read_text()
     assert '<base href="./">' in template, 'index.html mist <base href="./">'
     ids = json.loads((ROOT / "editions" / "index.json").read_text())["editions"]
-    pages, recipes = {}, []
+    pages, recipes, dated = {}, [], []
     for i in ids:
         ed = json.loads((ROOT / "editions" / f"{i}.json").read_text())
         for r in ed.get("recipes", []):
             pages[r["slug"]] = page(template, r, ed)
             recipes.append(r)
-    return pages, json.dumps(makers(recipes), ensure_ascii=False, indent=1) + "\n"
+            dated.append((r["slug"], ed["date"]))
+    return pages, json.dumps(makers(recipes), ensure_ascii=False, indent=1) + "\n", sitemap(dated)
 
 
 def main():
-    pages, mk = build()
+    pages, mk, sm = build()
     existing = {p.name for p in OUT.iterdir() if p.is_dir()} if OUT.exists() else set()
     if "--check" in sys.argv:
         bad = [s for s, h in pages.items() if not (OUT / s / "index.html").exists() or (OUT / s / "index.html").read_text() != h]
@@ -121,9 +133,11 @@ def main():
             print(f"verouderd of ontbreekt: recept/{s}/")
         for s in extra:
             print(f"hoort niet meer bij een editie: recept/{s}/")
-        stale = not MAKERS.exists() or MAKERS.read_text() != mk
-        if stale:
-            print("verouderd of ontbreekt: data/makers.json")
+        stale = 0
+        for f, want in ((MAKERS, mk), (SITEMAP, sm)):
+            if not f.exists() or f.read_text() != want:
+                print(f"verouderd of ontbreekt: {f.relative_to(ROOT)}")
+                stale += 1
         print(f"{len(pages)} receptpagina's gecontroleerd, {len(bad) + len(extra) + stale} probleem/problemen. Los op met: python3 scripts/build_pages.py")
         return 1 if bad or extra or stale else 0
     for slug, h in pages.items():
@@ -134,7 +148,8 @@ def main():
         if f.exists() and MARK in f.read_text():
             shutil.rmtree(OUT / slug)
     MAKERS.write_text(mk)
-    print(f"{len(pages)} receptpagina's in recept/, makers in data/makers.json.")
+    SITEMAP.write_text(sm)
+    print(f"{len(pages)} receptpagina's in recept/, makers in data/makers.json, sitemap.xml.")
     return 0
 
 

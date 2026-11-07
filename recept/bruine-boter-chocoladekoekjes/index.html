@@ -8,6 +8,7 @@
 <title>Chocoladekoekjes met bruine boter · Proef</title>
 <base href="../../">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preload" href="editions/index.json" as="fetch" crossorigin="anonymous">
 <!-- fonts:start (gemaakt door scripts/fonts.py) -->
 <link rel="preload" href="assets/fonts/fraunces-normal-latin-9e5095.woff2" as="font" type="font/woff2" crossorigin>
@@ -19,7 +20,7 @@
   --board: #E8E4DB;
   --sheet: #F8F5EE;
   --ink: #1F1D1A;
-  --muted: #7A7366;
+  --muted: #6B6458;   /* 4,6:1 op --board, 5,4:1 op --sheet (WCAG AA) */
   --rule: #DDD6C8;
   /* vaste kleuren: tekst op navy of op een gekleurde kaart */
   --cream: #F8F5EE;
@@ -27,6 +28,7 @@
   --dark: #1F1D1A;
   --navy: #2E4A6B;
   --hanko: #C4372C;
+  --hanko-text: #B33129;   /* rood voor kleine tekst: 4,9:1 op --board */
   --ok: #3F6B4F;
   --persimmon: #D8693E;
   --mustard: #F0B23B;
@@ -42,11 +44,11 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --board: #161412; --sheet: #211E1A; --ink: #EEE9DF; --muted: #A39B8E; --rule: #37322B; --navy: #2B4562; --ok: #8FBF9F; --ink-cover: #3A352E;
+    --board: #161412; --sheet: #211E1A; --ink: #EEE9DF; --muted: #A39B8E; --rule: #37322B; --navy: #2B4562; --ok: #8FBF9F; --ink-cover: #3A352E; --hanko-text: #E66A5E;
   }
 }
 :root[data-theme="dark"] {
-  --board: #161412; --sheet: #211E1A; --ink: #EEE9DF; --muted: #A39B8E; --rule: #37322B; --navy: #2B4562; --ok: #8FBF9F; --ink-cover: #3A352E;
+  --board: #161412; --sheet: #211E1A; --ink: #EEE9DF; --muted: #A39B8E; --rule: #37322B; --navy: #2B4562; --ok: #8FBF9F; --ink-cover: #3A352E; --hanko-text: #E66A5E;
 }
 
 * { box-sizing: border-box; }
@@ -66,7 +68,7 @@ img { display: block; max-width: 100%; }
 
 .mono { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; font-variant-numeric: tabular-nums; }
 .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-.kicker { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--hanko); }
+.kicker { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--hanko-text); }
 .cjk { font-family: var(--cjk); font-weight: 900; line-height: 1; }
 .card { background: var(--sheet); }
 .no { font-family: var(--serif); color: var(--persimmon); font-variant-numeric: lining-nums; }
@@ -79,10 +81,10 @@ img { display: block; max-width: 100%; }
 
 /* Trending: in woorden waarom het in de editie staat */
 .trend { border-top: 1px solid var(--rule); padding-top: 10px; }
-.trend b { display: block; margin-bottom: 3px; font-family: var(--mono); font-weight: 500; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--hanko); }
+.trend b { display: block; margin-bottom: 3px; font-family: var(--mono); font-weight: 500; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--hanko-text); }
 .trend p { margin: 0; font-style: italic; font-size: 15px; line-height: 1.4; color: var(--muted); }
 /* gemeten trend: label, sparkline (12 maanden) en één zin, uit Google Trends (scripts/trends_spark.py) */
-.tl { display: inline-flex; align-items: baseline; gap: 5px; font-style: normal; font-family: var(--mono); font-weight: 500; font-size: 10.5px; line-height: 1.5; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; color: var(--hanko); }
+.tl { display: inline-flex; align-items: baseline; gap: 5px; font-style: normal; font-family: var(--mono); font-weight: 500; font-size: 10.5px; line-height: 1.5; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; color: var(--hanko-text); }
 .tl i { font-style: normal; font-size: 12px; letter-spacing: 0; }
 .tl.quiet { color: var(--muted); }
 .spark { display: block; width: 100%; height: 34px; overflow: visible; color: var(--ink); }
@@ -140,7 +142,7 @@ img { display: block; max-width: 100%; }
 .chips li { padding: 4px 11px; border: 1px solid var(--rule); border-radius: 99px; font-size: 15px; line-height: 1.3; }
 .chips li small { margin-left: 6px; font-family: var(--mono); font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .chips li.new { border-color: var(--hanko); }
-.chips li.new small { color: var(--hanko); }
+.chips li.new small { color: var(--hanko-text); }
 /* microseizoenen */
 .seasons .now { display: flex; align-items: flex-end; gap: 22px; margin: 22px 0 6px; padding: 22px 24px; background: var(--cover, var(--navy)); color: var(--cream); width: fit-content; }
 .seasons .now .kou { font-size: 64px; }
@@ -159,7 +161,7 @@ img { display: block; max-width: 100%; }
 .sekki li .k { font-size: 15px; }
 .sekki li .nl { font-size: 14px; line-height: 1.35; color: var(--muted); }
 .sekki li .eds { grid-column: 2; display: flex; gap: 8px; }
-.sekki li .eds a { font-size: 10px; color: var(--hanko); text-decoration: none; }
+.sekki li .eds a { font-size: 10px; color: var(--hanko-text); text-decoration: none; }
 .sekki li.is-now { background: color-mix(in srgb, var(--hanko) 8%, transparent); }
 .sekki li.is-now .nl { color: var(--ink); }
 .mast .kou-nl a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .2em; }
@@ -247,18 +249,18 @@ img { display: block; max-width: 100%; }
 /* ---------- Home ---------- */
 .home { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gap); }
 /* omslagkleur per editie */
-.c-navy { --cover: var(--navy); } .c-ink { --cover: var(--ink-cover); } .c-kaki { --cover: #A9512F; } .c-moss { --cover: #3D5A47; }
+.c-navy { --cover: var(--navy); } .c-ink { --cover: var(--ink-cover); } .c-kaki { --cover: #9C4A2A; } .c-moss { --cover: #3D5A47; }
 .mast { grid-column: span 4; background: var(--cover, var(--navy)); color: var(--cream); padding: 28px 26px 24px; display: flex; flex-direction: column; min-height: 540px; }
 .mast .logo { margin: 0; font-size: 64px; line-height: 1; }
 .mast .tagline { margin-top: 14px; font-size: 18px; line-height: 1.35; max-width: 24ch; text-wrap: balance; }
-.mast .sub { margin-top: 12px; color: rgba(248,245,238,.65); }
+.mast .sub { margin-top: 12px; color: rgba(248,245,238,.9); }
 .mast .kou-wrap { display: flex; align-items: flex-end; gap: 18px; margin-top: auto; padding-top: 28px; }
 .kou { writing-mode: vertical-rl; text-orientation: upright; line-height: 1; letter-spacing: .04em; }
 .mast .kou.big { font-size: 76px; }
-.mast .kou-nl { margin: 0; font-style: italic; font-size: 15px; line-height: 1.4; color: rgba(248,245,238,.85); max-width: 14ch; }
-.mast .kou-nl .mono { display: block; margin-bottom: 6px; font-style: normal; font-size: 10.5px; color: rgba(248,245,238,.65); }
+.mast .kou-nl { margin: 0; font-style: italic; font-size: 15px; line-height: 1.4; color: rgba(248,245,238,.9); max-width: 14ch; }
+.mast .kou-nl .mono { display: block; margin-bottom: 6px; font-style: normal; font-size: 10.5px; color: rgba(248,245,238,.9); }
 .mast .bottom { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-top: 22px; }
-.mast .intro { font-style: italic; font-size: 15px; line-height: 1.5; color: rgba(248,245,238,.85); max-width: 32ch; }
+.mast .intro { font-style: italic; font-size: 15px; line-height: 1.5; color: rgba(248,245,238,.9); max-width: 32ch; }
 
 .lead { grid-column: span 8; display: grid; grid-template-rows: minmax(0, 1fr) auto; text-decoration: none; min-width: 0; }
 .lead .duo { min-height: 340px; }
@@ -280,15 +282,12 @@ img { display: block; max-width: 100%; }
 .tile .trend b { color: var(--dark); }
 .tile .spark { color: var(--lo); }
 .tile .tl { color: var(--dark); }
-.tile .tl.quiet { color: rgba(31,29,26,.6); }
+.tile .tl.quiet { color: rgba(31,29,26,.78); }
 .tile .trend p { color: rgba(31,29,26,.78); }
-.tile.t-persimmon { color: var(--cream); }
-.tile.t-persimmon .no, .tile.t-persimmon .trend b { color: var(--cream); }
-.tile.t-persimmon .metaline, .tile.t-persimmon .trend p { color: rgba(248,245,238,.88); }
-.tile.t-persimmon .trend { border-top-color: rgba(248,245,238,.4); }
-.tile.t-persimmon .spark { color: var(--cream); }
-.tile.t-persimmon .tl { color: var(--cream); }
-.tile.t-persimmon .tl.quiet { color: rgba(248,245,238,.75); }
+/* persimmon: crème haalt maar 3,2:1, inkt 4,8:1 (WCAG AA); daarom inkt, en de zachtere tekst ook in volle inkt */
+.tile.t-persimmon .no, .tile.t-persimmon .trend b, .tile.t-persimmon .metaline, .tile.t-persimmon .trend p,
+.tile.t-persimmon .tl.quiet, .tile.t-persimmon .tl, .tile.t-persimmon .spark { color: var(--dark); }
+.tile.t-persimmon .trend { border-top-color: rgba(31,29,26,.3); }
 
 .ferm-teaser { grid-column: span 12; display: grid; grid-template-columns: minmax(160px, 3fr) auto minmax(0, 7fr) auto; gap: 40px; align-items: center; text-decoration: none; padding-right: 36px; }
 .ferm-teaser .seigaiha { align-self: stretch; min-height: 220px; }
@@ -316,7 +315,7 @@ kbd { font-family: var(--mono); font-style: normal; font-size: 11px; border: 1px
 .issue { display: flex; flex-direction: column; justify-content: space-between; aspect-ratio: 1; padding: 14px 16px; background: var(--cover); color: var(--cover-ink, var(--cream)); text-decoration: none; transition: transform .2s ease; }
 .issue:hover { transform: translateY(-3px); }
 .issue .kou.small { font-size: 30px; align-self: flex-start; }
-.issue .when { opacity: .8; }
+.issue .when { opacity: .9; }
 .empty { color: var(--muted); padding: 16px; font-style: italic; }
 
 /* ---------- Recept ---------- */
@@ -336,7 +335,8 @@ kbd { font-family: var(--mono); font-style: normal; font-size: 11px; border: 1px
 .avatar .ini { font-family: var(--serif); font-size: 19px; line-height: 1; }
 .maker a { text-decoration: none; }
 .maker a:hover { text-decoration: underline; }
-.maker .links { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 10.5px; }
+.maker .links { display: flex; flex-wrap: wrap; gap: 0 18px; font-size: 10.5px; }
+.maker .links a { display: inline-block; padding: 4px 0; }   /* tikdoel minstens 24 px hoog (WCAG 2.5.8) */
 /* Kaart over de maker, direct onder de titel */
 .mcard { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0 16px; align-items: center; margin: 0 0 16px; padding: 16px 18px; border: 1px solid var(--rule); }
 .mcard > .label { grid-column: 1 / -1; margin-bottom: 10px; }
@@ -390,7 +390,7 @@ kbd { font-family: var(--mono); font-style: normal; font-size: 11px; border: 1px
 .ingr .q { white-space: nowrap; font-variant-numeric: tabular-nums; }
 .steps { list-style: none; margin: 0; padding: 0; counter-reset: s; }
 .steps li { counter-increment: s; display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 8px; margin-bottom: 12px; font-size: 15.5px; line-height: 1.5; }
-.steps li::before { content: counter(s); color: var(--hanko); }
+.steps li::before { content: counter(s); color: var(--hanko-text); }
 .tip { margin-top: 20px; border-left: 2px solid var(--persimmon); padding: 2px 0 2px 14px; font-style: italic; font-size: 15px; color: var(--muted); }
 .tip .label { display: block; font-style: normal; color: var(--ink); margin-bottom: 2px; }
 .why { margin-top: 28px; padding-top: 14px; border-top: 1px solid var(--rule); font-family: var(--sans); font-size: 14px; line-height: 1.5; color: var(--muted); }
@@ -433,7 +433,7 @@ kbd { font-family: var(--mono); font-style: normal; font-size: 11px; border: 1px
 .checks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; border-top: 1px solid var(--ink); padding-top: 16px; }
 .checks div { font-size: 14.5px; line-height: 1.5; }
 .checks .mono { display: block; margin-bottom: 4px; }
-.checks .ok { color: var(--ok); } .checks .bad { color: var(--hanko); } .checks .kid { color: var(--muted); }
+.checks .ok { color: var(--ok); } .checks .bad { color: var(--hanko-text); } .checks .kid { color: var(--muted); }
 /* hoeveelheid kiezen: groente + water samen, zout rekent mee */
 .sizer { margin: 0 0 22px; padding: 16px 18px 14px; border: 1px solid var(--ink); background: var(--board); }
 .sizer .label { color: var(--ink); }
@@ -468,7 +468,7 @@ kbd { font-family: var(--mono); font-style: normal; font-size: 11px; border: 1px
 .fish a:hover { text-decoration: underline; }
 .fish small { color: var(--muted); font-size: 12px; margin-left: 4px; }
 .fish .r { font-family: var(--mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
-.fish .groen .r { color: #3F8F5A; } .fish .rood .r { color: var(--hanko); } .fish .oranje .r { color: #B86E1A; }
+.fish .groen .r { color: #3F8F5A; } .fish .rood .r { color: var(--hanko-text); } .fish .oranje .r { color: #B86E1A; }
 .season .src { grid-column: 1 / -1; font-family: var(--mono); font-size: 10px; letter-spacing: .03em; color: var(--muted); line-height: 1.5; }
 .season .src a { color: var(--ink); }
 .buzz.compact > li { grid-template-columns: 32px minmax(0, 1fr) 140px; gap: 2px 16px; padding: 11px 0; align-items: start; }
@@ -502,17 +502,16 @@ kbd { font-family: var(--mono); font-style: normal; font-size: 11px; border: 1px
 .mini .body { padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .mini strong { font-weight: 400; font-size: 17px; line-height: 1.15; }
 .mini:hover strong { text-decoration: underline; text-decoration-thickness: 1px; }
-.mini .why-rel { font-family: var(--sans); font-size: 12px; line-height: 1.35; color: rgba(31,29,26,.7); margin-top: auto; }
-.mini .mono { color: rgba(31,29,26,.65); font-size: 10.5px; }
-.mini.t-persimmon { color: var(--cream); }
-.mini.t-persimmon .why-rel, .mini.t-persimmon .mono { color: rgba(248,245,238,.85); }
+.mini .why-rel { font-family: var(--sans); font-size: 12px; line-height: 1.35; color: rgba(31,29,26,.82); margin-top: auto; }
+.mini .mono { color: rgba(31,29,26,.8); font-size: 10.5px; }
+.mini.t-persimmon .why-rel, .mini.t-persimmon .mono { color: var(--dark); }
 
 /* Zoeken (toets /) */
 #search { width: min(720px, calc(100vw - 24px)); max-height: min(80vh, 760px); margin: 9vh auto auto; padding: 0; border: 0; background: var(--sheet); color: var(--ink); box-shadow: 0 30px 80px rgba(0,0,0,.25); display: none; flex-direction: column; overflow: hidden; }
 #search[open] { display: flex; }
 #search::backdrop { background: rgba(22,20,18,.32); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
 .s-top { display: flex; align-items: center; gap: 12px; padding: 18px 22px 14px; border-bottom: 1px solid var(--ink); }
-.s-top .cjk { font-size: 22px; font-weight: 700; color: var(--hanko); }
+.s-top .cjk { font-size: 22px; font-weight: 700; color: var(--hanko-text); }
 .s-top input { flex: 1; min-width: 0; font: inherit; font-size: 22px; letter-spacing: -0.01em; color: var(--ink); background: transparent; border: 0; padding: 4px 0; }
 .s-top input:focus { outline: none; }
 .s-top input::placeholder { color: var(--muted); font-style: italic; }
@@ -520,7 +519,7 @@ kbd { font-family: var(--mono); font-style: normal; font-size: 11px; border: 1px
 .s-chips { display: flex; gap: 6px; flex-wrap: wrap; padding: 12px 22px; border-bottom: 1px solid var(--rule); }
 .s-chips button { font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; padding: 5px 10px; border: 1px solid var(--rule); border-radius: 99px; background: transparent; color: var(--ink); cursor: pointer; }
 .s-chips button:hover, .s-chips button.on { border-color: var(--ink); background: var(--ink); color: var(--sheet); }
-.s-chips .dice { border-color: var(--hanko); color: var(--hanko); }
+.s-chips .dice { border-color: var(--hanko); color: var(--hanko-text); }
 .s-hint { padding: 10px 22px 0; font-family: var(--sans); font-size: 12.5px; color: var(--muted); }
 .s-results { list-style: none; margin: 0; padding: 8px 10px 14px; overflow-y: auto; }
 .s-results li a { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 10px 12px; text-decoration: none; }
@@ -549,7 +548,7 @@ kbd { font-family: var(--mono); font-style: normal; font-size: 11px; border: 1px
 @media (max-width: 640px) { .sk-tile { grid-column: span 12; } }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--board); font-family: var(--mono); font-size: 12px; padding: 10px 16px; border-radius: 2px; z-index: 10; }
-/* Nieuwsbrief: staat als vaste HTML in de pagina (niet via JS), zodat Laposta's validate.js het formulier bij het laden vindt */
+/* Nieuwsbrief: staat als vaste HTML in de pagina (niet via JS), zodat Laposta's validate.js het formulier vindt zodra het geladen wordt */
 .signup { margin-top: 96px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 460px); gap: 20px 48px; align-items: end; background: var(--sheet); padding: 32px; }
 .signup h2 { font-size: 36px; letter-spacing: -0.02em; margin-top: 6px; }
 .signup-dek { font-style: italic; color: var(--muted); margin-top: 6px; max-width: 46ch; }
@@ -591,14 +590,15 @@ html.pop-open, html.pop-open body { overflow: hidden; }
 }
 /* ---------- Kleine details. Alleen met beweging als het apparaat niet om minder beweging vraagt. ---------- */
 /* mise en place: ingrediënt of stap aantikken = afvinken; een inktstreep door het ingrediënt */
-.ingr li[role="checkbox"], .steps li[role="checkbox"] { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.ingr li.chk, .steps li.chk { cursor: pointer; -webkit-tap-highlight-color: transparent; }
 .ingr .ink { background: linear-gradient(currentColor, currentColor) no-repeat 0 58% / 0 1.5px; transition: background-size .35s ease, color .3s ease; }
 .ingr li.got .ink { background-size: 100% 1.5px; color: var(--muted); }
 .ingr li.got .q { color: var(--muted); }
 .steps li { transition: color .3s ease; }
 .steps li.done { color: var(--muted); }
 .steps li.done::before { content: "✓"; color: var(--ok); font-weight: 600; }
-.ingr li[role="checkbox"]:focus-visible, .steps li[role="checkbox"]:focus-visible { outline: 2px solid var(--hanko); outline-offset: 2px; }
+.chk [role="checkbox"]:focus { outline: none; }
+.chk [role="checkbox"]:focus-visible { outline: 2px solid var(--hanko); outline-offset: 3px; border-radius: 2px; }
 @media (prefers-reduced-motion: no-preference) {
   /* getallen tikken mee bij meer of minder personen */
   .q.tick { animation: tick .32s ease; }
@@ -607,9 +607,9 @@ html.pop-open, html.pop-open body { overflow: hidden; }
 .seigaiha { background-position: calc(50% + var(--ws, 0px) + var(--wp, 0px)) 0; transition: background-position 1.1s cubic-bezier(.2, .7, .2, 1); }
 @media (prefers-reduced-motion: reduce) { .seigaiha { transition: none; } }
 /* ingrediënten: een klein cirkeltje laat zien dat je kunt afvinken */
-.ingr li[role="checkbox"] { grid-template-columns: 9ch minmax(0, 1fr) 12px; }
-.ingr li[role="checkbox"]::after { content: ""; align-self: center; box-sizing: border-box; width: 11px; height: 11px; border: 1px solid var(--rule); border-radius: 50%; display: grid; place-items: center; font-size: 8px; line-height: 1; color: var(--sheet); transition: border-color .2s ease, background-color .2s ease; }
-@media (hover: hover) { .ingr li[role="checkbox"]:hover::after { border-color: var(--muted); } }
+.ingr li.chk { grid-template-columns: 9ch minmax(0, 1fr) 12px; }
+.ingr li.chk::after { content: ""; align-self: center; box-sizing: border-box; width: 11px; height: 11px; border: 1px solid var(--rule); border-radius: 50%; display: grid; place-items: center; font-size: 8px; line-height: 1; color: var(--sheet); transition: border-color .2s ease, background-color .2s ease; }
+@media (hover: hover) { .ingr li.chk:hover::after { border-color: var(--muted); } }
 .ingr li.got::after { content: "✓"; background: var(--ok); border-color: var(--ok); }
 @keyframes tick { 0% { transform: translateY(-5px); opacity: .2; } 100% { transform: none; opacity: 1; } }
 footer { margin-top: 96px; }
@@ -617,6 +617,7 @@ footer { margin-top: 96px; }
 .foot-links { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 22px; }
 .foot-links a { color: var(--ink); text-decoration: none; }
 .foot-links a:hover { text-decoration: underline; }
+.foot-links span a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; }
 .foot-search { display: inline-flex; align-items: center; gap: 6px; }
 
 @media (max-width: 1000px) {
@@ -777,7 +778,38 @@ footer { margin-top: 96px; }
   })();
 </script>
 <!-- Laposta: vraagt bij versturen een eenmalig token op en lost een kleine rekenpuzzel op (spambeveiliging) -->
-<script src="https://proef.email-provider.eu/subscribe/check/validate.js" defer></script>
+<script>
+  // Laposta's script tegen spam laden we pas als een aanmeldformulier bijna in beeld is (of iemand het gebruikt).
+  // Zo krijgt een bezoeker die het formulier niet ziet geen verzoek en geen technisch cookie van Laposta.
+  // Het script meet zelf hoe lang het formulier open was; daarom laden we het bij het in beeld komen, niet pas bij de klik.
+  (function () {
+    var SRC = "https://proef.email-provider.eu/subscribe/check/validate.js", loading = null;
+    var forms = Array.prototype.slice.call(document.querySelectorAll(".signup-form"));
+    function load() {
+      if (!loading) loading = new Promise(function (done) {
+        var s = document.createElement("script"); s.src = SRC; s.async = true;
+        s.onload = s.onerror = function () { done(); };
+        document.head.appendChild(s);
+      });
+      return loading;
+    }
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (es) {
+        if (es.some(function (e) { return e.isIntersecting; })) { io.disconnect(); load(); }
+      }, { rootMargin: "400px 0px" });
+      forms.forEach(function (f) { io.observe(f); });
+    } else load();
+    forms.forEach(function (f) {
+      f.addEventListener("focusin", load);
+      // verstuurd voordat Laposta het formulier had voorbereid: eerst laden, dan opnieuw versturen
+      f.addEventListener("submit", function (e) {
+        if (f.querySelector('input[name="submit-duration"]')) return;
+        e.preventDefault(); e.stopImmediatePropagation();
+        load().then(function () { setTimeout(function () { f.requestSubmit ? f.requestSubmit() : f.submit(); }, 0); });
+      });
+    });
+  })();
+</script>
 
 <dialog id="signup-pop" class="pop" aria-labelledby="pop-t" tabindex="-1">
   <button type="button" class="pop-close" aria-label="Sluiten">×</button>
@@ -1160,13 +1192,18 @@ footer { margin-top: 96px; }
     if (calm.matches) return;
     q.classList.remove("tick"); void q.offsetWidth; q.classList.add("tick");
   }
+  let uid = 0;
   function ingredientList(list, factor) {
     const groups = []; let cur = null;
     for (const ing of list || []) { const g = ing.group || ""; if (!cur || cur.name !== g) { cur = { name: g, items: [] }; groups.push(cur); } cur.items.push(ing); }
     const cells = [], box = h("div");
     for (const grp of groups) {
       if (grp.name) box.append(h("p", { class: "label ing-group", text: grp.name }));
-      box.append(h("ul", { class: "ingr" }, grp.items.map((ing) => { const q = h("span", { class: "q", text: fmtQty(ing, factor) }); cells.push([q, ing]); return h("li", { role: "checkbox", "aria-checked": "false", tabindex: "0" }, q, h("span", null, h("span", { class: "ink", text: ing.item }))); })));
+      // afvinken: het vakje (role=checkbox) zit in het li; zijn naam is de hoeveelheid plus het ingrediënt
+      box.append(h("ul", { class: "ingr" }, grp.items.map((ing) => {
+        const id = "c" + (++uid), q = h("span", { class: "q", id: id + "q", text: fmtQty(ing, factor) }); cells.push([q, ing]);
+        return h("li", { class: "chk" }, q, h("span", { role: "checkbox", "aria-checked": "false", tabindex: "0", "aria-labelledby": id + "q " + id + "i" }, h("span", { class: "ink", id: id + "i", text: ing.item })));
+      })));
     }
     return { box, cells, groups };
   }
@@ -1218,7 +1255,7 @@ footer { margin-top: 96px; }
               ings.box),
             h("section", { "aria-labelledby": "steps-t" },
               h("h2", { class: "mono colhead", id: "steps-t", text: "Bereiding" }),
-              h("ol", { class: "steps" }, (r.steps || []).map((s) => h("li", { role: "checkbox", "aria-checked": "false", tabindex: "0" }, h("span", { text: s })))),
+              h("ol", { class: "steps" }, (r.steps || []).map((s) => h("li", { class: "chk" }, h("span", { role: "checkbox", "aria-checked": "false", tabindex: "0", text: s })))),
               r.tip ? h("aside", { class: "tip" }, h("span", { class: "label", text: "Tip" }), r.tip) : null,
               pair ? h("aside", { class: "pair" }, h("span", { class: "mono label", text: "Dit past er goed bij" }), fermCard(pair, "small")) : null),
             r.spark && r.spark.weeks ? h("aside", { class: "why", id: "waarom", "aria-labelledby": "why-t" },
@@ -1304,18 +1341,18 @@ footer { margin-top: 96px; }
         ...sec("Hoe lang we het bewaren",
           "Zolang je bent aangemeld. Meld je je af, dan sturen we je niets meer. Laposta bewaart dan alleen dat je je hebt afgemeld, zodat je niet per ongeluk opnieuw mail krijgt. Wil je dat je adres helemaal verdwijnt, mail ons dan."),
         ...sec("De website",
-          "Proef gebruikt geen cookies, geen advertenties en geen bezoekersstatistieken. Wel zien deze partijen je IP-adres, zoals bij elke website die iets van hen laadt:",
+          "Proef zelf zet geen cookies en gebruikt geen advertenties of bezoekersstatistieken. Wel zien deze partijen je IP-adres, zoals bij elke website die iets van hen laadt. Twee ervan kunnen een technisch cookie zetten (alleen voor het goed werken van hun dienst, niet om je te volgen):",
           list(
             "GitHub (Verenigde Staten): de site staat op GitHub Pages.",
-            "Laposta (Nederland): het aanmeldformulier laadt een script tegen spam.",
-            "De sites van de makers: foto's bij recepten worden van hun site geladen. Die site ziet ook dat je via Proef komt.",
+            "Laposta (Nederland): zodra een aanmeldformulier in beeld komt, laadt een script tegen spam. Laposta zet daarbij een technisch cookie dat verkeer over hun servers verdeelt.",
+            "De sites van de makers: foto's bij recepten (en de foto van de maker) worden van hun site geladen. Die site ziet ook dat je via Proef komt. Sommige sites zetten daarbij een technisch cookie tegen bots (bijvoorbeeld Cloudflare).",
             "YouTube, Instagram of TikTok: een video laadt pas als je op afspelen klikt. Vanaf dan gelden de regels van dat platform.")),
         ...sec("Wie je gegevens verwerkt",
           "Laposta verstuurt de nieuwsbrief en bewaart de lijst met e-mailadressen op servers in Nederland. Je e-mailadres komt verder nergens terecht."),
         ...sec("Je rechten",
           h("p", null, "Je mag je gegevens inzien, laten verbeteren of verwijderen, en bezwaar maken tegen het gebruik. Mail ons daarvoor. Ben je het niet eens met hoe we met je gegevens omgaan, dan kun je een klacht indienen bij de ",
             h("a", { href: "https://www.autoriteitpersoonsgegevens.nl", target: "_blank", rel: "noopener", text: "Autoriteit Persoonsgegevens" }), ".")),
-        h("p", { class: "mono updated", text: "Bijgewerkt op 6 november 2026" }))));
+        h("p", { class: "mono updated", text: "Bijgewerkt op 7 november 2026" }))));
     document.title = "Privacy · Proef";
     $("home").hidden = true; $("detail-view").hidden = false;
     window.scrollTo(0, 0);
@@ -1590,10 +1627,10 @@ footer { margin-top: 96px; }
   function renderShelf() {
     $("shelf").replaceChildren(...state.editions.map((ed) => h("a", {
       class: "issue " + coverClass(ed), href: ed === state.editions[0] ? "#deze-week" : "#editie-" + ed.id,
-      "aria-label": `Editie ${ed.number}, week ${ed.week}, ${fmtDate(ed.date)}`,
     },
-      h("span", { class: "mono", text: "Nº " + pad(ed.number) }),
-      kouEl(ed, "small"),
+      // naam van de link = de zichtbare tekst (WCAG 2.5.3); het Japanse teken is versiering
+      h("span", { class: "mono", text: "Nº " + pad(ed.number) + " " }),
+      (() => { const k = kouEl(ed, "small"); k.setAttribute("aria-hidden", "true"); return k; })(),
       h("span", { class: "mono when", text: `Week ${ed.week} · ${fmtDate(ed.date)}` }))));
   }
 
@@ -1851,31 +1888,32 @@ footer { margin-top: 96px; }
   const today = () => new Date().toISOString().slice(0, 10);
   const miseKey = () => "proef-mise:" + location.pathname + location.hash.replace(/^#(waarom)?$/, "");
   function miseSave() {
-    const lists = [...$("detail-view").querySelectorAll(".ingr li[role=checkbox], .steps li[role=checkbox]")];
-    const on = lists.map((li, i) => (li.getAttribute("aria-checked") === "true" ? i : -1)).filter((i) => i >= 0);
+    const lists = [...$("detail-view").querySelectorAll(".ingr li.chk, .steps li.chk")];
+    const on = lists.map((li, i) => (checked(li) ? i : -1)).filter((i) => i >= 0);
     try { on.length ? localStorage.setItem(miseKey(), JSON.stringify({ d: today(), on })) : localStorage.removeItem(miseKey()); } catch (e) {}
   }
   function setupMise() {
     let saved = null;
     try { saved = JSON.parse(localStorage.getItem(miseKey()) || "null"); } catch (e) {}
     if (!saved || saved.d !== today()) return;
-    const lists = [...$("detail-view").querySelectorAll(".ingr li[role=checkbox], .steps li[role=checkbox]")];
+    const lists = [...$("detail-view").querySelectorAll(".ingr li.chk, .steps li.chk")];
     for (const i of saved.on) if (lists[i]) tick(lists[i], true);
   }
+  const checked = (li) => li.querySelector('[role="checkbox"]')?.getAttribute("aria-checked") === "true";
   function tick(li, on) {
-    li.setAttribute("aria-checked", on ? "true" : "false");
+    li.querySelector('[role="checkbox"]')?.setAttribute("aria-checked", on ? "true" : "false");
     li.classList.toggle(li.closest(".steps") ? "done" : "got", on);
   }
   $("detail-view").addEventListener("click", (e) => {
-    const li = e.target.closest('.ingr li[role="checkbox"], .steps li[role="checkbox"]');
+    const li = e.target.closest(".ingr li.chk, .steps li.chk");
     if (!li || e.target.closest("a, button, input")) return;
-    tick(li, li.getAttribute("aria-checked") !== "true");
+    tick(li, !checked(li));
     miseSave();
   });
   $("detail-view").addEventListener("keydown", (e) => {
-    const li = e.target.closest('.ingr li[role="checkbox"], .steps li[role="checkbox"]');
-    if (!li || (e.key !== " " && e.key !== "Enter")) return;
-    e.preventDefault(); tick(li, li.getAttribute("aria-checked") !== "true"); miseSave();
+    const li = e.target.closest(".ingr li.chk, .steps li.chk");
+    if (!li || !e.target.matches('[role="checkbox"]') || (e.key !== " " && e.key !== "Enter")) return;
+    e.preventDefault(); tick(li, !checked(li)); miseSave();
   });
 
   /* ---------- Nieuwsbrief-pop-up: bij de derde pagina, niet voor wie via de mail komt, al is aangemeld of hem wegklikte ---------- */

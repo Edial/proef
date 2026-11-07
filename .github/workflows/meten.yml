@@ -11,11 +11,16 @@ on:
   workflow_dispatch:
     inputs:
       edition:
-        description: "Editie-id (leeg = nieuwste uit editions/index.json)"
+        description: "Editie-id (leeg = nieuwste editie, ook een concept)"
         required: false
+      toch_publiceren:
+        description: "Concept toch live zetten, ook als de trendregel niet gehaald is"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
+  issues: write   # melding als een concept de trendregel niet haalt
 
 concurrency:
   group: meten
@@ -30,12 +35,16 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install pillow
-      - name: Welke editie
+      - name: Welke editie (concept of al live)
         id: ed
         run: |
           ID="${{ github.event.inputs.edition }}"
-          if [ -z "$ID" ]; then ID=$(python3 -c "import json;print(json.load(open('editions/index.json'))['editions'][0])"); fi
+          if [ -z "$ID" ]; then ID=$(ls editions/ | grep -E '^[0-9]{4}-[0-9]{2}\.json$' | sort | tail -1 | sed 's/\.json$//'); fi
+          CONCEPT=$(python3 -c "import json,sys;print('true' if sys.argv[1] not in json.load(open('editions/index.json'))['editions'] else 'false')" "$ID")
+          echo "id=$ID" >> "$GITHUB_OUTPUT"
           echo "file=editions/$ID.json" >> "$GITHUB_OUTPUT"
+          echo "concept=$CONCEPT" >> "$GITHUB_OUTPUT"
+          echo "Editie $ID, concept: $CONCEPT"
       - name: Google Trends
         run: python3 scripts/trends_collect.py ${{ steps.ed.outputs.file }} || echo "Google Trends mislukt, niet blokkerend"
       - name: Foto's even licht
@@ -46,16 +55,57 @@ jobs:
         run: python3 scripts/photo_more.py ${{ steps.ed.outputs.file }} || echo "photo_more mislukt, niet blokkerend"
       - name: Lettertypen (nieuwe Japanse of Koreaanse tekens)
         run: python3 scripts/fonts.py || echo "fonts mislukt, niet blokkerend"
+      # Een concept gaat pas live als minstens 3 van de 5 recepten volgens de meting echt in trek zijn
+      # (REDACTIE.md). Haalt het dat niet, dan blijft het concept staan (met de meting), komt er een issue
+      # en gaat er geen nieuwsbrief uit. Met de hand kan het toch: Run workflow met "toch publiceren".
+      - name: Trendregel
+        id: gate
+        run: |
+          ID="${{ steps.ed.outputs.id }}"
+          if [ "${{ steps.ed.outputs.concept }}" != "true" ]; then echo "ok=true" >> "$GITHUB_OUTPUT"; exit 0; fi
+          if python3 scripts/check_edition.py --gemeten "$ID" > "$RUNNER_TEMP/gate.txt"; then
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.inputs.toch_publiceren }}" = "true" ]; then
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+            python3 -c "import json,sys,datetime;p=sys.argv[1];e=json.load(open(p));e['trendUitzondering']='met de hand gepubliceerd op '+datetime.date.today().isoformat();open(p,'w').write(json.dumps(e,ensure_ascii=False,indent=2)+'\n')" "editions/$ID.json"
+          else
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          fi
+          cat "$RUNNER_TEMP/gate.txt"
+      - name: Publiceren (id in editions/index.json)
+        if: steps.ed.outputs.concept == 'true' && steps.gate.outputs.ok == 'true'
+        run: |
+          python3 -c "import json,sys;p='editions/index.json';d=json.load(open(p));d['editions']=[sys.argv[1]]+[x for x in d['editions'] if x!=sys.argv[1]];open(p,'w').write(json.dumps(d,ensure_ascii=False,indent=2)+'\n')" "${{ steps.ed.outputs.id }}"
       - name: Controle en receptpagina's
         run: |
-          python3 scripts/check_edition.py
+          if [ "${{ steps.gate.outputs.ok }}" = "true" ]; then python3 scripts/check_edition.py; fi
           python3 scripts/build_pages.py
       - name: Opslaan
         run: |
           git config user.name "proef-bot"
           git config user.email "proef-bot@users.noreply.github.com"
-          git add editions/ data/trends.csv data/makers.json recept/ index.html assets/fonts/
+          git add editions/ data/trends.csv data/makers.json recept/ sitemap.xml index.html assets/fonts/
           git diff --cached --quiet && exit 0
           git commit -m "Trends en foto's gemeten (${{ steps.ed.outputs.file }})"
           git pull --rebase origin main
           git push
+      - name: Melden dat het concept niet live gaat
+        if: steps.gate.outputs.ok == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          ID="${{ steps.ed.outputs.id }}"
+          {
+            echo "Editie **$ID** staat klaar als concept, maar is **niet gepubliceerd**: minder dan 3 van de 5 recepten zijn volgens de meting echt in trek (Nieuw, Seizoen, Piek of Stijgt). Er gaat ook geen nieuwsbrief uit."
+            echo
+            echo '```'
+            grep -E "FOUT" "$RUNNER_TEMP/gate.txt" || cat "$RUNNER_TEMP/gate.txt"
+            echo '```'
+            echo
+            echo "**Oplossen**"
+            echo "- Vervang de recepten met Stabiel of Dalend door recepten bij een stijger die nu in trek is (\`python3 scripts/summary.py\`, google=Nieuw/Seizoen/Piek/Stijgt) en zet die stijger als eerste trendTerm. Push \`editions/$ID.json\`: GitHub meet dan opnieuw en zet hem live als het klopt."
+            echo "- Of zet hem toch live: Actions → Trends en foto's meten → Run workflow, editie \`$ID\`, vink *toch publiceren* aan."
+          } > "$RUNNER_TEMP/issue.md"
+          gh issue create --title "Editie $ID niet live: trendregel niet gehaald" --body-file "$RUNNER_TEMP/issue.md" || true
+          echo "::error::Editie $ID haalt de trendregel niet en is niet gepubliceerd (zie het issue)."
+          exit 1

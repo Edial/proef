@@ -1,7 +1,19 @@
 #!/usr/bin/env python3
 """Controleert alle edities in editions/ op de regels uit REDACTIE.md en FERMENTATIE.md.
 
-Gebruik: python3 scripts/check_edition.py      (exit 1 bij fouten)
+Gepubliceerd is wat in editions/index.json staat. Een nieuwere editions/<id>.json die daar nog niet in staat, is een
+concept: de wekelijkse routine schrijft het, de Action "Trends en foto's meten" meet het en zet het pas live
+(in index.json) als het de regels haalt. Het nieuwste concept wordt ook gecontroleerd.
+
+Trendregel (vanaf editie 4, oudere edities blijven zoals ze zijn): minstens 3 van de recepten zijn echt in trek
+(Nieuw, Seizoen, Piek of Stijgt).
+- Nog niet gemeten (concept, direct na het schrijven): de eerste zoekterm (trendTerms[0]) van minstens 3 recepten
+  is een stijger uit data/buzz.json die Google Trends al Nieuw, Seizoen, Piek of Stijgt noemt.
+- Gemeten (--gemeten <id>, in de Action na de meting): het gemeten label (spark) telt. Ontbreekt de meting, dan telt
+  het recept niet mee.
+
+Gebruik: python3 scripts/check_edition.py                    (exit 1 bij fouten)
+         python3 scripts/check_edition.py --gemeten 2026-46   (trendregel op de gemeten labels van die editie)
 """
 import datetime as dt
 import json
@@ -114,6 +126,38 @@ if (ROOT / "data" / "sources.csv").exists():
     with (ROOT / "data" / "sources.csv").open(newline="") as _f:
         SOURCES = {row["id"]: row for row in csv.DictReader(_f)}
 SPARK_LABELS = {"Nieuw", "Seizoen", "Piek", "Stijgt", "Stabiel", "Dalend"}
+TRENDING = {"Nieuw", "Seizoen", "Piek", "Stijgt"}
+TREND_RULE_FROM = 4   # editienummer vanaf waar de trendregel hard is; 1 t/m 3 blijven zoals ze zijn
+MEASURED = sys.argv[sys.argv.index("--gemeten") + 1] if "--gemeten" in sys.argv else None
+
+
+def rising_trending():
+    """{zoekterm: label} van de stijgers in data/buzz.json die Google Trends al in trek noemt."""
+    try:
+        b = json.loads((ROOT / "data" / "buzz.json").read_text())
+    except Exception:  # noqa: BLE001
+        return {}
+    return {r["phrase"].lower(): r["google"]["label"] for r in b.get("rising", [])
+            if (r.get("google") or {}).get("label") in TRENDING}
+
+
+def trend_rule(ed, where, concept):
+    """Minstens 3 recepten echt in trek. Fout vanaf editie TREND_RULE_FROM, daarvoor een waarschuwing."""
+    recipes = ed.get("recipes", [])
+    hard = (ed.get("number") or 0) >= TREND_RULE_FROM and not ed.get("trendUitzondering")  # met de hand toch gepubliceerd
+    if concept and MEASURED != ed.get("id"):
+        rising = rising_trending()
+        good = [r["slug"] for r in recipes if ((r.get("trendTerms") or [""])[0] or "").lower() in rising]
+        if len(good) < 3 and hard:
+            options = ", ".join(sorted(rising)) or "(data/buzz.json heeft nog geen stijgers met een Google-label)"
+            err(where, f"maar {len(good)} recepten hebben als eerste zoekterm een stijger die nu in trek is (nodig: 3). "
+                       f"Kies recepten bij deze stijgers en zet die stijger als eerste trendTerm: {options}")
+        return
+    good = sum((r.get("spark") or {}).get("label") in TRENDING for r in recipes)
+    if good < 3:
+        labels = ", ".join(f"{r.get('slug')}: {(r.get('spark') or {}).get('label', 'niet gemeten')}" for r in recipes)
+        msg = f"maar {good} van de {len(recipes)} recepten zijn volgens Google Trends echt in trek (nodig: 3 met Nieuw, Seizoen, Piek of Stijgt). {labels}"
+        (err if hard else warn)(where, msg)
 SIGNAL_KEYS = {"source", "metric", "value", "unit", "period", "geo", "url", "note"}
 
 
@@ -200,11 +244,17 @@ def main():
     ids = index.get("editions", [])
     if len(ids) != len(set(ids)):
         err("index.json", "een editie staat er dubbel in")
+    # het nieuwste concept (een editie die nog niet in index.json staat) controleren we mee, als nieuwste editie
+    concepts = sorted(p.stem for p in ED.glob("*-*.json") if p.stem not in ids and (not ids or p.stem > max(ids)))
+    concept = concepts[-1] if concepts else None
+    if MEASURED and MEASURED not in ids + concepts:
+        err("--gemeten", f"editions/{MEASURED}.json bestaat niet")
+    ids_all = ([concept] if concept else []) + ids
     seen, numbers, prev_cover = {}, {}, None
     md = (ROOT / "FERMENTATIE.md").read_text() if (ROOT / "FERMENTATIE.md").exists() else ""
     library = md.split("## 9.", 1)[1].split("## Bronnen", 1)[0].lower() if "## 9." in md else ""
     recent_ferments = []
-    for eid in reversed(ids):  # oud naar nieuw
+    for eid in reversed(ids_all):  # oud naar nieuw
         path = ED / f"{eid}.json"
         where = f"editions/{eid}.json"
         if not path.exists():
@@ -228,9 +278,7 @@ def main():
             core = sum((SOURCES.get(r.get("source") or "") or {}).get("tier") == "core" for r in ed.get("recipes", []))
             if core < 3:
                 warn(where, f"maar {core} van de recepten komen van een kernbron (doel: minstens 3, veld 'source')")
-            good = sum((r.get("spark") or {}).get("label") in ("Nieuw", "Seizoen", "Piek", "Stijgt") for r in ed.get("recipes", []))
-            if good < 3:
-                warn(where, f"maar {good} recepten zijn volgens Google Trends echt in trek (doel: minstens 3 met Nieuw, Seizoen, Piek of Stijgt)")
+            trend_rule(ed, where, eid == concept)
         for i, wt in enumerate(ed.get("watch") or []):
             ww = f"{where} watch {i + 1}"
             need(wt, ["term", "source"], ww)
@@ -275,7 +323,8 @@ def main():
         print("let op:", w)
     for e in errors:
         print("FOUT:  ", e)
-    print(f"{len(ids)} editie(s) gecontroleerd: {len(errors)} fout(en), {len(warnings)} waarschuwing(en).")
+    extra = f" (plus concept {concept}, nog niet live)" if concept else ""
+    print(f"{len(ids)} editie(s) gecontroleerd{extra}: {len(errors)} fout(en), {len(warnings)} waarschuwing(en).")
     return 1 if errors else 0
 
 
