@@ -330,6 +330,50 @@ kbd { font-family: var(--mono); font-style: normal; font-size: 11px; border: 1px
 .credit { font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .credit a { text-decoration: none; }
 .credit a:hover { color: var(--ink); }
+/* De maker: wie het recept en de foto's maakte (data/makers.json). Voorstel A, B of C via ?kaart=a|b|c */
+.avatar { flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: var(--hi); color: var(--lo); }
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+.avatar .ini { font-family: var(--serif); font-size: 19px; line-height: 1; }
+.maker a { text-decoration: none; }
+.maker a:hover { text-decoration: underline; }
+.maker .links { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 10.5px; }
+/* Byline onder de titel, zoals in een tijdschrift */
+.byline { display: flex; align-items: center; gap: 12px; padding: 0 0 14px; }
+.byline .avatar { width: 34px; height: 34px; }
+.byline .avatar .ini { font-size: 16px; }
+.byline .who { font-style: italic; font-size: 16px; line-height: 1.3; color: var(--muted); }
+.byline .who b { font-weight: 400; font-style: normal; color: var(--ink); }
+.byline .links { margin-top: 3px; color: var(--muted); }
+/* Kaart over de maker: onder de inleiding (versie 1) of direct onder de titel (versie 2) */
+.mcard { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0 16px; align-items: center; margin-top: 18px; padding: 16px 18px; border: 1px solid var(--rule); }
+.mcard.top { margin: 0 0 16px; }
+.mcard > .label { grid-column: 1 / -1; margin-bottom: 10px; }
+.mcard .avatar { width: 56px; height: 56px; }
+.mcard .avatar .ini { font-size: 26px; }
+.mcard strong { display: block; font-weight: 400; font-size: 20px; line-height: 1.15; letter-spacing: -0.01em; }
+.mcard .sub { display: block; margin-top: 3px; font-size: 10.5px; color: var(--muted); }
+.mcard .bio { grid-column: 1 / -1; margin-top: 12px; font-size: 15px; line-height: 1.45; }
+.mcard .links { grid-column: 1 / -1; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--rule); }
+/* Meer foto's van het recept (photos, scripts/photo_more.py): kleine reeks onder de hoofdfoto, groot in de fotoviewer */
+.thumbs { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; margin: 0; padding: 0; list-style: none; }
+.thumbs button { display: block; width: 100%; aspect-ratio: 1; padding: 0; border: 0; background: var(--rule); cursor: zoom-in; overflow: hidden; }
+.thumbs img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.8); opacity: .92; transition: filter .3s ease, opacity .3s ease; }
+.thumbs button:hover img, .thumbs button:focus-visible img { filter: none; opacity: 1; }
+.lightbox { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: #161412; color: #EEE9DF; overflow: hidden; }
+.lightbox[open] { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; }
+.lightbox:focus { outline: none; }
+.lb-top, .lb-foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 14px max(16px, env(safe-area-inset-left, 0px)); }
+.lb-top .mono { color: #A39B8E; }
+.lb-close, .lb-nav { border: 0; background: transparent; color: #EEE9DF; cursor: pointer; font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; padding: 6px 2px; }
+.lb-nav { font-size: 20px; padding: 4px 10px; }
+.lb-nav:disabled { opacity: .25; cursor: default; }
+.lb-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior: contain; }
+.lb-track::-webkit-scrollbar { display: none; }
+.lb-track figure { flex: 0 0 100%; display: grid; place-items: center; margin: 0; padding: 0 16px; scroll-snap-align: center; }
+.lb-track img { width: auto; height: auto; max-width: 100%; max-height: calc(100dvh - 120px); object-fit: contain; }
+.lb-foot .credit { color: #A39B8E; }
+.lb-foot .credit a { color: #EEE9DF; }
+@media (hover: none) { .lb-navs { display: none; } }
 .sheet { padding: 32px 34px 34px; min-width: 0; }
 .sheet header { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0 18px; align-items: end; padding-bottom: 16px; }
 .sheet header .no { font-size: 64px; line-height: .85; }
@@ -920,6 +964,87 @@ footer { margin-top: 96px; }
       } }, h("span", { class: "tri", "aria-hidden": "true" }), "Bekijk de video"));
     return box;
   }
+  /* ---------- De maker van het recept (data/makers.json, gemaakt door scripts/build_pages.py) ---------- */
+  // versie 1: byline onder de titel + kaart onder de inleiding; versie 2: kaart direct onder de titel. Kies met ?kaart=2
+  const KAART = new URLSearchParams(location.search).get("kaart") === "2" ? 2 : 1;
+  const hostOf = (u) => { try { return new URL(u).hostname.replace(/^www\./, ""); } catch { return ""; } };
+  const ext = (href, text, cls) => href ? h("a", { href, target: "_blank", rel: "noopener", class: cls, text: text + " ↗" }) : null;
+  function makerOf(r) {
+    const mk = state.makers || {}, id = mk.recipes && mk.recipes[r.slug], m = (id && mk.makers[id]) || {};
+    const credit = r.photoCredit || {};
+    if (!id && !credit.label) return null;
+    const person = m.person || (credit.label && credit.label !== m.name ? credit.label.replace(/\s*\(.*\)\s*$/, "") : "");
+    return {
+      name: person || m.name || credit.label, org: person ? m.name || "" : "", avatar: m.avatar, bio: m.bio,
+      instagram: m.instagram, site: m.site, url: credit.url || m.site, host: hostOf(m.site || credit.url),
+      count: id ? Object.values(mk.recipes).filter((x) => x === id).length : 1,
+    };
+  }
+  function avatar(m, r) {
+    const box = h("span", { class: "avatar " + tintClass(r), "aria-hidden": "true" });
+    const initial = () => box.replaceChildren(h("span", { class: "ini", text: m.name.trim().charAt(0) }));
+    if (m.avatar) {
+      const img = h("img", { alt: "", loading: "lazy", decoding: "async", referrerpolicy: "strict-origin-when-cross-origin", src: m.avatar });
+      img.addEventListener("error", initial, { once: true });
+      box.append(img);
+    } else initial();
+    return box;
+  }
+  const videoLink = (r) => r.video && VIDEO[r.video.platform] ? ext(r.video.url, "Video op " + VIDEO[r.video.platform].name) : null;
+  const makerLinks = (m, r) => h("p", { class: "links mono" },
+    ext(m.url, "Origineel recept"), videoLink(r),
+    m.instagram ? ext("https://www.instagram.com/" + m.instagram + "/", "Instagram") : null,
+    m.site ? ext(m.site, m.host) : null);
+  // byline onder de titel: wie het maakte en de link naar het origineel
+  const makerByline = (m, r) => h("div", { class: "maker byline" }, avatar(m, r),
+    h("div", null, h("p", { class: "who" }, "Naar een recept van ", h("b", { text: m.name })),
+      h("p", { class: "links mono" }, m.org ? h("span", { text: m.org }) : null, ext(m.url, "Origineel recept"))));
+  // kaart: wie het is, waar je meer vindt en hoe vaak die al in Proef stond
+  const makerCard = (m, r, top) => h("aside", { class: "maker mcard" + (top ? " top" : ""), "aria-label": "Over de maker" },
+    h("span", { class: "label", text: "Recept en foto's van" }),
+    avatar(m, r),
+    h("div", null, h("strong", { text: m.name }),
+      h("span", { class: "sub mono", text: [m.org, m.count > 1 ? m.count + " recepten in Proef" : ""].filter(Boolean).join(" · ") || m.host })),
+    m.bio ? h("p", { class: "bio", text: m.bio }) : null,
+    makerLinks(m, r));
+
+  // meer foto's van het recept: de hoofdfoto (het gerecht als het af is) blijft altijd bovenaan
+  function gallery(r) {
+    const extra = (r.photos || []).filter((p) => p && p.url);
+    if (!r.photo || !extra.length) return null;
+    const all = [{ url: r.photo }, ...extra];
+    return h("ul", { class: "thumbs", "aria-label": "Meer foto's van dit recept" }, extra.map((p, i) => h("li", null,
+      h("button", { type: "button", "aria-label": `Foto ${i + 2} van ${all.length} vergroten`, onclick: () => lightbox(r, all, i + 1) },
+        h("img", { alt: "", loading: "lazy", decoding: "async", referrerpolicy: "strict-origin-when-cross-origin", src: p.thumb || p.url })))));
+  }
+  function lightbox(r, all, start) {
+    const m = makerOf(r), smooth = !matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const count = h("span", { class: "mono", "aria-live": "polite" });
+    const track = h("div", { class: "lb-track" }, all.map((p, i) => h("figure", null,
+      h("img", { alt: i ? `Foto ${i + 1} van ${r.title}` : "Foto van " + r.title, loading: Math.abs(i - start) <= 1 ? "eager" : "lazy", decoding: "async", referrerpolicy: "strict-origin-when-cross-origin", src: p.url }))));
+    const at = () => Math.round(track.scrollLeft / Math.max(1, track.clientWidth));
+    const step = (d) => track.scrollBy({ left: d * track.clientWidth, behavior: smooth ? "smooth" : "auto" });
+    const prev = h("button", { type: "button", class: "lb-nav", "aria-label": "Vorige foto", text: "←", onclick: () => step(-1) });
+    const next = h("button", { type: "button", class: "lb-nav", "aria-label": "Volgende foto", text: "→", onclick: () => step(1) });
+    const show = () => { const i = at(); count.textContent = `${i + 1} / ${all.length}`; prev.disabled = i === 0; next.disabled = i === all.length - 1; };
+    const dlg = h("dialog", { class: "lightbox", "aria-label": "Foto's van " + r.title },
+      h("div", { class: "lb-top" }, count, h("button", { type: "button", class: "lb-close", text: "Sluit ✕", onclick: () => dlg.close() })),
+      track,
+      h("div", { class: "lb-foot" }, m ? h("p", { class: "credit" }, "Foto's: ", ext(m.url, m.name + (m.org ? " · " + m.org : ""))) : h("span"), h("span", { class: "lb-navs" }, prev, next)));
+    track.addEventListener("scroll", show, { passive: true });
+    track.addEventListener("click", (e) => { if (e.target.tagName === "FIGURE") dlg.close(); });
+    dlg.addEventListener("keydown", (e) => { if (e.key === "ArrowRight") { e.preventDefault(); step(1); } if (e.key === "ArrowLeft") { e.preventDefault(); step(-1); } });
+    dlg.addEventListener("close", () => { dlg.remove(); document.documentElement.classList.remove("pop-open"); });
+    document.body.append(dlg);
+    document.documentElement.classList.add("pop-open");
+    dlg.showModal();
+    track.scrollLeft = start * track.clientWidth;
+    show();
+  }
+  // de linkerkolom blijft staan bij scrollen; is hij hoger dan het scherm, dan blijft de onderkant in beeld
+  function fitLeft() { const l = document.querySelector(".spread .left"); if (l) l.style.top = Math.min(16, innerHeight - l.offsetHeight - 16) + "px"; }
+  addEventListener("resize", fitLeft, { passive: true });
+
   const native =(r) => r.native ? h("p", { class: "native", lang: /[가-힯]/.test(r.native) ? "ko" : "ja" }, r.native, r.roman ? h("em", { lang: "nl", text: r.roman }) : null) : null;
   // gemeten trend (spark) als die er is, anders de redactionele trend-tekst
   const QUIET = new Set(["Stabiel", "Dalend"]);
@@ -1077,17 +1202,19 @@ footer { margin-top: 96px; }
     const idx = ed.recipes.indexOf(r), prev = ed.recipes[idx - 1], next = ed.recipes[idx + 1];
     const pair = allFerments().find((x) => pairsWith(x.f, r));
     const whyText = r.signal?.text;
+    const maker = makerOf(r);
     $("detail-view").replaceChildren(h("article", null,
       h("a", { class: "back mono", href: "#editie-" + ed.id, text: `← Nº ${pad(ed.number)} · week ${ed.week}` }),
       h("div", { class: "spread" },
-        h("figure", { class: "left", style: "margin:0" },
+        h("div", { class: "left" },
           withVideo(r, photo(r, { glyph: true, eager: true, hero: true, sizes: "(max-width: 1000px) 100vw, 480px" })),
-          r.photoCredit ? h("figcaption", { class: "credit" }, "Foto en origineel recept: ", h("a", { href: r.photoCredit.url, target: "_blank", rel: "noopener", text: r.photoCredit.label + " ↗" }),
-            r.video && VIDEO[r.video.platform] ? [" · ", h("a", { href: r.video.url, target: "_blank", rel: "noopener", text: "Video op " + VIDEO[r.video.platform].name + " ↗" })] : null) : null),
+          gallery(r)),
         h("div", { class: "card sheet" },
           h("header", null, h("span", { class: "no", text: recipeNo(r) }), h("div", null, native(r), h("h1", { text: r.title }))),
+          maker ? (KAART === 2 ? makerCard(maker, r, true) : makerByline(maker, r)) : null,
           h("div", { class: "metaline mono" }, h("span", { class: "stepper" }, minus, out, plus), h("span", { text: r.minutes + " min" }), r.category ? h("span", { text: r.category }) : null),
           h("p", { class: "dek", text: r.dek || "" }),
+          maker && KAART === 1 ? makerCard(maker, r) : null,
           trend(r, { line: true }),
           (r.tags || []).length ? h("div", { class: "tags" }, r.tags.map((t) => h("a", { href: "#zoek/" + encodeURIComponent(t.toLowerCase()), text: t }))) : null,
           h("div", { class: "stack" },
@@ -1115,6 +1242,7 @@ footer { margin-top: 96px; }
     $("home").hidden = true; $("detail-view").hidden = false;
     state.lastSlug = r.slug;
     window.scrollTo(0, 0);
+    fitLeft();
   }
 
   /* ---------- Hoe meten we trends? ---------- */
@@ -1847,7 +1975,9 @@ footer { margin-top: 96px; }
       const res = await fetch("editions/index.json", { cache: "no-cache" });
       if (!res.ok) throw new Error("index");
       const idx = await res.json();
+      const makers = fetch("data/makers.json", { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
       const eds = await Promise.all((idx.editions || []).map((id) => fetch(`editions/${id}.json`, { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).catch(() => null)));
+      state.makers = await makers;
       state.editions = eds.filter((e) => e && Array.isArray(e.recipes)).sort((a, b) => b.number - a.number);
       $("features").removeAttribute("aria-busy");
       for (const ed of state.editions) for (const r of ed.recipes) { r._edition = ed; state.bySlug.set(r.slug, r); }
@@ -1871,13 +2001,16 @@ footer { margin-top: 96px; }
     go(url.href);
   });
   window.addEventListener("popstate", route);
-  // receptpagina: na een klein stukje scrollen verschijnt de foto in kleur
-  // (op mobiel loopt de overgang mee met het scrollen, anders is de foto al weg voor je het ziet)
+  // receptpagina: na een stukje scrollen verschijnt de foto in kleur. Het begint pas na een kwart van de foto,
+  // zodat de bovenkant van de pagina eerst rustig blijft (op mobiel loopt de overgang daarna mee met het scrollen,
+  // tot 70% van de foto; anders is de foto al weg voor je het ziet)
   const narrow = matchMedia("(max-width: 1000px)");
+  const FADE_START = 0.25, FADE_END = 0.7;   // deel van de fotohoogte
   addEventListener("scroll", () => {
     const d = document.querySelector(".spread .left .duo"); if (!d) return;
-    if (narrow.matches) { d.classList.add("scrub"); d.style.setProperty("--mix", Math.min(1, scrollY / (d.offsetHeight * 0.45)).toFixed(3)); }
-    else { d.classList.remove("scrub"); d.classList.toggle("scrolled", scrollY > 24); }
+    const start = d.offsetHeight * FADE_START;
+    if (narrow.matches) { d.classList.add("scrub"); d.style.setProperty("--mix", Math.min(1, Math.max(0, scrollY - start) / (d.offsetHeight * (FADE_END - FADE_START))).toFixed(3)); }
+    else { d.classList.remove("scrub"); d.classList.toggle("scrolled", scrollY > start); }
   }, { passive: true });
   initSearch();
   load();

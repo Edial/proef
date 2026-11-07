@@ -1,0 +1,93 @@
+{
+ "makers": {
+  "bon-app-tit": {
+   "name": "Bon Appétit",
+   "bio": "Amerikaans kooktijdschrift, sinds 1956.",
+   "site": "https://www.bonappetit.com",
+   "instagram": "bonappetitmag",
+   "country": "US",
+   "affiliation": "Bon Appétit"
+  },
+  "dinner-at-the-zoo": {
+   "name": "Dinner at the Zoo",
+   "site": "https://www.dinneratthezoo.com",
+   "country": "US"
+  },
+  "foxes-love-lemons": {
+   "name": "Foxes Love Lemons",
+   "site": "https://foxeslovelemons.com",
+   "country": "US"
+  },
+  "i-am-a-food-blog": {
+   "name": "I Am A Food Blog",
+   "person": "Stephanie Le",
+   "avatar": "https://iamafoodblog.b-cdn.net/wp-content/uploads/2020/04/us-150x150.jpg",
+   "bio": "Blogt sinds 2010 over eten en schreef de kookboeken Easy Gourmet en That Noodle Life.",
+   "site": "https://iamafoodblog.com",
+   "instagram": "iamafoodblog",
+   "country": "CA",
+   "affiliation": "blog"
+  },
+  "just-one-cookbook": {
+   "name": "Just One Cookbook",
+   "person": "Namiko Hirasawa Chen",
+   "avatar": "https://www.justonecookbook.com/wp-content/uploads/2025/07/nami-square.jpg",
+   "bio": "Geboren in Yokohama, woont in San Francisco. Deelt sinds 2011 Japanse thuisrecepten.",
+   "site": "https://www.justonecookbook.com",
+   "instagram": "justonecookbook",
+   "country": "JP",
+   "affiliation": "blog"
+  },
+  "maangchi": {
+   "name": "Maangchi",
+   "bio": "Koreaanse thuiskeuken, met kookvideo’s op YouTube sinds 2007.",
+   "site": "https://www.maangchi.com",
+   "instagram": "maangchi",
+   "country": "KR",
+   "affiliation": "blog"
+  },
+  "noble-pig": {
+   "name": "Noble Pig",
+   "person": "Cathy Pollak",
+   "bio": "Schrijft sinds 2007 over eten en ontwikkelt recepten op Noble Pig.",
+   "site": "https://noblepig.com",
+   "country": "US"
+  },
+  "omnivore-s-cookbook": {
+   "name": "Omnivore's Cookbook",
+   "person": "Maggie Zhu",
+   "avatar": "https://omnivorescookbook.com/wp-content/uploads/2025/03/maggie-zhu-1.jpg",
+   "bio": "Geboren in Beijing, woont in New York. Deelt sinds 2013 Chinese recepten voor thuis.",
+   "site": "https://omnivorescookbook.com",
+   "instagram": "omnivorescookbook",
+   "country": "US",
+   "affiliation": "blog"
+  },
+  "the-woks-of-life": {
+   "name": "The Woks of Life",
+   "person": "Familie Leung",
+   "avatar": "https://thewoksoflife.com/wp-content/uploads/2020/10/wol-family.jpg",
+   "bio": "Bill, Judy, Sarah en Kaitlin: een familie die sinds 2013 de Chinese thuiskeuken vastlegt.",
+   "site": "https://thewoksoflife.com",
+   "instagram": "thewoksoflife",
+   "country": "US",
+   "affiliation": "blog"
+  }
+ },
+ "recipes": {
+  "tom-yum-noedelsoep-gehakt": "the-woks-of-life",
+  "kinoko-gohan-paddenstoelenrijst": "just-one-cookbook",
+  "japanse-koolrolletjes-tomatensaus": "just-one-cookbook",
+  "gekarameliseerde-zoete-aardappel-oven": "i-am-a-food-blog",
+  "pompoentaart-gecondenseerde-melk": "bon-app-tit",
+  "curry-noedelsoep-popcornkip": "omnivore-s-cookbook",
+  "rode-curry-kip-pompoen-traybake": "the-woks-of-life",
+  "gestoomd-ei-garnalen-tofu": "the-woks-of-life",
+  "zoete-aardappel-chaat": "bon-app-tit",
+  "bruine-boter-chocoladekoekjes": "noble-pig",
+  "marry-me-melting-cabbage": "noble-pig",
+  "dumpling-bake": "foxes-love-lemons",
+  "zuppa-toscana": "dinner-at-the-zoo",
+  "kimchi-gebakken-rijst": "maangchi"
+ }
+}

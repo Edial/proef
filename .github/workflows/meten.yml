@@ -2,7 +2,8 @@ name: Trends en foto's meten
 
 # De wekelijkse routine draait in een omgeving zonder toegang tot Google Trends en de receptsites.
 # Daarom meet GitHub zelf: na elke push van een editie (of met de hand) de trendlabels en sparklines
-# (trends_collect.py), de lichtheid van de foto's (photo_light.py) en daarna de receptpagina's (build_pages.py).
+# (trends_collect.py), de lichtheid van de foto's (photo_light.py), de extra foto's van de bron (photo_more.py)
+# en daarna de receptpagina's (build_pages.py).
 on:
   push:
     branches: [main]
@@ -41,6 +42,8 @@ jobs:
         run: python3 scripts/photo_light.py ${{ steps.ed.outputs.file }} || echo "photo_light mislukt, niet blokkerend"
       - name: Kleinere fotomaten van de bron
         run: python3 scripts/photo_small.py ${{ steps.ed.outputs.file }} || echo "photo_small mislukt, niet blokkerend"
+      - name: Meer foto's van het recept (bron)
+        run: python3 scripts/photo_more.py ${{ steps.ed.outputs.file }} || echo "photo_more mislukt, niet blokkerend"
       - name: Lettertypen (nieuwe Japanse of Koreaanse tekens)
         run: python3 scripts/fonts.py || echo "fonts mislukt, niet blokkerend"
       - name: Controle en receptpagina's
@@ -51,7 +54,7 @@ jobs:
         run: |
           git config user.name "proef-bot"
           git config user.email "proef-bot@users.noreply.github.com"
-          git add editions/ data/trends.csv recept/ index.html assets/fonts/
+          git add editions/ data/trends.csv data/makers.json recept/ index.html assets/fonts/
           git diff --cached --quiet && exit 0
           git commit -m "Trends en foto's gemeten (${{ steps.ed.outputs.file }})"
           git pull --rebase origin main

@@ -56,6 +56,7 @@ De routine draait elke zaterdag om 06:00. Elke stap kost tokens, en alles wat je
 
 - `data/sources.csv`: alle koks, bloggers en magazines die we volgen. `tier` is `core` (receptbron, met oud-Bon Appétit en delicious. in de kern) of `network` (alleen voor de meting). `python3 scripts/check_sources.py` zoekt nieuwe feeds en zet de status; met `--all` controleer je alles opnieuw (eens per kwartaal).
 - Nieuwe bron toevoegen: een regel met `id`, `name`, `tier`, `affiliation`, `site`, `lang`, `country`, `focus` (en eventueel `youtube` met de @-naam en `instagram` met de gebruikersnaam zonder @), de rest leeg. Daarna `check_sources.py`.
+- **Kaartje van de maker** (receptpagina): de naam, foto en bio komen uit `data/sources.csv`, kolommen `person` (de kok, als die anders heet dan de site), `avatar` (directe https-link naar een foto van de maker op de eigen site, nooit van Instagram) en `bio` (één Nederlandse zin, alleen feiten die op de site van de maker staan). Vul ze in voor elke bron die je voor het eerst gebruikt; zonder foto toont de site de eerste letter. Draai daarna `python3 scripts/build_pages.py` (dat maakt `data/makers.json`).
 - **Instagram:** de harvest leest ook de posts van elke bron met een `instagram`-handle, ook als die bron geen werkende feed heeft. Dat werkt alleen voor zakelijke en creator-accounts. Controleren: start de Action *Instagram testen* met `bronnen` als account; een handle met FOUT haal je weg of verbeter je. Een nieuw account beoordelen: `profiel naam1 naam2` (naam, website, volgers, gemiddelde reacties). De koks achter een magazine vinden: `noemt food52` (welke accounts het vaakst genoemd worden).
 - `data/posts.csv` en `data/buzz.json` maakt `scripts/harvest.py`; niet met de hand bewerken.
 
@@ -83,6 +84,7 @@ De routine draait elke zaterdag om 06:00. Elke stap kost tokens, en alles wat je
       "signals": [{ "source": "Pinterest", "metric": "search-growth", "value": 2, "unit": "x", "period": "2026 vs 2025", "geo": "world", "url": "https://…", "note": "…" }],
       "links": [{ "label": "…", "url": "https://…" }],
       "photo": "https://…jpg", "photoCredit": { "label": "…", "url": "https://…" },
+      "photos": [{ "url": "https://…jpg", "w": 1200, "h": 800, "thumb": "https://…-150x150.jpg" }],  // door scripts/photo_more.py, niet zelf invullen
       "video": { "platform": "youtube", "id": "Lf44Fk7H24s", "url": "https://www.youtube.com/watch?v=Lf44Fk7H24s" },  // optioneel, zie stap 3
       "photoGamma": 0.62,  // door scripts/photo_light.py, niet zelf invullen
       "ingredients": [{ "qty": 200, "unit": "g", "item": "…", "group": "Saus (optioneel)" }],

@@ -3,17 +3,21 @@
 
 Elke pagina is index.html met <base href="../../">, plus eigen titel, beschrijving, deelvoorbeeld
 (og:/twitter:) en receptgegevens voor Google (schema.org Recipe). De site zelf toont daarna het recept.
-Draai na elke wijziging aan index.html of een editie; de controle op GitHub faalt als een pagina verouderd is.
+Daarnaast data/makers.json: per recept de maker (kok, blog of magazine uit data/sources.csv, met naam, foto en bio)
+voor het kaartje op de receptpagina. Een recept zonder `source` vindt zijn maker via de website van photoCredit.url.
+Draai na elke wijziging aan index.html, een editie of data/sources.csv; de controle op GitHub faalt als iets verouderd is.
 
 Gebruik: python3 scripts/build_pages.py           (pagina's maken of bijwerken, oude weghalen)
          python3 scripts/build_pages.py --check   (alleen controleren; exit 1 als iets niet klopt)
 """
+import csv
 import html
 import json
 import pathlib
 import re
 import shutil
 import sys
+import urllib.parse
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = "https://edial.github.io/proef/"
@@ -65,20 +69,50 @@ def page(template, r, ed):
     return out.replace("</head>", head + "\n</head>", 1)
 
 
+MAKERS = ROOT / "data" / "makers.json"
+
+
+def host(url):
+    h = urllib.parse.urlsplit(url or "").hostname or ""
+    return h[4:] if h.startswith("www.") else h
+
+
+def makers(recipes):
+    """{"makers": {id: {...}}, "recipes": {slug: id}}: alleen de bronnen die in een editie staan."""
+    with (ROOT / "data" / "sources.csv").open(newline="") as f:
+        src = {r["id"]: r for r in csv.DictReader(f)}
+    by_host = {host(r["site"]): i for i, r in src.items() if r.get("site")}
+    out, links = {}, {}
+    for r in recipes:
+        credit = r.get("photoCredit") or {}
+        i = r.get("source") if r.get("source") in src else by_host.get(host(credit.get("url")))
+        if not i:
+            continue
+        s = src[i]
+        links[r["slug"]] = i
+        out[i] = {k: v for k, v in {
+            "name": s["name"], "person": s.get("person"), "avatar": s.get("avatar"), "bio": s.get("bio"),
+            "site": s.get("site"), "instagram": s.get("instagram"), "country": s.get("country"),
+            "affiliation": s.get("affiliation"),
+        }.items() if v}
+    return {"makers": dict(sorted(out.items())), "recipes": links}
+
+
 def build():
     template = (ROOT / "index.html").read_text()
     assert '<base href="./">' in template, 'index.html mist <base href="./">'
     ids = json.loads((ROOT / "editions" / "index.json").read_text())["editions"]
-    pages = {}
+    pages, recipes = {}, []
     for i in ids:
         ed = json.loads((ROOT / "editions" / f"{i}.json").read_text())
         for r in ed.get("recipes", []):
             pages[r["slug"]] = page(template, r, ed)
-    return pages
+            recipes.append(r)
+    return pages, json.dumps(makers(recipes), ensure_ascii=False, indent=1) + "\n"
 
 
 def main():
-    pages = build()
+    pages, mk = build()
     existing = {p.name for p in OUT.iterdir() if p.is_dir()} if OUT.exists() else set()
     if "--check" in sys.argv:
         bad = [s for s, h in pages.items() if not (OUT / s / "index.html").exists() or (OUT / s / "index.html").read_text() != h]
@@ -87,8 +121,11 @@ def main():
             print(f"verouderd of ontbreekt: recept/{s}/")
         for s in extra:
             print(f"hoort niet meer bij een editie: recept/{s}/")
-        print(f"{len(pages)} receptpagina's gecontroleerd, {len(bad) + len(extra)} probleem/problemen. Los op met: python3 scripts/build_pages.py")
-        return 1 if bad or extra else 0
+        stale = not MAKERS.exists() or MAKERS.read_text() != mk
+        if stale:
+            print("verouderd of ontbreekt: data/makers.json")
+        print(f"{len(pages)} receptpagina's gecontroleerd, {len(bad) + len(extra) + stale} probleem/problemen. Los op met: python3 scripts/build_pages.py")
+        return 1 if bad or extra or stale else 0
     for slug, h in pages.items():
         (OUT / slug).mkdir(parents=True, exist_ok=True)
         (OUT / slug / "index.html").write_text(h)
@@ -96,7 +133,8 @@ def main():
         f = OUT / slug / "index.html"
         if f.exists() and MARK in f.read_text():
             shutil.rmtree(OUT / slug)
-    print(f"{len(pages)} receptpagina's in recept/.")
+    MAKERS.write_text(mk)
+    print(f"{len(pages)} receptpagina's in recept/, makers in data/makers.json.")
     return 0
 
 

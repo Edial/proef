@@ -407,6 +407,44 @@
           "w": 1200,
           "url": "https://omnivorescookbook.com/wp-content/uploads/2026/10/200322_Curry-Noodle-With-Popcorn-Chicken_550.jpg"
         }
+      ],
+      "photos": [
+        {
+          "url": "https://omnivorescookbook.com/wp-content/uploads/2026/10/200322_Curry-Noodle-With-Popcorn-Chicken_9.jpg",
+          "w": 1200,
+          "h": 1800,
+          "thumb": "https://omnivorescookbook.com/wp-content/uploads/2026/10/200322_Curry-Noodle-With-Popcorn-Chicken_9-600x900.jpg"
+        },
+        {
+          "url": "https://omnivorescookbook.com/wp-content/uploads/2026/10/200322_Curry-Noodle-With-Popcorn-Chicken_10.jpg",
+          "w": 1200,
+          "h": 1800,
+          "thumb": "https://omnivorescookbook.com/wp-content/uploads/2026/10/200322_Curry-Noodle-With-Popcorn-Chicken_10-600x900.jpg"
+        },
+        {
+          "url": "https://omnivorescookbook.com/wp-content/uploads/2026/10/200322_Curry-Noodle-With-Popcorn-Chicken_1.jpg",
+          "w": 1200,
+          "h": 800,
+          "thumb": "https://omnivorescookbook.com/wp-content/uploads/2026/10/200322_Curry-Noodle-With-Popcorn-Chicken_1-600x400.jpg"
+        },
+        {
+          "url": "https://omnivorescookbook.com/wp-content/uploads/2026/10/200322_Curry-Noodle-With-Popcorn-Chicken_3.jpg",
+          "w": 1200,
+          "h": 800,
+          "thumb": "https://omnivorescookbook.com/wp-content/uploads/2026/10/200322_Curry-Noodle-With-Popcorn-Chicken_3-600x400.jpg"
+        },
+        {
+          "url": "https://omnivorescookbook.com/wp-content/uploads/2026/10/200322_Curry-Noodle-With-Popcorn-Chicken_4.jpg",
+          "w": 1200,
+          "h": 800,
+          "thumb": "https://omnivorescookbook.com/wp-content/uploads/2026/10/200322_Curry-Noodle-With-Popcorn-Chicken_4-600x400.jpg"
+        },
+        {
+          "url": "https://omnivorescookbook.com/wp-content/uploads/2026/10/200322_Curry-Noodle-With-Popcorn-Chicken_5.jpg",
+          "w": 1200,
+          "h": 800,
+          "thumb": "https://omnivorescookbook.com/wp-content/uploads/2026/10/200322_Curry-Noodle-With-Popcorn-Chicken_5-600x400.jpg"
+        }
       ]
     },
     {
@@ -708,6 +746,18 @@
           "w": 1200,
           "url": "https://thewoksoflife.com/wp-content/uploads/2026/05/thai-red-curry-sheet-pan-chicken-6.jpg"
         }
+      ],
+      "photos": [
+        {
+          "url": "https://thewoksoflife.com/wp-content/uploads/2026/05/thai-red-curry-sheet-pan-chicken.jpg",
+          "w": 1200,
+          "h": 800
+        },
+        {
+          "url": "https://thewoksoflife.com/wp-content/uploads/2026/05/thai-red-curry-sheet-pan-chicken-3.jpg",
+          "w": 1200,
+          "h": 800
+        }
       ]
     },
     {
@@ -958,6 +1008,38 @@
         {
           "w": 1200,
           "url": "https://thewoksoflife.com/wp-content/uploads/2026/05/steamed-egg-shrimp-tofu-7.jpg"
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://thewoksoflife.com/wp-content/uploads/2026/05/steamed-egg-shrimp-tofu-4.jpg",
+          "w": 1200,
+          "h": 1533
+        },
+        {
+          "url": "https://thewoksoflife.com/wp-content/uploads/2026/05/steamed-egg-shrimp-tofu.jpg",
+          "w": 1200,
+          "h": 800
+        },
+        {
+          "url": "https://thewoksoflife.com/wp-content/uploads/2026/05/steamed-egg-shrimp-tofu-5.jpg",
+          "w": 1200,
+          "h": 770
+        },
+        {
+          "url": "https://thewoksoflife.com/wp-content/uploads/2026/05/steamed-egg-shrimp-tofu-2.jpg",
+          "w": 1200,
+          "h": 750
+        },
+        {
+          "url": "https://thewoksoflife.com/wp-content/uploads/2026/05/steamed-egg-shrimp-tofu-3.jpg",
+          "w": 1200,
+          "h": 802
+        },
+        {
+          "url": "https://thewoksoflife.com/wp-content/uploads/2026/05/steamed-egg-shrimp-tofu-6.jpg",
+          "w": 1200,
+          "h": 786
         }
       ]
     },
