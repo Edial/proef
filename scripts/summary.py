@@ -62,24 +62,24 @@ def buzz_and_core():
         instagram_hits(rows)
 
 
-def instagram_hits(rows, days=14, top=12):
-    """Instagram-posts die het veel beter doen dan normaal voor die kok (likes + reacties t.o.v. de mediaan van
-    het account). Zo tellen kleine koks even zwaar als grote. Alleen een signaal: het recept zelf komt van de eigen site."""
-    import statistics
-    ig = [p for p in rows if p["kind"] == "instagram" and p["views"].isdigit()]
-    per = {}
-    for p in ig:
-        per.setdefault(p["source"], []).append(int(p["views"]))
-    med = {s: statistics.median(v) for s, v in per.items() if len(v) >= 8}
-    since = (dt.date.today() - dt.timedelta(days=days)).isoformat()
-    hits = [(int(p["views"]) / med[p["source"]], p) for p in ig
-            if p["published"] >= since and med.get(p["source"]) and int(p["views"]) >= 2 * med[p["source"]]]
-    hits.sort(key=lambda x: -x[0])
-    if hits:
-        print(f"\nUITSCHIETERS OP INSTAGRAM (laatste {days} dagen, minstens 2× zoveel reacties als normaal voor die kok; "
-              "alleen een signaal, zoek het recept op de eigen site van de maker):")
-    for r, p in hits[:top]:
-        print(f"- {p['published']} {p['name']} ({r:.1f}× normaal): {p['title']} {p['url']}")
+def instagram_hits(rows=None, top=20):
+    """Wat nu echt trending is op Instagram (scripts/instagram_trend.py): minstens 5× zoveel likes en reacties als normaal
+    voor dat account, minstens 1.000, afgelopen 14 dagen. Minstens 1 recept per editie komt hieruit (trendregel)."""
+    import instagram_trend as it
+    hits = it.trending()
+    paywall = {}
+    import csv
+    with (ROOT / "data" / "sources.csv").open(newline="") as f:
+        for r in csv.DictReader(f):
+            paywall[r["id"]] = (r.get("paywall") or "").strip(), r.get("site", "")
+    print(f"\nTRENDING OP INSTAGRAM ({len(hits)} posts, afgelopen {it.DAYS} dagen; ×normaal = likes en reacties t.o.v. "
+          f"wat dat account gewend is). VERPLICHT: minstens 1 recept per editie komt hieruit. Kies een post die een gerecht is, "
+          f"zet de url van de post in het recept als \"instagram\" en haal recept en foto van de eigen site van de maker "
+          f"(staat die achter een betaalmuur, neem hetzelfde gerecht van een kernbron). Nooit een foto van Instagram.")
+    for h in hits[:top]:
+        pw, site = paywall.get(h["source"], ("", ""))
+        extra = f" [site: {site}{', betaalmuur' if pw else ''}]" if site else ""
+        print(f"- {h['ratio']}× ({h['engagement']} likes+reacties) {h['date']} {h['name']}: {h['title']} {h['url']}{extra}")
 
 
 def main():

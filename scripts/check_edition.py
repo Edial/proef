@@ -5,12 +5,14 @@ Gepubliceerd is wat in editions/index.json staat. Een nieuwere editions/<id>.jso
 concept: de wekelijkse routine schrijft het, de Action "Trends en foto's meten" meet het en zet het pas live
 (in index.json) als het de regels haalt. Het nieuwste concept wordt ook gecontroleerd.
 
-Trendregel (vanaf editie 4, oudere edities blijven zoals ze zijn): minstens 3 van de recepten zijn echt in trek
-(Nieuw, Seizoen, Piek of Stijgt).
-- Nog niet gemeten (concept, direct na het schrijven): de eerste zoekterm (trendTerms[0]) van minstens 3 recepten
-  is een stijger uit data/buzz.json die Google Trends al Nieuw, Seizoen, Piek of Stijgt noemt.
-- Gemeten (--gemeten <id>, in de Action na de meting): het gemeten label (spark) telt. Ontbreekt de meting, dan telt
-  het recept niet mee.
+Trendregel (vanaf editie 4, oudere edities blijven zoals ze zijn): minstens 3 van de recepten zijn echt in trek,
+en minstens 1 daarvan is trending op Instagram. In trek is: Google Trends zegt Nieuw, Seizoen, Piek of Stijgt, of de
+Instagram-post achter het recept (veld `instagram`) haalt minstens 5× zoveel likes en reacties als normaal voor dat
+account en minstens 1.000 (scripts/instagram_trend.py).
+- Nog niet gemeten (concept, direct na het schrijven): de eerste zoekterm (trendTerms[0]) is een stijger uit
+  data/buzz.json die Google Trends al in trek noemt, of de Instagram-post staat in de lijst van instagram_trend.py.
+- Gemeten (--gemeten <id>, in de Action na de meting): de gemeten labels (`spark` en `igTrend`) tellen. Ontbreekt de
+  meting, dan telt het recept niet mee.
 
 Gebruik: python3 scripts/check_edition.py                    (exit 1 bij fouten)
          python3 scripts/check_edition.py --gemeten 2026-46   (trendregel op de gemeten labels van die editie)
@@ -20,6 +22,8 @@ import json
 import pathlib
 import re
 import sys
+
+import instagram_trend
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 ED = ROOT / "editions"
@@ -110,6 +114,8 @@ def check_recipe(r, where, seen):
     check_signals(r.get("signals"), where)
     if r.get("source") and r["source"] not in SOURCES:
         err(where, f"source '{r['source']}' staat niet in data/sources.csv")
+    if r.get("instagram") and not instagram_trend.code(r["instagram"]):
+        err(where, "instagram moet de url van een Instagram-post zijn (https://www.instagram.com/p/… of /reel/…)")
     sp = r.get("spark")
     if sp is not None:
         if sp.get("label") not in SPARK_LABELS:
@@ -142,22 +148,37 @@ def rising_trending():
 
 
 def trend_rule(ed, where, concept):
-    """Minstens 3 recepten echt in trek. Fout vanaf editie TREND_RULE_FROM, daarvoor een waarschuwing."""
+    """Minstens 3 recepten echt in trek, waarvan minstens 1 op Instagram. Fout vanaf editie TREND_RULE_FROM,
+    daarvoor alleen een waarschuwing (en geen Instagram-eis)."""
     recipes = ed.get("recipes", [])
     hard = (ed.get("number") or 0) >= TREND_RULE_FROM and not ed.get("trendUitzondering")  # met de hand toch gepubliceerd
     if concept and MEASURED != ed.get("id"):
         rising = rising_trending()
-        good = [r["slug"] for r in recipes if ((r.get("trendTerms") or [""])[0] or "").lower() in rising]
-        if len(good) < 3 and hard:
+        ig_now = {instagram_trend.code(s["url"]) for s in instagram_trend.trending(
+            dt.date.fromisoformat(ed["date"]) if ed.get("date") else None)}
+        google = [r for r in recipes if ((r.get("trendTerms") or [""])[0] or "").lower() in rising]
+        insta = [r for r in recipes if instagram_trend.code(r.get("instagram")) in ig_now]
+        good = {r["slug"] for r in google + insta}
+        if hard and len(good) < 3:
             options = ", ".join(sorted(rising)) or "(data/buzz.json heeft nog geen stijgers met een Google-label)"
-            err(where, f"maar {len(good)} recepten hebben als eerste zoekterm een stijger die nu in trek is (nodig: 3). "
-                       f"Kies recepten bij deze stijgers en zet die stijger als eerste trendTerm: {options}")
+            err(where, f"maar {len(good)} recepten zijn nu al aantoonbaar in trek (nodig: 3). Zet bij een recept een stijger "
+                       f"als eerste trendTerm ({options}) of de url van een post uit TRENDING OP INSTAGRAM als \"instagram\".")
+        if hard and not insta:
+            err(where, "geen enkel recept komt uit TRENDING OP INSTAGRAM (nodig: minstens 1). Kies een gerecht uit die lijst "
+                       "(python3 scripts/summary.py) en zet de url van de post in het recept als \"instagram\".")
         return
-    good = sum((r.get("spark") or {}).get("label") in TRENDING for r in recipes)
-    if good < 3:
-        labels = ", ".join(f"{r.get('slug')}: {(r.get('spark') or {}).get('label', 'niet gemeten')}" for r in recipes)
-        msg = f"maar {good} van de {len(recipes)} recepten zijn volgens Google Trends echt in trek (nodig: 3 met Nieuw, Seizoen, Piek of Stijgt). {labels}"
+    google = [r for r in recipes if (r.get("spark") or {}).get("label") in TRENDING]
+    insta = [r for r in recipes if instagram_trend.counts(r.get("igTrend"))]
+    good = {r["slug"] for r in google + insta}
+    if len(good) < 3:
+        labels = ", ".join(f"{r.get('slug')}: {(r.get('spark') or {}).get('label', 'niet gemeten')}"
+                           + (f" / Instagram {r['igTrend']['ratio']}×" if r.get("igTrend") else "") for r in recipes)
+        msg = (f"maar {len(good)} van de {len(recipes)} recepten zijn echt in trek (nodig: 3; Google Trends Nieuw, Seizoen, "
+               f"Piek of Stijgt, of Instagram minstens {instagram_trend.MIN_RATIO:g}× normaal). {labels}")
         (err if hard else warn)(where, msg)
+    if hard and not insta:
+        err(where, f"geen recept is gemeten trending op Instagram (nodig: minstens 1 met igTrend van minstens "
+                   f"{instagram_trend.MIN_RATIO:g}× normaal en {instagram_trend.MIN_ENGAGEMENT} likes en reacties).")
 SIGNAL_KEYS = {"source", "metric", "value", "unit", "period", "geo", "url", "note"}
 
 

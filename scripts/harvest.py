@@ -29,7 +29,8 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SOURCES = ROOT / "data" / "sources.csv"
 POSTS = ROOT / "data" / "posts.csv"
 BUZZ = ROOT / "data" / "buzz.json"
-COLS = ["source", "name", "tier", "kind", "published", "title", "url", "views", "first_seen"]
+# views: weergaven (YouTube) of likes + reacties (Instagram); likes en comments apart voor Instagram (instagram_trend.py)
+COLS = ["source", "name", "tier", "kind", "published", "title", "url", "views", "likes", "comments", "first_seen"]
 KEEP_DAYS = 400
 WINDOW, BASE = 30, 60
 
@@ -213,7 +214,10 @@ def main():
         old = posts.get(p["url"])
         posts[p["url"]] = {"source": src["id"], "name": src["name"], "tier": src["tier"], "kind": kind,
                            "published": p["published"].date().isoformat(), "title": " ".join(p["title"].split()),
-                           "url": p["url"], "views": p["views"], "first_seen": old["first_seen"] if old else today.isoformat()}
+                           "url": p["url"], "views": p["views"],
+                           "likes": "" if p.get("likes") is None else str(p["likes"]),
+                           "comments": "" if p.get("comments") is None else str(p["comments"]),
+                           "first_seen": old["first_seen"] if old else today.isoformat()}
     cutoff = today - dt.timedelta(days=KEEP_DAYS)
     posts = {u: p for u, p in posts.items() if day(p["published"]) >= cutoff}
     with POSTS.open("w", newline="") as f:

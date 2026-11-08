@@ -48,6 +48,8 @@ jobs:
           echo "Editie $ID, concept: $CONCEPT"
       - name: Google Trends
         run: python3 scripts/trends_collect.py ${{ steps.ed.outputs.file }} || echo "Google Trends mislukt, niet blokkerend"
+      - name: Instagram (likes en reacties uit de harvest van vrijdagnacht)
+        run: python3 scripts/instagram_trend.py ${{ steps.ed.outputs.file }} || echo "instagram_trend mislukt, niet blokkerend"
       - name: Foto's even licht
         run: python3 scripts/photo_light.py ${{ steps.ed.outputs.file }} || echo "photo_light mislukt, niet blokkerend"
       - name: Kleinere fotomaten van de bron
@@ -56,8 +58,8 @@ jobs:
         run: python3 scripts/photo_more.py ${{ steps.ed.outputs.file }} || echo "photo_more mislukt, niet blokkerend"
       - name: Lettertypen (nieuwe Japanse of Koreaanse tekens)
         run: python3 scripts/fonts.py || echo "fonts mislukt, niet blokkerend"
-      # Een concept gaat pas live als minstens 3 van de 5 recepten volgens de meting echt in trek zijn
-      # (REDACTIE.md). Haalt het dat niet, dan blijft het concept staan (met de meting), komt er een issue
+      # Een concept gaat pas live als minstens 3 van de 5 recepten volgens de meting echt in trek zijn, waarvan minstens
+      # 1 op Instagram (REDACTIE.md). Haalt het dat niet, dan blijft het concept staan (met de meting), komt er een issue
       # en gaat er geen nieuwsbrief uit. Met de hand kan het toch: Run workflow met "toch publiceren".
       - name: Trendregel
         id: gate

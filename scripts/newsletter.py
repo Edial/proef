@@ -27,6 +27,8 @@ import sys
 
 from PIL import Image, ImageDraw
 
+import instagram_trend
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = "https://edial.github.io/proef/"
 
@@ -41,7 +43,7 @@ TINTS = {
     "sage": ("#BFD3C7", "#2E4A6B"), "sky": ("#A9C4DE", "#2E4A6B"), "blush": ("#F3DACE", "#7E3A2C"),
     "persimmon": ("#FAD2B4", "#9C3F1F"), "mustard": ("#F7D27E", "#5B3D10"),
 }
-ARROW = {"Nieuw": "✦", "Seizoen": "↻", "Piek": "▲", "Stijgt": "↗", "Stabiel": "→", "Dalend": "↘"}
+ARROW = {"Nieuw": "✦", "Seizoen": "↻", "Piek": "▲", "Stijgt": "↗", "Stabiel": "→", "Dalend": "↘", "Instagram": "♥"}
 GOOD = {"Nieuw", "Seizoen", "Piek", "Stijgt"}
 MONTHS = "januari februari maart april mei juni juli augustus september oktober november december".split()
 
@@ -138,8 +140,15 @@ def recipe_card(r, base, mail_url):
                f'<td height="{PIC}" align="center" style="height:{PIC}px;background:{TINTS[tint][0]};color:{TINTS[tint][1]};'
                f'font-family:{CJK};font-size:72px;line-height:1;">{esc(r.get("glyph") or "食")}</td></tr></table>')
     sp = r.get("spark") or {}
+    ig = r.get("igTrend")
     trend = ""
-    if sp.get("weeks"):
+    if instagram_trend.counts(ig) and sp.get("label") not in GOOD:
+        # trending op Instagram, niet (ook) op Google: dan het Instagram-label, zoals op de site
+        trend = (f'<div style="margin:10px 0 0;font-family:{MONO};font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;'
+                 f'color:{HANKO};">{ARROW["Instagram"]}&nbsp;Instagram</div>'
+                 f'<div class="mu" style="margin:4px 0 0;font-family:{SERIF};font-style:italic;font-size:14px;line-height:1.4;color:{MUTED};">'
+                 f'{round(ig["ratio"])}× zoveel likes en reacties als normaal bij {esc(ig["name"])}.</div>')
+    elif sp.get("weeks"):
         slug = r["slug"]
         spark_img = pair(f"{mail_url}{slug}.png", f"{mail_url}{slug}-dark.png", 84, 18, "")
         label = sp.get("label", "")

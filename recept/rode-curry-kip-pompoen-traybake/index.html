@@ -1091,12 +1091,20 @@ footer { margin-top: 96px; }
   }
   const sparkLabel = (sp) => `Zoekinteresse in “${sp.term}”, ${geoText(sp.geo)}, afgelopen 12 maanden. ${sp.label}: ${sp.text}`;
   // trendlabel: pijltje + woord, rood als het de goede kant op gaat, grijs als het stil of dalend is
-  const ARROW = { Nieuw: "✦", Seizoen: "↻", Piek: "▲", Stijgt: "↗", Stabiel: "→", Dalend: "↘" };
+  const ARROW = { Nieuw: "✦", Seizoen: "↻", Piek: "▲", Stijgt: "↗", Stabiel: "→", Dalend: "↘", Instagram: "♥" };
+  // Instagram (igTrend, scripts/instagram_trend.py): telt als trending bij minstens 5× normaal en 1.000 likes en reacties
+  const HOT = new Set(["Nieuw", "Seizoen", "Piek", "Stijgt"]);
+  const igCounts = (t) => !!t && t.ratio >= 5 && t.engagement >= 1000 && (t.age ?? 0) <= 14;
+  const igText = (t) => `${Math.round(t.ratio)}× zoveel likes en reacties als normaal bij ${t.name}.`;
+  // Instagram gaat voor als Google het gerecht niet in trek noemt; anders blijft het Google-label met lijntje staan
+  const igFirst = (r) => igCounts(r.igTrend) && !(r.spark && HOT.has(r.spark.label));
   const tl = (label) => h("span", { class: "tl" + (QUIET.has(label) ? " quiet" : "") }, h("i", { "aria-hidden": "true", text: ARROW[label] || "•" }), label);
   const chip = (sp) => tl(sp.label);
   // home: label met een klein lijntje ernaast; receptpagina (big): grote grafiek met vorig jaar als stippellijn
   const trend = (r, opts = {}) => {
     const sp = r.spark;
+    if (igFirst(r) && opts.line) return h("a", { class: "trend line", href: recipeHref(r.slug) + "#waarom", onclick: (e) => { e.preventDefault(); $("waarom")?.scrollIntoView({ behavior: "smooth" }); } }, tl("Instagram"), h("span", { text: igText(r.igTrend) }));
+    if (igFirst(r)) return h("div", { class: "trend" }, h("div", { class: "row" }, tl("Instagram")), h("p", { text: igText(r.igTrend) }));
     if (sp && sp.weeks && opts.line) return h("a", { class: "trend line", href: recipeHref(r.slug) + "#waarom", onclick: (e) => { e.preventDefault(); $("waarom")?.scrollIntoView({ behavior: "smooth" }); } }, chip(sp), h("span", { text: sp.text }));
     if (sp && sp.weeks) return h("div", { class: "trend has-spark" },
       h("div", { class: "row" }, chip(sp), sparkSvg(sp, { label: sparkLabel(sp) })),
@@ -1107,7 +1115,10 @@ footer { margin-top: 96px; }
   // "Waarom deze week" met gemeten trend: grafiek, één zin over het netwerk, één bronregel
   const linkList = (items) => items.flatMap((x, i) => [i ? (i === items.length - 1 ? " en " : ", ") : "", h("a", { href: x.url, target: "_blank", rel: "noopener", text: x.text })]);
   function whyTrend(r) {
-    const sp = r.spark, net = sp.network;
+    const sp = r.spark, net = sp && sp.network, ig = r.igTrend;
+    const insta = ig ? h("p", { class: "why-line" }, "Op Instagram kreeg ", h("a", { href: ig.url, target: "_blank", rel: "noopener", text: ig.name }),
+      ` ${nf.format(ig.engagement)} likes en reacties op dit gerecht (post van ${fmtDate(ig.date)}): ${Math.round(ig.ratio)}× zoveel als normaal voor dat account.`) : null;
+    if (!sp || !sp.weeks) return [insta, h("p", { class: "why-src" }, h("a", { href: "#zo-meten-we", text: "Hoe meten we dit?" }))];
     const start = monthFmt.format(new Date(sp.start + "T12:00:00"));
     const cooks = net && net.posts.length ? [
       `${net.sources} van de ${net.of} koks die we volgen maakten er de afgelopen ${net.days} dagen iets mee: `,
@@ -1115,6 +1126,7 @@ footer { margin-top: 96px; }
       : net ? [`Geen van de ${net.of} koks die we volgen maakte er de afgelopen ${net.days} dagen iets mee.`] : null;
     const also = (r.links || []).map((l) => ({ url: l.url, text: l.label.split(" · ")[0] }));
     return [
+      insta,
       sparkSvg(sp, { prev: true, label: sparkLabel(sp) + " De stippellijn is het jaar ervoor." }),
       h("div", { class: "spark-axis", "aria-hidden": "true" }, h("span", { text: start }), h("span", { text: "- - vorig jaar" }), h("span", { text: "nu" })),
       cooks ? h("p", { class: "why-line" }, ...cooks) : null,
@@ -1258,7 +1270,7 @@ footer { margin-top: 96px; }
               h("ol", { class: "steps" }, (r.steps || []).map((s) => h("li", { class: "chk" }, h("span", { role: "checkbox", "aria-checked": "false", tabindex: "0", text: s })))),
               r.tip ? h("aside", { class: "tip" }, h("span", { class: "label", text: "Tip" }), r.tip) : null,
               pair ? h("aside", { class: "pair" }, h("span", { class: "mono label", text: "Dit past er goed bij" }), fermCard(pair, "small")) : null),
-            r.spark && r.spark.weeks ? h("aside", { class: "why", id: "waarom", "aria-labelledby": "why-t" },
+            (r.spark && r.spark.weeks) || r.igTrend ? h("aside", { class: "why", id: "waarom", "aria-labelledby": "why-t" },
               h("span", { class: "label", id: "why-t", text: "Waarom deze week" }), ...whyTrend(r))
             : whyText || (r.links || []).length ? h("aside", { class: "why", "aria-labelledby": "why-t" },
               h("span", { class: "label", id: "why-t", text: "Waarom deze week" }),
@@ -1282,9 +1294,10 @@ footer { margin-top: 96px; }
     ["Nieuw", "Het afgelopen jaar volop gezocht, daarvoor bijna niet."],
     ["Seizoen", "Komt elk jaar rond deze tijd terug, en zit nu hoog."],
     ["Piek", "Zo vaak gezocht als in vijf jaar niet, en vaker dan vorig jaar."],
-    ["Stijgt", "Minstens anderhalf keer zo vaak gezocht als in dezelfde weken vorig jaar."],
+    ["Stijgt", "Minstens 1,25 keer zo vaak gezocht als in dezelfde weken vorig jaar."],
     ["Stabiel", "Ongeveer even vaak gezocht als vorig jaar."],
     ["Dalend", "Duidelijk minder gezocht dan vorig jaar."],
+    ["Instagram", "Een kok of magazine die we volgen kreeg er de afgelopen twee weken minstens 5× zoveel likes en reacties op als normaal voor dat account, en minstens 1.000."],
   ];
   function showMethod() {
     $("detail-view").replaceChildren(h("article", null,
@@ -1297,7 +1310,9 @@ footer { margin-top: 96px; }
           h("p", { text: "Per recept kiezen we een zoekterm zoals mensen hem intypen, bijvoorbeeld “zuppa toscana”. We halen elke week de cijfers op bij Google Trends. Is er in Nederland genoeg data, dan gebruiken we Nederland; anders kijken we wereldwijd." }),
           h("p", { text: "Google geeft geen aantallen, maar een score van 0 tot 100 per zoekterm. Daarom vergelijken we een gerecht alleen met zichzelf: de laatste vier volle weken tegenover dezelfde weken vorig jaar, en tegenover het laagste punt van het afgelopen jaar. De lopende week telt niet mee." }),
           h("p", { text: "De lijn toont de afgelopen 12 maanden, de stippellijn op de receptpagina het jaar ervoor. De rode stip is de laatste volle week." }),
-          h("p", { text: "Daarnaast volgen we een netwerk van koks, foodbloggers en magazines, met oud-redacteuren van Bon Appétit en delicious. in de kern. Elke week lezen we hun nieuwe recepten. Bij elk recept tellen we hoeveel van hen de afgelopen 30 dagen iets met dit gerecht publiceerden; elke kok telt één keer." })),
+          h("p", { text: "Daarnaast volgen we een netwerk van koks, foodbloggers en magazines, met oud-redacteuren van Bon Appétit en delicious. in de kern. Elke week lezen we hun nieuwe recepten. Bij elk recept tellen we hoeveel van hen de afgelopen 30 dagen iets met dit gerecht publiceerden; elke kok telt één keer." }),
+          h("p", { text: "Op Instagram kijken we naar likes en reacties, en altijd ten opzichte van wat dat account gewend is: zo telt een post van een kleine kok even zwaar als een van Bon Appétit. Reacties tellen hooguit mee tot een kwart van de likes, zodat ‘reageer met SOEP voor het recept’ en winacties niet dubbel tellen. Shares en saves kunnen we niet zien: die deelt Instagram alleen met de maker zelf." }),
+          h("p", { text: "Vanaf Nº 04 staan er in elke editie minstens drie recepten die zo aantoonbaar in trek zijn, waarvan minstens één op Instagram. Haalt een editie dat niet, dan verschijnt hij niet." })),
         h("h2", { class: "mono colhead", text: "De labels" }),
         h("dl", { class: "labels" }, LABELS.map(([l, t]) => h("div", null, h("dt", null, tl(l)), h("dd", { text: t })))),
         h("p", { class: "why", text: "Staat er een recept met “Dalend” in Proef? Dan kozen we het om iets anders: het seizoen, weinig werk, of omdat kinderen het lusten. Het label laat eerlijk zien hoe het ervoor staat." }))));
