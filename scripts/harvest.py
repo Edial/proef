@@ -18,6 +18,7 @@ import csv
 import datetime as dt
 import json
 import pathlib
+import random
 import re
 import sys
 import time
@@ -82,8 +83,12 @@ def fetch(src):
 
 
 def fetch_instagram(sources):
-    """Eén voor één, met een korte pauze: Business Discovery telt mee in de rate limit van Meta."""
+    """Eén voor één, met een pauze: Business Discovery telt mee in de rate limit van Meta (± 200 per uur).
+    De volgorde wisselt per week: haalt de run de limiet toch, dan missen niet elke week dezelfde accounts.
+    Boven de 180 accounts gaan we langzamer (± 190 per uur), zodat de limiet niet gehaald wordt."""
     out, ok, todo = [], 0, [s for s in sources if s.get("instagram", "").strip()]
+    random.Random(dt.date.today().isocalendar()[1]).shuffle(todo)
+    pause = 19 if len(todo) > 180 else 0.3
     if not instagram.enabled():
         print("Instagram overgeslagen: IG_TOKEN of IG_USER_ID ontbreekt.")
         return out
@@ -96,7 +101,7 @@ def fetch_instagram(sources):
             break
         except Exception as e:  # noqa: BLE001
             print(f"FOUT  {src['name']} (Instagram): {e}"[:110], file=sys.stderr)
-        time.sleep(0.3)
+        time.sleep(pause)
     print(f"Instagram: {ok} van {len(todo)} accounts gelezen, {len(out)} posts.")
     return out
 
