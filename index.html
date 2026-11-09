@@ -23,6 +23,61 @@
 <meta property="og:image:alt" content="Proef: vijf trending recepten van het seizoen. De kinderen eten mee.">
 <meta name="twitter:card" content="summary_large_image">
 <!-- deelvoorbeeld:end -->
+<!-- teller: bezoekersstatistieken via GoatCounter (geen cookies, slaat geen IP-adressen op; zie #privacy) -->
+<script>
+  // De site meldt zelf elke pagina en gebeurtenis via proefTel. GoatCounter telt niets vanzelf (no_onload): zo tellen
+  // de pagina's achter # (#trends, #archief) apart en gaan zoektermen nooit mee. Het script van GoatCounter laadt pas
+  // bij de eerste telling, en helemaal niet voor wie in de privacyverklaring "Tel mij niet mee" kiest.
+  (function () {
+    var SITE = "https://edialproef.goatcounter.com/count", KEY = "proef-teller";
+    // Herkomst uit links met utm_source (de nieuwsbrief, of een eigen link zoals ?utm_source=whatsapp).
+    // De site haalt die parameters later van de url, dus hier al vastleggen.
+    var q = new URLSearchParams(location.search);
+    var bron = [q.get("utm_source"), q.get("utm_campaign")].filter(Boolean).join(" ");
+    var status = "", wachtrij = [], laatste = null;  // status: "" (niet geladen), "laden", "klaar" of "mislukt"
+    function uit() { try { return localStorage.getItem(KEY) === "uit"; } catch (e) { return false; } }
+    function laad() {
+      status = "laden";
+      window.goatcounter = { no_onload: true, endpoint: SITE };
+      var s = document.createElement("script");
+      s.async = true;
+      s.src = "https://gc.zgo.at/count.js";
+      s.setAttribute("data-goatcounter", SITE);
+      s.onload = function () {
+        status = window.goatcounter && window.goatcounter.count ? "klaar" : "mislukt";
+        var w = wachtrij; wachtrij = [];
+        if (status === "klaar") w.forEach(function (v) { window.goatcounter.count(v); });
+      };
+      s.onerror = function () { status = "mislukt"; wachtrij = []; };  // bijvoorbeeld door een adblocker
+      document.head.appendChild(s);
+    }
+    function stuur(v) {
+      if (uit() || status === "mislukt") return;
+      if (status === "klaar") return window.goatcounter.count(v);
+      wachtrij.push(v);
+      if (!status) laad();
+    }
+    window.proefTel = {
+      // Een bekeken pagina, zoals "/proef/recept/dumpling-bake/" of "/proef/#trends". Dezelfde pagina twee keer achter elkaar telt één keer.
+      pagina: function (path) {
+        if (path === laatste) return;
+        laatste = path;
+        setTimeout(function () {  // pas na het tekenen van de pagina, zodat de titel bij de pagina hoort
+          var v = { path: path, title: document.title };
+          if (bron) { v.referrer = bron; bron = ""; }  // alleen bij de eerste pagina van het bezoek
+          stuur(v);
+        }, 0);
+      },
+      // Een gebeurtenis, zoals "aangemeld". De naam mag niet met / beginnen.
+      gebeurtenis: function (naam, titel) { stuur({ path: naam, title: titel || naam, event: true }); },
+      staatUit: uit,
+      // Tellen aan of uit in deze browser. Geeft false als de browser niets mag onthouden.
+      zet: function (aan) {
+        try { if (aan) localStorage.removeItem(KEY); else localStorage.setItem(KEY, "uit"); return true; } catch (e) { return false; }
+      }
+    };
+  })();
+</script>
 <link rel="preload" href="editions/index.json" as="fetch" crossorigin="anonymous">
 <!-- fonts:start (gemaakt door scripts/fonts.py) -->
 <link rel="preload" href="assets/fonts/fraunces-normal-latin-9e5095.woff2" as="font" type="font/woff2" crossorigin>
@@ -770,6 +825,7 @@ footer { margin-top: 96px; }
   (function () {
     var q = new URLSearchParams(location.search);
     if (!q.has("aangemeld")) return;
+    proefTel.gebeurtenis("aangemeld", "Aangemeld (terug van Laposta)");
     try { var ps = JSON.parse(localStorage.getItem("proef-pop") || "{}"); ps.sub = 1; localStorage.setItem("proef-pop", JSON.stringify(ps)); } catch (e) {}
     q.delete("aangemeld");
     history.replaceState(null, "", location.pathname + (String(q) ? "?" + q : "") + location.hash);
@@ -781,40 +837,6 @@ footer { margin-top: 96px; }
     setTimeout(function () { t.hidden = true; }, 9000);
   })();
 </script>
-<!-- Laposta: vraagt bij versturen een eenmalig token op en lost een kleine rekenpuzzel op (spambeveiliging) -->
-<script>
-  // Laposta's script tegen spam laden we pas als een aanmeldformulier bijna in beeld is (of iemand het gebruikt).
-  // Zo krijgt een bezoeker die het formulier niet ziet geen verzoek en geen technisch cookie van Laposta.
-  // Het script meet zelf hoe lang het formulier open was; daarom laden we het bij het in beeld komen, niet pas bij de klik.
-  (function () {
-    var SRC = "https://proef.email-provider.eu/subscribe/check/validate.js", loading = null;
-    var forms = Array.prototype.slice.call(document.querySelectorAll(".signup-form"));
-    function load() {
-      if (!loading) loading = new Promise(function (done) {
-        var s = document.createElement("script"); s.src = SRC; s.async = true;
-        s.onload = s.onerror = function () { done(); };
-        document.head.appendChild(s);
-      });
-      return loading;
-    }
-    if ("IntersectionObserver" in window) {
-      var io = new IntersectionObserver(function (es) {
-        if (es.some(function (e) { return e.isIntersecting; })) { io.disconnect(); load(); }
-      }, { rootMargin: "400px 0px" });
-      forms.forEach(function (f) { io.observe(f); });
-    } else load();
-    forms.forEach(function (f) {
-      f.addEventListener("focusin", load);
-      // verstuurd voordat Laposta het formulier had voorbereid: eerst laden, dan opnieuw versturen
-      f.addEventListener("submit", function (e) {
-        if (f.querySelector('input[name="submit-duration"]')) return;
-        e.preventDefault(); e.stopImmediatePropagation();
-        load().then(function () { setTimeout(function () { f.requestSubmit ? f.requestSubmit() : f.submit(); }, 0); });
-      });
-    });
-  })();
-</script>
-
 <dialog id="signup-pop" class="pop" aria-labelledby="pop-t" tabindex="-1">
   <button type="button" class="pop-close" aria-label="Sluiten">×</button>
   <p class="kicker">Gratis nieuwsbrief</p>
@@ -839,6 +861,50 @@ footer { margin-top: 96px; }
   </form>
   <button type="button" class="pop-later mono">Nee, dank je</button>
 </dialog>
+
+<!-- Laposta: vraagt bij versturen een eenmalig token op en lost een kleine rekenpuzzel op (spambeveiliging) -->
+<!-- staat ná de pop-up, zodat ook het formulier in de pop-up wordt voorbereid -->
+<script>
+  // Laposta's script tegen spam laden we pas als een aanmeldformulier bijna in beeld is (of iemand het gebruikt).
+  // Zo krijgt een bezoeker die het formulier niet ziet geen verzoek en geen technisch cookie van Laposta.
+  // Het script meet zelf hoe lang het formulier open was; daarom laden we het bij het in beeld komen, niet pas bij de klik.
+  (function () {
+    var SRC = "https://proef.email-provider.eu/subscribe/check/validate.js", loading = null;
+    var forms = Array.prototype.slice.call(document.querySelectorAll(".signup-form"));
+    function load() {
+      if (!loading) loading = new Promise(function (done) {
+        var s = document.createElement("script"); s.src = SRC; s.async = true;
+        s.onload = s.onerror = function () { done(); };
+        document.head.appendChild(s);
+      });
+      return loading;
+    }
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (es) {
+        if (es.some(function (e) { return e.isIntersecting; })) { io.disconnect(); load(); }
+      }, { rootMargin: "400px 0px" });
+      forms.forEach(function (f) { io.observe(f); });
+    } else load();
+    forms.forEach(function (f) {
+      var geteld = false;
+      f.addEventListener("focusin", load);
+      // verstuurd voordat Laposta het formulier had voorbereid: eerst laden, dan opnieuw versturen
+      f.addEventListener("submit", function (e) {
+        if (f.querySelector('input[name="submit-duration"]')) {
+          // de echte verzending; één keer tellen, ook als Laposta het formulier daarna zelf opnieuw verstuurt
+          if (!geteld) {
+            geteld = true;
+            var pop = f.classList.contains("pop-form");
+            proefTel.gebeurtenis(pop ? "aanmelden-popup" : "aanmelden-onderaan", pop ? "Aanmelden via de pop-up" : "Aanmelden onderaan de pagina");
+          }
+          return;
+        }
+        e.preventDefault(); e.stopImmediatePropagation();
+        load().then(function () { setTimeout(function () { f.requestSubmit ? f.requestSubmit() : f.submit(); }, 0); });
+      });
+    });
+  })();
+</script>
 
 <dialog id="search" aria-label="Zoeken">
   <div class="s-top">
@@ -1339,6 +1405,19 @@ footer { margin-top: 96px; }
     });
     return b;
   }
+  // "Tel mij niet mee": zet de teller (GoatCounter) uit of weer aan in deze browser
+  function counterButton() {
+    const b = h("button", { type: "button", class: "reveal mono" });
+    const label = () => { b.textContent = proefTel.staatUit() ? "Tel mij weer mee" : "Tel mij niet mee"; };
+    label();
+    b.addEventListener("click", () => {
+      const aan = proefTel.staatUit();
+      if (!proefTel.zet(aan)) return toast("Dat lukt niet: deze browser mag niets onthouden.");
+      label();
+      toast(aan ? "Je wordt weer meegeteld." : "Je wordt niet meer meegeteld in deze browser.");
+    });
+    return b;
+  }
   function showPrivacy() {
     const sec = (title, ...ps) => [h("h2", { class: "mono colhead", text: title }),
       h("div", { class: "prose-1" }, ...ps.map((p) => (typeof p === "string" ? h("p", { text: p }) : p)))];
@@ -1360,18 +1439,24 @@ footer { margin-top: 96px; }
         ...sec("Hoe lang we het bewaren",
           "Zolang je bent aangemeld. Meld je je af, dan sturen we je niets meer. Laposta bewaart dan alleen dat je je hebt afgemeld, zodat je niet per ongeluk opnieuw mail krijgt. Wil je dat je adres helemaal verdwijnt, mail ons dan."),
         ...sec("De website",
-          "Proef zelf zet geen cookies en gebruikt geen advertenties of bezoekersstatistieken. Wel zien deze partijen je IP-adres, zoals bij elke website die iets van hen laadt. Twee ervan kunnen een technisch cookie zetten (alleen voor het goed werken van hun dienst, niet om je te volgen):",
+          "Proef zelf zet geen cookies en toont geen advertenties. Wel zien deze partijen je IP-adres, zoals bij elke website die iets van hen laadt. Twee ervan kunnen een technisch cookie zetten (alleen voor het goed werken van hun dienst, niet om je te volgen):",
           list(
             "GitHub (Verenigde Staten): de site staat op GitHub Pages.",
+            "GoatCounter: telt bezoeken (zie Bezoekersstatistieken hieronder). Zet geen cookies.",
             "Laposta (Nederland): zodra een aanmeldformulier in beeld komt, laadt een script tegen spam. Laposta zet daarbij een technisch cookie dat verkeer over hun servers verdeelt.",
             "De sites van de makers: foto's bij recepten (en de foto van de maker) worden van hun site geladen. Die site ziet ook dat je via Proef komt. Sommige sites zetten daarbij een technisch cookie tegen bots (bijvoorbeeld Cloudflare).",
             "YouTube, Instagram of TikTok: een video laadt pas als je op afspelen klikt. Vanaf dan gelden de regels van dat platform.")),
+        ...sec("Bezoekersstatistieken",
+          "We tellen bezoeken met GoatCounter: hoeveel mensen de site bekijken, welke pagina's, hoe ze binnenkomen (bijvoorbeeld via de nieuwsbrief of een gedeelde link) en hoe vaak iemand zich aanmeldt. Zo zien we welke recepten aanslaan en of de nieuwsbrief lezers trekt. Wat je in de zoekfunctie typt, sturen we niet mee.",
+          "GoatCounter zet geen cookies en bewaart niets in je browser. Je IP-adres wordt niet opgeslagen. Om dubbel tellen te voorkomen, houdt GoatCounter hooguit 8 uur een onherleidbare code in het geheugen, gemaakt van je IP-adres, je browser en een willekeurig getal. Daarna blijven alleen totalen over, zoals browser, schermgrootte en land.",
+          "Dat doen we omdat we de site willen verbeteren (gerechtvaardigd belang, artikel 6 lid 1 onder f AVG).",
+          h("p", null, "Liever niet meegeteld? ", counterButton(), " Dat onthouden we alleen in deze browser.")),
         ...sec("Wie je gegevens verwerkt",
           "Laposta verstuurt de nieuwsbrief en bewaart de lijst met e-mailadressen op servers in Nederland. Je e-mailadres komt verder nergens terecht."),
         ...sec("Je rechten",
           h("p", null, "Je mag je gegevens inzien, laten verbeteren of verwijderen, en bezwaar maken tegen het gebruik. Mail ons daarvoor. Ben je het niet eens met hoe we met je gegevens omgaan, dan kun je een klacht indienen bij de ",
             h("a", { href: "https://www.autoriteitpersoonsgegevens.nl", target: "_blank", rel: "noopener", text: "Autoriteit Persoonsgegevens" }), ".")),
-        h("p", { class: "mono updated", text: "Bijgewerkt op 7 november 2026" }))));
+        h("p", { class: "mono updated", text: "Bijgewerkt op 9 november 2026" }))));
     document.title = "Privacy · Proef";
     $("home").hidden = true; $("detail-view").hidden = false;
     window.scrollTo(0, 0);
@@ -1963,13 +2048,14 @@ footer { margin-top: 96px; }
     lockScroll();
     d.showModal();
     d.focus();  // focus op het venster zelf, niet op de sluitknop
+    proefTel.gebeurtenis("popup-getoond", "Pop-up getoond");
   }
   {
     const d = $("signup-pop");
     const shut = () => { if (d.open) d.close(); };
     d.addEventListener("close", () => {
       unlockScroll();
-      const s = popGet(); if (!s.sub) { s.closed = Date.now(); popSet(s); }
+      const s = popGet(); if (!s.sub) { s.closed = Date.now(); popSet(s); proefTel.gebeurtenis("popup-weggeklikt", "Pop-up weggeklikt"); }
     });
     d.querySelector(".pop-close").addEventListener("click", shut);
     d.querySelector(".pop-later").addEventListener("click", shut);
@@ -1987,6 +2073,8 @@ footer { margin-top: 96px; }
     const hsh = decodeURIComponent(location.hash.slice(1));
     // oude links (#slug) naar het eigen adres van het recept
     if (state.bySlug.has(hsh)) { history.replaceState(null, "", recipeHref(hsh)); return route(); }
+    // teller: de pagina zonder # (voorpagina, recept) of met de route erachter; van een zoekopdracht alleen "#zoek", nooit de zoekterm
+    proefTel.pagina(location.pathname + (HASH_ROUTE.test(hsh) && hsh !== "deze-week" ? "#" + hsh.replace(/^zoek\/.*$/, "zoek") : ""));
     if (!hsh.startsWith("zoek")) countView(location.pathname + "#" + hsh);
     const path = recipePath();
     if (path && state.bySlug.has(decodeURIComponent(path[1])) && !HASH_ROUTE.test(hsh)) {
@@ -2037,6 +2125,7 @@ footer { margin-top: 96px; }
       renderShelf();
       route();
     } catch (e) {
+      proefTel.gebeurtenis("laden-mislukt", "Recepten konden niet laden");
       $("features").replaceChildren(h("p", { class: "status", id: "status", text: "De recepten konden niet worden geladen. Ververs de pagina om het opnieuw te proberen." }));
     }
   }
