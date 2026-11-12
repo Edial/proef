@@ -34,7 +34,7 @@ jobs:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
         run: python3 scripts/harvest.py --alleen-instagram
       - name: Wat er nu trending is
-        run: python3 scripts/instagram_trend.py | head -20
+        run: python3 scripts/instagram_trend.py --top 20
       - name: Opslaan
         run: |
           git config user.name "proef-bot"

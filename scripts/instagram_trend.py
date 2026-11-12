@@ -9,15 +9,19 @@ De logica, in gewone woorden:
    som; daar rekenen we met de som.)
 2. Normaal = de mediaan van die betrokkenheid over de posts van hetzelfde account die bij het meten minstens 3 dagen
    oud waren (minstens 8 posts). Zo wegen een klein account en Bon Appétit even zwaar: we kijken hoe een post het doet
-   ten opzichte van wat dat account gewend is.
+   ten opzichte van wat dat account gewend is. Posts met bijna niets (minder dan 5% van het 75e percentiel van dat
+   account, bijvoorbeeld proef-reels die alleen niet-volgers zien) tellen niet mee voor normaal: bij Kalejunkie was
+   de helft van de posts zo'n post, waardoor normaal op 64 likes uitkwam en alles een uitschieter leek.
    Jonge posts groeien nog. Gemeten op 7 november 2026 (175 posts): een post van 1 dag oud had gemiddeld 40% van wat
    normaal is, van 2 dagen 80%, vanaf 3 dagen 100%. Een post van 1 of 2 dagen vergelijken we daarom met dat deel van
    normaal; een post van dezelfde dag telt nog niet mee (de dagelijkse meting pakt hem morgen op).
 3. Een post is trending als hij in de afgelopen 14 dagen verscheen, minstens 5× zo goed scoort als normaal en minstens
    1.000 likes en reacties heeft (anders is één toevallige uitschieter bij een klein account al genoeg).
    Ter vergelijking: in oktober en begin november haalden 11 tot 16 posts per week dat.
+4. De volgorde van de lijst: hoeveel extra likes en reacties een post kreeg boven normaal (bijv. 466.000 bij
+   Kookmutsjes tegenover 3.800 bij een post die bij een klein bereik 50× scoorde). Zo staan de grote trends bovenaan.
 
-Gebruik: python3 scripts/instagram_trend.py                    lijst van wat nu trending is
+Gebruik: python3 scripts/instagram_trend.py [--top 20]         lijst van wat nu trending is
          python3 scripts/instagram_trend.py editions/2026-46.json  zet per recept met `instagram` (url van de post) het
                                                                 gemeten `igTrend` in de editie (niet met de hand invullen)
 """
@@ -67,6 +71,11 @@ def scored(today=None):
         e = engagement(p)
         if e is not None and measured_age(p) >= MATURE:
             per.setdefault(p["source"], []).append(e)
+    def robust(v):
+        v = sorted(v)
+        floor = 0.05 * v[int(len(v) * 0.75)]
+        return [x for x in v if x >= floor]
+    per = {s: robust(v) for s, v in per.items() if len(v) >= MIN_POSTS}
     normal = {s: statistics.median(v) for s, v in per.items() if len(v) >= MIN_POSTS}
     out = {}
     for p in rows:
@@ -87,8 +96,8 @@ def is_trending(s):
 
 
 def trending(today=None):
-    """Wat nu trending is, beste eerst."""
-    return sorted((s for s in scored(today).values() if is_trending(s)), key=lambda s: -s["ratio"])
+    """Wat nu trending is, met de meeste extra aandacht (likes en reacties boven normaal) eerst."""
+    return sorted((s for s in scored(today).values() if is_trending(s)), key=lambda s: -(s["engagement"] - s["normal"]))
 
 
 def counts(trend):
@@ -117,9 +126,10 @@ def measure(path):
 
 
 def main():
-    if len(sys.argv) > 1:
+    if len(sys.argv) > 1 and sys.argv[1] != "--top":
         return measure(sys.argv[1])
-    for s in trending():
+    top = int(sys.argv[2]) if len(sys.argv) > 2 else None
+    for s in trending()[:top]:
         print(f"{s['ratio']:5.1f}× {s['engagement']:>7} {s['name'][:24]:24} {s['date']} {s['title'][:70]} {s['url']}")
 
 
