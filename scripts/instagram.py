@@ -152,9 +152,10 @@ def main():
             n, top = mentions(h.lstrip("@"))
             print(f"@{h.lstrip('@')} noemt in {n} posts:", ", ".join(f"@{k} ({v})" for k, v in top[:30]))
         return
-    if arg == "diepte":  # hoeveel dagen beslaan de posts die we per keer ophalen?
-        for h in sys.argv[2:]:
-            posts = read(h.lstrip("@"))
+    if arg == "diepte":  # hoeveel dagen beslaan de posts die we per keer ophalen? (diepte 100 a b c: met 100 posts)
+        n = int(sys.argv[2]) if len(sys.argv) > 2 and sys.argv[2].isdigit() else 50
+        for h in [x for x in sys.argv[2:] if not x.isdigit()]:
+            posts = read(h.lstrip("@"), n)
             if posts:
                 print(f"OK    @{h.lstrip('@'):22} {len(posts)} posts, van {posts[-1]['published']:%Y-%m-%d} tot {posts[0]['published']:%Y-%m-%d}")
             time.sleep(0.3)
