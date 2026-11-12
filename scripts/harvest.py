@@ -37,7 +37,25 @@ POSTS = ROOT / "data" / "posts.csv"
 BUZZ = ROOT / "data" / "buzz.json"
 # views: weergaven (YouTube) of likes + reacties (Instagram); likes en comments apart voor Instagram (instagram_trend.py)
 # measured: de dag waarop views/likes/comments voor het laatst zijn gemeten (Instagram groeit de eerste dagen nog)
-COLS = ["source", "name", "tier", "kind", "published", "title", "url", "views", "likes", "comments", "measured", "first_seen"]
+# cp0_/cp1_: twee eerdere metingen van likes en reacties (Instagram); cp1 is 7 tot 13 dagen oud, zodat
+# instagram_trend.py kan zien hoeveel er de afgelopen week bij kwam (een oudere post die ineens weer groeit)
+CP = ["cp0_likes", "cp0_comments", "cp0_on", "cp1_likes", "cp1_comments", "cp1_on"]
+COLS = ["source", "name", "tier", "kind", "published", "title", "url", "views", "likes", "comments", "measured", *CP, "first_seen"]
+
+
+def checkpoints(old, today):
+    """Schuift de meetpunten door: cp0 is de eerste meting na het vorige meetpunt, cp1 de meting van 7 tot 13 dagen
+    geleden. Werkt met een dagelijkse meting; slaat een dag over, dan wordt het venster iets langer."""
+    cp = {k: (old or {}).get(k) or "" for k in CP}
+    if not old or not (old.get("measured") or "") or not (old.get("likes") or "").isdigit() or old["measured"] == today.isoformat():
+        return cp
+    prev = {"likes": old["likes"], "comments": old.get("comments") or "0", "on": old["measured"]}
+    if not cp["cp0_on"]:
+        cp.update(cp0_likes=prev["likes"], cp0_comments=prev["comments"], cp0_on=prev["on"])
+    elif (today - dt.date.fromisoformat(cp["cp0_on"])).days >= 7:
+        cp.update(cp1_likes=cp["cp0_likes"], cp1_comments=cp["cp0_comments"], cp1_on=cp["cp0_on"],
+                  cp0_likes=prev["likes"], cp0_comments=prev["comments"], cp0_on=prev["on"])
+    return cp
 KEEP_DAYS = 400
 WINDOW, BASE = 30, 60
 
@@ -232,6 +250,7 @@ def main():
                            "likes": "" if p.get("likes") is None else str(p["likes"]),
                            "comments": "" if p.get("comments") is None else str(p["comments"]),
                            "measured": today.isoformat(),
+                           **(checkpoints(old, today) if kind == "instagram" else {}),
                            "first_seen": old["first_seen"] if old else today.isoformat()}
     cutoff = today - dt.timedelta(days=KEEP_DAYS)
     posts = {u: p for u, p in posts.items() if day(p["published"]) >= cutoff}

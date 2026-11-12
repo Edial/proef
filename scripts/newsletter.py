@@ -147,7 +147,9 @@ def recipe_card(r, base, mail_url):
         trend = (f'<div style="margin:10px 0 0;font-family:{MONO};font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;'
                  f'color:{HANKO};">{ARROW["Instagram"]}&nbsp;Instagram</div>'
                  f'<div class="mu" style="margin:4px 0 0;font-family:{SERIF};font-style:italic;font-size:14px;line-height:1.4;color:{MUTED};">'
-                 f'{round(ig["ratio"])}× zoveel likes en reacties als normaal bij {esc(ig["name"])}.</div>')
+                 + (f'Weer populair: deze week nog {ig["growth"]:,} likes en reacties erbij bij {esc(ig["name"])}.'.replace(",", ".")
+                    if ig.get("kind") == "groeit" else
+                    f'{round(ig["ratio"])}× zoveel likes en reacties als normaal bij {esc(ig["name"])}.') + '</div>')
     elif sp.get("weeks"):
         slug = r["slug"]
         spark_img = pair(f"{mail_url}{slug}.png", f"{mail_url}{slug}-dark.png", 84, 18, "")

@@ -78,8 +78,9 @@ def handles():
                 for r in csv.DictReader(f) if r.get("instagram", "").strip()]
 
 
-def read(handle, limit=50):
-    # 50 i.p.v. 25: drukke accounts (Food & Wine: 49 posts in een week) vallen anders deels buiten beeld
+def read(handle, limit=100):
+    # 100 per keer (één verzoek): zo reiken bijna alle accounts 3 tot 6 weken terug, ook drukke (Feedfeed: 25 dagen),
+    # en kunnen we zien of een oudere post ineens weer groeit (instagram_trend.py)
     """Geeft [{title, url, published (datetime), views, likes, comments}] terug, net als feeds.read()."""
     fields = f"business_discovery.username({handle}){{followers_count,media.limit({limit}){{{MEDIA}}}}}"
     data = _get(os.environ["IG_USER_ID"], {"fields": fields})["business_discovery"]

@@ -1094,8 +1094,13 @@ footer { margin-top: 96px; }
   const ARROW = { Nieuw: "✦", Seizoen: "↻", Piek: "▲", Stijgt: "↗", Stabiel: "→", Dalend: "↘", Instagram: "♥" };
   // Instagram (igTrend, scripts/instagram_trend.py): telt als trending bij minstens 5× normaal en 1.000 likes en reacties
   const HOT = new Set(["Nieuw", "Seizoen", "Piek", "Stijgt"]);
-  const igCounts = (t) => !!t && t.ratio >= 5 && t.engagement >= 1000 && (t.age ?? 0) <= 14;
-  const igText = (t) => `${Math.round(t.ratio)}× zoveel likes en reacties als normaal bij ${t.name}.`;
+  // twee soorten (scripts/instagram_trend.py): uitschieter (≥5× normaal, ≤4 weken) of groeit nu (oudere post, deze week ≥2× normaal erbij)
+  const igCounts = (t) => !!t && (t.kind === "groeit"
+    ? t.growthRatio >= 2 && t.growth >= 1000 && t.age >= 7 && t.age <= 42
+    : t.ratio >= 5 && t.engagement >= 1000 && (t.age ?? 0) <= 28);
+  const igText = (t) => t.kind === "groeit"
+    ? `Weer populair: deze week nog ${nf.format(t.growth)} likes en reacties erbij bij ${t.name}.`
+    : `${Math.round(t.ratio)}× zoveel likes en reacties als normaal bij ${t.name}.`;
   // Instagram gaat voor als Google het gerecht niet in trek noemt; anders blijft het Google-label met lijntje staan
   const igFirst = (r) => igCounts(r.igTrend) && !(r.spark && HOT.has(r.spark.label));
   const tl = (label) => h("span", { class: "tl" + (QUIET.has(label) ? " quiet" : "") }, h("i", { "aria-hidden": "true", text: ARROW[label] || "•" }), label);
@@ -1117,7 +1122,9 @@ footer { margin-top: 96px; }
   function whyTrend(r) {
     const sp = r.spark, net = sp && sp.network, ig = r.igTrend;
     const insta = ig ? h("p", { class: "why-line" }, "Op Instagram kreeg ", h("a", { href: ig.url, target: "_blank", rel: "noopener", text: ig.name }),
-      ` ${nf.format(ig.engagement)} likes en reacties op dit gerecht (post van ${fmtDate(ig.date)}): ${Math.round(ig.ratio)}× zoveel als normaal voor dat account.`) : null;
+      ig.kind === "groeit"
+        ? ` op een post van ${fmtDate(ig.date)} de afgelopen week nog ${nf.format(ig.growth)} likes en reacties erbij: ${nf.format(ig.growthRatio)}× wat een gewone post van dat account in totaal haalt.`
+        : ` ${nf.format(ig.engagement)} likes en reacties op dit gerecht (post van ${fmtDate(ig.date)}): ${Math.round(ig.ratio)}× zoveel als normaal voor dat account.`) : null;
     if (!sp || !sp.weeks) return [insta, h("p", { class: "why-src" }, h("a", { href: "#zo-meten-we", text: "Hoe meten we dit?" }))];
     const start = monthFmt.format(new Date(sp.start + "T12:00:00"));
     const cooks = net && net.posts.length ? [
@@ -1297,7 +1304,7 @@ footer { margin-top: 96px; }
     ["Stijgt", "Minstens 1,25 keer zo vaak gezocht als in dezelfde weken vorig jaar."],
     ["Stabiel", "Ongeveer even vaak gezocht als vorig jaar."],
     ["Dalend", "Duidelijk minder gezocht dan vorig jaar."],
-    ["Instagram", "Een kok of magazine die we volgen kreeg er de afgelopen twee weken minstens 5× zoveel likes en reacties op als normaal voor dat account, en minstens 1.000."],
+    ["Instagram", "Een kok of magazine die we volgen kreeg er de afgelopen vier weken minstens 5× zoveel likes en reacties op als normaal voor dat account, of een oudere post kreeg er in één week minstens twee keer zoveel bij als een gewone post in totaal haalt. Altijd minstens 1.000."],
   ];
   function showMethod() {
     $("detail-view").replaceChildren(h("article", null,
@@ -1311,7 +1318,7 @@ footer { margin-top: 96px; }
           h("p", { text: "Google geeft geen aantallen, maar een score van 0 tot 100 per zoekterm. Daarom vergelijken we een gerecht alleen met zichzelf: de laatste vier volle weken tegenover dezelfde weken vorig jaar, en tegenover het laagste punt van het afgelopen jaar. De lopende week telt niet mee." }),
           h("p", { text: "De lijn toont de afgelopen 12 maanden, de stippellijn op de receptpagina het jaar ervoor. De rode stip is de laatste volle week." }),
           h("p", { text: "Daarnaast volgen we een netwerk van koks, foodbloggers en magazines, met oud-redacteuren van Bon Appétit en delicious. in de kern. Elke week lezen we hun nieuwe recepten. Bij elk recept tellen we hoeveel van hen de afgelopen 30 dagen iets met dit gerecht publiceerden; elke kok telt één keer." }),
-          h("p", { text: "Op Instagram kijken we naar likes en reacties, en altijd ten opzichte van wat dat account gewend is: zo telt een post van een kleine kok even zwaar als een van Bon Appétit. Reacties tellen hooguit mee tot een kwart van de likes, zodat ‘reageer met SOEP voor het recept’ en winacties niet dubbel tellen. We meten elke dag. Likes groeien de eerste dagen nog, dus een post van één of twee dagen oud vergelijken we met wat een post van die leeftijd normaal haalt. Shares en saves kunnen we niet zien: die deelt Instagram alleen met de maker zelf." }),
+          h("p", { text: "Op Instagram kijken we naar likes en reacties, en altijd ten opzichte van wat dat account gewend is: zo telt een post van een kleine kok even zwaar als een van Bon Appétit. Reacties tellen hooguit mee tot een kwart van de likes, zodat ‘reageer met SOEP voor het recept’ en winacties niet dubbel tellen. We meten elke dag. Likes groeien de eerste dagen nog, dus een post van één of twee dagen oud vergelijken we met wat een post van die leeftijd normaal haalt. En een post van een paar weken oud die ineens weer rondgaat, zien we ook: dan kijken we hoeveel er die week bij kwam. Shares en saves kunnen we niet zien: die deelt Instagram alleen met de maker zelf." }),
           h("p", { text: "Vanaf Nº 04 staan er in elke editie minstens drie recepten die zo aantoonbaar in trek zijn, waarvan minstens één op Instagram. Haalt een editie dat niet, dan verschijnt hij niet." })),
         h("h2", { class: "mono colhead", text: "De labels" }),
         h("dl", { class: "labels" }, LABELS.map(([l, t]) => h("div", null, h("dt", null, tl(l)), h("dd", { text: t })))),

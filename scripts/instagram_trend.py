@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Wat is er nu echt trending op Instagram bij de koks en magazines die we volgen? Rekent alleen met data/posts.csv
-(de wekelijkse harvest), zonder internet. Gebruikt door summary.py (de lijst voor de routine), check_edition.py
+(de dagelijkse meting), zonder internet. Gebruikt door summary.py (de lijst voor de routine), check_edition.py
 (de trendregel) en de Action "Trends en foto's meten" (die zet `igTrend` in de editie).
 
 De logica, in gewone woorden:
@@ -15,11 +15,16 @@ De logica, in gewone woorden:
    Jonge posts groeien nog. Gemeten op 7 november 2026 (175 posts): een post van 1 dag oud had gemiddeld 40% van wat
    normaal is, van 2 dagen 80%, vanaf 3 dagen 100%. Een post van 1 of 2 dagen vergelijken we daarom met dat deel van
    normaal; een post van dezelfde dag telt nog niet mee (de dagelijkse meting pakt hem morgen op).
-3. Een post is trending als hij in de afgelopen 14 dagen verscheen, minstens 5× zo goed scoort als normaal en minstens
-   1.000 likes en reacties heeft (anders is één toevallige uitschieter bij een klein account al genoeg).
-   Ter vergelijking: in oktober en begin november haalden 11 tot 16 posts per week dat.
-4. De volgorde van de lijst: hoeveel extra likes en reacties een post kreeg boven normaal (bijv. 466.000 bij
-   Kookmutsjes tegenover 3.800 bij een post die bij een klein bereik 50× scoorde). Zo staan de grote trends bovenaan.
+3. Een post is trending op een van twee manieren (altijd minstens 1.000 likes en reacties, anders is één toevallige
+   uitschieter bij een klein account al genoeg):
+   - Uitschieter: verscheen in de afgelopen 4 weken en scoort minstens 5× zo goed als normaal. Op 12 november waren
+     dat er 118 (65 als we alleen de laatste 2 weken namen).
+   - Groeit nu: een post van 1 tot 6 weken oud die er de afgelopen week minstens 2× zoveel likes en reacties bij kreeg
+     als een gewone post van dat account in totaal haalt. Een oudere post die ineens weer rondgaat, dus. Hiervoor
+     bewaart de dagelijkse meting per post een meetpunt van 7 tot 13 dagen terug (harvest.py, cp1_). De drempel 2× is
+     een startwaarde: eind november is er genoeg meetdata om hem te ijken.
+4. De volgorde van de lijst: hoeveel extra likes en reacties een post kreeg (bij een uitschieter boven normaal, bij een
+   groeier in de afgelopen week). Zo staan de grote trends bovenaan, niet de kleine accounts met een hoge verhouding.
 
 Gebruik: python3 scripts/instagram_trend.py [--top 20]         lijst van wat nu trending is
          python3 scripts/instagram_trend.py editions/2026-46.json  zet per recept met `instagram` (url van de post) het
@@ -35,7 +40,8 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 POSTS = ROOT / "data" / "posts.csv"
-DAYS, MIN_RATIO, MIN_ENGAGEMENT, MIN_POSTS, COMMENT_SHARE = 14, 5.0, 1000, 8, 0.25
+DAYS, MIN_RATIO, MIN_ENGAGEMENT, MIN_POSTS, COMMENT_SHARE = 28, 5.0, 1000, 8, 0.25
+GROW_MIN_AGE, GROW_MAX_AGE, GROW_RATIO = 7, 42, 2.0   # groeit nu: post van 1 tot 6 weken, week-groei ≥ 2× normaal
 SHARE_AT_AGE = {1: 0.4, 2: 0.8}   # deel van de uiteindelijke likes en reacties dat een post na 1 of 2 dagen heeft
 MATURE = 3                        # vanaf zoveel dagen oud is een post uitgegroeid
 NOT_A_POST = re.compile(r"\b(giveaway|winactie|win a|winnen)\b", re.I)
@@ -83,27 +89,49 @@ def scored(today=None):
         share = 1.0 if at >= MATURE else SHARE_AT_AGE.get(at)
         if e is None or not n or not c or not share:
             continue
-        out[c] = {"source": p["source"], "name": p["name"], "url": p["url"], "date": p["published"], "title": p["title"],
-                  "engagement": e, "likes": int(p["likes"]) if (p.get("likes") or "").isdigit() else None,
-                  "normal": round(n * share), "ratio": round(e / (n * share), 1),
-                  "age": (today - dt.date.fromisoformat(p["published"])).days, "measuredAge": at}
+        age = (today - dt.date.fromisoformat(p["published"])).days
+        s = {"source": p["source"], "name": p["name"], "url": p["url"], "date": p["published"], "title": p["title"],
+             "engagement": e, "likes": int(p["likes"]) if (p.get("likes") or "").isdigit() else None,
+             "normal": round(n * share), "ratio": round(e / (n * share), 1), "age": age, "measuredAge": at,
+             "kind": "uitschieter", "extra": e - round(n * share)}
+        # groeit nu: likes en reacties erbij sinds het meetpunt van 7 tot 13 dagen terug, omgerekend naar een week
+        before = engagement({"likes": p.get("cp1_likes") or "", "comments": p.get("cp1_comments") or ""})
+        if before is not None and p.get("cp1_on") and p.get("measured"):
+            days = (dt.date.fromisoformat(p["measured"]) - dt.date.fromisoformat(p["cp1_on"])).days
+            if days >= 7:
+                s["growth"] = round((e - before) * 7 / days)
+                s["growthRatio"] = round(s["growth"] / n, 1)   # t.o.v. wat een gewone post in totaal haalt
+                if grows(s) and not is_outlier(s):   # een uitschieter blijft een uitschieter
+                    s.update(kind="groeit", extra=s["growth"])
+        out[c] = s
     return out
 
 
+def is_outlier(s):
+    return s["ratio"] >= MIN_RATIO and s["engagement"] >= MIN_ENGAGEMENT and 0 <= s["age"] <= DAYS
+
+
+def grows(s):
+    return s.get("growthRatio", 0) >= GROW_RATIO and s.get("growth", 0) >= MIN_ENGAGEMENT \
+        and GROW_MIN_AGE <= s["age"] <= GROW_MAX_AGE
+
+
 def is_trending(s):
-    return bool(s) and s["ratio"] >= MIN_RATIO and s["engagement"] >= MIN_ENGAGEMENT and 0 <= s["age"] <= DAYS \
-        and not NOT_A_POST.search(s["title"])
+    return bool(s) and (is_outlier(s) or grows(s)) and not NOT_A_POST.search(s["title"])
 
 
 def trending(today=None):
-    """Wat nu trending is, met de meeste extra aandacht (likes en reacties boven normaal) eerst."""
-    return sorted((s for s in scored(today).values() if is_trending(s)), key=lambda s: -(s["engagement"] - s["normal"]))
+    """Wat nu trending is, met de meeste extra aandacht (boven normaal, of erbij in de afgelopen week) eerst."""
+    return sorted((s for s in scored(today).values() if is_trending(s)), key=lambda s: -s["extra"])
 
 
 def counts(trend):
     """Telt een gemeten igTrend mee voor de trendregel?"""
-    return bool(trend) and trend.get("ratio", 0) >= MIN_RATIO and trend.get("engagement", 0) >= MIN_ENGAGEMENT \
-        and trend.get("age", 0) <= DAYS
+    if not trend:
+        return False
+    if trend.get("kind") == "groeit":
+        return grows(trend)
+    return trend.get("ratio", 0) >= MIN_RATIO and trend.get("engagement", 0) >= MIN_ENGAGEMENT and trend.get("age", 0) <= DAYS
 
 
 def measure(path):
@@ -119,9 +147,12 @@ def measure(path):
             r.pop("igTrend", None)
             print(f"{r['slug'][:34]:34} Instagram-post niet in data/posts.csv (account niet gevolgd of te oud)")
             continue
-        r["igTrend"] = {k: s[k] for k in ("name", "url", "date", "title", "engagement", "normal", "ratio", "age")}
-        print(f"{r['slug'][:34]:34} {s['name']}: {s['engagement']} likes en reacties, {s['ratio']}× normaal"
-              f"{'' if counts(r['igTrend']) else ' (telt niet mee: minder dan 5× normaal of 1.000)'}")
+        r["igTrend"] = {k: s[k] for k in ("name", "url", "date", "title", "engagement", "normal", "ratio", "age", "kind",
+                                           "growth", "growthRatio") if k in s}
+        how = (f"{s['growth']} erbij in een week ({s['growthRatio']}× een gewone post)" if s["kind"] == "groeit"
+               else f"{s['engagement']} likes en reacties, {s['ratio']}× normaal")
+        print(f"{r['slug'][:34]:34} {s['name']}: {how}"
+              f"{'' if counts(r['igTrend']) else ' (telt niet mee: geen uitschieter en groeit niet genoeg)'}")
     pathlib.Path(path).write_text(json.dumps(ed, ensure_ascii=False, indent=2) + "\n")
 
 
@@ -130,7 +161,8 @@ def main():
         return measure(sys.argv[1])
     top = int(sys.argv[2]) if len(sys.argv) > 2 else None
     for s in trending()[:top]:
-        print(f"{s['ratio']:5.1f}× {s['engagement']:>7} {s['name'][:24]:24} {s['date']} {s['title'][:70]} {s['url']}")
+        how = f"+{s['growth']}/week" if s["kind"] == "groeit" else f"{s['ratio']:.1f}×"
+        print(f"{how:>12} {s['engagement']:>7} {s['name'][:24]:24} {s['date']} {s['title'][:70]} {s['url']}")
 
 
 if __name__ == "__main__":

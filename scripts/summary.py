@@ -72,14 +72,16 @@ def instagram_hits(rows=None, top=20):
     with (ROOT / "data" / "sources.csv").open(newline="") as f:
         for r in csv.DictReader(f):
             paywall[r["id"]] = (r.get("paywall") or "").strip(), r.get("site", "")
-    print(f"\nTRENDING OP INSTAGRAM ({len(hits)} posts, afgelopen {it.DAYS} dagen; ×normaal = likes en reacties t.o.v. "
-          f"wat dat account gewend is). VERPLICHT: minstens 1 recept per editie komt hieruit. Kies een post die een gerecht is, "
+    print(f"\nTRENDING OP INSTAGRAM ({len(hits)} posts; ×normaal = likes en reacties t.o.v. wat dat account gewend is, "
+          f"afgelopen {it.DAYS} dagen; 'groeit' = oudere post die er deze week veel bij kreeg). VERPLICHT: minstens 1 recept per editie komt hieruit. Kies een post die een gerecht is, "
           f"zet de url van de post in het recept als \"instagram\" en haal recept en foto van de eigen site van de maker "
           f"(staat die achter een betaalmuur, neem hetzelfde gerecht van een kernbron). Nooit een foto van Instagram.")
     for h in hits[:top]:
         pw, site = paywall.get(h["source"], ("", ""))
         extra = f" [site: {site}{', betaalmuur' if pw else ''}]" if site else ""
-        print(f"- {h['ratio']}× ({h['engagement']} likes+reacties) {h['date']} {h['name']}: {h['title']} {h['url']}{extra}")
+        how = (f"groeit: +{h['growth']} deze week ({h['growthRatio']}× een gewone post)" if h["kind"] == "groeit"
+               else f"{h['ratio']}× ({h['engagement']} likes+reacties)")
+        print(f"- {how} {h['date']} {h['name']}: {h['title']} {h['url']}{extra}")
 
 
 def main():

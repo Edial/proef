@@ -7,8 +7,8 @@ concept: de wekelijkse routine schrijft het, de Action "Trends en foto's meten" 
 
 Trendregel (vanaf editie 4, oudere edities blijven zoals ze zijn): minstens 3 van de recepten zijn echt in trek,
 en minstens 1 daarvan is trending op Instagram. In trek is: Google Trends zegt Nieuw, Seizoen, Piek of Stijgt, of de
-Instagram-post achter het recept (veld `instagram`) haalt minstens 5× zoveel likes en reacties als normaal voor dat
-account en minstens 1.000 (scripts/instagram_trend.py).
+Instagram-post achter het recept (veld `instagram`) is trending volgens scripts/instagram_trend.py: een uitschieter
+(minstens 5× normaal voor dat account, afgelopen 4 weken) of een oudere post die er deze week veel bij kreeg.
 - Nog niet gemeten (concept, direct na het schrijven): de eerste zoekterm (trendTerms[0]) is een stijger uit
   data/buzz.json die Google Trends al in trek noemt, of de Instagram-post staat in de lijst van instagram_trend.py.
 - Gemeten (--gemeten <id>, in de Action na de meting): de gemeten labels (`spark` en `igTrend`) tellen. Ontbreekt de
@@ -174,11 +174,11 @@ def trend_rule(ed, where, concept):
         labels = ", ".join(f"{r.get('slug')}: {(r.get('spark') or {}).get('label', 'niet gemeten')}"
                            + (f" / Instagram {r['igTrend']['ratio']}×" if r.get("igTrend") else "") for r in recipes)
         msg = (f"maar {len(good)} van de {len(recipes)} recepten zijn echt in trek (nodig: 3; Google Trends Nieuw, Seizoen, "
-               f"Piek of Stijgt, of Instagram minstens {instagram_trend.MIN_RATIO:g}× normaal). {labels}")
+               f"Piek of Stijgt, of trending op Instagram). {labels}")
         (err if hard else warn)(where, msg)
     if hard and not insta:
-        err(where, f"geen recept is gemeten trending op Instagram (nodig: minstens 1 met igTrend van minstens "
-                   f"{instagram_trend.MIN_RATIO:g}× normaal en {instagram_trend.MIN_ENGAGEMENT} likes en reacties).")
+        err(where, "geen recept is gemeten trending op Instagram (nodig: minstens 1 met een igTrend die meetelt: "
+                   "uitschieter of groeit nu, zie scripts/instagram_trend.py).")
 SIGNAL_KEYS = {"source", "metric", "value", "unit", "period", "geo", "url", "note"}
 
 
