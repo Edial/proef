@@ -9,6 +9,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: posts   # dezelfde groep als "Instagram dagelijks": nooit tegelijk data/posts.csv schrijven
+  cancel-in-progress: false
+
 jobs:
   harvest:
     runs-on: ubuntu-latest
@@ -29,5 +33,7 @@ jobs:
           git config user.name "proef-bot"
           git config user.email "proef-bot@users.noreply.github.com"
           git add data/sources.csv data/posts.csv data/buzz.json
-          git diff --cached --quiet || git commit -m "Bronnen opgehaald ($(date -u +%F))"
-          git push
+          git diff --cached --quiet && exit 0
+          git commit -m "Bronnen opgehaald ($(date -u +%F))"
+          for i in 1 2 3; do git pull --rebase origin main && git push && exit 0; sleep 10; done
+          exit 1

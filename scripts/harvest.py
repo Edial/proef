@@ -10,8 +10,13 @@ Instagram: bronnen met een `instagram`-handle worden ook gelezen (scripts/instag
 IG_TOKEN en IG_USER_ID gezet zijn. Dat telt ook voor bronnen zonder werkende feed: die doen dan alleen via
 Instagram mee. Zonder token slaat de harvest Instagram over.
 
+Dagelijks (Action "Instagram dagelijks"): `python3 scripts/harvest.py --alleen-instagram` haalt alleen Instagram op en
+werkt de likes en reacties van recente posts bij. Zo missen we geen posts van drukke accounts en meten we jonge posts
+opnieuw als ze ouder zijn (likes groeien de eerste dagen nog).
+
 Gebruik: python3 scripts/harvest.py              (alleen feeds)
          python3 scripts/harvest.py --google 15   (plus Google Trends-label voor de 15 grootste stijgers)
+         python3 scripts/harvest.py --alleen-instagram   (alleen Instagram bijwerken, elke dag)
 """
 import concurrent.futures as cf
 import csv
@@ -31,7 +36,8 @@ SOURCES = ROOT / "data" / "sources.csv"
 POSTS = ROOT / "data" / "posts.csv"
 BUZZ = ROOT / "data" / "buzz.json"
 # views: weergaven (YouTube) of likes + reacties (Instagram); likes en comments apart voor Instagram (instagram_trend.py)
-COLS = ["source", "name", "tier", "kind", "published", "title", "url", "views", "likes", "comments", "first_seen"]
+# measured: de dag waarop views/likes/comments voor het laatst zijn gemeten (Instagram groeit de eerste dagen nog)
+COLS = ["source", "name", "tier", "kind", "published", "title", "url", "views", "likes", "comments", "measured", "first_seen"]
 KEEP_DAYS = 400
 WINDOW, BASE = 30, 60
 
@@ -206,12 +212,15 @@ def main():
     sources = load_sources()
     posts = load_posts()
     n0 = len(posts)
-    slow = [s for s in sources if "substack.com" in s["feed"] and has_feed(s)]  # Substack geeft snel 429: één voor één
-    with cf.ThreadPoolExecutor(16) as pool:
-        results = [x for batch in pool.map(fetch, [s for s in sources if s not in slow]) for x in batch]
-    for s in slow:
-        results += fetch(s)
-        time.sleep(1.5)
+    only_ig = "--alleen-instagram" in sys.argv  # dagelijks: alleen Instagram, buzz.json blijft van vrijdag
+    results = []
+    if not only_ig:
+        slow = [s for s in sources if "substack.com" in s["feed"] and has_feed(s)]  # Substack geeft snel 429: één voor één
+        with cf.ThreadPoolExecutor(16) as pool:
+            results = [x for batch in pool.map(fetch, [s for s in sources if s not in slow]) for x in batch]
+        for s in slow:
+            results += fetch(s)
+            time.sleep(1.5)
     results += fetch_instagram(sources)
     for src, kind, p in results:
         if not p["published"]:
@@ -222,6 +231,7 @@ def main():
                            "url": p["url"], "views": p["views"],
                            "likes": "" if p.get("likes") is None else str(p["likes"]),
                            "comments": "" if p.get("comments") is None else str(p["comments"]),
+                           "measured": today.isoformat(),
                            "first_seen": old["first_seen"] if old else today.isoformat()}
     cutoff = today - dt.timedelta(days=KEEP_DAYS)
     posts = {u: p for u, p in posts.items() if day(p["published"]) >= cutoff}
@@ -229,6 +239,9 @@ def main():
         w = csv.DictWriter(f, COLS)
         w.writeheader()
         w.writerows(sorted(posts.values(), key=lambda p: (p["published"], p["source"]), reverse=True))
+    if only_ig:
+        print(f"Instagram bijgewerkt: {len(posts)} berichten bewaard ({len(posts) - n0:+d}).")
+        return
     b = buzz(posts, today)
     if "--google" in sys.argv:
         add_google(b, int(sys.argv[sys.argv.index("--google") + 1]))

@@ -7,8 +7,12 @@ De logica, in gewone woorden:
 1. Betrokkenheid = likes + reacties, maar reacties tellen hooguit mee tot een kwart van de likes. Zo tellen posts als
    "reageer met SOEP en ik stuur je het recept" of winacties niet dubbel. (Oudere posts in posts.csv hebben alleen de
    som; daar rekenen we met de som.)
-2. Normaal = de mediaan van die betrokkenheid over de posts van hetzelfde account (minstens 8 posts). Zo wegen een
-   klein account en Bon Appétit even zwaar: we kijken hoe een post het doet ten opzichte van wat dat account gewend is.
+2. Normaal = de mediaan van die betrokkenheid over de posts van hetzelfde account die bij het meten minstens 3 dagen
+   oud waren (minstens 8 posts). Zo wegen een klein account en Bon Appétit even zwaar: we kijken hoe een post het doet
+   ten opzichte van wat dat account gewend is.
+   Jonge posts groeien nog. Gemeten op 7 november 2026 (175 posts): een post van 1 dag oud had gemiddeld 40% van wat
+   normaal is, van 2 dagen 80%, vanaf 3 dagen 100%. Een post van 1 of 2 dagen vergelijken we daarom met dat deel van
+   normaal; een post van dezelfde dag telt nog niet mee (de dagelijkse meting pakt hem morgen op).
 3. Een post is trending als hij in de afgelopen 14 dagen verscheen, minstens 5× zo goed scoort als normaal en minstens
    1.000 likes en reacties heeft (anders is één toevallige uitschieter bij een klein account al genoeg).
    Ter vergelijking: in oktober en begin november haalden 11 tot 16 posts per week dat.
@@ -28,6 +32,8 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 POSTS = ROOT / "data" / "posts.csv"
 DAYS, MIN_RATIO, MIN_ENGAGEMENT, MIN_POSTS, COMMENT_SHARE = 14, 5.0, 1000, 8, 0.25
+SHARE_AT_AGE = {1: 0.4, 2: 0.8}   # deel van de uiteindelijke likes en reacties dat een post na 1 of 2 dagen heeft
+MATURE = 3                        # vanaf zoveel dagen oud is een post uitgegroeid
 NOT_A_POST = re.compile(r"\b(giveaway|winactie|win a|winnen)\b", re.I)
 
 
@@ -52,21 +58,26 @@ def scored(today=None):
         return {}
     with POSTS.open(newline="") as f:
         rows = [p for p in csv.DictReader(f) if p["kind"] == "instagram"]
+    def measured_age(p):  # leeftijd van de post op het moment dat de likes zijn geteld
+        on = p.get("measured") or p.get("first_seen") or today.isoformat()
+        return (dt.date.fromisoformat(on) - dt.date.fromisoformat(p["published"])).days
+
     per = {}
     for p in rows:
         e = engagement(p)
-        if e is not None:
+        if e is not None and measured_age(p) >= MATURE:
             per.setdefault(p["source"], []).append(e)
     normal = {s: statistics.median(v) for s, v in per.items() if len(v) >= MIN_POSTS}
     out = {}
     for p in rows:
-        e, n, c = engagement(p), normal.get(p["source"]), code(p["url"])
-        if e is None or not n or not c:
+        e, n, c, at = engagement(p), normal.get(p["source"]), code(p["url"]), measured_age(p)
+        share = 1.0 if at >= MATURE else SHARE_AT_AGE.get(at)
+        if e is None or not n or not c or not share:
             continue
-        age = (today - dt.date.fromisoformat(p["published"])).days
         out[c] = {"source": p["source"], "name": p["name"], "url": p["url"], "date": p["published"], "title": p["title"],
                   "engagement": e, "likes": int(p["likes"]) if (p.get("likes") or "").isdigit() else None,
-                  "normal": round(n), "ratio": round(e / n, 1), "age": age}
+                  "normal": round(n * share), "ratio": round(e / (n * share), 1),
+                  "age": (today - dt.date.fromisoformat(p["published"])).days, "measuredAge": at}
     return out
 
 

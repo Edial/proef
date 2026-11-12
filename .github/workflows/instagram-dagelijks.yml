@@ -1,0 +1,46 @@
+name: Instagram dagelijks
+
+# Elke ochtend de Instagram-posts van alle bronnen met een `instagram`-handle ophalen (data/posts.csv).
+# Waarom elke dag en niet alleen vrijdag:
+# - likes groeien de eerste dagen nog: een post wordt zo opnieuw gemeten als hij ouder is
+#   (scripts/instagram_trend.py vergelijkt jonge posts met wat een post van die leeftijd normaal haalt);
+# - drukke accounts plaatsen meer dan 50 posts per week, en per keer halen we de laatste 50 op.
+# Zaterdag om 04:30 UTC is de data vers voor de routine (07:00 in Nederland). buzz.json blijft van vrijdag.
+# Eén keer per dag past ruim binnen de limiet van Meta (± 200 verzoeken per uur, 1 per account).
+on:
+  schedule:
+    - cron: "30 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: posts   # dezelfde groep als "Bronnen ophalen": nooit tegelijk data/posts.csv schrijven
+  cancel-in-progress: false
+
+jobs:
+  instagram:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Instagram ophalen
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+        run: python3 scripts/harvest.py --alleen-instagram
+      - name: Wat er nu trending is
+        run: python3 scripts/instagram_trend.py | head -20
+      - name: Opslaan
+        run: |
+          git config user.name "proef-bot"
+          git config user.email "proef-bot@users.noreply.github.com"
+          git add data/posts.csv
+          git diff --cached --quiet && exit 0
+          git commit -m "Instagram bijgewerkt ($(date -u +%F))"
+          for i in 1 2 3; do git pull --rebase origin main && git push && exit 0; sleep 10; done
+          exit 1

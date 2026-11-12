@@ -78,7 +78,8 @@ def handles():
                 for r in csv.DictReader(f) if r.get("instagram", "").strip()]
 
 
-def read(handle, limit=25):
+def read(handle, limit=50):
+    # 50 i.p.v. 25: drukke accounts (Food & Wine: 49 posts in een week) vallen anders deels buiten beeld
     """Geeft [{title, url, published (datetime), views, likes, comments}] terug, net als feeds.read()."""
     fields = f"business_discovery.username({handle}){{followers_count,media.limit({limit}){{{MEDIA}}}}}"
     data = _get(os.environ["IG_USER_ID"], {"fields": fields})["business_discovery"]
@@ -150,6 +151,13 @@ def main():
         for h in sys.argv[2:]:
             n, top = mentions(h.lstrip("@"))
             print(f"@{h.lstrip('@')} noemt in {n} posts:", ", ".join(f"@{k} ({v})" for k, v in top[:30]))
+        return
+    if arg == "diepte":  # hoeveel dagen beslaan de posts die we per keer ophalen?
+        for h in sys.argv[2:]:
+            posts = read(h.lstrip("@"))
+            if posts:
+                print(f"OK    @{h.lstrip('@'):22} {len(posts)} posts, van {posts[-1]['published']:%Y-%m-%d} tot {posts[0]['published']:%Y-%m-%d}")
+            time.sleep(0.3)
         return
     if arg == "bronnen":
         ok = 0
