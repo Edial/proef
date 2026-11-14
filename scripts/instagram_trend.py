@@ -160,7 +160,11 @@ def main():
     if len(sys.argv) > 1 and sys.argv[1] != "--top":
         return measure(sys.argv[1])
     top = int(sys.argv[2]) if len(sys.argv) > 2 else None
-    for s in trending()[:top]:
+    hits = trending()
+    import runlog
+    runlog.metric(trending=len(hits), groeit=sum(h["kind"] == "groeit" for h in hits),
+                  top="; ".join(f"{h['name']}: {h['title'][:40]}" for h in hits[:3]))
+    for s in hits[:top]:
         how = f"+{s['growth']}/week" if s["kind"] == "groeit" else f"{s['ratio']:.1f}×"
         print(f"{how:>12} {s['engagement']:>7} {s['name'][:24]:24} {s['date']} {s['title'][:70]} {s['url']}")
 

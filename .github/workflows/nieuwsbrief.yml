@@ -37,6 +37,7 @@ jobs:
     if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     env:
+      RUNLOG_FILE: /tmp/runlog.json   # cijfers voor LOGBOEK.md (scripts/runlog.py)
       EDITION_INPUT: ${{ github.event.inputs.edition }}
       MODE: ${{ github.event.inputs.mode || (vars.NIEUWSBRIEF == 'klaarzetten' && 'klaarzetten') || 'versturen' }}
     steps:
@@ -54,6 +55,7 @@ jobs:
           # gemeten wordt (bijvoorbeeld na een aanpassing) krijgt geen mail en geen campagne
           if [ "${{ github.event_name }}" != "workflow_dispatch" ] && [ "$AGE" -gt 3 ]; then
             echo "Editie $ID is $AGE dagen oud: geen nieuwsbrief."; echo "skip=true" >> "$GITHUB_OUTPUT"
+            python3 scripts/runlog.py metric nieuwsbrief="overgeslagen: editie $ID is $AGE dagen oud"
           fi
       - uses: actions/setup-python@v5
         if: steps.ed.outputs.skip != 'true'
@@ -109,3 +111,11 @@ jobs:
           else
             python3 scripts/laposta.py prepare "$ID" "$LAPOSTA_TEST_EMAIL"
           fi
+      - name: Cijfers voor het logboek
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: runlog
+          path: /tmp/runlog.json
+          if-no-files-found: ignore
+          retention-days: 7

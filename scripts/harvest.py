@@ -30,6 +30,7 @@ import time
 
 import feeds
 import instagram
+import runlog
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SOURCES = ROOT / "data" / "sources.csv"
@@ -127,6 +128,7 @@ def fetch_instagram(sources):
             print(f"FOUT  {src['name']} (Instagram): {e}"[:110], file=sys.stderr)
         time.sleep(pause)
     print(f"Instagram: {ok} van {len(todo)} accounts gelezen, {len(out)} posts.")
+    runlog.metric(instagram_accounts=f"{ok}/{len(todo)}")
     return out
 
 
@@ -258,6 +260,7 @@ def main():
         w = csv.DictWriter(f, COLS)
         w.writeheader()
         w.writerows(sorted(posts.values(), key=lambda p: (p["published"], p["source"]), reverse=True))
+    runlog.metric(berichten_nieuw=len(posts) - n0)
     if only_ig:
         print(f"Instagram bijgewerkt: {len(posts)} berichten bewaard ({len(posts) - n0:+d}).")
         return
@@ -272,6 +275,7 @@ def main():
                                 "posters": len({p["source"] for p in recent}), "rising": b},
                                ensure_ascii=False, indent=1) + "\n")
     print(f"{len(sources)} bronnen gelezen, {len(posts)} berichten bewaard ({len(posts) - n0:+d}).")
+    runlog.metric(bronnen=len(sources), stijgers=len(b), google_labels=sum(1 for r in b if r.get("google")))
     print("Stijgt in het netwerk:", ", ".join(f"{r['phrase']} ({r['sources']})" for r in b[:12]))
 
 

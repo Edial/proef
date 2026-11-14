@@ -1,0 +1,15 @@
+{
+ "workflow": "Instagram dagelijks",
+ "uitkomst": "success",
+ "aanleiding": "schedule",
+ "start": "2026-11-13T12:27:32+00:00",
+ "eind": "2026-11-13T12:31:17+00:00",
+ "duur_s": 225,
+ "gepland": "2026-11-13T04:30:00+00:00",
+ "te_laat_min": 478,
+ "run": "https://github.com/Edial/proef/actions/runs/43425316659",
+ "run_id": 43425316659,
+ "details": {
+  "let_op": "achteraf toegevoegd, zonder cijfers"
+ }
+}

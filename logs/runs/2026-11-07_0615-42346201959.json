@@ -1,0 +1,15 @@
+{
+ "workflow": "Nieuwsbrief",
+ "uitkomst": "success",
+ "aanleiding": "workflow_run",
+ "start": "2026-11-07T06:15:36+00:00",
+ "eind": "2026-11-07T06:16:23+00:00",
+ "duur_s": 47,
+ "gepland": null,
+ "te_laat_min": null,
+ "run": "https://github.com/Edial/proef/actions/runs/42346201959",
+ "run_id": 42346201959,
+ "details": {
+  "let_op": "achteraf toegevoegd, zonder cijfers"
+ }
+}

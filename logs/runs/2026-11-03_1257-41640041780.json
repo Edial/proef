@@ -1,0 +1,15 @@
+{
+ "workflow": "Bronnen ophalen",
+ "uitkomst": "success",
+ "aanleiding": "workflow_dispatch",
+ "start": "2026-11-03T12:57:12+00:00",
+ "eind": "2026-11-03T13:04:28+00:00",
+ "duur_s": 436,
+ "gepland": null,
+ "te_laat_min": null,
+ "run": "https://github.com/Edial/proef/actions/runs/41640041780",
+ "run_id": 41640041780,
+ "details": {
+  "let_op": "achteraf toegevoegd, zonder cijfers"
+ }
+}
