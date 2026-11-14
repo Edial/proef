@@ -64,7 +64,11 @@
       "category": "Hoofdgerecht",
       "minutes": 45,
       "servings": 4,
-      "tags": ["Kindvriendelijk", "Weinig werk", "Seizoen"],
+      "tags": [
+        "Kindvriendelijk",
+        "Weinig werk",
+        "Seizoen"
+      ],
       "tint": "persimmon",
       "glyph": "瓜",
       "native": "",
@@ -78,7 +82,10 @@
         "text": "Butternut squash kwam de afgelopen maand bij veertien koks uit ons netwerk voorbij, waarvan vijf kernbronnen; de maand ervoor bij vijf. Google Trends noemt het een seizoensterm. Rachel Phipps zette deze pasta deze maand opnieuw online: de oven doet het werk en de saus is zonder room."
       },
       "source": "rachel-phipps",
-      "trendTerms": ["butternut squash", "butternut squash pasta"],
+      "trendTerms": [
+        "butternut squash",
+        "butternut squash pasta"
+      ],
       "signals": [
         {
           "source": "Proef-netwerk",
@@ -103,16 +110,55 @@
         "url": "https://www.rachelphipps.com/2026/11/vegan-creamy-squash-pasta-recipe-bacon-sage.html"
       },
       "ingredients": [
-        { "qty": 600, "unit": "g", "item": "butternutpompoen, geschild en in blokjes van 2 cm" },
-        { "qty": 4, "unit": "", "item": "teentjes knoflook, met schil" },
-        { "qty": 1, "unit": "g", "item": "chilivlokken (snufje, mag weg)" },
-        { "qty": 15, "unit": "ml", "item": "olijfolie" },
-        { "qty": 400, "unit": "g", "item": "penne" },
-        { "qty": 150, "unit": "g", "item": "ontbijtspek (ca. 8 plakjes), in reepjes" },
-        { "qty": 15, "unit": "", "item": "blaadjes verse salie" },
-        { "qty": 220, "unit": "ml", "item": "groentebouillon" },
-        { "qty": 40, "unit": "g", "item": "Parmezaanse kaas, in schaafsel" },
-        { "unit": "", "item": "zout" }
+        {
+          "qty": 600,
+          "unit": "g",
+          "item": "butternutpompoen, geschild en in blokjes van 2 cm"
+        },
+        {
+          "qty": 4,
+          "unit": "",
+          "item": "teentjes knoflook, met schil"
+        },
+        {
+          "qty": 1,
+          "unit": "g",
+          "item": "chilivlokken (snufje, mag weg)"
+        },
+        {
+          "qty": 15,
+          "unit": "ml",
+          "item": "olijfolie"
+        },
+        {
+          "qty": 400,
+          "unit": "g",
+          "item": "penne"
+        },
+        {
+          "qty": 150,
+          "unit": "g",
+          "item": "ontbijtspek (ca. 8 plakjes), in reepjes"
+        },
+        {
+          "qty": 15,
+          "unit": "",
+          "item": "blaadjes verse salie"
+        },
+        {
+          "qty": 220,
+          "unit": "ml",
+          "item": "groentebouillon"
+        },
+        {
+          "qty": 40,
+          "unit": "g",
+          "item": "Parmezaanse kaas, in schaafsel"
+        },
+        {
+          "unit": "",
+          "item": "zout"
+        }
       ],
       "steps": [
         "Verwarm de oven voor op 200 °C. Hussel de pompoen, de hele knoflookteentjes, de chilivlokken, de olie en een flinke snuf zout door elkaar op een bakplaat. Rooster 30 minuten, tot de pompoen zacht is en aan de onderkant bruin.",
@@ -122,7 +168,208 @@
         "Doe de pasta terug in de pan met de saus en roer op middelhoog vuur tot alles warm is en de saus glanzend aan de pasta blijft hangen. Voeg zo nodig nog wat kookwater toe.",
         "Verdeel over warme borden en strooi het spek, de salie en de Parmezaan erover."
       ],
-      "tip": "Laat voor kinderen de chilivlokken weg. Ze kunnen de pompoenblokjes op de bakplaat leggen en zelf op de knop van de blender drukken. Voor een vegetarische versie bak je de salie in olijfolie en laat je het spek weg."
+      "tip": "Laat voor kinderen de chilivlokken weg. Ze kunnen de pompoenblokjes op de bakplaat leggen en zelf op de knop van de blender drukken. Voor een vegetarische versie bak je de salie in olijfolie en laat je het spek weg.",
+      "spark": {
+        "term": "butternut squash",
+        "geo": "NL",
+        "source": "Google Trends",
+        "asOf": "2026-11-01",
+        "start": "2025-11-09",
+        "weeks": [
+          86,
+          53,
+          73,
+          81,
+          40,
+          54,
+          66,
+          36,
+          54,
+          53,
+          30,
+          40,
+          37,
+          33,
+          0,
+          38,
+          39,
+          31,
+          32,
+          29,
+          33,
+          31,
+          31,
+          30,
+          33,
+          0,
+          28,
+          34,
+          30,
+          0,
+          30,
+          0,
+          0,
+          26,
+          30,
+          43,
+          0,
+          0,
+          0,
+          46,
+          0,
+          26,
+          51,
+          29,
+          55,
+          89,
+          52,
+          66,
+          73,
+          82,
+          76,
+          68
+        ],
+        "prev": [
+          97,
+          58,
+          32,
+          51,
+          47,
+          46,
+          68,
+          59,
+          34,
+          77,
+          50,
+          45,
+          37,
+          28,
+          29,
+          31,
+          38,
+          43,
+          31,
+          34,
+          33,
+          0,
+          32,
+          0,
+          0,
+          0,
+          0,
+          32,
+          41,
+          0,
+          0,
+          0,
+          30,
+          0,
+          0,
+          35,
+          0,
+          35,
+          36,
+          33,
+          0,
+          29,
+          0,
+          35,
+          47,
+          39,
+          52,
+          87,
+          87,
+          78,
+          77,
+          64
+        ],
+        "label": "Seizoen",
+        "text": "Elk najaar terug: nu zes keer zo vaak gezocht als in de zomer.",
+        "yoy": 0.98,
+        "vsLow": 6.0,
+        "network": {
+          "sources": 14,
+          "days": 30,
+          "terms": [
+            "butternut squash",
+            "butternut squash pasta"
+          ],
+          "posts": [
+            {
+              "name": "Serious Eats",
+              "title": "Roasted Butternut Squash and Red Onion with Tahini and Za’atar from ‘Jerusalem’",
+              "url": "https://www.seriouseats.com/roasted-butternut-squash-and-red-onion-with-t",
+              "date": "2026-10-31"
+            },
+            {
+              "name": "Molly Baz",
+              "title": "to the butternut squash soup hive : I see you, and I raise you a bowl of this honey nut squash and corn soup.",
+              "url": "https://www.instagram.com/reel/DfKhdcDhUKW/",
+              "date": "2026-10-31"
+            },
+            {
+              "name": "Carolina Gelen",
+              "title": "BUTTERNUT SQUASH AND LENTIL SOUP — an incredibly easy dinner to which gonnaneedmilk brings 13 essential nutrients making it more nutritious",
+              "url": "https://www.instagram.com/reel/DfF-M6NBiWp/",
+              "date": "2026-10-29"
+            },
+            {
+              "name": "Tiffy Cooks",
+              "title": "Get your veggies and fiber in with this delicious fall butternut squash pasta 😮‍💨",
+              "url": "https://www.instagram.com/reel/DeubFrkuxb8/",
+              "date": "2026-10-20"
+            },
+            {
+              "name": "Justine Snacks",
+              "title": "Butternut squash mac n’ cheese!",
+              "url": "https://www.instagram.com/reel/DehOt2jhbpE/",
+              "date": "2026-10-15"
+            },
+            {
+              "name": "Rachel Phipps",
+              "title": "Creamy Butternut Squash Pasta with Bacon and Sage",
+              "url": "https://www.rachelphipps.com/2026/11/vegan-creamy-squash-pasta-recipe-bacon-sage.html",
+              "date": "2026-11-12"
+            }
+          ],
+          "of": 147
+        }
+      },
+      "photoGamma": 0.62,
+      "photoSet": [
+        {
+          "w": 300,
+          "url": "https://www.rachelphipps.com/wp-content/uploads/2020/10/Creamy-Butternut-Squash-Pasta-300x200.jpg"
+        },
+        {
+          "w": 608,
+          "url": "https://www.rachelphipps.com/wp-content/uploads/2020/10/Creamy-Butternut-Squash-Pasta-608x406.jpg"
+        },
+        {
+          "w": 768,
+          "url": "https://www.rachelphipps.com/wp-content/uploads/2020/10/Creamy-Butternut-Squash-Pasta-768x512.jpg"
+        },
+        {
+          "w": 976,
+          "url": "https://www.rachelphipps.com/wp-content/uploads/2020/10/Creamy-Butternut-Squash-Pasta-976x651.jpg"
+        },
+        {
+          "w": 1024,
+          "url": "https://www.rachelphipps.com/wp-content/uploads/2020/10/Creamy-Butternut-Squash-Pasta-1024x683.jpg"
+        },
+        {
+          "w": 1272,
+          "url": "https://www.rachelphipps.com/wp-content/uploads/2020/10/Creamy-Butternut-Squash-Pasta-1272x848.jpg"
+        },
+        {
+          "w": 1536,
+          "url": "https://www.rachelphipps.com/wp-content/uploads/2020/10/Creamy-Butternut-Squash-Pasta-1536x1024.jpg"
+        },
+        {
+          "w": 1920,
+          "url": "https://www.rachelphipps.com/wp-content/uploads/2020/10/Creamy-Butternut-Squash-Pasta.jpg"
+        }
+      ]
     },
     {
       "slug": "zalm-shoyu-rijstkom",
@@ -131,7 +378,12 @@
       "category": "Lunch",
       "minutes": 40,
       "servings": 4,
-      "tags": ["Aziatisch", "Kindvriendelijk", "Weinig werk", "Seizoen"],
+      "tags": [
+        "Aziatisch",
+        "Kindvriendelijk",
+        "Weinig werk",
+        "Seizoen"
+      ],
       "tint": "sky",
       "glyph": "丼",
       "native": "サーモン丼",
@@ -145,7 +397,10 @@
         "text": "Rice bowls kwamen de afgelopen maand bij zes koks uit ons netwerk voorbij, waarvan vijf kernbronnen. Google Trends ziet de zoekterm in Nederland stijgen. Marion Grasby zette deze shoyu-zalmkom deze week online; een topping van gefermenteerde bloemkool brengt er seizoensgroente in."
       },
       "source": "marions-kitchen",
-      "trendTerms": ["rice bowl", "salmon rice bowl"],
+      "trendTerms": [
+        "rice bowl",
+        "salmon rice bowl"
+      ],
       "signals": [
         {
           "source": "Proef-netwerk",
@@ -170,18 +425,78 @@
         "url": "https://www.marionskitchen.com/salmon-shoyu-bowl/"
       },
       "ingredients": [
-        { "qty": 600, "unit": "g", "item": "zalmfilet van sashimikwaliteit, zonder vel, in blokjes van 2 cm", "group": "Zalm" },
-        { "qty": 120, "unit": "ml", "item": "sojasaus", "group": "Marinade" },
-        { "qty": 30, "unit": "ml", "item": "geroosterde sesamolie", "group": "Marinade" },
-        { "qty": 20, "unit": "g", "item": "honing", "group": "Marinade" },
-        { "qty": 15, "unit": "ml", "item": "citroensap", "group": "Marinade" },
-        { "qty": 30, "unit": "ml", "item": "chili-olie met krokante stukjes", "group": "Aan tafel (optioneel)" },
-        { "qty": 300, "unit": "g", "item": "Japanse sushirijst (ongekookt), gekookt en afgekoeld tot kamertemperatuur", "group": "Kom" },
-        { "qty": 1, "unit": "", "item": "komkommer, in kleine blokjes", "group": "Kom" },
-        { "qty": 2, "unit": "", "item": "lente-uitjes, in ringetjes", "group": "Kom" },
-        { "qty": 10, "unit": "g", "item": "geroosterd sesamzaad", "group": "Kom" },
-        { "qty": 2, "unit": "", "item": "vellen nori, in dunne reepjes", "group": "Kom" },
-        { "qty": 150, "unit": "g", "item": "gefermenteerde bloemkool (ferment van de week), uitgelekt", "group": "Kom" }
+        {
+          "qty": 600,
+          "unit": "g",
+          "item": "zalmfilet van sashimikwaliteit, zonder vel, in blokjes van 2 cm",
+          "group": "Zalm"
+        },
+        {
+          "qty": 120,
+          "unit": "ml",
+          "item": "sojasaus",
+          "group": "Marinade"
+        },
+        {
+          "qty": 30,
+          "unit": "ml",
+          "item": "geroosterde sesamolie",
+          "group": "Marinade"
+        },
+        {
+          "qty": 20,
+          "unit": "g",
+          "item": "honing",
+          "group": "Marinade"
+        },
+        {
+          "qty": 15,
+          "unit": "ml",
+          "item": "citroensap",
+          "group": "Marinade"
+        },
+        {
+          "qty": 30,
+          "unit": "ml",
+          "item": "chili-olie met krokante stukjes",
+          "group": "Aan tafel (optioneel)"
+        },
+        {
+          "qty": 300,
+          "unit": "g",
+          "item": "Japanse sushirijst (ongekookt), gekookt en afgekoeld tot kamertemperatuur",
+          "group": "Kom"
+        },
+        {
+          "qty": 1,
+          "unit": "",
+          "item": "komkommer, in kleine blokjes",
+          "group": "Kom"
+        },
+        {
+          "qty": 2,
+          "unit": "",
+          "item": "lente-uitjes, in ringetjes",
+          "group": "Kom"
+        },
+        {
+          "qty": 10,
+          "unit": "g",
+          "item": "geroosterd sesamzaad",
+          "group": "Kom"
+        },
+        {
+          "qty": 2,
+          "unit": "",
+          "item": "vellen nori, in dunne reepjes",
+          "group": "Kom"
+        },
+        {
+          "qty": 150,
+          "unit": "g",
+          "item": "gefermenteerde bloemkool (ferment van de week), uitgelekt",
+          "group": "Kom"
+        }
       ],
       "steps": [
         "Kook de rijst volgens de verpakking en laat hem afkoelen tot kamertemperatuur.",
@@ -190,7 +505,200 @@
         "Verdeel de rijst over vier kommen. Schep de zalm uit de marinade en leg hem op de rijst, met de komkommer en de gefermenteerde bloemkool ernaast.",
         "Strooi lente-ui, sesamzaad en nori erover. Zet de chili-olie op tafel, zodat iedereen zelf kiest."
       ],
-      "tip": "Eten de kinderen liever geen rauwe vis (of ben je zwanger)? Leg hun deel van de zalm na het marineren 8–10 minuten in een oven van 200 °C. Kinderen kunnen zelf hun kom vullen; laat de chili-olie weg en geef een klein beetje marinade als saus."
+      "tip": "Eten de kinderen liever geen rauwe vis (of ben je zwanger)? Leg hun deel van de zalm na het marineren 8–10 minuten in een oven van 200 °C. Kinderen kunnen zelf hun kom vullen; laat de chili-olie weg en geef een klein beetje marinade als saus.",
+      "spark": {
+        "term": "rice bowl",
+        "geo": "NL",
+        "source": "Google Trends",
+        "asOf": "2026-11-01",
+        "start": "2025-11-09",
+        "weeks": [
+          29,
+          0,
+          22,
+          29,
+          30,
+          28,
+          0,
+          28,
+          48,
+          44,
+          36,
+          0,
+          48,
+          62,
+          38,
+          38,
+          46,
+          36,
+          58,
+          38,
+          36,
+          37,
+          21,
+          25,
+          48,
+          28,
+          37,
+          41,
+          31,
+          29,
+          39,
+          63,
+          33,
+          61,
+          55,
+          32,
+          34,
+          37,
+          27,
+          38,
+          43,
+          23,
+          100,
+          87,
+          61,
+          51,
+          37,
+          32,
+          42,
+          29,
+          27,
+          27
+        ],
+        "prev": [
+          0,
+          20,
+          22,
+          0,
+          21,
+          0,
+          0,
+          0,
+          29,
+          32,
+          30,
+          29,
+          22,
+          0,
+          27,
+          21,
+          0,
+          28,
+          0,
+          29,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          23,
+          21,
+          24,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          36,
+          0,
+          0,
+          0,
+          33,
+          27,
+          0,
+          0,
+          24,
+          0,
+          0,
+          0,
+          0,
+          27,
+          23,
+          0,
+          29
+        ],
+        "label": "Stijgt",
+        "text": "Anderhalf keer zo vaak gezocht als vorig jaar.",
+        "yoy": 1.58,
+        "vsLow": 1.5,
+        "network": {
+          "sources": 6,
+          "days": 30,
+          "terms": [
+            "rice bowl",
+            "salmon rice bowl"
+          ],
+          "posts": [
+            {
+              "name": "Tiffy Cooks",
+              "title": "Unatama-Don: Easy Unagi Egg Rice Bowl",
+              "url": "https://tiffycooks.com/unatama-don-easy-unagi-egg-rice-bowl/",
+              "date": "2026-11-09"
+            },
+            {
+              "name": "Just One Cookbook",
+              "title": "Japanese Pork Cutlet Rice Bowl in 30 Minutes!",
+              "url": "https://www.instagram.com/reel/DfcZkr1BUhf/",
+              "date": "2026-11-07"
+            },
+            {
+              "name": "The Foodie Takes Flight",
+              "title": "Sticky tofu rice bowl!",
+              "url": "https://www.instagram.com/reel/DfFBPrfhnYn/",
+              "date": "2026-10-29"
+            },
+            {
+              "name": "I Am A Food Blog",
+              "title": "chat rice bowl has been promoted to soup and now it thinks it’s better than us",
+              "url": "https://www.instagram.com/p/De7nBzBkssv/",
+              "date": "2026-10-25"
+            },
+            {
+              "name": "Bon Appétit",
+              "title": "Meet soboro don, a Japanese rice bowl loaded with savory ground beef, fluffy scrambled eggs, crunchy veggies, and avocado.",
+              "url": "https://www.instagram.com/p/De7vy3tAbOz/",
+              "date": "2026-10-25"
+            },
+            {
+              "name": "Okonomi Kitchen",
+              "title": "Sansho Au Poivre Chicken Rice Bowl",
+              "url": "https://www.okonomikitchen.com/sansho-au-poivre-chicken-rice/",
+              "date": "2026-10-22"
+            }
+          ],
+          "of": 147
+        }
+      },
+      "photoGamma": 0.42,
+      "photoSet": [
+        {
+          "w": 640,
+          "url": "https://www.marionskitchen.com/wp-content/uploads/2026/11/MK_Salmon-crunchShoyu-Chirashi-Bowl_3-640x800.webp"
+        },
+        {
+          "w": 768,
+          "url": "https://www.marionskitchen.com/wp-content/uploads/2026/11/MK_Salmon-crunchShoyu-Chirashi-Bowl_3-768x960.webp"
+        },
+        {
+          "w": 1200,
+          "url": "https://www.marionskitchen.com/wp-content/uploads/2026/11/MK_Salmon-crunchShoyu-Chirashi-Bowl_3-1200x675.webp"
+        },
+        {
+          "w": 1600,
+          "url": "https://www.marionskitchen.com/wp-content/uploads/2026/11/MK_Salmon-crunchShoyu-Chirashi-Bowl_3-1600x1600.webp"
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://www.marionskitchen.com/wp-content/uploads/2026/11/MK_Salmon-crunchShoyu-Chirashi-Bowl_6.webp",
+          "w": 1600,
+          "h": 2000,
+          "thumb": "https://www.marionskitchen.com/wp-content/uploads/2026/11/MK_Salmon-crunchShoyu-Chirashi-Bowl_6-150x150.webp"
+        }
+      ]
     },
     {
       "slug": "jeow-som-biefstuksalade",
@@ -199,7 +707,10 @@
       "category": "Hoofdgerecht",
       "minutes": 25,
       "servings": 4,
-      "tags": ["Aziatisch", "Weinig werk"],
+      "tags": [
+        "Aziatisch",
+        "Weinig werk"
+      ],
       "tint": "sage",
       "glyph": "肉",
       "native": "",
@@ -214,7 +725,10 @@
         "text": "De reel van Tiffy Cooks kreeg 174.178 likes en reacties, bijna twaalf keer zoveel als haar posts normaal halen. Het recept staat op haar eigen site. Jeow som is een Laotiaanse dipsaus; de pepers kun je apart houden, dan is de salade ook voor kinderen."
       },
       "source": "tiffy-cooks",
-      "trendTerms": ["steak salad", "jeow som"],
+      "trendTerms": [
+        "steak salad",
+        "jeow som"
+      ],
       "signals": [
         {
           "source": "Instagram",
@@ -243,22 +757,101 @@
         "url": "https://tiffycooks.com/spicy-tangy-jeow-som-steak-salad/"
       },
       "ingredients": [
-        { "qty": 2, "unit": "", "item": "sjalotten", "group": "Jeow som" },
-        { "qty": 3, "unit": "", "item": "Thaise rode pepertjes (mag weg)", "group": "Jeow som" },
-        { "qty": 12, "unit": "", "item": "teentjes knoflook", "group": "Jeow som" },
-        { "qty": 30, "unit": "g", "item": "verse koriander", "group": "Jeow som" },
-        { "qty": 3, "unit": "", "item": "limoenen, sap", "group": "Jeow som" },
-        { "qty": 25, "unit": "g", "item": "suiker", "group": "Jeow som" },
-        { "qty": 60, "unit": "ml", "item": "vissaus", "group": "Jeow som" },
-        { "qty": 30, "unit": "ml", "item": "olijfolie", "group": "Jeow som" },
-        { "qty": 2, "unit": "", "item": "entrecotes (samen ca. 600 g)", "group": "Salade" },
-        { "qty": 15, "unit": "ml", "item": "zonnebloemolie", "group": "Salade" },
-        { "qty": 2, "unit": "", "item": "komkommers, in grove stukken", "group": "Salade" },
-        { "qty": 300, "unit": "g", "item": "cherrytomaatjes, gehalveerd", "group": "Salade" },
-        { "qty": 100, "unit": "g", "item": "ingelegde rode ui", "group": "Salade" },
-        { "qty": 10, "unit": "g", "item": "Thaise basilicum, fijngesneden", "group": "Salade" },
-        { "qty": 10, "unit": "", "item": "blaadjes munt", "group": "Salade" },
-        { "unit": "", "item": "zout en peper", "group": "Salade" }
+        {
+          "qty": 2,
+          "unit": "",
+          "item": "sjalotten",
+          "group": "Jeow som"
+        },
+        {
+          "qty": 3,
+          "unit": "",
+          "item": "Thaise rode pepertjes (mag weg)",
+          "group": "Jeow som"
+        },
+        {
+          "qty": 12,
+          "unit": "",
+          "item": "teentjes knoflook",
+          "group": "Jeow som"
+        },
+        {
+          "qty": 30,
+          "unit": "g",
+          "item": "verse koriander",
+          "group": "Jeow som"
+        },
+        {
+          "qty": 3,
+          "unit": "",
+          "item": "limoenen, sap",
+          "group": "Jeow som"
+        },
+        {
+          "qty": 25,
+          "unit": "g",
+          "item": "suiker",
+          "group": "Jeow som"
+        },
+        {
+          "qty": 60,
+          "unit": "ml",
+          "item": "vissaus",
+          "group": "Jeow som"
+        },
+        {
+          "qty": 30,
+          "unit": "ml",
+          "item": "olijfolie",
+          "group": "Jeow som"
+        },
+        {
+          "qty": 2,
+          "unit": "",
+          "item": "entrecotes (samen ca. 600 g)",
+          "group": "Salade"
+        },
+        {
+          "qty": 15,
+          "unit": "ml",
+          "item": "zonnebloemolie",
+          "group": "Salade"
+        },
+        {
+          "qty": 2,
+          "unit": "",
+          "item": "komkommers, in grove stukken",
+          "group": "Salade"
+        },
+        {
+          "qty": 300,
+          "unit": "g",
+          "item": "cherrytomaatjes, gehalveerd",
+          "group": "Salade"
+        },
+        {
+          "qty": 100,
+          "unit": "g",
+          "item": "ingelegde rode ui",
+          "group": "Salade"
+        },
+        {
+          "qty": 10,
+          "unit": "g",
+          "item": "Thaise basilicum, fijngesneden",
+          "group": "Salade"
+        },
+        {
+          "qty": 10,
+          "unit": "",
+          "item": "blaadjes munt",
+          "group": "Salade"
+        },
+        {
+          "unit": "",
+          "item": "zout en peper",
+          "group": "Salade"
+        }
       ],
       "steps": [
         "Haal de entrecotes 20 minuten voor het bakken uit de koelkast en bestrooi ze met zout en peper.",
@@ -268,7 +861,169 @@
         "Meng in een grote schaal de komkommer, tomaatjes, ingelegde ui, basilicum en munt met een paar lepels jeow som.",
         "Snijd het vlees in plakken, leg het op de salade en schep er nog wat saus over. Zet de rest van de saus op tafel."
       ],
-      "tip": "Kinderen krijgen de saus zonder pepers, en hun vlees mag iets langer in de pan. Ze kunnen de limoenen uitpersen en de munt en basilicum plukken. Wie het zuur te sterk vindt, roert een extra theelepel suiker door hun deel van de saus."
+      "tip": "Kinderen krijgen de saus zonder pepers, en hun vlees mag iets langer in de pan. Ze kunnen de limoenen uitpersen en de munt en basilicum plukken. Wie het zuur te sterk vindt, roert een extra theelepel suiker door hun deel van de saus.",
+      "spark": {
+        "term": "steak salad",
+        "geo": "world",
+        "source": "Google Trends",
+        "asOf": "2026-11-01",
+        "start": "2025-11-09",
+        "weeks": [
+          58,
+          60,
+          50,
+          56,
+          49,
+          57,
+          61,
+          74,
+          74,
+          68,
+          62,
+          67,
+          70,
+          78,
+          76,
+          71,
+          69,
+          70,
+          77,
+          81,
+          86,
+          78,
+          86,
+          81,
+          86,
+          94,
+          92,
+          94,
+          100,
+          91,
+          92,
+          94,
+          98,
+          88,
+          91,
+          84,
+          75,
+          78,
+          83,
+          86,
+          77,
+          76,
+          78,
+          76,
+          77,
+          76,
+          66,
+          60,
+          62,
+          57,
+          52,
+          61
+        ],
+        "prev": [
+          46,
+          48,
+          40,
+          54,
+          51,
+          49,
+          52,
+          71,
+          65,
+          65,
+          62,
+          62,
+          62,
+          63,
+          62,
+          69,
+          65,
+          66,
+          68,
+          67,
+          76,
+          68,
+          66,
+          65,
+          74,
+          71,
+          75,
+          73,
+          69,
+          78,
+          77,
+          77,
+          80,
+          82,
+          77,
+          80,
+          89,
+          80,
+          86,
+          83,
+          81,
+          71,
+          73,
+          68,
+          66,
+          63,
+          70,
+          62,
+          56,
+          59,
+          55,
+          60
+        ],
+        "label": "Stabiel",
+        "text": "Even vaak gezocht als vorig jaar.",
+        "yoy": 1.01,
+        "vsLow": 1.0,
+        "network": {
+          "sources": 1,
+          "days": 30,
+          "terms": [
+            "steak salad",
+            "jeow som"
+          ],
+          "posts": [
+            {
+              "name": "Tiffy Cooks",
+              "title": "SPICY & TANGY JEOW SOM STEAK SALAD 🌶️ 🥗 my go to craving when it’s that time of the month ~",
+              "url": "https://www.instagram.com/reel/DfZ99gEucK-/",
+              "date": "2026-11-06"
+            }
+          ],
+          "of": 147
+        }
+      },
+      "igTrend": {
+        "name": "Tiffy Cooks",
+        "url": "https://www.instagram.com/reel/DfZ99gEucK-/",
+        "date": "2026-11-06",
+        "title": "SPICY & TANGY JEOW SOM STEAK SALAD 🌶️ 🥗 my go to craving when it’s that time of the month ~",
+        "engagement": 174178,
+        "normal": 14923,
+        "ratio": 11.7,
+        "age": 8,
+        "kind": "uitschieter"
+      },
+      "photoGamma": 0.51,
+      "photoSet": [
+        {
+          "w": 500,
+          "url": "https://tiffycooks.com/wp-content/uploads/2026/10/steak-salad-Serve_1mo3rwYRiMnWRmnGUWzzca96Nqqtdi-F6-500x500.webp"
+        },
+        {
+          "w": 768,
+          "url": "https://tiffycooks.com/wp-content/uploads/2026/10/steak-salad-Serve_1mo3rwYRiMnWRmnGUWzzca96Nqqtdi-F6-768x1024.webp"
+        },
+        {
+          "w": 900,
+          "url": "https://tiffycooks.com/wp-content/uploads/2026/10/steak-salad-Serve_1mo3rwYRiMnWRmnGUWzzca96Nqqtdi-F6.webp"
+        }
+      ]
     },
     {
       "slug": "chinese-komijnaardappeltjes",
@@ -277,7 +1032,12 @@
       "category": "Bijgerecht",
       "minutes": 25,
       "servings": 4,
-      "tags": ["Aziatisch", "Kindvriendelijk", "Weinig werk", "Seizoen"],
+      "tags": [
+        "Aziatisch",
+        "Kindvriendelijk",
+        "Weinig werk",
+        "Seizoen"
+      ],
       "tint": "mustard",
       "glyph": "芋",
       "native": "",
@@ -291,7 +1051,10 @@
         "text": "Maggie Zhu zette deze Chinese gebakken aardappeltjes deze week opnieuw online. Aardappels zijn deze maand volop Nederlands, en de komijn smaakt naar de straatkraampjes in Xi'an zonder dat het pittig hoeft te zijn."
       },
       "source": "omnivore-s-cookbook",
-      "trendTerms": ["chinese cumin potatoes", "cumin potatoes"],
+      "trendTerms": [
+        "chinese cumin potatoes",
+        "cumin potatoes"
+      ],
       "signals": [
         {
           "source": "Omnivore's Cookbook",
@@ -314,14 +1077,46 @@
         "url": "https://omnivorescookbook.com/sauteed-potato/"
       },
       "ingredients": [
-        { "qty": 450, "unit": "g", "item": "kruimige aardappels, in blokjes van 1,5 cm" },
-        { "qty": 4, "unit": "g", "item": "gemalen komijn (2 theelepels)" },
-        { "qty": 1, "unit": "g", "item": "gemalen Sichuanpeper (¼ theelepel, mag weg)" },
-        { "qty": 4, "unit": "g", "item": "Chinese chilivlokken (2 theelepels, mag weg)" },
-        { "qty": 30, "unit": "ml", "item": "pinda- of zonnebloemolie" },
-        { "qty": 2, "unit": "g", "item": "zout" },
-        { "qty": 2, "unit": "", "item": "teentjes knoflook, fijngehakt" },
-        { "qty": 2, "unit": "", "item": "lente-uitjes, in ringetjes" }
+        {
+          "qty": 450,
+          "unit": "g",
+          "item": "kruimige aardappels, in blokjes van 1,5 cm"
+        },
+        {
+          "qty": 4,
+          "unit": "g",
+          "item": "gemalen komijn (2 theelepels)"
+        },
+        {
+          "qty": 1,
+          "unit": "g",
+          "item": "gemalen Sichuanpeper (¼ theelepel, mag weg)"
+        },
+        {
+          "qty": 4,
+          "unit": "g",
+          "item": "Chinese chilivlokken (2 theelepels, mag weg)"
+        },
+        {
+          "qty": 30,
+          "unit": "ml",
+          "item": "pinda- of zonnebloemolie"
+        },
+        {
+          "qty": 2,
+          "unit": "g",
+          "item": "zout"
+        },
+        {
+          "qty": 2,
+          "unit": "",
+          "item": "teentjes knoflook, fijngehakt"
+        },
+        {
+          "qty": 2,
+          "unit": "",
+          "item": "lente-uitjes, in ringetjes"
+        }
       ],
       "steps": [
         "Zet de aardappelblokjes net onder water, breng aan de kook en kook ongeveer 5 minuten, tot ze net zacht zijn.",
@@ -330,7 +1125,189 @@
         "Verhit de olie in een grote antiaanbakpan op middelhoog vuur. Doe de aardappels erin, strooi het zout erover, schep om en verdeel ze in één laag. Bak ongeveer 8 minuten, af en toe omscheppen, tot ze goudbruin en krokant zijn.",
         "Voeg de knoflook, lente-ui en het kruidenmengsel toe (met een scheutje extra olie als de pan droog is) en bak al omscheppend nog een minuut. Serveer meteen."
       ],
-      "tip": "Doe voor kinderen alleen komijn en zout: dat smaakt als heel goede gebakken aardappeltjes. Strooi de chili en Sichuanpeper daarna over het deel van de volwassenen. Kinderen kunnen de kruiden afmeten en mengen."
+      "tip": "Doe voor kinderen alleen komijn en zout: dat smaakt als heel goede gebakken aardappeltjes. Strooi de chili en Sichuanpeper daarna over het deel van de volwassenen. Kinderen kunnen de kruiden afmeten en mengen.",
+      "spark": {
+        "term": "cumin potatoes",
+        "geo": "world",
+        "source": "Google Trends",
+        "asOf": "2026-11-01",
+        "start": "2025-11-09",
+        "weeks": [
+          62,
+          66,
+          46,
+          45,
+          67,
+          51,
+          51,
+          60,
+          49,
+          71,
+          0,
+          43,
+          65,
+          42,
+          67,
+          47,
+          64,
+          41,
+          69,
+          92,
+          64,
+          100,
+          46,
+          80,
+          53,
+          97,
+          80,
+          85,
+          83,
+          87,
+          47,
+          78,
+          76,
+          85,
+          83,
+          46,
+          62,
+          55,
+          57,
+          0,
+          0,
+          64,
+          50,
+          43,
+          71,
+          88,
+          48,
+          52,
+          49,
+          52,
+          3,
+          44
+        ],
+        "prev": [
+          0,
+          46,
+          63,
+          39,
+          0,
+          51,
+          44,
+          49,
+          0,
+          0,
+          0,
+          62,
+          0,
+          47,
+          0,
+          0,
+          51,
+          49,
+          56,
+          50,
+          59,
+          53,
+          57,
+          67,
+          0,
+          56,
+          54,
+          37,
+          36,
+          63,
+          43,
+          47,
+          44,
+          0,
+          0,
+          0,
+          52,
+          0,
+          0,
+          0,
+          42,
+          0,
+          0,
+          0,
+          43,
+          43,
+          39,
+          83,
+          60,
+          52,
+          43,
+          46
+        ],
+        "label": "Dalend",
+        "text": "Een kwart minder gezocht dan vorig jaar.",
+        "yoy": 0.74,
+        "vsLow": 0.9,
+        "network": {
+          "sources": 0,
+          "days": 30,
+          "terms": [
+            "chinese cumin potatoes",
+            "cumin potatoes"
+          ],
+          "posts": [],
+          "of": 147
+        }
+      },
+      "photoGamma": 0.44,
+      "photoSet": [
+        {
+          "w": 600,
+          "url": "https://omnivorescookbook.com/wp-content/uploads/2026/11/230621_Chinese-Sauteed-Potato_3-600x400.jpg"
+        },
+        {
+          "w": 768,
+          "url": "https://omnivorescookbook.com/wp-content/uploads/2026/11/230621_Chinese-Sauteed-Potato_3-768x512.jpg"
+        },
+        {
+          "w": 1200,
+          "url": "https://omnivorescookbook.com/wp-content/uploads/2023/09/230621_Chinese-Sauteed-Potato_3.jpg"
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://omnivorescookbook.com/wp-content/uploads/2026/11/230621_Chinese-Sauteed-Potato_6.jpg",
+          "w": 1200,
+          "h": 1800,
+          "thumb": "https://omnivorescookbook.com/wp-content/uploads/2026/11/230621_Chinese-Sauteed-Potato_6-600x900.jpg"
+        },
+        {
+          "url": "https://omnivorescookbook.com/wp-content/uploads/2026/11/230621_Chinese-Sauteed-Potato_8.jpg",
+          "w": 1200,
+          "h": 1800,
+          "thumb": "https://omnivorescookbook.com/wp-content/uploads/2026/11/230621_Chinese-Sauteed-Potato_8-600x900.jpg"
+        },
+        {
+          "url": "https://omnivorescookbook.com/wp-content/uploads/2026/11/230621_Chinese-Sauteed-Potato_1.jpg",
+          "w": 1200,
+          "h": 800,
+          "thumb": "https://omnivorescookbook.com/wp-content/uploads/2026/11/230621_Chinese-Sauteed-Potato_1-600x400.jpg"
+        },
+        {
+          "url": "https://omnivorescookbook.com/wp-content/uploads/2026/11/230621_Chinese-Sauteed-Potato_2.jpg",
+          "w": 1200,
+          "h": 800,
+          "thumb": "https://omnivorescookbook.com/wp-content/uploads/2026/11/230621_Chinese-Sauteed-Potato_2-600x400.jpg"
+        },
+        {
+          "url": "https://omnivorescookbook.com/wp-content/uploads/2026/11/230621_Chinese-Sauteed-Potato_4.jpg",
+          "w": 1200,
+          "h": 800,
+          "thumb": "https://omnivorescookbook.com/wp-content/uploads/2026/11/230621_Chinese-Sauteed-Potato_4-600x400.jpg"
+        },
+        {
+          "url": "https://omnivorescookbook.com/wp-content/uploads/2026/11/230621_Chinese-Sauteed-Potato_5.jpg",
+          "w": 1200,
+          "h": 800,
+          "thumb": "https://omnivorescookbook.com/wp-content/uploads/2026/11/230621_Chinese-Sauteed-Potato_5-600x400.jpg"
+        }
+      ]
     },
     {
       "slug": "chocolade-crinkle-koekjes",
@@ -340,7 +1317,9 @@
       "minutes": 105,
       "servings": 22,
       "servingsLabel": "koekjes",
-      "tags": ["Kindvriendelijk"],
+      "tags": [
+        "Kindvriendelijk"
+      ],
       "tint": "blush",
       "glyph": "菓",
       "native": "",
@@ -354,7 +1333,10 @@
         "text": "Nagi Maehashi zette deze crinkle cookies deze week online. Ze vragen weinig werk en geen mixer, en het rollen door de poedersuiker is precies wat kinderen graag doen."
       },
       "source": "recipetin-eats",
-      "trendTerms": ["crinkle cookies", "chocolate crinkle cookies"],
+      "trendTerms": [
+        "crinkle cookies",
+        "chocolate crinkle cookies"
+      ],
       "signals": [
         {
           "source": "RecipeTin Eats",
@@ -377,18 +1359,78 @@
         "url": "https://www.recipetineats.com/chocolate-crinkle-cookies/"
       },
       "ingredients": [
-        { "qty": 200, "unit": "g", "item": "pure chocolade (druppels of in stukjes)", "group": "Deeg" },
-        { "qty": 60, "unit": "g", "item": "ongezouten roomboter, gesmolten en afgekoeld", "group": "Deeg" },
-        { "qty": 2, "unit": "", "item": "grote eieren, op kamertemperatuur", "group": "Deeg" },
-        { "qty": 50, "unit": "g", "item": "kristalsuiker", "group": "Deeg" },
-        { "qty": 55, "unit": "g", "item": "lichtbruine basterdsuiker", "group": "Deeg" },
-        { "qty": 5, "unit": "ml", "item": "vanille-extract", "group": "Deeg" },
-        { "qty": 25, "unit": "g", "item": "cacaopoeder, gezeefd", "group": "Deeg" },
-        { "qty": 150, "unit": "g", "item": "bloem", "group": "Deeg" },
-        { "qty": 6, "unit": "g", "item": "bakpoeder", "group": "Deeg" },
-        { "qty": 1, "unit": "g", "item": "zout (snufje)", "group": "Deeg" },
-        { "qty": 50, "unit": "g", "item": "kristalsuiker", "group": "Om in te rollen" },
-        { "qty": 90, "unit": "g", "item": "poedersuiker", "group": "Om in te rollen" }
+        {
+          "qty": 200,
+          "unit": "g",
+          "item": "pure chocolade (druppels of in stukjes)",
+          "group": "Deeg"
+        },
+        {
+          "qty": 60,
+          "unit": "g",
+          "item": "ongezouten roomboter, gesmolten en afgekoeld",
+          "group": "Deeg"
+        },
+        {
+          "qty": 2,
+          "unit": "",
+          "item": "grote eieren, op kamertemperatuur",
+          "group": "Deeg"
+        },
+        {
+          "qty": 50,
+          "unit": "g",
+          "item": "kristalsuiker",
+          "group": "Deeg"
+        },
+        {
+          "qty": 55,
+          "unit": "g",
+          "item": "lichtbruine basterdsuiker",
+          "group": "Deeg"
+        },
+        {
+          "qty": 5,
+          "unit": "ml",
+          "item": "vanille-extract",
+          "group": "Deeg"
+        },
+        {
+          "qty": 25,
+          "unit": "g",
+          "item": "cacaopoeder, gezeefd",
+          "group": "Deeg"
+        },
+        {
+          "qty": 150,
+          "unit": "g",
+          "item": "bloem",
+          "group": "Deeg"
+        },
+        {
+          "qty": 6,
+          "unit": "g",
+          "item": "bakpoeder",
+          "group": "Deeg"
+        },
+        {
+          "qty": 1,
+          "unit": "g",
+          "item": "zout (snufje)",
+          "group": "Deeg"
+        },
+        {
+          "qty": 50,
+          "unit": "g",
+          "item": "kristalsuiker",
+          "group": "Om in te rollen"
+        },
+        {
+          "qty": 90,
+          "unit": "g",
+          "item": "poedersuiker",
+          "group": "Om in te rollen"
+        }
       ],
       "steps": [
         "Klop het cacaopoeder, de bloem, het bakpoeder en het zout los in een kom.",
@@ -400,7 +1442,150 @@
         "Leg ze minstens 7,5 cm uit elkaar en bak 13 minuten zonder de ovendeur open te doen. Ze zijn klaar als de buitenkant vast is en het midden nog wiebelt.",
         "Laat 5 minuten op de plaat afkoelen en daarna op een rooster."
       ],
-      "tip": "Kinderen rollen de balletjes door de twee suikers: hoe dikker de poedersuiker, hoe mooier de barsten. Smelt de chocolade zelf en laat ze daarna roeren."
+      "tip": "Kinderen rollen de balletjes door de twee suikers: hoe dikker de poedersuiker, hoe mooier de barsten. Smelt de chocolade zelf en laat ze daarna roeren.",
+      "spark": {
+        "term": "crinkle cookies",
+        "geo": "world",
+        "source": "Google Trends",
+        "asOf": "2026-11-01",
+        "start": "2025-11-09",
+        "weeks": [
+          14,
+          17,
+          23,
+          39,
+          66,
+          80,
+          87,
+          17,
+          8,
+          8,
+          7,
+          8,
+          8,
+          8,
+          7,
+          7,
+          8,
+          7,
+          7,
+          7,
+          9,
+          7,
+          7,
+          6,
+          7,
+          6,
+          6,
+          7,
+          6,
+          5,
+          6,
+          5,
+          4,
+          5,
+          5,
+          5,
+          6,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          6,
+          5,
+          6,
+          6,
+          6,
+          6,
+          7,
+          7,
+          9
+        ],
+        "prev": [
+          12,
+          16,
+          22,
+          38,
+          63,
+          91,
+          87,
+          14,
+          10,
+          8,
+          9,
+          8,
+          8,
+          9,
+          7,
+          6,
+          6,
+          7,
+          7,
+          6,
+          6,
+          7,
+          7,
+          5,
+          5,
+          5,
+          5,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          5,
+          5,
+          5,
+          5,
+          6,
+          5,
+          6,
+          6,
+          6,
+          5,
+          5,
+          5,
+          6,
+          7,
+          8,
+          7,
+          8,
+          10
+        ],
+        "label": "Stabiel",
+        "text": "Iets minder gezocht dan vorig jaar.",
+        "yoy": 0.88,
+        "vsLow": 1.4,
+        "network": {
+          "sources": 2,
+          "days": 30,
+          "terms": [
+            "crinkle cookies",
+            "chocolate crinkle cookies"
+          ],
+          "posts": [
+            {
+              "name": "RecipeTin Eats",
+              "title": "Crinkle Cookies",
+              "url": "https://www.recipetineats.com/chocolate-crinkle-cookies/",
+              "date": "2026-11-13"
+            },
+            {
+              "name": "Rasa Malaysia",
+              "title": "CHOCOLATE CRINKLE COOKIES – Soft, chewy, and fudgy in the middle with a pretty crackled coating of powdered sugar.",
+              "url": "https://www.instagram.com/p/DfmVJw5IUMY/",
+              "date": "2026-11-11"
+            }
+          ],
+          "of": 147
+        }
+      },
+      "photoGamma": 0.7
     }
   ],
   "ferment": {
@@ -414,12 +1599,30 @@
     "teaser": "Bloemkoolroosjes in pekel, na een week of twee fris zuur.",
     "yield": "1 pot van 1,5 liter",
     "facts": [
-      { "label": "Pot", "value": "1,5 liter, glas" },
-      { "label": "Werk", "value": "20 min" },
-      { "label": "Aanrecht", "value": "meestal 1–2 weken, 18–22 °C" },
-      { "label": "Klaar", "value": "als het zuur ruikt en de pH 4,6 of lager is (pH-strip verplicht)" },
-      { "label": "Bewaren", "value": "koelkast, binnen 1 maand op" },
-      { "label": "Niveau", "value": "Beginner" }
+      {
+        "label": "Pot",
+        "value": "1,5 liter, glas"
+      },
+      {
+        "label": "Werk",
+        "value": "20 min"
+      },
+      {
+        "label": "Aanrecht",
+        "value": "meestal 1–2 weken, 18–22 °C"
+      },
+      {
+        "label": "Klaar",
+        "value": "als het zuur ruikt en de pH 4,6 of lager is (pH-strip verplicht)"
+      },
+      {
+        "label": "Bewaren",
+        "value": "koelkast, binnen 1 maand op"
+      },
+      {
+        "label": "Niveau",
+        "value": "Beginner"
+      }
     ],
     "usedIn": "zalm-shoyu-rijstkom",
     "science": [
@@ -428,17 +1631,63 @@
       "Stukken groente geven minder vocht af dan geraspte, daarom krijgen ze een sterkere pekel (5 %) dan geraspte groente (rond 3 %). Proef neemt de strengste waarde uit de bronnen."
     ],
     "timeline": [
-      { "when": "Dag 0", "title": "Inmaken", "text": "Roosjes in de pot, pekel erover, gewicht erop. Alles onder het vocht.", "now": true },
-      { "when": "Dag 2–5", "title": "Bubbels", "text": "De pekel wordt troebel en er komen bubbels. Elke dag even het gas laten ontsnappen en kijken of alles onder staat.", "now": false },
-      { "when": "Dag 7–14", "title": "Proeven en meten", "text": "Ruikt het fris zuur, proef dan een roosje en meet met een pH-strip. Bij 4,6 of lager: klaar.", "now": false },
-      { "when": "Daarna", "title": "Koelkast", "text": "Deksel dicht en in de koelkast. Binnen een maand opeten.", "now": false }
+      {
+        "when": "Dag 0",
+        "title": "Inmaken",
+        "text": "Roosjes in de pot, pekel erover, gewicht erop. Alles onder het vocht.",
+        "now": true
+      },
+      {
+        "when": "Dag 2–5",
+        "title": "Bubbels",
+        "text": "De pekel wordt troebel en er komen bubbels. Elke dag even het gas laten ontsnappen en kijken of alles onder staat.",
+        "now": false
+      },
+      {
+        "when": "Dag 7–14",
+        "title": "Proeven en meten",
+        "text": "Ruikt het fris zuur, proef dan een roosje en meet met een pH-strip. Bij 4,6 of lager: klaar.",
+        "now": false
+      },
+      {
+        "when": "Daarna",
+        "title": "Koelkast",
+        "text": "Deksel dicht en in de koelkast. Binnen een maand opeten.",
+        "now": false
+      }
     ],
     "ingredients": [
-      { "qty": 600, "unit": "g", "item": "bloemkool, in kleine roosjes (schoongemaakt gewogen)", "base": true, "key": "bloemkool" },
-      { "qty": 700, "unit": "ml", "item": "water (kraanwater mag; staat er veel chloor in, laat het dan een nacht open staan)", "base": true, "key": "water" },
-      { "qty": 35, "unit": "g", "item": "zeezout zonder jodium en zonder antiklontermiddel", "salt": true, "key": "zout" },
-      { "qty": 3, "unit": "", "item": "teentjes knoflook, gehalveerd" },
-      { "qty": 4, "unit": "", "item": "plakjes verse gember" }
+      {
+        "qty": 600,
+        "unit": "g",
+        "item": "bloemkool, in kleine roosjes (schoongemaakt gewogen)",
+        "base": true,
+        "key": "bloemkool"
+      },
+      {
+        "qty": 700,
+        "unit": "ml",
+        "item": "water (kraanwater mag; staat er veel chloor in, laat het dan een nacht open staan)",
+        "base": true,
+        "key": "water"
+      },
+      {
+        "qty": 35,
+        "unit": "g",
+        "item": "zeezout zonder jodium en zonder antiklontermiddel",
+        "salt": true,
+        "key": "zout"
+      },
+      {
+        "qty": 3,
+        "unit": "",
+        "item": "teentjes knoflook, gehalveerd"
+      },
+      {
+        "qty": 4,
+        "unit": "",
+        "item": "plakjes verse gember"
+      }
     ],
     "steps": [
       "Was een glazen pot van 1,5 liter, het deksel en een klein glazen gewichtje (of een zakje met pekel) in heet sop en spoel na met heel heet water. Gebruik geen koper, messing of zink.",
@@ -454,11 +1703,26 @@
     "bad": "Pluizige schimmel (groen, blauw, zwart, bruin of wit pluis), slijmerige roosjes of pekel, of een rotte geur in plaats van een zure: dan alles weggooien, ook als het maar een plekje is. Ook weggooien als de pH boven 4,6 blijft.",
     "kids": "Kinderen kunnen de bloemkool in roosjes breken en het zout afwegen op de keukenweegschaal. Laat ze elke dag de bubbels tellen en de pH-strip naast de kleurenkaart houden.",
     "sources": [
-      { "label": "University of Illinois Extension · Fermenting", "url": "https://extension.illinois.edu/food-preservation/fermenting" },
-      { "label": "University of Illinois Extension · Lacto-fermentation handout", "url": "https://extension.illinois.edu/sites/default/files/fermentation_handout_2020.pdf" },
-      { "label": "UC Irvine SSIHI · How to lacto-ferment any vegetable", "url": "https://ssihi.uci.edu/files/2024/05/How-to-Lacto-Ferment-Any-Vegetable.pdf" },
-      { "label": "NCHFP · Containers, covers and weights", "url": "https://nchfp.uga.edu/how/ferment/general-information-on-fermenting/suitable-containers-covers-and-weights-for-fermenting-food/" },
-      { "label": "UC Davis · Troubleshooting fermented vegetables", "url": "https://ucfoodsafety.ucdavis.edu/sites/g/files/dgvnsk7366/files/media/documents/Troubleshooting%20fermented%20fruits%20and%20vegetables%20FINAL.pdf" }
+      {
+        "label": "University of Illinois Extension · Fermenting",
+        "url": "https://extension.illinois.edu/food-preservation/fermenting"
+      },
+      {
+        "label": "University of Illinois Extension · Lacto-fermentation handout",
+        "url": "https://extension.illinois.edu/sites/default/files/fermentation_handout_2020.pdf"
+      },
+      {
+        "label": "UC Irvine SSIHI · How to lacto-ferment any vegetable",
+        "url": "https://ssihi.uci.edu/files/2024/05/How-to-Lacto-Ferment-Any-Vegetable.pdf"
+      },
+      {
+        "label": "NCHFP · Containers, covers and weights",
+        "url": "https://nchfp.uga.edu/how/ferment/general-information-on-fermenting/suitable-containers-covers-and-weights-for-fermenting-food/"
+      },
+      {
+        "label": "UC Davis · Troubleshooting fermented vegetables",
+        "url": "https://ucfoodsafety.ucdavis.edu/sites/g/files/dgvnsk7366/files/media/documents/Troubleshooting%20fermented%20fruits%20and%20vegetables%20FINAL.pdf"
+      }
     ]
   }
 }

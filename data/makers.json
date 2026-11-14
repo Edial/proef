@@ -46,6 +46,13 @@
    "country": "KR",
    "affiliation": "blog"
   },
+  "marions-kitchen": {
+   "name": "Marion's Kitchen",
+   "site": "https://www.marionskitchen.com",
+   "instagram": "marionskitchen",
+   "country": "AU",
+   "affiliation": "blog"
+  },
   "noble-pig": {
    "name": "Noble Pig",
    "person": "Cathy Pollak",
@@ -63,6 +70,18 @@
    "country": "US",
    "affiliation": "blog"
   },
+  "rachel-phipps": {
+   "name": "Rachel Phipps",
+   "site": "https://rachelphipps.com",
+   "country": "GB"
+  },
+  "recipetin-eats": {
+   "name": "RecipeTin Eats",
+   "site": "https://www.recipetineats.com",
+   "instagram": "recipe_tin",
+   "country": "AU",
+   "affiliation": "blog"
+  },
   "the-woks-of-life": {
    "name": "The Woks of Life",
    "person": "Familie Leung",
@@ -72,9 +91,21 @@
    "instagram": "thewoksoflife",
    "country": "US",
    "affiliation": "blog"
+  },
+  "tiffy-cooks": {
+   "name": "Tiffy Cooks",
+   "site": "https://tiffycooks.com",
+   "instagram": "tiffy.cooks",
+   "country": "CA",
+   "affiliation": "blog"
   }
  },
  "recipes": {
+  "romige-pompoenpasta-spek-salie": "rachel-phipps",
+  "zalm-shoyu-rijstkom": "marions-kitchen",
+  "jeow-som-biefstuksalade": "tiffy-cooks",
+  "chinese-komijnaardappeltjes": "omnivore-s-cookbook",
+  "chocolade-crinkle-koekjes": "recipetin-eats",
   "tom-yum-noedelsoep-gehakt": "the-woks-of-life",
   "kinoko-gohan-paddenstoelenrijst": "just-one-cookbook",
   "japanse-koolrolletjes-tomatensaus": "just-one-cookbook",
