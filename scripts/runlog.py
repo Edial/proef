@@ -65,7 +65,8 @@ def edition_metrics(path, gate):
     insta = sum(instagram_trend.counts(r.get("igTrend")) for r in rs)
     either = sum((r.get("spark") or {}).get("label") in hot or instagram_trend.counts(r.get("igTrend")) for r in rs)
     labels = ", ".join(f"{(r.get('spark') or {}).get('label', '–')}{'+IG' if instagram_trend.counts(r.get('igTrend')) else ''}" for r in rs)
-    pushed = subprocess.run(["git", "log", "-1", "--format=%cI", "--", path], capture_output=True, text=True, cwd=ROOT).stdout.strip()
+    # de commit die het bestand toevoegde = de push van de routine (niet de latere commit van de meting)
+    pushed = (subprocess.run(["git", "log", "--diff-filter=A", "--format=%cI", "--", path], capture_output=True, text=True, cwd=ROOT).stdout.strip().splitlines() or [""])[-1]
     metric(editie=f"Nº {ed.get('number', 0):02d} ({ed.get('id')})", in_trek=f"{either} van {len(rs)}", google=google,
            instagram=insta, labels=labels, trendregel=gate, live=gate in ("ok", "toch"), concept_gepusht=pushed or None)
 

@@ -1,0 +1,17 @@
+{
+ "workflow": "Nieuwsbrief",
+ "uitkomst": "success",
+ "aanleiding": "workflow_run",
+ "start": "2026-11-14T06:20:18+00:00",
+ "eind": "2026-11-14T06:21:05+00:00",
+ "duur_s": 47,
+ "gepland": null,
+ "te_laat_min": null,
+ "run": "https://github.com/Edial/proef/actions/runs/43565840676",
+ "run_id": 43565840676,
+ "details": {
+  "nieuwsbrief": "verstuurd naar de lijst",
+  "onderwerp": "🎃 Romige pompoenpasta en zalm-rijstkommen 🥢",
+  "let_op": "achteraf uit de run"
+ }
+}

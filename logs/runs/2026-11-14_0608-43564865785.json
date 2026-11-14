@@ -1,0 +1,23 @@
+{
+ "workflow": "Trends en foto's meten",
+ "uitkomst": "success",
+ "aanleiding": "push",
+ "start": "2026-11-14T06:08:33+00:00",
+ "eind": "2026-11-14T06:20:16+00:00",
+ "duur_s": 703,
+ "gepland": null,
+ "te_laat_min": null,
+ "run": "https://github.com/Edial/proef/actions/runs/43564865785",
+ "run_id": 43564865785,
+ "details": {
+  "editie": "Nº 04 (2026-46)",
+  "in_trek": "3 van 5",
+  "google": 2,
+  "instagram": 1,
+  "labels": "Seizoen, Stijgt, Stabiel+IG, Dalend, Stabiel",
+  "trendregel": "ok",
+  "live": true,
+  "concept_gepusht": "2026-11-14T06:08:29+00:00",
+  "let_op": "cijfers achteraf uit de editie"
+ }
+}
