@@ -4,10 +4,11 @@ Alles wat automatisch draait, per week, nieuwste eerst. Wordt na elke run bijgew
 
 ## Week 46 · zaterdag 14 november 2026
 
-**Samenvatting:** Nº 04 (2026-46): live om 07:20, in trek 3 van 5 (Instagram 1) · nieuwsbrief: verstuurd naar de lijst (za 07:21) · 2 van 2 geplande runs te laat (max 7 u 58)
+**Samenvatting:** Nº 04 (2026-46): live om 07:20, in trek 3 van 5 (Instagram 1) · nieuwsbrief: verstuurd naar de lijst (za 07:21) · 3 van 3 geplande runs te laat (max 7 u 58)
 
 | Wanneer | Wat | Te laat | Duur | Uitkomst | Details |
 |---|---|---|---|---|---|
+| za 14-11 12:39 | [Instagram dagelijks](https://github.com/Edial/proef/actions/runs/43591058418) | 7 u 09 | 3 min | ✓ gelukt | Instagram-accounts: 138/146 · nieuwe berichten: 34 · trending op Instagram: 118 · waarvan groeit: 0 · top: Kookmutsjes: • POTATO POCKETS WITH BEEF •; Kookmutsjes: • WRAPS MET GEHAKT EN KAAS •; Kookmutsjes: • CHEESE STEAK WRAPS • |
 | za 14-11 07:20 | [Nieuwsbrief](https://github.com/Edial/proef/actions/runs/43565840676) |  | 47 s | ✓ gelukt | nieuwsbrief: verstuurd naar de lijst · onderwerp: 🎃 Romige pompoenpasta en zalm-rijstkommen 🥢 · let op: achteraf uit de run |
 | za 14-11 07:08 | [Trends en foto's meten](https://github.com/Edial/proef/actions/runs/43564865785) |  | 11 min | ✓ gelukt | Nº 04 (2026-46) · in trek: 3 van 5 · Google: 2 · Instagram: 1 · labels: Seizoen, Stijgt, Stabiel+IG, Dalend, Stabiel · trendregel: ok · live: ja · concept binnen: 07:08 · let op: cijfers achteraf uit de editie |
 | za 14-11 02:57 | [Bronnen ophalen](https://github.com/Edial/proef/actions/runs/43543600911) | 3 u 58 | 8 min | ✓ gelukt | let op: achteraf toegevoegd, zonder cijfers |
