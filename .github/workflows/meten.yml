@@ -29,6 +29,8 @@ concurrency:
 jobs:
   meten:
     runs-on: ubuntu-latest
+    env:
+      RUNLOG_FILE: /tmp/runlog.json   # cijfers voor LOGBOEK.md (scripts/runlog.py)
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -75,6 +77,14 @@ jobs:
             echo "ok=false" >> "$GITHUB_OUTPUT"
           fi
           cat "$RUNNER_TEMP/gate.txt"
+      - name: Uitkomst voor het logboek
+        if: always()
+        run: |
+          G="${{ steps.gate.outputs.ok }}"
+          if [ "${{ steps.ed.outputs.concept }}" != "true" ]; then G="al live (opnieuw gemeten)";
+          elif [ "$G" = "true" ] && [ "${{ github.event.inputs.toch_publiceren }}" = "true" ]; then G="toch";
+          elif [ "$G" = "true" ]; then G="ok"; else G="niet"; fi
+          python3 scripts/runlog.py editie "${{ steps.ed.outputs.file }}" --trendregel "$G" || true
       - name: Publiceren (id in editions/index.json)
         if: steps.ed.outputs.concept == 'true' && steps.gate.outputs.ok == 'true'
         run: |
@@ -116,3 +126,11 @@ jobs:
           gh issue create --title "Editie $ID niet live: trendregel niet gehaald" --body-file "$RUNNER_TEMP/issue.md" || true
           echo "::error::Editie $ID haalt de trendregel niet en is niet gepubliceerd (zie het issue)."
           exit 1
+      - name: Cijfers voor het logboek
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: runlog
+          path: /tmp/runlog.json
+          if-no-files-found: ignore
+          retention-days: 7

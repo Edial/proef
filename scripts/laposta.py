@@ -25,6 +25,8 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
+import runlog
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 API = "https://api.laposta.nl/v2"
 
@@ -53,6 +55,7 @@ def campaign_for(eid, meta, test):
     sent = [c for c in campaigns if c.get("name") == f"Proef {eid}" and (c.get("delivery_started") or c.get("delivery_requested"))]
     if sent and not test:
         print(f"Editie {eid} is al verstuurd of ingepland ({sent[0].get('delivery_started') or sent[0].get('delivery_requested')}). Niets gedaan.")
+        runlog.metric(nieuwsbrief="al eerder verstuurd, niets gedaan")
         sys.exit(0)
     for c in campaigns:
         if c.get("name") == name and not c.get("delivery_started") and not c.get("delivery_requested"):
@@ -81,6 +84,7 @@ def main():
     res = call("POST", f"campaign/{cid}/content", [("html", (folder / "mail.html").read_text())])
     report = (res.get("campaign") or {}).get("report") or res.get("report")
     print(f"campagne {cid} ({'nieuw' if new else 'bijgewerkt'}): {meta['subject']}")
+    runlog.metric(onderwerp=meta["subject"])
     if report:
         print("Laposta meldt bij het importeren:", json.dumps(report, ensure_ascii=False))
     if mode in ("test", "prepare"):
@@ -88,9 +92,11 @@ def main():
             call("POST", f"campaign/{cid}/action/testmail", [("email", sys.argv[3])])
             print("testmail verstuurd")
         print("klaargezet in Laposta, nog niet verstuurd naar de lijst" if mode == "prepare" else "testcampagne bijgewerkt")
+        runlog.metric(nieuwsbrief="klaargezet met testmail, nog niet verstuurd" if mode == "prepare" else "testcampagne")
     else:
         call("POST", f"campaign/{cid}/action/send")
         print("verstuurd naar de lijst")
+        runlog.metric(nieuwsbrief="verstuurd naar de lijst")
 
 
 if __name__ == "__main__":

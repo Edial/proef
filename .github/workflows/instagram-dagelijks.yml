@@ -22,6 +22,8 @@ concurrency:
 jobs:
   instagram:
     runs-on: ubuntu-latest
+    env:
+      RUNLOG_FILE: /tmp/runlog.json   # cijfers voor LOGBOEK.md (scripts/runlog.py)
     timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
@@ -44,3 +46,11 @@ jobs:
           git commit -m "Instagram bijgewerkt ($(date -u +%F))"
           for i in 1 2 3; do git pull --rebase origin main && git push && exit 0; sleep 10; done
           exit 1
+      - name: Cijfers voor het logboek
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: runlog
+          path: /tmp/runlog.json
+          if-no-files-found: ignore
+          retention-days: 7

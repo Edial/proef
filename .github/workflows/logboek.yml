@@ -1,0 +1,45 @@
+name: Logboek
+
+# Na elke run van de Actions hieronder: tijden, uitkomst en cijfers vastleggen in logs/runs/ en LOGBOEK.md
+# (scripts/runlog.py). Eén voor één (concurrency), zodat twee runs nooit tegelijk LOGBOEK.md schrijven.
+# De controle wordt alleen gelogd als hij faalt.
+on:
+  workflow_run:
+    workflows: ["Bronnen ophalen", "Instagram dagelijks", "Trends en foto's meten", "Nieuwsbrief", "Controle"]
+    types: [completed]
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: logboek
+  cancel-in-progress: false
+
+jobs:
+  log:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Cijfers van de run ophalen
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: runlog
+          path: /tmp/runlog
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+      - name: Vastleggen
+        run: python3 scripts/runlog.py add "$GITHUB_EVENT_PATH" /tmp/runlog/runlog.json
+      - name: Opslaan
+        run: |
+          git config user.name "proef-bot"
+          git config user.email "proef-bot@users.noreply.github.com"
+          git add logs/ LOGBOEK.md
+          git diff --cached --quiet && exit 0
+          git commit -m "Logboek: ${{ github.event.workflow_run.name }} (${{ github.event.workflow_run.conclusion }})"
+          for i in 1 2 3 4 5; do git pull --rebase origin main && git push && exit 0; sleep $((i * 5)); done
+          exit 1

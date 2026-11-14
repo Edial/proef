@@ -1,0 +1,15 @@
+{
+ "workflow": "Trends en foto's meten",
+ "uitkomst": "success",
+ "aanleiding": "push",
+ "start": "2026-11-07T06:07:20+00:00",
+ "eind": "2026-11-07T06:15:33+00:00",
+ "duur_s": 493,
+ "gepland": null,
+ "te_laat_min": null,
+ "run": "https://github.com/Edial/proef/actions/runs/42345587458",
+ "run_id": 42345587458,
+ "details": {
+  "let_op": "achteraf toegevoegd, zonder cijfers"
+ }
+}
