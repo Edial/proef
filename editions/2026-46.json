@@ -1,0 +1,464 @@
+{
+  "id": "2026-46",
+  "number": 4,
+  "year": 2026,
+  "week": 46,
+  "date": "2026-11-14",
+  "intro": "Pompoen en aardappel doen deze week het zware werk, en de rest is snel klaar. Een romige pasta van geroosterde butternut, krokante komijnaardappeltjes, een Laotiaanse biefstuksalade en chocoladekoekjes die de kinderen door de poedersuiker rollen.",
+  "cover": {
+    "color": "moss"
+  },
+  "mail": {
+    "subject": "🎃 Romige pompoenpasta en zalm-rijstkommen 🥢",
+    "preview": "Plus een pittige Laotiaanse biefstuksalade, komijnaardappeltjes en chocolade-crinkles. Ferment: bloemkool in pekel."
+  },
+  "watch": [
+    {
+      "term": "mashed potatoes",
+      "source": "Foxes Love Lemons",
+      "url": "https://foxeslovelemons.com/greek-mashed-potatoes/",
+      "note": "aardappelpuree stijgt in NL (14 koks); site was niet te openen"
+    },
+    {
+      "term": "pumpkin spice bread",
+      "source": "Damn Delicious",
+      "url": "https://damndelicious.net/2017/12/22/pumpkin-spice-bread-with-cream-cheese-frosting/",
+      "note": "pumpkin spice: Seizoen in NL; site weigert automatische toegang"
+    },
+    {
+      "term": "butternut squash white bean soup",
+      "source": "Two Peas & Their Pod",
+      "url": "https://www.twopeasandtheirpod.com/butternut-squash-white-bean-soup/",
+      "note": "eerst gekozen als soep, site gaf 403"
+    },
+    {
+      "term": "french onion soup",
+      "source": "RecipeTin Eats",
+      "url": "https://www.recipetineats.com/french-onion-soup/",
+      "note": "french onion: Seizoen; bijna twee uur op het vuur, te lang voor Proef"
+    },
+    {
+      "term": "potato pockets with beef",
+      "source": "Kookmutsjes",
+      "url": "https://www.instagram.com/reel/DfXMRsUtV7n/",
+      "note": "grootste Instagram-uitschieter van de week",
+      "signals": [
+        {
+          "source": "Instagram",
+          "metric": "engagement",
+          "value": 58.1,
+          "unit": "x",
+          "period": "november 2026",
+          "geo": "world",
+          "url": "https://www.instagram.com/reel/DfXMRsUtV7n/",
+          "note": "492.684 likes en reacties, 58,1× normaal voor Kookmutsjes"
+        }
+      ]
+    }
+  ],
+  "recipes": [
+    {
+      "slug": "romige-pompoenpasta-spek-salie",
+      "title": "Romige pompoenpasta met krokant spek en salie",
+      "dek": "Geroosterde butternut met knoflook wordt in de blender een gladde saus. Spek en salie maken het krokant.",
+      "category": "Hoofdgerecht",
+      "minutes": 45,
+      "servings": 4,
+      "tags": ["Kindvriendelijk", "Weinig werk", "Seizoen"],
+      "tint": "persimmon",
+      "glyph": "瓜",
+      "native": "",
+      "roman": "",
+      "trend": {
+        "source": "Rachel Phipps",
+        "text": "Butternut staat nu bij veel koks op het menu."
+      },
+      "signal": {
+        "source": "Proef-netwerk",
+        "text": "Butternut squash kwam de afgelopen maand bij veertien koks uit ons netwerk voorbij, waarvan vijf kernbronnen; de maand ervoor bij vijf. Google Trends noemt het een seizoensterm. Rachel Phipps zette deze pasta deze maand opnieuw online: de oven doet het werk en de saus is zonder room."
+      },
+      "source": "rachel-phipps",
+      "trendTerms": ["butternut squash", "butternut squash pasta"],
+      "signals": [
+        {
+          "source": "Proef-netwerk",
+          "metric": "listed",
+          "value": 14,
+          "unit": "koks",
+          "period": "laatste 30 dagen",
+          "geo": "world",
+          "url": "https://www.rachelphipps.com/2026/11/vegan-creamy-squash-pasta-recipe-bacon-sage.html",
+          "note": "butternut squash: 14 koks (ervoor 5,0), waarvan 5 kernbronnen; Google: Seizoen [world]"
+        }
+      ],
+      "links": [
+        {
+          "label": "Rachel Phipps · Creamy Squash Pasta with Crispy Bacon & Sage",
+          "url": "https://www.rachelphipps.com/2026/11/vegan-creamy-squash-pasta-recipe-bacon-sage.html"
+        }
+      ],
+      "photo": "https://www.rachelphipps.com/wp-content/uploads/2020/10/Creamy-Butternut-Squash-Pasta.jpg",
+      "photoCredit": {
+        "label": "Rachel Phipps",
+        "url": "https://www.rachelphipps.com/2026/11/vegan-creamy-squash-pasta-recipe-bacon-sage.html"
+      },
+      "ingredients": [
+        { "qty": 600, "unit": "g", "item": "butternutpompoen, geschild en in blokjes van 2 cm" },
+        { "qty": 4, "unit": "", "item": "teentjes knoflook, met schil" },
+        { "qty": 1, "unit": "g", "item": "chilivlokken (snufje, mag weg)" },
+        { "qty": 15, "unit": "ml", "item": "olijfolie" },
+        { "qty": 400, "unit": "g", "item": "penne" },
+        { "qty": 150, "unit": "g", "item": "ontbijtspek (ca. 8 plakjes), in reepjes" },
+        { "qty": 15, "unit": "", "item": "blaadjes verse salie" },
+        { "qty": 220, "unit": "ml", "item": "groentebouillon" },
+        { "qty": 40, "unit": "g", "item": "Parmezaanse kaas, in schaafsel" },
+        { "unit": "", "item": "zout" }
+      ],
+      "steps": [
+        "Verwarm de oven voor op 200 °C. Hussel de pompoen, de hele knoflookteentjes, de chilivlokken, de olie en een flinke snuf zout door elkaar op een bakplaat. Rooster 30 minuten, tot de pompoen zacht is en aan de onderkant bruin.",
+        "Kook intussen de penne in ruim gezouten water volgens de verpakking. Schep voor het afgieten een mok kookwater apart.",
+        "Leg het spek in een koude koekenpan en bak het op hoog vuur in 4–5 minuten krokant. Schep het eruit op keukenpapier. Zet het vuur middelhoog en bak de salieblaadjes in het vet in een halve minuut knapperig; leg ze bij het spek.",
+        "Doe de pompoen in de blender, knijp de zachte knoflook uit de schil erbij en voeg de bouillon en een snuf zout toe. Mix glad; gebruik een scheut kookwater als het te dik is.",
+        "Doe de pasta terug in de pan met de saus en roer op middelhoog vuur tot alles warm is en de saus glanzend aan de pasta blijft hangen. Voeg zo nodig nog wat kookwater toe.",
+        "Verdeel over warme borden en strooi het spek, de salie en de Parmezaan erover."
+      ],
+      "tip": "Laat voor kinderen de chilivlokken weg. Ze kunnen de pompoenblokjes op de bakplaat leggen en zelf op de knop van de blender drukken. Voor een vegetarische versie bak je de salie in olijfolie en laat je het spek weg."
+    },
+    {
+      "slug": "zalm-shoyu-rijstkom",
+      "title": "Rijstkom met shoyu-zalm",
+      "dek": "Blokjes zalm in een marinade van sojasaus, sesamolie en honing, op sushirijst met komkommer en nori.",
+      "category": "Lunch",
+      "minutes": 40,
+      "servings": 4,
+      "tags": ["Aziatisch", "Kindvriendelijk", "Weinig werk", "Seizoen"],
+      "tint": "sky",
+      "glyph": "丼",
+      "native": "サーモン丼",
+      "roman": "sāmon don",
+      "trend": {
+        "source": "Marion's Kitchen",
+        "text": "Rijstkommen worden nu in Nederland meer gezocht."
+      },
+      "signal": {
+        "source": "Proef-netwerk",
+        "text": "Rice bowls kwamen de afgelopen maand bij zes koks uit ons netwerk voorbij, waarvan vijf kernbronnen. Google Trends ziet de zoekterm in Nederland stijgen. Marion Grasby zette deze shoyu-zalmkom deze week online; een topping van gefermenteerde bloemkool brengt er seizoensgroente in."
+      },
+      "source": "marions-kitchen",
+      "trendTerms": ["rice bowl", "salmon rice bowl"],
+      "signals": [
+        {
+          "source": "Proef-netwerk",
+          "metric": "listed",
+          "value": 6,
+          "unit": "koks",
+          "period": "laatste 30 dagen",
+          "geo": "world",
+          "url": "https://www.marionskitchen.com/salmon-shoyu-bowl/",
+          "note": "rice bowl: 6 koks (ervoor 1,0), waarvan 5 kernbronnen; Google: Stijgt [NL]"
+        }
+      ],
+      "links": [
+        {
+          "label": "Marion's Kitchen · Salmon Shoyu Bowl",
+          "url": "https://www.marionskitchen.com/salmon-shoyu-bowl/"
+        }
+      ],
+      "photo": "https://www.marionskitchen.com/wp-content/uploads/2026/11/MK_Salmon-crunchShoyu-Chirashi-Bowl_3.webp",
+      "photoCredit": {
+        "label": "Marion Grasby",
+        "url": "https://www.marionskitchen.com/salmon-shoyu-bowl/"
+      },
+      "ingredients": [
+        { "qty": 600, "unit": "g", "item": "zalmfilet van sashimikwaliteit, zonder vel, in blokjes van 2 cm", "group": "Zalm" },
+        { "qty": 120, "unit": "ml", "item": "sojasaus", "group": "Marinade" },
+        { "qty": 30, "unit": "ml", "item": "geroosterde sesamolie", "group": "Marinade" },
+        { "qty": 20, "unit": "g", "item": "honing", "group": "Marinade" },
+        { "qty": 15, "unit": "ml", "item": "citroensap", "group": "Marinade" },
+        { "qty": 30, "unit": "ml", "item": "chili-olie met krokante stukjes", "group": "Aan tafel (optioneel)" },
+        { "qty": 300, "unit": "g", "item": "Japanse sushirijst (ongekookt), gekookt en afgekoeld tot kamertemperatuur", "group": "Kom" },
+        { "qty": 1, "unit": "", "item": "komkommer, in kleine blokjes", "group": "Kom" },
+        { "qty": 2, "unit": "", "item": "lente-uitjes, in ringetjes", "group": "Kom" },
+        { "qty": 10, "unit": "g", "item": "geroosterd sesamzaad", "group": "Kom" },
+        { "qty": 2, "unit": "", "item": "vellen nori, in dunne reepjes", "group": "Kom" },
+        { "qty": 150, "unit": "g", "item": "gefermenteerde bloemkool (ferment van de week), uitgelekt", "group": "Kom" }
+      ],
+      "steps": [
+        "Kook de rijst volgens de verpakking en laat hem afkoelen tot kamertemperatuur.",
+        "Roer de sojasaus, sesamolie, honing en het citroensap door elkaar tot de honing is opgelost.",
+        "Schep de zalm voorzichtig door de marinade, dek af en zet 30 minuten in de koelkast.",
+        "Verdeel de rijst over vier kommen. Schep de zalm uit de marinade en leg hem op de rijst, met de komkommer en de gefermenteerde bloemkool ernaast.",
+        "Strooi lente-ui, sesamzaad en nori erover. Zet de chili-olie op tafel, zodat iedereen zelf kiest."
+      ],
+      "tip": "Eten de kinderen liever geen rauwe vis (of ben je zwanger)? Leg hun deel van de zalm na het marineren 8–10 minuten in een oven van 200 °C. Kinderen kunnen zelf hun kom vullen; laat de chili-olie weg en geef een klein beetje marinade als saus."
+    },
+    {
+      "slug": "jeow-som-biefstuksalade",
+      "title": "Laotiaanse biefstuksalade met jeow som",
+      "dek": "Gebakken entrecote op een frisse salade, met een zure, pittige saus van limoen, vissaus, knoflook en koriander.",
+      "category": "Hoofdgerecht",
+      "minutes": 25,
+      "servings": 4,
+      "tags": ["Aziatisch", "Weinig werk"],
+      "tint": "sage",
+      "glyph": "肉",
+      "native": "",
+      "roman": "",
+      "instagram": "https://www.instagram.com/reel/DfZ99gEucK-/",
+      "trend": {
+        "source": "Instagram",
+        "text": "Tiffy Cooks' salade valt nu op op Instagram."
+      },
+      "signal": {
+        "source": "Instagram",
+        "text": "De reel van Tiffy Cooks kreeg 174.178 likes en reacties, bijna twaalf keer zoveel als haar posts normaal halen. Het recept staat op haar eigen site. Jeow som is een Laotiaanse dipsaus; de pepers kun je apart houden, dan is de salade ook voor kinderen."
+      },
+      "source": "tiffy-cooks",
+      "trendTerms": ["steak salad", "jeow som"],
+      "signals": [
+        {
+          "source": "Instagram",
+          "metric": "engagement",
+          "value": 11.7,
+          "unit": "x",
+          "period": "november 2026",
+          "geo": "world",
+          "url": "https://www.instagram.com/reel/DfZ99gEucK-/",
+          "note": "174.178 likes en reacties, 11,7× normaal voor Tiffy Cooks"
+        }
+      ],
+      "links": [
+        {
+          "label": "Tiffy Cooks · Spicy Tangy Jeow Som Steak Salad",
+          "url": "https://tiffycooks.com/spicy-tangy-jeow-som-steak-salad/"
+        },
+        {
+          "label": "Instagram · Tiffy Cooks",
+          "url": "https://www.instagram.com/reel/DfZ99gEucK-/"
+        }
+      ],
+      "photo": "https://tiffycooks.com/wp-content/uploads/2026/10/steak-salad-Serve_1mo3rwYRiMnWRmnGUWzzca96Nqqtdi-F6.webp",
+      "photoCredit": {
+        "label": "Tiffy Cooks",
+        "url": "https://tiffycooks.com/spicy-tangy-jeow-som-steak-salad/"
+      },
+      "ingredients": [
+        { "qty": 2, "unit": "", "item": "sjalotten", "group": "Jeow som" },
+        { "qty": 3, "unit": "", "item": "Thaise rode pepertjes (mag weg)", "group": "Jeow som" },
+        { "qty": 12, "unit": "", "item": "teentjes knoflook", "group": "Jeow som" },
+        { "qty": 30, "unit": "g", "item": "verse koriander", "group": "Jeow som" },
+        { "qty": 3, "unit": "", "item": "limoenen, sap", "group": "Jeow som" },
+        { "qty": 25, "unit": "g", "item": "suiker", "group": "Jeow som" },
+        { "qty": 60, "unit": "ml", "item": "vissaus", "group": "Jeow som" },
+        { "qty": 30, "unit": "ml", "item": "olijfolie", "group": "Jeow som" },
+        { "qty": 2, "unit": "", "item": "entrecotes (samen ca. 600 g)", "group": "Salade" },
+        { "qty": 15, "unit": "ml", "item": "zonnebloemolie", "group": "Salade" },
+        { "qty": 2, "unit": "", "item": "komkommers, in grove stukken", "group": "Salade" },
+        { "qty": 300, "unit": "g", "item": "cherrytomaatjes, gehalveerd", "group": "Salade" },
+        { "qty": 100, "unit": "g", "item": "ingelegde rode ui", "group": "Salade" },
+        { "qty": 10, "unit": "g", "item": "Thaise basilicum, fijngesneden", "group": "Salade" },
+        { "qty": 10, "unit": "", "item": "blaadjes munt", "group": "Salade" },
+        { "unit": "", "item": "zout en peper", "group": "Salade" }
+      ],
+      "steps": [
+        "Haal de entrecotes 20 minuten voor het bakken uit de koelkast en bestrooi ze met zout en peper.",
+        "Maal de sjalotten, de knoflook en de koriander fijn in een hakmolen. Houd de pepertjes apart als er kinderen mee-eten.",
+        "Roer het limoensap met de suiker en de vissaus tot de suiker is opgelost. Roer het kruidenmengsel en de olijfolie erdoor: dit is de jeow som. Maal voor de volwassenen de pepertjes fijn en roer ze door de helft van de saus.",
+        "Verhit de zonnebloemolie in een koekenpan op middelhoog tot hoog vuur en bak de entrecotes ongeveer 2 minuten per kant voor medium-rare, of langer naar smaak. Laat 5 minuten rusten.",
+        "Meng in een grote schaal de komkommer, tomaatjes, ingelegde ui, basilicum en munt met een paar lepels jeow som.",
+        "Snijd het vlees in plakken, leg het op de salade en schep er nog wat saus over. Zet de rest van de saus op tafel."
+      ],
+      "tip": "Kinderen krijgen de saus zonder pepers, en hun vlees mag iets langer in de pan. Ze kunnen de limoenen uitpersen en de munt en basilicum plukken. Wie het zuur te sterk vindt, roert een extra theelepel suiker door hun deel van de saus."
+    },
+    {
+      "slug": "chinese-komijnaardappeltjes",
+      "title": "Chinese aardappeltjes met komijn",
+      "dek": "Voorgekookte aardappelblokjes krokant gebakken met komijn, knoflook en lente-ui. Sichuanpeper en chili zijn optioneel.",
+      "category": "Bijgerecht",
+      "minutes": 25,
+      "servings": 4,
+      "tags": ["Aziatisch", "Kindvriendelijk", "Weinig werk", "Seizoen"],
+      "tint": "mustard",
+      "glyph": "芋",
+      "native": "",
+      "roman": "",
+      "trend": {
+        "source": "Omnivore's Cookbook",
+        "text": "Deze week opnieuw gedeeld door Omnivore's Cookbook."
+      },
+      "signal": {
+        "source": "Omnivore's Cookbook",
+        "text": "Maggie Zhu zette deze Chinese gebakken aardappeltjes deze week opnieuw online. Aardappels zijn deze maand volop Nederlands, en de komijn smaakt naar de straatkraampjes in Xi'an zonder dat het pittig hoeft te zijn."
+      },
+      "source": "omnivore-s-cookbook",
+      "trendTerms": ["chinese cumin potatoes", "cumin potatoes"],
+      "signals": [
+        {
+          "source": "Omnivore's Cookbook",
+          "metric": "listed",
+          "period": "november 2026",
+          "geo": "world",
+          "url": "https://omnivorescookbook.com/sauteed-potato/",
+          "note": "nieuw in de feed van een kernbron op 2026-11-12"
+        }
+      ],
+      "links": [
+        {
+          "label": "Omnivore's Cookbook · Chinese Sauteed Potato (Cumin Chili Home Fries)",
+          "url": "https://omnivorescookbook.com/sauteed-potato/"
+        }
+      ],
+      "photo": "https://omnivorescookbook.com/wp-content/uploads/2023/09/230621_Chinese-Sauteed-Potato_3.jpg",
+      "photoCredit": {
+        "label": "Maggie Zhu",
+        "url": "https://omnivorescookbook.com/sauteed-potato/"
+      },
+      "ingredients": [
+        { "qty": 450, "unit": "g", "item": "kruimige aardappels, in blokjes van 1,5 cm" },
+        { "qty": 4, "unit": "g", "item": "gemalen komijn (2 theelepels)" },
+        { "qty": 1, "unit": "g", "item": "gemalen Sichuanpeper (¼ theelepel, mag weg)" },
+        { "qty": 4, "unit": "g", "item": "Chinese chilivlokken (2 theelepels, mag weg)" },
+        { "qty": 30, "unit": "ml", "item": "pinda- of zonnebloemolie" },
+        { "qty": 2, "unit": "g", "item": "zout" },
+        { "qty": 2, "unit": "", "item": "teentjes knoflook, fijngehakt" },
+        { "qty": 2, "unit": "", "item": "lente-uitjes, in ringetjes" }
+      ],
+      "steps": [
+        "Zet de aardappelblokjes net onder water, breng aan de kook en kook ongeveer 5 minuten, tot ze net zacht zijn.",
+        "Spoel ze af met koud water, laat goed uitlekken en even drogen: zo worden ze krokanter.",
+        "Meng de komijn, Sichuanpeper en chilivlokken in een schaaltje.",
+        "Verhit de olie in een grote antiaanbakpan op middelhoog vuur. Doe de aardappels erin, strooi het zout erover, schep om en verdeel ze in één laag. Bak ongeveer 8 minuten, af en toe omscheppen, tot ze goudbruin en krokant zijn.",
+        "Voeg de knoflook, lente-ui en het kruidenmengsel toe (met een scheutje extra olie als de pan droog is) en bak al omscheppend nog een minuut. Serveer meteen."
+      ],
+      "tip": "Doe voor kinderen alleen komijn en zout: dat smaakt als heel goede gebakken aardappeltjes. Strooi de chili en Sichuanpeper daarna over het deel van de volwassenen. Kinderen kunnen de kruiden afmeten en mengen."
+    },
+    {
+      "slug": "chocolade-crinkle-koekjes",
+      "title": "Chocolade-crinkles",
+      "dek": "Zachte chocoladekoekjes, eerst door suiker en dan door poedersuiker gerold, zodat ze in de oven mooi openbarsten.",
+      "category": "Gebak",
+      "minutes": 105,
+      "servings": 22,
+      "servingsLabel": "koekjes",
+      "tags": ["Kindvriendelijk"],
+      "tint": "blush",
+      "glyph": "菓",
+      "native": "",
+      "roman": "",
+      "trend": {
+        "source": "RecipeTin Eats",
+        "text": "Deze week nieuw bij RecipeTin Eats, voor de feestdagen."
+      },
+      "signal": {
+        "source": "RecipeTin Eats",
+        "text": "Nagi Maehashi zette deze crinkle cookies deze week online. Ze vragen weinig werk en geen mixer, en het rollen door de poedersuiker is precies wat kinderen graag doen."
+      },
+      "source": "recipetin-eats",
+      "trendTerms": ["crinkle cookies", "chocolate crinkle cookies"],
+      "signals": [
+        {
+          "source": "RecipeTin Eats",
+          "metric": "listed",
+          "period": "november 2026",
+          "geo": "world",
+          "url": "https://www.recipetineats.com/chocolate-crinkle-cookies/",
+          "note": "nieuw in de feed van een kernbron op 2026-11-13"
+        }
+      ],
+      "links": [
+        {
+          "label": "RecipeTin Eats · Crinkle Cookies",
+          "url": "https://www.recipetineats.com/chocolate-crinkle-cookies/"
+        }
+      ],
+      "photo": "https://www.recipetineats.com/tachyon/2026/11/Crinkle-Cookies-6-1.jpg",
+      "photoCredit": {
+        "label": "Nagi Maehashi",
+        "url": "https://www.recipetineats.com/chocolate-crinkle-cookies/"
+      },
+      "ingredients": [
+        { "qty": 200, "unit": "g", "item": "pure chocolade (druppels of in stukjes)", "group": "Deeg" },
+        { "qty": 60, "unit": "g", "item": "ongezouten roomboter, gesmolten en afgekoeld", "group": "Deeg" },
+        { "qty": 2, "unit": "", "item": "grote eieren, op kamertemperatuur", "group": "Deeg" },
+        { "qty": 50, "unit": "g", "item": "kristalsuiker", "group": "Deeg" },
+        { "qty": 55, "unit": "g", "item": "lichtbruine basterdsuiker", "group": "Deeg" },
+        { "qty": 5, "unit": "ml", "item": "vanille-extract", "group": "Deeg" },
+        { "qty": 25, "unit": "g", "item": "cacaopoeder, gezeefd", "group": "Deeg" },
+        { "qty": 150, "unit": "g", "item": "bloem", "group": "Deeg" },
+        { "qty": 6, "unit": "g", "item": "bakpoeder", "group": "Deeg" },
+        { "qty": 1, "unit": "g", "item": "zout (snufje)", "group": "Deeg" },
+        { "qty": 50, "unit": "g", "item": "kristalsuiker", "group": "Om in te rollen" },
+        { "qty": 90, "unit": "g", "item": "poedersuiker", "group": "Om in te rollen" }
+      ],
+      "steps": [
+        "Klop het cacaopoeder, de bloem, het bakpoeder en het zout los in een kom.",
+        "Smelt de chocolade in een hittebestendige kom in de magnetron, in stappen van 20 seconden en steeds roeren. Laat 5 minuten afkoelen.",
+        "Klop de boter, eieren, beide suikers en de vanille door de chocolade tot het glad is. Roer met een houten lepel de droge ingrediënten erdoor. Het deeg is heel zacht.",
+        "Zet het deeg ongeveer 30 minuten in de koelkast, tot je er balletjes van kunt rollen. Niet langer dan nodig.",
+        "Verwarm de oven voor op 180 °C (hetelucht 160 °C) en bekleed twee bakplaten met bakpapier.",
+        "Rol balletjes van ongeveer een eetlepel deeg (20–22 stuks). Rol ze eerst licht door de kristalsuiker en dan dik door de poedersuiker, tot ze helemaal wit zijn. Rol alleen de balletjes die meteen de oven in gaan.",
+        "Leg ze minstens 7,5 cm uit elkaar en bak 13 minuten zonder de ovendeur open te doen. Ze zijn klaar als de buitenkant vast is en het midden nog wiebelt.",
+        "Laat 5 minuten op de plaat afkoelen en daarna op een rooster."
+      ],
+      "tip": "Kinderen rollen de balletjes door de twee suikers: hoe dikker de poedersuiker, hoe mooier de barsten. Smelt de chocolade zelf en laat ze daarna roeren."
+    }
+  ],
+  "ferment": {
+    "number": 4,
+    "slug": "bloemkool-in-pekel",
+    "title": "Bloemkool in pekel",
+    "glyph": "酵",
+    "native": "",
+    "roman": "",
+    "lede": "Bloemkoolroosjes in een pekel van 5 %, met knoflook en een paar plakjes gember. Na één à twee weken op het aanrecht zijn ze fris zuur en nog knapperig: lekker door een rijstkom of naast de borrel.",
+    "teaser": "Bloemkoolroosjes in pekel, na een week of twee fris zuur.",
+    "yield": "1 pot van 1,5 liter",
+    "facts": [
+      { "label": "Pot", "value": "1,5 liter, glas" },
+      { "label": "Werk", "value": "20 min" },
+      { "label": "Aanrecht", "value": "meestal 1–2 weken, 18–22 °C" },
+      { "label": "Klaar", "value": "als het zuur ruikt en de pH 4,6 of lager is (pH-strip verplicht)" },
+      { "label": "Bewaren", "value": "koelkast, binnen 1 maand op" },
+      { "label": "Niveau", "value": "Beginner" }
+    ],
+    "usedIn": "zalm-shoyu-rijstkom",
+    "science": [
+      "Op bloemkool leven van nature melkzuurbacteriën. In een pekel van 5 % krijgen rotbacteriën weinig kans, terwijl melkzuurbacteriën er goed tegen kunnen. Ze eten de suikers uit de bloemkool en maken er melkzuur en koolzuurgas van.",
+      "Dat zuur maakt het ferment veilig: onder pH 4,6 kunnen ziekmakers als de botulismebacterie niet groeien. Bloemkool is van zichzelf weinig zuur, daarom meet je het met een pH-strip en vertrouw je niet alleen op je neus.",
+      "Stukken groente geven minder vocht af dan geraspte, daarom krijgen ze een sterkere pekel (5 %) dan geraspte groente (rond 3 %). Proef neemt de strengste waarde uit de bronnen."
+    ],
+    "timeline": [
+      { "when": "Dag 0", "title": "Inmaken", "text": "Roosjes in de pot, pekel erover, gewicht erop. Alles onder het vocht.", "now": true },
+      { "when": "Dag 2–5", "title": "Bubbels", "text": "De pekel wordt troebel en er komen bubbels. Elke dag even het gas laten ontsnappen en kijken of alles onder staat.", "now": false },
+      { "when": "Dag 7–14", "title": "Proeven en meten", "text": "Ruikt het fris zuur, proef dan een roosje en meet met een pH-strip. Bij 4,6 of lager: klaar.", "now": false },
+      { "when": "Daarna", "title": "Koelkast", "text": "Deksel dicht en in de koelkast. Binnen een maand opeten.", "now": false }
+    ],
+    "ingredients": [
+      { "qty": 600, "unit": "g", "item": "bloemkool, in kleine roosjes (schoongemaakt gewogen)", "base": true, "key": "bloemkool" },
+      { "qty": 700, "unit": "ml", "item": "water (kraanwater mag; staat er veel chloor in, laat het dan een nacht open staan)", "base": true, "key": "water" },
+      { "qty": 35, "unit": "g", "item": "zeezout zonder jodium en zonder antiklontermiddel", "salt": true, "key": "zout" },
+      { "qty": 3, "unit": "", "item": "teentjes knoflook, gehalveerd" },
+      { "qty": 4, "unit": "", "item": "plakjes verse gember" }
+    ],
+    "steps": [
+      "Was een glazen pot van 1,5 liter, het deksel en een klein glazen gewichtje (of een zakje met pekel) in heet sop en spoel na met heel heet water. Gebruik geen koper, messing of zink.",
+      "Los {zout} g zout op in {water} ml water: dat is een pekel van 5 %. Weeg het zout altijd, niet met een lepel.",
+      "Doe de knoflook en gember onderin de pot en schik de bloemkoolroosjes erop. Laat bovenin 5 cm ruimte vrij.",
+      "Giet de pekel erover tot de roosjes helemaal onder staan, en leg het gewichtje erop zodat niets boven komt drijven. Te weinig pekel? Maak er bij met 50 g zout per liter water.",
+      "Leg het deksel losjes op de pot (of gebruik een waterslot) en zet hem op het aanrecht bij 18–22 °C, uit de zon. Zet er een schaaltje onder voor overlopend vocht.",
+      "Laat elke dag even het gas ontsnappen en controleer of alles onder het vocht staat. Schep een vlak wit vliesje eraf.",
+      "Na een week begin je te ruiken en te proeven. Is het fris zuur, meet dan met een pH-strip: bij 4,6 of lager is het klaar. Komt de pH niet onder 4,6, gooi het dan weg.",
+      "Draai het deksel dicht en zet de pot in de koelkast. Binnen een maand opeten."
+    ],
+    "ok": "Bubbels, gesis bij het openen, een frisse zure geur en troebel vocht. Een vlak wit, grijs of roze vliesje op het vocht (kahmgist) is onschuldig: schep het eraf en controleer dat alles onder staat. Iets zachtere roosjes die schoon en zuur ruiken, zijn veilig.",
+    "bad": "Pluizige schimmel (groen, blauw, zwart, bruin of wit pluis), slijmerige roosjes of pekel, of een rotte geur in plaats van een zure: dan alles weggooien, ook als het maar een plekje is. Ook weggooien als de pH boven 4,6 blijft.",
+    "kids": "Kinderen kunnen de bloemkool in roosjes breken en het zout afwegen op de keukenweegschaal. Laat ze elke dag de bubbels tellen en de pH-strip naast de kleurenkaart houden.",
+    "sources": [
+      { "label": "University of Illinois Extension · Fermenting", "url": "https://extension.illinois.edu/food-preservation/fermenting" },
+      { "label": "University of Illinois Extension · Lacto-fermentation handout", "url": "https://extension.illinois.edu/sites/default/files/fermentation_handout_2020.pdf" },
+      { "label": "UC Irvine SSIHI · How to lacto-ferment any vegetable", "url": "https://ssihi.uci.edu/files/2024/05/How-to-Lacto-Ferment-Any-Vegetable.pdf" },
+      { "label": "NCHFP · Containers, covers and weights", "url": "https://nchfp.uga.edu/how/ferment/general-information-on-fermenting/suitable-containers-covers-and-weights-for-fermenting-food/" },
+      { "label": "UC Davis · Troubleshooting fermented vegetables", "url": "https://ucfoodsafety.ucdavis.edu/sites/g/files/dgvnsk7366/files/media/documents/Troubleshooting%20fermented%20fruits%20and%20vegetables%20FINAL.pdf" }
+    ]
+  }
+}
