@@ -96,6 +96,22 @@ def read(handle, limit=100):
     return [p for p in out if p["title"]]
 
 
+def photo(handle, code, limit=100):
+    """De afbeelding van één post (bij een reel het omslagbeeld): (url, soort) of (None, reden). De url verloopt na
+    een paar dagen; download hem dus meteen (scripts/instagram_photo.py)."""
+    fields = f"business_discovery.username({handle}){{media.limit({limit}){{permalink,media_type,media_url,thumbnail_url,children{{media_type,media_url,thumbnail_url}}}}}}"
+    data = _get(os.environ["IG_USER_ID"], {"fields": fields})["business_discovery"]
+    for m in data.get("media", {}).get("data", []):
+        if f"/{code}/" in m.get("permalink", ""):
+            kids = (m.get("children") or {}).get("data", [])
+            for x in [m] + kids:
+                url = x.get("thumbnail_url") or (x.get("media_url") if x.get("media_type") != "VIDEO" else None)
+                if url:
+                    return url, m.get("media_type")
+            return None, f"post gevonden ({m.get('media_type')}), maar Instagram geeft geen afbeelding"
+    return None, "post niet bij de laatste 100 van dit account"
+
+
 def profile(handle, limit=12):
     """Naam, website, volgers en gemiddelde reacties: genoeg om te beslissen of een account erbij moet."""
     f = (f"business_discovery.username({handle}){{username,name,website,biography,followers_count,media_count,"
@@ -161,6 +177,10 @@ def main():
             if posts:
                 print(f"OK    @{h.lstrip('@'):22} {len(posts)} posts, van {posts[-1]['published']:%Y-%m-%d} tot {posts[0]['published']:%Y-%m-%d}")
             time.sleep(0.3)
+        return
+    if arg == "foto":  # foto <handle> <code>: geeft Instagram de afbeelding van deze post?
+        url, kind = photo(sys.argv[2].lstrip("@"), sys.argv[3])
+        print(f"OK    {kind}: {url[:60]}…" if url else f"FOUT  {kind}")
         return
     if arg == "bronnen":
         ok = 0
