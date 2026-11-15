@@ -91,7 +91,8 @@ def read(handle, limit=100):
                     "published": dt.datetime.strptime(m["timestamp"], "%Y-%m-%dT%H:%M:%S%z"),
                     # like_count ontbreekt als het account likes verbergt; dan telt alleen het aantal reacties
                     "views": "" if likes is None else str(likes + comments),
-                    "likes": likes, "comments": comments, "followers": data.get("followers_count")})
+                    "likes": likes, "comments": comments, "followers": data.get("followers_count"),
+                    "caption": (m.get("caption") or "").strip()})
     return [p for p in out if p["title"]]
 
 

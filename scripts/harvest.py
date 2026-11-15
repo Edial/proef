@@ -261,6 +261,9 @@ def main():
         w.writeheader()
         w.writerows(sorted(posts.values(), key=lambda p: (p["published"], p["source"]), reverse=True))
     runlog.metric(berichten_nieuw=len(posts) - n0)
+    # onderschriften van wat nu trending is (voor de routine: is het een gerecht, staat het recept erin?) en de thema's
+    import instagram_trend
+    instagram_trend.write_pool({p["url"]: p.get("caption", "") for _, kind, p in results if kind == "instagram"}, today)
     if only_ig:
         print(f"Instagram bijgewerkt: {len(posts)} berichten bewaard ({len(posts) - n0:+d}).")
         return

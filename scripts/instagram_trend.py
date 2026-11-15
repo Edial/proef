@@ -44,6 +44,7 @@ DAYS, MIN_RATIO, MIN_ENGAGEMENT, MIN_POSTS, COMMENT_SHARE = 28, 5.0, 1000, 8, 0.
 GROW_MIN_AGE, GROW_MAX_AGE, GROW_RATIO = 7, 42, 2.0   # groeit nu: post van 1 tot 6 weken, week-groei ≥ 2× normaal
 SHARE_AT_AGE = {1: 0.4, 2: 0.8}   # deel van de uiteindelijke likes en reacties dat een post na 1 of 2 dagen heeft
 MATURE = 3                        # vanaf zoveel dagen oud is een post uitgegroeid
+SWEET = {"Gebak", "Bakken", "Dessert", "Zoet", "Koekjes", "Taart"}   # categorieën voor het zoete recept
 NOT_A_POST = re.compile(r"\b(giveaway|winactie|win a|winnen)\b", re.I)
 
 
@@ -134,6 +135,69 @@ def counts(trend):
     return trend.get("ratio", 0) >= MIN_RATIO and trend.get("engagement", 0) >= MIN_ENGAGEMENT and trend.get("age", 0) <= DAYS
 
 
+CAPTIONS = ROOT / "data" / "ig_captions.json"
+THEMES_FILE = ROOT / "data" / "ig_trends.json"
+# thema's voor de Trends-pagina: ingrediënten en soorten gerechten (geen recepten). Engels en Nederlands → één label.
+THEMES = {
+    "pompoen": r"pumpkin|pompoen|kabocha|butternut|squash", "aardappel": r"potato|aardappel", "zoete aardappel": r"sweet potato|zoete aardappel",
+    "kool": r"cabbage|kool\b|sauerkraut|zuurkool|kimchi", "paddenstoelen": r"mushroom|paddenstoel|champignon|shiitake",
+    "appel": r"\bapple|appel", "peer": r"\bpear\b|\bpeer", "cranberry": r"cranberr", "citroen": r"lemon|citroen", "tomaat": r"tomato|toma(a)?t",
+    "bonen": r"\bbeans?\b|bonen|chickpea|kikkererwt|lentil|linzen", "tofu": r"tofu", "ei": r"\beggs?\b|\bei(eren)?\b|omelet",
+    "kip": r"chicken|\bkip", "rundvlees": r"\bbeef|steak|rundvlees|gehakt|biefstuk", "varkensvlees": r"pork|varkens|bacon|spek",
+    "zalm en vis": r"salmon|zalm|\bfish\b|\bvis\b|tuna|tonijn|shrimp|garnal", "kalkoen": r"turkey|kalkoen",
+    "noedels": r"noodle|noedel|ramen|udon|pho\b", "rijst": r"\brice\b|rijst|risotto|gohan", "pasta": r"pasta|spaghetti|lasagn|pastina|gnocchi|orzo",
+    "soep": r"\bsoup|soep|stew|stoof|broth", "dumplings": r"dumpling|wonton|gyoza|potsticker", "wraps en broodjes": r"\bwrap|sandwich|broodje|toast|burger",
+    "salade": r"salad", "curry": r"curry|masala|\bdal\b", "roerbak": r"stir.?fry|roerbak|\bwok", "ovenschotel": r"casserole|ovenschotel|traybake|sheet.?pan|gratin|scalloped",
+    "taart en pie": r"\bpie\b|taart|\btart\b|galette|cheesecake", "koekjes": r"cookie|koekje|biscuit", "cake": r"\bcake|brownie|muffin|cupcake",
+    "brood": r"\bbread|brood|sourdough|zuurdesem|focaccia|bagel", "chocolade": r"chocolat", "karamel": r"caramel|karamel",
+    "kaas": r"cheese|kaas|parmesan|feta|burrata", "miso": r"\bmiso", "gochujang": r"gochujang", "knoflook": r"garlic|knoflook",
+    "chili en pittig": r"\bchil[il]|spicy|pittig|sriracha|hot sauce", "saus en dip": r"\bsauce|\bsaus|\bdip\b|dressing|pesto",
+    "ontbijt": r"breakfast|ontbijt|pancake|pannenkoek|granola|oat", "drankjes": r"cocktail|martini|latte|matcha|\bpunch\b|smoothie",
+}
+
+
+def write_pool(new_captions=None, today=None):
+    """Bewaart het onderschrift van elke post die nu trending is (data/ig_captions.json, voor de routine) en telt de
+    thema's voor de Trends-pagina (data/ig_trends.json): bij hoeveel makers een ingrediënt of soort gerecht nu een hit is."""
+    hits = trending(today)
+    old = json.loads(CAPTIONS.read_text()) if CAPTIONS.exists() else {}
+    caps = {}
+    for h in hits:
+        c = code(h["url"])
+        text = (new_captions or {}).get(h["url"]) or old.get(c) or ""
+        if text:
+            caps[c] = text[:1800]
+    CAPTIONS.write_text(json.dumps(caps, ensure_ascii=False, indent=0) + "\n")
+    themes = {}
+    for h in hits:
+        text = (caps.get(code(h["url"])) or h["title"]).lower()
+        for label, pat in THEMES.items():
+            if re.search(pat, text):
+                t = themes.setdefault(label, {"makers": {}, "posts": 0})
+                t["posts"] += 1
+                t["makers"][h["name"]] = max(t["makers"].get(h["name"], 0), h["engagement"])
+    rows = [{"label": k, "makers": len(v["makers"]), "posts": v["posts"], "likes": sum(v["makers"].values()),
+             "names": sorted(v["makers"], key=lambda n: -v["makers"][n])[:3]} for k, v in themes.items() if len(v["makers"]) >= 3]
+    rows.sort(key=lambda r: (-r["makers"], -r["likes"]))
+    THEMES_FILE.write_text(json.dumps({"generated": (today or dt.date.today()).isoformat(), "hits": len(hits),
+                                       "makers": len({h["source"] for h in hits}), "themes": rows[:12]}, ensure_ascii=False, indent=1) + "\n")
+    return caps
+
+
+def series(source, url, today):
+    """De laatste 30 posts van deze maker (oud → nieuw) als likes en reacties, met de plek van deze post: voor het
+    staafjesdiagram op de site."""
+    with POSTS.open(newline="") as f:
+        rows = sorted((p for p in csv.DictReader(f) if p["kind"] == "instagram" and p["source"] == source), key=lambda p: p["published"])
+    vals = [(engagement(p) or 0, p["url"] == url) for p in rows]
+    at = next((i for i, v in enumerate(vals) if v[1]), None)
+    if at is None:
+        return None
+    lo = max(0, min(at - 22, len(vals) - 30))
+    part = vals[lo:lo + 30]
+    return {"values": [v[0] for v in part], "at": at - lo}
+
+
 def measure(path):
     ed = json.loads(pathlib.Path(path).read_text())
     today = dt.date.fromisoformat(ed["date"]) if ed.get("date") else dt.date.today()
@@ -147,16 +211,23 @@ def measure(path):
             r.pop("igTrend", None)
             print(f"{r['slug'][:34]:34} Instagram-post niet in data/posts.csv (account niet gevolgd of te oud)")
             continue
-        r["igTrend"] = {k: s[k] for k in ("name", "url", "date", "title", "engagement", "normal", "ratio", "age", "kind",
-                                           "growth", "growthRatio") if k in s}
+        r["igTrend"] = {k: s[k] for k in ("name", "source", "url", "date", "title", "engagement", "normal", "ratio", "age", "kind",
+                                           "growth", "growthRatio", "extra") if k in s}
+        r["igTrend"]["series"] = series(s["source"], s["url"], today)
         how = (f"{s['growth']} erbij in een week ({s['growthRatio']}× een gewone post)" if s["kind"] == "groeit"
                else f"{s['engagement']} likes en reacties, {s['ratio']}× normaal")
         print(f"{r['slug'][:34]:34} {s['name']}: {how}"
               f"{'' if counts(r['igTrend']) else ' (telt niet mee: geen uitschieter en groeit niet genoeg)'}")
+    # vanaf Nº 05: het nummer is de rangorde. Gerechten op extra aandacht (grootste hit eerst), het zoete recept als laatste.
+    if (ed.get("number") or 0) >= 5 and not any(r.get("spark") for r in ed.get("recipes", [])):
+        sweet = lambda r: r.get("category") in SWEET
+        ed["recipes"].sort(key=lambda r: (sweet(r), -((r.get("igTrend") or {}).get("extra") or 0)))
     pathlib.Path(path).write_text(json.dumps(ed, ensure_ascii=False, indent=2) + "\n")
 
 
 def main():
+    if len(sys.argv) > 1 and sys.argv[1] == "--pool":
+        return print(len(write_pool()), "onderschriften bewaard; thema's in data/ig_trends.json")
     if len(sys.argv) > 1 and sys.argv[1] != "--top":
         return measure(sys.argv[1])
     top = int(sys.argv[2]) if len(sys.argv) > 2 else None
