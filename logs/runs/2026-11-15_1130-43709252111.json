@@ -1,0 +1,19 @@
+{
+ "workflow": "Instagram dagelijks",
+ "uitkomst": "success",
+ "aanleiding": "workflow_dispatch",
+ "start": "2026-11-15T11:30:33+00:00",
+ "eind": "2026-11-15T12:09:59+00:00",
+ "duur_s": 2366,
+ "gepland": null,
+ "te_laat_min": null,
+ "run": "https://github.com/Edial/proef/actions/runs/43709252111",
+ "run_id": 43709252111,
+ "details": {
+  "instagram_accounts": "116/185",
+  "berichten_nieuw": 2054,
+  "trending": 135,
+  "groeit": 0,
+  "top": "Kookmutsjes: • POTATO POCKETS WITH BEEF •; Kookmutsjes: • WRAPS MET GEHAKT EN KAAS •; Kookmutsjes: • CHEESE STEAK WRAPS •"
+ }
+}
