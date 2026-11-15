@@ -99,8 +99,8 @@ def check_recipe(r, where, seen):
     if r.get("photo"):
         if not str(r["photo"]).startswith("https://"):
             err(where, "photo moet een https-link zijn")
-        if "instagram" in str(r["photo"]) or "fbcdn" in str(r["photo"]):
-            err(where, "photo mag geen foto van Instagram zijn; laat photo weg, dan toont de site de post zelf (veld instagram)")
+        if "cdninstagram" in str(r["photo"]) or "fbcdn" in str(r["photo"]) or "instagram.com" in str(r["photo"]):
+            err(where, "photo mag geen adres van Instagram zijn (dat verloopt); laat photo weg, dan haalt GitHub de foto van de post op (veld instagram)")
     elif not instagram_trend.code(r.get("instagram")):
         err(where, "geen photo: dat mag alleen bij een recept dat van Instagram zelf komt (veld instagram met de url van de post)")
     check_video(r.get("video"), where)

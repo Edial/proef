@@ -52,6 +52,11 @@ jobs:
         run: python3 scripts/trends_collect.py ${{ steps.ed.outputs.file }} || echo "Google Trends mislukt, niet blokkerend"
       - name: Instagram (likes en reacties uit de harvest van vrijdagnacht)
         run: python3 scripts/instagram_trend.py ${{ steps.ed.outputs.file }} || echo "instagram_trend mislukt, niet blokkerend"
+      - name: Foto van de post, voor recepten die van Instagram zelf komen
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+        run: python3 scripts/instagram_photo.py ${{ steps.ed.outputs.file }} || echo "instagram_photo mislukt, niet blokkerend"
       - name: Foto's even licht
         run: python3 scripts/photo_light.py ${{ steps.ed.outputs.file }} || echo "photo_light mislukt, niet blokkerend"
       - name: Kleinere fotomaten van de bron
@@ -101,7 +106,7 @@ jobs:
         run: |
           git config user.name "proef-bot"
           git config user.email "proef-bot@users.noreply.github.com"
-          git add editions/ data/trends.csv data/makers.json recept/ sitemap.xml index.html assets/fonts/
+          git add editions/ assets/ig/ data/trends.csv data/makers.json recept/ sitemap.xml index.html assets/fonts/
           git diff --cached --quiet && exit 0
           git commit -m "Trends en foto's gemeten (${{ steps.ed.outputs.file }})"
           git pull --rebase origin main
