@@ -4,10 +4,11 @@ Alles wat automatisch draait, per week, nieuwste eerst. Wordt na elke run bijgew
 
 ## Week 46 · zaterdag 14 november 2026
 
-**Samenvatting:** Nº 04 (2026-46): live om 07:20, in trek 3 van 5 (Instagram 1) · nieuwsbrief: verstuurd naar de lijst (za 07:21) · 3 van 3 geplande runs te laat (max 7 u 58)
+**Samenvatting:** Nº 04 (2026-46): live om 07:20, in trek 3 van 5 (Instagram 1) · nieuwsbrief: verstuurd naar de lijst (za 07:21) · 4 van 4 geplande runs te laat (max 7 u 58)
 
 | Wanneer | Wat | Te laat | Duur | Uitkomst | Details |
 |---|---|---|---|---|---|
+| zo 15-11 13:06 | [Instagram dagelijks](https://github.com/Edial/proef/actions/runs/43712188156) | 7 u 37 | 3 min | ✓ gelukt | Instagram-accounts: 0/185 · nieuwe berichten: -9 · trending op Instagram: 117 · waarvan groeit: 0 · top: Kookmutsjes: • POTATO POCKETS WITH BEEF •; Kookmutsjes: • WRAPS MET GEHAKT EN KAAS •; Kookmutsjes: • CHEESE STEAK WRAPS • |
 | zo 15-11 12:30 | [Instagram dagelijks](https://github.com/Edial/proef/actions/runs/43709252111) |  | 39 min | ✓ gelukt | Instagram-accounts: 116/185 · nieuwe berichten: 2054 · trending op Instagram: 135 · waarvan groeit: 0 · top: Kookmutsjes: • POTATO POCKETS WITH BEEF •; Kookmutsjes: • WRAPS MET GEHAKT EN KAAS •; Kookmutsjes: • CHEESE STEAK WRAPS • |
 | za 14-11 12:39 | [Instagram dagelijks](https://github.com/Edial/proef/actions/runs/43591058418) | 7 u 09 | 3 min | ✓ gelukt | Instagram-accounts: 138/146 · nieuwe berichten: 34 · trending op Instagram: 118 · waarvan groeit: 0 · top: Kookmutsjes: • POTATO POCKETS WITH BEEF •; Kookmutsjes: • WRAPS MET GEHAKT EN KAAS •; Kookmutsjes: • CHEESE STEAK WRAPS • |
 | za 14-11 07:20 | [Nieuwsbrief](https://github.com/Edial/proef/actions/runs/43565840676) |  | 47 s | ✓ gelukt | nieuwsbrief: verstuurd naar de lijst · onderwerp: 🎃 Romige pompoenpasta en zalm-rijstkommen 🥢 · let op: achteraf uit de run |
