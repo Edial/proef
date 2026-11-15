@@ -219,7 +219,8 @@ def measure(path):
         print(f"{r['slug'][:34]:34} {s['name']}: {how}"
               f"{'' if counts(r['igTrend']) else ' (telt niet mee: geen uitschieter en groeit niet genoeg)'}")
     # vanaf Nº 05: het nummer is de rangorde. Gerechten op extra aandacht (grootste hit eerst), het zoete recept als laatste.
-    if (ed.get("number") or 0) >= 5 and not any(r.get("spark") for r in ed.get("recipes", [])):
+    live = json.loads((ROOT / "editions" / "index.json").read_text())["editions"]
+    if (ed.get("number") or 0) >= 5 and ed.get("id") not in live:   # alleen een concept; een editie die live staat, blijft staan
         sweet = lambda r: r.get("category") in SWEET
         ed["recipes"].sort(key=lambda r: (sweet(r), -((r.get("igTrend") or {}).get("extra") or 0)))
     pathlib.Path(path).write_text(json.dumps(ed, ensure_ascii=False, indent=2) + "\n")

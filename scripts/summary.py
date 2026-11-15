@@ -62,26 +62,35 @@ def buzz_and_core():
         instagram_hits(rows)
 
 
-def instagram_hits(rows=None, top=20):
-    """Wat nu echt trending is op Instagram (scripts/instagram_trend.py): minstens 5× zoveel likes en reacties als normaal
-    voor dat account, minstens 1.000, afgelopen 14 dagen. Minstens 1 recept per editie komt hieruit (trendregel)."""
+def instagram_hits(rows=None, top=45):
+    """De kandidaten voor de editie: wat nu een hit is op Instagram (scripts/instagram_trend.py), met het begin van het
+    onderschrift zodat je ziet of het een gerecht is en of het recept erin staat."""
+    import csv
+    import json
     import instagram_trend as it
     hits = it.trending()
-    paywall = {}
-    import csv
+    caps = json.loads(it.CAPTIONS.read_text()) if it.CAPTIONS.exists() else {}
     with (ROOT / "data" / "sources.csv").open(newline="") as f:
-        for r in csv.DictReader(f):
-            paywall[r["id"]] = (r.get("paywall") or "").strip(), r.get("site", "")
-    print(f"\nTRENDING OP INSTAGRAM ({len(hits)} posts; ×normaal = likes en reacties t.o.v. wat dat account gewend is, "
-          f"afgelopen {it.DAYS} dagen; 'groeit' = oudere post die er deze week veel bij kreeg). VERPLICHT: minstens 1 recept per editie komt hieruit. Kies een post die een gerecht is, "
-          f"zet de url van de post in het recept als \"instagram\" en haal recept en foto van de eigen site van de maker "
-          f"(staat die achter een betaalmuur, neem hetzelfde gerecht van een kernbron). Nooit een foto van Instagram.")
-    for h in hits[:top]:
-        pw, site = paywall.get(h["source"], ("", ""))
-        extra = f" [site: {site}{', betaalmuur' if pw else ''}]" if site else ""
-        how = (f"groeit: +{h['growth']} deze week ({h['growthRatio']}× een gewone post)" if h["kind"] == "groeit"
-               else f"{h['ratio']}× ({h['engagement']} likes+reacties)")
-        print(f"- {how} {h['date']} {h['name']}: {h['title']} {h['url']}{extra}")
+        src = {r["id"]: r for r in csv.DictReader(f)}
+    used = {it.code(r.get("instagram")) for e in load() for r in e.get("recipes", [])}
+    print(f"\nTRENDING OP INSTAGRAM: DE KANDIDATEN ({len(hits)} posts, grootste hit eerst). Kies hieruit 4 gerechten en 1 baksel of zoet "
+          f"(minstens 4 van de 5 uit deze lijst, hooguit 1 per maker). Zet de url van de post in het recept als \"instagram\". "
+          f"Sla over wat geen gerecht is. Staat het recept met hoeveelheden op de site van de maker, neem het daar (met foto); "
+          f"staat het alleen in het onderschrift, dan mag dat ook (zonder photo). Het volledige onderschrift: data/ig_captions.json[code].")
+    n = 0
+    for h in hits:
+        c = it.code(h["url"])
+        if c in used:
+            continue
+        s = src.get(h["source"], {})
+        site = "" if "linktr.ee" in s.get("site", "") else s.get("site", "")
+        note = "betaalmuur, " if s.get("paywall") else ""
+        how = (f"groeit +{h['growth']}/week" if h["kind"] == "groeit" else f"{h['ratio']}×")
+        text = " ".join((caps.get(c) or h["title"]).split())[:330]
+        print(f"- [{c}] {how}, {h['engagement']} likes+reacties, {h['date']}, {h['name']} ({note}site: {site or 'geen'}) {h['url']}\n    {text}")
+        n += 1
+        if n >= top:
+            break
 
 
 def main():

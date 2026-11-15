@@ -90,7 +90,16 @@ Elk punt moet "ja" zijn, anders publiceert Proef het niet. De validator (`script
 
 Kies de Fermentatie van de week **uit deze lijst**. De cijfers zijn al gecontroleerd tegen de bronnen. De wekelijkse run hoeft ze niet opnieuw uit te zoeken en controleert alleen of de bronlinks nog werken. Herhaal geen ferment uit de **laatste 4 edities**: `python3 scripts/summary.py` laat zien welke dat zijn.
 
-Een nieuw ferment toevoegen mag alleen als het onder §1 valt en je **minstens twee bronnen hebt gelezen** die de cijfers dragen. Zet het dan onderaan deze tabel met "nalopen" erachter, zodat een mens het nakijkt.
+Een nieuw ferment toevoegen mag als **het zoutgehalte (of de verhouding) letterlijk uit een vertrouwde bron komt** (lijst hieronder). Eén goede bron is genoeg; het getal moet wel precies kloppen. Zet het ferment ook in `data/ferments.json`: daarmee rekent `check_edition.py` bij elke editie het zout na.
+
+**Vertrouwde bronnen**
+- *The Noma Guide to Fermentation* (René Redzepi en David Zilber): melkzuurferments met 2 % zout op het gewicht van het ingrediënt, koji, kombucha, azijn.
+- *The Art of Fermentation* en *Wild Fermentation* (Sandor Katz).
+- *Koji Alchemy* (Jeremy Umansky en Rich Shih) en *Miso, Tempeh, Natto* (Kirsten en Christopher Shockey).
+- Universiteiten en overheid: NCHFP (USDA), Oregon State, UC Davis, Illinois Extension, University of Minnesota Extension.
+- Makers met uitgeschreven, geteste recepten: Just One Cookbook (Japans), Korean Bapsang en Maangchi (Koreaans), Serious Eats.
+
+Blijft gelden, wat de bron ook is: weeg het zout in grammen; meet bij groente met weinig zuur (chili, paprika, bonen, bloemkool, radijs, wortel) de pH: 4,6 of lager; bij twijfel weggooien (§6).
 
 | Ferment | Zout | Aanrecht | Daarna | Bronnen |
 |---|---|---|---|---|
@@ -101,8 +110,23 @@ Een nieuw ferment toevoegen mag alleen als het onder §1 valt en je **minstens t
 | **Gefermenteerde wortel met gember** (staafjes) | 2,5 % van groente + water samen (= pekel 5 % bij half wortel, half water); bijvullen met 25 g zout per liter | 10–14 dagen, 20–22 °C; ruikt het na 3 weken niet zuur, dan weggooien. pH-strip: 4,6 of lager | koelkast, binnen 1 maand op | Illinois Extension · UC Davis · gebruikt in Nº 02 (test) |
 | **Bloemkool of sperziebonen in pekel** | pekel 5 %: 50 g zout per liter water (Illinois: stukken 5 %; UCI noemt 2 %, Proef neemt de strengste) | tot het zuur ruikt, meestal 1–2 weken, **pH-strip verplicht: 4,6 of lager** | koelkast, binnen 1 maand op | Illinois Extension · UCI SSIHI tabel |
 
+**Snel en fris** (klaar in 1 tot 5 dagen)
+
+| Ferment | Zout | Aanrecht | Daarna | Bron |
+|---|---|---|---|---|
+| **Komkommerkimchi** (oi-kimchi) | 15 g grof zeezout op 680 g komkommer (2,2 %), 30 minuten laten staan, **niet afspoelen** | een paar uur tot een nacht, 18–22 °C | koelkast, binnen 1 week op (wordt daarna zacht) | Korean Bapsang, Oi Kimchi |
+| **Tepache** (ananasdrank) | geen zout: schil en kern van 1 rijpe ananas, 200 g bruine suiker, 1,9 liter water | 1–3 dagen, 24–26 °C; elke dag proeven | zeven en in de koelkast, binnen 1 week op. In een dichte fles bouwt koolzuur op: elke dag even openen | Live Eat Learn, Pineapple Tepache |
+| **Gefermenteerde blauwe bessen of pruimen** | 2 % van het gewicht van het fruit: 20 g op 1 kg (pruimen: gewogen zonder pit) | 4–7 dagen in een zak of pot zonder lucht, tot het fris zuur smaakt; warm (tot 28 °C) gaat sneller | koelkast, binnen 1 maand op; invriezen kan | The Noma Guide to Fermentation |
+
+**Smaakmakers**
+
+| Ferment | Zout | Aanrecht | Daarna | Bron |
+|---|---|---|---|---|
+| **Shio koji** | 30 % van het gewicht van de koji: 200 g rijstkoji, 60 g zeezout, 250 ml water (toegestaan: 10–30 %) | 1 week (zomer) tot 2 weken (winter) op kamertemperatuur, elke dag roeren | koelkast, binnen 6 maanden op. Gebruik 2 delen shio koji waar je 1 deel zout zou nemen | Just One Cookbook, How to Make Shio Koji · The Fermentary |
+| **Gefermenteerde chilisaus** | 3 % van pepers + water samen (toegestaan: 2,5–3,5 %) | 1–2 weken, 18–22 °C, pepers onder de pekel. **pH-strip verplicht: 4,6 of lager** (liefst onder 4,0) voor je hem pureert | koelkast, binnen 3 maanden op | Noma-methode (minstens 2 %) · Hanna Instruments, pH of hot sauce |
+
 **Nog niet in de lijst:**
-- **Gefermenteerde chilisaus.** Paprika en chili zijn weinig zuur, dus het risico op botulisme is groter. De primaire bron (University of Minnesota Extension) was niet te lezen. Eerst nalopen.
+- **Knoflook in honing, waterkefir, gemberbier, ingelegde citroen:** kandidaten; toevoegen zodra het recept uit een vertrouwde bron is overgenomen.
 - **Kkakdugi** (radijskimchi): geen bron van een universiteit of overheid gevonden.
 
 Bronlinks voor deze tabel staan hieronder.

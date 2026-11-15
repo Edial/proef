@@ -123,7 +123,7 @@ def card(pic, meta, title, url, extra=""):
 </div>"""
 
 
-def recipe_card(r, base, mail_url):
+def recipe_card(r, base, mail_url, neo=False):
     url = f"{base}recept/{r['slug']}/"
     tint = r.get("tint") if r.get("tint") in TINTS else "sage"
     alt = esc(f"Foto van {r['title']}")
@@ -142,14 +142,17 @@ def recipe_card(r, base, mail_url):
     sp = r.get("spark") or {}
     ig = r.get("igTrend")
     trend = ""
-    if instagram_trend.counts(ig) and sp.get("label") not in GOOD:
+    if neo and sp.get("label") != "Seizoen":
+        sp = {}
+    if instagram_trend.counts(ig) and (neo or sp.get("label") not in GOOD):
         # trending op Instagram, niet (ook) op Google: dan het Instagram-label, zoals op de site
         trend = (f'<div style="margin:10px 0 0;font-family:{MONO};font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;'
                  f'color:{HANKO};">{ARROW["Instagram"]}&nbsp;Instagram</div>'
                  f'<div class="mu" style="margin:4px 0 0;font-family:{SERIF};font-style:italic;font-size:14px;line-height:1.4;color:{MUTED};">'
                  + (f'Weer populair: deze week nog {ig["growth"]:,} likes en reacties erbij bij {esc(ig["name"])}.'.replace(",", ".")
                     if ig.get("kind") == "groeit" else
-                    f'{round(ig["ratio"])}× zoveel likes en reacties als normaal bij {esc(ig["name"])}.') + '</div>')
+                    (f'{ig["engagement"]:,} likes en reacties: {round(ig["ratio"])}× normaal bij {esc(ig["name"])}.'.replace(",", ".") if neo else
+                     f'{round(ig["ratio"])}× zoveel likes en reacties als normaal bij {esc(ig["name"])}.')) + '</div>')
     elif sp.get("weeks"):
         slug = r["slug"]
         spark_img = pair(f"{mail_url}{slug}.png", f"{mail_url}{slug}-dark.png", 84, 18, "")
@@ -209,7 +212,8 @@ def build(ed, base, subject=None, preview=None):
     for r in ed["recipes"]:
         if (r.get("spark") or {}).get("weeks"):
             spark_png(r["spark"]["weeks"], out / f"{r['slug']}.png", out / f"{r['slug']}-dark.png")
-    cards = [recipe_card(r, base, mail_url) for r in ed["recipes"]]
+    neo = (ed.get("number") or 0) >= 5   # het beste van Instagram: Instagram gaat voor, Google alleen als Seizoen
+    cards = [recipe_card(r, base, mail_url, neo) for r in ed["recipes"]]
     if ed.get("ferment"):
         cards.append(ferment_card(ed["ferment"], ed, base))
     m = ed.get("mail") or {}

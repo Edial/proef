@@ -104,6 +104,10 @@ img { display: block; max-width: 100%; }
 .spark { display: block; width: 100%; height: 34px; overflow: visible; color: var(--ink); }
 .trend .row { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
 .trend .row .spark { flex: none; width: 84px; height: 18px; }
+.bars { display: block; flex: none; width: 96px; height: 18px; fill: currentColor; opacity: .9; }
+.bars rect { opacity: .45; } .bars .hit { fill: var(--hanko); opacity: 1; }
+.bars.big { width: 100%; height: 90px; margin: 14px 0 4px; }
+.tile .bars { color: var(--dark); }
 .spark path { fill: none; vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round; }
 .spark .ln { stroke: currentColor; stroke-width: 1.5; }
 .spark .prev { stroke: currentColor; stroke-width: 1; stroke-dasharray: 2 3; opacity: .4; }
@@ -132,6 +136,15 @@ img { display: block; max-width: 100%; }
 .reveal { font-size: 12px; letter-spacing: .06em; padding: 3px 10px; border: 1px solid var(--ink); border-radius: 99px; background: transparent; color: var(--ink); cursor: pointer; vertical-align: 1px; }
 .reveal:hover, .reveal:focus-visible { background: var(--ink); color: var(--board); }
 .trends .dek { max-width: 62ch; }
+.igthemes { margin: 0 0 30px; }
+.ig-note { font-size: 15px; color: var(--muted); max-width: 62ch; margin-bottom: 10px; }
+.themes { list-style: none; margin: 0; padding: 0; }
+.themes li { display: grid; grid-template-columns: 150px minmax(60px, 1fr) auto; gap: 4px 14px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--rule); }
+.themes strong { font-weight: 400; font-size: 19px; }
+.themes .bar { height: 6px; background: var(--rule); } .themes .bar i { display: block; height: 100%; background: var(--hanko); }
+.themes .mono { font-size: 10.5px; color: var(--muted); white-space: nowrap; }
+.themes .who { grid-column: 1 / -1; font-size: 13.5px; font-style: italic; color: var(--muted); }
+@media (max-width: 640px) { .themes li { grid-template-columns: 110px minmax(40px, 1fr) auto; } .themes strong { font-size: 17px; } }
 .glance { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin: 26px 0 34px; padding: 18px 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); }
 .glance b { display: block; font-weight: 400; font-size: 40px; line-height: 1; color: var(--ink); }
 .glance .mono { display: block; margin-top: 8px; color: var(--muted); font-size: 10.5px; }
@@ -989,7 +1002,9 @@ footer { margin-top: 96px; }
     instagram: { name: "Instagram", vertical: true, src: (id) => "https://www.instagram.com/p/" + id + "/embed/" },
     tiktok: { name: "TikTok", vertical: true, src: (id) => "https://www.tiktok.com/player/v1/" + id + "?autoplay=1&rel=0" },
   };
+  const igCode = (u) => (/instagram\.com\/(?:[^/]+\/)?(?:p|reel|reels|tv)\/([A-Za-z0-9_-]+)/.exec(u || "") || [])[1];
   function withVideo(r, box) {
+    if (!r.video && !r.photo && igCode(r.instagram)) r.video = { platform: "instagram", id: igCode(r.instagram), url: r.instagram, vertical: true, post: true };
     const v = r.video && VIDEO[r.video.platform];
     if (!v) return box;
     const by = r.photoCredit ? " van " + r.photoCredit.label : "";
@@ -999,7 +1014,7 @@ footer { margin-top: 96px; }
         const vertical = r.video.vertical ?? v.vertical;
         box.replaceWith(h("div", { class: "video " + tintClass(r) + (vertical ? " vertical" : "") },
           h("iframe", { src: v.src(r.video.id), title: "Video: " + r.title + by, allow: "autoplay; encrypted-media; picture-in-picture; fullscreen", referrerpolicy: "strict-origin-when-cross-origin" })));
-      } }, h("span", { class: "tri", "aria-hidden": "true" }), "Bekijk de video"));
+      } }, h("span", { class: "tri", "aria-hidden": "true" }), r.video.post ? "Bekijk de post op Instagram" : "Bekijk de video"));
     return box;
   }
   /* ---------- De maker van het recept (data/makers.json, gemaakt door scripts/build_pages.py) ---------- */
@@ -1033,7 +1048,7 @@ footer { margin-top: 96px; }
     m.site ? ext(m.site, m.host) : null);
   // kaart direct onder de titel: wie het recept en de foto's maakte, waar je meer vindt en hoe vaak die al in Proef stond
   const makerCard = (m, r) => h("aside", { class: "maker mcard", "aria-label": "Over de maker" },
-    h("span", { class: "label", text: "Recept en foto's van" }),
+    h("span", { class: "label", text: r.photo ? "Recept en foto's van" : "Recept van" }),
     avatar(m, r),
     h("div", null, h("strong", { text: m.name }),
       h("span", { class: "sub mono", text: [m.org, m.count > 1 ? m.count + " recepten in Proef" : ""].filter(Boolean).join(" · ") || m.host })),
@@ -1043,7 +1058,7 @@ footer { margin-top: 96px; }
   // meer foto's van het recept: de hoofdfoto (het gerecht als het af is) blijft altijd bovenaan
   function gallery(r) {
     const extra = (r.photos || []).filter((p) => p && p.url);
-    if (!r.photo || !extra.length) return null;
+    if (!r.photo || extra.length < 2) return null;   // één los plaatje onder de foto is geen reeks
     const all = [{ url: r.photo }, ...extra];
     return h("ul", { class: "thumbs", "aria-label": "Meer foto's van dit recept" }, extra.map((p, i) => h("li", null,
       h("button", { type: "button", "aria-label": `Foto ${i + 2} van ${all.length} vergroten`, onclick: () => lightbox(r, all, i + 1) },
@@ -1106,14 +1121,27 @@ footer { margin-top: 96px; }
     ? `Weer populair: deze week nog ${nf.format(t.growth)} likes en reacties erbij bij ${t.name}.`
     : `${Math.round(t.ratio)}× zoveel likes en reacties als normaal bij ${t.name}.`;
   // Instagram gaat voor als Google het gerecht niet in trek noemt; anders blijft het Google-label met lijntje staan
-  const igFirst = (r) => igCounts(r.igTrend) && !(r.spark && HOT.has(r.spark.label));
+  // vanaf Nº 05 (het beste van Instagram): Instagram gaat altijd voor, Google Trends telt alleen nog als "Seizoen"
+  const neo = (r) => ((r._edition || {}).number || 0) >= 5;
+  const igFirst = (r) => igCounts(r.igTrend) && (neo(r) || !(r.spark && HOT.has(r.spark.label)));
+  const igLine = (t) => t.kind === "groeit" ? igText(t) : `${nf.format(t.engagement)} likes en reacties: ${Math.round(t.ratio)}× normaal bij ${t.name}.`;
+  // staafjes: de laatste posts van deze maker (oud → nieuw), deze post in rood
+  function igBars(t) {
+    const sv = t.series; if (!sv || !sv.values || sv.values.length < 5) return null;
+    const max = Math.max(1, ...sv.values), W = sv.values.length * 4, el = h("span");
+    el.innerHTML = `<svg class="bars" viewBox="0 0 ${W} 20" preserveAspectRatio="none" role="img" aria-label="Likes en reacties op de laatste ${sv.values.length} posts van ${t.name.replace(/"/g, "")}; deze post steekt erbovenuit.">`
+      + sv.values.map((v, i) => `<rect x="${i * 4}" y="${(20 - Math.max(1, v / max * 20)).toFixed(1)}" width="3" height="${Math.max(1, v / max * 20).toFixed(1)}"${i === sv.at ? ' class="hit"' : ""}/>`).join("") + "</svg>";
+    return el.firstChild;
+  }
   const tl = (label) => h("span", { class: "tl" + (QUIET.has(label) ? " quiet" : "") }, h("i", { "aria-hidden": "true", text: ARROW[label] || "•" }), label);
   const chip = (sp) => tl(sp.label);
   // home: label met een klein lijntje ernaast; receptpagina (big): grote grafiek met vorig jaar als stippellijn
   const trend = (r, opts = {}) => {
     const sp = r.spark;
-    if (igFirst(r) && opts.line) return h("a", { class: "trend line", href: recipeHref(r.slug) + "#waarom", onclick: (e) => { e.preventDefault(); $("waarom")?.scrollIntoView({ behavior: "smooth" }); } }, tl("Instagram"), h("span", { text: igText(r.igTrend) }));
-    if (igFirst(r)) return h("div", { class: "trend" }, h("div", { class: "row" }, tl("Instagram")), h("p", { text: igText(r.igTrend) }));
+    const season = neo(r) && sp && sp.label === "Seizoen" ? tl("Seizoen") : null;
+    if (igFirst(r) && opts.line) return h("a", { class: "trend line", href: recipeHref(r.slug) + "#waarom", onclick: (e) => { e.preventDefault(); $("waarom")?.scrollIntoView({ behavior: "smooth" }); } }, tl("Instagram"), season, h("span", { text: neo(r) ? igLine(r.igTrend) : igText(r.igTrend) }));
+    if (igFirst(r)) return h("div", { class: "trend" }, h("div", { class: "row" }, tl("Instagram"), neo(r) ? igBars(r.igTrend) : null), h("p", { text: neo(r) ? igLine(r.igTrend) : igText(r.igTrend) }));
+    if (neo(r) && sp && sp.label !== "Seizoen") return null;   // Stabiel, Dalend enz. tonen we niet meer
     if (sp && sp.weeks && opts.line) return h("a", { class: "trend line", href: recipeHref(r.slug) + "#waarom", onclick: (e) => { e.preventDefault(); $("waarom")?.scrollIntoView({ behavior: "smooth" }); } }, chip(sp), h("span", { text: sp.text }));
     if (sp && sp.weeks) return h("div", { class: "trend has-spark" },
       h("div", { class: "row" }, chip(sp), sparkSvg(sp, { label: sparkLabel(sp) })),
@@ -1129,7 +1157,10 @@ footer { margin-top: 96px; }
       ig.kind === "groeit"
         ? ` op een post van ${fmtDate(ig.date)} de afgelopen week nog ${nf.format(ig.growth)} likes en reacties erbij: ${nf.format(ig.growthRatio)}× wat een gewone post van dat account in totaal haalt.`
         : ` ${nf.format(ig.engagement)} likes en reacties op dit gerecht (post van ${fmtDate(ig.date)}): ${Math.round(ig.ratio)}× zoveel als normaal voor dat account.`) : null;
-    if (!sp || !sp.weeks) return [insta, h("p", { class: "why-src" }, h("a", { href: "#zo-meten-we", text: "Hoe meten we dit?" }))];
+    const bars = ig && neo(r) ? igBars(ig) : null;
+    if (bars) bars.classList.add("big");
+    const barsNote = bars ? h("div", { class: "spark-axis", "aria-hidden": "true" }, h("span", { text: `laatste ${ig.series.values.length} posts van ${ig.name}` }), h("span", { text: "rood: deze post" })) : null;
+    if (!sp || !sp.weeks || (neo(r) && sp.label !== "Seizoen")) return [insta, bars, barsNote, h("p", { class: "why-src" }, h("a", { href: "#zo-meten-we", text: "Hoe meten we dit?" }))];
     const start = monthFmt.format(new Date(sp.start + "T12:00:00"));
     const cooks = net && net.posts.length ? [
       `${net.sources} van de ${net.of} koks die we volgen maakten er de afgelopen ${net.days} dagen iets mee: `,
@@ -1137,7 +1168,7 @@ footer { margin-top: 96px; }
       : net ? [`Geen van de ${net.of} koks die we volgen maakte er de afgelopen ${net.days} dagen iets mee.`] : null;
     const also = (r.links || []).map((l) => ({ url: l.url, text: l.label.split(" · ")[0] }));
     return [
-      insta,
+      insta, bars, barsNote,
       sparkSvg(sp, { prev: true, label: sparkLabel(sp) + " De stippellijn is het jaar ervoor." }),
       h("div", { class: "spark-axis", "aria-hidden": "true" }, h("span", { text: start }), h("span", { text: "- - vorig jaar" }), h("span", { text: "nu" })),
       cooks ? h("p", { class: "why-line" }, ...cooks) : null,
@@ -1323,7 +1354,8 @@ footer { margin-top: 96px; }
           h("p", { text: "De lijn toont de afgelopen 12 maanden, de stippellijn op de receptpagina het jaar ervoor. De rode stip is de laatste volle week." }),
           h("p", { text: "Daarnaast volgen we een netwerk van koks, foodbloggers en magazines, met oud-redacteuren van Bon Appétit en delicious. in de kern. Elke week lezen we hun nieuwe recepten. Bij elk recept tellen we hoeveel van hen de afgelopen 30 dagen iets met dit gerecht publiceerden; elke kok telt één keer." }),
           h("p", { text: "Op Instagram kijken we naar likes en reacties, en altijd ten opzichte van wat dat account gewend is: zo telt een post van een kleine kok even zwaar als een van Bon Appétit. Reacties tellen hooguit mee tot een kwart van de likes, zodat ‘reageer met SOEP voor het recept’ en winacties niet dubbel tellen. We meten elke dag. Likes groeien de eerste dagen nog, dus een post van één of twee dagen oud vergelijken we met wat een post van die leeftijd normaal haalt. En een post van een paar weken oud die ineens weer rondgaat, zien we ook: dan kijken we hoeveel er die week bij kwam. Shares en saves kunnen we niet zien: die deelt Instagram alleen met de maker zelf." }),
-          h("p", { text: "Vanaf Nº 04 staan er in elke editie minstens drie recepten die zo aantoonbaar in trek zijn, waarvan minstens één op Instagram. Haalt een editie dat niet, dan verschijnt hij niet." })),
+          h("p", { text: "Vanaf Nº 05 is Proef het beste van Instagram: vier gerechten en één baksel of zoet, gekozen uit wat bij de makers die we volgen een hit is. Minstens vier van de vijf hebben zo’n gemeten hit; de vijfde mag ook een seizoensgerecht zijn dat Google Trends bevestigt. De staafjes bij een recept zijn de laatste posts van die maker, met deze post in rood. Het recept halen we van de site van de maker, of uit het onderschrift van de post als het daar met hoeveelheden in staat; dan tonen we geen foto maar de post zelf." }),
+          h("p", { text: "In Nº 04 golden nog de oude regels: minstens drie recepten aantoonbaar in trek, waarvan minstens één op Instagram. Haalt een editie dat niet, dan verschijnt hij niet." })),
         h("h2", { class: "mono colhead", text: "De labels" }),
         h("dl", { class: "labels" }, LABELS.map(([l, t]) => h("div", null, h("dt", null, tl(l)), h("dd", { text: t })))),
         h("p", { class: "why", text: "Staat er een recept met “Dalend” in Proef? Dan kozen we het om iets anders: het seizoen, weinig werk, of omdat kinderen het lusten. Het label laat eerlijk zien hoe het ervoor staat." }))));
@@ -1448,15 +1480,29 @@ footer { margin-top: 96px; }
     const list = h("ol", { class: "buzz compact" }, h("li", { class: "status", text: "Even laden…" }));
     const kicker = h("p", { class: "kicker", text: "Trends" });
     const seasonBox = h("section", { class: "season", "aria-label": "Nu in het seizoen" });
+    const igBox = h("section", { class: "igthemes", "aria-label": "Hits op Instagram per thema" });
+    fetch("data/ig_trends.json", { cache: "no-cache" }).then((r) => r.json()).then((d) => {
+      if (!d.themes || !d.themes.length) return;
+      const top = d.themes[0].makers;
+      igBox.replaceChildren(
+        h("h2", { class: "mono colhead", text: "Waar Instagram nu vol van staat" }),
+        h("p", { class: "ig-note", text: `${d.hits} posts van ${d.makers} makers halen nu minstens 5× zoveel likes en reacties als normaal. Dit zijn de ingrediënten en gerechten die daarin het vaakst terugkomen.` }),
+        h("ol", { class: "themes" }, d.themes.slice(0, 10).map((t) => h("li", null,
+          h("strong", { text: t.label }),
+          h("span", { class: "bar", "aria-hidden": "true" }, h("i", { style: `width:${Math.round(t.makers / top * 100)}%` })),
+          h("span", { class: "mono", text: `${t.makers} makers · ${nf.format(Math.round(t.likes / 1000))}k likes` }),
+          h("span", { class: "who", text: "o.a. " + t.names.join(", ") })))));
+    }).catch(() => {});
     loadSeason(seasonBox);
     $("detail-view").replaceChildren(h("article", null,
       h("a", { class: "back mono", href: "#deze-week", text: "← Deze week" }),
       h("div", { class: "card sheet trends" },
         kicker,
         h("h1", { text: "Wat koks nu maken" }),
-        h("p", { class: "dek", text: "Elke week lezen we de nieuwe recepten van de koks, foodbloggers en magazines die we volgen. Hier zie je welke gerechten nu bij meerdere van hen tegelijk opduiken, en of mensen er op Google ook naar zoeken." }),
+        h("p", { class: "dek", text: "Elke week lezen we de nieuwe recepten van de koks, foodbloggers en magazines die we volgen. Hier zie je welke ingrediënten en gerechten nu in trek zijn: op Instagram, bij meerdere koks tegelijk, en op Google. Geen recepten: die staan in de editie." }),
         seasonBox,
         head,
+        igBox,
         h("h2", { class: "mono colhead", text: "Stijgt bij de koks" }),
         list,
         ours.length ? h("section", { class: "ours" },

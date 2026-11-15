@@ -1,0 +1,16 @@
+{
+ "_uitleg": "De bibliotheek van ferments, leesbaar voor scripts (check_edition.py). Mensen lezen FERMENTATIE.md §9. zout: 'pct' = percentage van groente (+ water) samen, 'afspoelen' = zout wordt afgespoeld, 'koji' = percentage van het gewicht van de koji, 'geen' = zonder zout.",
+ "ferments": [
+  {"naam": "Mak-kimchi", "ook": ["kimchi"], "lijn": "klassiek", "zout": "afspoelen"},
+  {"naam": "Zuurkool", "ook": [], "lijn": "klassiek", "zout": "pct", "min": 2.0, "max": 2.5},
+  {"naam": "Augurken met dille", "ook": ["augurk"], "lijn": "klassiek", "zout": "pct", "min": 3.0, "max": 5.0},
+  {"naam": "Radijs in pekel", "ook": ["radijs"], "lijn": "klassiek", "zout": "pct", "min": 2.0, "max": 5.0},
+  {"naam": "Gefermenteerde wortel met gember", "ook": ["wortel"], "lijn": "klassiek", "zout": "pct", "min": 2.0, "max": 5.0},
+  {"naam": "Bloemkool of sperziebonen in pekel", "ook": ["bloemkool", "sperziebonen"], "lijn": "klassiek", "zout": "pct", "min": 2.0, "max": 5.0},
+  {"naam": "Komkommerkimchi", "ook": ["oi-kimchi", "oi kimchi", "komkommer"], "lijn": "snel en fris", "zout": "pct", "min": 2.0, "max": 2.5},
+  {"naam": "Tepache", "ook": ["ananas"], "lijn": "snel en fris", "zout": "geen"},
+  {"naam": "Gefermenteerde blauwe bessen", "ook": ["blauwe bessen", "pruimen", "gefermenteerde pruimen"], "lijn": "snel en fris", "zout": "pct", "min": 2.0, "max": 2.0},
+  {"naam": "Shio koji", "ook": ["koji"], "lijn": "smaakmakers", "zout": "koji", "min": 10, "max": 30},
+  {"naam": "Gefermenteerde chilisaus", "ook": ["chilisaus", "hot sauce", "sriracha"], "lijn": "smaakmakers", "zout": "pct", "min": 2.5, "max": 3.5}
+ ]
+}

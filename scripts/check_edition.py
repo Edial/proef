@@ -83,7 +83,7 @@ def check_video(v, where):
 
 
 def check_recipe(r, where, seen):
-    need(r, ["slug", "title", "dek", "category", "minutes", "servings", "ingredients", "steps", "photo", "photoCredit", "tint", "glyph", "trend"], where)
+    need(r, ["slug", "title", "dek", "category", "minutes", "servings", "ingredients", "steps", "photoCredit", "tint", "glyph", "trend"], where)
     slug = r.get("slug", "")
     if slug and not SLUG.match(slug):
         err(where, f"slug '{slug}' mag alleen kleine letters, cijfers en streepjes bevatten")
@@ -96,8 +96,13 @@ def check_recipe(r, where, seen):
         err(where, f"tint '{r['tint']}' is onbekend ({', '.join(sorted(TINTS))})")
     if r.get("glyph") and len(r["glyph"]) != 1:
         err(where, "glyph moet precies één teken zijn")
-    if not str(r.get("photo", "")).startswith("https://"):
-        err(where, "photo moet een https-link zijn")
+    if r.get("photo"):
+        if not str(r["photo"]).startswith("https://"):
+            err(where, "photo moet een https-link zijn")
+        if "instagram" in str(r["photo"]) or "fbcdn" in str(r["photo"]):
+            err(where, "photo mag geen foto van Instagram zijn; laat photo weg, dan toont de site de post zelf (veld instagram)")
+    elif not instagram_trend.code(r.get("instagram")):
+        err(where, "geen photo: dat mag alleen bij een recept dat van Instagram zelf komt (veld instagram met de url van de post)")
     check_video(r.get("video"), where)
     t = r.get("trend") or {}
     if r.get("trend") and not (t.get("text") and t.get("source")):
@@ -145,6 +150,44 @@ def rising_trending():
         return {}
     return {r["phrase"].lower(): r["google"]["label"] for r in b.get("rising", [])
             if (r.get("google") or {}).get("label") in TRENDING}
+
+
+CONCEPT_FROM = 5   # vanaf dit editienummer: het beste van Instagram (4 gerechten + 1 zoet, minstens 4 van Instagram)
+
+
+def instagram_rule(ed, where, concept):
+    """Vanaf Nº 05. 4 gerechten en 1 baksel of zoet; minstens 4 van de 5 zijn een hit op Instagram, de vijfde ook
+    of een seizoensgerecht volgens Google Trends (label Seizoen); hooguit 1 recept per maker."""
+    recipes = ed.get("recipes", [])
+    if ed.get("trendUitzondering"):
+        return
+    sweet = [r for r in recipes if r.get("category") in instagram_trend.SWEET]
+    if len(recipes) != 5 or len(sweet) != 1:
+        err(where, f"{len(recipes)} recepten waarvan {len(sweet)} zoet; nodig: 4 gerechten en precies 1 baksel of zoet "
+                   f"(category een van: {', '.join(sorted(instagram_trend.SWEET))})")
+    asian = sum("Aziatisch" in (r.get("tags") or []) for r in recipes if r not in sweet)
+    if asian < 2:
+        warn(where, f"maar {asian} van de gerechten is Aziatisch (liefst minstens 2, tag 'Aziatisch')")
+    measured = not (concept and MEASURED != ed.get("id"))
+    if measured:
+        insta = [r for r in recipes if instagram_trend.counts(r.get("igTrend"))]
+        season = [r for r in recipes if r not in insta and (r.get("spark") or {}).get("label") == "Seizoen"]
+        makers = [(r.get("igTrend") or {}).get("source") or (r.get("igTrend") or {}).get("name") for r in insta]
+    else:
+        today = dt.date.fromisoformat(ed["date"]) if ed.get("date") else None
+        pool = {instagram_trend.code(s["url"]): s for s in instagram_trend.trending(today)}
+        rising = rising_trending()
+        insta = [r for r in recipes if instagram_trend.code(r.get("instagram")) in pool]
+        season = [r for r in recipes if r not in insta and rising.get(((r.get("trendTerms") or [""])[0] or "").lower()) == "Seizoen"]
+        makers = [pool[instagram_trend.code(r["instagram"])]["source"] for r in insta]
+    rest = [r.get("slug") for r in recipes if r not in insta and r not in season]
+    if len(insta) < 4 or rest or len(season) > 1:
+        how = "gemeten hit op Instagram (igTrend)" if measured else "post uit TRENDING OP INSTAGRAM (veld instagram)"
+        err(where, f"{len(insta)} van de {len(recipes)} recepten hebben een {how}; nodig: minstens 4, en de vijfde ook of een "
+                   f"seizoensgerecht (Google Trends: Seizoen{'' if measured else ', als eerste trendTerm'}). Voldoet niet: {', '.join(rest) or '-'}")
+    double = sorted({m for m in makers if m and makers.count(m) > 1})
+    if double:
+        err(where, f"meer dan 1 recept van dezelfde maker ({', '.join(double)}); hooguit 1 per maker per editie")
 
 
 def trend_rule(ed, where, concept):
@@ -195,6 +238,19 @@ def check_signals(items, where):
             err(w, "value moet een getal zijn (zet tekst in 'note')")
 
 
+FERMENTS = []
+if (ROOT / "data" / "ferments.json").exists():
+    FERMENTS = json.loads((ROOT / "data" / "ferments.json").read_text())["ferments"]
+
+
+def library_item(title):
+    t = title.lower()
+    for f in FERMENTS:
+        if f["naam"].lower() in t or t in f["naam"].lower() or any(a in t for a in f["ook"]):
+            return f
+    return None
+
+
 def check_ferment(f, where, recipes, seen):
     need(f, ["slug", "title", "glyph", "lede", "teaser", "ingredients", "steps", "ok", "bad", "kids", "sources", "timeline", "science"], where)
     slug = f.get("slug", "")
@@ -204,9 +260,13 @@ def check_ferment(f, where, recipes, seen):
     if f.get("usedIn") and f["usedIn"] not in {r.get("slug") for r in recipes}:
         err(where, f"usedIn '{f['usedIn']}' is geen recept uit deze editie")
     check_ingredients(f.get("ingredients"), where)
+    lib = library_item(f.get("title", ""))
+    mode = (lib or {}).get("zout") or ("afspoelen" if f.get("saltMode") == "afspoelen" else "pct")
+    if FERMENTS and not lib:
+        err(where, f"'{f.get('title')}' staat niet in de bibliotheek (data/ferments.json, FERMENTATIE.md §9)")
     # FERMENTATIE.md §2: zout gewogen in grammen
     salts = [i for i in f.get("ingredients", []) if "zout" in i.get("item", "").lower()]
-    if not salts:
+    if not salts and mode != "geen":
         err(where, "geen zout in de ingrediënten (FERMENTATIE.md §2)")
     for s in salts:
         if s.get("unit") != "g":
@@ -222,25 +282,34 @@ def check_ferment(f, where, recipes, seen):
         if i.get("unit") not in ("g", "ml") or not isinstance(i.get("qty"), (int, float)):
             err(where, f"base-ingrediënt '{i.get('item')}' moet in g of ml")
     salt = [i for i in ings if i.get("salt")]
-    if len(salt) != 1:
+    if mode == "geen":
+        if salt:
+            err(where, "dit ferment gaat zonder zout (bibliotheek), maar er staat een ingrediënt met \"salt\": true")
+    elif len(salt) != 1:
         err(where, "precies één ingrediënt moet \"salt\": true hebben")
-    elif base and f.get("saltMode") != "afspoelen":
-        total = sum(i.get("qty") or 0 for i in base)
+    elif base and mode != "afspoelen":
+        # zout als percentage: van groente + water samen, of bij shio koji van het gewicht van de koji
+        ref = [i for i in base if "koji" in i.get("item", "").lower()] if mode == "koji" else base
+        total = sum(i.get("qty") or 0 for i in ref)
         pct = salt[0]["qty"] / total * 100 if total else 0
-        if not 2 <= pct <= 5:
-            err(where, f"zout is {pct:.1f} % van groente + water; moet 2–5 % zijn (FERMENTATIE.md §2)")
+        lo, hi = ((lib or {}).get("min", 2), (lib or {}).get("max", 5))
+        if not lo - 0.05 <= pct <= hi + 0.05:
+            of = "de koji" if mode == "koji" else "groente + water"
+            err(where, f"zout is {pct:.1f} % van {of}; voor {(lib or {}).get('naam', 'dit ferment')} moet dat {lo:g}–{hi:g} % zijn (FERMENTATIE.md §9)")
     keys = {i.get("key") for i in ings if i.get("key")} | {"totaal"}
     for s in f.get("steps", []):
         for k in re.findall(r"\{([a-z]+)\}", s):
             if k not in keys:
                 err(where, f"stap gebruikt {{{k}}}, maar geen ingrediënt heeft \"key\": \"{k}\"")
     text = " ".join(f.get("steps", []) + [x.get("text", "") for x in f.get("timeline", [])] + [x.get("value", "") for x in f.get("facts", [])]).lower()
+    brine = mode in ("pct", "afspoelen") and (lib or {}).get("lijn", "klassiek") == "klassiek"   # groente in pekel
     checks = [
-        (r"1[89]\s?[–-]\s?2[0-2]\s?°c|\b(18|19|20|21|22)\s?°c", "geen aanrecht-temperatuur tussen 18 en 22 °C (§3)"),
-        (r"5\s?cm", "geen 5 cm kopruimte (§5)"),
-        (r"onder|boven de", "niets over de groente onder het vocht houden (§5)"),
-        (r"pekel", "geen pekel om bij te vullen (§2)"),
-        (r"ph", "geen pH-controle genoemd (§4)"),
+        (r"\b(1[89]|2[0-8])\s?[–-]\s?(2[0-8])\s?°c|\b(18|19|2[0-8])\s?°c", "geen temperatuur genoemd (§3)"),
+        *([(r"5\s?cm", "geen 5 cm kopruimte (§5)"),
+           (r"onder|boven de", "niets over de groente onder het vocht houden (§5)"),
+           (r"pekel", "geen pekel om bij te vullen (§2)"),
+           (r"ph", "geen pH-controle genoemd (§4)")] if brine else []),
+        *([(r"ph", "geen pH-controle genoemd (verplicht bij chilisaus, §4)")] if lib and "chili" in lib["naam"].lower() else []),
         (r"heet|sop|schoon", "niets over een schone pot (§5)"),
         (r"koelkast", "niets over bewaren in de koelkast (§7)"),
     ]
@@ -297,14 +366,14 @@ def main():
             err(where, "mail.subject ontbreekt: schrijf een onderwerpregel voor de nieuwsbrief (REDACTIE.md stap 7)")
         # nog niet gemeten maar wel in index.json: dan zou het live staan zonder dat de trendregel getoetst is
         if eid != concept and (ed.get("number") or 0) >= TREND_RULE_FROM and not ed.get("trendUitzondering") \
-                and not any(r.get("spark") for r in ed.get("recipes", [])):
+                and not any(r.get("spark") or r.get("igTrend") for r in ed.get("recipes", [])):
             err(where, "staat in editions/index.json maar is nog niet gemeten. Haal het id uit editions/index.json: "
                        "GitHub zet de editie zelf live na de meting, als de trendregel klopt (REDACTIE.md stap 10).")
         if str(ed.get("date", "")) >= "2026-11-07":
             core = sum((SOURCES.get(r.get("source") or "") or {}).get("tier") == "core" for r in ed.get("recipes", []))
-            if core < 3:
+            if core < 3 and (ed.get("number") or 0) < CONCEPT_FROM:
                 warn(where, f"maar {core} van de recepten komen van een kernbron (doel: minstens 3, veld 'source')")
-            trend_rule(ed, where, eid == concept)
+            (instagram_rule if (ed.get("number") or 0) >= CONCEPT_FROM else trend_rule)(ed, where, eid == concept)
         for i, wt in enumerate(ed.get("watch") or []):
             ww = f"{where} watch {i + 1}"
             need(wt, ["term", "source"], ww)
@@ -338,8 +407,6 @@ def main():
         if "ferment" in ed:
             check_ferment(ed["ferment"], f"{where} ferment", recipes, seen)
             title = ed["ferment"].get("title", "").lower()
-            if library and title and title not in library:
-                warn(f"{where} ferment", f"'{ed['ferment'].get('title')}' staat niet in de bibliotheek (FERMENTATIE.md §9); laat een mens het nalopen")
             if title in recent_ferments[-4:]:
                 warn(f"{where} ferment", "zelfde ferment als in een van de laatste 4 edities")
             recent_ferments.append(title)
