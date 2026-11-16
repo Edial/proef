@@ -1,0 +1,19 @@
+{
+ "workflow": "Instagram dagelijks",
+ "uitkomst": "success",
+ "aanleiding": "schedule",
+ "start": "2026-11-16T13:00:06+00:00",
+ "eind": "2026-11-16T13:47:32+00:00",
+ "duur_s": 2846,
+ "gepland": "2026-11-16T04:30:00+00:00",
+ "te_laat_min": 510,
+ "run": "https://github.com/Edial/proef/actions/runs/43871648731",
+ "run_id": 43871648731,
+ "details": {
+  "instagram_accounts": "141/185",
+  "berichten_nieuw": 1164,
+  "trending": 167,
+  "groeit": 0,
+  "top": "Kookmutsjes: • POTATO POCKETS WITH BEEF •; The Banana Diaries: One Bowl SOFT & Chewy Frosted Sugar Cook; The Little Blog of Vegan: Comment ‘cheesecake’ and I’ll send you t"
+ }
+}

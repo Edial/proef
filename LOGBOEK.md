@@ -2,6 +2,14 @@
 
 Alles wat automatisch draait, per week, nieuwste eerst. Wordt na elke run bijgewerkt door de Action *Logboek* (`scripts/runlog.py`); de losse runs staan in `logs/runs/`. Tijden in Nederlandse tijd. *Te laat* = hoeveel later dan gepland GitHub de run startte. De controle staat er alleen in als hij faalde.
 
+## Week 47 · zaterdag 21 november 2026
+
+**Samenvatting:** 1 van 1 geplande runs te laat (max 8 u 30)
+
+| Wanneer | Wat | Te laat | Duur | Uitkomst | Details |
+|---|---|---|---|---|---|
+| ma 16-11 14:00 | [Instagram dagelijks](https://github.com/Edial/proef/actions/runs/43871648731) | 8 u 30 | 47 min | ✓ gelukt | Instagram-accounts: 141/185 · nieuwe berichten: 1164 · trending op Instagram: 167 · waarvan groeit: 0 · top: Kookmutsjes: • POTATO POCKETS WITH BEEF •; The Banana Diaries: One Bowl SOFT & Chewy Frosted Sugar Cook; The Little Blog of Vegan: Comment ‘cheesecake’ and I’ll send you t |
+
 ## Week 46 · zaterdag 14 november 2026
 
 **Samenvatting:** Nº 04 (2026-46): live om 07:20, in trek 3 van 5 (Instagram 1) · nieuwsbrief: verstuurd naar de lijst (za 07:21) · 4 van 4 geplande runs te laat (max 7 u 58)
