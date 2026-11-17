@@ -4,10 +4,11 @@ Alles wat automatisch draait, per week, nieuwste eerst. Wordt na elke run bijgew
 
 ## Week 47 · zaterdag 21 november 2026
 
-**Samenvatting:** 1 van 1 geplande runs te laat (max 8 u 30)
+**Samenvatting:** 2 van 2 geplande runs te laat (max 9 u 12)
 
 | Wanneer | Wat | Te laat | Duur | Uitkomst | Details |
 |---|---|---|---|---|---|
+| di 17-11 14:42 | [Instagram dagelijks](https://github.com/Edial/proef/actions/runs/44095396261) | 9 u 12 | 40 min | ✓ gelukt | Instagram-accounts: 119/185 · nieuwe berichten: 78 · trending op Instagram: 166 · waarvan groeit: 0 · top: Kookmutsjes: • POTATO POCKETS WITH BEEF •; The Banana Diaries: One Bowl SOFT & Chewy Frosted Sugar Cook; The Little Blog of Vegan: Comment ‘cheesecake’ and I’ll send you t |
 | ma 16-11 14:00 | [Instagram dagelijks](https://github.com/Edial/proef/actions/runs/43871648731) | 8 u 30 | 47 min | ✓ gelukt | Instagram-accounts: 141/185 · nieuwe berichten: 1164 · trending op Instagram: 167 · waarvan groeit: 0 · top: Kookmutsjes: • POTATO POCKETS WITH BEEF •; The Banana Diaries: One Bowl SOFT & Chewy Frosted Sugar Cook; The Little Blog of Vegan: Comment ‘cheesecake’ and I’ll send you t |
 
 ## Week 46 · zaterdag 14 november 2026
