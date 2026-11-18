@@ -1,24 +1,13 @@
 {
- "generated": "2026-11-17",
- "hits": 166,
- "makers": 64,
+ "generated": "2026-11-18",
+ "hits": 159,
+ "makers": 62,
  "themes": [
   {
-   "label": "taart en pie",
-   "makers": 15,
-   "posts": 26,
-   "likes": 765861,
-   "names": [
-    "The Little Blog of Vegan",
-    "Fitwaffle",
-    "Kookmutsjes"
-   ]
-  },
-  {
    "label": "kaas",
-   "makers": 14,
-   "posts": 26,
-   "likes": 1337029,
+   "makers": 15,
+   "posts": 27,
+   "likes": 1392246,
    "names": [
     "Kookmutsjes",
     "The Banana Diaries",
@@ -27,9 +16,9 @@
   },
   {
    "label": "saus en dip",
-   "makers": 14,
+   "makers": 15,
    "posts": 27,
-   "likes": 390047,
+   "likes": 400356,
    "names": [
     "The Little Blog of Vegan",
     "Food52",
@@ -37,10 +26,21 @@
    ]
   },
   {
+   "label": "taart en pie",
+   "makers": 14,
+   "posts": 25,
+   "likes": 777977,
+   "names": [
+    "The Little Blog of Vegan",
+    "Fitwaffle",
+    "Kookmutsjes"
+   ]
+  },
+  {
    "label": "cake",
-   "makers": 13,
+   "makers": 12,
    "posts": 16,
-   "likes": 553925,
+   "likes": 551724,
    "names": [
     "The Little Blog of Vegan",
     "Lauren Dozier",
@@ -49,9 +49,9 @@
   },
   {
    "label": "koekjes",
-   "makers": 12,
-   "posts": 13,
-   "likes": 799585,
+   "makers": 11,
+   "posts": 12,
+   "likes": 807879,
    "names": [
     "The Banana Diaries",
     "The Little Blog of Vegan",
@@ -62,7 +62,7 @@
    "label": "chili en pittig",
    "makers": 10,
    "posts": 13,
-   "likes": 533797,
+   "likes": 537032,
    "names": [
     "The Banana Diaries",
     "Tiffy Cooks",
@@ -70,21 +70,10 @@
    ]
   },
   {
-   "label": "appel",
-   "makers": 9,
-   "posts": 10,
-   "likes": 762754,
-   "names": [
-    "Kookmutsjes",
-    "Redcurrant Bakery",
-    "Food52"
-   ]
-  },
-  {
    "label": "aardappel",
    "makers": 9,
    "posts": 9,
-   "likes": 655103,
+   "likes": 696210,
    "names": [
     "Kookmutsjes",
     "Kalejunkie",
@@ -94,19 +83,19 @@
   {
    "label": "ontbijt",
    "makers": 9,
-   "posts": 17,
-   "likes": 347818,
+   "posts": 16,
+   "likes": 317757,
    "names": [
     "The Little Blog of Vegan",
-    "Amy Bakes Bread",
-    "Kalejunkie"
+    "Kalejunkie",
+    "Feedfeed"
    ]
   },
   {
    "label": "karamel",
    "makers": 9,
    "posts": 11,
-   "likes": 126885,
+   "likes": 126907,
    "names": [
     "Food52",
     "Kalejunkie",
@@ -117,7 +106,7 @@
    "label": "pasta",
    "makers": 9,
    "posts": 11,
-   "likes": 87071,
+   "likes": 87089,
    "names": [
     "Grossy Pelosi",
     "Kalejunkie",
@@ -128,11 +117,22 @@
    "label": "pompoen",
    "makers": 9,
    "posts": 11,
-   "likes": 53763,
+   "likes": 53825,
    "names": [
     "America's Test Kitchen",
     "Feedfeed",
     "Just One Cookbook"
+   ]
+  },
+  {
+   "label": "appel",
+   "makers": 8,
+   "posts": 9,
+   "likes": 796059,
+   "names": [
+    "Kookmutsjes",
+    "Redcurrant Bakery",
+    "Food52"
    ]
   }
  ]
