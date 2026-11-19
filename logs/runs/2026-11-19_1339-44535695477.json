@@ -1,0 +1,19 @@
+{
+ "workflow": "Instagram dagelijks",
+ "uitkomst": "success",
+ "aanleiding": "schedule",
+ "start": "2026-11-19T13:39:51+00:00",
+ "eind": "2026-11-19T14:20:54+00:00",
+ "duur_s": 2463,
+ "gepland": "2026-11-19T04:30:00+00:00",
+ "te_laat_min": 550,
+ "run": "https://github.com/Edial/proef/actions/runs/44535695477",
+ "run_id": 44535695477,
+ "details": {
+  "instagram_accounts": "122/185",
+  "berichten_nieuw": 76,
+  "trending": 163,
+  "groeit": 3,
+  "top": "Kookmutsjes: • POTATO POCKETS WITH BEEF •; Kookmutsjes: • WRAPS MET GEHAKT EN KAAS •; The Banana Diaries: One Bowl SOFT & Chewy Frosted Sugar Cook"
+ }
+}
