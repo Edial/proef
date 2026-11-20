@@ -4,10 +4,11 @@ Alles wat automatisch draait, per week, nieuwste eerst. Wordt na elke run bijgew
 
 ## Week 47 · zaterdag 21 november 2026
 
-**Samenvatting:** 4 van 4 geplande runs te laat (max 9 u 12)
+**Samenvatting:** 5 van 5 geplande runs te laat (max 9 u 12)
 
 | Wanneer | Wat | Te laat | Duur | Uitkomst | Details |
 |---|---|---|---|---|---|
+| vr 20-11 14:21 | [Instagram dagelijks](https://github.com/Edial/proef/actions/runs/44743651691) | 8 u 52 | 38 min | ✓ gelukt | Instagram-accounts: 113/185 · nieuwe berichten: 74 · trending op Instagram: 162 · waarvan groeit: 5 · top: Kookmutsjes: • POTATO POCKETS WITH BEEF •; Kookmutsjes: • WRAPS MET GEHAKT EN KAAS •; The Banana Diaries: One Bowl SOFT & Chewy Frosted Sugar Cook |
 | do 19-11 14:39 | [Instagram dagelijks](https://github.com/Edial/proef/actions/runs/44535695477) | 9 u 10 | 41 min | ✓ gelukt | Instagram-accounts: 122/185 · nieuwe berichten: 76 · trending op Instagram: 163 · waarvan groeit: 3 · top: Kookmutsjes: • POTATO POCKETS WITH BEEF •; Kookmutsjes: • WRAPS MET GEHAKT EN KAAS •; The Banana Diaries: One Bowl SOFT & Chewy Frosted Sugar Cook |
 | wo 18-11 14:16 | [Instagram dagelijks](https://github.com/Edial/proef/actions/runs/44312091616) | 8 u 47 | 34 min | ✓ gelukt | Instagram-accounts: 102/185 · nieuwe berichten: 59 · trending op Instagram: 159 · waarvan groeit: 0 · top: Kookmutsjes: • POTATO POCKETS WITH BEEF •; The Banana Diaries: One Bowl SOFT & Chewy Frosted Sugar Cook; The Little Blog of Vegan: Comment ‘cheesecake’ and I’ll send you t |
 | di 17-11 14:42 | [Instagram dagelijks](https://github.com/Edial/proef/actions/runs/44095396261) | 9 u 12 | 40 min | ✓ gelukt | Instagram-accounts: 119/185 · nieuwe berichten: 78 · trending op Instagram: 166 · waarvan groeit: 0 · top: Kookmutsjes: • POTATO POCKETS WITH BEEF •; The Banana Diaries: One Bowl SOFT & Chewy Frosted Sugar Cook; The Little Blog of Vegan: Comment ‘cheesecake’ and I’ll send you t |
