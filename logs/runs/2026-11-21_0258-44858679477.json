@@ -1,0 +1,19 @@
+{
+ "workflow": "Bronnen ophalen",
+ "uitkomst": "success",
+ "aanleiding": "schedule",
+ "start": "2026-11-21T02:58:13+00:00",
+ "eind": "2026-11-21T04:04:27+00:00",
+ "duur_s": 3974,
+ "gepland": "2026-11-20T22:00:00+00:00",
+ "te_laat_min": 298,
+ "run": "https://github.com/Edial/proef/actions/runs/44858679477",
+ "run_id": 44858679477,
+ "details": {
+  "instagram_accounts": "185/185",
+  "berichten_nieuw": 1495,
+  "bronnen": 238,
+  "stijgers": 60,
+  "google_labels": 40
+ }
+}
