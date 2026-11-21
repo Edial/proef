@@ -52,281 +52,6 @@
   ],
   "recipes": [
     {
-      "slug": "kabocha-gehakt-roerbak",
-      "title": "Kabocha met gehakt uit de wok",
-      "dek": "Dunne plakjes kabocha garen eerst kort in de magnetron en gaan dan met varkensgehakt in een zoet-hartige saus. In een half uur op tafel, met rijst.",
-      "category": "Hoofdgerecht",
-      "minutes": 30,
-      "servings": 4,
-      "tags": [
-        "Aziatisch",
-        "Kindvriendelijk",
-        "Weinig werk",
-        "Seizoen"
-      ],
-      "tint": "persimmon",
-      "glyph": "炒",
-      "native": "かぼちゃのそぼろ炒め",
-      "roman": "kabocha no soboro itame",
-      "trend": {
-        "source": "Instagram",
-        "text": "Kabocha ligt nu overal, dit is een snelle doordeweekse manier."
-      },
-      "signal": {
-        "source": "Just One Cookbook",
-        "text": "Namiko Chen van Just One Cookbook zette deze roerbak begin november opnieuw op Instagram: de reel haalde ruim 4.600 likes en 1.600 reacties, veel meer dan gewoonlijk voor het account. Het recept staat met hoeveelheden op haar site."
-      },
-      "source": "just-one-cookbook",
-      "trendTerms": [
-        "kabocha stir fry",
-        "kabocha"
-      ],
-      "signals": [
-        {
-          "source": "Instagram",
-          "metric": "likes",
-          "value": 4689,
-          "unit": "likes",
-          "period": "2026-11-04 t/m 2026-11-21",
-          "geo": "world",
-          "url": "https://www.instagram.com/reel/DfTLDxRh0fd/",
-          "note": "plus 1628 reacties"
-        }
-      ],
-      "links": [
-        {
-          "label": "Just One Cookbook · Kabocha Pork Stir-Fry",
-          "url": "https://www.justonecookbook.com/kabocha-pork-stir-fry/"
-        }
-      ],
-      "instagram": "https://www.instagram.com/reel/DfTLDxRh0fd/",
-      "photo": "https://www.justonecookbook.com/wp-content/uploads/2021/09/Kabocha-Pork-Stir-Fry-1854-II.jpg",
-      "photoCredit": {
-        "label": "Just One Cookbook",
-        "url": "https://www.justonecookbook.com/kabocha-pork-stir-fry/"
-      },
-      "ingredients": [
-        {
-          "qty": 350,
-          "unit": "g",
-          "item": "varkensgehakt (of kipgehakt)"
-        },
-        {
-          "qty": 5,
-          "unit": "ml",
-          "item": "sojasaus",
-          "group": "Marinade"
-        },
-        {
-          "qty": 10,
-          "unit": "ml",
-          "item": "sake (of water)",
-          "group": "Marinade"
-        },
-        {
-          "qty": 6,
-          "unit": "g",
-          "item": "aardappelzetmeel of maïzena",
-          "group": "Marinade"
-        },
-        {
-          "qty": 600,
-          "unit": "g",
-          "item": "kabocha (of flespompoen), zonder pitten gewogen"
-        },
-        {
-          "qty": 2,
-          "unit": "",
-          "item": "teentjes knoflook, in dunne plakjes"
-        },
-        {
-          "qty": 20,
-          "unit": "ml",
-          "item": "neutrale olie"
-        },
-        {
-          "qty": 30,
-          "unit": "ml",
-          "item": "sake (of water)",
-          "group": "Saus"
-        },
-        {
-          "qty": 30,
-          "unit": "ml",
-          "item": "sojasaus",
-          "group": "Saus"
-        },
-        {
-          "qty": 20,
-          "unit": "ml",
-          "item": "oestersaus",
-          "group": "Saus"
-        },
-        {
-          "qty": 10,
-          "unit": "g",
-          "item": "gochujang (of witte miso voor een milde versie)",
-          "group": "Saus"
-        },
-        {
-          "qty": 8,
-          "unit": "g",
-          "item": "suiker",
-          "group": "Saus"
-        },
-        {
-          "qty": 300,
-          "unit": "g",
-          "item": "Japanse rijst, gekookt volgens de verpakking",
-          "group": "Erbij"
-        }
-      ],
-      "steps": [
-        "Meng het gehakt met de sojasaus, sake en het zetmeel van de marinade en laat 5 tot 10 minuten staan. Roer in een kommetje de sake, sojasaus, oestersaus, gochujang en suiker voor de saus door elkaar.",
-        "Schep de pitten uit de kabocha (de schil mag eraan blijven) en snijd hem in plakjes van 3 mm. Halveer grote plakken.",
-        "Leg de kabocha met 2 eetlepels water in een magnetronschaal, dek af en verwarm 3 à 4 minuten op vol vermogen. Een prikker moet er nog met wat weerstand in gaan: hij is dan voor ongeveer 80 % gaar.",
-        "Verhit de olie in een wok of grote koekenpan op middelhoog vuur en bak de knoflook tot hij geurt. Bak het gehakt los tot het niet meer roze is.",
-        "Schep de kabocha erdoor, doe een deksel op de pan en laat 5 minuten op laag vuur garen tot hij zacht is.",
-        "Giet de saus erbij, zet het vuur hoog en schep om tot de saus is ingekookt en alles glanst. Serveer met de rijst."
-      ],
-      "tip": "Neem voor kinderen witte miso in plaats van gochujang: dan is het niet pittig. Ze kunnen het gehakt met de marinade mengen en de saus roeren. Het snijden van de harde kabocha doet een volwassene."
-    },
-    {
-      "slug": "tofu-bulgogi-rijstkom",
-      "title": "Rijstkom met krokante tofu-bulgogi",
-      "dek": "Geraspte tofu wordt krokant in de oven of airfryer en trekt daarna een zoete bulgogisaus met peer, gember en sesam op. Met rijst en lente-ui.",
-      "category": "Hoofdgerecht",
-      "minutes": 40,
-      "servings": 3,
-      "tags": [
-        "Aziatisch",
-        "Vegetarisch",
-        "Kindvriendelijk"
-      ],
-      "tint": "sage",
-      "glyph": "豆",
-      "native": "두부 불고기",
-      "roman": "dubu bulgogi",
-      "trend": {
-        "source": "Instagram",
-        "text": "Tofu als gehakt: deze week veel bewaard en gedeeld."
-      },
-      "signal": {
-        "source": "The Foodie Takes Flight",
-        "text": "Jeeca Uy van The Foodie Takes Flight plaatste deze rijstkom half november opnieuw; de reel kreeg ruim 4.200 likes en 1.700 reacties, veel meer dan normaal voor haar account. Het recept staat met hoeveelheden op haar site."
-      },
-      "source": "the-foodie-takes-flight",
-      "trendTerms": [
-        "tofu bulgogi",
-        "shredded tofu"
-      ],
-      "signals": [
-        {
-          "source": "Instagram",
-          "metric": "likes",
-          "value": 4290,
-          "unit": "likes",
-          "period": "2026-11-14 t/m 2026-11-21",
-          "geo": "world",
-          "url": "https://www.instagram.com/reel/DfuVfX1hTdL/",
-          "note": "plus 1770 reacties"
-        }
-      ],
-      "links": [
-        {
-          "label": "The Foodie Takes Flight · Shredded Tofu Bulgogi",
-          "url": "https://thefoodietakesflight.com/shredded-tofu-bulgogi/"
-        }
-      ],
-      "instagram": "https://www.instagram.com/reel/DfuVfX1hTdL/",
-      "photo": "https://thefoodietakesflight.com/wp-content/uploads/2022/12/Shredded-Tofu-Bulgogi-Bowl-7-of-8-scaled.jpg",
-      "photoCredit": {
-        "label": "The Foodie Takes Flight",
-        "url": "https://thefoodietakesflight.com/shredded-tofu-bulgogi/"
-      },
-      "ingredients": [
-        {
-          "qty": 500,
-          "unit": "g",
-          "item": "extra stevige tofu, goed uitgelekt"
-        },
-        {
-          "qty": 120,
-          "unit": "g",
-          "item": "geschilde peer of zoete appel, fijn geraspt",
-          "group": "Saus"
-        },
-        {
-          "qty": 20,
-          "unit": "ml",
-          "item": "sojasaus",
-          "group": "Saus"
-        },
-        {
-          "qty": 5,
-          "unit": "ml",
-          "item": "donkere sojasaus",
-          "group": "Saus"
-        },
-        {
-          "qty": 25,
-          "unit": "g",
-          "item": "gochujang",
-          "group": "Saus"
-        },
-        {
-          "qty": 30,
-          "unit": "ml",
-          "item": "geroosterde sesamolie",
-          "group": "Saus"
-        },
-        {
-          "qty": 25,
-          "unit": "g",
-          "item": "suiker",
-          "group": "Saus"
-        },
-        {
-          "qty": 8,
-          "unit": "g",
-          "item": "verse gember, fijn geraspt",
-          "group": "Saus"
-        },
-        {
-          "qty": 3,
-          "unit": "",
-          "item": "teentjes knoflook, fijngehakt",
-          "group": "Saus"
-        },
-        {
-          "qty": 9,
-          "unit": "g",
-          "item": "sesamzaad, plus extra om te bestrooien",
-          "group": "Saus"
-        },
-        {
-          "qty": 250,
-          "unit": "g",
-          "item": "Japanse rijst of sushirijst, gekookt",
-          "group": "Erbij"
-        },
-        {
-          "qty": 2,
-          "unit": "",
-          "item": "lente-uitjes, in ringetjes",
-          "group": "Erbij"
-        }
-      ],
-      "steps": [
-        "Verwarm de oven of airfryer voor op 180 °C. Dep de tofu droog en rasp hem op de grove kant van een rasp.",
-        "Spreid de tofu zo dun mogelijk uit op een bakplaat met bakpapier of in het mandje van de airfryer. Bak 12 tot 15 minuten in de airfryer of 25 tot 30 minuten in de oven, tot hij lichtgoudbruin is. Schep halverwege om en laat hem niet te droog worden.",
-        "Roer intussen alle ingrediënten voor de saus door elkaar.",
-        "Doe de tofu en de saus in een wok of koekenpan op middelhoog vuur en schep 7 tot 8 minuten om, tot de saus is opgenomen. Proef en breng op smaak met wat extra sojasaus.",
-        "Schep de tofu op de rijst en bestrooi met lente-ui en sesamzaad."
-      ],
-      "tip": "Gebruik voor kinderen de helft van de gochujang: de peer en suiker houden het zoet. Ze kunnen de tofu raspen (vingers weg van de rasp bij het laatste stukje) en de saus mengen. Een augurkje van komkommerkimchi erbij past goed."
-    },
-    {
       "slug": "parmezaan-krielaardappels-oven",
       "title": "Krielaardappels op een korst van Parmezaan",
       "dek": "Gehalveerde krieltjes gaan met de snijkant in een laag Parmezaan, boter en kruiden en komen er met een knapperige kaaskorst uit. Vijf ingrediënten, de oven doet de rest.",
@@ -466,7 +191,1062 @@
         "Laat 10 minuten staan zodat de korst hard wordt. Bestrooi met bieslook en wat vlokkenzout en breek de aardappels met korst en al los."
       ],
       "tip": "Kinderen kunnen de kaaspasta mengen en de aardappels in de schaal drukken: hoe steviger, hoe meer korst. Laat ze de kruidenmix zelf afwegen. Het kerven doet een volwassene.",
-      "photo": "https://kalejunkie.com/wp-content/uploads/2023/12/KJ_Crispy-Garlic-Parmesan-Potatoes-6.jpg"
+      "photo": "https://kalejunkie.com/wp-content/uploads/2023/12/KJ_Crispy-Garlic-Parmesan-Potatoes-6.jpg",
+      "spark": {
+        "term": "thanksgiving side",
+        "geo": "world",
+        "source": "Google Trends",
+        "asOf": "2026-11-08",
+        "start": "2025-11-16",
+        "weeks": [
+          40,
+          69,
+          5,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          5,
+          8,
+          4,
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          3,
+          4,
+          2,
+          2,
+          3,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          3,
+          4,
+          3,
+          6,
+          5,
+          4,
+          6,
+          12,
+          19
+        ],
+        "prev": [
+          67,
+          83,
+          3,
+          2,
+          2,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          3,
+          6,
+          4,
+          5,
+          7,
+          14,
+          25
+        ],
+        "label": "Seizoen",
+        "text": "Elk najaar terug: nu tien keer zo vaak gezocht als in de zomer.",
+        "yoy": 0.8,
+        "vsLow": 10.2,
+        "network": {
+          "sources": 14,
+          "days": 30,
+          "terms": [
+            "thanksgiving side",
+            "parmesan potatoes",
+            "crispy parmesan potatoes"
+          ],
+          "posts": [
+            {
+              "name": "Serious Eats",
+              "title": "Crispy Garlic-Parmesan Potatoes, French Onion Stuffing, and Creamy Stroganoff: 10 Reader-Favorite Recipes to Make This November",
+              "url": "https://www.seriouseats.com/most-saved-recipes-week-ending-11-13-26-12252831",
+              "date": "2026-11-13"
+            },
+            {
+              "name": "The Modern Proper",
+              "title": "A favorite Thanksgiving side from deep within the archives.",
+              "url": "https://www.instagram.com/reel/Df-cZ2aO3M3/",
+              "date": "2026-11-20"
+            },
+            {
+              "name": "Love and Lemons",
+              "title": "A showstopper of a Thanksgiving side: HOT HONEY HASSELBACK BUTTERNUT SQUASH.",
+              "url": "https://www.instagram.com/reel/Df8CYM8PwhA/",
+              "date": "2026-11-19"
+            },
+            {
+              "name": "Half Baked Harvest",
+              "title": "The Best Thanksgiving Side Dishes.",
+              "url": "https://www.halfbakedharvest.com/the-best-thanksgiving-side-dishes/",
+              "date": "2026-11-19"
+            },
+            {
+              "name": "Ministry of Curry",
+              "title": "Your Thanksgiving side dish just got a serious upgrade.",
+              "url": "https://www.instagram.com/reel/Df47cPopM-Z/",
+              "date": "2026-11-18"
+            },
+            {
+              "name": "Piping Pot Curry",
+              "title": "The Thanksgiving side that steals the show 🥕🌈 Rainbow carrots roasted with spices until caramelized and tender, served over a cool lemon yog",
+              "url": "https://www.instagram.com/reel/Df2iC8mSkUu/",
+              "date": "2026-11-17"
+            }
+          ],
+          "of": 174
+        }
+      },
+      "igTrend": {
+        "name": "Kalejunkie",
+        "source": "kalejunkie",
+        "url": "https://www.instagram.com/reel/Df93Y4BJ1Z4/",
+        "date": "2026-11-20",
+        "title": "kalejunkie comment LINK for the recipe or grab it below for my 5-INGREDIENT CRISPY PARMESAN RANCH POTATOES!",
+        "engagement": 7056,
+        "normal": 1294,
+        "ratio": 5.5,
+        "age": 1,
+        "kind": "uitschieter",
+        "extra": 5762,
+        "series": {
+          "values": [
+            2228,
+            255,
+            2,
+            4977,
+            686,
+            5912,
+            2,
+            3,
+            113,
+            1,
+            1272,
+            8,
+            4319,
+            546,
+            2011,
+            2,
+            47,
+            1375,
+            1,
+            105,
+            2,
+            255,
+            1109,
+            1635,
+            58,
+            2,
+            1615,
+            174,
+            7056,
+            2
+          ],
+          "at": 28
+        }
+      },
+      "photoGamma": 0.46,
+      "photoSet": [
+        {
+          "w": 768,
+          "url": "https://kalejunkie.com/wp-content/uploads/2023/12/KJ_Crispy-Garlic-Parmesan-Potatoes-6-768x960.jpg"
+        },
+        {
+          "w": 819,
+          "url": "https://kalejunkie.com/wp-content/uploads/2023/12/KJ_Crispy-Garlic-Parmesan-Potatoes-6-819x1024.jpg"
+        },
+        {
+          "w": 1229,
+          "url": "https://kalejunkie.com/wp-content/uploads/2023/12/KJ_Crispy-Garlic-Parmesan-Potatoes-6-1229x1536.jpg"
+        },
+        {
+          "w": 1638,
+          "url": "https://kalejunkie.com/wp-content/uploads/2023/12/KJ_Crispy-Garlic-Parmesan-Potatoes-6-1638x2048.jpg"
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://kalejunkie.com/wp-content/uploads/2023/12/KJ_Crispy-Garlic-Parmesan-Potatoes-1.jpg",
+          "w": 5399,
+          "h": 6749,
+          "thumb": "https://kalejunkie.com/wp-content/uploads/2023/12/KJ_Crispy-Garlic-Parmesan-Potatoes-1-150x150.jpg"
+        },
+        {
+          "url": "https://kalejunkie.com/wp-content/uploads/2023/12/KJ_Crispy-Garlic-Parmesan-Potatoes-2.jpg",
+          "w": 4980,
+          "h": 6225,
+          "thumb": "https://kalejunkie.com/wp-content/uploads/2023/12/KJ_Crispy-Garlic-Parmesan-Potatoes-2-150x150.jpg"
+        },
+        {
+          "url": "https://kalejunkie.com/wp-content/uploads/2023/12/KJ_Crispy-Garlic-Parmesan-Potatoes-3.jpg",
+          "w": 4836,
+          "h": 6045,
+          "thumb": "https://kalejunkie.com/wp-content/uploads/2023/12/KJ_Crispy-Garlic-Parmesan-Potatoes-3-150x150.jpg"
+        },
+        {
+          "url": "https://kalejunkie.com/wp-content/uploads/2023/12/KJ_Crispy-Garlic-Parmesan-Potatoes-4.jpg",
+          "w": 4719,
+          "h": 5898,
+          "thumb": "https://kalejunkie.com/wp-content/uploads/2023/12/KJ_Crispy-Garlic-Parmesan-Potatoes-4-150x150.jpg"
+        },
+        {
+          "url": "https://kalejunkie.com/wp-content/uploads/2023/12/KJ_Crispy-Garlic-Parmesan-Potatoes-5.jpg",
+          "w": 3922,
+          "h": 4903,
+          "thumb": "https://kalejunkie.com/wp-content/uploads/2023/12/KJ_Crispy-Garlic-Parmesan-Potatoes-5-150x150.jpg"
+        }
+      ]
+    },
+    {
+      "slug": "tofu-bulgogi-rijstkom",
+      "title": "Rijstkom met krokante tofu-bulgogi",
+      "dek": "Geraspte tofu wordt krokant in de oven of airfryer en trekt daarna een zoete bulgogisaus met peer, gember en sesam op. Met rijst en lente-ui.",
+      "category": "Hoofdgerecht",
+      "minutes": 40,
+      "servings": 3,
+      "tags": [
+        "Aziatisch",
+        "Vegetarisch",
+        "Kindvriendelijk"
+      ],
+      "tint": "sage",
+      "glyph": "豆",
+      "native": "두부 불고기",
+      "roman": "dubu bulgogi",
+      "trend": {
+        "source": "Instagram",
+        "text": "Tofu als gehakt: deze week veel bewaard en gedeeld."
+      },
+      "signal": {
+        "source": "The Foodie Takes Flight",
+        "text": "Jeeca Uy van The Foodie Takes Flight plaatste deze rijstkom half november opnieuw; de reel kreeg ruim 4.200 likes en 1.700 reacties, veel meer dan normaal voor haar account. Het recept staat met hoeveelheden op haar site."
+      },
+      "source": "the-foodie-takes-flight",
+      "trendTerms": [
+        "tofu bulgogi",
+        "shredded tofu"
+      ],
+      "signals": [
+        {
+          "source": "Instagram",
+          "metric": "likes",
+          "value": 4290,
+          "unit": "likes",
+          "period": "2026-11-14 t/m 2026-11-21",
+          "geo": "world",
+          "url": "https://www.instagram.com/reel/DfuVfX1hTdL/",
+          "note": "plus 1770 reacties"
+        }
+      ],
+      "links": [
+        {
+          "label": "The Foodie Takes Flight · Shredded Tofu Bulgogi",
+          "url": "https://thefoodietakesflight.com/shredded-tofu-bulgogi/"
+        }
+      ],
+      "instagram": "https://www.instagram.com/reel/DfuVfX1hTdL/",
+      "photo": "https://thefoodietakesflight.com/wp-content/uploads/2022/12/Shredded-Tofu-Bulgogi-Bowl-7-of-8-scaled.jpg",
+      "photoCredit": {
+        "label": "The Foodie Takes Flight",
+        "url": "https://thefoodietakesflight.com/shredded-tofu-bulgogi/"
+      },
+      "ingredients": [
+        {
+          "qty": 500,
+          "unit": "g",
+          "item": "extra stevige tofu, goed uitgelekt"
+        },
+        {
+          "qty": 120,
+          "unit": "g",
+          "item": "geschilde peer of zoete appel, fijn geraspt",
+          "group": "Saus"
+        },
+        {
+          "qty": 20,
+          "unit": "ml",
+          "item": "sojasaus",
+          "group": "Saus"
+        },
+        {
+          "qty": 5,
+          "unit": "ml",
+          "item": "donkere sojasaus",
+          "group": "Saus"
+        },
+        {
+          "qty": 25,
+          "unit": "g",
+          "item": "gochujang",
+          "group": "Saus"
+        },
+        {
+          "qty": 30,
+          "unit": "ml",
+          "item": "geroosterde sesamolie",
+          "group": "Saus"
+        },
+        {
+          "qty": 25,
+          "unit": "g",
+          "item": "suiker",
+          "group": "Saus"
+        },
+        {
+          "qty": 8,
+          "unit": "g",
+          "item": "verse gember, fijn geraspt",
+          "group": "Saus"
+        },
+        {
+          "qty": 3,
+          "unit": "",
+          "item": "teentjes knoflook, fijngehakt",
+          "group": "Saus"
+        },
+        {
+          "qty": 9,
+          "unit": "g",
+          "item": "sesamzaad, plus extra om te bestrooien",
+          "group": "Saus"
+        },
+        {
+          "qty": 250,
+          "unit": "g",
+          "item": "Japanse rijst of sushirijst, gekookt",
+          "group": "Erbij"
+        },
+        {
+          "qty": 2,
+          "unit": "",
+          "item": "lente-uitjes, in ringetjes",
+          "group": "Erbij"
+        }
+      ],
+      "steps": [
+        "Verwarm de oven of airfryer voor op 180 °C. Dep de tofu droog en rasp hem op de grove kant van een rasp.",
+        "Spreid de tofu zo dun mogelijk uit op een bakplaat met bakpapier of in het mandje van de airfryer. Bak 12 tot 15 minuten in de airfryer of 25 tot 30 minuten in de oven, tot hij lichtgoudbruin is. Schep halverwege om en laat hem niet te droog worden.",
+        "Roer intussen alle ingrediënten voor de saus door elkaar.",
+        "Doe de tofu en de saus in een wok of koekenpan op middelhoog vuur en schep 7 tot 8 minuten om, tot de saus is opgenomen. Proef en breng op smaak met wat extra sojasaus.",
+        "Schep de tofu op de rijst en bestrooi met lente-ui en sesamzaad."
+      ],
+      "tip": "Gebruik voor kinderen de helft van de gochujang: de peer en suiker houden het zoet. Ze kunnen de tofu raspen (vingers weg van de rasp bij het laatste stukje) en de saus mengen. Een augurkje van komkommerkimchi erbij past goed.",
+      "spark": {
+        "term": "shredded tofu",
+        "geo": "world",
+        "source": "Google Trends",
+        "asOf": "2026-11-08",
+        "start": "2025-11-16",
+        "weeks": [
+          62,
+          44,
+          49,
+          49,
+          42,
+          39,
+          57,
+          84,
+          83,
+          59,
+          72,
+          81,
+          53,
+          68,
+          74,
+          71,
+          67,
+          57,
+          100,
+          80,
+          77,
+          69,
+          58,
+          71,
+          61,
+          58,
+          48,
+          69,
+          72,
+          64,
+          60,
+          56,
+          60,
+          62,
+          57,
+          79,
+          60,
+          54,
+          75,
+          63,
+          60,
+          66,
+          55,
+          39,
+          34,
+          53,
+          56,
+          40,
+          53,
+          68,
+          42,
+          54
+        ],
+        "prev": [
+          34,
+          25,
+          51,
+          40,
+          39,
+          19,
+          48,
+          61,
+          50,
+          59,
+          67,
+          38,
+          40,
+          33,
+          45,
+          62,
+          62,
+          52,
+          66,
+          45,
+          44,
+          43,
+          43,
+          53,
+          60,
+          42,
+          39,
+          59,
+          52,
+          52,
+          49,
+          69,
+          63,
+          46,
+          49,
+          46,
+          43,
+          47,
+          46,
+          46,
+          45,
+          62,
+          65,
+          63,
+          57,
+          57,
+          55,
+          64,
+          52,
+          59,
+          59,
+          69
+        ],
+        "label": "Stabiel",
+        "text": "Even vaak gezocht als vorig jaar.",
+        "yoy": 0.91,
+        "vsLow": 1.1,
+        "network": {
+          "sources": 1,
+          "days": 30,
+          "terms": [
+            "tofu bulgogi",
+            "shredded tofu"
+          ],
+          "posts": [
+            {
+              "name": "The Foodie Takes Flight",
+              "title": "Comment “RECIPE” and I’ll send this shredded tofu bulgogi recipe to you 🫶🏼🍚",
+              "url": "https://www.instagram.com/reel/Df99j6TSRCQ/",
+              "date": "2026-11-20"
+            }
+          ],
+          "of": 174
+        }
+      },
+      "igTrend": {
+        "name": "The Foodie Takes Flight",
+        "source": "the-foodie-takes-flight",
+        "url": "https://www.instagram.com/reel/DfuVfX1hTdL/",
+        "date": "2026-11-14",
+        "title": "Shredded Tofu Bulgogi Rice Bowl 🧡 comment “RECIPE” to get this sent to you :)",
+        "engagement": 5362,
+        "normal": 164,
+        "ratio": 32.7,
+        "age": 7,
+        "kind": "uitschieter",
+        "extra": 5198,
+        "series": {
+          "values": [
+            2528,
+            152,
+            94,
+            841,
+            14,
+            40,
+            0,
+            36,
+            39,
+            1206,
+            0,
+            64,
+            79,
+            32,
+            102,
+            58,
+            265,
+            40,
+            20,
+            512,
+            339,
+            125,
+            5362,
+            36,
+            111,
+            89,
+            102,
+            79,
+            1571,
+            114
+          ],
+          "at": 22
+        }
+      },
+      "photoGamma": 0.46,
+      "photoSet": [
+        {
+          "w": 480,
+          "url": "https://thefoodietakesflight.com/wp-content/uploads/2022/12/Shredded-Tofu-Bulgogi-Bowl-7-of-8-480x270.jpg"
+        },
+        {
+          "w": 500,
+          "url": "https://thefoodietakesflight.com/wp-content/uploads/2022/12/Shredded-Tofu-Bulgogi-Bowl-7-of-8-500x375.jpg"
+        },
+        {
+          "w": 683,
+          "url": "https://thefoodietakesflight.com/wp-content/uploads/2022/12/Shredded-Tofu-Bulgogi-Bowl-7-of-8-683x1024.jpg"
+        },
+        {
+          "w": 768,
+          "url": "https://thefoodietakesflight.com/wp-content/uploads/2022/12/Shredded-Tofu-Bulgogi-Bowl-7-of-8-768x1152.jpg"
+        },
+        {
+          "w": 1024,
+          "url": "https://thefoodietakesflight.com/wp-content/uploads/2022/12/Shredded-Tofu-Bulgogi-Bowl-7-of-8-1024x1536.jpg"
+        },
+        {
+          "w": 1365,
+          "url": "https://thefoodietakesflight.com/wp-content/uploads/2022/12/Shredded-Tofu-Bulgogi-Bowl-7-of-8-1365x2048.jpg"
+        },
+        {
+          "w": 1707,
+          "url": "https://thefoodietakesflight.com/wp-content/uploads/2022/12/Shredded-Tofu-Bulgogi-Bowl-7-of-8-scaled.jpg"
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://thefoodietakesflight.com/wp-content/uploads/2022/12/Shredded-Tofu-Bulgogi-Bowl-8-of-24.jpg",
+          "w": 1170,
+          "h": 2038,
+          "thumb": "https://thefoodietakesflight.com/wp-content/uploads/2022/12/Shredded-Tofu-Bulgogi-Bowl-8-of-24-150x150.jpg"
+        },
+        {
+          "url": "https://thefoodietakesflight.com/wp-content/uploads/2022/12/Shredded-Tofu-Bulgogi-Bowl-12-of-24.jpg",
+          "w": 1170,
+          "h": 2038,
+          "thumb": "https://thefoodietakesflight.com/wp-content/uploads/2022/12/Shredded-Tofu-Bulgogi-Bowl-12-of-24-150x150.jpg"
+        },
+        {
+          "url": "https://thefoodietakesflight.com/wp-content/uploads/2022/12/Shredded-Tofu-Bulgogi-Bowl-3-of-24.jpg",
+          "w": 1170,
+          "h": 2038,
+          "thumb": "https://thefoodietakesflight.com/wp-content/uploads/2022/12/Shredded-Tofu-Bulgogi-Bowl-3-of-24-150x150.jpg"
+        },
+        {
+          "url": "https://thefoodietakesflight.com/wp-content/uploads/2022/12/Shredded-Tofu-Bulgogi-Bowl-7-of-24.jpg",
+          "w": 1170,
+          "h": 2038,
+          "thumb": "https://thefoodietakesflight.com/wp-content/uploads/2022/12/Shredded-Tofu-Bulgogi-Bowl-7-of-24-150x150.jpg"
+        },
+        {
+          "url": "https://thefoodietakesflight.com/wp-content/uploads/2022/12/Shredded-Tofu-Bulgogi-Bowl-1-of-24.jpg",
+          "w": 1170,
+          "h": 2038,
+          "thumb": "https://thefoodietakesflight.com/wp-content/uploads/2022/12/Shredded-Tofu-Bulgogi-Bowl-1-of-24-150x150.jpg"
+        },
+        {
+          "url": "https://thefoodietakesflight.com/wp-content/uploads/2022/12/Shredded-Tofu-Bulgogi-Bowl-9-of-24.jpg",
+          "w": 1170,
+          "h": 2038,
+          "thumb": "https://thefoodietakesflight.com/wp-content/uploads/2022/12/Shredded-Tofu-Bulgogi-Bowl-9-of-24-150x150.jpg"
+        }
+      ]
+    },
+    {
+      "slug": "kabocha-gehakt-roerbak",
+      "title": "Kabocha met gehakt uit de wok",
+      "dek": "Dunne plakjes kabocha garen eerst kort in de magnetron en gaan dan met varkensgehakt in een zoet-hartige saus. In een half uur op tafel, met rijst.",
+      "category": "Hoofdgerecht",
+      "minutes": 30,
+      "servings": 4,
+      "tags": [
+        "Aziatisch",
+        "Kindvriendelijk",
+        "Weinig werk",
+        "Seizoen"
+      ],
+      "tint": "persimmon",
+      "glyph": "炒",
+      "native": "かぼちゃのそぼろ炒め",
+      "roman": "kabocha no soboro itame",
+      "trend": {
+        "source": "Instagram",
+        "text": "Kabocha ligt nu overal, dit is een snelle doordeweekse manier."
+      },
+      "signal": {
+        "source": "Just One Cookbook",
+        "text": "Namiko Chen van Just One Cookbook zette deze roerbak begin november opnieuw op Instagram: de reel haalde ruim 4.600 likes en 1.600 reacties, veel meer dan gewoonlijk voor het account. Het recept staat met hoeveelheden op haar site."
+      },
+      "source": "just-one-cookbook",
+      "trendTerms": [
+        "kabocha stir fry",
+        "kabocha"
+      ],
+      "signals": [
+        {
+          "source": "Instagram",
+          "metric": "likes",
+          "value": 4689,
+          "unit": "likes",
+          "period": "2026-11-04 t/m 2026-11-21",
+          "geo": "world",
+          "url": "https://www.instagram.com/reel/DfTLDxRh0fd/",
+          "note": "plus 1628 reacties"
+        }
+      ],
+      "links": [
+        {
+          "label": "Just One Cookbook · Kabocha Pork Stir-Fry",
+          "url": "https://www.justonecookbook.com/kabocha-pork-stir-fry/"
+        }
+      ],
+      "instagram": "https://www.instagram.com/reel/DfTLDxRh0fd/",
+      "photo": "https://www.justonecookbook.com/wp-content/uploads/2021/09/Kabocha-Pork-Stir-Fry-1854-II.jpg",
+      "photoCredit": {
+        "label": "Just One Cookbook",
+        "url": "https://www.justonecookbook.com/kabocha-pork-stir-fry/"
+      },
+      "ingredients": [
+        {
+          "qty": 350,
+          "unit": "g",
+          "item": "varkensgehakt (of kipgehakt)"
+        },
+        {
+          "qty": 5,
+          "unit": "ml",
+          "item": "sojasaus",
+          "group": "Marinade"
+        },
+        {
+          "qty": 10,
+          "unit": "ml",
+          "item": "sake (of water)",
+          "group": "Marinade"
+        },
+        {
+          "qty": 6,
+          "unit": "g",
+          "item": "aardappelzetmeel of maïzena",
+          "group": "Marinade"
+        },
+        {
+          "qty": 600,
+          "unit": "g",
+          "item": "kabocha (of flespompoen), zonder pitten gewogen"
+        },
+        {
+          "qty": 2,
+          "unit": "",
+          "item": "teentjes knoflook, in dunne plakjes"
+        },
+        {
+          "qty": 20,
+          "unit": "ml",
+          "item": "neutrale olie"
+        },
+        {
+          "qty": 30,
+          "unit": "ml",
+          "item": "sake (of water)",
+          "group": "Saus"
+        },
+        {
+          "qty": 30,
+          "unit": "ml",
+          "item": "sojasaus",
+          "group": "Saus"
+        },
+        {
+          "qty": 20,
+          "unit": "ml",
+          "item": "oestersaus",
+          "group": "Saus"
+        },
+        {
+          "qty": 10,
+          "unit": "g",
+          "item": "gochujang (of witte miso voor een milde versie)",
+          "group": "Saus"
+        },
+        {
+          "qty": 8,
+          "unit": "g",
+          "item": "suiker",
+          "group": "Saus"
+        },
+        {
+          "qty": 300,
+          "unit": "g",
+          "item": "Japanse rijst, gekookt volgens de verpakking",
+          "group": "Erbij"
+        }
+      ],
+      "steps": [
+        "Meng het gehakt met de sojasaus, sake en het zetmeel van de marinade en laat 5 tot 10 minuten staan. Roer in een kommetje de sake, sojasaus, oestersaus, gochujang en suiker voor de saus door elkaar.",
+        "Schep de pitten uit de kabocha (de schil mag eraan blijven) en snijd hem in plakjes van 3 mm. Halveer grote plakken.",
+        "Leg de kabocha met 2 eetlepels water in een magnetronschaal, dek af en verwarm 3 à 4 minuten op vol vermogen. Een prikker moet er nog met wat weerstand in gaan: hij is dan voor ongeveer 80 % gaar.",
+        "Verhit de olie in een wok of grote koekenpan op middelhoog vuur en bak de knoflook tot hij geurt. Bak het gehakt los tot het niet meer roze is.",
+        "Schep de kabocha erdoor, doe een deksel op de pan en laat 5 minuten op laag vuur garen tot hij zacht is.",
+        "Giet de saus erbij, zet het vuur hoog en schep om tot de saus is ingekookt en alles glanst. Serveer met de rijst."
+      ],
+      "tip": "Neem voor kinderen witte miso in plaats van gochujang: dan is het niet pittig. Ze kunnen het gehakt met de marinade mengen en de saus roeren. Het snijden van de harde kabocha doet een volwassene.",
+      "spark": {
+        "term": "kabocha",
+        "geo": "world",
+        "source": "Google Trends",
+        "asOf": "2026-11-08",
+        "start": "2025-11-16",
+        "weeks": [
+          75,
+          77,
+          55,
+          50,
+          46,
+          47,
+          50,
+          57,
+          55,
+          54,
+          52,
+          47,
+          44,
+          45,
+          45,
+          51,
+          45,
+          43,
+          45,
+          48,
+          48,
+          52,
+          47,
+          47,
+          46,
+          44,
+          44,
+          46,
+          44,
+          42,
+          42,
+          43,
+          42,
+          43,
+          39,
+          39,
+          40,
+          40,
+          44,
+          37,
+          42,
+          45,
+          52,
+          60,
+          75,
+          89,
+          87,
+          90,
+          88,
+          97,
+          90,
+          85
+        ],
+        "prev": [
+          67,
+          69,
+          51,
+          46,
+          44,
+          49,
+          53,
+          45,
+          47,
+          44,
+          40,
+          39,
+          32,
+          42,
+          37,
+          34,
+          35,
+          31,
+          34,
+          34,
+          31,
+          31,
+          34,
+          31,
+          26,
+          27,
+          30,
+          30,
+          41,
+          36,
+          39,
+          34,
+          32,
+          29,
+          35,
+          36,
+          37,
+          36,
+          39,
+          36,
+          41,
+          49,
+          49,
+          53,
+          67,
+          77,
+          84,
+          95,
+          88,
+          100,
+          82,
+          83
+        ],
+        "label": "Seizoen",
+        "text": "Elk najaar terug: nu twee keer zo vaak gezocht als in de zomer.",
+        "yoy": 1.02,
+        "vsLow": 2.2,
+        "network": {
+          "sources": 4,
+          "days": 30,
+          "terms": [
+            "kabocha stir fry",
+            "kabocha"
+          ],
+          "posts": [
+            {
+              "name": "Just One Cookbook",
+              "title": "Japanese Kabocha Flan, Silky & Creamy Instant Pot Dessert!",
+              "url": "https://www.instagram.com/reel/Df3KXqiTAyF/",
+              "date": "2026-11-18"
+            },
+            {
+              "name": "Japanese Cooking 101",
+              "title": "Make delicious Kabocha Gohan (Japanese pumpkin rice) with just a few simple ingredients and your rice cooker!",
+              "url": "https://www.instagram.com/reel/DfLMQEjSEZz/",
+              "date": "2026-10-31"
+            },
+            {
+              "name": "J. Kenji López-Alt",
+              "title": "Braised Kabocha Squash Season!",
+              "url": "https://www.youtube.com/shorts/s6liqS8PTF8",
+              "date": "2026-10-30"
+            },
+            {
+              "name": "Okonomi Kitchen",
+              "title": "kabocha (pumpkin) cinnamon roll focaccia with real kabocha puree in the dough and filling~",
+              "url": "https://www.instagram.com/reel/DfzpSoAhf6i/",
+              "date": "2026-11-16"
+            }
+          ],
+          "of": 174
+        }
+      },
+      "igTrend": {
+        "name": "Just One Cookbook",
+        "source": "just-one-cookbook",
+        "url": "https://www.instagram.com/reel/DfTLDxRh0fd/",
+        "date": "2026-11-04",
+        "title": "Easy Japanese Kabocha Pork Stir-Fry in 30 Minutes!",
+        "engagement": 5861,
+        "normal": 921,
+        "ratio": 6.4,
+        "age": 17,
+        "kind": "uitschieter",
+        "growth": 439,
+        "growthRatio": 0.5,
+        "extra": 4940,
+        "series": {
+          "values": [
+            688,
+            483,
+            3607,
+            1188,
+            463,
+            457,
+            785,
+            519,
+            619,
+            653,
+            329,
+            881,
+            845,
+            1064,
+            1143,
+            626,
+            1861,
+            724,
+            2750,
+            1515,
+            1367,
+            1211,
+            5861,
+            1377,
+            781,
+            886,
+            1132,
+            755,
+            525,
+            821
+          ],
+          "at": 22
+        }
+      },
+      "photoGamma": 0.52,
+      "photoSet": [
+        {
+          "w": 400,
+          "url": "https://cdn.justonecookbook.com/spai/q_glossy+ret_img+to_auto/www.justonecookbook.com/wp-content/uploads/2021/09/Kabocha-Pork-Stir-Fry-1854-II-400x600.jpg"
+        },
+        {
+          "w": 533,
+          "url": "https://cdn.justonecookbook.com/spai/q_glossy+ret_img+to_auto/www.justonecookbook.com/wp-content/uploads/2021/09/Kabocha-Pork-Stir-Fry-1854-II-533x800.jpg"
+        },
+        {
+          "w": 768,
+          "url": "https://cdn.justonecookbook.com/spai/q_glossy+ret_img+to_auto/www.justonecookbook.com/wp-content/uploads/2021/09/Kabocha-Pork-Stir-Fry-1854-II-768x1152.jpg"
+        },
+        {
+          "w": 800,
+          "url": "https://www.justonecookbook.com/wp-content/uploads/2021/09/Kabocha-Pork-Stir-Fry-1854-II.jpg"
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://www.justonecookbook.com/wp-content/uploads/2021/09/Kabocha-Pork-Stir-Fry-1832-I-1.jpg",
+          "w": 800,
+          "h": 533,
+          "thumb": "https://www.justonecookbook.com/wp-content/uploads/2021/09/Kabocha-Pork-Stir-Fry-1832-I-1-150x150.jpg"
+        },
+        {
+          "url": "https://www.justonecookbook.com/wp-content/uploads/2021/09/Kabocha-Pork-Stir-Fry-1881-III.jpg",
+          "w": 800,
+          "h": 1200,
+          "thumb": "https://www.justonecookbook.com/wp-content/uploads/2021/09/Kabocha-Pork-Stir-Fry-1881-III-150x150.jpg"
+        },
+        {
+          "url": "https://www.justonecookbook.com/wp-content/uploads/2021/09/Kabocha-Pork-Stir-Fry-1869-IV.jpg",
+          "w": 800,
+          "h": 1200,
+          "thumb": "https://www.justonecookbook.com/wp-content/uploads/2021/09/Kabocha-Pork-Stir-Fry-1869-IV-150x150.jpg"
+        },
+        {
+          "url": "https://www.justonecookbook.com/wp-content/uploads/2021/09/Kabocha-Pork-Stir-Fry-1858-V.jpg",
+          "w": 800,
+          "h": 1200,
+          "thumb": "https://www.justonecookbook.com/wp-content/uploads/2021/09/Kabocha-Pork-Stir-Fry-1858-V-150x150.jpg"
+        },
+        {
+          "url": "https://www.justonecookbook.com/wp-content/uploads/2021/09/Kabocha-Pork-Stir-Fry-1840-I-2.jpg",
+          "w": 800,
+          "h": 533,
+          "thumb": "https://www.justonecookbook.com/wp-content/uploads/2021/09/Kabocha-Pork-Stir-Fry-1840-I-2-150x150.jpg"
+        },
+        {
+          "url": "https://www.justonecookbook.com/wp-content/uploads/2021/09/Kabocha-Pork-Stir-Fry-Ingredients.jpg",
+          "w": 800,
+          "h": 533,
+          "thumb": "https://www.justonecookbook.com/wp-content/uploads/2021/09/Kabocha-Pork-Stir-Fry-Ingredients-150x150.jpg"
+        }
+      ]
     },
     {
       "slug": "franse-uienpasta-gruyere",
@@ -595,7 +1375,192 @@
         "Haal het deksel eraf en kook nog ongeveer 5 minuten tot de pasta beetgaar is. Roer de room erdoor en daarna, in delen, de gruyère tot die gesmolten is.",
         "Proef, breng op smaak met peper en bestrooi met peterselie."
       ],
-      "tip": "Neem voor kinderen de variant met azijn en bouillon in plaats van wijn. Ze kunnen de kaas raspen en in delen door de pasta roeren. Wie de ui te sterk vindt, krijgt er een bord met extra kaas: na twintig minuten bakken is de ui zoet."
+      "tip": "Neem voor kinderen de variant met azijn en bouillon in plaats van wijn. Ze kunnen de kaas raspen en in delen door de pasta roeren. Wie de ui te sterk vindt, krijgt er een bord met extra kaas: na twintig minuten bakken is de ui zoet.",
+      "spark": {
+        "term": "french onion",
+        "geo": "world",
+        "source": "Google Trends",
+        "asOf": "2026-11-08",
+        "start": "2025-11-16",
+        "weeks": [
+          81,
+          74,
+          66,
+          75,
+          77,
+          98,
+          100,
+          74,
+          69,
+          76,
+          74,
+          72,
+          60,
+          58,
+          54,
+          50,
+          46,
+          47,
+          50,
+          47,
+          43,
+          46,
+          42,
+          45,
+          47,
+          47,
+          44,
+          45,
+          42,
+          41,
+          41,
+          39,
+          38,
+          37,
+          39,
+          42,
+          43,
+          40,
+          47,
+          41,
+          44,
+          50,
+          48,
+          57,
+          68,
+          66,
+          69,
+          65,
+          66,
+          62,
+          65,
+          79
+        ],
+        "prev": [
+          71,
+          75,
+          60,
+          59,
+          65,
+          93,
+          86,
+          86,
+          69,
+          69,
+          56,
+          56,
+          55,
+          60,
+          49,
+          48,
+          48,
+          45,
+          44,
+          43,
+          41,
+          41,
+          38,
+          36,
+          37,
+          35,
+          38,
+          37,
+          40,
+          37,
+          34,
+          35,
+          40,
+          38,
+          37,
+          38,
+          39,
+          43,
+          42,
+          44,
+          45,
+          46,
+          49,
+          46,
+          56,
+          54,
+          60,
+          65,
+          70,
+          68,
+          76,
+          83
+        ],
+        "label": "Seizoen",
+        "text": "Elk najaar terug: nu anderhalf keer zo vaak gezocht als in de zomer.",
+        "yoy": 0.92,
+        "vsLow": 1.7,
+        "network": {
+          "sources": 10,
+          "days": 30,
+          "terms": [
+            "french onion",
+            "french onion pasta"
+          ],
+          "posts": [
+            {
+              "name": "Molly Baz",
+              "title": "HELLLOOOOOOO ARE YOU MAKING FRENCH ONION CHICKENS/TURKEYS OR WHAT FAM??????",
+              "url": "https://www.instagram.com/reel/Df-kUlPzy8J/",
+              "date": "2026-11-20"
+            },
+            {
+              "name": "Serious Eats",
+              "title": "Crispy Garlic-Parmesan Potatoes, French Onion Stuffing, and Creamy Stroganoff: 10 Reader-Favorite Recipes to Make This November",
+              "url": "https://www.seriouseats.com/most-saved-recipes-week-ending-11-13-26-12252831",
+              "date": "2026-11-13"
+            },
+            {
+              "name": "Food & Wine",
+              "title": "French Onion Mac and Cheese",
+              "url": "https://www.foodandwine.com/french-onion-mac-and-cheese-8740660",
+              "date": "2026-11-21"
+            },
+            {
+              "name": "Feedfeed",
+              "title": "This is your sign to skip the dinner reservations and make French Onion Soup at home!",
+              "url": "https://www.instagram.com/reel/Df8AjvXhYnQ/",
+              "date": "2026-11-19"
+            },
+            {
+              "name": "Saveur",
+              "title": "Flambéed French Onion Crêpes",
+              "url": "https://www.saveur.com/recipes/flambeed-french-onion-crepes/",
+              "date": "2026-11-16"
+            },
+            {
+              "name": "Half Baked Harvest",
+              "title": "French Onion Stuffing.",
+              "url": "https://www.halfbakedharvest.com/french-onion-stuffing/",
+              "date": "2026-11-09"
+            }
+          ],
+          "of": 174
+        }
+      },
+      "photoGamma": 0.6,
+      "photoSet": [
+        {
+          "w": 580,
+          "url": "https://cdn.loveandlemons.com/wp-content/uploads/2026/09/french-onion-pasta-recipe-580x597.jpg"
+        },
+        {
+          "w": 995,
+          "url": "https://cdn.loveandlemons.com/wp-content/uploads/2026/09/french-onion-pasta-recipe-995x1024.jpg"
+        },
+        {
+          "w": 1160,
+          "url": "https://cdn.loveandlemons.com/wp-content/uploads/2026/09/french-onion-pasta-recipe-1160x1194.jpg"
+        },
+        {
+          "w": 1740,
+          "url": "https://cdn.loveandlemons.com/wp-content/uploads/2026/09/french-onion-pasta-recipe.jpg"
+        }
+      ]
     },
     {
       "slug": "tulband-witte-chocolade-cranberry",
@@ -811,7 +1776,264 @@
         "Botercrème: mix de boter helemaal glad, voeg op lage stand beetje bij beetje de poedersuiker toe, dan het zout, de slagroom en het amandelextract. Mix de afgekoelde witte chocolade erdoor en klop nog 1 minuut op middelhoge stand.",
         "Smeer de botercrème over de cake en versier met de cranberry's, het amandelschaafsel en wat sinaasappelrasp. Bewaar afgedekt in de koelkast (tot 5 dagen) en laat voor het serveren op temperatuur komen."
       ],
-      "tip": "Kinderen kunnen de cranberry's door de bloem rollen, de eieren één voor één aangeven en de cake versieren. Het rollen van de gesuikerde cranberry's is ook een mooi klusje voor kleine handen. Laat het amandelextract weg bij een notenallergie."
+      "tip": "Kinderen kunnen de cranberry's door de bloem rollen, de eieren één voor één aangeven en de cake versieren. Het rollen van de gesuikerde cranberry's is ook een mooi klusje voor kleine handen. Laat het amandelextract weg bij een notenallergie.",
+      "spark": {
+        "term": "white chocolate",
+        "geo": "NL",
+        "source": "Google Trends",
+        "asOf": "2026-11-08",
+        "start": "2025-11-16",
+        "weeks": [
+          7,
+          7,
+          8,
+          5,
+          6,
+          8,
+          6,
+          7,
+          6,
+          7,
+          7,
+          8,
+          7,
+          8,
+          8,
+          5,
+          8,
+          7,
+          8,
+          6,
+          8,
+          6,
+          7,
+          7,
+          6,
+          6,
+          8,
+          5,
+          8,
+          9,
+          10,
+          8,
+          13,
+          12,
+          7,
+          8,
+          7,
+          7,
+          14,
+          19,
+          25,
+          100,
+          81,
+          33,
+          38,
+          12,
+          7,
+          8,
+          8,
+          10,
+          9,
+          5
+        ],
+        "prev": [
+          5,
+          6,
+          6,
+          5,
+          7,
+          6,
+          5,
+          5,
+          7,
+          5,
+          4,
+          5,
+          6,
+          8,
+          6,
+          6,
+          6,
+          7,
+          7,
+          5,
+          6,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          4,
+          5,
+          5,
+          6,
+          4,
+          6,
+          5,
+          6,
+          5,
+          5,
+          6,
+          6,
+          6,
+          5,
+          4,
+          4,
+          5,
+          7,
+          5,
+          6,
+          6
+        ],
+        "label": "Stijgt",
+        "text": "Anderhalf keer zo vaak gezocht als vorig jaar.",
+        "yoy": 1.33,
+        "vsLow": 1.2,
+        "network": {
+          "sources": 10,
+          "days": 30,
+          "terms": [
+            "white chocolate",
+            "cranberry bundt cake"
+          ],
+          "posts": [
+            {
+              "name": "Bon Appétit",
+              "title": "If you’re team cake over pie, bring shilpauskokovic’s white chocolate cranberry cake to your next dinner.",
+              "url": "https://www.instagram.com/p/Df4mWaGFr2B/",
+              "date": "2026-11-18"
+            },
+            {
+              "name": "Constellation Inspiration",
+              "title": "goldfish brittle white chocolate cookies, with the same recipe but a special version of the crackers (they’re toy story!!!)",
+              "url": "https://www.instagram.com/p/Dfc-XYjgWV_/",
+              "date": "2026-11-07"
+            },
+            {
+              "name": "Jane's Patisserie",
+              "title": "Another chatty bake along video whilst I make some white chocolate raspberry cookies 🍪",
+              "url": "https://www.instagram.com/reel/DfPmHIiOL3k/",
+              "date": "2026-11-02"
+            },
+            {
+              "name": "Eat Cho Food",
+              "title": "Cranberry White Chocolate Cheesecake with a Full Rosemary Graham Cracker Crust!",
+              "url": "https://www.instagram.com/reel/DfQJpKDSbtN/",
+              "date": "2026-11-02"
+            },
+            {
+              "name": "Fitwaffle",
+              "title": "Easy White Chocolate Biscoff Christmas Trees 🎄✨",
+              "url": "https://www.instagram.com/reel/Df7oZmFx9Ii/",
+              "date": "2026-11-19"
+            },
+            {
+              "name": "Baker by Nature",
+              "title": "🎄 it’s safe to say I’m OBSESSED with this white chocolate cranberry bundt cake!",
+              "url": "https://www.instagram.com/reel/Df5RMPozeOG/",
+              "date": "2026-11-18"
+            }
+          ],
+          "of": 174
+        }
+      },
+      "igTrend": {
+        "name": "Baker by Nature",
+        "source": "baker-by-nature",
+        "url": "https://www.instagram.com/reel/Df5RMPozeOG/",
+        "date": "2026-11-18",
+        "title": "🎄 it’s safe to say I’m OBSESSED with this white chocolate cranberry bundt cake!",
+        "engagement": 27920,
+        "normal": 846,
+        "ratio": 33.0,
+        "age": 3,
+        "kind": "uitschieter",
+        "extra": 27074,
+        "series": {
+          "values": [
+            3608,
+            380,
+            2035,
+            1097,
+            24771,
+            13837,
+            1358,
+            1134,
+            576,
+            845,
+            5099,
+            1117,
+            574,
+            776,
+            881,
+            1923,
+            8440,
+            877,
+            361,
+            541,
+            2641,
+            1476,
+            1393,
+            350,
+            658,
+            6990,
+            1523,
+            27920,
+            1370,
+            621
+          ],
+          "at": 27
+        }
+      },
+      "photoGamma": 0.35,
+      "photoSet": [
+        {
+          "w": 300,
+          "url": "https://bakerbynature.com/wp-content/uploads/2017/12/CranberryBundtCake711-1-of-1-300x300.jpg"
+        },
+        {
+          "w": 340,
+          "url": "https://bakerbynature.com/wp-content/uploads/2017/12/CranberryBundtCake711-1-of-1-340x340.jpg"
+        },
+        {
+          "w": 500,
+          "url": "https://bakerbynature.com/wp-content/uploads/2017/12/CranberryBundtCake711-1-of-1-500x750.jpg"
+        },
+        {
+          "w": 600,
+          "url": "https://bakerbynature.com/wp-content/uploads/2017/12/CranberryBundtCake711-1-of-1-600x900.jpg"
+        },
+        {
+          "w": 640,
+          "url": "https://bakerbynature.com/wp-content/uploads/2017/12/CranberryBundtCake711-1-of-1.jpg"
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://bakerbynature.com/wp-content/uploads/2017/12/CranberryBundtCake71-1-of-1.jpg",
+          "w": 616,
+          "h": 960,
+          "thumb": "https://bakerbynature.com/wp-content/uploads/2017/12/CranberryBundtCake71-1-of-1-150x150.jpg"
+        },
+        {
+          "url": "https://bakerbynature.com/wp-content/uploads/2017/12/CranberryBundtCake711222d-1-of-1.jpg",
+          "w": 640,
+          "h": 960,
+          "thumb": "https://bakerbynature.com/wp-content/uploads/2017/12/CranberryBundtCake711222d-1-of-1-150x150.jpg"
+        },
+        {
+          "url": "https://bakerbynature.com/wp-content/uploads/2017/12/CranberryBundtCake7112-1-of-1.jpg",
+          "w": 640,
+          "h": 960,
+          "thumb": "https://bakerbynature.com/wp-content/uploads/2017/12/CranberryBundtCake7112-1-of-1-150x150.jpg"
+        }
+      ]
     }
   ],
   "ferment": {

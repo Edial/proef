@@ -1,5 +1,12 @@
 {
  "makers": {
+  "baker-by-nature": {
+   "name": "Baker by Nature",
+   "site": "https://bakerbynature.com",
+   "instagram": "bakerbynature",
+   "country": "US",
+   "affiliation": "blog"
+  },
   "bon-app-tit": {
    "name": "Bon Appétit",
    "bio": "Amerikaans kooktijdschrift, sinds 1956.",
@@ -37,6 +44,19 @@
    "instagram": "justonecookbook",
    "country": "JP",
    "affiliation": "blog"
+  },
+  "kalejunkie": {
+   "name": "Kalejunkie",
+   "site": "https://www.kalejunkie.com",
+   "instagram": "kalejunkie",
+   "country": "US",
+   "affiliation": "blog"
+  },
+  "love-and-lemons": {
+   "name": "Love and Lemons",
+   "site": "https://www.loveandlemons.com",
+   "instagram": "loveandlemons",
+   "country": "US"
   },
   "maangchi": {
    "name": "Maangchi",
@@ -82,6 +102,13 @@
    "country": "AU",
    "affiliation": "blog"
   },
+  "the-foodie-takes-flight": {
+   "name": "The Foodie Takes Flight",
+   "site": "https://thefoodietakesflight.com",
+   "instagram": "thefoodietakesflight",
+   "country": "MY",
+   "affiliation": "blog"
+  },
   "the-woks-of-life": {
    "name": "The Woks of Life",
    "person": "Familie Leung",
@@ -101,6 +128,11 @@
   }
  },
  "recipes": {
+  "parmezaan-krielaardappels-oven": "kalejunkie",
+  "tofu-bulgogi-rijstkom": "the-foodie-takes-flight",
+  "kabocha-gehakt-roerbak": "just-one-cookbook",
+  "franse-uienpasta-gruyere": "love-and-lemons",
+  "tulband-witte-chocolade-cranberry": "baker-by-nature",
   "romige-pompoenpasta-spek-salie": "rachel-phipps",
   "zalm-shoyu-rijstkom": "marions-kitchen",
   "jeow-som-biefstuksalade": "tiffy-cooks",
