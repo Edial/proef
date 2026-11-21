@@ -1,0 +1,22 @@
+{
+ "workflow": "Trends en foto's meten",
+ "uitkomst": "success",
+ "aanleiding": "workflow_dispatch",
+ "start": "2026-11-21T07:04:28+00:00",
+ "eind": "2026-11-21T07:17:30+00:00",
+ "duur_s": 782,
+ "gepland": null,
+ "te_laat_min": null,
+ "run": "https://github.com/Edial/proef/actions/runs/44878513984",
+ "run_id": 44878513984,
+ "details": {
+  "editie": "Nº 05 (2026-47)",
+  "in_trek": "5 van 5",
+  "google": 4,
+  "instagram": 4,
+  "labels": "Seizoen+IG, Stabiel+IG, Seizoen+IG, Seizoen, Stijgt+IG",
+  "trendregel": "toch",
+  "live": true,
+  "concept_gepusht": "2026-11-21T08:03:52+01:00"
+ }
+}

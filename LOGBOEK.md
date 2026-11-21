@@ -4,10 +4,11 @@ Alles wat automatisch draait, per week, nieuwste eerst. Wordt na elke run bijgew
 
 ## Week 47 · zaterdag 21 november 2026
 
-**Samenvatting:** Nº 05 (2026-47): live om 07:20, in trek 5 van 5 (Instagram 4) · **1 mislukt** · 6 van 6 geplande runs te laat (max 9 u 12)
+**Samenvatting:** Nº 05 (2026-47): live om 08:17, in trek 5 van 5 (Instagram 4) · Nº 05 (2026-47): live om 07:20, in trek 5 van 5 (Instagram 4) · **1 mislukt** · 6 van 6 geplande runs te laat (max 9 u 12)
 
 | Wanneer | Wat | Te laat | Duur | Uitkomst | Details |
 |---|---|---|---|---|---|
+| za 21-11 08:04 | [Trends en foto's meten](https://github.com/Edial/proef/actions/runs/44878513984) |  | 13 min | ✓ gelukt | Nº 05 (2026-47) · in trek: 5 van 5 · Google: 4 · Instagram: 4 · labels: Seizoen+IG, Stabiel+IG, Seizoen+IG, Seizoen, Stijgt+IG · trendregel: toch · live: ja · concept binnen: 08:03 |
 | za 21-11 07:06 | [Trends en foto's meten](https://github.com/Edial/proef/actions/runs/44873963138) |  | 13 min | ✗ mislukt | Nº 05 (2026-47) · in trek: 5 van 5 · Google: 4 · Instagram: 4 · labels: Seizoen+IG, Stabiel+IG, Seizoen+IG, Seizoen, Stijgt+IG · trendregel: ok · live: ja · concept binnen: 07:06 |
 | za 21-11 03:58 | [Bronnen ophalen](https://github.com/Edial/proef/actions/runs/44858679477) | 4 u 58 | 1 u 06 | ✓ gelukt | Instagram-accounts: 185/185 · nieuwe berichten: 1495 · bronnen: 238 · stijgers: 60 · met Google-label: 40 |
 | vr 20-11 14:21 | [Instagram dagelijks](https://github.com/Edial/proef/actions/runs/44743651691) | 8 u 52 | 38 min | ✓ gelukt | Instagram-accounts: 113/185 · nieuwe berichten: 74 · trending op Instagram: 162 · waarvan groeit: 5 · top: Kookmutsjes: • POTATO POCKETS WITH BEEF •; Kookmutsjes: • WRAPS MET GEHAKT EN KAAS •; The Banana Diaries: One Bowl SOFT & Chewy Frosted Sugar Cook |
