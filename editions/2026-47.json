@@ -1,0 +1,981 @@
+{
+  "id": "2026-47",
+  "number": 5,
+  "year": 2026,
+  "week": 47,
+  "date": "2026-11-21",
+  "intro": "Vanaf deze week kiezen we uit wat de makers die we volgen op Instagram het vaakst bewaard en gedeeld zien worden. Kabocha met gehakt uit de wok, krokante tofu in bulgogisaus, aardappels op een korst van Parmezaan en een tulband met witte chocolade en cranberry's.",
+  "cover": {
+    "color": "navy"
+  },
+  "mail": {
+    "subject": "🎃 Kabocha uit de wok en krokante Parmezaanaardappels",
+    "preview": "Plus tofu-bulgogi op rijst, pasta met gekarameliseerde ui en een tulband met witte chocolade en cranberry's."
+  },
+  "watch": [
+    {
+      "term": "potato pockets",
+      "source": "Instagram · Kookmutsjes",
+      "url": "https://www.instagram.com/reel/DfXMRsUtV7n/",
+      "note": "grootste hit van de week (78,6× normaal), maar het recept staat niet uitgeschreven op de site"
+    },
+    {
+      "term": "cheesy beef wraps",
+      "source": "Instagram · Kookmutsjes",
+      "url": "https://www.instagram.com/reel/DfClP_wMBVr/",
+      "note": "32,1× normaal; niet gekozen om ruimte te maken voor een seizoensgerecht"
+    },
+    {
+      "term": "nutella cookie pie",
+      "source": "Instagram · Fitwaffle",
+      "url": "https://www.instagram.com/reel/Dfr-htQRYQl/",
+      "note": "23,6× normaal; al één zoet recept gekozen"
+    },
+    {
+      "term": "sugar cookie bars",
+      "source": "Instagram · The Banana Diaries",
+      "url": "https://www.instagram.com/reel/DfaGgOeze1d/",
+      "note": "11,6× normaal, vegan"
+    },
+    {
+      "term": "yule log cake",
+      "source": "Instagram · Life, Love and Sugar",
+      "url": "https://www.instagram.com/reel/Dfa-Qs-pJkK/",
+      "note": "169,7× normaal, maar veel werk"
+    },
+    {
+      "term": "winter stew",
+      "source": "Instagram · Rachel Ama",
+      "url": "https://www.instagram.com/reel/DfDC5fmywBc/",
+      "note": "recept alleen via DM"
+    }
+  ],
+  "recipes": [
+    {
+      "slug": "kabocha-gehakt-roerbak",
+      "title": "Kabocha met gehakt uit de wok",
+      "dek": "Dunne plakjes kabocha garen eerst kort in de magnetron en gaan dan met varkensgehakt in een zoet-hartige saus. In een half uur op tafel, met rijst.",
+      "category": "Hoofdgerecht",
+      "minutes": 30,
+      "servings": 4,
+      "tags": [
+        "Aziatisch",
+        "Kindvriendelijk",
+        "Weinig werk",
+        "Seizoen"
+      ],
+      "tint": "persimmon",
+      "glyph": "炒",
+      "native": "かぼちゃのそぼろ炒め",
+      "roman": "kabocha no soboro itame",
+      "trend": {
+        "source": "Instagram",
+        "text": "Kabocha ligt nu overal, dit is een snelle doordeweekse manier."
+      },
+      "signal": {
+        "source": "Just One Cookbook",
+        "text": "Namiko Chen van Just One Cookbook zette deze roerbak begin november opnieuw op Instagram: de reel haalde ruim 4.600 likes en 1.600 reacties, veel meer dan gewoonlijk voor het account. Het recept staat met hoeveelheden op haar site."
+      },
+      "source": "just-one-cookbook",
+      "trendTerms": [
+        "kabocha stir fry",
+        "kabocha"
+      ],
+      "signals": [
+        {
+          "source": "Instagram",
+          "metric": "likes",
+          "value": 4689,
+          "unit": "likes",
+          "period": "2026-11-04 t/m 2026-11-21",
+          "geo": "world",
+          "url": "https://www.instagram.com/reel/DfTLDxRh0fd/",
+          "note": "plus 1628 reacties"
+        }
+      ],
+      "links": [
+        {
+          "label": "Just One Cookbook · Kabocha Pork Stir-Fry",
+          "url": "https://www.justonecookbook.com/kabocha-pork-stir-fry/"
+        }
+      ],
+      "instagram": "https://www.instagram.com/reel/DfTLDxRh0fd/",
+      "photo": "https://www.justonecookbook.com/wp-content/uploads/2021/09/Kabocha-Pork-Stir-Fry-1854-II.jpg",
+      "photoCredit": {
+        "label": "Just One Cookbook",
+        "url": "https://www.justonecookbook.com/kabocha-pork-stir-fry/"
+      },
+      "ingredients": [
+        {
+          "qty": 350,
+          "unit": "g",
+          "item": "varkensgehakt (of kipgehakt)"
+        },
+        {
+          "qty": 5,
+          "unit": "ml",
+          "item": "sojasaus",
+          "group": "Marinade"
+        },
+        {
+          "qty": 10,
+          "unit": "ml",
+          "item": "sake (of water)",
+          "group": "Marinade"
+        },
+        {
+          "qty": 6,
+          "unit": "g",
+          "item": "aardappelzetmeel of maïzena",
+          "group": "Marinade"
+        },
+        {
+          "qty": 600,
+          "unit": "g",
+          "item": "kabocha (of flespompoen), zonder pitten gewogen"
+        },
+        {
+          "qty": 2,
+          "unit": "",
+          "item": "teentjes knoflook, in dunne plakjes"
+        },
+        {
+          "qty": 20,
+          "unit": "ml",
+          "item": "neutrale olie"
+        },
+        {
+          "qty": 30,
+          "unit": "ml",
+          "item": "sake (of water)",
+          "group": "Saus"
+        },
+        {
+          "qty": 30,
+          "unit": "ml",
+          "item": "sojasaus",
+          "group": "Saus"
+        },
+        {
+          "qty": 20,
+          "unit": "ml",
+          "item": "oestersaus",
+          "group": "Saus"
+        },
+        {
+          "qty": 10,
+          "unit": "g",
+          "item": "gochujang (of witte miso voor een milde versie)",
+          "group": "Saus"
+        },
+        {
+          "qty": 8,
+          "unit": "g",
+          "item": "suiker",
+          "group": "Saus"
+        },
+        {
+          "qty": 300,
+          "unit": "g",
+          "item": "Japanse rijst, gekookt volgens de verpakking",
+          "group": "Erbij"
+        }
+      ],
+      "steps": [
+        "Meng het gehakt met de sojasaus, sake en het zetmeel van de marinade en laat 5 tot 10 minuten staan. Roer in een kommetje de sake, sojasaus, oestersaus, gochujang en suiker voor de saus door elkaar.",
+        "Schep de pitten uit de kabocha (de schil mag eraan blijven) en snijd hem in plakjes van 3 mm. Halveer grote plakken.",
+        "Leg de kabocha met 2 eetlepels water in een magnetronschaal, dek af en verwarm 3 à 4 minuten op vol vermogen. Een prikker moet er nog met wat weerstand in gaan: hij is dan voor ongeveer 80 % gaar.",
+        "Verhit de olie in een wok of grote koekenpan op middelhoog vuur en bak de knoflook tot hij geurt. Bak het gehakt los tot het niet meer roze is.",
+        "Schep de kabocha erdoor, doe een deksel op de pan en laat 5 minuten op laag vuur garen tot hij zacht is.",
+        "Giet de saus erbij, zet het vuur hoog en schep om tot de saus is ingekookt en alles glanst. Serveer met de rijst."
+      ],
+      "tip": "Neem voor kinderen witte miso in plaats van gochujang: dan is het niet pittig. Ze kunnen het gehakt met de marinade mengen en de saus roeren. Het snijden van de harde kabocha doet een volwassene."
+    },
+    {
+      "slug": "tofu-bulgogi-rijstkom",
+      "title": "Rijstkom met krokante tofu-bulgogi",
+      "dek": "Geraspte tofu wordt krokant in de oven of airfryer en trekt daarna een zoete bulgogisaus met peer, gember en sesam op. Met rijst en lente-ui.",
+      "category": "Hoofdgerecht",
+      "minutes": 40,
+      "servings": 3,
+      "tags": [
+        "Aziatisch",
+        "Vegetarisch",
+        "Kindvriendelijk"
+      ],
+      "tint": "sage",
+      "glyph": "豆",
+      "native": "두부 불고기",
+      "roman": "dubu bulgogi",
+      "trend": {
+        "source": "Instagram",
+        "text": "Tofu als gehakt: deze week veel bewaard en gedeeld."
+      },
+      "signal": {
+        "source": "The Foodie Takes Flight",
+        "text": "Jeeca Uy van The Foodie Takes Flight plaatste deze rijstkom half november opnieuw; de reel kreeg ruim 4.200 likes en 1.700 reacties, veel meer dan normaal voor haar account. Het recept staat met hoeveelheden op haar site."
+      },
+      "source": "the-foodie-takes-flight",
+      "trendTerms": [
+        "tofu bulgogi",
+        "shredded tofu"
+      ],
+      "signals": [
+        {
+          "source": "Instagram",
+          "metric": "likes",
+          "value": 4290,
+          "unit": "likes",
+          "period": "2026-11-14 t/m 2026-11-21",
+          "geo": "world",
+          "url": "https://www.instagram.com/reel/DfuVfX1hTdL/",
+          "note": "plus 1770 reacties"
+        }
+      ],
+      "links": [
+        {
+          "label": "The Foodie Takes Flight · Shredded Tofu Bulgogi",
+          "url": "https://thefoodietakesflight.com/shredded-tofu-bulgogi/"
+        }
+      ],
+      "instagram": "https://www.instagram.com/reel/DfuVfX1hTdL/",
+      "photo": "https://thefoodietakesflight.com/wp-content/uploads/2022/12/Shredded-Tofu-Bulgogi-Bowl-7-of-8-scaled.jpg",
+      "photoCredit": {
+        "label": "The Foodie Takes Flight",
+        "url": "https://thefoodietakesflight.com/shredded-tofu-bulgogi/"
+      },
+      "ingredients": [
+        {
+          "qty": 500,
+          "unit": "g",
+          "item": "extra stevige tofu, goed uitgelekt"
+        },
+        {
+          "qty": 120,
+          "unit": "g",
+          "item": "geschilde peer of zoete appel, fijn geraspt",
+          "group": "Saus"
+        },
+        {
+          "qty": 20,
+          "unit": "ml",
+          "item": "sojasaus",
+          "group": "Saus"
+        },
+        {
+          "qty": 5,
+          "unit": "ml",
+          "item": "donkere sojasaus",
+          "group": "Saus"
+        },
+        {
+          "qty": 25,
+          "unit": "g",
+          "item": "gochujang",
+          "group": "Saus"
+        },
+        {
+          "qty": 30,
+          "unit": "ml",
+          "item": "geroosterde sesamolie",
+          "group": "Saus"
+        },
+        {
+          "qty": 25,
+          "unit": "g",
+          "item": "suiker",
+          "group": "Saus"
+        },
+        {
+          "qty": 8,
+          "unit": "g",
+          "item": "verse gember, fijn geraspt",
+          "group": "Saus"
+        },
+        {
+          "qty": 3,
+          "unit": "",
+          "item": "teentjes knoflook, fijngehakt",
+          "group": "Saus"
+        },
+        {
+          "qty": 9,
+          "unit": "g",
+          "item": "sesamzaad, plus extra om te bestrooien",
+          "group": "Saus"
+        },
+        {
+          "qty": 250,
+          "unit": "g",
+          "item": "Japanse rijst of sushirijst, gekookt",
+          "group": "Erbij"
+        },
+        {
+          "qty": 2,
+          "unit": "",
+          "item": "lente-uitjes, in ringetjes",
+          "group": "Erbij"
+        }
+      ],
+      "steps": [
+        "Verwarm de oven of airfryer voor op 180 °C. Dep de tofu droog en rasp hem op de grove kant van een rasp.",
+        "Spreid de tofu zo dun mogelijk uit op een bakplaat met bakpapier of in het mandje van de airfryer. Bak 12 tot 15 minuten in de airfryer of 25 tot 30 minuten in de oven, tot hij lichtgoudbruin is. Schep halverwege om en laat hem niet te droog worden.",
+        "Roer intussen alle ingrediënten voor de saus door elkaar.",
+        "Doe de tofu en de saus in een wok of koekenpan op middelhoog vuur en schep 7 tot 8 minuten om, tot de saus is opgenomen. Proef en breng op smaak met wat extra sojasaus.",
+        "Schep de tofu op de rijst en bestrooi met lente-ui en sesamzaad."
+      ],
+      "tip": "Gebruik voor kinderen de helft van de gochujang: de peer en suiker houden het zoet. Ze kunnen de tofu raspen (vingers weg van de rasp bij het laatste stukje) en de saus mengen. Een augurkje van komkommerkimchi erbij past goed."
+    },
+    {
+      "slug": "parmezaan-krielaardappels-oven",
+      "title": "Krielaardappels op een korst van Parmezaan",
+      "dek": "Gehalveerde krieltjes gaan met de snijkant in een laag Parmezaan, boter en kruiden en komen er met een knapperige kaaskorst uit. Vijf ingrediënten, de oven doet de rest.",
+      "category": "Bijgerecht",
+      "minutes": 45,
+      "servings": 6,
+      "tags": [
+        "Kindvriendelijk",
+        "Weinig werk",
+        "Vegetarisch",
+        "Seizoen"
+      ],
+      "tint": "mustard",
+      "glyph": "芋",
+      "native": "",
+      "roman": "",
+      "trend": {
+        "source": "Instagram",
+        "text": "Een bijgerecht dat nu op veel feesttafels komt."
+      },
+      "signal": {
+        "source": "Kalejunkie",
+        "text": "Nicole Modic (Kalejunkie) zette deze aardappels op 20 november online als aflevering vijf van haar reeks bijgerechten voor Thanksgiving; binnen een dag kreeg de reel ruim 6.400 likes. Het hele recept staat in het onderschrift. Thanksgiving-bijgerechten kwamen de afgelopen maand bij veertien koks uit ons netwerk voorbij."
+      },
+      "source": "kalejunkie",
+      "trendTerms": [
+        "thanksgiving side",
+        "parmesan potatoes",
+        "crispy parmesan potatoes"
+      ],
+      "signals": [
+        {
+          "source": "Instagram",
+          "metric": "likes",
+          "value": 6443,
+          "unit": "likes",
+          "period": "2026-11-20 t/m 2026-11-21",
+          "geo": "world",
+          "url": "https://www.instagram.com/reel/Df93Y4BJ1Z4/",
+          "note": "plus 613 reacties"
+        },
+        {
+          "source": "Proef-netwerk",
+          "metric": "listed",
+          "value": 14,
+          "unit": "koks",
+          "period": "laatste 30 dagen",
+          "geo": "world",
+          "url": "https://www.halfbakedharvest.com/the-best-thanksgiving-side-dishes/",
+          "note": "thanksgiving side: 14 koks (ervoor 0,5), waarvan 1 kernbron; Google: Seizoen [world]"
+        }
+      ],
+      "links": [
+        {
+          "label": "Kalejunkie op Instagram · Crispy Parmesan Ranch Potatoes",
+          "url": "https://www.instagram.com/reel/Df93Y4BJ1Z4/"
+        },
+        {
+          "label": "Kalejunkie · Viral Crispy Garlic Parmesan Crusted Potatoes",
+          "url": "https://kalejunkie.com/viral-crispy-garlic-parmesan-crusted-potatoes/"
+        }
+      ],
+      "instagram": "https://www.instagram.com/reel/Df93Y4BJ1Z4/",
+      "photoCredit": {
+        "label": "Kalejunkie",
+        "url": "https://kalejunkie.com/viral-crispy-garlic-parmesan-crusted-potatoes/"
+      },
+      "ingredients": [
+        {
+          "qty": 700,
+          "unit": "g",
+          "item": "krielaardappels, gehalveerd"
+        },
+        {
+          "qty": 10,
+          "unit": "ml",
+          "item": "neutrale olie"
+        },
+        {
+          "qty": 150,
+          "unit": "g",
+          "item": "Parmezaanse kaas, fijn geraspt"
+        },
+        {
+          "qty": 55,
+          "unit": "g",
+          "item": "gezouten boter, gesmolten"
+        },
+        {
+          "qty": 2,
+          "unit": "g",
+          "item": "gedroogde dille",
+          "group": "Kruidenmix (of 16 g kant-en-klare ranchkruiden)"
+        },
+        {
+          "qty": 3,
+          "unit": "g",
+          "item": "knoflookpoeder",
+          "group": "Kruidenmix (of 16 g kant-en-klare ranchkruiden)"
+        },
+        {
+          "qty": 3,
+          "unit": "g",
+          "item": "uienpoeder",
+          "group": "Kruidenmix (of 16 g kant-en-klare ranchkruiden)"
+        },
+        {
+          "qty": 1,
+          "unit": "g",
+          "item": "gedroogde peterselie",
+          "group": "Kruidenmix (of 16 g kant-en-klare ranchkruiden)"
+        },
+        {
+          "qty": 3,
+          "unit": "g",
+          "item": "zout",
+          "group": "Kruidenmix (of 16 g kant-en-klare ranchkruiden)"
+        },
+        {
+          "qty": 1,
+          "unit": "g",
+          "item": "zwarte peper",
+          "group": "Kruidenmix (of 16 g kant-en-klare ranchkruiden)"
+        },
+        {
+          "qty": null,
+          "unit": "",
+          "item": "bieslook, fijngeknipt, en vlokkenzout",
+          "group": "Erbij"
+        }
+      ],
+      "steps": [
+        "Verwarm de oven voor op 220 °C. Meng de kruiden voor de kruidenmix.",
+        "Kerf met een scherp mes een ruitjespatroon in de snijkant van elk aardappelhelftje. Hussel ze in een kom met de olie en een derde van de kruidenmix.",
+        "Roer in een ovenschaal van ongeveer 23 × 30 cm de Parmezaan, de gesmolten boter en de rest van de kruidenmix door elkaar tot een dikke pasta en strijk die glad over de bodem.",
+        "Druk de aardappels er met de snijkant stevig in. Bak 25 minuten, tot de kaas goudbruin en knapperig is.",
+        "Laat 10 minuten staan zodat de korst hard wordt. Bestrooi met bieslook en wat vlokkenzout en breek de aardappels met korst en al los."
+      ],
+      "tip": "Kinderen kunnen de kaaspasta mengen en de aardappels in de schaal drukken: hoe steviger, hoe meer korst. Laat ze de kruidenmix zelf afwegen. Het kerven doet een volwassene.",
+      "photo": "https://kalejunkie.com/wp-content/uploads/2023/12/KJ_Crispy-Garlic-Parmesan-Potatoes-6.jpg"
+    },
+    {
+      "slug": "franse-uienpasta-gruyere",
+      "title": "Pasta met gekarameliseerde ui en gruyère",
+      "dek": "Alles wat Franse uiensoep lekker maakt, in één pan met pasta: zacht gestoofde ui, tijm, bouillon en gesmolten gruyère.",
+      "category": "Hoofdgerecht",
+      "minutes": 60,
+      "servings": 4,
+      "tags": [
+        "Kindvriendelijk",
+        "Vegetarisch",
+        "Seizoen"
+      ],
+      "tint": "sky",
+      "glyph": "葱",
+      "native": "",
+      "roman": "",
+      "trend": {
+        "source": "Proef-netwerk",
+        "text": "Franse ui duikt nu bij veel koks op, ook in pasta."
+      },
+      "signal": {
+        "source": "Proef-netwerk",
+        "text": "French onion kwam de afgelopen maand bij tien koks uit ons netwerk voorbij, de maand ervoor bij drie, van mac and cheese tot crêpes. Google Trends noemt het een seizoensterm. Deze versie van Love and Lemons kookt de pasta in de bouillon, zodat je maar één pan hebt."
+      },
+      "source": "love-and-lemons",
+      "trendTerms": [
+        "french onion",
+        "french onion pasta"
+      ],
+      "signals": [
+        {
+          "source": "Proef-netwerk",
+          "metric": "listed",
+          "value": 10,
+          "unit": "koks",
+          "period": "laatste 30 dagen",
+          "geo": "world",
+          "url": "https://www.loveandlemons.com/french-onion-pasta/",
+          "note": "french onion: 10 koks (ervoor 3,0), waarvan 2 kernbronnen; Google: Seizoen [world]"
+        }
+      ],
+      "links": [
+        {
+          "label": "Love and Lemons · French Onion Pasta",
+          "url": "https://www.loveandlemons.com/french-onion-pasta/"
+        }
+      ],
+      "photo": "https://cdn.loveandlemons.com/wp-content/uploads/2026/09/french-onion-pasta-recipe.jpg",
+      "photoCredit": {
+        "label": "Love and Lemons",
+        "url": "https://www.loveandlemons.com/french-onion-pasta/"
+      },
+      "ingredients": [
+        {
+          "qty": 45,
+          "unit": "ml",
+          "item": "olijfolie"
+        },
+        {
+          "qty": 2,
+          "unit": "",
+          "item": "middelgrote gele uien (samen ca. 350 g), in dunne halve ringen"
+        },
+        {
+          "qty": 2,
+          "unit": "g",
+          "item": "zeezout, plus zwarte peper"
+        },
+        {
+          "qty": 3,
+          "unit": "",
+          "item": "teentjes knoflook, fijngehakt"
+        },
+        {
+          "qty": 1,
+          "unit": "g",
+          "item": "gedroogde tijm"
+        },
+        {
+          "qty": 60,
+          "unit": "ml",
+          "item": "droge witte wijn (of 15 ml witte wijnazijn met 45 ml bouillon)"
+        },
+        {
+          "qty": 15,
+          "unit": "ml",
+          "item": "balsamicoazijn"
+        },
+        {
+          "qty": 225,
+          "unit": "g",
+          "item": "korte pasta, zoals mezze maniche of penne"
+        },
+        {
+          "qty": 15,
+          "unit": "ml",
+          "item": "tamari of sojasaus"
+        },
+        {
+          "qty": 830,
+          "unit": "ml",
+          "item": "groentebouillon"
+        },
+        {
+          "qty": 60,
+          "unit": "ml",
+          "item": "slagroom"
+        },
+        {
+          "qty": 100,
+          "unit": "g",
+          "item": "gruyère, geraspt"
+        },
+        {
+          "qty": null,
+          "unit": "",
+          "item": "verse peterselie, om te bestrooien"
+        }
+      ],
+      "steps": [
+        "Verhit 30 ml olijfolie in een grote, diepe hapjespan op middelhoog vuur. Bak de uien met het zout en wat peper in ongeveer 20 minuten zacht en goudbruin; schep af en toe om.",
+        "Schenk de rest van de olie erbij en bak de knoflook en tijm 1 minuut mee.",
+        "Blus af met de wijn en de balsamico, schraap de aanbaksels los en laat het vocht bijna helemaal inkoken.",
+        "Roer de pasta, tamari en bouillon erdoor. Breng aan de kook, draai het vuur laag, doe het deksel erop en laat 20 minuten zachtjes koken; roer af en toe.",
+        "Haal het deksel eraf en kook nog ongeveer 5 minuten tot de pasta beetgaar is. Roer de room erdoor en daarna, in delen, de gruyère tot die gesmolten is.",
+        "Proef, breng op smaak met peper en bestrooi met peterselie."
+      ],
+      "tip": "Neem voor kinderen de variant met azijn en bouillon in plaats van wijn. Ze kunnen de kaas raspen en in delen door de pasta roeren. Wie de ui te sterk vindt, krijgt er een bord met extra kaas: na twintig minuten bakken is de ui zoet."
+    },
+    {
+      "slug": "tulband-witte-chocolade-cranberry",
+      "title": "Tulband met cranberry's en witte chocolade",
+      "dek": "Een boterige tulbandcake met roomkaas, sinaasappelrasp en hele cranberry's, afgemaakt met botercrème van witte chocolade en gesuikerde cranberry's.",
+      "category": "Gebak",
+      "minutes": 160,
+      "servings": 12,
+      "servingsLabel": "plakken",
+      "tags": [
+        "Bakken",
+        "Feestdagen",
+        "Kindvriendelijk"
+      ],
+      "tint": "blush",
+      "glyph": "菓",
+      "native": "",
+      "roman": "",
+      "trend": {
+        "source": "Instagram",
+        "text": "Wordt nu veel gebakken, als opmaat naar de feestdagen."
+      },
+      "signal": {
+        "source": "Baker by Nature",
+        "text": "Ashley Manila van Baker by Nature zette haar tulband op 18 november opnieuw op Instagram; de reel kreeg 33 keer zoveel likes en reacties als gewoonlijk, ruim 44.000 in totaal. Witte chocolade kwam de afgelopen maand bij tien koks uit ons netwerk voorbij en wordt in Nederland meer gezocht."
+      },
+      "source": "baker-by-nature",
+      "trendTerms": [
+        "white chocolate",
+        "cranberry bundt cake"
+      ],
+      "signals": [
+        {
+          "source": "Instagram",
+          "metric": "likes",
+          "value": 22336,
+          "unit": "likes",
+          "period": "2026-11-18 t/m 2026-11-21",
+          "geo": "world",
+          "url": "https://www.instagram.com/reel/Df5RMPozeOG/",
+          "note": "plus 22361 reacties; 33,0× normaal voor het account"
+        },
+        {
+          "source": "Proef-netwerk",
+          "metric": "listed",
+          "value": 10,
+          "unit": "koks",
+          "period": "laatste 30 dagen",
+          "geo": "NL",
+          "url": "https://www.instagram.com/reel/Df5RMPozeOG/",
+          "note": "white chocolate: 10 koks (ervoor 3,5), waarvan 4 kernbronnen; Google: Stijgt [NL]"
+        }
+      ],
+      "links": [
+        {
+          "label": "Baker by Nature · White Chocolate Cranberry Bundt Cake",
+          "url": "https://bakerbynature.com/white-chocolate-cranberry-bundt-cake/"
+        }
+      ],
+      "instagram": "https://www.instagram.com/reel/Df5RMPozeOG/",
+      "photo": "https://bakerbynature.com/wp-content/uploads/2017/12/CranberryBundtCake711-1-of-1.jpg",
+      "photoCredit": {
+        "label": "Baker by Nature",
+        "url": "https://bakerbynature.com/white-chocolate-cranberry-bundt-cake/"
+      },
+      "ingredients": [
+        {
+          "qty": 275,
+          "unit": "g",
+          "item": "bloem",
+          "group": "Cake"
+        },
+        {
+          "qty": 4,
+          "unit": "g",
+          "item": "bakpoeder",
+          "group": "Cake"
+        },
+        {
+          "qty": 3,
+          "unit": "g",
+          "item": "zout",
+          "group": "Cake"
+        },
+        {
+          "qty": 340,
+          "unit": "g",
+          "item": "ongezouten roomboter, op kamertemperatuur",
+          "group": "Cake"
+        },
+        {
+          "qty": 170,
+          "unit": "g",
+          "item": "volle roomkaas, op kamertemperatuur",
+          "group": "Cake"
+        },
+        {
+          "qty": 400,
+          "unit": "g",
+          "item": "kristalsuiker",
+          "group": "Cake"
+        },
+        {
+          "qty": 55,
+          "unit": "g",
+          "item": "lichtbruine basterdsuiker",
+          "group": "Cake"
+        },
+        {
+          "qty": 1,
+          "unit": "",
+          "item": "sinaasappel, alleen de fijne rasp (ca. 1 eetlepel)",
+          "group": "Cake"
+        },
+        {
+          "qty": 7,
+          "unit": "ml",
+          "item": "vanille-extract",
+          "group": "Cake"
+        },
+        {
+          "qty": 5,
+          "unit": "ml",
+          "item": "amandelextract",
+          "group": "Cake"
+        },
+        {
+          "qty": 5,
+          "unit": "",
+          "item": "grote eieren, op kamertemperatuur",
+          "group": "Cake"
+        },
+        {
+          "qty": 225,
+          "unit": "g",
+          "item": "verse cranberry's",
+          "group": "Cake"
+        },
+        {
+          "qty": 25,
+          "unit": "g",
+          "item": "bloem, om de cranberry's door te halen",
+          "group": "Cake"
+        },
+        {
+          "qty": 225,
+          "unit": "g",
+          "item": "ongezouten roomboter, op kamertemperatuur",
+          "group": "Botercrème"
+        },
+        {
+          "qty": 285,
+          "unit": "g",
+          "item": "poedersuiker",
+          "group": "Botercrème"
+        },
+        {
+          "qty": 1,
+          "unit": "g",
+          "item": "zout",
+          "group": "Botercrème"
+        },
+        {
+          "qty": 30,
+          "unit": "ml",
+          "item": "slagroom",
+          "group": "Botercrème"
+        },
+        {
+          "qty": 5,
+          "unit": "ml",
+          "item": "amandelextract",
+          "group": "Botercrème"
+        },
+        {
+          "qty": 170,
+          "unit": "g",
+          "item": "witte chocolade, gesmolten en 10 minuten afgekoeld",
+          "group": "Botercrème"
+        },
+        {
+          "qty": 200,
+          "unit": "g",
+          "item": "kristalsuiker (50 g voor de siroop, 150 g om te rollen)",
+          "group": "Gesuikerde cranberry's (optioneel)"
+        },
+        {
+          "qty": 60,
+          "unit": "ml",
+          "item": "water",
+          "group": "Gesuikerde cranberry's (optioneel)"
+        },
+        {
+          "qty": 115,
+          "unit": "g",
+          "item": "verse of bevroren cranberry's",
+          "group": "Gesuikerde cranberry's (optioneel)"
+        },
+        {
+          "qty": 20,
+          "unit": "g",
+          "item": "amandelschaafsel en wat sinaasappelrasp",
+          "group": "Gesuikerde cranberry's (optioneel)"
+        }
+      ],
+      "steps": [
+        "Verwarm de oven voor op 160 °C. Vet een tulbandvorm van 25 cm (2,8 liter) royaal in en bestuif hem met bloem.",
+        "Klop de bloem, het bakpoeder en het zout los in een kom.",
+        "Mix de boter en roomkaas in 1 minuut glad. Voeg beide suikers toe en mix 3 minuten op middelhoge stand tot het licht en luchtig is. Mix de sinaasappelrasp, vanille en amandelextract erdoor, en dan de eieren één voor één; schraap tussendoor de kom schoon.",
+        "Mix op de laagste stand het bloemmengsel erdoor, net tot je geen bloem meer ziet. Hussel de cranberry's met 25 g bloem en spatel ze door het beslag.",
+        "Schep het beslag in de vorm en bak 70 tot 75 minuten, tot een prikker in het midden er schoon uitkomt. Laat 20 minuten in de vorm afkoelen, stort hem op een rooster en laat helemaal afkoelen.",
+        "Gesuikerde cranberry's: verwarm 50 g suiker met het water tot de suiker is opgelost en het zachtjes pruttelt. Schep de cranberry's erdoor, laat ze op een rooster minstens 30 minuten drogen, rol ze in kleine porties door de overige 150 g suiker en laat nog een uur drogen.",
+        "Botercrème: mix de boter helemaal glad, voeg op lage stand beetje bij beetje de poedersuiker toe, dan het zout, de slagroom en het amandelextract. Mix de afgekoelde witte chocolade erdoor en klop nog 1 minuut op middelhoge stand.",
+        "Smeer de botercrème over de cake en versier met de cranberry's, het amandelschaafsel en wat sinaasappelrasp. Bewaar afgedekt in de koelkast (tot 5 dagen) en laat voor het serveren op temperatuur komen."
+      ],
+      "tip": "Kinderen kunnen de cranberry's door de bloem rollen, de eieren één voor één aangeven en de cake versieren. Het rollen van de gesuikerde cranberry's is ook een mooi klusje voor kleine handen. Laat het amandelextract weg bij een notenallergie."
+    }
+  ],
+  "ferment": {
+    "number": 5,
+    "slug": "komkommerkimchi",
+    "title": "Komkommerkimchi",
+    "glyph": "酵",
+    "native": "오이김치",
+    "roman": "oi-kimchi",
+    "lede": "Blokjes komkommer met grof zeezout, gochugaru, knoflook en lente-ui. Na een paar uur tot een nacht op het aanrecht is hij fris, pittig en nog knapperig: de snelste kimchi die er is.",
+    "teaser": "Knapperige komkommer met chili en knoflook, binnen een dag klaar.",
+    "yield": "1 pot van 1 liter",
+    "facts": [
+      {
+        "label": "Pot",
+        "value": "1 liter, glas"
+      },
+      {
+        "label": "Werk",
+        "value": "45 min (waarvan 30 min zouten)"
+      },
+      {
+        "label": "Aanrecht",
+        "value": "een paar uur tot een nacht, 18–22 °C"
+      },
+      {
+        "label": "Klaar",
+        "value": "als het fris zurig ruikt en proeft"
+      },
+      {
+        "label": "Bewaren",
+        "value": "koelkast, binnen 1 week op"
+      },
+      {
+        "label": "Niveau",
+        "value": "Beginner"
+      }
+    ],
+    "usedIn": "tofu-bulgogi-rijstkom",
+    "science": [
+      "Het zout trekt in een half uur vocht uit de komkommer, zodat hij knapperig blijft en de kruiden beter hechten. Het zout wordt niet afgespoeld: het blijft in de kimchi en remt rotbacteriën, terwijl de melkzuurbacteriën die op de groente leven er goed tegen kunnen.",
+      "Op het aanrecht beginnen die melkzuurbacteriën de suikers uit de komkommer en de ui om te zetten in melkzuur. Na een paar uur proef je het eerste zuur; in de koelkast gaat het langzaam verder.",
+      "Komkommerkimchi is bedoeld om snel te eten. Komkommer wordt na een week zacht, daarom maak je een kleine pot en eet je hem binnen een week op. Wil je hem langer op het aanrecht laten staan, meet dan met een pH-strip: 4,6 of lager."
+    ],
+    "timeline": [
+      {
+        "when": "Uur 0",
+        "title": "Zouten",
+        "text": "Komkommer in blokjes, zout erover, 30 minuten laten staan. Daarna goed laten uitlekken, niet afspoelen.",
+        "now": true
+      },
+      {
+        "when": "Uur 1",
+        "title": "Mengen",
+        "text": "Kruiden, lente-ui en ui erdoor, in de pot aandrukken. Deksel losjes erop.",
+        "now": false
+      },
+      {
+        "when": "Uur 4–12",
+        "title": "Aanrecht",
+        "text": "Op 18–22 °C. Proef: zodra hij fris zurig is, gaat hij de koelkast in.",
+        "now": false
+      },
+      {
+        "when": "Dag 1–7",
+        "title": "Koelkast",
+        "text": "Elke dag iets zuurder. Binnen een week opeten.",
+        "now": false
+      }
+    ],
+    "ingredients": [
+      {
+        "qty": 680,
+        "unit": "g",
+        "item": "kleine komkommers of snackkomkommers, in blokjes van 3 cm (schoongemaakt gewogen)",
+        "base": true,
+        "key": "komkommer"
+      },
+      {
+        "qty": 15,
+        "unit": "g",
+        "item": "grof zeezout zonder jodium en zonder antiklontermiddel",
+        "salt": true,
+        "key": "zout"
+      },
+      {
+        "qty": 70,
+        "unit": "g",
+        "item": "Chinese bieslook of lente-ui, in stukjes van 3 cm",
+        "key": "bieslook"
+      },
+      {
+        "qty": 40,
+        "unit": "g",
+        "item": "ui (een kwart), in dunne reepjes",
+        "key": "ui"
+      },
+      {
+        "qty": 15,
+        "unit": "g",
+        "item": "gochugaru (Koreaanse chilivlokken); voor kinderen de helft",
+        "key": "gochugaru"
+      },
+      {
+        "qty": 30,
+        "unit": "ml",
+        "item": "vissaus",
+        "key": "vissaus"
+      },
+      {
+        "qty": 10,
+        "unit": "g",
+        "item": "knoflook, fijngehakt",
+        "key": "knoflook"
+      },
+      {
+        "qty": 2,
+        "unit": "g",
+        "item": "verse gember, geraspt",
+        "key": "gember"
+      },
+      {
+        "qty": 10,
+        "unit": "g",
+        "item": "suiker",
+        "key": "suiker"
+      },
+      {
+        "qty": 3,
+        "unit": "g",
+        "item": "geroosterd sesamzaad (mag weg)",
+        "key": "sesam"
+      }
+    ],
+    "steps": [
+      "Was een glazen pot van 1 liter en het deksel in heet sop en spoel na met heel heet water. Gebruik geen koper, messing of zink.",
+      "Halveer de komkommers in de lengte, snijd ze in de lengte nog eens in vieren en dan in blokjes van 3 cm.",
+      "Weeg {zout} g zout af (altijd wegen, niet met een lepel) en strooi het gelijkmatig over {komkommer} g komkommer. Schep om en laat 30 minuten staan.",
+      "Giet de komkommer af in een vergiet en laat goed uitlekken. Niet afspoelen: het zout hoort in de kimchi.",
+      "Meng in een kom de gochugaru, vissaus, knoflook, gember en suiker. Schep de komkommer, bieslook, ui en sesam erdoor (met handschoenen of een lepel).",
+      "Doe alles in de pot en druk het aan, zodat er zo min mogelijk lucht tussen zit. Laat minstens 5 cm ruimte onder de rand. Komt het vocht niet tot boven de groente, maak dan wat pekel bij: 20 g zout per liter water.",
+      "Zet het deksel losjes op de pot en laat een paar uur tot een nacht op het aanrecht staan bij 18–22 °C. Druk de komkommer af en toe onder het vocht en draai het deksel even open om het gas te laten ontsnappen.",
+      "Proef: is hij fris zurig, zet hem dan dicht in de koelkast en eet hem binnen een week op. Laat je hem langer op het aanrecht staan, meet dan de pH: 4,6 of lager."
+    ],
+    "ok": "Kleine bubbels, een frisse zure geur, troebel rood vocht en komkommer die nog knapt. Een vlak wit vliesje op het vocht (kahmgist) is onschuldig: schep het eraf. Wat zachtere komkommer die schoon en zuur ruikt, is veilig.",
+    "bad": "Pluizige schimmel (groen, blauw, zwart, bruin of wit pluis), slijmerige komkommer of slijmerig vocht, of een rotte geur in plaats van een zure: dan alles weggooien. Bij twijfel weggooien.",
+    "kids": "Kinderen kunnen de komkommer zouten, het zout afwegen op de keukenweegschaal en de kimchi met een lepel mengen. Maak voor hen een potje met de helft van de gochugaru, of eentje helemaal zonder.",
+    "sources": [
+      {
+        "label": "Korean Bapsang · Oi Kimchi (cucumber kimchi)",
+        "url": "https://www.koreanbapsang.com/oi-kimchi-cucumber-kimchi-and-blog/"
+      },
+      {
+        "label": "University of Illinois Extension · Fermenting",
+        "url": "https://extension.illinois.edu/food-preservation/fermenting"
+      },
+      {
+        "label": "NCHFP · Containers, covers and weights",
+        "url": "https://nchfp.uga.edu/how/ferment/general-information-on-fermenting/suitable-containers-covers-and-weights-for-fermenting-food/"
+      },
+      {
+        "label": "UC Davis · Troubleshooting fermented vegetables",
+        "url": "https://ucfoodsafety.ucdavis.edu/sites/g/files/dgvnsk7366/files/media/documents/Troubleshooting%20fermented%20fruits%20and%20vegetables%20FINAL.pdf"
+      }
+    ]
+  }
+}
