@@ -4,10 +4,11 @@ Alles wat automatisch draait, per week, nieuwste eerst. Wordt na elke run bijgew
 
 ## Week 47 · zaterdag 21 november 2026
 
-**Samenvatting:** Nº 05 (2026-47): live om 08:17, in trek 5 van 5 (Instagram 4) · Nº 05 (2026-47): live om 07:20, in trek 5 van 5 (Instagram 4) · nieuwsbrief: verstuurd naar de lijst (za 08:30) · **2 mislukt** · 6 van 6 geplande runs te laat (max 9 u 12)
+**Samenvatting:** Nº 05 (2026-47): live om 08:17, in trek 5 van 5 (Instagram 4) · Nº 05 (2026-47): live om 07:20, in trek 5 van 5 (Instagram 4) · nieuwsbrief: verstuurd naar de lijst (za 08:30) · **2 mislukt** · 7 van 7 geplande runs te laat (max 9 u 12)
 
 | Wanneer | Wat | Te laat | Duur | Uitkomst | Details |
 |---|---|---|---|---|---|
+| za 21-11 13:51 | [Instagram dagelijks](https://github.com/Edial/proef/actions/runs/44906008002) | 8 u 22 | 1 u 00 | ✓ gelukt | Instagram-accounts: 185/185 · nieuwe berichten: 34 · trending op Instagram: 186 · waarvan groeit: 4 · top: Kookmutsjes: • POTATO POCKETS WITH BEEF •; Kookmutsjes: • WRAPS MET GEHAKT EN KAAS •; The Little Blog of Vegan: Comment ‘cheesecake’ and I’ll send you t |
 | za 21-11 08:29 | [Nieuwsbrief](https://github.com/Edial/proef/actions/runs/44879561536) |  | 49 s | ✓ gelukt | nieuwsbrief: verstuurd naar de lijst · onderwerp: 🎃 Kabocha uit de wok en krokante Parmezaanaardappels |
 | za 21-11 08:17 | [Nieuwsbrief](https://github.com/Edial/proef/actions/runs/44879561536) |  | 10 s | ✗ mislukt |  |
 | za 21-11 08:04 | [Trends en foto's meten](https://github.com/Edial/proef/actions/runs/44878513984) |  | 13 min | ✓ gelukt | Nº 05 (2026-47) · in trek: 5 van 5 · Google: 4 · Instagram: 4 · labels: Seizoen+IG, Stabiel+IG, Seizoen+IG, Seizoen, Stijgt+IG · trendregel: toch · live: ja · concept binnen: 08:03 |
