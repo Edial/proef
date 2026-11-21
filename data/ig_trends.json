@@ -1,35 +1,13 @@
 {
- "generated": "2026-11-20",
- "hits": 162,
- "makers": 65,
+ "generated": "2026-11-21",
+ "hits": 182,
+ "makers": 71,
  "themes": [
   {
-   "label": "kaas",
-   "makers": 17,
-   "posts": 30,
-   "likes": 1493532,
-   "names": [
-    "Kookmutsjes",
-    "The Banana Diaries",
-    "The Little Blog of Vegan"
-   ]
-  },
-  {
-   "label": "saus en dip",
-   "makers": 17,
-   "posts": 29,
-   "likes": 386207,
-   "names": [
-    "The Little Blog of Vegan",
-    "Food52",
-    "Feedfeed"
-   ]
-  },
-  {
    "label": "taart en pie",
-   "makers": 15,
-   "posts": 26,
-   "likes": 816212,
+   "makers": 18,
+   "posts": 29,
+   "likes": 970976,
    "names": [
     "The Little Blog of Vegan",
     "Fitwaffle",
@@ -37,32 +15,32 @@
    ]
   },
   {
-   "label": "koekjes",
-   "makers": 11,
-   "posts": 12,
-   "likes": 834295,
+   "label": "saus en dip",
+   "makers": 17,
+   "posts": 30,
+   "likes": 393576,
    "names": [
-    "The Banana Diaries",
     "The Little Blog of Vegan",
-    "Fitwaffle"
-   ]
-  },
-  {
-   "label": "chili en pittig",
-   "makers": 11,
-   "posts": 16,
-   "likes": 558784,
-   "names": [
-    "The Banana Diaries",
-    "Tiffy Cooks",
+    "Food52",
     "Feedfeed"
    ]
   },
   {
+   "label": "kaas",
+   "makers": 16,
+   "posts": 31,
+   "likes": 1506887,
+   "names": [
+    "Kookmutsjes",
+    "The Banana Diaries",
+    "The Little Blog of Vegan"
+   ]
+  },
+  {
    "label": "cake",
-   "makers": 10,
-   "posts": 15,
-   "likes": 565648,
+   "makers": 13,
+   "posts": 21,
+   "likes": 654393,
    "names": [
     "The Little Blog of Vegan",
     "Lauren Dozier",
@@ -70,21 +48,76 @@
    ]
   },
   {
-   "label": "pompoen",
-   "makers": 10,
-   "posts": 11,
-   "likes": 60296,
+   "label": "chili en pittig",
+   "makers": 13,
+   "posts": 18,
+   "likes": 598849,
+   "names": [
+    "The Banana Diaries",
+    "Tiffy Cooks",
+    "Butternut Bakery"
+   ]
+  },
+  {
+   "label": "ontbijt",
+   "makers": 12,
+   "posts": 19,
+   "likes": 1073720,
    "names": [
     "America's Test Kitchen",
-    "Feedfeed",
-    "Handle the Heat"
+    "The Little Blog of Vegan",
+    "Ryan Nordheimer"
+   ]
+  },
+  {
+   "label": "koekjes",
+   "makers": 11,
+   "posts": 12,
+   "likes": 881865,
+   "names": [
+    "The Banana Diaries",
+    "The Little Blog of Vegan",
+    "Fitwaffle"
+   ]
+  },
+  {
+   "label": "aardappel",
+   "makers": 11,
+   "posts": 11,
+   "likes": 855314,
+   "names": [
+    "Kookmutsjes",
+    "Ryan Nordheimer",
+    "Food & Wine"
+   ]
+  },
+  {
+   "label": "ei",
+   "makers": 11,
+   "posts": 19,
+   "likes": 666699,
+   "names": [
+    "The Banana Diaries",
+    "The Little Blog of Vegan",
+    "America's Test Kitchen"
+   ]
+  },
+  {
+   "label": "chocolade",
+   "makers": 11,
+   "posts": 12,
+   "likes": 470017,
+   "names": [
+    "The Little Blog of Vegan",
+    "Life, Love and Sugar",
+    "Claire Saffitz"
    ]
   },
   {
    "label": "wraps en broodjes",
-   "makers": 9,
-   "posts": 18,
-   "likes": 806011,
+   "makers": 10,
+   "posts": 20,
+   "likes": 830991,
    "names": [
     "Kookmutsjes",
     "Bon Appétit",
@@ -92,47 +125,14 @@
    ]
   },
   {
-   "label": "ei",
-   "makers": 9,
-   "posts": 16,
-   "likes": 615327,
-   "names": [
-    "The Banana Diaries",
-    "The Little Blog of Vegan",
-    "Feedfeed"
-   ]
-  },
-  {
-   "label": "ontbijt",
-   "makers": 9,
-   "posts": 15,
-   "likes": 306545,
-   "names": [
-    "The Little Blog of Vegan",
-    "Feedfeed",
-    "Amy Bakes Bread"
-   ]
-  },
-  {
    "label": "soep",
-   "makers": 9,
+   "makers": 10,
    "posts": 11,
-   "likes": 79478,
+   "likes": 104839,
    "names": [
     "Mob",
-    "Kalejunkie",
-    "Just One Cookbook"
-   ]
-  },
-  {
-   "label": "appel",
-   "makers": 8,
-   "posts": 9,
-   "likes": 801461,
-   "names": [
-    "Kookmutsjes",
-    "Redcurrant Bakery",
-    "Feedfeed"
+    "Rachel Ama",
+    "Kalejunkie"
    ]
   }
  ]
