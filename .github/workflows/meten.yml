@@ -110,8 +110,9 @@ jobs:
           for P in editions/ assets/ig/ data/trends.csv data/makers.json recept/ sitemap.xml index.html assets/fonts/; do if [ -e "$P" ]; then git add "$P"; fi; done
           git diff --cached --quiet && exit 0
           git commit -m "Trends en foto's gemeten (${{ steps.ed.outputs.file }})"
-          git pull --rebase origin main
-          git push
+          # opnieuw proberen: het Logboek pusht soms net tegelijk
+          for i in 1 2 3 4 5; do git pull --rebase origin main && git push && exit 0; sleep $((i * 5)); done
+          exit 1
       - name: Melden dat het concept niet live gaat
         if: steps.gate.outputs.ok == 'false'
         env:

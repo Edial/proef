@@ -86,8 +86,9 @@ jobs:
           git add mail/
           if ! git diff --cached --quiet; then
             git commit -m "Nieuwsbrief gemaakt (${{ steps.make.outputs.id }})"
-            git pull --rebase origin main
-            git push
+            # opnieuw proberen: het Logboek pusht soms net tegelijk
+            for i in 1 2 3 4 5; do git pull --rebase origin main && git push && exit 0; sleep $((i * 5)); done
+            exit 1
           fi
       - name: Wachten tot de site bijgewerkt is
         if: steps.ed.outputs.skip != 'true'
