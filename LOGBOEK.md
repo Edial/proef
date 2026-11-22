@@ -4,10 +4,11 @@ Alles wat automatisch draait, per week, nieuwste eerst. Wordt na elke run bijgew
 
 ## Week 47 · zaterdag 21 november 2026
 
-**Samenvatting:** Nº 05 (2026-47): live om 08:17, in trek 5 van 5 (Instagram 4) · Nº 05 (2026-47): live om 07:20, in trek 5 van 5 (Instagram 4) · nieuwsbrief: verstuurd naar de lijst (za 08:30) · **2 mislukt** · 7 van 7 geplande runs te laat (max 9 u 12)
+**Samenvatting:** Nº 05 (2026-47): live om 08:17, in trek 5 van 5 (Instagram 4) · Nº 05 (2026-47): live om 07:20, in trek 5 van 5 (Instagram 4) · nieuwsbrief: verstuurd naar de lijst (za 08:30) · **2 mislukt** · 8 van 8 geplande runs te laat (max 9 u 12)
 
 | Wanneer | Wat | Te laat | Duur | Uitkomst | Details |
 |---|---|---|---|---|---|
+| zo 22-11 13:44 | [Instagram dagelijks](https://github.com/Edial/proef/actions/runs/45023854793) | 8 u 15 | 1 u 00 | ✓ gelukt | Instagram-accounts: 181/185 · nieuwe berichten: 96 · trending op Instagram: 183 · waarvan groeit: 7 · top: Kookmutsjes: • POTATO POCKETS WITH BEEF •; Kookmutsjes: • WRAPS MET GEHAKT EN KAAS •; The Little Blog of Vegan: Comment ‘cheesecake’ and I’ll send you t |
 | za 21-11 13:51 | [Instagram dagelijks](https://github.com/Edial/proef/actions/runs/44906008002) | 8 u 22 | 1 u 00 | ✓ gelukt | Instagram-accounts: 185/185 · nieuwe berichten: 34 · trending op Instagram: 186 · waarvan groeit: 4 · top: Kookmutsjes: • POTATO POCKETS WITH BEEF •; Kookmutsjes: • WRAPS MET GEHAKT EN KAAS •; The Little Blog of Vegan: Comment ‘cheesecake’ and I’ll send you t |
 | za 21-11 08:29 | [Nieuwsbrief](https://github.com/Edial/proef/actions/runs/44879561536) |  | 49 s | ✓ gelukt | nieuwsbrief: verstuurd naar de lijst · onderwerp: 🎃 Kabocha uit de wok en krokante Parmezaanaardappels |
 | za 21-11 08:17 | [Nieuwsbrief](https://github.com/Edial/proef/actions/runs/44879561536) |  | 10 s | ✗ mislukt |  |
