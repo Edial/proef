@@ -2,6 +2,14 @@
 
 Alles wat automatisch draait, per week, nieuwste eerst. Wordt na elke run bijgewerkt door de Action *Logboek* (`scripts/runlog.py`); de losse runs staan in `logs/runs/`. Tijden in Nederlandse tijd. *Te laat* = hoeveel later dan gepland GitHub de run startte. De controle staat er alleen in als hij faalde.
 
+## Week 48 · zaterdag 28 november 2026
+
+**Samenvatting:** 1 van 1 geplande runs te laat (max 10 u 36)
+
+| Wanneer | Wat | Te laat | Duur | Uitkomst | Details |
+|---|---|---|---|---|---|
+| ma 23-11 16:05 | [Instagram dagelijks](https://github.com/Edial/proef/actions/runs/45201339379) | 10 u 36 | 56 min | ✓ gelukt | Instagram-accounts: 172/185 · nieuwe berichten: 132 · trending op Instagram: 184 · waarvan groeit: 10 · top: Kookmutsjes: • POTATO POCKETS WITH BEEF •; Kookmutsjes: • BUTTER CHICKEN POTATO BREAD •; Kookmutsjes: • WRAPS MET GEHAKT EN KAAS • |
+
 ## Week 47 · zaterdag 21 november 2026
 
 **Samenvatting:** Nº 05 (2026-47): live om 08:17, in trek 5 van 5 (Instagram 4) · Nº 05 (2026-47): live om 07:20, in trek 5 van 5 (Instagram 4) · nieuwsbrief: verstuurd naar de lijst (za 08:30) · **2 mislukt** · 8 van 8 geplande runs te laat (max 9 u 12)
