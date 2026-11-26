@@ -4,10 +4,11 @@ Alles wat automatisch draait, per week, nieuwste eerst. Wordt na elke run bijgew
 
 ## Week 48 · zaterdag 28 november 2026
 
-**Samenvatting:** 3 van 3 geplande runs te laat (max 10 u 36)
+**Samenvatting:** 4 van 4 geplande runs te laat (max 10 u 36)
 
 | Wanneer | Wat | Te laat | Duur | Uitkomst | Details |
 |---|---|---|---|---|---|
+| do 26-11 15:08 | [Instagram dagelijks](https://github.com/Edial/proef/actions/runs/45835971595) | 9 u 38 | 51 min | ✓ gelukt | Instagram-accounts: 156/185 · nieuwe berichten: 131 · trending op Instagram: 166 · waarvan groeit: 8 · top: Kookmutsjes: • POTATO POCKETS WITH BEEF •; Kookmutsjes: • BUTTER CHICKEN POTATO BREAD •; The Little Blog of Vegan: Comment ‘cheesecake’ and I’ll send you t |
 | wo 25-11 15:44 | [Instagram dagelijks](https://github.com/Edial/proef/actions/runs/45637417017) | 10 u 15 | 40 min | ✓ gelukt | Instagram-accounts: 121/185 · nieuwe berichten: 95 · trending op Instagram: 175 · waarvan groeit: 8 · top: Kookmutsjes: • POTATO POCKETS WITH BEEF •; Kookmutsjes: • BUTTER CHICKEN POTATO BREAD •; Kookmutsjes: • WRAPS MET GEHAKT EN KAAS • |
 | di 24-11 16:03 | [Instagram dagelijks](https://github.com/Edial/proef/actions/runs/45421130936) | 10 u 34 | 47 min | ✓ gelukt | Instagram-accounts: 141/185 · nieuwe berichten: 98 · trending op Instagram: 179 · waarvan groeit: 9 · top: Kookmutsjes: • POTATO POCKETS WITH BEEF •; Kookmutsjes: • BUTTER CHICKEN POTATO BREAD •; Kookmutsjes: • WRAPS MET GEHAKT EN KAAS • |
 | ma 23-11 16:05 | [Instagram dagelijks](https://github.com/Edial/proef/actions/runs/45201339379) | 10 u 36 | 56 min | ✓ gelukt | Instagram-accounts: 172/185 · nieuwe berichten: 132 · trending op Instagram: 184 · waarvan groeit: 10 · top: Kookmutsjes: • POTATO POCKETS WITH BEEF •; Kookmutsjes: • BUTTER CHICKEN POTATO BREAD •; Kookmutsjes: • WRAPS MET GEHAKT EN KAAS • |
