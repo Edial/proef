@@ -1,0 +1,19 @@
+{
+ "workflow": "Instagram dagelijks",
+ "uitkomst": "success",
+ "aanleiding": "schedule",
+ "start": "2026-11-27T14:06:05+00:00",
+ "eind": "2026-11-27T15:05:08+00:00",
+ "duur_s": 3543,
+ "gepland": "2026-11-27T04:30:00+00:00",
+ "te_laat_min": 576,
+ "run": "https://github.com/Edial/proef/actions/runs/46012856740",
+ "run_id": 46012856740,
+ "details": {
+  "instagram_accounts": "176/185",
+  "berichten_nieuw": 149,
+  "trending": 165,
+  "groeit": 9,
+  "top": "Kookmutsjes: • POTATO POCKETS WITH BEEF •; Kookmutsjes: • BUTTER CHICKEN POTATO BREAD •; The Little Blog of Vegan: Comment ‘cheesecake’ and I’ll send you t"
+ }
+}
