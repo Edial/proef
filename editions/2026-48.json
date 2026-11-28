@@ -5,19 +5,56 @@
   "week": 48,
   "date": "2026-11-28",
   "intro": "Na Thanksgiving draait het bij de makers die we volgen om zachte broodjes en taart, en de eerste kerstbaksels komen eraan. Deze week aardappelbroodjes met butter chicken, een gouden soep met sterretjespasta en sperziebonen uit de wok.",
-  "cover": { "color": "ink" },
+  "cover": {
+    "color": "ink"
+  },
   "mail": {
     "subject": "🥢 Butter chicken in een aardappelbroodje, soep met sterretjes",
     "preview": "Plus kip met sperziebonen uit de wok, zachte botermelkbroodjes en een pecantaart met karamelcrème."
   },
   "watch": [
-    { "term": "potato pockets", "source": "Instagram", "url": "https://www.instagram.com/reel/DfXMRsUtV7n/", "note": "Kookmutsjes, aardappelbroodjes met gehakt: grootste hit van de maand (84,7× normaal), niet gekozen omdat we al het butter chicken-broodje van dezelfde maker nemen" },
-    { "term": "french onion scalloped potatoes", "source": "Instagram", "url": "https://www.instagram.com/reel/DgFwV8qxwnS/", "note": "Ryan Nordheimer, friendsgiving-menu; de recepten staan achter een betaalmuur op Substack" },
-    { "term": "pumpkin pie", "source": "Proef-netwerk", "url": "https://www.okonomikitchen.com/pumpkin-pie-tiramisu/", "note": "29 koks laatste 30 dagen (ervoor 7,5); Google: Seizoen [world]" },
-    { "term": "mashed potatoes", "source": "Proef-netwerk", "url": "https://www.foodandwine.com/leftover-mashed-potatoes-ideas-12275199", "note": "23 koks (ervoor 2); Google: Stijgt [NL]" },
-    { "term": "yule log", "source": "Instagram", "url": "https://www.instagram.com/reel/Dfa-Qs-pJkK/", "note": "Life, Love and Sugar, 173× normaal; site weigert foto's van buitenaf, te veel werk" },
-    { "term": "chocolate pie", "source": "Instagram", "url": "https://www.instagram.com/reel/Df926KahRTr/", "note": "Butternut Bakery, chocoladetaart met Oreo-bodem; site weigert ophalen" },
-    { "term": "matcha banana pudding", "source": "Instagram", "url": "https://www.instagram.com/reel/DfnDruchPIb/", "note": "Teak & Thyme, 12,8× normaal" }
+    {
+      "term": "potato pockets",
+      "source": "Instagram",
+      "url": "https://www.instagram.com/reel/DfXMRsUtV7n/",
+      "note": "Kookmutsjes, aardappelbroodjes met gehakt: grootste hit van de maand (84,7× normaal), niet gekozen omdat we al het butter chicken-broodje van dezelfde maker nemen"
+    },
+    {
+      "term": "french onion scalloped potatoes",
+      "source": "Instagram",
+      "url": "https://www.instagram.com/reel/DgFwV8qxwnS/",
+      "note": "Ryan Nordheimer, friendsgiving-menu; de recepten staan achter een betaalmuur op Substack"
+    },
+    {
+      "term": "pumpkin pie",
+      "source": "Proef-netwerk",
+      "url": "https://www.okonomikitchen.com/pumpkin-pie-tiramisu/",
+      "note": "29 koks laatste 30 dagen (ervoor 7,5); Google: Seizoen [world]"
+    },
+    {
+      "term": "mashed potatoes",
+      "source": "Proef-netwerk",
+      "url": "https://www.foodandwine.com/leftover-mashed-potatoes-ideas-12275199",
+      "note": "23 koks (ervoor 2); Google: Stijgt [NL]"
+    },
+    {
+      "term": "yule log",
+      "source": "Instagram",
+      "url": "https://www.instagram.com/reel/Dfa-Qs-pJkK/",
+      "note": "Life, Love and Sugar, 173× normaal; site weigert foto's van buitenaf, te veel werk"
+    },
+    {
+      "term": "chocolate pie",
+      "source": "Instagram",
+      "url": "https://www.instagram.com/reel/Df926KahRTr/",
+      "note": "Butternut Bakery, chocoladetaart met Oreo-bodem; site weigert ophalen"
+    },
+    {
+      "term": "matcha banana pudding",
+      "source": "Instagram",
+      "url": "https://www.instagram.com/reel/DfnDruchPIb/",
+      "note": "Teak & Thyme, 12,8× normaal"
+    }
   ],
   "recipes": [
     {
@@ -28,49 +65,177 @@
       "minutes": 75,
       "servings": 8,
       "servingsLabel": "broodjes",
-      "tags": ["Aziatisch", "Kindvriendelijk", "Vriest goed in"],
+      "tags": [
+        "Aziatisch",
+        "Kindvriendelijk",
+        "Vriest goed in"
+      ],
       "tint": "persimmon",
       "glyph": "包",
       "native": "",
       "roman": "",
-      "trend": { "source": "Instagram", "text": "Een Nederlands recept dat deze maand heel vaak bewaard wordt." },
+      "trend": {
+        "source": "Instagram",
+        "text": "Een Nederlands recept dat deze maand heel vaak bewaard wordt."
+      },
       "signal": {
         "source": "Kookmutsjes",
         "text": "Kookmutsjes zette deze broodjes op 21 november online; de reel haalde ruim 540.000 likes en reacties, bijna 56 keer zoveel als normaal voor het account. Het hele recept staat met grammen op hun eigen site."
       },
       "source": "kookmutsjes",
-      "trendTerms": ["butter chicken", "potato bread"],
+      "trendTerms": [
+        "butter chicken",
+        "potato bread"
+      ],
       "signals": [
-        { "source": "Instagram", "metric": "likes", "value": 543980, "unit": "likes+reacties", "period": "2026-11-21 t/m 2026-11-28", "geo": "world", "url": "https://www.instagram.com/reel/DgATw8vMS9a/", "note": "55,9× het normale bereik van het account" }
+        {
+          "source": "Instagram",
+          "metric": "likes",
+          "value": 543980,
+          "unit": "likes+reacties",
+          "period": "2026-11-21 t/m 2026-11-28",
+          "geo": "world",
+          "url": "https://www.instagram.com/reel/DgATw8vMS9a/",
+          "note": "55,9× het normale bereik van het account"
+        }
       ],
       "links": [
-        { "label": "Kookmutsjes op Instagram · Butter chicken potato bread", "url": "https://www.instagram.com/reel/DgATw8vMS9a/" },
-        { "label": "Kookmutsjes · Aardappelbroodjes met butter chicken", "url": "https://kookmutsjes.com/recept/aardappelbroodjes-met-butter-chicken/" }
+        {
+          "label": "Kookmutsjes op Instagram · Butter chicken potato bread",
+          "url": "https://www.instagram.com/reel/DgATw8vMS9a/"
+        },
+        {
+          "label": "Kookmutsjes · Aardappelbroodjes met butter chicken",
+          "url": "https://kookmutsjes.com/recept/aardappelbroodjes-met-butter-chicken/"
+        }
       ],
       "instagram": "https://www.instagram.com/reel/DgATw8vMS9a/",
       "photo": "https://kookmutsjes.com/wp-content/uploads/2026/11/aardappelbroodjes-butter-chicken.jpg",
-      "photoCredit": { "label": "Kookmutsjes", "url": "https://kookmutsjes.com/recept/aardappelbroodjes-met-butter-chicken/" },
+      "photoCredit": {
+        "label": "Kookmutsjes",
+        "url": "https://kookmutsjes.com/recept/aardappelbroodjes-met-butter-chicken/"
+      },
       "ingredients": [
-        { "qty": 500, "unit": "g", "item": "kruimige aardappels (450 g geschild)", "group": "Aardappeldeeg" },
-        { "qty": 1, "unit": "", "item": "theelepel gedroogde peterselie", "group": "Aardappeldeeg" },
-        { "qty": 4, "unit": "g", "item": "zout", "group": "Aardappeldeeg" },
-        { "qty": 2, "unit": "g", "item": "knoflookpoeder", "group": "Aardappeldeeg" },
-        { "qty": 1, "unit": "", "item": "ei", "group": "Aardappeldeeg" },
-        { "qty": 200, "unit": "g", "item": "bloem, plus wat extra om te bestuiven", "group": "Aardappeldeeg" },
-        { "qty": 25, "unit": "g", "item": "ongezouten roomboter", "group": "Butter chicken" },
-        { "qty": 550, "unit": "g", "item": "kippendijen, in kleine blokjes", "group": "Butter chicken" },
-        { "qty": 2, "unit": "g", "item": "cayennepeper (voor kinderen de helft)", "group": "Butter chicken" },
-        { "qty": 5, "unit": "g", "item": "garam masala", "group": "Butter chicken" },
-        { "qty": 2, "unit": "g", "item": "komijnpoeder", "group": "Butter chicken" },
-        { "qty": 3, "unit": "g", "item": "knoflookpoeder", "group": "Butter chicken" },
-        { "qty": 1, "unit": "g", "item": "zwarte peper", "group": "Butter chicken" },
-        { "qty": 0.5, "unit": "", "item": "kippenbouillonblokje, verkruimeld", "group": "Butter chicken" },
-        { "qty": 30, "unit": "g", "item": "tomatenpuree", "group": "Butter chicken" },
-        { "qty": 100, "unit": "ml", "item": "slagroom", "group": "Butter chicken" },
-        { "qty": 75, "unit": "g", "item": "geraspte kaas", "group": "Butter chicken" },
-        { "qty": 10, "unit": "g", "item": "ketjap manis of honing", "group": "Butter chicken" },
-        { "qty": 8, "unit": "", "item": "plakjes kaas", "group": "Afmaken" },
-        { "qty": null, "unit": "", "item": "olie om in te vetten", "group": "Afmaken" }
+        {
+          "qty": 500,
+          "unit": "g",
+          "item": "kruimige aardappels (450 g geschild)",
+          "group": "Aardappeldeeg"
+        },
+        {
+          "qty": 1,
+          "unit": "",
+          "item": "theelepel gedroogde peterselie",
+          "group": "Aardappeldeeg"
+        },
+        {
+          "qty": 4,
+          "unit": "g",
+          "item": "zout",
+          "group": "Aardappeldeeg"
+        },
+        {
+          "qty": 2,
+          "unit": "g",
+          "item": "knoflookpoeder",
+          "group": "Aardappeldeeg"
+        },
+        {
+          "qty": 1,
+          "unit": "",
+          "item": "ei",
+          "group": "Aardappeldeeg"
+        },
+        {
+          "qty": 200,
+          "unit": "g",
+          "item": "bloem, plus wat extra om te bestuiven",
+          "group": "Aardappeldeeg"
+        },
+        {
+          "qty": 25,
+          "unit": "g",
+          "item": "ongezouten roomboter",
+          "group": "Butter chicken"
+        },
+        {
+          "qty": 550,
+          "unit": "g",
+          "item": "kippendijen, in kleine blokjes",
+          "group": "Butter chicken"
+        },
+        {
+          "qty": 2,
+          "unit": "g",
+          "item": "cayennepeper (voor kinderen de helft)",
+          "group": "Butter chicken"
+        },
+        {
+          "qty": 5,
+          "unit": "g",
+          "item": "garam masala",
+          "group": "Butter chicken"
+        },
+        {
+          "qty": 2,
+          "unit": "g",
+          "item": "komijnpoeder",
+          "group": "Butter chicken"
+        },
+        {
+          "qty": 3,
+          "unit": "g",
+          "item": "knoflookpoeder",
+          "group": "Butter chicken"
+        },
+        {
+          "qty": 1,
+          "unit": "g",
+          "item": "zwarte peper",
+          "group": "Butter chicken"
+        },
+        {
+          "qty": 0.5,
+          "unit": "",
+          "item": "kippenbouillonblokje, verkruimeld",
+          "group": "Butter chicken"
+        },
+        {
+          "qty": 30,
+          "unit": "g",
+          "item": "tomatenpuree",
+          "group": "Butter chicken"
+        },
+        {
+          "qty": 100,
+          "unit": "ml",
+          "item": "slagroom",
+          "group": "Butter chicken"
+        },
+        {
+          "qty": 75,
+          "unit": "g",
+          "item": "geraspte kaas",
+          "group": "Butter chicken"
+        },
+        {
+          "qty": 10,
+          "unit": "g",
+          "item": "ketjap manis of honing",
+          "group": "Butter chicken"
+        },
+        {
+          "qty": 8,
+          "unit": "",
+          "item": "plakjes kaas",
+          "group": "Afmaken"
+        },
+        {
+          "qty": null,
+          "unit": "",
+          "item": "olie om in te vetten",
+          "group": "Afmaken"
+        }
       ],
       "steps": [
         "Kook de geschilde aardappels in 15 à 20 minuten gaar. Giet af en laat ze even uitdampen.",
@@ -81,107 +246,220 @@
         "Leg op elk lapje een plakje kaas en ongeveer 80 g vulling. Vouw de hoeken naar het midden en knijp het deeg goed dicht. Leg de broodjes met de naad naar beneden op bakpapier.",
         "Bak ze in een koekenpan op middellaag vuur 3 à 4 minuten per kant goudbruin. Of bestrijk ze met wat olie en bak ze 12 à 15 minuten op 200 °C in de airfryer of oven."
       ],
-      "tip": "Kinderen kunnen de aardappels stampen, de bollen draaien en de pakketjes dichtvouwen. Halveer de cayennepeper of laat hem weg; de ketjap maakt de vulling zoetig. Ongebakken broodjes kun je invriezen."
-    },
-    {
-      "slug": "pastinasoep-verborgen-groente",
-      "title": "Pastinasoep met verborgen groente",
-      "dek": "Een heldere kippenbouillon trekt met wortel, selderij, ui en een Parmezaankorst. De groente gaat daarna door de blender en terug de pan in, zodat de soep goudgeel en romig wordt. Kleine pasta en veel Parmezaan erop.",
-      "category": "Soep",
-      "minutes": 40,
-      "servings": 6,
-      "tags": ["Kindvriendelijk", "Weinig werk", "Seizoen"],
-      "tint": "mustard",
-      "glyph": "汁",
-      "native": "",
-      "roman": "",
-      "trend": { "source": "Instagram", "text": "Een soep voor koude dagen, met groente die je niet ziet." },
-      "signal": {
-        "source": "Kalejunkie",
-        "text": "Nicole Modic (Kalejunkie) noemt deze pastina Italian penicillin: een soep voor als je ziek bent, met de groente gepureerd zodat kieskeurige kinderen het niet merken. De reel kreeg ruim 20.000 likes en reacties, 6,6 keer zoveel als normaal. Het hele recept staat in het onderschrift."
+      "tip": "Kinderen kunnen de aardappels stampen, de bollen draaien en de pakketjes dichtvouwen. Halveer de cayennepeper of laat hem weg; de ketjap maakt de vulling zoetig. Ongebakken broodjes kun je invriezen.",
+      "spark": {
+        "term": "butter chicken",
+        "geo": "NL",
+        "source": "Google Trends",
+        "asOf": "2026-11-15",
+        "start": "2025-11-23",
+        "weeks": [
+          56,
+          46,
+          52,
+          45,
+          40,
+          52,
+          57,
+          54,
+          60,
+          59,
+          56,
+          56,
+          73,
+          68,
+          55,
+          52,
+          53,
+          56,
+          51,
+          50,
+          49,
+          50,
+          49,
+          41,
+          50,
+          45,
+          30,
+          44,
+          45,
+          34,
+          29,
+          32,
+          41,
+          38,
+          40,
+          37,
+          44,
+          46,
+          39,
+          46,
+          69,
+          67,
+          62,
+          59,
+          57,
+          54,
+          66,
+          53,
+          47,
+          48,
+          56,
+          49
+        ],
+        "prev": [
+          48,
+          51,
+          54,
+          42,
+          35,
+          49,
+          57,
+          49,
+          63,
+          56,
+          64,
+          50,
+          52,
+          60,
+          54,
+          47,
+          94,
+          55,
+          53,
+          45,
+          44,
+          33,
+          41,
+          37,
+          36,
+          40,
+          46,
+          45,
+          38,
+          35,
+          30,
+          30,
+          40,
+          39,
+          44,
+          45,
+          56,
+          34,
+          46,
+          46,
+          49,
+          48,
+          49,
+          48,
+          54,
+          58,
+          50,
+          56,
+          61,
+          56,
+          55,
+          52
+        ],
+        "label": "Stabiel",
+        "text": "Iets minder gezocht dan vorig jaar.",
+        "yoy": 0.89,
+        "vsLow": 1.4,
+        "network": {
+          "sources": 2,
+          "days": 30,
+          "terms": [
+            "butter chicken",
+            "potato bread"
+          ],
+          "posts": [
+            {
+              "name": "Foodies",
+              "title": "Broccoli als butter chicken? Dit vegetarische weekmenu wil je proberen",
+              "url": "https://www.foodiesmagazine.nl/trends/vegetarisch-weekmenu-verrassende-groenten/",
+              "date": "2026-11-08"
+            },
+            {
+              "name": "Kookmutsjes",
+              "title": "• BUTTER CHICKEN POTATO BREAD •",
+              "url": "https://www.instagram.com/reel/DgATw8vMS9a/",
+              "date": "2026-11-21"
+            }
+          ],
+          "of": 174
+        }
       },
-      "source": "kalejunkie",
-      "trendTerms": ["pastina soup", "pastina"],
-      "signals": [
-        { "source": "Instagram", "metric": "likes", "value": 20823, "unit": "likes+reacties", "period": "2026-11-03 t/m 2026-11-28", "geo": "world", "url": "https://www.instagram.com/reel/DfSJ2RdtlSv/", "note": "6,6× het normale bereik van het account" }
-      ],
-      "links": [
-        { "label": "Kalejunkie op Instagram · Hidden veggie pastina", "url": "https://www.instagram.com/reel/DfSJ2RdtlSv/" },
-        { "label": "Kalejunkie · 20-Minute Immunity Pastina (foto)", "url": "https://kalejunkie.com/20-minute-immunity-pastina/" }
-      ],
-      "instagram": "https://www.instagram.com/reel/DfSJ2RdtlSv/",
-      "photo": "https://kalejunkie.com/wp-content/uploads/2025/12/KJ-20-Minute-Immunity-Pastina-6-scaled.jpg",
-      "photoCredit": { "label": "Kalejunkie", "url": "https://kalejunkie.com/20-minute-immunity-pastina/" },
-      "ingredients": [
-        { "qty": 1900, "unit": "ml", "item": "kippenbouillon" },
-        { "qty": 300, "unit": "g", "item": "winterpeen (3 grote), geschild en gehalveerd" },
-        { "qty": 160, "unit": "g", "item": "bleekselderij (4 stengels), gehalveerd" },
-        { "qty": 1, "unit": "", "item": "gele ui, in grove stukken" },
-        { "qty": 3, "unit": "", "item": "teentjes knoflook" },
-        { "qty": 1, "unit": "", "item": "kippenbouillonblokje" },
-        { "qty": 1, "unit": "", "item": "korst van een stuk Parmezaanse kaas" },
-        { "qty": 2, "unit": "", "item": "laurierblaadjes" },
-        { "qty": 270, "unit": "g", "item": "kleine soeppasta (sterretjes, letters of pastina)" },
-        { "qty": 3, "unit": "g", "item": "kurkuma" },
-        { "qty": 3, "unit": "g", "item": "zout" },
-        { "qty": 45, "unit": "g", "item": "Parmezaanse kaas, vers geraspt" },
-        { "qty": null, "unit": "", "item": "zwarte peper en citroensap naar smaak" }
-      ],
-      "steps": [
-        "Doe de bouillon, wortel, selderij, ui, knoflook, het bouillonblokje, de Parmezaankorst en de laurier in een grote pan. Breng aan de kook, zet het vuur middelhoog, leg het deksel erop en laat 25 minuten trekken tot de wortel zacht is.",
-        "Kook intussen de pasta in een andere pan met water beetgaar. Giet af en zet apart.",
-        "Vis de groente uit de pan (laurier en korst weggooien) en doe hem in de blender met 250 à 500 ml bouillon, de kurkuma en het zout. Pureer glad en roer terug door de soep.",
-        "Verdeel de pasta over de kommen en schep de soep erover. Maak af met veel Parmezaan, zwarte peper en een scheutje citroensap."
-      ],
-      "tip": "Kinderen kunnen de pasta afwegen, de Parmezaan raspen en zelf hun kom opscheppen. Bewaar pasta en soep apart, anders zuigt de pasta alle bouillon op. Laat de hete soep eerst wat afkoelen voor hij de blender in gaat."
-    },
-    {
-      "slug": "kip-sperziebonen-roerbak",
-      "title": "Kip met sperziebonen uit de wok",
-      "dek": "Reepjes kip en geblancheerde sperziebonen gaan met knoflook en gember de wok in en krijgen een glanzende saus van sojasaus en oestersaus. Een halfuur, met rijst erbij een volledige maaltijd.",
-      "category": "Hoofdgerecht",
-      "minutes": 30,
-      "servings": 4,
-      "tags": ["Aziatisch", "Kindvriendelijk", "Weinig werk", "Seizoen"],
-      "tint": "sage",
-      "glyph": "炒",
-      "native": "",
-      "roman": "",
-      "trend": { "source": "Proef-netwerk", "text": "Sperziebonen staan nu bij veel koks op tafel." },
-      "signal": {
-        "source": "Khin's Kitchen",
-        "text": "Sperziebonen kwamen de afgelopen maand bij zestien koks uit ons netwerk voorbij, vooral als bijgerecht voor Thanksgiving. Khin's Kitchen maakt er met kip een snelle roerbak van; het recept staat met grammen op haar site."
+      "igTrend": {
+        "name": "Kookmutsjes",
+        "source": "kookmutsjes",
+        "url": "https://www.instagram.com/reel/DgATw8vMS9a/",
+        "date": "2026-11-21",
+        "title": "• BUTTER CHICKEN POTATO BREAD •",
+        "engagement": 543980,
+        "normal": 9732,
+        "ratio": 55.9,
+        "age": 7,
+        "kind": "uitschieter",
+        "extra": 534248,
+        "series": {
+          "values": [
+            14841,
+            7857,
+            8429,
+            11038,
+            9963,
+            104766,
+            6367,
+            824581,
+            19155,
+            10459,
+            9797,
+            17897,
+            3965,
+            6026,
+            19533,
+            2891,
+            29095,
+            35934,
+            9329,
+            7261,
+            6300,
+            49249,
+            7650,
+            543980,
+            6856,
+            2718,
+            11391,
+            10401,
+            2065,
+            3956
+          ],
+          "at": 23
+        }
       },
-      "source": "khins-kitchen",
-      "trendTerms": ["green bean", "chicken green bean stir fry"],
-      "signals": [
-        { "source": "Proef-netwerk", "metric": "listed", "value": 16, "unit": "koks", "period": "laatste 30 dagen", "geo": "world", "url": "https://cafedelites.com/green-bean-casserole-with-parmesan-stove-top-version/", "note": "green bean: 16 koks (ervoor 1), waarvan 5 kernbronnen; Google: Seizoen [world]" }
-      ],
-      "links": [
-        { "label": "Khin's Kitchen · Chicken and green bean stir fry", "url": "https://khinskitchen.com/chicken-green-bean-stir-fry/" }
-      ],
-      "photo": "https://khinskitchen.com/wp-content/uploads/2025/12/chicken-and-green-beans-stir-fry-02.jpg",
-      "photoCredit": { "label": "Khin's Kitchen", "url": "https://khinskitchen.com/chicken-green-bean-stir-fry/" },
-      "ingredients": [
-        { "qty": 400, "unit": "g", "item": "kipfilet of kippendijen zonder vel" },
-        { "qty": 400, "unit": "g", "item": "sperziebonen" },
-        { "qty": 6, "unit": "", "item": "teentjes knoflook, fijngehakt" },
-        { "qty": 10, "unit": "g", "item": "verse gember, fijngehakt" },
-        { "qty": 30, "unit": "ml", "item": "neutrale olie" },
-        { "qty": 10, "unit": "ml", "item": "sesamolie" },
-        { "qty": 60, "unit": "ml", "item": "lichte sojasaus", "group": "Saus" },
-        { "qty": 10, "unit": "ml", "item": "donkere sojasaus", "group": "Saus" },
-        { "qty": 60, "unit": "ml", "item": "oestersaus", "group": "Saus" },
-        { "qty": 1, "unit": "g", "item": "witte peper", "group": "Saus" },
-        { "qty": 300, "unit": "g", "item": "witte rijst, gekookt volgens de verpakking", "group": "Erbij" }
-      ],
-      "steps": [
-        "Was de sperziebonen, haal de puntjes eraf en snijd ze in stukken van 5 cm. Blancheer ze 2 minuten in kokend water en laat uitlekken.",
-        "Roer de sojasauzen, oestersaus en witte peper door elkaar. Snijd de kip in dunne reepjes en hussel ze met 2 eetlepels van de saus.",
-        "Verhit de olie in een wok of grote koekenpan op middelhoog vuur. Bak knoflook en gember tot ze geuren, doe de kip erbij en bak 2 à 3 minuten. Keer om en bak nog 1 à 2 minuten, tot de kip niet meer roze is.",
-        "Schep de sperziebonen en de rest van de saus erdoor en roerbak nog 1 à 2 minuten. Druppel de sesamolie erover en eet meteen, met rijst."
-      ],
-      "tip": "Kinderen kunnen de puntjes van de bonen knippen en de saus mengen. Het gerecht is niet pittig; wie wil, schept er aan tafel wat gefermenteerde chilisaus bij."
+      "photoGamma": 0.7,
+      "photoSet": [
+        {
+          "w": 300,
+          "url": "https://kookmutsjes.com/wp-content/uploads/2026/11/aardappelbroodjes-butter-chicken-300x209.jpg"
+        },
+        {
+          "w": 768,
+          "url": "https://kookmutsjes.com/wp-content/uploads/2026/11/aardappelbroodjes-butter-chicken-768x534.jpg"
+        },
+        {
+          "w": 1024,
+          "url": "https://kookmutsjes.com/wp-content/uploads/2026/11/aardappelbroodjes-butter-chicken-1024x712.jpg"
+        },
+        {
+          "w": 1536,
+          "url": "https://kookmutsjes.com/wp-content/uploads/2026/11/aardappelbroodjes-butter-chicken-1536x1068.jpg"
+        },
+        {
+          "w": 1808,
+          "url": "https://kookmutsjes.com/wp-content/uploads/2026/11/aardappelbroodjes-butter-chicken.jpg"
+        }
+      ]
     },
     {
       "slug": "parker-house-boterbroodjes",
@@ -191,43 +469,143 @@
       "minutes": 60,
       "servings": 18,
       "servingsLabel": "broodjes",
-      "tags": ["Kindvriendelijk", "Vegetarisch", "Feestdagen"],
+      "tags": [
+        "Kindvriendelijk",
+        "Vegetarisch",
+        "Feestdagen"
+      ],
       "tint": "sky",
       "glyph": "麦",
       "native": "",
       "roman": "",
-      "trend": { "source": "Instagram", "text": "Zelfgebakken broodjes horen nu bij veel feestmaaltijden." },
+      "trend": {
+        "source": "Instagram",
+        "text": "Zelfgebakken broodjes horen nu bij veel feestmaaltijden."
+      },
       "signal": {
         "source": "Cloudy Kitchen",
         "text": "Erin Clarkson (Cloudy Kitchen) deelde haar tip voor feestdagenbroodjes: laat het deeg eerst in de koelkast rijzen, dan rijst het daarna niet te ver door. De post kreeg bijna 20 keer zoveel reacties als normaal. Bijgerechten voor Thanksgiving kwamen de afgelopen maand bij dertien koks uit ons netwerk voorbij."
       },
       "source": "cloudy-kitchen",
-      "trendTerms": ["thanksgiving side", "parker house rolls"],
+      "trendTerms": [
+        "thanksgiving side",
+        "parker house rolls"
+      ],
       "signals": [
-        { "source": "Instagram", "metric": "likes", "value": 44479, "unit": "likes+reacties", "period": "2026-11-08 t/m 2026-11-28", "geo": "world", "url": "https://www.instagram.com/p/DffwiBYkkOm/", "note": "19,8× het normale bereik van het account" },
-        { "source": "Proef-netwerk", "metric": "listed", "value": 13, "unit": "koks", "period": "laatste 30 dagen", "geo": "world", "url": "https://www.loveandlemons.com/no-oven-thanksgiving-side-dishes/", "note": "thanksgiving side: 13 koks (ervoor 1); Google: Seizoen [world]" }
+        {
+          "source": "Instagram",
+          "metric": "likes",
+          "value": 44479,
+          "unit": "likes+reacties",
+          "period": "2026-11-08 t/m 2026-11-28",
+          "geo": "world",
+          "url": "https://www.instagram.com/p/DffwiBYkkOm/",
+          "note": "19,8× het normale bereik van het account"
+        },
+        {
+          "source": "Proef-netwerk",
+          "metric": "listed",
+          "value": 13,
+          "unit": "koks",
+          "period": "laatste 30 dagen",
+          "geo": "world",
+          "url": "https://www.loveandlemons.com/no-oven-thanksgiving-side-dishes/",
+          "note": "thanksgiving side: 13 koks (ervoor 1); Google: Seizoen [world]"
+        }
       ],
       "links": [
-        { "label": "Cloudy Kitchen op Instagram", "url": "https://www.instagram.com/p/DffwiBYkkOm/" },
-        { "label": "Cloudy Kitchen · Parker House Rolls", "url": "https://cloudykitchen.com/blog/parker-house-rolls/" },
-        { "label": "Cloudy Kitchen · Super soft white bread dough", "url": "https://cloudykitchen.com/blog/white-bread-dough/" }
+        {
+          "label": "Cloudy Kitchen op Instagram",
+          "url": "https://www.instagram.com/p/DffwiBYkkOm/"
+        },
+        {
+          "label": "Cloudy Kitchen · Parker House Rolls",
+          "url": "https://cloudykitchen.com/blog/parker-house-rolls/"
+        },
+        {
+          "label": "Cloudy Kitchen · Super soft white bread dough",
+          "url": "https://cloudykitchen.com/blog/white-bread-dough/"
+        }
       ],
       "instagram": "https://www.instagram.com/p/DffwiBYkkOm/",
       "photo": "https://cloudykitchen.com/wp-content/uploads/2024/06/buttering-parker-house-rolls.jpg",
-      "photoCredit": { "label": "Cloudy Kitchen", "url": "https://cloudykitchen.com/blog/parker-house-rolls/" },
+      "photoCredit": {
+        "label": "Cloudy Kitchen",
+        "url": "https://cloudykitchen.com/blog/parker-house-rolls/"
+      },
       "ingredients": [
-        { "qty": 220, "unit": "ml", "item": "volle melk, op kamertemperatuur", "group": "Deeg" },
-        { "qty": 50, "unit": "ml", "item": "lauw water", "group": "Deeg" },
-        { "qty": 10, "unit": "g", "item": "kristalsuiker", "group": "Deeg" },
-        { "qty": 7, "unit": "g", "item": "instantgist (1 zakje)", "group": "Deeg" },
-        { "qty": 35, "unit": "g", "item": "volle melkpoeder", "group": "Deeg" },
-        { "qty": 430, "unit": "g", "item": "patentbloem of bloem voor brood", "group": "Deeg" },
-        { "qty": 1, "unit": "", "item": "groot ei, op kamertemperatuur", "group": "Deeg" },
-        { "qty": 2, "unit": "g", "item": "zout", "group": "Deeg" },
-        { "qty": 60, "unit": "g", "item": "ongezouten roomboter, zacht", "group": "Deeg" },
-        { "qty": 60, "unit": "g", "item": "gezouten roomboter, gesmolten", "group": "Afmaken" },
-        { "qty": 1, "unit": "", "item": "ei, losgeklopt met 15 ml water", "group": "Afmaken" },
-        { "qty": null, "unit": "", "item": "zeezoutvlokken (optioneel)", "group": "Afmaken" }
+        {
+          "qty": 220,
+          "unit": "ml",
+          "item": "volle melk, op kamertemperatuur",
+          "group": "Deeg"
+        },
+        {
+          "qty": 50,
+          "unit": "ml",
+          "item": "lauw water",
+          "group": "Deeg"
+        },
+        {
+          "qty": 10,
+          "unit": "g",
+          "item": "kristalsuiker",
+          "group": "Deeg"
+        },
+        {
+          "qty": 7,
+          "unit": "g",
+          "item": "instantgist (1 zakje)",
+          "group": "Deeg"
+        },
+        {
+          "qty": 35,
+          "unit": "g",
+          "item": "volle melkpoeder",
+          "group": "Deeg"
+        },
+        {
+          "qty": 430,
+          "unit": "g",
+          "item": "patentbloem of bloem voor brood",
+          "group": "Deeg"
+        },
+        {
+          "qty": 1,
+          "unit": "",
+          "item": "groot ei, op kamertemperatuur",
+          "group": "Deeg"
+        },
+        {
+          "qty": 2,
+          "unit": "g",
+          "item": "zout",
+          "group": "Deeg"
+        },
+        {
+          "qty": 60,
+          "unit": "g",
+          "item": "ongezouten roomboter, zacht",
+          "group": "Deeg"
+        },
+        {
+          "qty": 60,
+          "unit": "g",
+          "item": "gezouten roomboter, gesmolten",
+          "group": "Afmaken"
+        },
+        {
+          "qty": 1,
+          "unit": "",
+          "item": "ei, losgeklopt met 15 ml water",
+          "group": "Afmaken"
+        },
+        {
+          "qty": null,
+          "unit": "",
+          "item": "zeezoutvlokken (optioneel)",
+          "group": "Afmaken"
+        }
       ],
       "steps": [
         "Kneed alle deegingrediënten behalve de zachte boter ongeveer 10 minuten met de deeghaak van een keukenmachine, tot het deeg glad en elastisch is. Kneed de boter erdoor in nog 5 minuten.",
@@ -237,7 +615,961 @@
         "Dek af en laat ongeveer 1 uur rijzen tot ze bol staan. Verwarm de oven intussen voor op 180 °C.",
         "Bestrijk de broodjes met het ei en bak ze 25 à 30 minuten diep goudbruin. Bestrijk ze direct met de rest van de boter en strooi er eventueel zeezoutvlokken over."
       ],
-      "tip": "Kinderen kunnen het deeg wegen en verdelen, de bolletjes draaien en ze met boter bestrijken en dubbelvouwen. Kneden zonder machine kan ook: reken dan op 15 minuten met de hand. Melkpoeder vind je bij de toko of de Turkse supermarkt."
+      "tip": "Kinderen kunnen het deeg wegen en verdelen, de bolletjes draaien en ze met boter bestrijken en dubbelvouwen. Kneden zonder machine kan ook: reken dan op 15 minuten met de hand. Melkpoeder vind je bij de toko of de Turkse supermarkt.",
+      "spark": {
+        "term": "thanksgiving side",
+        "geo": "world",
+        "source": "Google Trends",
+        "asOf": "2026-11-15",
+        "start": "2025-11-23",
+        "weeks": [
+          83,
+          6,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          6,
+          10,
+          4,
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          3,
+          4,
+          4,
+          2,
+          2,
+          3,
+          2,
+          2,
+          2,
+          1,
+          2,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          3,
+          4,
+          4,
+          6,
+          5,
+          4,
+          7,
+          14,
+          24,
+          44
+        ],
+        "prev": [
+          100,
+          3,
+          2,
+          2,
+          2,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          2,
+          3,
+          7,
+          5,
+          6,
+          8,
+          17,
+          29,
+          47
+        ],
+        "label": "Seizoen",
+        "text": "Elk najaar terug: nu meer dan tien keer zo vaak gezocht als in de zomer.",
+        "yoy": 0.88,
+        "vsLow": 17.8,
+        "network": {
+          "sources": 15,
+          "days": 30,
+          "terms": [
+            "thanksgiving side",
+            "parker house rolls"
+          ],
+          "posts": [
+            {
+              "name": "Deb Perelman",
+              "title": "Classic, buttery, tender and stretchy Parker House rolls with a pretzel wash that makes them dark, shiny and unmistakably special on top.",
+              "url": "https://www.instagram.com/p/DgNe9rmFYsf/",
+              "date": "2026-11-26"
+            },
+            {
+              "name": "Broma Bakery",
+              "title": "Homemade Parker House Rolls",
+              "url": "https://bromabakery.com/homemade-parker-house-rolls/",
+              "date": "2026-11-17"
+            },
+            {
+              "name": "Serious Eats",
+              "title": "Stuffing doesn't have to be relegated to the B-List of Thanksgiving side dishes.",
+              "url": "https://www.instagram.com/p/DfiQZpoD8Hf/",
+              "date": "2026-11-09"
+            },
+            {
+              "name": "Half Baked Harvest",
+              "title": "Comment SAVE to get my most popular Thanksgiving side dishes!",
+              "url": "https://www.instagram.com/p/DgMDzCbnPni/",
+              "date": "2026-11-26"
+            },
+            {
+              "name": "Natasha's Kitchen",
+              "title": "Still need a last-minute Thanksgiving side?",
+              "url": "https://www.instagram.com/reel/DgK6OMgJ9pT/",
+              "date": "2026-11-25"
+            },
+            {
+              "name": "Love and Lemons",
+              "title": "10 Easy Thanksgiving Side Dishes That Don’t Use the Oven",
+              "url": "https://www.loveandlemons.com/no-oven-thanksgiving-side-dishes/",
+              "date": "2026-11-23"
+            }
+          ],
+          "of": 174
+        }
+      },
+      "igTrend": {
+        "name": "Cloudy Kitchen",
+        "source": "cloudy-kitchen",
+        "url": "https://www.instagram.com/p/DffwiBYkkOm/",
+        "date": "2026-11-08",
+        "title": "Making rolls these holidays?",
+        "engagement": 44479,
+        "normal": 2250,
+        "ratio": 19.8,
+        "age": 20,
+        "kind": "uitschieter",
+        "growth": 10087,
+        "growthRatio": 4.5,
+        "extra": 42229,
+        "series": {
+          "values": [
+            11296,
+            3125,
+            1595,
+            3549,
+            10950,
+            1914,
+            2350,
+            1290,
+            997,
+            6446,
+            2921,
+            1137,
+            27915,
+            1666,
+            1247,
+            53011,
+            3035,
+            5947,
+            3755,
+            3849,
+            667,
+            14014,
+            44479,
+            8812,
+            1426,
+            3085,
+            2550,
+            1048,
+            818,
+            959
+          ],
+          "at": 22
+        }
+      },
+      "photoGamma": 1.3,
+      "photoSet": [
+        {
+          "w": 360,
+          "url": "https://cloudykitchen.com/wp-content/uploads/2023/11/buttering-parker-house-rolls-360x540.jpg"
+        },
+        {
+          "w": 720,
+          "url": "https://cloudykitchen.com/wp-content/uploads/2023/11/buttering-parker-house-rolls-720x1079.jpg"
+        },
+        {
+          "w": 768,
+          "url": "https://cloudykitchen.com/wp-content/uploads/2023/11/buttering-parker-house-rolls-768x1151.jpg"
+        },
+        {
+          "w": 800,
+          "url": "https://cloudykitchen.com/wp-content/uploads/2023/11/buttering-parker-house-rolls-800x1200.jpg"
+        },
+        {
+          "w": 1025,
+          "url": "https://cloudykitchen.com/wp-content/uploads/2023/11/buttering-parker-house-rolls-1025x1536.jpg"
+        },
+        {
+          "w": 1200,
+          "url": "https://cloudykitchen.com/wp-content/uploads/2024/06/buttering-parker-house-rolls.jpg"
+        }
+      ]
+    },
+    {
+      "slug": "pastinasoep-verborgen-groente",
+      "title": "Pastinasoep met verborgen groente",
+      "dek": "Een heldere kippenbouillon trekt met wortel, selderij, ui en een Parmezaankorst. De groente gaat daarna door de blender en terug de pan in, zodat de soep goudgeel en romig wordt. Kleine pasta en veel Parmezaan erop.",
+      "category": "Soep",
+      "minutes": 40,
+      "servings": 6,
+      "tags": [
+        "Kindvriendelijk",
+        "Weinig werk",
+        "Seizoen"
+      ],
+      "tint": "mustard",
+      "glyph": "汁",
+      "native": "",
+      "roman": "",
+      "trend": {
+        "source": "Instagram",
+        "text": "Een soep voor koude dagen, met groente die je niet ziet."
+      },
+      "signal": {
+        "source": "Kalejunkie",
+        "text": "Nicole Modic (Kalejunkie) noemt deze pastina Italian penicillin: een soep voor als je ziek bent, met de groente gepureerd zodat kieskeurige kinderen het niet merken. De reel kreeg ruim 20.000 likes en reacties, 6,6 keer zoveel als normaal. Het hele recept staat in het onderschrift."
+      },
+      "source": "kalejunkie",
+      "trendTerms": [
+        "pastina soup",
+        "pastina"
+      ],
+      "signals": [
+        {
+          "source": "Instagram",
+          "metric": "likes",
+          "value": 20823,
+          "unit": "likes+reacties",
+          "period": "2026-11-03 t/m 2026-11-28",
+          "geo": "world",
+          "url": "https://www.instagram.com/reel/DfSJ2RdtlSv/",
+          "note": "6,6× het normale bereik van het account"
+        }
+      ],
+      "links": [
+        {
+          "label": "Kalejunkie op Instagram · Hidden veggie pastina",
+          "url": "https://www.instagram.com/reel/DfSJ2RdtlSv/"
+        },
+        {
+          "label": "Kalejunkie · 20-Minute Immunity Pastina (foto)",
+          "url": "https://kalejunkie.com/20-minute-immunity-pastina/"
+        }
+      ],
+      "instagram": "https://www.instagram.com/reel/DfSJ2RdtlSv/",
+      "photo": "https://kalejunkie.com/wp-content/uploads/2025/12/KJ-20-Minute-Immunity-Pastina-6-scaled.jpg",
+      "photoCredit": {
+        "label": "Kalejunkie",
+        "url": "https://kalejunkie.com/20-minute-immunity-pastina/"
+      },
+      "ingredients": [
+        {
+          "qty": 1900,
+          "unit": "ml",
+          "item": "kippenbouillon"
+        },
+        {
+          "qty": 300,
+          "unit": "g",
+          "item": "winterpeen (3 grote), geschild en gehalveerd"
+        },
+        {
+          "qty": 160,
+          "unit": "g",
+          "item": "bleekselderij (4 stengels), gehalveerd"
+        },
+        {
+          "qty": 1,
+          "unit": "",
+          "item": "gele ui, in grove stukken"
+        },
+        {
+          "qty": 3,
+          "unit": "",
+          "item": "teentjes knoflook"
+        },
+        {
+          "qty": 1,
+          "unit": "",
+          "item": "kippenbouillonblokje"
+        },
+        {
+          "qty": 1,
+          "unit": "",
+          "item": "korst van een stuk Parmezaanse kaas"
+        },
+        {
+          "qty": 2,
+          "unit": "",
+          "item": "laurierblaadjes"
+        },
+        {
+          "qty": 270,
+          "unit": "g",
+          "item": "kleine soeppasta (sterretjes, letters of pastina)"
+        },
+        {
+          "qty": 3,
+          "unit": "g",
+          "item": "kurkuma"
+        },
+        {
+          "qty": 3,
+          "unit": "g",
+          "item": "zout"
+        },
+        {
+          "qty": 45,
+          "unit": "g",
+          "item": "Parmezaanse kaas, vers geraspt"
+        },
+        {
+          "qty": null,
+          "unit": "",
+          "item": "zwarte peper en citroensap naar smaak"
+        }
+      ],
+      "steps": [
+        "Doe de bouillon, wortel, selderij, ui, knoflook, het bouillonblokje, de Parmezaankorst en de laurier in een grote pan. Breng aan de kook, zet het vuur middelhoog, leg het deksel erop en laat 25 minuten trekken tot de wortel zacht is.",
+        "Kook intussen de pasta in een andere pan met water beetgaar. Giet af en zet apart.",
+        "Vis de groente uit de pan (laurier en korst weggooien) en doe hem in de blender met 250 à 500 ml bouillon, de kurkuma en het zout. Pureer glad en roer terug door de soep.",
+        "Verdeel de pasta over de kommen en schep de soep erover. Maak af met veel Parmezaan, zwarte peper en een scheutje citroensap."
+      ],
+      "tip": "Kinderen kunnen de pasta afwegen, de Parmezaan raspen en zelf hun kom opscheppen. Bewaar pasta en soep apart, anders zuigt de pasta alle bouillon op. Laat de hete soep eerst wat afkoelen voor hij de blender in gaat.",
+      "spark": {
+        "term": "pastina soup",
+        "geo": "world",
+        "source": "Google Trends",
+        "asOf": "2026-11-15",
+        "start": "2025-11-23",
+        "weeks": [
+          39,
+          58,
+          62,
+          70,
+          59,
+          99,
+          76,
+          60,
+          68,
+          63,
+          48,
+          44,
+          45,
+          49,
+          34,
+          31,
+          29,
+          28,
+          28,
+          19,
+          21,
+          24,
+          18,
+          19,
+          16,
+          17,
+          16,
+          18,
+          14,
+          13,
+          12,
+          14,
+          17,
+          19,
+          16,
+          15,
+          17,
+          19,
+          26,
+          27,
+          30,
+          32,
+          39,
+          59,
+          63,
+          58,
+          54,
+          56,
+          50,
+          61,
+          68,
+          60
+        ],
+        "prev": [
+          42,
+          53,
+          53,
+          71,
+          88,
+          100,
+          78,
+          62,
+          64,
+          52,
+          70,
+          55,
+          60,
+          43,
+          44,
+          42,
+          25,
+          31,
+          27,
+          28,
+          21,
+          17,
+          19,
+          20,
+          17,
+          28,
+          27,
+          22,
+          17,
+          21,
+          17,
+          16,
+          16,
+          14,
+          15,
+          26,
+          18,
+          25,
+          19,
+          29,
+          27,
+          30,
+          32,
+          43,
+          44,
+          41,
+          50,
+          53,
+          55,
+          57,
+          64,
+          55
+        ],
+        "label": "Seizoen",
+        "text": "Elk najaar terug: nu vier keer zo vaak gezocht als in de zomer.",
+        "yoy": 1.03,
+        "vsLow": 4.0,
+        "network": {
+          "sources": 2,
+          "days": 30,
+          "terms": [
+            "pastina soup",
+            "pastina"
+          ],
+          "posts": [
+            {
+              "name": "Kalejunkie",
+              "title": "kalejunkie HIDDEN VEGGIE PASTINA aka italian penicillin, the soup that cures all—sickness, a broken heart, and pays your bills for you too 😏",
+              "url": "https://www.instagram.com/reel/DfSJ2RdtlSv/",
+              "date": "2026-11-03"
+            },
+            {
+              "name": "Ella Henry (Glow with Ella)",
+              "title": "Carrot Ginger Pastina 🥕",
+              "url": "https://www.instagram.com/reel/DfNlcWghppV/",
+              "date": "2026-11-01"
+            }
+          ],
+          "of": 174
+        }
+      },
+      "igTrend": {
+        "name": "Kalejunkie",
+        "source": "kalejunkie",
+        "url": "https://www.instagram.com/reel/DfSJ2RdtlSv/",
+        "date": "2026-11-03",
+        "title": "kalejunkie HIDDEN VEGGIE PASTINA aka italian penicillin, the soup that cures all—sickness, a broken heart, and pays your bills for you too 😏",
+        "engagement": 20823,
+        "normal": 3134,
+        "ratio": 6.6,
+        "age": 25,
+        "kind": "uitschieter",
+        "growth": 248,
+        "growthRatio": 0.1,
+        "extra": 17689,
+        "series": {
+          "values": [
+            8517,
+            1555,
+            111,
+            123,
+            3355,
+            3134,
+            31,
+            2,
+            4443,
+            1,
+            12,
+            1193,
+            2,
+            5260,
+            2839,
+            884,
+            4296,
+            8922,
+            5633,
+            692,
+            2,
+            3206,
+            20823,
+            74,
+            1,
+            4069,
+            8,
+            154,
+            2,
+            49
+          ],
+          "at": 22
+        }
+      },
+      "photoGamma": 0.45,
+      "photoSet": [
+        {
+          "w": 768,
+          "url": "https://kalejunkie.com/wp-content/uploads/2025/12/KJ-20-Minute-Immunity-Pastina-6-768x960.jpg"
+        },
+        {
+          "w": 819,
+          "url": "https://kalejunkie.com/wp-content/uploads/2025/12/KJ-20-Minute-Immunity-Pastina-6-819x1024.jpg"
+        },
+        {
+          "w": 1200,
+          "url": "https://kalejunkie.com/wp-content/uploads/2025/12/KJ-20-Minute-Immunity-Pastina-6-scaled.jpg"
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://kalejunkie.com/wp-content/uploads/2025/12/KJ-20-Minute-Immunity-Pastina-1.jpg",
+          "w": 1200,
+          "h": 1500,
+          "thumb": "https://kalejunkie.com/wp-content/uploads/2025/12/KJ-20-Minute-Immunity-Pastina-1-150x150.jpg"
+        },
+        {
+          "url": "https://kalejunkie.com/wp-content/uploads/2025/12/KJ-20-Minute-Immunity-Pastina-2.jpg",
+          "w": 1200,
+          "h": 1500,
+          "thumb": "https://kalejunkie.com/wp-content/uploads/2025/12/KJ-20-Minute-Immunity-Pastina-2-150x150.jpg"
+        },
+        {
+          "url": "https://kalejunkie.com/wp-content/uploads/2025/12/KJ-20-Minute-Immunity-Pastina-3.jpg",
+          "w": 1200,
+          "h": 1500,
+          "thumb": "https://kalejunkie.com/wp-content/uploads/2025/12/KJ-20-Minute-Immunity-Pastina-3-150x150.jpg"
+        },
+        {
+          "url": "https://kalejunkie.com/wp-content/uploads/2025/12/KJ-20-Minute-Immunity-Pastina-4.jpg",
+          "w": 1200,
+          "h": 1500,
+          "thumb": "https://kalejunkie.com/wp-content/uploads/2025/12/KJ-20-Minute-Immunity-Pastina-4-150x150.jpg"
+        },
+        {
+          "url": "https://kalejunkie.com/wp-content/uploads/2025/12/KJ-20-Minute-Immunity-Pastina-5.jpg",
+          "w": 1200,
+          "h": 1500,
+          "thumb": "https://kalejunkie.com/wp-content/uploads/2025/12/KJ-20-Minute-Immunity-Pastina-5-150x150.jpg"
+        }
+      ]
+    },
+    {
+      "slug": "kip-sperziebonen-roerbak",
+      "title": "Kip met sperziebonen uit de wok",
+      "dek": "Reepjes kip en geblancheerde sperziebonen gaan met knoflook en gember de wok in en krijgen een glanzende saus van sojasaus en oestersaus. Een halfuur, met rijst erbij een volledige maaltijd.",
+      "category": "Hoofdgerecht",
+      "minutes": 30,
+      "servings": 4,
+      "tags": [
+        "Aziatisch",
+        "Kindvriendelijk",
+        "Weinig werk",
+        "Seizoen"
+      ],
+      "tint": "sage",
+      "glyph": "炒",
+      "native": "",
+      "roman": "",
+      "trend": {
+        "source": "Proef-netwerk",
+        "text": "Sperziebonen staan nu bij veel koks op tafel."
+      },
+      "signal": {
+        "source": "Khin's Kitchen",
+        "text": "Sperziebonen kwamen de afgelopen maand bij zestien koks uit ons netwerk voorbij, vooral als bijgerecht voor Thanksgiving. Khin's Kitchen maakt er met kip een snelle roerbak van; het recept staat met grammen op haar site."
+      },
+      "source": "khins-kitchen",
+      "trendTerms": [
+        "green bean",
+        "chicken green bean stir fry"
+      ],
+      "signals": [
+        {
+          "source": "Proef-netwerk",
+          "metric": "listed",
+          "value": 16,
+          "unit": "koks",
+          "period": "laatste 30 dagen",
+          "geo": "world",
+          "url": "https://cafedelites.com/green-bean-casserole-with-parmesan-stove-top-version/",
+          "note": "green bean: 16 koks (ervoor 1), waarvan 5 kernbronnen; Google: Seizoen [world]"
+        }
+      ],
+      "links": [
+        {
+          "label": "Khin's Kitchen · Chicken and green bean stir fry",
+          "url": "https://khinskitchen.com/chicken-green-bean-stir-fry/"
+        }
+      ],
+      "photo": "https://khinskitchen.com/wp-content/uploads/2025/12/chicken-and-green-beans-stir-fry-02.jpg",
+      "photoCredit": {
+        "label": "Khin's Kitchen",
+        "url": "https://khinskitchen.com/chicken-green-bean-stir-fry/"
+      },
+      "ingredients": [
+        {
+          "qty": 400,
+          "unit": "g",
+          "item": "kipfilet of kippendijen zonder vel"
+        },
+        {
+          "qty": 400,
+          "unit": "g",
+          "item": "sperziebonen"
+        },
+        {
+          "qty": 6,
+          "unit": "",
+          "item": "teentjes knoflook, fijngehakt"
+        },
+        {
+          "qty": 10,
+          "unit": "g",
+          "item": "verse gember, fijngehakt"
+        },
+        {
+          "qty": 30,
+          "unit": "ml",
+          "item": "neutrale olie"
+        },
+        {
+          "qty": 10,
+          "unit": "ml",
+          "item": "sesamolie"
+        },
+        {
+          "qty": 60,
+          "unit": "ml",
+          "item": "lichte sojasaus",
+          "group": "Saus"
+        },
+        {
+          "qty": 10,
+          "unit": "ml",
+          "item": "donkere sojasaus",
+          "group": "Saus"
+        },
+        {
+          "qty": 60,
+          "unit": "ml",
+          "item": "oestersaus",
+          "group": "Saus"
+        },
+        {
+          "qty": 1,
+          "unit": "g",
+          "item": "witte peper",
+          "group": "Saus"
+        },
+        {
+          "qty": 300,
+          "unit": "g",
+          "item": "witte rijst, gekookt volgens de verpakking",
+          "group": "Erbij"
+        }
+      ],
+      "steps": [
+        "Was de sperziebonen, haal de puntjes eraf en snijd ze in stukken van 5 cm. Blancheer ze 2 minuten in kokend water en laat uitlekken.",
+        "Roer de sojasauzen, oestersaus en witte peper door elkaar. Snijd de kip in dunne reepjes en hussel ze met 2 eetlepels van de saus.",
+        "Verhit de olie in een wok of grote koekenpan op middelhoog vuur. Bak knoflook en gember tot ze geuren, doe de kip erbij en bak 2 à 3 minuten. Keer om en bak nog 1 à 2 minuten, tot de kip niet meer roze is.",
+        "Schep de sperziebonen en de rest van de saus erdoor en roerbak nog 1 à 2 minuten. Druppel de sesamolie erover en eet meteen, met rijst."
+      ],
+      "tip": "Kinderen kunnen de puntjes van de bonen knippen en de saus mengen. Het gerecht is niet pittig; wie wil, schept er aan tafel wat gefermenteerde chilisaus bij.",
+      "spark": {
+        "term": "green bean",
+        "geo": "world",
+        "source": "Google Trends",
+        "asOf": "2026-11-15",
+        "start": "2025-11-23",
+        "weeks": [
+          93,
+          9,
+          7,
+          9,
+          25,
+          6,
+          5,
+          5,
+          4,
+          4,
+          4,
+          5,
+          6,
+          5,
+          4,
+          5,
+          4,
+          5,
+          10,
+          10,
+          7,
+          6,
+          6,
+          6,
+          7,
+          7,
+          6,
+          6,
+          5,
+          6,
+          5,
+          4,
+          4,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          6,
+          6,
+          5,
+          7,
+          5,
+          5,
+          5,
+          4,
+          5,
+          6,
+          12,
+          26
+        ],
+        "prev": [
+          93,
+          8,
+          6,
+          10,
+          25,
+          5,
+          5,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          9,
+          8,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          5,
+          4,
+          5,
+          5,
+          5,
+          10,
+          8,
+          6,
+          5,
+          5,
+          5,
+          4,
+          6,
+          5,
+          5,
+          6,
+          8,
+          13,
+          30
+        ],
+        "label": "Seizoen",
+        "text": "Elk najaar terug: nu drie keer zo vaak gezocht als in de winter.",
+        "yoy": 0.86,
+        "vsLow": 2.6,
+        "network": {
+          "sources": 16,
+          "days": 30,
+          "terms": [
+            "green bean",
+            "chicken green bean stir fry"
+          ],
+          "posts": [
+            {
+              "name": "Nigella Lawson",
+              "title": "turns its attention to Thanksgiving this week, kicking off with this Green Bean and Lemon Casserole.",
+              "url": "https://www.instagram.com/p/DgFPW3-IVKR/",
+              "date": "2026-11-23"
+            },
+            {
+              "name": "Deb Perelman",
+              "title": "GREEN BEAN CASSEROLE WITH FRIED ONIONS Crisp-tender green beans, homemade sauce, and heaps of crispy fried onions turned me from a green bea",
+              "url": "https://www.instagram.com/reel/DgDtSrDyIy4/",
+              "date": "2026-11-22"
+            },
+            {
+              "name": "Rick Martinez",
+              "title": "For most of my adult life, while my parents were alive and we cooked Thanksgiving together, I made the green bean casserole with lots of cre",
+              "url": "https://www.instagram.com/p/Df5Z9q0o7nu/",
+              "date": "2026-11-18"
+            },
+            {
+              "name": "Bon Appétit",
+              "title": "BA’s Best Green Bean Casserole With Step-by-Step Video",
+              "url": "https://www.bonappetit.com/recipe/bas-best-green-bean-casserole",
+              "date": "2026-11-04"
+            },
+            {
+              "name": "I Am A Food Blog",
+              "title": "Easy Green Bean Casserole From Scratch",
+              "url": "https://iamafoodblog.com/green-bean-casserole/",
+              "date": "2026-11-03"
+            },
+            {
+              "name": "The Pancake Princess",
+              "title": "Pineapple green bean casserole actually slapped 🍍🍍Had the best time co-hosting a Friendsgiving with dolesunshine at their headquarters in LA",
+              "url": "https://www.instagram.com/reel/DgNl6yGxw4s/",
+              "date": "2026-11-26"
+            }
+          ],
+          "of": 174
+        }
+      },
+      "photoGamma": 0.75,
+      "photoSet": [
+        {
+          "w": 360,
+          "url": "https://khinskitchen.com/wp-content/uploads/2025/12/chicken-and-green-beans-stir-fry-02-360x640.jpg"
+        },
+        {
+          "w": 576,
+          "url": "https://khinskitchen.com/wp-content/uploads/2025/12/chicken-and-green-beans-stir-fry-02-576x1024.jpg"
+        },
+        {
+          "w": 720,
+          "url": "https://khinskitchen.com/wp-content/uploads/2025/12/chicken-and-green-beans-stir-fry-02-720x1280.jpg"
+        },
+        {
+          "w": 768,
+          "url": "https://khinskitchen.com/wp-content/uploads/2025/12/chicken-and-green-beans-stir-fry-02-768x1365.jpg"
+        },
+        {
+          "w": 864,
+          "url": "https://khinskitchen.com/wp-content/uploads/2025/12/chicken-and-green-beans-stir-fry-02-864x1536.jpg"
+        },
+        {
+          "w": 1152,
+          "url": "https://khinskitchen.com/wp-content/uploads/2025/12/chicken-and-green-beans-stir-fry-02-1152x2048.jpg"
+        },
+        {
+          "w": 1200,
+          "url": "https://khinskitchen.com/wp-content/uploads/2025/12/chicken-and-green-beans-stir-fry-02.jpg"
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://khinskitchen.com/wp-content/uploads/2025/12/chicken-and-green-beans-stir-fry-ingredients.jpg",
+          "w": 1200,
+          "h": 2133,
+          "thumb": "https://khinskitchen.com/wp-content/uploads/2025/12/chicken-and-green-beans-stir-fry-ingredients-150x150.jpg"
+        },
+        {
+          "url": "https://khinskitchen.com/wp-content/uploads/2025/12/chicken-and-green-beans-stir-fry-01.jpg",
+          "w": 1200,
+          "h": 2133,
+          "thumb": "https://khinskitchen.com/wp-content/uploads/2025/12/chicken-and-green-beans-stir-fry-01-150x150.jpg"
+        },
+        {
+          "url": "https://khinskitchen.com/wp-content/uploads/2025/12/chicken-and-green-beans-stir-fry-03.jpg",
+          "w": 1200,
+          "h": 1200,
+          "thumb": "https://khinskitchen.com/wp-content/uploads/2025/12/chicken-and-green-beans-stir-fry-03-150x150.jpg"
+        }
+      ]
     },
     {
       "slug": "pecantaart-bruine-suikercreme",
@@ -246,51 +1578,193 @@
       "category": "Taart",
       "minutes": 90,
       "servings": 8,
-      "tags": ["Feestdagen", "Vegetarisch", "Seizoen"],
+      "tags": [
+        "Feestdagen",
+        "Vegetarisch",
+        "Seizoen"
+      ],
       "tint": "blush",
       "glyph": "菓",
       "native": "",
       "roman": "",
-      "trend": { "source": "Instagram", "text": "Pecantaart is deze weken bij veel koks te zien." },
+      "trend": {
+        "source": "Instagram",
+        "text": "Pecantaart is deze weken bij veel koks te zien."
+      },
       "signal": {
         "source": "Bon Appétit",
         "text": "Bon Appétit zette deze taart van Joe Sevier half november online met de woorden dat je hem moet maken. De reel kreeg ruim 43.000 likes en reacties, 16 keer zoveel als normaal. Pecantaart kwam de afgelopen maand bij twintig koks uit ons netwerk voorbij."
       },
       "source": "bon-app-tit",
-      "trendTerms": ["pecan pie", "pecan cream pie"],
+      "trendTerms": [
+        "pecan pie",
+        "pecan cream pie"
+      ],
       "signals": [
-        { "source": "Instagram", "metric": "likes", "value": 43645, "unit": "likes+reacties", "period": "2026-11-14 t/m 2026-11-28", "geo": "world", "url": "https://www.instagram.com/reel/DfuzaNAiWVy/", "note": "16,4× het normale bereik van het account" },
-        { "source": "Proef-netwerk", "metric": "listed", "value": 20, "unit": "koks", "period": "laatste 30 dagen", "geo": "world", "url": "https://noblepig.com/pecan-pie-brownies/", "note": "pecan pie: 20 koks (ervoor 4); Google: Seizoen [world]" }
+        {
+          "source": "Instagram",
+          "metric": "likes",
+          "value": 43645,
+          "unit": "likes+reacties",
+          "period": "2026-11-14 t/m 2026-11-28",
+          "geo": "world",
+          "url": "https://www.instagram.com/reel/DfuzaNAiWVy/",
+          "note": "16,4× het normale bereik van het account"
+        },
+        {
+          "source": "Proef-netwerk",
+          "metric": "listed",
+          "value": 20,
+          "unit": "koks",
+          "period": "laatste 30 dagen",
+          "geo": "world",
+          "url": "https://noblepig.com/pecan-pie-brownies/",
+          "note": "pecan pie: 20 koks (ervoor 4); Google: Seizoen [world]"
+        }
       ],
       "links": [
-        { "label": "Bon Appétit op Instagram · Pecan cream pie", "url": "https://www.instagram.com/reel/DfuzaNAiWVy/" },
-        { "label": "Bon Appétit · Pecan Cream Pie With Brown Sugar Custard", "url": "https://www.bonappetit.com/recipe/pecan-cream-pie" }
+        {
+          "label": "Bon Appétit op Instagram · Pecan cream pie",
+          "url": "https://www.instagram.com/reel/DfuzaNAiWVy/"
+        },
+        {
+          "label": "Bon Appétit · Pecan Cream Pie With Brown Sugar Custard",
+          "url": "https://www.bonappetit.com/recipe/pecan-cream-pie"
+        }
       ],
       "instagram": "https://www.instagram.com/reel/DfuzaNAiWVy/",
       "photo": "https://assets.bonappetit.com/photos/68bb587cfb8124efd122306b/16:9/w_1280,c_limit/amish-pecan-cream-pie_RECIPE_V2_072425_12934_VOG_final.jpg",
-      "photoCredit": { "label": "Bon Appétit", "url": "https://www.bonappetit.com/recipe/pecan-cream-pie" },
+      "photoCredit": {
+        "label": "Bon Appétit",
+        "url": "https://www.bonappetit.com/recipe/pecan-cream-pie"
+      },
       "ingredients": [
-        { "qty": 1, "unit": "", "item": "rol koelvers taartdeeg (ca. 230 g)", "group": "Bodem" },
-        { "qty": 2, "unit": "", "item": "grote eieren", "group": "Pecanlaag" },
-        { "qty": 133, "unit": "g", "item": "donkerbruine basterdsuiker", "group": "Pecanlaag" },
-        { "qty": 3, "unit": "g", "item": "zout", "group": "Pecanlaag" },
-        { "qty": 85, "unit": "g", "item": "ongezouten roomboter", "group": "Pecanlaag" },
-        { "qty": 300, "unit": "g", "item": "ongebrande pecannoten", "group": "Pecanlaag" },
-        { "qty": 30, "unit": "g", "item": "zure room", "group": "Pecanlaag" },
-        { "qty": 5, "unit": "ml", "item": "vanille-extract", "group": "Pecanlaag" },
-        { "qty": 360, "unit": "ml", "item": "slagroom", "group": "Crème" },
-        { "qty": 360, "unit": "ml", "item": "volle melk", "group": "Crème" },
-        { "qty": 6, "unit": "", "item": "eidooiers", "group": "Crème" },
-        { "qty": 150, "unit": "g", "item": "donkerbruine basterdsuiker", "group": "Crème" },
-        { "qty": 40, "unit": "g", "item": "maizena", "group": "Crème" },
-        { "qty": 1.5, "unit": "g", "item": "zout", "group": "Crème" },
-        { "qty": 85, "unit": "g", "item": "koude ongezouten roomboter, in stukjes", "group": "Crème" },
-        { "qty": 20, "unit": "ml", "item": "vanille-extract", "group": "Crème" },
-        { "qty": 240, "unit": "ml", "item": "slagroom", "group": "Room" },
-        { "qty": 60, "unit": "g", "item": "zure room", "group": "Room" },
-        { "qty": 25, "unit": "g", "item": "poedersuiker", "group": "Room" },
-        { "qty": 5, "unit": "ml", "item": "vanille-extract", "group": "Room" },
-        { "qty": null, "unit": "", "item": "snufje zout", "group": "Room" }
+        {
+          "qty": 1,
+          "unit": "",
+          "item": "rol koelvers taartdeeg (ca. 230 g)",
+          "group": "Bodem"
+        },
+        {
+          "qty": 2,
+          "unit": "",
+          "item": "grote eieren",
+          "group": "Pecanlaag"
+        },
+        {
+          "qty": 133,
+          "unit": "g",
+          "item": "donkerbruine basterdsuiker",
+          "group": "Pecanlaag"
+        },
+        {
+          "qty": 3,
+          "unit": "g",
+          "item": "zout",
+          "group": "Pecanlaag"
+        },
+        {
+          "qty": 85,
+          "unit": "g",
+          "item": "ongezouten roomboter",
+          "group": "Pecanlaag"
+        },
+        {
+          "qty": 300,
+          "unit": "g",
+          "item": "ongebrande pecannoten",
+          "group": "Pecanlaag"
+        },
+        {
+          "qty": 30,
+          "unit": "g",
+          "item": "zure room",
+          "group": "Pecanlaag"
+        },
+        {
+          "qty": 5,
+          "unit": "ml",
+          "item": "vanille-extract",
+          "group": "Pecanlaag"
+        },
+        {
+          "qty": 360,
+          "unit": "ml",
+          "item": "slagroom",
+          "group": "Crème"
+        },
+        {
+          "qty": 360,
+          "unit": "ml",
+          "item": "volle melk",
+          "group": "Crème"
+        },
+        {
+          "qty": 6,
+          "unit": "",
+          "item": "eidooiers",
+          "group": "Crème"
+        },
+        {
+          "qty": 150,
+          "unit": "g",
+          "item": "donkerbruine basterdsuiker",
+          "group": "Crème"
+        },
+        {
+          "qty": 40,
+          "unit": "g",
+          "item": "maizena",
+          "group": "Crème"
+        },
+        {
+          "qty": 1.5,
+          "unit": "g",
+          "item": "zout",
+          "group": "Crème"
+        },
+        {
+          "qty": 85,
+          "unit": "g",
+          "item": "koude ongezouten roomboter, in stukjes",
+          "group": "Crème"
+        },
+        {
+          "qty": 20,
+          "unit": "ml",
+          "item": "vanille-extract",
+          "group": "Crème"
+        },
+        {
+          "qty": 240,
+          "unit": "ml",
+          "item": "slagroom",
+          "group": "Room"
+        },
+        {
+          "qty": 60,
+          "unit": "g",
+          "item": "zure room",
+          "group": "Room"
+        },
+        {
+          "qty": 25,
+          "unit": "g",
+          "item": "poedersuiker",
+          "group": "Room"
+        },
+        {
+          "qty": 5,
+          "unit": "ml",
+          "item": "vanille-extract",
+          "group": "Room"
+        },
+        {
+          "qty": null,
+          "unit": "",
+          "item": "snufje zout",
+          "group": "Room"
+        }
       ],
       "steps": [
         "Verwarm de oven voor op 200 °C. Bekleed een metalen taartvorm van 23 cm met het taartdeeg, prik de bodem in, leg er bakpapier op en vul met bakbonen. Bak 20 minuten, haal papier en bonen eruit en bak nog 5 à 10 minuten tot de bodem droog en lichtbruin is. Zet de oven op 175 °C.",
@@ -303,7 +1777,254 @@
         "Strijk de crème over de pecanlaag, druk folie direct op het oppervlak en zet minstens 4 uur in de koelkast.",
         "Klop de slagroom met zure room, poedersuiker, vanille en zout tot zachte pieken. Verdeel over de taart en breek de gekarameliseerde noten erover."
       ],
-      "tip": "Kinderen kunnen de bakbonen op de bodem leggen, de noten wegen en de room kloppen en uitstrijken. Het koken van de crème doet een volwassene: die wordt heet en spat. De taart kan een dag van tevoren klaar; leg de noten er pas vlak voor het opdienen op."
+      "tip": "Kinderen kunnen de bakbonen op de bodem leggen, de noten wegen en de room kloppen en uitstrijken. Het koken van de crème doet een volwassene: die wordt heet en spat. De taart kan een dag van tevoren klaar; leg de noten er pas vlak voor het opdienen op.",
+      "spark": {
+        "term": "pecan pie",
+        "geo": "world",
+        "source": "Google Trends",
+        "asOf": "2026-11-15",
+        "start": "2025-11-23",
+        "weeks": [
+          97,
+          14,
+          11,
+          13,
+          26,
+          8,
+          4,
+          4,
+          4,
+          3,
+          3,
+          4,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          4,
+          4,
+          3,
+          3,
+          3,
+          3,
+          3,
+          6,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          4,
+          5,
+          5,
+          6,
+          6,
+          6,
+          7,
+          9,
+          16,
+          34
+        ],
+        "prev": [
+          88,
+          12,
+          10,
+          13,
+          24,
+          7,
+          4,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3,
+          3,
+          2,
+          3,
+          4,
+          3,
+          3,
+          3,
+          2,
+          2,
+          3,
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          4,
+          4,
+          5,
+          5,
+          4,
+          5,
+          5,
+          7,
+          7,
+          7,
+          10,
+          11,
+          18,
+          34
+        ],
+        "label": "Seizoen",
+        "text": "Elk najaar terug: nu zes keer zo vaak gezocht als in de zomer.",
+        "yoy": 0.9,
+        "vsLow": 5.7,
+        "network": {
+          "sources": 20,
+          "days": 30,
+          "terms": [
+            "pecan pie",
+            "pecan cream pie"
+          ],
+          "posts": [
+            {
+              "name": "Deb Perelman",
+              "title": "BLACK-BOTTOM OATMEAL PIE Do you or someone you know suffer from Pecan Pie Deprivation Syndrome because of a nut allergy?",
+              "url": "https://www.instagram.com/reel/DgGCKmSy0Um/",
+              "date": "2026-11-23"
+            },
+            {
+              "name": "Bon Appétit",
+              "title": "BA's Best Pecan Pie",
+              "url": "https://www.bonappetit.com/recipe/bas-best-pecan-pie",
+              "date": "2026-11-17"
+            },
+            {
+              "name": "Molly Baz",
+              "title": "here’s what happens when you take your classic American pecan pie on a trip to the French patisserie.",
+              "url": "https://www.instagram.com/reel/Df0On5mTkxw/",
+              "date": "2026-11-16"
+            },
+            {
+              "name": "Broma Bakery",
+              "title": "Pecan Pie Pull Apart Bread",
+              "url": "https://bromabakery.com/pecan-pie-pull-apart-bread/",
+              "date": "2026-11-06"
+            },
+            {
+              "name": "Feel Good Foodie",
+              "title": "There’s no corn syrup in my Pecan pie!",
+              "url": "https://www.instagram.com/reel/DgJcMAqR_Oj/",
+              "date": "2026-11-25"
+            },
+            {
+              "name": "Food & Wine",
+              "title": "But no matter how you say it, we hope pecan pie makes it to your holiday table 🥧.",
+              "url": "https://www.instagram.com/reel/DgGkLTVDN8X/",
+              "date": "2026-11-24"
+            }
+          ],
+          "of": 174
+        }
+      },
+      "igTrend": {
+        "name": "Bon Appétit",
+        "source": "bon-app-tit",
+        "url": "https://www.instagram.com/reel/DfuzaNAiWVy/",
+        "date": "2026-11-14",
+        "title": "Make this pie, or you’ll regret it for the rest of your life, according to joeseviergrams.",
+        "engagement": 43645,
+        "normal": 2656,
+        "ratio": 16.4,
+        "age": 14,
+        "kind": "uitschieter",
+        "growth": 4404,
+        "growthRatio": 1.7,
+        "extra": 40989,
+        "series": {
+          "values": [
+            0,
+            420,
+            984,
+            1731,
+            595,
+            2332,
+            5950,
+            4375,
+            700,
+            1076,
+            2239,
+            8050,
+            494,
+            1098,
+            3511,
+            1101,
+            5529,
+            1080,
+            0,
+            2095,
+            1290,
+            2563,
+            43645,
+            918,
+            11895,
+            16634,
+            3502,
+            1651,
+            8307,
+            952
+          ],
+          "at": 22
+        }
+      },
+      "photoGamma": 1.06,
+      "photoSet": [
+        {
+          "w": 480,
+          "url": "https://assets.bonappetit.com/photos/68bb587cfb8124efd122306b/16:9/w_480,c_limit/amish-pecan-cream-pie_RECIPE_V2_072425_12934_VOG_final.jpg"
+        },
+        {
+          "w": 640,
+          "url": "https://assets.bonappetit.com/photos/68bb587cfb8124efd122306b/16:9/w_640,c_limit/amish-pecan-cream-pie_RECIPE_V2_072425_12934_VOG_final.jpg"
+        },
+        {
+          "w": 768,
+          "url": "https://assets.bonappetit.com/photos/68bb587cfb8124efd122306b/16:9/w_768,c_limit/amish-pecan-cream-pie_RECIPE_V2_072425_12934_VOG_final.jpg"
+        },
+        {
+          "w": 800,
+          "url": "https://assets.bonappetit.com/photos/68bb587cfb8124efd122306b/16:9/w_800,c_limit/amish-pecan-cream-pie_RECIPE_V2_072425_12934_VOG_final.jpg"
+        },
+        {
+          "w": 1024,
+          "url": "https://assets.bonappetit.com/photos/68bb587cfb8124efd122306b/16:9/w_1024,c_limit/amish-pecan-cream-pie_RECIPE_V2_072425_12934_VOG_final.jpg"
+        },
+        {
+          "w": 1200,
+          "url": "https://assets.bonappetit.com/photos/68bb587cfb8124efd122306b/16:9/w_1200,c_limit/amish-pecan-cream-pie_RECIPE_V2_072425_12934_VOG_final.jpg"
+        },
+        {
+          "w": 1536,
+          "url": "https://assets.bonappetit.com/photos/68bb587cfb8124efd122306b/16:9/w_1536,c_limit/amish-pecan-cream-pie_RECIPE_V2_072425_12934_VOG_final.jpg"
+        }
+      ]
     }
   ],
   "ferment": {
@@ -317,12 +2038,30 @@
     "teaser": "Rode pepers in pekel, na een week of twee een frisse, zure chilisaus.",
     "yield": "1 pot van 1 liter, ca. 400 ml saus",
     "facts": [
-      { "label": "Pot", "value": "1 liter, glas" },
-      { "label": "Werk", "value": "20 min, plus 10 min pureren" },
-      { "label": "Aanrecht", "value": "1–2 weken, 18–22 °C" },
-      { "label": "Klaar", "value": "als het fris zuur ruikt en de pH 4,6 of lager is" },
-      { "label": "Bewaren", "value": "koelkast, binnen 3 maanden op" },
-      { "label": "Niveau", "value": "Beginner, met pH-strips" }
+      {
+        "label": "Pot",
+        "value": "1 liter, glas"
+      },
+      {
+        "label": "Werk",
+        "value": "20 min, plus 10 min pureren"
+      },
+      {
+        "label": "Aanrecht",
+        "value": "1–2 weken, 18–22 °C"
+      },
+      {
+        "label": "Klaar",
+        "value": "als het fris zuur ruikt en de pH 4,6 of lager is"
+      },
+      {
+        "label": "Bewaren",
+        "value": "koelkast, binnen 3 maanden op"
+      },
+      {
+        "label": "Niveau",
+        "value": "Beginner, met pH-strips"
+      }
     ],
     "usedIn": "kip-sperziebonen-roerbak",
     "science": [
@@ -331,17 +2070,65 @@
       "Het melkzuur maakt de smaak frisser en ronder. In de koelkast gaat de fermentatie heel langzaam verder."
     ],
     "timeline": [
-      { "when": "Dag 0", "title": "Inleggen", "text": "Pepers, paprika en knoflook in de pot, pekel erover, alles onder het vocht. Deksel losjes erop.", "now": true },
-      { "when": "Dag 2–4", "title": "Bubbels", "text": "Het vocht wordt troebel en er stijgen belletjes op. Elke dag even het deksel openen om gas te laten ontsnappen.", "now": false },
-      { "when": "Dag 7–14", "title": "Meten", "text": "Ruikt het fris zuur, meet dan de pH. Bij 4,6 of lager mag hij door de blender.", "now": false },
-      { "when": "Daarna", "title": "Pureren en koel zetten", "text": "Pureer met een deel van de pekel tot de dikte die je wilt en bewaar in de koelkast.", "now": false }
+      {
+        "when": "Dag 0",
+        "title": "Inleggen",
+        "text": "Pepers, paprika en knoflook in de pot, pekel erover, alles onder het vocht. Deksel losjes erop.",
+        "now": true
+      },
+      {
+        "when": "Dag 2–4",
+        "title": "Bubbels",
+        "text": "Het vocht wordt troebel en er stijgen belletjes op. Elke dag even het deksel openen om gas te laten ontsnappen.",
+        "now": false
+      },
+      {
+        "when": "Dag 7–14",
+        "title": "Meten",
+        "text": "Ruikt het fris zuur, meet dan de pH. Bij 4,6 of lager mag hij door de blender.",
+        "now": false
+      },
+      {
+        "when": "Daarna",
+        "title": "Pureren en koel zetten",
+        "text": "Pureer met een deel van de pekel tot de dikte die je wilt en bewaar in de koelkast.",
+        "now": false
+      }
     ],
     "ingredients": [
-      { "qty": 200, "unit": "g", "item": "rode chilipepers, steeltjes eraf, gehalveerd (schoongemaakt gewogen)", "base": true, "key": "pepers" },
-      { "qty": 100, "unit": "g", "item": "rode puntpaprika, zonder zaadlijsten, in stukken", "base": true, "key": "paprika" },
-      { "qty": 300, "unit": "ml", "item": "water (kraanwater mag; even laten staan of filteren als het sterk naar chloor ruikt)", "base": true, "key": "water" },
-      { "qty": 18, "unit": "g", "item": "zeezout zonder jodium en zonder antiklontermiddel", "salt": true, "key": "zout" },
-      { "qty": 3, "unit": "", "item": "teentjes knoflook, gepeld en gehalveerd" }
+      {
+        "qty": 200,
+        "unit": "g",
+        "item": "rode chilipepers, steeltjes eraf, gehalveerd (schoongemaakt gewogen)",
+        "base": true,
+        "key": "pepers"
+      },
+      {
+        "qty": 100,
+        "unit": "g",
+        "item": "rode puntpaprika, zonder zaadlijsten, in stukken",
+        "base": true,
+        "key": "paprika"
+      },
+      {
+        "qty": 300,
+        "unit": "ml",
+        "item": "water (kraanwater mag; even laten staan of filteren als het sterk naar chloor ruikt)",
+        "base": true,
+        "key": "water"
+      },
+      {
+        "qty": 18,
+        "unit": "g",
+        "item": "zeezout zonder jodium en zonder antiklontermiddel",
+        "salt": true,
+        "key": "zout"
+      },
+      {
+        "qty": 3,
+        "unit": "",
+        "item": "teentjes knoflook, gepeld en gehalveerd"
+      }
     ],
     "steps": [
       "Was een glazen pot van 1 liter en het deksel in heet sop en spoel na met heel heet water. Gebruik geen koper, messing of zink. Draag handschoenen bij het snijden van de pepers.",
@@ -356,10 +2143,22 @@
     "bad": "Pluizige schimmel (groen, blauw, zwart, bruin of wit pluis), slijmerige pepers of slijmerig vocht, of een rotte geur in plaats van een zure: dan alles weggooien, niet wegscheppen. Ook weggooien als de pH boven 4,6 blijft. Bij twijfel weggooien.",
     "kids": "Kinderen kunnen het zout en water afwegen, de pekel roeren, de paprika in de pot doen en elke dag de bubbels bekijken. De pepers snijdt een volwassene met handschoenen. Voor kinderen: meng een theelepel saus door ketchup of mayonaise.",
     "sources": [
-      { "label": "Hanna Instruments · pH of hot sauce: making and testing", "url": "https://blog.hannainst.com/ph_hot_sauce_making_and_testing" },
-      { "label": "University of Illinois Extension · Fermenting", "url": "https://extension.illinois.edu/food-preservation/fermenting" },
-      { "label": "NCHFP · Containers, covers and weights", "url": "https://nchfp.uga.edu/how/ferment/general-information-on-fermenting/suitable-containers-covers-and-weights-for-fermenting-food/" },
-      { "label": "UC Davis · Troubleshooting fermented vegetables", "url": "https://ucfoodsafety.ucdavis.edu/sites/g/files/dgvnsk7366/files/media/documents/Troubleshooting%20fermented%20fruits%20and%20vegetables%20FINAL.pdf" }
+      {
+        "label": "Hanna Instruments · pH of hot sauce: making and testing",
+        "url": "https://blog.hannainst.com/ph_hot_sauce_making_and_testing"
+      },
+      {
+        "label": "University of Illinois Extension · Fermenting",
+        "url": "https://extension.illinois.edu/food-preservation/fermenting"
+      },
+      {
+        "label": "NCHFP · Containers, covers and weights",
+        "url": "https://nchfp.uga.edu/how/ferment/general-information-on-fermenting/suitable-containers-covers-and-weights-for-fermenting-food/"
+      },
+      {
+        "label": "UC Davis · Troubleshooting fermented vegetables",
+        "url": "https://ucfoodsafety.ucdavis.edu/sites/g/files/dgvnsk7366/files/media/documents/Troubleshooting%20fermented%20fruits%20and%20vegetables%20FINAL.pdf"
+      }
     ]
   }
 }

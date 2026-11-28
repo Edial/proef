@@ -15,6 +15,13 @@
    "country": "US",
    "affiliation": "Bon Appétit"
   },
+  "cloudy-kitchen": {
+   "name": "Cloudy Kitchen",
+   "site": "https://cloudykitchen.com",
+   "instagram": "cloudykitchen",
+   "country": "US",
+   "affiliation": "blog"
+  },
   "dinner-at-the-zoo": {
    "name": "Dinner at the Zoo",
    "site": "https://www.dinneratthezoo.com",
@@ -51,6 +58,19 @@
    "instagram": "kalejunkie",
    "country": "US",
    "affiliation": "blog"
+  },
+  "khins-kitchen": {
+   "name": "Khin's Kitchen",
+   "site": "https://khinskitchen.com",
+   "instagram": "khinskitchen",
+   "country": "GB",
+   "affiliation": "blog"
+  },
+  "kookmutsjes": {
+   "name": "Kookmutsjes",
+   "site": "https://www.kookmutsjes.com",
+   "instagram": "kookmutsjes",
+   "country": "NL"
   },
   "love-and-lemons": {
    "name": "Love and Lemons",
@@ -128,6 +148,11 @@
   }
  },
  "recipes": {
+  "aardappelbroodjes-butter-chicken": "kookmutsjes",
+  "parker-house-boterbroodjes": "cloudy-kitchen",
+  "pastinasoep-verborgen-groente": "kalejunkie",
+  "kip-sperziebonen-roerbak": "khins-kitchen",
+  "pecantaart-bruine-suikercreme": "bon-app-tit",
   "parmezaan-krielaardappels-oven": "kalejunkie",
   "tofu-bulgogi-rijstkom": "the-foodie-takes-flight",
   "kabocha-gehakt-roerbak": "just-one-cookbook",
