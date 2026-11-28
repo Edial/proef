@@ -4,10 +4,11 @@ Alles wat automatisch draait, per week, nieuwste eerst. Wordt na elke run bijgew
 
 ## Week 48 · zaterdag 28 november 2026
 
-**Samenvatting:** Nº 06 (2026-48): live om 07:26, in trek 5 van 5 (Instagram 4) · 6 van 6 geplande runs te laat (max 10 u 36)
+**Samenvatting:** Nº 06 (2026-48): live om 07:26, in trek 5 van 5 (Instagram 4) · nieuwsbrief: verstuurd naar de lijst (za 07:27) · 6 van 6 geplande runs te laat (max 10 u 36)
 
 | Wanneer | Wat | Te laat | Duur | Uitkomst | Details |
 |---|---|---|---|---|---|
+| za 28-11 07:26 | [Nieuwsbrief](https://github.com/Edial/proef/actions/runs/46116636027) |  | 50 s | ✓ gelukt | nieuwsbrief: verstuurd naar de lijst · onderwerp: 🥢 Butter chicken in een aardappelbroodje, soep met sterretjes |
 | za 28-11 07:10 | [Trends en foto's meten](https://github.com/Edial/proef/actions/runs/46115361387) |  | 16 min | ✓ gelukt | Nº 06 (2026-48) · in trek: 5 van 5 · Google: 4 · Instagram: 4 · labels: Stabiel+IG, Seizoen+IG, Seizoen+IG, Seizoen, Seizoen+IG · trendregel: ok · live: ja · concept binnen: 07:10 |
 | za 28-11 04:42 | [Bronnen ophalen](https://github.com/Edial/proef/actions/runs/46104107952) | 5 u 42 | 1 u 05 | ✓ gelukt | Instagram-accounts: 181/185 · nieuwe berichten: 523 · bronnen: 238 · stijgers: 60 · met Google-label: 38 |
 | vr 27-11 15:06 | [Instagram dagelijks](https://github.com/Edial/proef/actions/runs/46012856740) | 9 u 36 | 59 min | ✓ gelukt | Instagram-accounts: 176/185 · nieuwe berichten: 149 · trending op Instagram: 165 · waarvan groeit: 9 · top: Kookmutsjes: • POTATO POCKETS WITH BEEF •; Kookmutsjes: • BUTTER CHICKEN POTATO BREAD •; The Little Blog of Vegan: Comment ‘cheesecake’ and I’ll send you t |

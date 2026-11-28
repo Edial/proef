@@ -1,0 +1,16 @@
+{
+ "workflow": "Nieuwsbrief",
+ "uitkomst": "success",
+ "aanleiding": "workflow_run",
+ "start": "2026-11-28T06:26:49+00:00",
+ "eind": "2026-11-28T06:27:39+00:00",
+ "duur_s": 50,
+ "gepland": null,
+ "te_laat_min": null,
+ "run": "https://github.com/Edial/proef/actions/runs/46116636027",
+ "run_id": 46116636027,
+ "details": {
+  "onderwerp": "🥢 Butter chicken in een aardappelbroodje, soep met sterretjes",
+  "nieuwsbrief": "verstuurd naar de lijst"
+ }
+}
